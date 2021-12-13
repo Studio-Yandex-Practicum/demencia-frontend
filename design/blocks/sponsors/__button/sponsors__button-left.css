@@ -1,0 +1,12 @@
+.sponsors__button-left {
+    height: 20px;
+    padding-right: 130%;
+    background-color: transparent;
+    border: 0;
+}
+
+@media screen and (max-width: 520px) {
+    .sponsors__button-left {
+        height: 18px;
+    }
+}

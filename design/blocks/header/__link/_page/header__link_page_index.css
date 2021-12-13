@@ -1,0 +1,13 @@
+.header__link_page_index {
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 12px;
+  color: black;
+  transition: font-size 0.5s ease, border-bottom 0.5s cubic-bezier(0.2,-2,0.8,2);
+}
+
+.header__link_page_index:hover {
+  font-size: 13px;
+  border-bottom: 2px solid #6D097A;
+}

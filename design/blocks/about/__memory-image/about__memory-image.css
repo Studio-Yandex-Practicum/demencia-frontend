@@ -1,0 +1,25 @@
+.about__memory-image {
+    width: 135px;
+    max-height: 160px;
+    background-color: #FEFEFE;
+    padding: 4% 3%;
+    margin: 0 8% 0 5%;
+}
+
+@media screen and (max-width: 750px) {
+    .about__memory-image {
+        padding: 7% 4%;
+        margin: 0 7% 0 3%;
+        max-width: 90px;
+        max-height: 130px;
+    }
+}
+
+@media screen and (max-width: 540px) {
+    .about__memory-image {
+        margin: 0 4% 0 12%;
+        padding: 20% 12%;
+        max-width: 60px;
+        max-height: 110px;
+    }
+}

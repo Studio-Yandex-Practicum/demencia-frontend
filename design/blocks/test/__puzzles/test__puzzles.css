@@ -1,0 +1,26 @@
+.test__puzzles {
+  width: 76px;
+  height: 61px;
+  background: url(../../../images/test_puzzlesdecor.svg);
+  background-repeat: no-repeat;
+  background-size: contain;
+  position: absolute;
+  bottom: 120px;
+  left: 62px;
+}
+
+@media screen and (max-width:767px) {
+  .test__puzzles {
+    width: 54px;
+    height: 40px;
+    bottom: 95px;
+    left: 36px;
+  }
+}
+
+@media screen and (max-width:660px){
+  .test__puzzles {
+    bottom: 105px;
+    left: 38px;
+  }
+}

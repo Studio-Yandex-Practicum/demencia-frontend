@@ -1,0 +1,27 @@
+.article-slider__title {
+    max-width: 150px;
+    font-size: 19px;
+    line-height: 18px;
+    ;
+    font-weight: 400;
+    letter-spacing: 1.6px;
+    color: white;
+    margin: 3px 0 0 19px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+@media screen and (max-width:767px) {
+    .article-slider__title {
+        max-width: 135px;
+        font-size: 15px;
+        line-height: 15px;
+        ;
+    }
+}
+
+@media screen and (max-width: 369px) {
+    .article-slider__title {
+        margin: 10px 0 0 29px;
+    }
+}

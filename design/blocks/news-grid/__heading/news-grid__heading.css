@@ -1,0 +1,32 @@
+.news-grid__heading {
+    margin: auto;
+    margin-bottom: 70px;
+    font-size: 86px;
+    line-height: 1.15;
+    font-weight: 800;
+    font-style: normal;
+    text-align: center;
+    vertical-align: middle;
+    text-transform: uppercase;
+    color: #6D097A;
+    transform: translate(0px, 120%);
+    opacity: 0;
+    transition: all 1.5s ease;
+}
+
+.news-grid__heading._active {
+    transform: translate(0px, 0px);
+    opacity: 1;
+}
+
+@media (max-width: 800px) {
+    .news-grid__heading {
+        font-size: 64px;
+    }
+}
+
+@media (max-width: 600px) {
+    .news-grid__heading {
+        font-size: 42px;
+    }
+}

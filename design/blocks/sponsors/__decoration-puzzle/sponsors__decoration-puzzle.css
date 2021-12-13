@@ -1,0 +1,41 @@
+.sponsors__decoration-puzzle {
+    position: absolute;
+    top: -55%;
+    right: 15%;
+    opacity: .7;
+    max-width: 100px;
+    transform: translate(150%, 0px) rotate(360deg);
+    opacity: 0;
+    transition: all 3s ease 0s;
+}
+
+.sponsors__decoration-puzzle._active {
+    transform: translate(0px, 0px) rotate(0deg);
+    opacity: 1;
+}
+
+.sponsors__decoration-puzzle:hover {
+    transform: rotate(180deg);
+}
+
+@media screen and (max-width: 750px) {
+    .sponsors__decoration-puzzle {
+        top: -30%;
+        max-width: 80px;
+    }
+}
+
+@media screen and (max-width: 540px) {
+    .sponsors__decoration-puzzle {
+        top: -45%;
+        left: 25%;
+        max-width: 60px;
+    }
+}
+
+@media screen and (max-width: 450px) {
+    .sponsors__decoration-puzzle {
+        max-width: 35px;
+        top: -25%;
+    }
+}

@@ -1,0 +1,24 @@
+.w-new {
+  margin-bottom: 100px;
+    padding-top: 10px;
+    position: relative;
+    box-sizing: border-box;
+}
+
+@media screen and (max-width: 640px) {
+  .w-new {
+    margin-bottom: 70px;
+  }
+}
+
+@media screen and (max-width: 450px) {
+    .w-new {
+        padding-top: 0;
+    }
+}
+
+@media screen and (max-width: 410px) {
+  .w-new {
+    margin-bottom: 90px;
+  }
+}

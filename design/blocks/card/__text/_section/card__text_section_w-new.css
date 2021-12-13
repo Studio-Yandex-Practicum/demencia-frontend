@@ -1,0 +1,19 @@
+.card__text_section_w-new {
+  max-width: 200px;
+  max-height: 50px;
+  font-size: 8px;
+  line-height: 1.2;
+  -webkit-line-clamp: 3;
+}
+
+@media (max-width: 540px) {
+  .card__text_section_w-new {
+  font-size: 7px;
+  }
+}
+
+@media (max-width: 521px) {
+  .card__text_section_w-new {
+    -webkit-line-clamp: 2;
+  }
+}

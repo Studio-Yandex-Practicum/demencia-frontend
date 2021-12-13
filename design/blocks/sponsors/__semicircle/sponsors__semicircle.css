@@ -1,0 +1,42 @@
+.sponsors__semicircle {
+    position: absolute;
+    top: -170px;
+    right: 37.5%;
+    max-width: 250px;
+    transform: translate(0px, 110%);
+    opacity: 0;
+    transition: all 1.2s ease 0.5s;
+}
+
+.sponsors__semicircle._active {
+    transform: translate(0px, 0px);
+    opacity: 1;
+}
+
+@media screen and (max-width: 750px) {
+    .sponsors__semicircle {
+        max-width: 220px;
+        top: -140px;
+        right: 35%;
+    }
+}
+
+@media screen and (max-width: 540px) {
+    .sponsors__semicircle {
+        max-width: 140px;
+        right: 12%;
+    }
+}
+
+@media screen and (max-width: 450px) {
+    .sponsors__semicircle {
+        top: -90px;
+    }
+}
+
+@media screen and (max-width: 370px) {
+    .sponsors__semicircle {
+        right: 11%;
+        max-width: 120px;
+    }
+}

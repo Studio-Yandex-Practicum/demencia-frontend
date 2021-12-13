@@ -1,0 +1,27 @@
+.about__decoration-image {
+    max-width: 230px;
+    width: 24%;
+    align-self: flex-start;
+    margin: -3% 5% 0 0;
+    transform: rotate(90deg);
+    transition: all 2s ease 0s;
+}
+
+.about__decoration-image._active {
+    transform: rotate(0deg);
+}
+
+@media screen and (max-width: 750px) {
+    .about__decoration-image {
+        margin: -1% 3% 0 -6%;
+        max-width: 200px;
+    }
+}
+
+@media screen and (max-width: 540px) {
+    .about__decoration-image {
+        margin: -8% 3% 10% -25%;
+        width: 100%;
+        min-width: 150px;
+    }
+}

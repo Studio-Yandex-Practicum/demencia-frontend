@@ -1,0 +1,23 @@
+.article__button {
+  color: #5B5B5B;
+  font-size: 30px;
+  font-weight: 400;
+  text-decoration: none;
+  font-style: normal;
+  margin: 1em 0;
+  padding: 0;
+  max-width: 400px;
+
+}
+
+.article__button:hover {
+  opacity: .7;
+  font-weight: 600;
+  transition: opacity font-weight .2s ease-in;
+}
+
+@media (max-width: 1080px) {
+  .article__button {
+    font-size: 24px;
+  }
+}

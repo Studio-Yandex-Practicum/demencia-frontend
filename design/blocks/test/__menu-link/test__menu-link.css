@@ -1,0 +1,27 @@
+.test__menu-link {
+    margin-top: 13px;
+    line-height: 7px;
+    font-size: 10px;
+    font-weight: 700;
+    text-decoration: none;
+    letter-spacing: 1.1px;
+    display: inline-block;
+    color: #2B2A29;
+    transition: font-size 0.5s ease, border-bottom 0.5s cubic-bezier(0.2, -2, 0.8, 2);
+    cursor: url("../../../images/cursor_pointer.svg"), pointer;
+}
+
+.test__menu-link:hover {
+    font-size: 11px;
+}
+
+@media screen and (max-width:767px) {
+    .test__menu-link {
+        font-size: 8.5px;
+        margin-top: 11px;
+        line-height: 7.5px;
+    }
+    .test__menu-link:hover {
+        font-size: 9.5px;
+    }
+}

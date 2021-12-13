@@ -1,0 +1,15 @@
+.card__button {
+  color: #6D097A;
+  text-transform: uppercase;
+  text-decoration: none;
+  font-size: 18px;
+  font-weight: 600;
+  font-style: normal;
+  cursor: url("../../../images/cursor_pointer.svg"), pointer;
+}
+
+.card__button:hover {
+  font-weight: 800;
+  opacity: .7;
+  transition: opacity font-weight 2s ease-in;
+}

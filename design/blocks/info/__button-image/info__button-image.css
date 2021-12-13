@@ -1,0 +1,63 @@
+.info__button-image {
+    width: 42px;
+    height: 88px;
+    background: url(../../../images/halfcirclegreen.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+    position: absolute;
+    bottom: 50px;
+    left: 260px;
+    transform: translate(50%, 0%);
+    transition: all 1s ease 0s;
+    z-index: 304;
+}
+
+.info__button-image._active {
+    transform: translate(0px, 0px);
+    opacity: 1;
+}
+
+@media screen and (max-width:660px) {
+    .info__button-image {
+        bottom: 30px;
+        left: 221px;
+    }
+}
+
+@media screen and (max-width:639px) {
+    .info__button-image {
+        bottom: -133px;
+        left: 505px;
+    }
+}
+
+@media screen and (max-width: 564px) {
+    .info__button-image {
+        width: 26px;
+        height: 51px;
+        bottom: -123px;
+        left: 425px;
+    }
+}
+
+@media screen and (max-width: 460px) {
+    .info__button-image {
+        width: 26px;
+        height: 51px;
+        bottom: -123px;
+        left: 367px;
+    }
+}
+
+@media screen and (max-width: 390px) {
+    .info__button-image {
+        left: 307px;
+    }
+}
+
+@media screen and (max-width: 340px) {
+    .info__button-image {
+        left: 267px;
+        bottom: -99px;
+    }
+}

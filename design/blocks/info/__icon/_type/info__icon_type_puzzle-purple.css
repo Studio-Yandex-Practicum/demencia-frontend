@@ -1,0 +1,19 @@
+.info__icon_type_puzzle-purple {
+  visibility: hidden;
+  width: 70px;
+  height: 82px;
+  position: absolute;
+  top: 90%;
+  right: 100px;
+  background-image: url("../../../../images/test_purple-pzzlsmall.svg");
+  background-repeat: no-repeat;
+  z-index: 2;
+}
+
+@media screen and (max-width: 639px) {
+  .info__icon_type_puzzle-purple {
+    visibility: visible;
+    width: 44px;
+    height: 52px;
+  }
+}

@@ -1,0 +1,27 @@
+.card__heading {
+  color: #5B5B5B;
+  text-transform: uppercase;
+  font-size: 22px;
+  line-height: 1.1;
+  font-weight: 600;
+  font-style: normal;
+  margin: .5em auto;
+}
+
+@media (max-width: 1080px) {
+  .card__heading {
+    font-size: 18px;
+  }
+}
+
+@media (max-width: 700px) {
+  .card__heading {
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 400px) {
+  .card__heading {
+    font-size: 14px;
+  }
+}

@@ -1,0 +1,45 @@
+.sponsors__heading {
+    font-style: normal;
+    font-weight: 700;
+    font-size: 48px;
+    line-height: 58px;
+    letter-spacing: 0.07em;
+    color: #6D097A;
+    text-transform: uppercase;
+    margin: 130px 0 0 10%;
+    padding: 0;
+    transform: translate(0px, 120%);
+    opacity: 0;
+    transition: all 1s ease 0s;
+}
+
+.sponsors__heading._active {
+    transform: translate(0px, 0px);
+    opacity: 1;
+}
+
+.sponsors__heading:hover {
+    color: #00926F;
+}
+
+@media screen and (max-width: 750px) {
+    .sponsors__heading {
+        font-size: 38px;
+        margin: 100px 0 0 6%;
+        letter-spacing: 0.08em;
+    }
+}
+
+@media screen and (max-width: 540px) {
+    .sponsors__heading {
+        font-size: 32px;
+    }
+}
+
+@media screen and (max-width: 450px) {
+    .sponsors__heading {
+        font-size: 26px;
+        letter-spacing: 0.06em;
+        margin: 65px 0 0 7%;
+    }
+}

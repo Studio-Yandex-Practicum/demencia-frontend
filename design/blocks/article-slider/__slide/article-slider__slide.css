@@ -1,0 +1,12 @@
+.article-slider__slide {
+    background-image: url(../../../images/maninchair.png);
+    height: 465px;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+@media screen and (max-width: 369px) {
+    .article-slider__slide {
+        max-height: 276px;
+    }
+}

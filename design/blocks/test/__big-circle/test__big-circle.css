@@ -1,0 +1,36 @@
+.test__big-circle {
+width: 290px;
+height: 290px;
+background: url(../../../images/circlebg.png);
+background-repeat: no-repeat;
+background-size: contain;
+position: absolute;
+right: 29px;
+bottom: 8px;
+z-index: 299;
+}
+
+
+
+@media screen and (max-width:930px) {
+  .test__big-circle {
+  width: 220px;
+  height: 220px;
+  bottom: 20px;
+  right: 14px;
+  }
+}
+
+@media screen and (max-width:660px) {
+  .test__big-circle {
+  bottom: 35px;
+  right: 16px;
+  }
+}
+
+@media screen and (max-width:639px) {
+  .test__big-circle {
+  bottom: 55px;
+  }
+}
+

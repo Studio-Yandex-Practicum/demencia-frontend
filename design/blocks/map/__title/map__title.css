@@ -1,0 +1,40 @@
+.map__title {
+    font-style: normal;
+    font-weight: 900;
+    font-size: 48px;
+    line-height: 68px;
+    letter-spacing: 0.07em;
+    color: #00926F;
+    text-transform: uppercase;
+    margin: 50px 0 0 105px;
+    ;
+    padding: 0;
+    transform: translate(0px, 120%);
+    opacity: 0;
+    transition: all 1s ease 0s;
+}
+
+.map__title._active {
+    transform: translate(0px, 0px);
+    opacity: 1;
+}
+
+.map__title:hover {
+    color: #6d097a;
+}
+
+@media screen and (max-width:700px) {
+    .map__title {
+        font-size: 36px;
+        letter-spacing: 0.14em;
+        margin: -10px 0 0 45px;
+    }
+}
+
+@media screen and (max-width:410px) {
+    .map__title {
+        font-size: 23px;
+        letter-spacing: 0.14em;
+        margin: -35px 0 0 27px;
+    }
+}

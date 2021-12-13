@@ -1,0 +1,15 @@
+.article__background {
+  position: absolute;
+  margin-top: 2em;
+  background-color: #CAE6DF;
+  width: 100%;
+  max-width: 1920px;
+  height: 400px;
+  z-index: -2;
+}
+
+@media (max-width: 420px) {
+  .article__background {
+    height: 360px;
+  }
+}

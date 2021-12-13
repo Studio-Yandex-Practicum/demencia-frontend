@@ -1,0 +1,27 @@
+.info__icon_type_i {
+    width: 15px;
+    height: 56px;
+    margin-left: 5px;
+    background-image: url("../../../../images/i_icon.svg");
+    background-repeat: no-repeat;
+    align-self: center;
+    transition: all 1s ease 0s;
+}
+
+.info__icon_type_i:hover {
+    transform: scale(1.2);
+}
+
+@media screen and (max-width: 641px) {
+    .info__icon_type_i {
+        margin-left: 50px;
+        height: 46px;
+    }
+}
+
+@media screen and (max-width: 390px) {
+    .info__icon_type_i {
+        margin-left: 40px;
+        height: 46px;
+    }
+}

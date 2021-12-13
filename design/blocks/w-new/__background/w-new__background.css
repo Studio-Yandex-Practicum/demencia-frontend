@@ -1,0 +1,33 @@
+.w-new__background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 350px;
+  z-index: -2;
+  background-color: #CAE6DF;
+}
+
+@media (max-width: 620px) {
+  .w-new__background {
+    height: 335px;
+  }
+}
+
+@media (max-width: 550px) {
+  .w-new__background {
+    height: 325px;
+  }
+}
+
+@media (max-width: 521px) {
+  .w-new__background {
+    height: 290px;
+  }
+}
+
+@media (max-width: 450px) {
+  .w-new__background {
+    height: 280px;
+  }
+}

@@ -1,0 +1,26 @@
+.info__icon_type_round-green {
+    width: 55px;
+    height: 115px;
+    position: absolute;
+    top: 50%;
+    left: 105%;
+    transform: translate(-50%, -50%);
+    background-image: url("../../../../images/decor/decor_round-green.png");
+    background-size: 55px 115px;
+}
+
+@media screen and (max-width: 641px) {
+    .info__icon_type_round-green {
+        width: 45px;
+        height: 85px;
+        background-size: 45px 85px;
+    }
+}
+
+@media screen and (max-width: 641px) {
+    .info__icon_type_round-green {
+        width: 45px;
+        height: 85px;
+        background-size: 45px 85px;
+    }
+}

@@ -1,0 +1,48 @@
+.test__button-image {
+    width: 42px;
+    height: 88px;
+    background: url(../../../images/halfcirclegreen.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+    position: absolute;
+    bottom: 29px;
+    left: 220px;
+    z-index: 302;
+    transform: translate(160%, 0px);
+    transition: all 1s ease 0s;
+}
+
+.test__button-image._active {
+    transform: translate(0px, 0px);
+}
+
+@media screen and (max-width:767px) {
+    .test__button-image {
+        width: 38px;
+        height: 76px;
+        bottom: 9px;
+        left: 172px;
+    }
+}
+
+@media screen and (max-width:660px) {
+  .test__button-image {
+    bottom: 30px;
+    left: 175px;
+  }
+
+}
+
+@media screen and (max-width:639px) {
+  .test__button-image {
+    bottom: 50px;
+    left: 215px;
+  }
+}
+
+@media screen and (max-width: 369px) {
+  .test__button-image {
+    bottom: 35px;
+    left: 217px;
+  }
+}

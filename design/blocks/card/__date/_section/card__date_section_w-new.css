@@ -1,0 +1,11 @@
+.card__date_section_w-new {
+  font-size: 8px;
+}
+
+@media (max-width: 540px) {
+  .card__date_section_w-new {
+  font-size: 7px;
+  margin: 0;
+  margin-bottom: 5px;
+  }
+}

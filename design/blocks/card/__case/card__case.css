@@ -1,0 +1,5 @@
+.card__case {
+  margin: 0 0 1em 0;
+  flex-grow: 1;
+  max-height: 190px;
+}

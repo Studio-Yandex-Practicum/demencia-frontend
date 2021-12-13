@@ -1,0 +1,36 @@
+.article__description {
+  display: inline-block;
+  color: #6d097a;
+  opacity: .8;
+  font-size: 34px;
+  line-height: 1.15;
+  font-weight: 700;
+  font-style: normal;
+  max-width: 1150px;
+}
+
+@media (max-width: 1080px) {
+  .article__description {
+    font-size: 28px;
+  }
+}
+
+@media (max-width: 700px) {
+  .article__description {
+    font-size: 24px;
+  }
+}
+
+@media (max-width: 460px) {
+  .article__description {
+    margin-top: 2em;
+  }
+}
+
+@media (max-width: 400px) {
+  .article__description {
+    margin-top: .5em;
+    font-size: 16px;
+    font-weight: 600;
+  }
+}

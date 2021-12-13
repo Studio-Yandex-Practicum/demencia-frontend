@@ -1,0 +1,9 @@
+.header__links_page_news {
+    margin: 30px 50px 0 0;
+}
+
+@media screen and (max-width:1000px){
+  .header__links_page_news {
+    margin: 20px 20px 0 0;
+  }
+}

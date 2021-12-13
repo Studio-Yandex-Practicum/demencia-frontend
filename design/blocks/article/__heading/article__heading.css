@@ -1,0 +1,33 @@
+.article__heading {
+  color: #6d097a;
+  text-transform: uppercase;
+  font-size: 60px;
+  line-height: 1.15;
+  font-style: normal;
+  font-weight: 600;
+  margin: 60px auto;
+  text-align: center;
+  padding: 0 20px;
+}
+
+@media (max-width: 1080px) {
+  .article__heading {
+    font-size: 42px;
+    margin: 45px auto;
+  }
+}
+
+@media (max-width: 700px) {
+  .article__heading {
+    font-size: 36px;
+    margin: 35px auto;
+  }
+}
+
+@media (max-width: 400px) {
+  .article__heading {
+    font-size: 24px;
+    margin: 15px auto;
+  }
+}
+

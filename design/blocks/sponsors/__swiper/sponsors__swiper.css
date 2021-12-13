@@ -1,0 +1,6 @@
+.sponsors__swiper {
+    width: 90%;
+    box-sizing: border-box;
+    overflow: hidden;
+    max-width: 900px;
+}

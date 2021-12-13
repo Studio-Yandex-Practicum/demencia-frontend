@@ -1,0 +1,10 @@
+.swiper-button-next::after {
+  display: none;
+  background-color: transparent;
+  border: none;
+}
+
+.article-slider__button-next {
+  background-color: transparent;
+  border: none;
+}

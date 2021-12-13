@@ -1,0 +1,30 @@
+.card__text {
+  color: #5B5B5B;
+  font-size: 18px;
+  margin: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+  max-width: 424px;
+  max-height: 125px;
+}
+
+@media (max-width: 1080px) {
+  .card__text {
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 700px) {
+  .card__text {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 400px) {
+  .card__text {
+    font-size: 12px;
+  }
+}

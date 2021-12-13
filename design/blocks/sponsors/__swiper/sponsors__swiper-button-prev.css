@@ -1,0 +1,9 @@
+.swiper-button-prev::after {
+    display: none;
+}
+
+.sponsors__swiper-button-prev {
+    background-color: transparent;
+    border: 0;
+    padding: 0;
+}

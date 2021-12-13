@@ -1,0 +1,41 @@
+.card {
+    margin: 0;
+    padding: 16px 16px 16px 16px;
+    max-width: 456px;
+    min-height: 592px;
+    background-color: #fff;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.25), 0 5px 5px rgba(0, 0, 0, 0.22);
+    transition: all 1s ease;
+}
+
+@media (max-width: 1500px) {
+    .card {
+        width: 420px;
+        min-height: 546px;
+    }
+}
+
+@media (max-width: 1020px) {
+    .card {
+        width: 380px;
+        min-height: 494px;
+    }
+}
+
+@media (max-width: 650px) {
+    .card {
+        width: 400px;
+        min-height: 442px;
+    }
+}
+
+@media (max-width: 420px) {
+    .card {
+        width: 304px;
+        min-height: 394px;
+    }
+}

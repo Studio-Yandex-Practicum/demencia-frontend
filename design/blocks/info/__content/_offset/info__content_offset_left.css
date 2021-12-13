@@ -1,0 +1,11 @@
+.info__content_offset_left {
+  margin-left: -20px;
+  padding-right: 20px;
+}
+
+@media screen and (max-width: 639px) {
+  .info__content_offset_left {
+    margin: 0;
+    padding: 0;
+  }
+}

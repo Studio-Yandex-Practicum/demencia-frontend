@@ -1,0 +1,14 @@
+.news-grid__background_theme_purple {
+    background-color: #6D097A;
+    top: 772px;
+    left: 8.855%;
+    z-index: -2;
+    width: calc(100% - 8.8% * 2);
+    height: 800px;
+    transform: translate(0px, 50%);
+    transition: all 5s ease;
+}
+
+.news-grid__background_theme_purple._active {
+    transform: translate(0px, 0px);
+}

@@ -1,0 +1,43 @@
+.about__description {
+    color: #FEFEFE;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 13px;
+    line-height: 16px;
+    letter-spacing: 0.03em;
+    margin: 0 0 20px 0;
+    padding: 0;
+    text-align: end;
+    transform: translate(0px, 120%);
+    opacity: 0;
+    transition: all 1s ease 0s;
+}
+
+.about__description._active {
+    transform: translate(0px, 0px);
+    opacity: 1;
+}
+
+@media screen and (max-width: 750px) {
+    .about__description {
+        font-size: 12px;
+        line-height: 14px;
+        margin: 0 0 30px 0;
+    }
+}
+
+@media screen and (max-width: 540px) {
+    .about__description {
+        font-size: 16px;
+        text-align: end;
+        margin: 0 4% 30px 0;
+    }
+}
+
+@media screen and (max-width: 370px) {
+    .about__description {
+        font-size: 11px;
+        letter-spacing: 0.04em;
+        margin: 0 4% 10px 0;
+    }
+}

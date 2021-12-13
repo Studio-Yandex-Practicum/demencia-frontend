@@ -1,0 +1,17 @@
+.info__pazzle {
+  width: 380px;
+  height: 336px;
+  position: absolute;
+  top: 450px;
+  left: 20px;
+  background-image: url("/images/decor/puzzle_decor.png");
+  background-size: cover;
+}
+
+@media screen and (max-width: 960px) {
+  .info__pazzle {
+    width: 380px;
+    height: 336px;
+    left: 20px;
+  }
+}

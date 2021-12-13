@@ -1,0 +1,49 @@
+.info__content_bkg_img {
+    content: "";
+    background-image: url("../../../../images/puzzle_decor.svg");
+    background-repeat: no-repeat;
+    background-size: 80%;
+    background-position: top 0 right 46px;
+    align-self: center;
+    transform: translate(-80%, 0px);
+    opacity: 0;
+    transition: all 2s ease;
+}
+
+.info__content_bkg_img._active {
+    transform: translate(0px, 0px);
+    opacity: 1;
+}
+
+@media screen and (max-width: 700px) {
+    .info__content_bkg_img {
+        min-height: 306px;
+        margin-top: 50px;
+    }
+}
+
+@media screen and (max-width: 639px) {
+    .info__content_bkg_img {
+        min-height: 230px;
+        margin: -10px 0 0 0;
+        align-self: flex-start;
+        background-image: url("../../../../images/test_decor-green-halfpuzzle.svg");
+        background-size: 190px;
+        background-position: bottom left 50px;
+    }
+}
+
+@media screen and (max-width: 567px) {
+    .info__content_bkg_img {
+        background-position: bottom left 6px;
+    }
+}
+
+@media screen and (max-width: 400px) {
+    .info__content_bkg_img {
+        margin: 10px 0 0 0;
+        min-height: 160px;
+        background-size: 120px;
+        background-position: top left 16px;
+    }
+}

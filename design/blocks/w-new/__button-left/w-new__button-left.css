@@ -1,0 +1,31 @@
+.w-new__button-left {
+  background-color: rgba(0, 0, 0, .0);
+  object-fit: cover;
+  height: 26px;
+  padding-right: 10px;
+  margin-right: -40px;
+}
+
+@media (max-width: 710px) {
+  .w-new__button-left {
+    margin-right: -10px;
+  }
+}
+
+@media (max-width: 510px) {
+  .w-new__button-left {
+    margin-right: -5px;
+  }
+}
+
+@media (max-width: 470px) {
+  .w-new__button-left {
+    height: 20px;
+  }
+}
+
+@media (max-width: 360px) {
+  .w-new__button-left {
+    margin-right: 5px;
+  }
+}

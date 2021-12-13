@@ -1,0 +1,28 @@
+.info__photo {
+    max-width: 382px;
+    margin-top: -50px;
+    align-self: center;
+    object-fit: cover;
+}
+
+@media screen and (max-width: 740px) {
+    .info__photo {
+        max-width: 304px;
+        margin-top: -30px;
+    }
+}
+
+@media screen and (max-width: 639px) {
+    .info__photo {
+        max-width: 100%;
+        margin: 0 auto;
+    }
+}
+
+@media screen and (max-width: 370px) {
+    .info__photo {
+        width: 319px;
+        height: 172px;
+        margin-top: -20px;
+    }
+}

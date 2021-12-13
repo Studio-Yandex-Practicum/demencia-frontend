@@ -1,0 +1,12 @@
+.card_section_w-new {
+    width: 137px;
+    min-height: 180px;
+    padding: 6px;
+}
+
+@media (max-width: 960px) {
+  .card_section_w-new {
+    width: 197px;
+    min-height: 152px;
+  }
+}

@@ -1,0 +1,15 @@
+.about {
+    display: flex;
+    background-color: #00926F;
+    position: relative;
+    max-width: 100%;
+}
+
+@media screen and (max-width: 540px) {
+    .about {
+        display: grid;
+        grid-template-areas: "puzzle main" "memory main" "memory main";
+        grid-template-columns: 0.8fr 1.2fr;
+        grid-template-rows: 1fr;
+    }
+}

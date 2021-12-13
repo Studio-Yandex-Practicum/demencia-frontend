@@ -1,0 +1,31 @@
+.info__icon_type_puzzle-green {
+    max-width: 66px;
+    max-height: 56px;
+    position: absolute;
+    top: 235px;
+    left: 35px;
+    z-index: 3;
+}
+
+@media screen and (max-width: 750px) {
+    .info__icon_type_puzzle-green {
+        top: 220px;
+        left: 30px;
+    }
+}
+
+@media screen and (max-width: 641px) {
+    .info__icon_type_puzzle-green {
+        top: 180px;
+        left: 40px;
+    }
+}
+
+@media screen and (max-width: 450px) {
+    .info__icon_type_puzzle-green {
+        top: 120px;
+        left: 40px;
+        max-width: 46px;
+        max-height: 46px;
+    }
+}

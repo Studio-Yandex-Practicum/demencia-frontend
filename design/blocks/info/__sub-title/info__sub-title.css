@@ -1,0 +1,55 @@
+.info__sub-title {
+    max-width: 150px;
+    margin: 135px 80px 15px 0;
+    align-self: flex-end;
+    color: #6d097a;
+    font-size: 36px;
+    text-align: right;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    padding: 0;
+    transform: translate(0px, 80%);
+    opacity: 0;
+    transition: all 2s ease;
+}
+
+.info__sub-title._active {
+    transform: translate(0px, 0px);
+    opacity: 1;
+}
+
+.info__sub-title:hover {
+    transform: scale(1.1);
+}
+
+@media screen and (max-width: 760px) {
+    .info__sub-title {
+        margin: 140px 40px 20px 40px;
+        font-size: 28px;
+    }
+}
+
+@media screen and (max-width: 660px) {
+    .info__sub-title {
+        margin: 80px 40px 10px 40px;
+        font-size: 24px;
+    }
+}
+
+@media screen and (max-width: 639px) {
+    .info__sub-title {
+        margin: 45px 0 10px 25px;
+        font-size: 17px;
+    }
+}
+
+@media screen and (max-width: 400px) {
+    .info__sub-title {
+        align-self: flex-end;
+        text-align: right;
+        max-width: 90px;
+        margin: 15px 25px 10px 25px;
+        font-size: 15px;
+    }
+}

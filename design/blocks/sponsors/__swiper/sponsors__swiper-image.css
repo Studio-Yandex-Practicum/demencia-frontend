@@ -1,0 +1,18 @@
+.sponsors__swiper-image {
+    max-width: 100px;
+    width: 100%;
+    object-fit: contain;
+    height: 80px;
+}
+
+@media screen and (max-width: 720px) {
+    .sponsors__swiper-image {
+        max-width: 90px;
+    }
+}
+
+@media screen and (max-width: 460px) {
+    .sponsors__swiper-image {
+        max-width: 55px;
+    }
+}

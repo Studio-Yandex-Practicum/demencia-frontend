@@ -1,0 +1,11 @@
+.article-slider {
+    width: 100%;
+    position: relative;
+}
+
+@media screen and (max-width: 369px) {
+    .article-slider {
+        max-height: 276px;
+        margin-top: -15px;
+    }
+}

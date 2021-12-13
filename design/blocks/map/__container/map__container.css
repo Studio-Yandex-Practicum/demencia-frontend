@@ -1,0 +1,48 @@
+.map__container {
+  max-width: 691px;
+  min-height: 149px;
+  margin: 28px auto 81px 129px;
+  cursor: url("../../../images/cursor_pointer.svg"), pointer;
+}
+
+@media screen and (max-width:830px){
+  .map__container {
+  max-width: 670px;
+  margin: 0 auto 60px;
+  }
+}
+
+@media screen and (max-width:700px){
+  .map__container {
+  max-width: 551px;
+  margin: 0 auto 50px;
+  }
+}
+
+@media screen and (max-width:590px){
+  .map__container {
+  max-width: 510px;
+  margin: 0 auto 50px;
+  }
+}
+
+@media screen and (max-width:520px){
+  .map__container {
+  max-width: 470px;
+  margin: 0 auto 20px;
+  }
+}
+
+@media screen and (max-width:480px){
+  .map__container {
+  max-width: 400px;
+  margin: 0 auto 20px;
+  }
+}
+
+@media screen and (max-width:410px){
+  .map__container {
+  max-width: 287px;
+  margin: 0 auto 20px;
+  }
+}

@@ -1,0 +1,13 @@
+.footer {
+  width: 100%;
+  min-height: 140px;
+  background-color: #EBECEC;
+  display: flex;
+  align-items: center;
+}
+
+@media screen and (max-width:767px){
+  .footer {
+ min-height: 100px;
+  }
+}

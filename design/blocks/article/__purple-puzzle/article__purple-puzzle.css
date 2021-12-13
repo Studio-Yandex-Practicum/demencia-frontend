@@ -1,0 +1,26 @@
+.article__purple-puzzle {
+  width: 100px;
+  height: 96px;
+  position: absolute;
+  bottom: 0%;
+  right: 12.5%;
+}
+
+@media (max-width: 700px) {
+  .article__purple-puzzle {
+    bottom: -1%;
+  }
+}
+
+@media (max-width: 600px) {
+  .article__purple-puzzle {
+    width: 88px;
+    height: 84px;
+  }
+}
+
+@media (max-width: 400px) {
+  .article__purple-puzzle {
+    opacity: .2;
+  }
+}

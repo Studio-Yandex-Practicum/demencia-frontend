@@ -1,0 +1,25 @@
+.about__link {
+    transform: translate(0px, 120%);
+    opacity: 0;
+    transition: all 2s ease 0s;
+    text-decoration: none;
+    align-self: flex-end;
+    width: 220px;
+}
+
+.about__link._active {
+    transform: translate(0px, 0px);
+    opacity: 1;
+}
+
+@media screen and (max-width: 750px) {
+    .about__link {
+        width: 220px;
+    }
+}
+
+@media screen and (max-width: 380px) {
+    .about__link {
+        width: 170px;
+    }
+}

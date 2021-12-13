@@ -1,0 +1,37 @@
+.logo_page_news {
+  width: 318px;
+  height: 238px;
+  margin: 21px 0 0 150px;
+}
+
+@media screen and (max-width:1400px){
+  .logo_page_news {
+  width: 172px;
+  height: 130px;
+  margin: 24px 0 0 110px;
+  }
+}
+
+@media screen and (max-width:960px){
+  .logo_page_news {
+    width: 172px;
+    height: 130px;
+    margin: 24px 0 0 45px;
+    }
+}
+
+@media screen and (max-width:767px){
+  .logo_page_news {
+  width: 141px;
+  height: 107px;
+  margin: 24px 0 0 35px;
+  }
+}
+
+@media screen and (max-width:639px){
+  .logo_page_news {
+  width: 124px;
+  height: 92px;
+  margin: 24px 0 0 25px;
+  }
+}

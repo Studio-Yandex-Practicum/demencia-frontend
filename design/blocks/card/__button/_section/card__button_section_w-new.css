@@ -1,0 +1,13 @@
+.card__button_section_w-new {
+  font-size: 8px;
+  border: 0;
+  background-color: rgba(0, 0, 0, .0);
+}
+
+@media (max-width: 540px) {
+  .card__button_section_w-new {
+    font-size: 7px;
+    margin: 0;
+    margin-bottom: 5px;
+  }
+}

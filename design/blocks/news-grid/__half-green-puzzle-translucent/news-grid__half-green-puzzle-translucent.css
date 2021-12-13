@@ -1,0 +1,34 @@
+.news-grid__half-green-puzzle-translucent {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 7.25%;
+    height: 16.7%;
+    z-index: -1;
+    transform: translate(0px, -40%);
+    transition: all 3s ease;
+}
+
+.news-grid__half-green-puzzle-translucent._active {
+    transform: translate(0px, 0px);
+}
+
+@media (max-width: 1020px) {
+    .news-grid__half-green-puzzle-translucent {
+        width: 18%;
+        height: 21%;
+    }
+}
+
+@media (max-width: 700px) {
+    .news-grid__half-green-puzzle-translucent {
+        bottom: 21%;
+    }
+}
+
+@media (max-width: 400px) {
+    .news-grid__half-green-puzzle-translucent {
+        bottom: 21%;
+        width: 25%;
+    }
+}

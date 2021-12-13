@@ -1,0 +1,5 @@
+@media screen and (max-width: 639px) {
+  .info__container_flow_column {
+    flex-direction: column;
+  }
+}

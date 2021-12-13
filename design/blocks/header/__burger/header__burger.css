@@ -1,0 +1,30 @@
+.header__burger {
+  display: none;
+  z-index: 456;
+  cursor: url("../../../images/cursor_pointer.svg"), pointer;
+}
+
+@media screen and (max-width:767px) {
+  .header__burger {
+    display:block;
+    width: 49px;
+    height: 33px;
+    background-image: url(../../../images/burger-menu.svg);
+    background-size: contain;
+    background-color: transparent;
+    background-repeat: no-repeat;
+    position: fixed;
+    top: 30px;
+    right: 25px;
+    border: none;
+    padding: 0;
+  }
+}
+
+@media screen and (max-width:639px) {
+  .header__burger {
+    width: 47px;
+    height: 25px;
+    top: 30px;
+  }
+}

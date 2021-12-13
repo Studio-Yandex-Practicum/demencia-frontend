@@ -1,0 +1,38 @@
+.info__title {
+    color: #6D097A;
+    font-size: 50px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.07em;
+    transform: translate(-80%, 0px);
+    margin: 85px 0 0 102px;
+    padding: 0;
+    opacity: 0;
+    transition: all 1.5s ease 0s;
+}
+
+.info__title._active {
+    transform: translate(0px, 0px);
+    opacity: 1;
+}
+
+.info__title:hover {
+    color: #00926F;
+    transition: color 0.5s ease 0s;
+}
+
+@media screen and (max-width: 886px) {
+    .info__title {
+        margin: 35px 0 0 40px;
+        font-size: 35px;
+    }
+}
+
+@media screen and (max-width: 639px) {
+    .info__title {
+        margin: 20px 0 0 30px;
+        font-size: 24px;
+        font-weight: 700;
+        letter-spacing: 1.9px;
+    }
+}

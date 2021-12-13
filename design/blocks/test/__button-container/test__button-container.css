@@ -1,0 +1,45 @@
+.test__button-container {
+    display: flex;
+    position: absolute;
+    bottom: 51px;
+    left: 70px;
+    z-index: 303;
+    transform: translate(-70%, 0px);
+    transition: all 1.5s ease 0s;
+}
+
+.test__button-container._active {
+    transform: translate(0px, 0px);
+}
+
+.text__button-container:hover {
+    transform: scale(1.2);
+}
+
+@media screen and (max-width:767px) {
+    .test__button-container {
+        bottom: 30px;
+        left: 44px;
+    }
+}
+
+@media screen and (max-width:660px) {
+    .test__button-container {
+        bottom: 50px;
+        left: 45px;
+    }
+}
+
+@media screen and (max-width:639px) {
+    .test__button-container {
+        bottom: 70px;
+        left: 85px;
+    }
+}
+
+@media screen and (max-width: 369px) {
+  .test__button-container {
+    bottom: 55px;
+    left: 85px;
+  }
+}

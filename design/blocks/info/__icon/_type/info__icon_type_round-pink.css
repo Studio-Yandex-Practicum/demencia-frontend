@@ -1,0 +1,43 @@
+.info__icon_type_round-pink {
+    margin-left: -50px;
+    width: 95px;
+    height: 186px;
+    overflow: visible;
+    align-self: center;
+    background-image: url("../../../../images/decor_halfcirlce_pink.svg");
+    background-size: cover;
+    transform: translate(30%, 0px);
+    transition: all 3s ease 0s;
+}
+
+.info__icon_type_round-pink._active {
+    transform: translate(0px, 0px);
+}
+
+@media screen and (max-width: 750px) {
+    .info__icon_type_round-pink {
+        width: 83px;
+        height: 166px;
+        margin-left: -45px;
+    }
+}
+
+@media screen and (max-width: 641px) {
+    .info__icon_type_round-pink {
+        width: 73px;
+        height: 146px;
+        margin-left: -35px;
+    }
+}
+
+@media screen and (max-width: 520px) {
+    .info__icon_type_round-pink {
+        margin-left: -40px;
+    }
+}
+
+@media screen and (max-width: 390px) {
+    .info__icon_type_round-pink {
+        margin-left: -40px;
+    }
+}

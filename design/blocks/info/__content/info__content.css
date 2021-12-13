@@ -1,0 +1,12 @@
+.info__content {
+    min-width: 50%;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+@media screen and (max-width: 639px) {
+    .info__container {
+        align-items: stretch;
+    }
+}

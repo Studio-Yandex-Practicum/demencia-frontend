@@ -1,0 +1,30 @@
+.article__image {
+  margin: auto;
+  max-width: 1440px;
+  width: 100%;
+}
+
+@media (max-width: 1440px) {
+  .article__image {
+    max-width: 1080px;
+  }
+}
+
+@media (max-width: 1080px) {
+  .article__image {
+   max-height: 580px;
+  }
+}
+
+@media (max-width: 700px) {
+  .article__image {
+    max-height: 400px;
+  }
+}
+
+@media (max-width: 400px) {
+  .article__image {
+    width: 100%;
+    max-height: 200px;
+  }
+}

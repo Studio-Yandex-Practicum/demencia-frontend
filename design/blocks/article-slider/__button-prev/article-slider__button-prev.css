@@ -1,0 +1,8 @@
+.swiper-button-prev::after {
+  display: none;
+}
+
+.article-slider__button-prev {
+  background-color: transparent;
+  border: none;
+}

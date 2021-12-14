@@ -3,9 +3,12 @@ import ReactDOM from "react-dom";
 import "./index.css";
 import App from "./components/app/app";
 import reportWebVitals from "./reportWebVitals";
+// todo: this should be imported as module
+import { GlobalStyle } from "./ui/controls/theme";
 
 ReactDOM.render(
   <React.StrictMode>
+    <GlobalStyle />
     <App />
   </React.StrictMode>,
   document.getElementById("root")

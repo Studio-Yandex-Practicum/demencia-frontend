@@ -1,6 +1,6 @@
 export enum FontSize {
-    Huge,
-    Large,
-    Medium,
-    Default
+  Huge = "huge",
+  Large = "large",
+  Medium = "medium",
+  Default = "default",
 }

@@ -1,5 +1,6 @@
 export interface FontStyle {
-    FontWeight: number,
-    FontSize: number,
-    LineHeight: number
+    fontWeight: number,
+    fontSize: number,
+    lineHeight: number,
+    letterSpacing: number
 }

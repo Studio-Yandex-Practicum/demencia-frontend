@@ -4,7 +4,7 @@ import "./index.css";
 import App from "./components/app/app";
 import reportWebVitals from "./reportWebVitals";
 // todo: this should be imported as module
-import { GlobalStyle } from "./ui/controls/theme";
+import { GlobalStyle } from "./ui/controls/style";
 
 ReactDOM.render(
   <React.StrictMode>

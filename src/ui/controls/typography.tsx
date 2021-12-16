@@ -4,7 +4,7 @@ import { laptopTheme } from "../theme";
 import { FontSize } from "../types";
 
 interface TextProps {
-  readonly size: FontSize;
+  readonly size?: FontSize;
 }
 
 interface TextBlockProps extends TextProps {
@@ -15,7 +15,7 @@ interface TextBlockProps extends TextProps {
 
 export const typographySizeMixIn = (props: TextProps) => {
   const { typography } = laptopTheme; //getTheme(props);
-  const selectedSize = typography[props.size];
+  const selectedSize = typography[props?.size || FontSize.Default];
   return `
         font-weight: ${selectedSize.fontWeight};
         font-size: ${selectedSize.fontSize}px;

@@ -1,10 +1,11 @@
 import React from "react";
 import styled, { css } from "styled-components";
 import { laptopTheme } from "../theme";
-import { FontSize } from "../types";
+import { FontSize, PaletteColor, TextColorType } from "../types";
 
 interface TextProps {
   readonly size?: FontSize;
+  readonly type?: TextColorType;
 }
 
 interface TextBlockProps extends TextProps {
@@ -24,6 +25,31 @@ export const typographySizeMixIn = (props: TextProps) => {
     `;
 };
 
+export const typographyColorMixIn = (props: TextProps) => {
+  const selectedColor = () => {
+    const { colors } = laptopTheme;
+    const type = props.type || TextColorType.Primary;
+    switch (type) {
+      case TextColorType.Primary: {
+        return colors.textPrimary;
+      }
+      case TextColorType.Secondary: {
+        return colors.textSecondary;
+      }
+      default: {
+        return null;
+      }
+    }
+  };
+
+  const colorToApply = selectedColor();
+  if (!colorToApply) {
+    return "";
+  }
+
+  return `color: ${colorToApply}; fill: ${colorToApply}`;
+};
+
 export const typographyMixin = css`
   margin: 0;
   padding: 0;
@@ -32,6 +58,7 @@ export const typographyMixin = css`
   font-family: "Golos", Arial, sans-serif;
   word-break: break-word;
   ${typographySizeMixIn};
+  ${typographyColorMixIn}
 `;
 
 export const P = styled.p<TextProps>`
@@ -69,7 +96,7 @@ export const H6 = styled.h6<TextProps>`
 export const TextBlock: React.FunctionComponent<TextBlockProps> = (props) => {
   switch (props.renderTag) {
     case "p": {
-      return <P size={props.size}>{props.children}</P>;
+      return <P size={props.size || FontSize.Default}>{props.children}</P>;
     }
     case "h1":
       return <H1 size={props.size}>{props.children}</H1>;

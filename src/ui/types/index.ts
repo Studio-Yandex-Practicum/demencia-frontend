@@ -3,18 +3,19 @@ import { PaletteColor } from "./palette-color.enum";
 import { Layout } from "./layout";
 import { Typography } from "./typography";
 import { FontSize } from "./font-size.enum";
+import { TextColorType } from "./text-color-type.enum";
 
 // TODO: update palette properly
 const defaultPalette: Palette = {
   background: PaletteColor.White,
-  backgroundAlt: PaletteColor.SoftWhite,
+  backgroundAlt: PaletteColor.WhiteGreen,
   primary: PaletteColor.DarkPurple,
   secondary: PaletteColor.Green,
-  primaryContent: PaletteColor.DarkGreyBrown,
-  secondaryContent: PaletteColor.LightGreen,
-  textPrimary: PaletteColor.DarkGreyBrown,
-  textSecondary: PaletteColor.Black,
+  primaryContent: PaletteColor.White,
+  secondaryContent: PaletteColor.SoftWhite,
+  textPrimary: PaletteColor.Black,
+  textSecondary: PaletteColor.GreyBrown,
 };
 
-export { PaletteColor, defaultPalette, FontSize };
+export { PaletteColor, TextColorType, defaultPalette, FontSize };
 export type { Layout, Typography };

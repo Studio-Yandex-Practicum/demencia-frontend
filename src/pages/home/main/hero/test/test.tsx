@@ -1,14 +1,15 @@
 import React from "react";
 import Menu from "./menu";
 import Decor from "./decor";
-import Action from "./action";
+import StartBtn from "../../utils/startBtn";
+import { test } from "../../utils/links";
 
 const Test: React.FC = () => {
   return (
     <div>
       <Menu />
       <Decor />
-      <Action />
+      <StartBtn target={test.target} title={test.title} />
     </div>
   );
 };

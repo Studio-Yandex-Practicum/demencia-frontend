@@ -3,43 +3,42 @@ import { Link } from "react-router-dom";
 interface Reference {
   id?: number;
   title?: string;
-  ref: string;
+  target: string;
 }
-
 export const home: Reference = {
   id: 0,
-  ref: "/",
+  target: "/",
 };
 const info: Reference = {
   id: 1,
   title: "О ДЕМЕНЦИИ",
-  ref: "info",
+  target: "info",
 };
 const sponsors: Reference = {
   id: 2,
   title: "ПАРТНЕРЫ",
-  ref: "sponsors",
+  target: "sponsors",
 };
 const news: Reference = {
   id: 3,
   title: "НОВОСТИ",
-  ref: "news-grid",
+  target: "news-grid",
 };
 const fond: Reference = {
   id: 4,
   title: "О ФОНДЕ",
-  ref: "fond",
+  target: "fond",
 };
 const map: Reference = {
   id: 5,
   title: "КОНТАКТЫ",
-  ref: "map",
+  target: "map",
 };
 
 const links: Reference[] = [info, sponsors, news, fond, map];
 
 export const renderLinks = links.map((link) => (
   <li key={link.id}>
-    <Link to={link.ref}>{link.title}</Link>
+    <Link to={link.target}>{link.title}</Link>
   </li>
 ));

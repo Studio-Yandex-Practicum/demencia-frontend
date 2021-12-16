@@ -1,15 +1,20 @@
 import React from "react";
 import Hero from "./hero/hero";
+import Info from "./info/info";
+import News from "./news/news";
+import Map from "./map/map";
+import About from "./about/about";
+import Sponsors from "./sponsors/sponsors";
 
 const Main: React.FC = () => {
   return (
     <main>
       <Hero />
-      <section />
-      <section />
-      <section />
-      <section />
-      <section />
+      <Info />
+      <News />
+      <Map />
+      <About />
+      <Sponsors />
     </main>
   );
 };

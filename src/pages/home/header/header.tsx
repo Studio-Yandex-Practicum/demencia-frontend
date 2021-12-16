@@ -8,7 +8,7 @@ const Header: React.FC = () => {
     <header>
       <button type="button" />
       <div>
-        <Link to={home.ref}>
+        <Link to={home.target}>
           <img src="./images/logo.svg" alt="логотип" />
         </Link>
         <nav>

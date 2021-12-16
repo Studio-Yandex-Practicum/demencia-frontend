@@ -1,5 +1,5 @@
 import React from "react";
-import Hero from "./hero";
+import Hero from "./hero/hero";
 
 const Main: React.FC = () => {
   return (

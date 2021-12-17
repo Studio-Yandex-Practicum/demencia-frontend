@@ -55,7 +55,7 @@ export const typographyMixin = css`
   padding: 0;
   border: 0;
   vertical-align: baseline;
-  font-family: "Golos", Arial, sans-serif;
+  font-family: "Ubuntu", Arial, sans-serif;
   word-break: break-word;
   ${typographySizeMixIn};
   ${typographyColorMixIn}

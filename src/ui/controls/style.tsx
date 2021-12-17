@@ -8,7 +8,7 @@ export const GlobalStyle = createGlobalStyle`
     ${styledNormalize}
     body {
         background-color: ${laptopTheme.colors.background};
-        font-family: "Golos", Arial, sans-serif;
+        font-family: "Ubuntu", Arial, sans-serif;
         color: ${laptopTheme.colors.textPrimary};
     }
 `;

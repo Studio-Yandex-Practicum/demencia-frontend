@@ -1,35 +1,13 @@
 @font-face {
-  font-family: "Golos";
-  src: url("./Golos-UI_Bold.ttf") format("truetype");
-  font-weight: 700;
+  font-family: "Ubuntu";
+  src: url("./ubuntu.woff2") format("woff2"),
+    url("./ubuntu.woff") format("woff"), url("./ubuntu.ttf") format("truetype");
+  font-weight: normal;
 }
 
 @font-face {
-  font-family: "Golos";
-  src: url("./Golos-UI_Medium.ttf") format("truetype");
-  font-weight: 500;
-}
-
-@font-face {
-  font-family: "Golos";
-  src: url("./Golos-UI_Bold.ttf") format("truetype");
-  font-weight: 700;
-}
-
-@font-face {
-  font-family: "Golos";
-  src: url("./Golos-UI_Medium.ttf") format("truetype");
-  font-weight: 500;
-}
-
-@font-face {
-  font-family: "Golos";
-  src: url("./Golos-UI_Regular.ttf") format("truetype");
-  font-weight: 400;
-}
-
-@font-face {
-  font-family: "Golos";
-  src: url("./Golos-UI_VF.ttf") format("truetype");
-  font-weight: 400 700;
+  font-family: "Ubuntu";
+  src: url("./ubuntu.woff2") format("woff2"),
+    url("./ubuntubold.woff") format("woff"), url("./ubuntubold.ttf") format("truetype");
+  font-weight: bold;
 }

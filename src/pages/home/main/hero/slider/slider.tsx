@@ -1,6 +1,7 @@
 import React from "react";
 import { Swiper, SwiperSlide } from "swiper/react/swiper-react";
 import SwiperCore, { Autoplay, Pagination, Navigation } from "swiper";
+// eslint-disable-next-line import/extensions
 import image from "./img.webp";
 import "./styles.css";
 import "swiper/swiper.min.css";
@@ -16,7 +17,7 @@ const Slider: React.FC = () => {
         spaceBetween={10}
         centeredSlides={true}
         autoplay={{
-          delay: 4500,
+          delay: 1500,
           disableOnInteraction: false,
         }}
         pagination={{

@@ -3,7 +3,7 @@ import { PaletteColor } from "./palette-color.enum";
 import { Layout } from "./layout";
 import { Typography } from "./typography";
 import { FontSize } from "./font-size.enum";
-import { TextColorType } from "./text-color-type.enum";
+import { ColorType } from "./color-type.enum";
 
 // TODO: update palette properly
 const defaultPalette: Palette = {
@@ -19,5 +19,5 @@ const defaultPalette: Palette = {
   accentAlt: PaletteColor.Green,
 };
 
-export { PaletteColor, TextColorType, defaultPalette, FontSize };
+export { PaletteColor, ColorType, defaultPalette, FontSize };
 export type { Layout, Typography };

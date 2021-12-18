@@ -1,11 +1,17 @@
 import { DefaultTheme } from "styled-components";
-import { defaultPalette } from "./types";
+import { defaultPalette, PaletteColor } from "./types";
 
 const themeLight: DefaultTheme = {
   layout: {
+    fontFamily: '"Ubuntu", Arial, sans-serif;',
     maxWidth: 1920,
     minWidth: 320,
-    defaultSpacing: 4 /* todo */,
+    defaultSpacing: 8 /* todo */,
+    borderRadius: 25,
+  },
+  button: {
+    color: PaletteColor.White,
+    backgroundColor: PaletteColor.Purple,
   },
   colors: defaultPalette /* todo */,
   typography: {

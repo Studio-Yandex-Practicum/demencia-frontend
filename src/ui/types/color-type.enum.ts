@@ -1,4 +1,4 @@
-export enum TextColorType {
+export enum ColorType {
   Default,
   Primary,
   Secondary,

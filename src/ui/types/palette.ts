@@ -1,5 +1,10 @@
 import { PaletteColor } from ".";
 
+export interface ColorInfo {
+  color: PaletteColor;
+  backgroundColor: PaletteColor;
+}
+
 export interface Palette {
   background: PaletteColor;
   backgroundAlt: PaletteColor;

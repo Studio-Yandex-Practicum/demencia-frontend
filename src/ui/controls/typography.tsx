@@ -1,12 +1,12 @@
 import React from "react";
 import styled, { css, DefaultTheme } from "styled-components";
-import { FontSize, PaletteColor, TextColorType } from "../types";
+import { FontSize, ColorType } from "../types";
 
 interface TextProps {
   readonly size?: FontSize;
-  readonly type?: TextColorType;
+  readonly type?: ColorType;
   readonly uppercase?: boolean;
-  readonly underscore?: boolean;
+  readonly underlined?: boolean;
 }
 
 interface TextBlockProps extends TextProps {
@@ -22,7 +22,7 @@ interface FontSizeProps {
 
 interface FontColorProps {
   readonly theme: DefaultTheme;
-  readonly type?: TextColorType;
+  readonly type?: ColorType;
 }
 
 export const typographySizeMixIn = (props: FontSizeProps) => {
@@ -38,18 +38,18 @@ export const typographySizeMixIn = (props: FontSizeProps) => {
 export const typographyColorMixIn = (props: FontColorProps) => {
   const selectedColor = () => {
     const { colors } = props.theme;
-    const type = props.type || TextColorType.Primary;
+    const type = props.type || ColorType.Primary;
     switch (type) {
-      case TextColorType.Primary: {
+      case ColorType.Primary: {
         return colors.textPrimary;
       }
-      case TextColorType.Secondary: {
+      case ColorType.Secondary: {
         return colors.textSecondary;
       }
-      case TextColorType.Accent: {
+      case ColorType.Accent: {
         return colors.accent;
       }
-      case TextColorType.AccentAlt: {
+      case ColorType.AccentAlt: {
         return colors.accentAlt;
       }
       default: {
@@ -70,7 +70,7 @@ export const textAnimationMixIn = () => {
   return "";
 };
 
-export const typographyMixin = css`
+export const typographyMixin = css<TextProps>`
   margin: 0;
   padding: 0;
   border: 0;
@@ -79,7 +79,9 @@ export const typographyMixin = css`
   word-break: break-word;
   ${typographySizeMixIn};
   ${typographyColorMixIn};
-  ${textAnimationMixIn}
+  ${textAnimationMixIn};
+  ${(props) => (!props.uppercase ? "" : "text-transform: uppercase;")}
+  ${(props) => (!props.underlined ? "" : "text-decoration-line: underline;")}
 `;
 
 export const P = styled.p<TextProps>`
@@ -142,7 +144,7 @@ export const TextBlock: React.FunctionComponent<TextBlockProps> = (props) => {
 
 export const MainTitle: React.FunctionComponent = (props) => {
   return (
-    <H1 size={FontSize.Huge} type={TextColorType.Accent}>
+    <H1 size={FontSize.Huge} type={ColorType.Accent} uppercase={true}>
       {props.children}
     </H1>
   );
@@ -150,7 +152,7 @@ export const MainTitle: React.FunctionComponent = (props) => {
 
 export const PrimaryTitle: React.FunctionComponent = (props) => {
   return (
-    <H2 size={FontSize.Large} type={TextColorType.Accent}>
+    <H2 size={FontSize.Large} type={ColorType.Accent} uppercase={true}>
       {props.children}
     </H2>
   );
@@ -158,7 +160,7 @@ export const PrimaryTitle: React.FunctionComponent = (props) => {
 
 export const SecondaryTitle: React.FunctionComponent = (props) => {
   return (
-    <H3 size={FontSize.Medium} type={TextColorType.Accent}>
+    <H3 size={FontSize.Medium} type={ColorType.Accent} uppercase={true}>
       {props.children}
     </H3>
   );
@@ -166,7 +168,7 @@ export const SecondaryTitle: React.FunctionComponent = (props) => {
 
 export const Subtitle: React.FunctionComponent = (props) => {
   return (
-    <P size={FontSize.Default} type={TextColorType.Primary}>
+    <P size={FontSize.Default} type={ColorType.Primary} uppercase={true}>
       {props.children}
     </P>
   );

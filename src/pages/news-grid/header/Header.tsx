@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
-import LogoImage from "./Logo-image";
-import NavList from "./Nav-list";
-import NavListItem from "./Nav-list-item";
+import LogoImage from "./logo-image";
+import NavList from "./nav-list";
+import NavListItem from "./nav-list-item";
 
 const Header: React.FC = () => {
   return (

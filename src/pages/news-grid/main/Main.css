@@ -1,0 +1,10 @@
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.content_page_news-grid {
+  position: relative;
+}

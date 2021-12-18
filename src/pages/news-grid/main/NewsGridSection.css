@@ -1,0 +1,11 @@
+.news-grid-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.news-grid__case {
+  position: relative;
+  max-width: 1920px;
+}

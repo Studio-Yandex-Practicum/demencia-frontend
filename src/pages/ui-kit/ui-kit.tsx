@@ -1,15 +1,28 @@
 import React from "react";
-import { H1, P, TextBlock } from "../../ui/controls/typography";
+import { Layout } from "../../ui/controls/layout";
+import {
+  H1,
+  MainTitle,
+  P,
+  PrimaryTitle,
+  SecondaryTitle,
+  Subtitle,
+  TextBlock,
+} from "../../ui/controls/typography";
 import { FontSize } from "../../ui/types";
 // TODO: this is a temporary page to display the ui components
 const UiKitPage: React.FC = () => {
   return (
-    <div>
+    <Layout>
       <header></header>
       <main>
-        <H1 size={FontSize.Large}>
-          This is a page to display the low - level components and styles
-        </H1>
+        <MainTitle>
+          MainTitle: This is a page to display the low - level components and
+          styles
+        </MainTitle>
+        <PrimaryTitle>This is a primary title</PrimaryTitle>
+        <SecondaryTitle>This is a secondary title</SecondaryTitle>
+        <Subtitle>This a subtitle</Subtitle>
         <TextBlock size={FontSize.Huge} renderTag={"h2"}>
           This is a huge text
         </TextBlock>
@@ -20,7 +33,7 @@ const UiKitPage: React.FC = () => {
         <P>This is a paragraph text</P>
       </main>
       <footer></footer>
-    </div>
+    </Layout>
   );
 };
 

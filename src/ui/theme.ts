@@ -3,6 +3,8 @@ import { defaultPalette } from "./types";
 
 const themeLight: DefaultTheme = {
   layout: {
+    maxWidth: 1920,
+    minWidth: 320,
     defaultSpacing: 4 /* todo */,
   },
   colors: defaultPalette /* todo */,
@@ -10,26 +12,27 @@ const themeLight: DefaultTheme = {
     huge: {
       fontSize: 50,
       fontWeight: 700,
-      letterSpacing: 0.07,
       lineHeight: 1.15,
     },
     large: {
-      fontSize: 36,
+      fontSize: 40,
       fontWeight: 700,
-      letterSpacing: 0.05,
       lineHeight: 1.15,
     },
     medium: {
-      fontSize: 18,
+      fontSize: 30,
       fontWeight: 700,
-      letterSpacing: 0.05,
-      lineHeight: 1.2,
+      lineHeight: 1.15,
     },
     default: {
-      fontSize: 12,
-      fontWeight: 700,
-      letterSpacing: 0.03,
-      lineHeight: 1.8,
+      fontSize: 20,
+      fontWeight: 400,
+      lineHeight: 1.15,
+    },
+    small: {
+      fontSize: 20,
+      fontWeight: 300,
+      lineHeight: 1.15,
     },
   },
 };

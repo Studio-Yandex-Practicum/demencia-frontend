@@ -11,7 +11,12 @@ export const GlobalStyle = createGlobalStyle<GlobalProps>`
     ${styledNormalize}
     body {
         background-color: ${(props) => props.theme.colors.background};
-        font-family: "Ubuntu", Arial, sans-serif;
         color:  ${(props) => props.theme.colors.textPrimary};
+        font-family: "Ubuntu", Arial, sans-serif;
+        -moz-osx-font-smoothing: grayscale;
+        -webkit-font-smoothing: antialiased;
+        -webkit-text-size-adjust: 100%;
+        -ms-text-size-adjust: 100%;
+        -moz-text-size-adjust: 100%;
     }
 `;

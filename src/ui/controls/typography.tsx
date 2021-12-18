@@ -5,6 +5,8 @@ import { FontSize, PaletteColor, TextColorType } from "../types";
 interface TextProps {
   readonly size?: FontSize;
   readonly type?: TextColorType;
+  readonly uppercase?: boolean;
+  readonly underscore?: boolean;
 }
 
 interface TextBlockProps extends TextProps {
@@ -30,7 +32,6 @@ export const typographySizeMixIn = (props: FontSizeProps) => {
         font-weight: ${selectedSize.fontWeight};
         font-size: ${selectedSize.fontSize}px;
         line-height: ${selectedSize.lineHeight}em;
-        letter-spacing: ${selectedSize.letterSpacing}em;
     `;
 };
 
@@ -44,6 +45,12 @@ export const typographyColorMixIn = (props: FontColorProps) => {
       }
       case TextColorType.Secondary: {
         return colors.textSecondary;
+      }
+      case TextColorType.Accent: {
+        return colors.accent;
+      }
+      case TextColorType.AccentAlt: {
+        return colors.accentAlt;
       }
       default: {
         return null;
@@ -59,6 +66,10 @@ export const typographyColorMixIn = (props: FontColorProps) => {
   return `color: ${colorToApply}; fill: ${colorToApply}`;
 };
 
+export const textAnimationMixIn = () => {
+  return "";
+};
+
 export const typographyMixin = css`
   margin: 0;
   padding: 0;
@@ -67,7 +78,8 @@ export const typographyMixin = css`
   font-family: "Ubuntu", Arial, sans-serif;
   word-break: break-word;
   ${typographySizeMixIn};
-  ${typographyColorMixIn}
+  ${typographyColorMixIn};
+  ${textAnimationMixIn}
 `;
 
 export const P = styled.p<TextProps>`
@@ -126,4 +138,36 @@ export const TextBlock: React.FunctionComponent<TextBlockProps> = (props) => {
       return <P size={props.size}>{props.children}</P>;
     }
   }
+};
+
+export const MainTitle: React.FunctionComponent = (props) => {
+  return (
+    <H1 size={FontSize.Huge} type={TextColorType.Accent}>
+      {props.children}
+    </H1>
+  );
+};
+
+export const PrimaryTitle: React.FunctionComponent = (props) => {
+  return (
+    <H2 size={FontSize.Large} type={TextColorType.Accent}>
+      {props.children}
+    </H2>
+  );
+};
+
+export const SecondaryTitle: React.FunctionComponent = (props) => {
+  return (
+    <H3 size={FontSize.Medium} type={TextColorType.Accent}>
+      {props.children}
+    </H3>
+  );
+};
+
+export const Subtitle: React.FunctionComponent = (props) => {
+  return (
+    <P size={FontSize.Default} type={TextColorType.Primary}>
+      {props.children}
+    </P>
+  );
 };

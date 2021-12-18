@@ -1,14 +1,17 @@
-import { createGlobalStyle } from "styled-components";
+import { createGlobalStyle, DefaultTheme } from "styled-components";
 import styledNormalize from "styled-normalize";
 import "../../fonts/fonts.css";
-import { laptopTheme } from "../theme";
+
+interface GlobalProps {
+  theme: DefaultTheme;
+}
 
 // TODO: do not hardcode global style
-export const GlobalStyle = createGlobalStyle`
+export const GlobalStyle = createGlobalStyle<GlobalProps>`
     ${styledNormalize}
     body {
-        background-color: ${laptopTheme.colors.background};
+        background-color: ${(props) => props.theme.colors.background};
         font-family: "Ubuntu", Arial, sans-serif;
-        color: ${laptopTheme.colors.textPrimary};
+        color:  ${(props) => props.theme.colors.textPrimary};
     }
 `;

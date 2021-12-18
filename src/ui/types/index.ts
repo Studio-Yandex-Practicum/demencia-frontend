@@ -7,8 +7,8 @@ import { TextColorType } from "./text-color-type.enum";
 
 // TODO: update palette properly
 const defaultPalette: Palette = {
-  background: PaletteColor.SoftWhite,
-  backgroundAlt: PaletteColor.LightGreen,
+  background: PaletteColor.White,
+  backgroundAlt: PaletteColor.SoftWhite,
   primary: PaletteColor.DarkPurple,
   secondary: PaletteColor.Green,
   primaryContent: PaletteColor.White,

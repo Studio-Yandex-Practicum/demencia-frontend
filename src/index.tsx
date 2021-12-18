@@ -1,15 +1,18 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import "./index.css";
 import App from "./components/app/app";
 import reportWebVitals from "./reportWebVitals";
 // todo: this should be imported as module
 import { GlobalStyle } from "./ui/controls/style";
+import { themeLight } from "./ui/theme";
+import { ThemeProvider } from "styled-components";
 
 ReactDOM.render(
   <React.StrictMode>
-    <GlobalStyle />
-    <App />
+    <ThemeProvider theme={themeLight}>
+      <GlobalStyle />
+      <App />
+    </ThemeProvider>
   </React.StrictMode>,
   document.getElementById("root")
 );

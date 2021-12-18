@@ -1,7 +1,7 @@
 import { DefaultTheme } from "styled-components";
 import { defaultPalette } from "./types";
 
-const laptopTheme: DefaultTheme = {
+const themeLight: DefaultTheme = {
   layout: {
     defaultSpacing: 4 /* todo */,
   },
@@ -34,4 +34,4 @@ const laptopTheme: DefaultTheme = {
   },
 };
 
-export { laptopTheme };
+export { themeLight };

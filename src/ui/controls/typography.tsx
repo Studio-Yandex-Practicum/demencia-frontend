@@ -1,6 +1,5 @@
 import React from "react";
-import styled, { css } from "styled-components";
-import { laptopTheme } from "../theme";
+import styled, { css, DefaultTheme } from "styled-components";
 import { FontSize, PaletteColor, TextColorType } from "../types";
 
 interface TextProps {
@@ -14,9 +13,19 @@ interface TextBlockProps extends TextProps {
   children?: any;
 }
 
-export const typographySizeMixIn = (props: TextProps) => {
-  const { typography } = laptopTheme; //getTheme(props);
-  const selectedSize = typography[props?.size || FontSize.Default];
+interface FontSizeProps {
+  readonly theme: DefaultTheme;
+  readonly size?: FontSize;
+}
+
+interface FontColorProps {
+  readonly theme: DefaultTheme;
+  readonly type?: TextColorType;
+}
+
+export const typographySizeMixIn = (props: FontSizeProps) => {
+  const { typography } = props.theme; //getTheme(props);
+  const selectedSize = typography[props.size || FontSize.Default];
   return `
         font-weight: ${selectedSize.fontWeight};
         font-size: ${selectedSize.fontSize}px;
@@ -25,9 +34,9 @@ export const typographySizeMixIn = (props: TextProps) => {
     `;
 };
 
-export const typographyColorMixIn = (props: TextProps) => {
+export const typographyColorMixIn = (props: FontColorProps) => {
   const selectedColor = () => {
-    const { colors } = laptopTheme;
+    const { colors } = props.theme;
     const type = props.type || TextColorType.Primary;
     switch (type) {
       case TextColorType.Primary: {

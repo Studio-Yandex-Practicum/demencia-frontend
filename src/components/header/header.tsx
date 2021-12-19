@@ -3,8 +3,9 @@ import Logo from "./logo";
 import Menu from "./menu";
 import styled from "styled-components";
 import React from "react";
-import burgerMenu from "../../images/burger-menu.svg";
-import cursorPointer from "../../images/cursor_pointer.svg";
+import { useState } from "react";
+import BurgerButton from "./burger-button";
+import VerticalModal from "./vertical-modal";
 
 const Wrapper = styled.header`
   width: 100%;
@@ -18,42 +19,39 @@ const Container = styled.div`
   z-index: 2;
 `;
 
-const BurgerButton = styled.button`
-  display: none;
-  z-index: 456;
-  cursor: url(${cursorPointer}), pointer;
-
-  @media screen and (max-width: 1290px) {
-    display: block;
-    width: 49px;
-    height: 33px;
-    background-image: url(${burgerMenu});
-    background-size: contain;
-    background-color: transparent;
-    background-repeat: no-repeat;
-    position: fixed;
-    top: 30px;
-    right: 25px;
-    border: none;
-    padding: 0;
-  }
-
-  @media screen and (max-width: 639px) {
-    width: 47px;
-    height: 25px;
-    top: 30px;
-  }
-`;
-
 const Header: React.FC = () => {
-  return (
-    <Wrapper>
-      <BurgerButton />
-      <Container>
-        <Link to="/">
+  const [isBurgerMenuOpen, setIsBurgerMenuOpen] = useState(false);
+
+  const closeBurger = () => setIsBurgerMenuOpen(false);
+
+  const content = (vertical: boolean) => {
+    return (
+      <>
+        <Link to="/" onClick={vertical ? closeBurger : undefined}>
           <Logo />
         </Link>
-        <Menu />
+        <Menu
+          vertical={vertical || undefined}
+          onClick={vertical ? closeBurger : undefined}
+        />
+      </>
+    );
+  };
+
+  return (
+    <Wrapper>
+      <BurgerButton
+        handleBurgerMenuOpen={() => setIsBurgerMenuOpen(!isBurgerMenuOpen)}
+        isOpen={isBurgerMenuOpen}
+      />
+      <Container>
+        {content(false)}
+        <VerticalModal
+          isOpen={isBurgerMenuOpen}
+          onClick={() => setIsBurgerMenuOpen(false)}
+        >
+          {content(true)}
+        </VerticalModal>
       </Container>
     </Wrapper>
   );

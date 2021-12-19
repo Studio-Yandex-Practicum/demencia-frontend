@@ -14,16 +14,38 @@ const MenuItems = styled.ul`
   }
 `;
 
-const Menu: React.FC = () => {
+const VerticalMenuItems = styled.ul`
+  display: flex;
+  flex-direction: column;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  row-gap: 25px;
+`;
+
+interface MenuProps {
+  vertical?: true;
+  onClick?: () => void;
+}
+
+const Menu: React.FC<MenuProps> = ({ vertical, onClick }) => {
+  const menu = (
+    <>
+      <MenuItem linkText="О ДЕМЕНЦИИ" linkTo="/#info" onClick={onClick} />
+      <MenuItem linkText="ПАРТНЕРЫ" linkTo="/#sponsors" onClick={onClick} />
+      <MenuItem linkText="НОВОСТИ" linkTo="/news-grid" onClick={onClick} />
+      <MenuItem linkText="О ФОНДЕ" linkTo="/#about" onClick={onClick} />
+      <MenuItem linkText="КОНТАКТЫ" linkTo="#" onClick={onClick} />
+    </>
+  );
+
   return (
     <nav>
-      <MenuItems>
-        <MenuItem linkText="О ДЕМЕНЦИИ" linkTo="/#info" />
-        <MenuItem linkText="ПАРТНЕРЫ" linkTo="/#sponsors" />
-        <MenuItem linkText="НОВОСТИ" linkTo="/news-grid" />
-        <MenuItem linkText="О ФОНДЕ" linkTo="/#about" />
-        <MenuItem linkText="КОНТАКТЫ" linkTo="#" />
-      </MenuItems>
+      {vertical ? (
+        <VerticalMenuItems>{menu}</VerticalMenuItems>
+      ) : (
+        <MenuItems>{menu}</MenuItems>
+      )}
     </nav>
   );
 };

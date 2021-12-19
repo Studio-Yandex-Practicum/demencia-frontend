@@ -15,7 +15,8 @@ const ItemLink = styled(Link)`
   font-size: 20px;
   line-height: 22.98px;
   color: black;
-  transition: border-bottom 0.5s cubic-bezier(0.2, -2, 0.8, 2);
+  transition: font-size 0.5s ease,
+    border-bottom 0.5s cubic-bezier(0.2, -2, 0.8, 2);
 
   &:hover {
     font-size: 21px;
@@ -26,12 +27,15 @@ const ItemLink = styled(Link)`
 interface MenuItemProps {
   linkTo: string;
   linkText: string;
+  onClick?: () => void;
 }
 
-const MenuItem: React.FC<MenuItemProps> = ({ linkTo, linkText }) => {
+const MenuItem: React.FC<MenuItemProps> = ({ linkTo, linkText, onClick }) => {
   return (
     <Item>
-      <ItemLink to={linkTo}>{linkText}</ItemLink>
+      <ItemLink to={linkTo} onClick={onClick}>
+        {linkText}
+      </ItemLink>
     </Item>
   );
 };

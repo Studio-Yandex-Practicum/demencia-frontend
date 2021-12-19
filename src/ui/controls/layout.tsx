@@ -1,9 +1,16 @@
 import styled, { css, DefaultTheme } from "styled-components";
-interface LayoutProps {
+import { BoxProps } from "./box";
+
+export interface ThemeProps {
   theme: DefaultTheme;
 }
-interface SectionProps {
-  theme: DefaultTheme;
+interface LayoutProps extends ThemeProps {
+  // todo: add own props
+  screenWidth?: number;
+}
+interface SectionProps extends ThemeProps, BoxProps {
+  // todo: add own props
+  col?: number;
 }
 
 export const Layout = styled.div<LayoutProps>`

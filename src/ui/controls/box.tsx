@@ -1,6 +1,6 @@
 import styled, { DefaultTheme } from "styled-components";
 
-interface BoxProps {
+export interface BoxProps {
   m?: number;
   mt?: number;
   mb?: number;

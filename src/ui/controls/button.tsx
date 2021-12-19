@@ -1,13 +1,18 @@
 import styled, { DefaultTheme } from "styled-components";
 import { FontSize } from "../types/font-size.enum";
+import { BoxProps, getBoxStyles } from "./box";
+import { ThemeProps } from "./layout";
 import { typographySizeMixIn } from "./typography";
 
-interface ButtonProps {
-  theme: DefaultTheme;
+interface ButtonProps extends ThemeProps, BoxProps {
   fullWidth: boolean;
 }
 
 export const Button = styled.button.attrs((props: ButtonProps) => ({
+  pt: 1,
+  pb: 1,
+  pl: 3,
+  pr: 3,
   ...props,
 }))`
   display: inline-block;
@@ -26,4 +31,5 @@ export const Button = styled.button.attrs((props: ButtonProps) => ({
   color: ${(p) => p.theme.button.color};
   background-color: ${(p) => p.theme.button.backgroundColor};
   ${(p) => typographySizeMixIn({ theme: p.theme, size: FontSize.Medium })}
+  ${getBoxStyles};
 `;

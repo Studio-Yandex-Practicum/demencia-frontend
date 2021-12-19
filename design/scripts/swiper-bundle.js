@@ -4020,7 +4020,7 @@
               (l = i + (Math.min(a.length, s.dynamicMainBullets) - 1)),
               (u = (l + i) / 2)),
             a.removeClass(
-              ["", "-next", "-next-next", "-prev", "-prev-prev", "-main"]
+              ["", "-next", "-next-next", "-prev", "-prev-prev", "-section"]
                 .map((e) => `${s.bulletActiveClass}${e}`)
                 .join(" ")
             ),

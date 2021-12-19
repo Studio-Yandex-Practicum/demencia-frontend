@@ -1,9 +1,11 @@
-interface INewsGridPuzzle {
+import React from "react";
+
+interface NewsGridPuzzleProps {
   puzzleImageSource: string;
   newsGridPuzzleClass: string;
 }
 
-const NewsGridPuzzle: React.FC<INewsGridPuzzle> = ({
+const NewsGridPuzzle: React.FC<NewsGridPuzzleProps> = ({
   puzzleImageSource,
   newsGridPuzzleClass,
 }) => {

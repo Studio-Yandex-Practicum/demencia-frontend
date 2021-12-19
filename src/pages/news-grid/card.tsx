@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
+import React from "react";
 
-interface ICard {
+interface CardProps {
   imageSource: string;
   cardHeading: string;
   cardText: string;
@@ -9,7 +10,7 @@ interface ICard {
   cardLinkTo: string;
 }
 
-const Card: React.FC<ICard> = ({
+const Card: React.FC<CardProps> = ({
   imageSource,
   cardHeading,
   cardText,

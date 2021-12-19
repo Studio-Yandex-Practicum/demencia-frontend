@@ -165,7 +165,7 @@
   font-size: 18px;
   font-weight: 600;
   font-style: normal;
-  cursor: url("../../../images/cursor_pointer.svg"), pointer;
+  cursor: url("../../images/cursor_pointer.svg"), pointer;
 }
 
 .card__button:hover {

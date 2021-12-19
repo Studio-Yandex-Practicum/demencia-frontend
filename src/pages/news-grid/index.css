@@ -1,14 +1,3 @@
-@import url(./news-grid.css);
-@import url(header/header.css);
-@import url(header/logo-image.css);
-@import url(header/nav-list.css);
-@import url(header/nav-list-item.css);
-@import url(main/main.css);
-@import url(main/section.css);
-@import url(main/heading.css);
 @import url(background/news-grid-background.css);
 @import url(background/news-grid-puzzle.css);
-@import url(main/news-grid-section.css);
-@import url(main/news-grid-list.css);
-@import url(main/card.css);
-@import url(footer/footer.css);
+@import url(card.css);

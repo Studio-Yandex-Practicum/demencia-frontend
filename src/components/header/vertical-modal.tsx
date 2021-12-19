@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import React from "react";
 import { createPortal } from "react-dom";
 import styled from "styled-components";
 
@@ -35,7 +35,7 @@ const VerticalModalMenu = styled.div<{ isOpen: boolean }>`
     padding: 120px 0 50px 30px;
     row-gap: 25px;
     background: #ffffff;
-    box-shadow: 0px 0px 25px rgb(0 0 0 / 15%);
+    box-shadow: 0 0 25px rgb(0 0 0 / 15%);
     position: relative;
     z-index: 451;
   }
@@ -65,24 +65,14 @@ const VerticalModal: React.FC<VerticalModalProps> = ({
   children,
   onClick,
 }) => {
-  const element = document.createElement("div");
-
-  useEffect(() => {
-    modalRootElement?.appendChild(element);
-
-    return () => {
-      modalRootElement?.removeChild(element);
-    };
-  });
-
-  if (isOpen) {
+  if (isOpen && modalRootElement) {
     return createPortal(
       <VerticalModalMenu isOpen={isOpen} onClick={onClick}>
         <div className="modal__container" onClick={(e) => e.stopPropagation()}>
           {children}
         </div>
       </VerticalModalMenu>,
-      element
+      modalRootElement
     );
   }
 

@@ -1,7 +1,6 @@
 import { Link } from "react-router-dom";
 import Logo from "./logo";
 import Menu from "./menu";
-import VerticalMenu from "./vertical-menu";
 import styled from "styled-components";
 import React from "react";
 import { useState } from "react";
@@ -23,6 +22,22 @@ const Container = styled.div`
 const Header: React.FC = () => {
   const [isBurgerMenuOpen, setIsBurgerMenuOpen] = useState(false);
 
+  const closeBurger = () => setIsBurgerMenuOpen(false);
+
+  const content = (vertical: boolean) => {
+    return (
+      <>
+        <Link to="/" onClick={vertical ? closeBurger : undefined}>
+          <Logo />
+        </Link>
+        <Menu
+          vertical={vertical || undefined}
+          onClick={vertical ? closeBurger : undefined}
+        />
+      </>
+    );
+  };
+
   return (
     <Wrapper>
       <BurgerButton
@@ -30,18 +45,12 @@ const Header: React.FC = () => {
         isOpen={isBurgerMenuOpen}
       />
       <Container>
-        <Link to="/">
-          <Logo />
-        </Link>
-        <Menu />
+        {content(false)}
         <VerticalModal
           isOpen={isBurgerMenuOpen}
           onClick={() => setIsBurgerMenuOpen(false)}
         >
-          <Link to="/" onClick={() => setIsBurgerMenuOpen(false)}>
-            <Logo />
-          </Link>
-          <VerticalMenu onClick={() => setIsBurgerMenuOpen(false)} />
+          {content(true)}
         </VerticalModal>
       </Container>
     </Wrapper>

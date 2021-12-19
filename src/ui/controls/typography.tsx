@@ -1,6 +1,7 @@
 import React from "react";
 import styled, { css, DefaultTheme } from "styled-components";
 import { FontSize, ColorType } from "../types";
+import { getBoxStyles } from "./box";
 
 interface TextProps {
   readonly size?: FontSize;
@@ -12,7 +13,7 @@ interface TextProps {
 interface TextBlockProps extends TextProps {
   renderTag?: string;
   className?: string;
-  children?: any;
+  children?: string;
 }
 
 interface FontSizeProps {
@@ -25,7 +26,7 @@ interface FontColorProps {
   readonly type?: ColorType;
 }
 
-export const typographySizeMixIn = (props: FontSizeProps) => {
+export const typographySizeMixIn = (props: FontSizeProps): string => {
   const { typography } = props.theme; //getTheme(props);
   const selectedSize = typography[props.size || FontSize.Default];
   return `
@@ -35,7 +36,7 @@ export const typographySizeMixIn = (props: FontSizeProps) => {
     `;
 };
 
-export const typographyColorMixIn = (props: FontColorProps) => {
+export const typographyColorMixIn = (props: FontColorProps): string => {
   const selectedColor = () => {
     const { colors } = props.theme;
     const type = props.type || ColorType.Primary;
@@ -66,7 +67,7 @@ export const typographyColorMixIn = (props: FontColorProps) => {
   return `color: ${colorToApply}; fill: ${colorToApply}`;
 };
 
-export const textAnimationMixIn = () => {
+export const textAnimationMixIn = (): string => {
   return "";
 };
 

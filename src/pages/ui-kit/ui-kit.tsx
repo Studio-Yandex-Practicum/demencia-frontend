@@ -9,7 +9,7 @@ import {
   Subtitle,
   TextBlock,
 } from "../../ui/controls/typography";
-import { Button } from "../../ui/controls/button";
+import { Button, Box } from "../../ui/controls";
 import { FontSize } from "../../ui/types";
 // TODO: this is a temporary page to display the ui components
 const UiKitPage: React.FC = () => {
@@ -22,25 +22,51 @@ const UiKitPage: React.FC = () => {
           styles
         </MainTitle>
         <Section>
-          <PrimaryTitle>This is a primary title</PrimaryTitle>
-          <SecondaryTitle>This is a secondary title</SecondaryTitle>
-          <Subtitle>This a subtitle</Subtitle>
-          <P>This is a paragraph text</P>
+          <Box mb={2}>
+            <PrimaryTitle>This is a primary title</PrimaryTitle>
+          </Box>
+          <Box mb={2}>
+            <SecondaryTitle>This is a secondary title</SecondaryTitle>
+          </Box>
+          <Box mb={2}>
+            <Subtitle>This a subtitle</Subtitle>
+          </Box>
+          <Box mb={2}>
+            <P>This is a paragraph text</P>
+          </Box>
         </Section>
         <Section>
-          <PrimaryTitle>Typography</PrimaryTitle>
-          <TextBlock size={FontSize.Huge} renderTag={"h2"}>
-            This is a huge text
-          </TextBlock>
-          <TextBlock size={FontSize.Large}>This is a large text</TextBlock>
-          <TextBlock size={FontSize.Medium}>This is medium text</TextBlock>
-          <TextBlock size={FontSize.Default}>This is text</TextBlock>
+          <Box mb={2}>
+            <PrimaryTitle>Typography</PrimaryTitle>
+          </Box>
+          <Box mb={2}>
+            <TextBlock size={FontSize.Huge} renderTag={"h2"}>
+              This is a huge text
+            </TextBlock>
+          </Box>
+          <Box mb={2}>
+            <TextBlock size={FontSize.Large}>This is a large text</TextBlock>
+          </Box>
+          <Box mb={2}>
+            <TextBlock size={FontSize.Medium}>This is medium text</TextBlock>
+          </Box>
+          <Box mb={2}>
+            <TextBlock size={FontSize.Default}>This is text</TextBlock>
+          </Box>
         </Section>
         <Section>
-          <PrimaryTitle>Buttons</PrimaryTitle>
-          <Button>Пройти тест</Button>
-          <Button>Пройти тест</Button>
-          <Button>Пройти тест</Button>
+          <Box mb={2}>
+            <PrimaryTitle>Buttons</PrimaryTitle>
+          </Box>
+          <Box mb={2}>
+            <Button>Пройти тест</Button>
+          </Box>
+          <Box mb={2}>
+            <Button>Пройти тест</Button>
+          </Box>
+          <Box mb={2}>
+            <Button>Пройти тест</Button>
+          </Box>
         </Section>
         <Section>
           <PrimaryTitle>Links</PrimaryTitle>

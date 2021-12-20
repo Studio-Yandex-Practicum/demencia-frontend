@@ -102,6 +102,19 @@ const UiKitPage: React.FC = () => {
           <PrimaryTitle>Links</PrimaryTitle>
           <Box mb={2}>
             <Link>Пройти тест</Link>
+            <Menu>
+              <MenuItems vertical={true}>
+                <MenuItem>
+                  <Link>Тест на деменцию</Link>
+                </MenuItem>
+                <MenuItem>
+                  <Link>Центры профилактики</Link>
+                </MenuItem>
+                <MenuItem>
+                  <Link>Знания</Link>
+                </MenuItem>
+              </MenuItems>
+            </Menu>
           </Box>
         </Section>
         <Section>

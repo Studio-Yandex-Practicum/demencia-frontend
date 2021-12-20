@@ -9,6 +9,7 @@ interface LinkStyleProps extends ThemeProps {
 
 interface LinkProps {
   animated?: boolean;
+  uppercased?: boolean;
   children?: ReactNode;
 }
 
@@ -23,6 +24,7 @@ export const linkMixin = css<LinkProps>`
   line-height: ${(p) => p.theme.typography.default.lineHeight}em;
   white-space: nowrap;
   text-decoration: none;
+  text-transform: uppercase;
   cursor: url("${cursorImage}"), pointer;
   color: ${(p) => p.theme.colors.textPrimary};
   transition: font-size 0.5s ease,

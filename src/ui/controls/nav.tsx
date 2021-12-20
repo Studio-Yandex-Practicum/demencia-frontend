@@ -1,29 +1,24 @@
 import styled, { css } from "styled-components";
 import { ScreenSize } from "../types";
 
+export interface MenuProps {
+  vertical?: boolean;
+}
 // todo: move margins and screen sizes to enum
-export const MenuItem = styled.li`
-  margin-left: 28px;
+export const MenuItem = styled.li``;
 
-  @media screen and (max-width: ${ScreenSize.Large}px) {
-    margin-left: 18px;
-  }
-
-  @media (min-width: ${ScreenSize.Small +
-    1}px) and (max-width: ${ScreenSize.Medium}px) {
-    margin-left: 0px;
-  }
-`;
-
-export const MenuItems = styled.ul`
+export const MenuItems = styled.ul<MenuProps>`
   display: flex;
+  ${(p) => (!p.vertical ? "" : "flex-direction:column;")}
   list-style: none;
   padding: 0;
   margin: 30px 50px 0 0;
+  gap: 28px;
 
   @media screen and (max-width: ${ScreenSize.Small}px) {
     display: none;
     margin: 20px 20px 0 0;
+    gap: 18px;
   }
 `;
 

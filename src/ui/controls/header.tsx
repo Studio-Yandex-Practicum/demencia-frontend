@@ -1,4 +1,35 @@
 import styled from "styled-components";
+import cursorImage from "../../images/cursor_pointer.svg";
+import burgerImage from "../../images/burger-menu.svg";
+import { ScreenSize } from "../types";
+
+export const BurgerButton = styled.button`
+  display: none;
+  z-index: 2;
+  cursor: url("${cursorImage}"), pointer;
+  alight-self: flex-end;
+
+  @media screen and (max-width: ${ScreenSize.Small}px) {
+    display: block;
+    width: 49px;
+    height: 33px;
+    background-image: url("${burgerImage}");
+    background-size: contain;
+    background-color: transparent;
+    background-repeat: no-repeat;
+    position: fixed;
+    top: 30px;
+    right: 25px;
+    border: none;
+    padding: 0;
+  }
+
+  @media screen and (max-width: 639px) {
+    width: 47px;
+    height: 25px;
+    top: 30px;
+  }
+`;
 
 const Header = styled.header`
   width: 100%;

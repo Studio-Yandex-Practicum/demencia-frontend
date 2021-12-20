@@ -14,6 +14,7 @@ import {
   Box,
   Link,
   Header,
+  BurgerButton,
   Menu,
   MenuItems,
   MenuItem,
@@ -25,6 +26,7 @@ const UiKitPage: React.FC = () => {
   return (
     <Layout>
       <Header>
+        <BurgerButton />
         <LogoBlock altText="Логотип" link="#" />
         <Menu>
           <MenuItems>

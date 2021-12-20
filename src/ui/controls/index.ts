@@ -3,6 +3,7 @@ import { Button } from "./button";
 import { Box } from "./box";
 import { Link } from "./link";
 import Header from "./header";
+import { BurgerButton } from "./header";
 import { Layout } from "./layout";
 import { Menu, MenuItem, MenuItems } from "./nav";
 import { LogoBlock } from "./logo";
@@ -10,6 +11,7 @@ import { LogoBlock } from "./logo";
 export {
   Layout,
   Header,
+  BurgerButton,
   Button,
   Box,
   Link,

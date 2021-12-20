@@ -1,6 +1,5 @@
 import React from "react";
-import StartBtn from "../utils/startBtn";
-import { test } from "../utils/links";
+import StartBtn from "../start-button/start-button";
 
 const Info: React.FC = () => {
   return (
@@ -39,7 +38,7 @@ const Info: React.FC = () => {
             <img src="images/old_couple.jpg" />
             <span />
           </div>
-          <StartBtn target={test.target} title={test.title} />
+          <StartBtn />
         </div>
       </div>
     </section>

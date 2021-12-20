@@ -1,16 +1,28 @@
 import React from "react";
-import Menu from "./menu";
+import styled from "styled-components";
+import NavMenu from "./menu";
 import Decor from "./decor";
-import StartBtn from "../../utils/startBtn";
-import { test } from "../../utils/links";
+import StartBtn from "../../start-button/start-button";
+
+const Section = styled.div`
+  width: 100%;
+  height: 465px;
+  position: relative;
+  @media screen and (max-width: 767px) {
+    height: 403px;
+  }
+  @media screen and (max-width: 369px) {
+    max-height: 391px;
+  }
+`;
 
 const Test: React.FC = () => {
   return (
-    <div>
-      <Menu />
+    <Section>
+      <NavMenu />
       <Decor />
-      <StartBtn target={test.target} title={test.title} />
-    </div>
+      <StartBtn />
+    </Section>
   );
 };
 

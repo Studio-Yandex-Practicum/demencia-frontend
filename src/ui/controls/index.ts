@@ -5,5 +5,16 @@ import { Link } from "./link";
 import Header from "./header";
 import { Layout } from "./layout";
 import { Menu, MenuItem, MenuItems } from "./nav";
+import { LogoBlock } from "./logo";
 
-export { Layout, Header, Button, Box, Link, Menu, MenuItems, MenuItem };
+export {
+  Layout,
+  Header,
+  Button,
+  Box,
+  Link,
+  Menu,
+  MenuItems,
+  MenuItem,
+  LogoBlock,
+};

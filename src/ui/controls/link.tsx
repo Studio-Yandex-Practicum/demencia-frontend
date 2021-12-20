@@ -1,5 +1,7 @@
+import { ReactNode } from "react";
 import styled, { css } from "styled-components";
 import { ThemeProps } from "./layout";
+import cursorImage from "../../images/cursor_pointer.svg";
 
 interface LinkStyleProps extends ThemeProps {
   animated?: boolean;
@@ -7,7 +9,7 @@ interface LinkStyleProps extends ThemeProps {
 
 interface LinkProps {
   animated?: boolean;
-  children?: string;
+  children?: ReactNode;
 }
 
 export const linkMixin = css<LinkProps>`
@@ -18,7 +20,7 @@ export const linkMixin = css<LinkProps>`
   font-family: ${(p) => p.theme.layout.fontFamily};
   white-space: nowrap;
   text-decoration: none;
-  cursor: url("../../images/cursor_pointer.svg"), pointer;
+  cursor: url("${cursorImage}"), pointer;
   color: ${(p) => p.theme.colors.textPrimary};
 
   &:hover {

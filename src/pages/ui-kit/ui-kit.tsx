@@ -17,6 +17,7 @@ import {
   Menu,
   MenuItems,
   MenuItem,
+  LogoBlock,
 } from "../../ui/controls";
 import { FontSize } from "../../ui/types";
 // TODO: this is a temporary page to display the ui components
@@ -24,7 +25,9 @@ const UiKitPage: React.FC = () => {
   return (
     <Layout>
       <Header>
-        <a href="#">Logo</a>
+        <Link>
+          <LogoBlock />
+        </Link>
         <Menu>
           <MenuItems>
             <MenuItem>

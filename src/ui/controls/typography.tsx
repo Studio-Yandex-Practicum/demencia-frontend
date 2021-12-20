@@ -1,4 +1,4 @@
-import React from "react";
+import React, { ReactNode } from "react";
 import styled, { css, DefaultTheme } from "styled-components";
 import { FontSize, ColorType } from "../types";
 import { BoxProps, getBoxStyles } from "./box";
@@ -14,7 +14,7 @@ interface TextProps extends BoxProps {
 interface TextBlockProps extends TextProps {
   renderTag?: string;
   className?: string;
-  children?: string;
+  children?: ReactNode;
 }
 
 interface FontSizeProps extends ThemeProps {

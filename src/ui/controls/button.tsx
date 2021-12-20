@@ -3,6 +3,7 @@ import { FontSize } from "../types/font-size.enum";
 import { BoxProps, getBoxStyles } from "./box";
 import { ThemeProps } from "./layout";
 import { typographySizeMixIn } from "./typography";
+import cursorImage from "../../images/cursor_pointer.svg";
 
 interface ButtonProps extends ThemeProps, BoxProps {
   fullWidth: boolean;
@@ -20,7 +21,7 @@ export const Button = styled.button.attrs((props: ButtonProps) => ({
   border: none;
   text-align: center;
   text-decoration: none;
-  cursor: url("../../images/cursor_pointer.svg"), pointer;
+  cursor: url("${cursorImage}"), pointer;
   font-family: ${(p) => p.theme.layout.fontFamily};
   display: flex;
   align-items: center;

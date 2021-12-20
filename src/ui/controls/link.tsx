@@ -29,7 +29,8 @@ export const linkMixin = css<LinkProps>`
     border-bottom 0.5s cubic-bezier(0.2, -2, 0.8, 2);
 
   &:hover {
-    font-size: ${(p) => p.theme.typography.normal.fontSize}px;
+    font-size: ${(p) =>
+      Math.floor(p.theme.typography.default.fontSize * 1.1)}px;
     border-bottom: ${(p) => p.theme.layout.borderSize}px solid
       ${(p) => p.theme.colors.accent}; // link hovered
   }

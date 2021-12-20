@@ -31,11 +31,6 @@ const themeLight: DefaultTheme = {
       fontWeight: 700,
       lineHeight: 1.15,
     },
-    normal: {
-      fontSize: 24,
-      fontWeight: 400,
-      lineHeight: 1.15,
-    },
     default: {
       fontSize: 20,
       fontWeight: 400,

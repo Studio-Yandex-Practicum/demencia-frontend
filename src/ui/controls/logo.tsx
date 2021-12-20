@@ -4,6 +4,8 @@ import logoImage from "../../images/logo.svg";
 
 interface LogoBlockProps {
   maxWidth?: number;
+  altText: string;
+  link: string;
 }
 
 // todo: logo size think of
@@ -17,5 +19,9 @@ export const Logo = styled.img`
 `;
 
 export const LogoBlock: React.FunctionComponent<LogoBlockProps> = (props) => {
-  return <Logo src={logoImage} />;
+  return (
+    <a href={props.link} aria-label={props.altText}>
+      <Logo src={logoImage} alt={props.altText} />
+    </a>
+  );
 };

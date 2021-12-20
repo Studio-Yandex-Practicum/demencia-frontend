@@ -25,9 +25,7 @@ const UiKitPage: React.FC = () => {
   return (
     <Layout>
       <Header>
-        <Link>
-          <LogoBlock />
-        </Link>
+        <LogoBlock altText="Логотип" link="#" />
         <Menu>
           <MenuItems>
             <MenuItem>

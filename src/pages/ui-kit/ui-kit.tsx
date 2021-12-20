@@ -9,13 +9,42 @@ import {
   Subtitle,
   TextBlock,
 } from "../../ui/controls/typography";
-import { Button, Box, Link } from "../../ui/controls";
+import {
+  Button,
+  Box,
+  Link,
+  Header,
+  Menu,
+  MenuItems,
+  MenuItem,
+} from "../../ui/controls";
 import { FontSize } from "../../ui/types";
 // TODO: this is a temporary page to display the ui components
 const UiKitPage: React.FC = () => {
   return (
     <Layout>
-      <header></header>
+      <Header>
+        <a href="#">Logo</a>
+        <Menu>
+          <MenuItems>
+            <MenuItem>
+              <Link>О ДЕМЕНЦИИ</Link>
+            </MenuItem>
+            <MenuItem>
+              <Link>ПАРТНЕРЫ</Link>
+            </MenuItem>
+            <MenuItem>
+              <Link>НОВОСТИ</Link>
+            </MenuItem>
+            <MenuItem>
+              <Link>О ФОНДЕ</Link>
+            </MenuItem>
+            <MenuItem>
+              <Link>КОНТАКТЫ</Link>
+            </MenuItem>
+          </MenuItems>
+        </Menu>
+      </Header>
       <Main>
         <MainTitle>
           MainTitle: This is a page to display the low - level components and

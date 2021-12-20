@@ -8,6 +8,7 @@ const themeLight: DefaultTheme = {
     minWidth: 320,
     defaultSpacing: 8 /* todo */,
     borderRadius: 25,
+    borderSize: 2,
   },
   button: {
     color: PaletteColor.White,
@@ -16,7 +17,7 @@ const themeLight: DefaultTheme = {
   colors: defaultPalette /* todo */,
   typography: {
     huge: {
-      fontSize: 50,
+      fontSize: 86,
       fontWeight: 700,
       lineHeight: 1.15,
     },
@@ -28,6 +29,11 @@ const themeLight: DefaultTheme = {
     medium: {
       fontSize: 30,
       fontWeight: 700,
+      lineHeight: 1.15,
+    },
+    normal: {
+      fontSize: 24,
+      fontWeight: 400,
       lineHeight: 1.15,
     },
     default: {

@@ -4,4 +4,5 @@ export interface Layout {
     minWidth: number;
     defaultSpacing: number;
     borderRadius: number;
+    borderSize: number;
 }

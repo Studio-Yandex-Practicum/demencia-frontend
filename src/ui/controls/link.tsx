@@ -18,13 +18,20 @@ export const linkMixin = css<LinkProps>`
   border: 0;
   vertical-align: baseline;
   font-family: ${(p) => p.theme.layout.fontFamily};
+  font-size: ${(p) => p.theme.typography.default.fontSize}px;
+  font-weight: ${(p) => p.theme.typography.default.fontWeight};
+  line-height: ${(p) => p.theme.typography.default.lineHeight}em;
   white-space: nowrap;
   text-decoration: none;
   cursor: url("${cursorImage}"), pointer;
   color: ${(p) => p.theme.colors.textPrimary};
+  transition: font-size 0.5s ease,
+    border-bottom 0.5s cubic-bezier(0.2, -2, 0.8, 2);
 
   &:hover {
-    border-bottom: 2px solid ${(p) => p.theme.colors.accent}; // link hovered
+    font-size: ${(p) => p.theme.typography.normal.fontSize}px;
+    border-bottom: ${(p) => p.theme.layout.borderSize}px solid
+      ${(p) => p.theme.colors.accent}; // link hovered
   }
 `;
 

@@ -13,9 +13,10 @@ export const Logo = styled.img`
   background-size: cover;
   background-repeat: no-repeat;
   cursor: url("${cursorImage}"), pointer;
-  width: 318px;
-  height: 238px;
-  margin: 21px 0 0 150px;
+  width: 220px;
+  height: 164px;
+  margin: 0;
+  padding: 0;
 `;
 
 export const LogoBlock: React.FunctionComponent<LogoBlockProps> = (props) => {

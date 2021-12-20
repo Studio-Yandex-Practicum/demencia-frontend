@@ -4,6 +4,7 @@ import { Layout } from "./layout";
 import { Typography } from "./typography";
 import { FontSize } from "./font-size.enum";
 import { ColorType } from "./color-type.enum";
+import { ScreenSize } from "./screen-size.enum";
 
 // TODO: update palette properly
 const defaultPalette: Palette = {
@@ -19,5 +20,5 @@ const defaultPalette: Palette = {
   accentAlt: PaletteColor.Green,
 };
 
-export { PaletteColor, ColorType, defaultPalette, FontSize };
+export { PaletteColor, ColorType, defaultPalette, FontSize, ScreenSize };
 export type { Layout, Typography };

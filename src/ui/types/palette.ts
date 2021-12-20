@@ -8,6 +8,8 @@ export interface ColorInfo {
 export interface Palette {
   background: PaletteColor;
   backgroundAlt: PaletteColor;
+  backgroundDark: PaletteColor;
+  backgroundFooter: PaletteColor;
   primary: PaletteColor;
   secondary: PaletteColor;
   primaryContent: PaletteColor;

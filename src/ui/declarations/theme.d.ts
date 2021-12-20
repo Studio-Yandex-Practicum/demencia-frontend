@@ -10,5 +10,6 @@ declare module "styled-components" {
     button: ColorInfo;
     colors: Palette;
     typography: Typography;
+    spacing: Spacing;
   }
 }

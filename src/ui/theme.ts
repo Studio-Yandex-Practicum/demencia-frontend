@@ -1,5 +1,21 @@
 import { DefaultTheme } from "styled-components";
-import { defaultPalette, PaletteColor } from "./types";
+import { Palette, PaletteColor } from "./types";
+
+// TODO: update palette properly
+const defaultPalette: Palette = {
+  background: PaletteColor.White,
+  backgroundAlt: PaletteColor.LightGreen,
+  backgroundDark: PaletteColor.Green,
+  backgroundFooter: PaletteColor.WhiteBlue,
+  primary: PaletteColor.DarkPurple,
+  secondary: PaletteColor.Green,
+  primaryContent: PaletteColor.White,
+  secondaryContent: PaletteColor.SoftWhite,
+  textPrimary: PaletteColor.Black,
+  textSecondary: PaletteColor.GreyBrown,
+  accent: PaletteColor.DarkPurple,
+  accentAlt: PaletteColor.Green,
+};
 
 const themeLight: DefaultTheme = {
   layout: {
@@ -42,6 +58,7 @@ const themeLight: DefaultTheme = {
       lineHeight: 1.15,
     },
   },
+  spacing: {},
 };
 
 export { themeLight };

@@ -1,9 +1,10 @@
 import React from "react";
 import styled, { css, DefaultTheme } from "styled-components";
 import { FontSize, ColorType } from "../types";
-import { getBoxStyles } from "./box";
+import { BoxProps, getBoxStyles } from "./box";
+import { ThemeProps } from "./layout";
 
-interface TextProps {
+interface TextProps extends BoxProps {
   readonly size?: FontSize;
   readonly type?: ColorType;
   readonly uppercase?: boolean;
@@ -16,18 +17,16 @@ interface TextBlockProps extends TextProps {
   children?: string;
 }
 
-interface FontSizeProps {
-  readonly theme: DefaultTheme;
+interface FontSizeProps extends ThemeProps {
   readonly size?: FontSize;
 }
 
-interface FontColorProps {
-  readonly theme: DefaultTheme;
+interface FontColorProps extends ThemeProps {
   readonly type?: ColorType;
 }
 
 export const typographySizeMixIn = (props: FontSizeProps): string => {
-  const { typography } = props.theme; //getTheme(props);
+  const { typography } = props.theme;
   const selectedSize = typography[props.size || FontSize.Default];
   return `
         font-weight: ${selectedSize.fontWeight};
@@ -81,6 +80,7 @@ export const typographyMixin = css<TextProps>`
   ${typographySizeMixIn};
   ${typographyColorMixIn};
   ${textAnimationMixIn};
+  ${getBoxStyles};
   ${(props) => (!props.uppercase ? "" : "text-transform: uppercase;")}
   ${(props) => (!props.underlined ? "" : "text-decoration-line: underline;")}
 `;
@@ -118,6 +118,7 @@ export const H6 = styled.h6<TextProps>`
 `;
 
 export const TextBlock: React.FunctionComponent<TextBlockProps> = (props) => {
+  props = { pb: 1, ...props }; // set default margin below
   switch (props.renderTag) {
     case "p": {
       return <P size={props.size || FontSize.Default}>{props.children}</P>;

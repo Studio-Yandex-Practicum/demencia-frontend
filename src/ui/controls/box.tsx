@@ -1,4 +1,5 @@
 import styled, { DefaultTheme } from "styled-components";
+import { PaletteColor } from "../types";
 
 export interface BoxProps {
   m?: number;
@@ -15,6 +16,7 @@ export interface BoxProps {
 
 interface BoxStyleProps extends BoxProps {
   theme: DefaultTheme;
+  backgroundColor?: PaletteColor;
 }
 
 const getShift = (val: number, defaultSpacing: number): number => {
@@ -64,8 +66,10 @@ export const getBoxStyles = (p: BoxStyleProps) => {
   return shiftStyles.join(" ");
 };
 
-export const Box = styled.div`
+export const Box = styled.div<BoxStyleProps>`
   display: block;
   box-sizing: border-box;
   ${getBoxStyles}
+  ${(p) =>
+    "background-color:" + p.backgroundColor || p.theme.colors.background};
 `;

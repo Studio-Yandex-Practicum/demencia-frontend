@@ -9,7 +9,7 @@ import {
   Subtitle,
   TextBlock,
 } from "../../ui/controls/typography";
-import { Button, Box } from "../../ui/controls";
+import { Button, Box, Link } from "../../ui/controls";
 import { FontSize } from "../../ui/types";
 // TODO: this is a temporary page to display the ui components
 const UiKitPage: React.FC = () => {
@@ -70,12 +70,21 @@ const UiKitPage: React.FC = () => {
         </Section>
         <Section>
           <PrimaryTitle>Links</PrimaryTitle>
+          <Box mb={2}>
+            <Link>Пройти тест</Link>
+          </Box>
         </Section>
         <Section>
           <PrimaryTitle>Icons</PrimaryTitle>
+          <P>todo icons</P>
         </Section>
         <Section>
           <PrimaryTitle>Animations</PrimaryTitle>
+          <P>todo animations</P>
+        </Section>
+        <Section>
+          <PrimaryTitle>Inputs</PrimaryTitle>
+          <P>todo inputs</P>
         </Section>
       </Main>
       <footer></footer>

@@ -1,4 +1,5 @@
 export enum PaletteColor {
+  Transparent = "transparent;",
   White = "#FFF;", // todo: check existance in figma "podrobnee"
   SoftWhite = "#E5E5E5;",
   WhiteGreen = "#CAE6DF;", // todo: check existance in figma "podrobnee"

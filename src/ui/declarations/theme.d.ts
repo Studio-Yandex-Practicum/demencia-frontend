@@ -8,6 +8,7 @@ declare module "styled-components" {
   export interface DefaultTheme {
     layout: Layout;
     button: ColorInfo;
+    linkButton: ColorInfo;
     colors: Palette;
     typography: Typography;
     spacing: Spacing;

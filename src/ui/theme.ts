@@ -30,6 +30,10 @@ const themeLight: DefaultTheme = {
     color: PaletteColor.White,
     backgroundColor: PaletteColor.Purple,
   },
+  linkButton: {
+    color: PaletteColor.Purple,
+    backgroundColor: PaletteColor.Transparent,
+  },
   colors: defaultPalette /* todo */,
   typography: {
     huge: {

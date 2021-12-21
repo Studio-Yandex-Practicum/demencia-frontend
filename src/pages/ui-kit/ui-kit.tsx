@@ -94,6 +94,26 @@ const UiKitPage: React.FC = () => {
             <Box mb={2}>
               <TextBlock size={FontSize.Default}>This is text</TextBlock>
             </Box>
+            <Box mb={2}>
+              <TextBlock type={ColorType.Primary}>
+                This is a primary color text
+              </TextBlock>
+            </Box>
+            <Box mb={2}>
+              <TextBlock type={ColorType.Secondary}>
+                This is a secondary color text
+              </TextBlock>
+            </Box>
+            <Box mb={2}>
+              <TextBlock type={ColorType.Accent}>
+                This is a accent color text
+              </TextBlock>
+            </Box>
+            <Box mb={2}>
+              <TextBlock type={ColorType.AccentAlt}>
+                This is a accent alt color text
+              </TextBlock>
+            </Box>
           </Container>
         </Section>
         <Section>

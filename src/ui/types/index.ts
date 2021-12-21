@@ -6,6 +6,14 @@ import { FontSize } from "./font-size.enum";
 import { ColorType } from "./color-type.enum";
 import { ScreenSize } from "./screen-size.enum";
 import { ContainerSize } from "./container-size.enum";
+import { ButtonSize } from "./button-size.enum";
 
-export { PaletteColor, ColorType, FontSize, ScreenSize, ContainerSize };
+export {
+  PaletteColor,
+  ColorType,
+  FontSize,
+  ScreenSize,
+  ContainerSize,
+  ButtonSize,
+};
 export type { Layout, Typography, Palette };

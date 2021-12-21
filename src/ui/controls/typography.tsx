@@ -15,6 +15,7 @@ interface TextBlockProps extends TextProps {
   renderTag?: string;
   className?: string;
   children?: ReactNode;
+  type?: ColorType;
 }
 
 interface FontSizeProps extends ThemeProps {
@@ -124,22 +125,54 @@ export const TextBlock: React.FunctionComponent<TextBlockProps> = (props) => {
       return <P size={props.size || FontSize.Default}>{props.children}</P>;
     }
     case "h1":
-      return <H1 size={props.size}>{props.children}</H1>;
+      return (
+        <H1 size={props.size} type={props.type}>
+          {props.children}
+        </H1>
+      );
     case "h2":
-      return <H2 size={props.size}>{props.children}</H2>;
+      return (
+        <H2 size={props.size} type={props.type}>
+          {props.children}
+        </H2>
+      );
     case "h3":
-      return <H3 size={props.size}>{props.children}</H3>;
+      return (
+        <H3 size={props.size} type={props.type}>
+          {props.children}
+        </H3>
+      );
     case "h4":
-      return <H4 size={props.size}>{props.children}</H4>;
+      return (
+        <H4 size={props.size} type={props.type}>
+          {props.children}
+        </H4>
+      );
     case "h5":
-      return <H5 size={props.size}>{props.children}</H5>;
+      return (
+        <H5 size={props.size} type={props.type}>
+          {props.children}
+        </H5>
+      );
     case "h6":
-      return <H6 size={props.size}>{props.children}</H6>;
+      return (
+        <H6 size={props.size} type={props.type}>
+          {props.children}
+        </H6>
+      );
     case "span": {
-      return <Span size={props.size}>{props.children}</Span>;
+      return (
+        <Span size={props.size} type={props.type}>
+          {props.children}
+        </Span>
+      );
     }
     default: {
-      return <P size={props.size}>{props.children}</P>;
+      return (
+        <P size={props.size} type={props.type}>
+          {props.children}
+        </P>
+      );
     }
   }
 };

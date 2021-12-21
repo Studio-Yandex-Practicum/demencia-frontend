@@ -1,5 +1,5 @@
 import * as typography from "./typography";
-import { Button } from "./button";
+import { Button, LinkButton } from "./button";
 import { Box } from "./box";
 import { Link } from "./link";
 import Header from "./header";
@@ -17,6 +17,7 @@ export {
   BurgerButton,
   Footer,
   Button,
+  LinkButton,
   Box,
   Link,
   Menu,

@@ -10,13 +10,26 @@ interface ButtonProps extends ThemeProps, BoxProps {
   fullWidth: boolean;
   animated?: boolean;
   primary?: boolean;
-  link?: boolean;
 }
 
-export const buttonStyleMixin = css<ButtonProps>``;
-export const linkButtonStyleMixin = css<ButtonProps>``;
+export const buttonStyleMixin = css<ButtonProps>`
+  border-radius: ${(p) => p.theme.layout.borderRadius}px;
+  color: ${(p) => p.theme.button.color};
+  background-color: ${(p) => p.theme.button.backgroundColor};
+`;
+export const linkButtonStyleMixin = css<ButtonProps>`
+  color: ${(p) => p.theme.linkButton.color};
+  background-color: ${(p) => p.theme.linkButton.backgroundColor};
+`;
+
 export const circleButtonStyleMixin = css<ButtonProps>``;
 export const buttonSizeMixin = css<ButtonProps>``;
+
+export const shadowMixin = css`
+  &:hover {
+    box-shadow: 5px 5px 20px 2px ${PaletteColor.Grey};
+  }
+`;
 
 export const buttonAnimationMixin = (props: ButtonProps): string => {
   if (!props.animated) {
@@ -38,6 +51,7 @@ export const buttonBaseMixin = css`
   text-align: center;
   text-decoration: none;
   text-transform: uppercase;
+  cursor: url("${cursorImage}"), pointer;
   ${buttonAnimationMixin}
   ${(p) => typographySizeMixIn({ theme: p.theme, size: FontSize.Medium })};
   ${getBoxStyles}
@@ -52,15 +66,8 @@ export const Button = styled.button.attrs((props: ButtonProps) => ({
   ...props,
 }))`
   ${buttonBaseMixin}
-  cursor: url("${cursorImage}"), pointer;
+  ${buttonStyleMixin}
   width: ${(p) => (p.fullWidth ? "100%" : "auto")};
-  border-radius: ${(p) => p.theme.layout.borderRadius}px;
-  color: ${(p) => p.theme.button.color};
-  background-color: ${(p) => p.theme.button.backgroundColor};
-
-  &:hover {
-    box-shadow: 5px 5px 20px 2px ${PaletteColor.Grey};
-  }
 `;
 
 export const LinkButton = styled.button.attrs((props: ButtonProps) => ({
@@ -72,4 +79,5 @@ export const LinkButton = styled.button.attrs((props: ButtonProps) => ({
   ...props,
 }))`
   ${buttonBaseMixin}
+  ${linkButtonStyleMixin}
 `;

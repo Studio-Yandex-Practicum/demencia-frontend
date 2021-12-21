@@ -11,6 +11,7 @@ import {
 } from "../../ui/controls/typography";
 import {
   Button,
+  LinkButton,
   Box,
   Container,
   Link,
@@ -160,10 +161,10 @@ const UiKitPage: React.FC = () => {
               <Button>Пройти тест</Button>
             </Box>
             <Box mb={2}>
-              <Button>Пройти тест</Button>
+              <LinkButton>LinkButton</LinkButton>
             </Box>
             <Box mb={2}>
-              <Button>Пройти тест</Button>
+              <Button>Button</Button>
             </Box>
           </Container>
         </Section>

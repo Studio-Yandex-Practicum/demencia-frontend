@@ -23,11 +23,11 @@ export const colorMixIn = (props: ColorProps): string => {
     }
     case ColorType.Primary: {
       return `background-color: ${colors.primary};
-              color: ${colors.secondaryContent}`;
+              color: ${colors.textSecondary}`;
     }
     case ColorType.Secondary: {
       return `background-color: ${colors.secondary};
-              color: ${colors.secondaryContent}`;
+              color: ${colors.textSecondary}`;
     }
     case ColorType.Accent: {
       return `background-color: ${colors.accent}`;

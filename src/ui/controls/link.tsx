@@ -27,7 +27,7 @@ export const linkMixin = css<LinkProps>`
   text-decoration: none;
   text-transform: uppercase;
   ${cursorMixin}
-  color: ${(p) => p.theme.colors.primaryContent};
+  color: ${(p) => p.theme.colors.textPrimary};
   transition: font-size 0.5s ease,
     border-bottom 0.5s cubic-bezier(0.2, -2, 0.8, 2);
 

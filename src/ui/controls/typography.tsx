@@ -42,14 +42,14 @@ export const typographyColorMixIn = (props: FontColorProps): string => {
     const type = props.type || ColorType.Default;
     switch (type) {
       case ColorType.Default: {
-        return colors.primaryContent;
+        return colors.textPrimary;
       }
       case ColorType.Primary: {
-        return colors.primaryContent;
+        return colors.textPrimary;
       }
 
       case ColorType.Secondary: {
-        return colors.secondaryContent;
+        return colors.textSecondary;
       }
       case ColorType.Accent: {
         return colors.primary;
@@ -80,7 +80,7 @@ export const typographyMixin = css<TextProps>`
   padding: 0;
   border: 0;
   vertical-align: baseline;
-  font-family: "Ubuntu", Arial, sans-serif;
+  font-family: ${(props) => props.theme.layout.fontFamily};
   word-break: break-word;
   ${typographySizeMixIn};
   ${typographyColorMixIn};

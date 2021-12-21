@@ -9,8 +9,8 @@ const defaultPalette: Palette = {
   primary: PaletteColor.DarkPurple,
   secondary: PaletteColor.Green,
   accent: PaletteColor.LightGreen,
-  primaryContent: PaletteColor.Black,
-  secondaryContent: PaletteColor.White,
+  textPrimary: PaletteColor.Black,
+  textSecondary: PaletteColor.White,
   shadow: PaletteColor.Grey,
 };
 

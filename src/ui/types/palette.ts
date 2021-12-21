@@ -12,7 +12,7 @@ export interface Palette {
   primary: PaletteColor;
   secondary: PaletteColor;
   accent: PaletteColor;
-  primaryContent: PaletteColor;
-  secondaryContent: PaletteColor;
+  textPrimary: PaletteColor;
+  textSecondary: PaletteColor;
   shadow: PaletteColor;
 }

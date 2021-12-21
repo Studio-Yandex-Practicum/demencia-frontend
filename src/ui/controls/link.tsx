@@ -2,6 +2,7 @@ import { ReactNode } from "react";
 import styled, { css } from "styled-components";
 import { ThemeProps } from "./layout";
 import { cursorMixin } from "./cursor";
+import { FontStyle } from "../types/font-style";
 
 interface LinkStyleProps extends ThemeProps {
   animated?: boolean;

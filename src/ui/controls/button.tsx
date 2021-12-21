@@ -9,7 +9,7 @@ import {
   shadowHoverLargeButtonMixIn,
 } from "./shadows";
 import { cursorMixin } from "./cursor";
-import { ButtonType } from "../types";
+import { ButtonStyle, ButtonType } from "../types";
 
 interface ButtonProps extends ThemeProps, BoxProps {
   fullWidth: boolean;
@@ -19,15 +19,10 @@ interface ButtonProps extends ThemeProps, BoxProps {
   fontSize?: FontSize;
 }
 
-export const buttonStyleMixIn = (props: ButtonProps): string => {
-  const { buttons } = props.theme;
-  const buttonStyleType = !props.primary
-    ? ButtonType.Secondary
-    : ButtonType.Primary;
-  const buttonStyle = buttons[buttonStyleType];
+const buildButtonStyle = (buttonStyle: ButtonStyle): string => {
   const border = !!buttonStyle.borderWidth
     ? `border: ${buttonStyle.borderWidth}px solid ${buttonStyle.borderColor};`
-    : "";
+    : "border: none";
 
   return `
     ${border}
@@ -37,15 +32,19 @@ export const buttonStyleMixIn = (props: ButtonProps): string => {
   `;
 };
 
+export const buttonStyleMixIn = (props: ButtonProps): string => {
+  const { buttons } = props.theme;
+  const buttonStyleType = !props.primary
+    ? ButtonType.Secondary
+    : ButtonType.Primary;
+  const buttonStyle = buttons[buttonStyleType];
+  return buildButtonStyle(buttonStyle);
+};
+
 export const linkButtonStyleMixIn = (props: ButtonProps): string => {
   const { buttons } = props.theme;
-  const buttonStyleType = ButtonType.Link;
-  const buttonStyle = buttons[buttonStyleType];
-  return `
-    border: none;
-    color: ${buttonStyle.color};
-    background-color: ${buttonStyle.backgroundColor};
-  `;
+  const buttonStyle = buttons[ButtonType.Link];
+  return buildButtonStyle(buttonStyle);
 };
 
 export const circleButtonStyleMixin = css<ButtonProps>``;
@@ -78,14 +77,13 @@ export const buttonAnimationMixin = (props: ButtonProps): string => {
   }`;
 };
 
-export const buttonBaseMixin = css`
+export const buttonBaseMixin = css<ButtonProps>`
   display: inline-block;
   box-sizing: border-box;
   font-family: ${(p) => p.theme.layout.fontFamily};
   text-align: center;
   text-decoration: none;
   ${cursorMixin}
-  ${buttonAnimationMixin}
   ${(p) => typographySizeMixIn({ theme: p.theme, size: p.fontSize })};
   ${getBoxStyles}
 `;
@@ -100,10 +98,12 @@ export const Button = styled.button.attrs((props: ButtonProps) => ({
 }))`
   ${buttonBaseMixin}
   ${buttonStyleMixIn}
+  ${buttonAnimationMixin}
   width: ${(p) => (p.fullWidth ? "100%" : "auto")};
 `;
 
 export const LinkButton = styled.button.attrs((props: ButtonProps) => ({
+  uppercase: true,
   ...props,
 }))`
   ${buttonBaseMixin}

@@ -166,7 +166,7 @@ const UiKitPage: React.FC = () => {
               <LinkButton>LinkButton</LinkButton>
             </Box>
             <Box mb={2}>
-              <Button>Button</Button>
+              <Button fontSize={FontSize.Default}>Button</Button>
             </Box>
           </Container>
         </Section>

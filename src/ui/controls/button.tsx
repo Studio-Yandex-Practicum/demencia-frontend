@@ -16,6 +16,7 @@ interface ButtonProps extends ThemeProps, BoxProps {
   primary?: boolean;
   animated?: boolean;
   uppercase?: boolean;
+  fontSize?: FontSize;
 }
 
 export const buttonStyleMixIn = (props: ButtonProps): string => {
@@ -85,7 +86,7 @@ export const buttonBaseMixin = css`
   text-decoration: none;
   ${cursorMixin}
   ${buttonAnimationMixin}
-  ${(p) => typographySizeMixIn({ theme: p.theme, size: FontSize.Medium })};
+  ${(p) => typographySizeMixIn({ theme: p.theme, size: p.fontSize })};
   ${getBoxStyles}
 `;
 export const Button = styled.button.attrs((props: ButtonProps) => ({
@@ -93,6 +94,7 @@ export const Button = styled.button.attrs((props: ButtonProps) => ({
   pb: 1,
   pl: 4,
   pr: 4,
+  fontSize: FontSize.Medium,
   animated: true,
   ...props,
 }))`

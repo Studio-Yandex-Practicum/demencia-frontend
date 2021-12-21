@@ -15,6 +15,7 @@ const defaultPalette: Palette = {
   textSecondary: PaletteColor.GreyBrown,
   accent: PaletteColor.DarkPurple,
   accentAlt: PaletteColor.Green,
+  shadow: PaletteColor.Grey,
 };
 
 const themeLight: DefaultTheme = {

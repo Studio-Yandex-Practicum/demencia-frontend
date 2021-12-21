@@ -158,7 +158,7 @@ const UiKitPage: React.FC = () => {
               <PrimaryTitle>Buttons</PrimaryTitle>
             </Box>
             <Box mb={2}>
-              <Button>Пройти тест</Button>
+              <Button primary={true}>Primary Button</Button>
             </Box>
             <Box mb={2}>
               <LinkButton>LinkButton</LinkButton>

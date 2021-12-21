@@ -1,6 +1,6 @@
 import styled, { css } from "styled-components";
-import cursorImage from "../../images/cursor_pointer.svg";
 import logoImage from "../../images/logo.svg";
+import { cursorMixin } from "./cursor";
 
 interface LogoBlockProps {
   maxWidth?: number;
@@ -12,9 +12,9 @@ interface LogoBlockProps {
 export const Logo = styled.img`
   background-size: cover;
   background-repeat: no-repeat;
-  cursor: url("${cursorImage}"), pointer;
-  width: 220px;
-  height: 164px;
+  ${cursorMixin}
+  width: 220px; // todo: move this to container
+  height: 164px; // todo: move this to container
   margin: 0;
   padding: 0;
 `;

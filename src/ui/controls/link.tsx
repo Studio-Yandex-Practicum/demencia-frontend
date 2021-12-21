@@ -1,7 +1,7 @@
 import { ReactNode } from "react";
 import styled, { css } from "styled-components";
 import { ThemeProps } from "./layout";
-import cursorImage from "../../images/cursor_pointer.svg";
+import { cursorMixin } from "./cursor";
 
 interface LinkStyleProps extends ThemeProps {
   animated?: boolean;
@@ -25,7 +25,7 @@ export const linkMixin = css<LinkProps>`
   white-space: nowrap;
   text-decoration: none;
   text-transform: uppercase;
-  cursor: url("${cursorImage}"), pointer;
+  ${cursorMixin}
   color: ${(p) => p.theme.colors.textPrimary};
   transition: font-size 0.5s ease,
     border-bottom 0.5s cubic-bezier(0.2, -2, 0.8, 2);

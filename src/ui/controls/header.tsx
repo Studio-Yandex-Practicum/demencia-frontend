@@ -2,11 +2,12 @@ import styled from "styled-components";
 import cursorImage from "../../images/cursor_pointer.svg";
 import burgerImage from "../../images/burger-menu.svg";
 import { ScreenSize } from "../types";
+import { cursorMixin } from "./cursor";
 
 export const BurgerButton = styled.button`
   display: none;
   z-index: 2;
-  cursor: url("${cursorImage}"), pointer;
+  ${cursorMixin}
   alight-self: flex-end;
 
   @media screen and (max-width: ${ScreenSize.Small}px) {

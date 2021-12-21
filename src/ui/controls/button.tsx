@@ -2,9 +2,13 @@ import styled, { css } from "styled-components";
 import { FontSize } from "../types/font-size.enum";
 import { BoxProps, getBoxStyles } from "./box";
 import { ThemeProps } from "./layout";
-import { P, typographySizeMixIn } from "./typography";
-import cursorImage from "../../images/cursor_pointer.svg";
-import { PaletteColor } from "../types";
+import { typographySizeMixIn } from "./typography";
+import {
+  shadowHoverButtonMixIn,
+  shadowLargeButtonMixIn,
+  shadowHoverLargeButtonMixIn,
+} from "./shadows";
+import { cursorMixin } from "./cursor";
 
 interface ButtonProps extends ThemeProps, BoxProps {
   fullWidth: boolean;
@@ -25,11 +29,20 @@ export const linkButtonStyleMixin = css<ButtonProps>`
 export const circleButtonStyleMixin = css<ButtonProps>``;
 export const buttonSizeMixin = css<ButtonProps>``;
 
-export const shadowMixin = css`
-  &:hover {
-    box-shadow: 5px 5px 20px 2px ${PaletteColor.Grey};
+export const shadowMixin = (props: ButtonProps): string => {
+  if (!props.primary) {
+    return `
+    &:hover {
+      ${shadowHoverButtonMixIn};
+    }`;
   }
-`;
+
+  return `
+  ${shadowLargeButtonMixIn}
+    &:hover {
+      ${shadowHoverLargeButtonMixIn};
+    }`;
+};
 
 export const buttonAnimationMixin = (props: ButtonProps): string => {
   if (!props.animated) {
@@ -51,7 +64,7 @@ export const buttonBaseMixin = css`
   text-align: center;
   text-decoration: none;
   text-transform: uppercase;
-  cursor: url("${cursorImage}"), pointer;
+  ${cursorMixin}
   ${buttonAnimationMixin}
   ${(p) => typographySizeMixIn({ theme: p.theme, size: FontSize.Medium })};
   ${getBoxStyles}
@@ -71,11 +84,6 @@ export const Button = styled.button.attrs((props: ButtonProps) => ({
 `;
 
 export const LinkButton = styled.button.attrs((props: ButtonProps) => ({
-  pt: 1,
-  pb: 1,
-  pl: 4,
-  pr: 4,
-  animated: true,
   ...props,
 }))`
   ${buttonBaseMixin}

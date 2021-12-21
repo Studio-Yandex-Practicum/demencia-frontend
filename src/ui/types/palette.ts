@@ -18,4 +18,5 @@ export interface Palette {
   textSecondary: PaletteColor;
   accent: PaletteColor;
   accentAlt: PaletteColor;
+  shadow: PaletteColor;
 }

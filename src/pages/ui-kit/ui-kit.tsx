@@ -33,25 +33,27 @@ const UiKitPage: React.FC = () => {
         <Box mt={3} ml={12}>
           <LogoBlock altText="Логотип" link="#" />
         </Box>
-        <Menu>
-          <MenuItems>
-            <MenuItem>
-              <Link>О ДЕМЕНЦИИ</Link>
-            </MenuItem>
-            <MenuItem>
-              <Link>ПАРТНЕРЫ</Link>
-            </MenuItem>
-            <MenuItem>
-              <Link>НОВОСТИ</Link>
-            </MenuItem>
-            <MenuItem>
-              <Link>О ФОНДЕ</Link>
-            </MenuItem>
-            <MenuItem>
-              <Link>КОНТАКТЫ</Link>
-            </MenuItem>
-          </MenuItems>
-        </Menu>
+        <Box mt={4} mr={4}>
+          <Menu>
+            <MenuItems>
+              <MenuItem>
+                <Link>О ДЕМЕНЦИИ</Link>
+              </MenuItem>
+              <MenuItem>
+                <Link>ПАРТНЕРЫ</Link>
+              </MenuItem>
+              <MenuItem>
+                <Link>НОВОСТИ</Link>
+              </MenuItem>
+              <MenuItem>
+                <Link>О ФОНДЕ</Link>
+              </MenuItem>
+              <MenuItem>
+                <Link>КОНТАКТЫ</Link>
+              </MenuItem>
+            </MenuItems>
+          </Menu>
+        </Box>
       </Header>
       <Main>
         <Container size={ContainerSize.Large}>

@@ -62,7 +62,7 @@ const appearRightInitialMixIn = css`
     opacity: 0;
 `;
 
-const appearMixin = css<AppearProps>`
+const appearSpeedMixin = css<AppearProps>`
   transition: all ${(p) => p.speed}s ease;
 `;
 

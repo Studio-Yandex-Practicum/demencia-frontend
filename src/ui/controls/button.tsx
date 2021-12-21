@@ -20,13 +20,19 @@ interface ButtonProps extends ThemeProps, BoxProps {
 }
 
 const buildButtonStyle = (buttonStyle: ButtonStyle): string => {
-  const border = !!buttonStyle.borderWidth
-    ? `border: ${buttonStyle.borderWidth}px solid ${buttonStyle.borderColor};`
-    : "border: none";
+  const borderValue =
+    typeof buttonStyle.borderWidth === "undefined"
+      ? "none"
+      : `${buttonStyle.borderWidth}px solid ${buttonStyle?.borderColor || ""};`;
+
+  const borderRadius = !!buttonStyle.borderRadius
+    ? `border-radius: ${buttonStyle.borderRadius}px;`
+    : "";
 
   return `
-    ${border}
-    border-radius: ${buttonStyle.borderRadius}px;
+    ${borderRadius}
+    border: ${borderValue};
+    
     color: ${buttonStyle.color};
     background-color: ${buttonStyle.backgroundColor};
   `;

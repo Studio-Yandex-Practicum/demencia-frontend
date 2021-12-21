@@ -23,13 +23,23 @@ const themeLight: DefaultTheme = {
     borderRadius: 25,
     borderSize: 2,
   },
-  button: {
-    color: PaletteColor.White,
-    backgroundColor: PaletteColor.DarkPurple,
-  },
-  linkButton: {
-    color: PaletteColor.DarkPurple,
-    backgroundColor: PaletteColor.Transparent,
+  buttons: {
+    primary: {
+      borderRadius: 25,
+      color: PaletteColor.White,
+      backgroundColor: PaletteColor.DarkPurple,
+    },
+    secondary: {
+      borderWidth: 2,
+      borderRadius: 30,
+      borderColor: PaletteColor.Green,
+      color: PaletteColor.Green,
+      backgroundColor: PaletteColor.White,
+    },
+    link: {
+      color: PaletteColor.DarkPurple,
+      backgroundColor: PaletteColor.White,
+    },
   },
   colors: defaultPalette /* todo */,
   typography: {

@@ -39,19 +39,23 @@ export const typographySizeMixIn = (props: FontSizeProps): string => {
 export const typographyColorMixIn = (props: FontColorProps): string => {
   const selectedColor = () => {
     const { colors } = props.theme;
-    const type = props.type || ColorType.Primary;
+    const type = props.type || ColorType.Default;
     switch (type) {
-      case ColorType.Primary: {
-        return colors.textPrimary;
+      case ColorType.Default: {
+        return colors.primaryContent;
       }
+      case ColorType.Primary: {
+        return colors.primaryContent;
+      }
+
       case ColorType.Secondary: {
-        return colors.textSecondary;
+        return colors.secondaryContent;
       }
       case ColorType.Accent: {
-        return colors.accent;
+        return colors.primary;
       }
       case ColorType.AccentAlt: {
-        return colors.accentAlt;
+        return colors.secondary;
       }
       default: {
         return null;

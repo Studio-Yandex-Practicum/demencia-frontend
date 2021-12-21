@@ -19,6 +19,7 @@ export const Layout = styled.div<LayoutProps>`
   margin: auto;
   box-sizing: border-box;
   overflow: hidden;
+  background-color: ${(props) => props.theme.colors.default};
 `;
 
 export const Main = styled.main`

@@ -27,7 +27,7 @@ export const linkMixin = css<LinkProps>`
   text-decoration: none;
   text-transform: uppercase;
   ${cursorMixin}
-  color: ${(p) => p.theme.colors.textPrimary};
+  color: ${(p) => p.theme.colors.primaryContent};
   transition: font-size 0.5s ease,
     border-bottom 0.5s cubic-bezier(0.2, -2, 0.8, 2);
 
@@ -35,7 +35,7 @@ export const linkMixin = css<LinkProps>`
     font-size: ${(p) =>
       Math.floor(p.theme.typography.default.fontSize * 1.1)}px;
     border-bottom: ${(p) => p.theme.layout.borderSize}px solid
-      ${(p) => p.theme.colors.accent}; // link hovered
+      ${(p) => p.theme.colors.primary}; // link hovered
   }
 `;
 

@@ -19,18 +19,18 @@ export const colorMixIn = (props: ColorProps): string => {
   const { colors } = props.theme;
   switch (props.bgColor) {
     case ColorType.Default: {
-      return `background-color: ${colors.background}`;
+      return `background-color: ${colors.default}`;
     }
     case ColorType.Primary: {
       return `background-color: ${colors.primary};
-              color: ${colors.primaryContent}`;
+              color: ${colors.secondaryContent}`;
     }
     case ColorType.Secondary: {
       return `background-color: ${colors.secondary};
-              color: ${colors.primaryContent}`;
+              color: ${colors.secondaryContent}`;
     }
     case ColorType.Accent: {
-      return `background-color: ${colors.backgroundAlt}`;
+      return `background-color: ${colors.accent}`;
     }
     default: {
       return "";

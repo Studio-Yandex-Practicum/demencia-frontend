@@ -70,6 +70,5 @@ export const Box = styled.div<BoxStyleProps>`
   display: block;
   box-sizing: border-box;
   ${getBoxStyles}
-  ${(p) =>
-    "background-color:" + p.backgroundColor || p.theme.colors.background};
+  ${(p) => "background-color:" + p.backgroundColor || p.theme.colors.default};
 `;

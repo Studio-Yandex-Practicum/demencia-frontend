@@ -3,18 +3,14 @@ import { Palette, PaletteColor } from "./types";
 
 // TODO: update palette properly
 const defaultPalette: Palette = {
-  background: PaletteColor.White,
-  backgroundAlt: PaletteColor.LightGreen,
-  backgroundDark: PaletteColor.Green,
+  background: PaletteColor.SoftWhite,
   backgroundFooter: PaletteColor.WhiteBlue,
+  default: PaletteColor.White,
   primary: PaletteColor.DarkPurple,
   secondary: PaletteColor.Green,
-  primaryContent: PaletteColor.White,
-  secondaryContent: PaletteColor.SoftWhite,
-  textPrimary: PaletteColor.Black,
-  textSecondary: PaletteColor.White,
-  accent: PaletteColor.DarkPurple,
-  accentAlt: PaletteColor.Green,
+  accent: PaletteColor.LightGreen,
+  primaryContent: PaletteColor.Black,
+  secondaryContent: PaletteColor.White,
   shadow: PaletteColor.Grey,
 };
 

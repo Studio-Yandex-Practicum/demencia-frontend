@@ -5,4 +5,5 @@ export enum ColorType {
   Secondary,
   Accent,
   AccentAlt,
+  Caption,
 }

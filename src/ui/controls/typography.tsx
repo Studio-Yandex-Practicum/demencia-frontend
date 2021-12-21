@@ -51,12 +51,19 @@ export const typographyColorMixIn = (props: FontColorProps): string => {
       case ColorType.Secondary: {
         return colors.textSecondary;
       }
+
       case ColorType.Accent: {
         return colors.primary;
       }
+
       case ColorType.AccentAlt: {
         return colors.secondary;
       }
+
+      case ColorType.Caption: {
+        return colors.shadow;
+      }
+
       default: {
         return null;
       }
@@ -207,7 +214,7 @@ export const SecondaryTitle: React.FunctionComponent = (props) => {
 
 export const Subtitle: React.FunctionComponent = (props) => {
   return (
-    <P size={FontSize.Default} type={ColorType.Primary} uppercase={true}>
+    <P size={FontSize.Default} type={ColorType.Caption} uppercase={true}>
       {props.children}
     </P>
   );

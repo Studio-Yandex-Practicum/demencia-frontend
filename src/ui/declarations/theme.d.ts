@@ -8,7 +8,7 @@ interface ButtonTypes {
   secondary: ButtonStyle,
   link: ButtonStyle
 }
-// and extend them!
+
 declare module "styled-components" {
   export interface DefaultTheme {
     layout: Layout;

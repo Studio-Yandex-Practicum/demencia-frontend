@@ -71,6 +71,7 @@ export const shadowMixin = (props: ButtonProps): string => {
     }`;
 };
 
+// todo: move to animations
 export const buttonAnimationMixin = (props: ButtonProps): string => {
   if (!props.animated) {
     return "";

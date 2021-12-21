@@ -1,5 +1,5 @@
 import { DefaultTheme } from "styled-components";
-import { Palette, PaletteColor } from "./types";
+import { ColorTheme, Palette, PaletteColor } from "./types";
 
 // TODO: update palette properly
 const defaultPalette: Palette = {
@@ -12,6 +12,21 @@ const defaultPalette: Palette = {
   textPrimary: PaletteColor.Black,
   textSecondary: PaletteColor.White,
   shadow: PaletteColor.Grey,
+};
+
+const basicColorTheme: ColorTheme = {
+  Primary: PaletteColor.DarkPurple,
+  PrimaryVariant: PaletteColor.DarkPurple,
+  Secondary: PaletteColor.Green,
+  SecondaryVariant: PaletteColor.LightGreen,
+  Background: PaletteColor.SoftWhite,
+  Surface: PaletteColor.White,
+  Error: PaletteColor.White, // todo: error
+  OnPrimary: PaletteColor.White,
+  OnSecondary: PaletteColor.White,
+  OnBackground: PaletteColor.Black,
+  OnSurface: PaletteColor.Black,
+  OnError: PaletteColor.Black,
 };
 
 const themeLight: DefaultTheme = {

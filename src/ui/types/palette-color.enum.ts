@@ -1,16 +1,13 @@
 export enum PaletteColor {
-  Transparent = "transparent;",
-  White = "#FFF;", // todo: check existance in figma "podrobnee"
-  SoftWhite = "#E5E5E5;",
-  WhiteGreen = "#CAE6DF;", // todo: check existance in figma "podrobnee"
-  WhiteBlue = "#EBECEC;", // todo: check existance in figma "podrobnee"
-  Green = "#429E84;",
-  LightGreen = "#D8EAE5;",
-  Blue = "#007AFF;", // todo: check existance in figma "podrobnee"
-  Purple = "#9A34A8;", // todo: check existance in figma "podrobnee"
-  DarkPurple = "#772988;",
-  GreyBrown = "#5B5B5B;", // todo: check existance in figma "podrobnee"
-  DarkGreyBrown = "#2B2A29;", // todo: check existance in figma "podrobnee"
-  Grey = "#666",
+  Transparent = "transparent",
+  White = "#FFF",
+  SoftWhite = "#E5E5E5", // page background figma
+  WhiteBlue = "#EBECEC", // footer
+  Green = "#429E84", // overrides #00926F by figma
+  LightGreen = "#D8EAE5", // overrides #CAE6DF by figma
+  Purple = "#9A34A8", // map
+  DarkPurple = "#772988", // overrides #6d097A by figma
+  Grey = "#666", // in logo, overrides #5B5B5B by figma
   Black = "#000",
+  LightGrey = "#999", // in test
 }

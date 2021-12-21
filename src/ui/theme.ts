@@ -12,7 +12,7 @@ const defaultPalette: Palette = {
   primaryContent: PaletteColor.White,
   secondaryContent: PaletteColor.SoftWhite,
   textPrimary: PaletteColor.Black,
-  textSecondary: PaletteColor.GreyBrown,
+  textSecondary: PaletteColor.White,
   accent: PaletteColor.DarkPurple,
   accentAlt: PaletteColor.Green,
   shadow: PaletteColor.Grey,
@@ -29,10 +29,10 @@ const themeLight: DefaultTheme = {
   },
   button: {
     color: PaletteColor.White,
-    backgroundColor: PaletteColor.Purple,
+    backgroundColor: PaletteColor.DarkPurple,
   },
   linkButton: {
-    color: PaletteColor.Purple,
+    color: PaletteColor.DarkPurple,
     backgroundColor: PaletteColor.Transparent,
   },
   colors: defaultPalette /* todo */,

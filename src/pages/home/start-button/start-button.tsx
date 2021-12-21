@@ -4,6 +4,12 @@ import { Link } from "react-router-dom";
 import cursorPointer from "../../../images/cursor_pointer.svg";
 import semicircle from "../../../images/halfcirclegreen.png";
 
+// styles for animation
+// transform: translate(-70%, 0px);
+// &:active {
+//   transform: translate(0px, 0px);
+// }
+
 const Button = styled.div`
   display: flex;
   position: absolute;
@@ -34,7 +40,7 @@ const Button = styled.div`
 
 const LINK = styled.div`
   a {
-    display: inline-block;
+    display: block;
     background-color: #6d097a;
     color: white;
     margin: auto;
@@ -55,6 +61,7 @@ const LINK = styled.div`
 
     &:hover {
       transform: scale(1.1);
+      box-shadow: 5px 5px 20px 2px grey;
     }
 
     @media screen and (max-width: 767px) {
@@ -115,7 +122,7 @@ const StartBtn: React.FC = (): JSX.Element => {
           <Link to={link.target}>{link.title}</Link>
         </LINK>
       </Button>
-      <Semicircle role="img" />
+      <Semicircle />
     </>
   );
 };

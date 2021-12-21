@@ -3,6 +3,8 @@ import styled, { keyframes } from "styled-components";
 import pazzles from "../../../../images/test_puzzlesdecor.svg";
 import greenPazzle from "../../../../images/test_green_puzzle.svg";
 import bigCircle from "../../../../images/circlebg.png";
+import mediumCircle from "../../../../images/circlesm.png";
+import smallCircle from "../../../../images/smallcircle.png";
 
 const pazzleRotation = keyframes`
 0% {
@@ -27,6 +29,27 @@ transform: rotate(0deg);
 
 75% {
 transform: rotate(-9deg);
+}
+
+100% {
+transform: rotate(0deg);
+}
+`;
+
+const circleSwingReversed = keyframes`
+0% {
+  transform: rotate(0deg);
+}
+25% {
+  transform: rotate(-9deg);
+}
+
+50% {
+transform: rotate(0deg);
+}
+
+75% {
+transform: rotate(9deg);
 }
 
 100% {
@@ -112,14 +135,73 @@ const BigCircle = styled.div`
   }
 `;
 
+const MediumCircle = styled.div`
+width: 180px;
+height: 180px;
+background: url(${mediumCircle});
+background-repeat: no-repeat;
+background-size: contain;
+position: absolute;
+right: 42px;
+bottom: 155px;
+z-index: 298;
+animation: ${circleSwingReversed} 8s infinite linear;
+}
+
+@media screen and (max-width:930px) {
+  width: 135px;
+  height: 135px;
+  bottom: 130px;
+  right: 25px;
+}
+
+@media screen and (max-width:660px) {
+  bottom: 140px;
+  right: 23px;
+}
+
+@media screen and (max-width:639px) {
+  bottom: 160px;
+  }
+`;
+
+const SmallCircle = styled.div`
+width: 64px;
+height: 64px;
+background: url(${smallCircle});
+background-repeat: no-repeat;
+background-size: contain;
+position: absolute;
+right: 178px;
+bottom: 227px;
+z-index: 297;
+
+@media screen and (max-width:930px) {
+    width: 48px;
+    height: 48px;
+    right: 125px;
+    bottom: 185px;
+}
+
+@media screen and (max-width:660px) {
+    right: 129px;
+    bottom: 197px;
+}
+
+@media screen and (max-width:639px) {
+  bottom: 217px;
+  }
+}
+`;
+
 const Decor: React.FC = () => {
   return (
     <>
       <Pazzles />
       <GreenPuzzle />
       <BigCircle />
-      <div role="img" />
-      <div role="img" />
+      <MediumCircle />
+      <SmallCircle />
     </>
   );
 };

@@ -188,7 +188,20 @@ const UiKitPage: React.FC = () => {
         <Section>
           <Container size={ContainerSize.Large}>
             <Subtitle1>Animations</Subtitle1>
-            <Text1>todo animations</Text1>
+            <Box mb={3}>
+              <Text1 onHoverColor={TextColor.Accent1}>
+                Text change on mouse hover: onHoverColor=TextColor.Accent1
+              </Text1>
+            </Box>
+            <Box mb={3}>
+              <Text1
+                textColor={TextColor.Accent1}
+                onHoverColor={TextColor.Accent2}
+              >
+                Text change on mouse hover: textColor=TextColor.Accent1
+                onHoverColor=TextColor.Accent2
+              </Text1>
+            </Box>
           </Container>
         </Section>
         <Section>

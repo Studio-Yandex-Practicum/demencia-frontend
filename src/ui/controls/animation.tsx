@@ -1,4 +1,6 @@
-import { keyframes, css } from "styled-components";
+import { keyframes, css, DefaultTheme, ThemeProps } from "styled-components";
+import { TextColor } from "../types";
+import { getTextSelectedColor } from "./typography";
 
 const zoomScale = 1.1;
 
@@ -50,7 +52,7 @@ export interface BorderBottomOnHoverProps {
 export const borderBottomOnHoverMixIn = (
   props: BorderBottomOnHoverProps
 ): string => {
-  if (!props.borderBottomOnHover) {
+  if (!props.borderBottomOnHover || !props.borderSize) {
     return "";
   }
 
@@ -58,8 +60,30 @@ export const borderBottomOnHoverMixIn = (
   transition: border-bottom 0.5s cubic-bezier(0.2, -2, 0.8, 2);
 
   &:hover {
-    border-bottom: ${props.borderSize}px solid
-      ${props.borderColor}; // link hovered
+    border-bottom: ${props.borderSize}px solid ${props.borderColor};
+  }
+`;
+};
+
+export interface ColorChangeOnHoverProps {
+  onHoverColor?: TextColor;
+}
+
+export const colorChangeOnHoverMixIn = (
+  props: ColorChangeOnHoverProps & ThemeProps<DefaultTheme>
+): string => {
+  if (!props.onHoverColor) {
+    return "";
+  }
+
+  const colorToApply = getTextSelectedColor({
+    ...props,
+    textColor: props.onHoverColor, // important order, props may already contain textColor
+  });
+  return `
+  &:hover {
+    color: ${colorToApply};
+    ${buildTransitionFast("color")}
   }
 `;
 };

@@ -1,21 +1,26 @@
 import React, { ReactNode } from "react";
 import styled, { css } from "styled-components";
 import { TextColor, TypographyLevel } from "../types";
+import {
+  colorChangeOnHoverMixIn,
+  ColorChangeOnHoverProps,
+  textUppercaseMixIn,
+  TextUppercaseProps,
+} from "./animation";
 import { BoxProps, getBoxStyles } from "./box";
 import { ThemeProps } from "./layout";
 
-interface TextProps extends BoxProps {
+interface TextProps extends BoxProps, ColorChangeOnHoverProps {
   level?: TypographyLevel;
   textColor?: TextColor;
-  uppercase?: boolean;
   underlined?: boolean;
 }
 
 export interface TextBlockProps extends TextProps {
+  uppercase?: boolean;
   renderTag?: string;
   className?: string;
   children?: ReactNode;
-  textColor?: TextColor;
 }
 
 interface FontLevelProps extends ThemeProps {
@@ -25,6 +30,37 @@ interface FontLevelProps extends ThemeProps {
 interface FontColorProps extends ThemeProps {
   textColor?: TextColor;
 }
+
+export const getTextSelectedColor = (props: FontColorProps) => {
+  const type = props.textColor || TextColor.Primary;
+  const { colors } = props.theme;
+
+  switch (type) {
+    case TextColor.Primary: {
+      return colors.textPrimary;
+    }
+
+    case TextColor.Secondary: {
+      return colors.textSecondary;
+    }
+
+    case TextColor.Accent1: {
+      return colors.textAccent1;
+    }
+
+    case TextColor.Accent2: {
+      return colors.textAccent2;
+    }
+
+    case TextColor.Shadow: {
+      return colors.textShadow;
+    }
+
+    default: {
+      return null;
+    }
+  }
+};
 
 export const typographySizeMixIn = (props: FontLevelProps): string => {
   const { typography } = props.theme;
@@ -37,37 +73,7 @@ export const typographySizeMixIn = (props: FontLevelProps): string => {
 };
 
 export const typographyColorMixIn = (props: FontColorProps): string => {
-  const selectedColor = () => {
-    const { colors } = props.theme;
-    const type = props.textColor || TextColor.Primary;
-    switch (type) {
-      case TextColor.Primary: {
-        return colors.textPrimary;
-      }
-
-      case TextColor.Secondary: {
-        return colors.textSecondary;
-      }
-
-      case TextColor.Accent1: {
-        return colors.textAccent1;
-      }
-
-      case TextColor.Accent2: {
-        return colors.textAccent2;
-      }
-
-      case TextColor.Shadow: {
-        return colors.textShadow;
-      }
-
-      default: {
-        return null;
-      }
-    }
-  };
-
-  const colorToApply = selectedColor();
+  const colorToApply = getTextSelectedColor(props);
   if (!colorToApply) {
     return "";
   }
@@ -75,11 +81,7 @@ export const typographyColorMixIn = (props: FontColorProps): string => {
   return `color: ${colorToApply}; fill: ${colorToApply}`;
 };
 
-export const textAnimationMixIn = (): string => {
-  return "";
-};
-
-export const typographyMixin = css<TextProps>`
+export const typographyMixin = css<TextProps & TextUppercaseProps>`
   margin: 0;
   padding: 0;
   border: 0;
@@ -88,10 +90,10 @@ export const typographyMixin = css<TextProps>`
   word-break: break-word;
   ${typographySizeMixIn};
   ${typographyColorMixIn};
-  ${textAnimationMixIn};
   ${getBoxStyles};
-  ${(props) => (!props.uppercase ? "" : "text-transform: uppercase;")}
+  ${textUppercaseMixIn};
   ${(props) => (!props.underlined ? "" : "text-decoration-line: underline;")}
+  ${colorChangeOnHoverMixIn}
 `;
 
 export const P = styled.p<TextProps>`

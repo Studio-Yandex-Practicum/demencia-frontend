@@ -11,7 +11,7 @@ interface TextProps extends BoxProps {
   underlined?: boolean;
 }
 
-interface TextBlockProps extends TextProps {
+export interface TextBlockProps extends TextProps {
   renderTag?: string;
   className?: string;
   children?: ReactNode;

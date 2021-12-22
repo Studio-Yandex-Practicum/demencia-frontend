@@ -17,6 +17,18 @@ import {
 } from "../../ui/controls";
 import { ContainerSize, TextColor, TypographyLevel } from "../../ui/types";
 import { BackgroundColor } from "../../ui/types/color-type.enum";
+import {
+  MainTitle,
+  Subtitle1,
+  Subtitle2,
+  Subtitle3,
+  Subtitle4,
+  Text1,
+  Text2,
+  Text3,
+  Text4,
+  Title,
+} from "../../ui/controls/text";
 // TODO: this is a temporary page to display the ui components
 const UiKitPage: React.FC = () => {
   return (
@@ -50,108 +62,57 @@ const UiKitPage: React.FC = () => {
       </Header>
       <Main>
         <Container size={ContainerSize.Large}>
-          <TextBlock
-            uppercase
-            level={TypographyLevel.MainTitle}
-            textColor={TextColor.Accent1}
-          >
-            Новости (Main Title)
-          </TextBlock>
+          <MainTitle>Новости (Main Title)</MainTitle>
         </Container>
         <Section>
           <Container size={ContainerSize.Large}>
             <Box mb={2}>
-              <TextBlock
-                uppercase
-                level={TypographyLevel.Title}
-                textColor={TextColor.Accent2}
-              >
-                Что нового? Кто с нами? (Title)
-              </TextBlock>
+              <Title>Что нового? Кто с нами? (Title)</Title>
             </Box>
             <Box mb={2} mt={6}>
-              <TextBlock
-                uppercase
-                level={TypographyLevel.Subtitle1}
-                textColor={TextColor.Accent1}
-              >
-                О деменции, Когнитивные функции (Subtitle1)
-              </TextBlock>
+              <Subtitle1>О деменции, Когнитивные функции (Subtitle1)</Subtitle1>
             </Box>
             <Box mb={2}>
-              <TextBlock
-                uppercase
-                level={TypographyLevel.Subtitle2}
-                textColor={TextColor.Accent1}
-              >
-                Внимание, Восприятие (Subtitle2)
-              </TextBlock>
+              <Subtitle2>Внимание, Восприятие (Subtitle2)</Subtitle2>
             </Box>
             <Box mb={2}>
-              <TextBlock
-                uppercase
-                level={TypographyLevel.Subtitle3}
-                textColor={TextColor.Shadow}
-              >
-                Как он устроен, Что это такое? (Subtitle3)
-              </TextBlock>
+              <Subtitle3>Как он устроен, Что это такое? (Subtitle3)</Subtitle3>
             </Box>
             <Box mb={2}>
-              <TextBlock uppercase level={TypographyLevel.Subtitle4}>
-                Отвечает за (Subtitle4)
-              </TextBlock>
+              <Subtitle4>Отвечает за (Subtitle4)</Subtitle4>
             </Box>
             <Box mb={2}>
-              <TextBlock level={TypographyLevel.Text1}>
+              <Text1>
                 сложные <strong>функции</strong> головного мозга, когнитивное
                 здоровье (Text1)
-              </TextBlock>
+              </Text1>
             </Box>
             <Box mb={2}>
-              <TextBlock level={TypographyLevel.Text2}>
-                Способность воспринимать (Text2)
-              </TextBlock>
+              <Text2>Способность воспринимать (Text2)</Text2>
             </Box>
             <Box mb={2}>
-              <TextBlock
-                level={TypographyLevel.Text3}
-                textColor={TextColor.Shadow}
-              >
+              <Text3>
                 Перейти к ленте новостей, Пройти тест вместе (Text3)
-              </TextBlock>
+              </Text3>
             </Box>
             <Box mb={2}>
-              <TextBlock level={TypographyLevel.Text4}>
-                Благотворительный фонд, Деменция - стойкое (Text4)
-              </TextBlock>
+              <Text4>Благотворительный фонд, Деменция - стойкое (Text4)</Text4>
             </Box>
           </Container>
         </Section>
         <Section>
           <Container size={ContainerSize.Large}>
             <Box mb={2}>
-              <TextBlock
-                uppercase
-                level={TypographyLevel.Subtitle1}
-                textColor={TextColor.Accent1}
-              >
-                Containers
-              </TextBlock>
+              <Subtitle1>Containers</Subtitle1>
             </Box>
             <Box mb={4}>
               <Container
                 size={ContainerSize.Large}
                 bgColor={BackgroundColor.Alt3}
               >
-                <TextBlock
-                  mt={6}
-                  mb={6}
-                  ml={2}
-                  level={TypographyLevel.Text1}
-                  textColor={TextColor.Accent1}
-                >
+                <Text1 mt={6} mb={6} ml={2} textColor={TextColor.Accent1}>
                   Container size=ContainerSize.Large bgColor=ColorType.Accent
-                </TextBlock>
+                </Text1>
               </Container>
             </Box>
             <Box mb={4}>
@@ -159,15 +120,9 @@ const UiKitPage: React.FC = () => {
                 size={ContainerSize.Medium}
                 bgColor={BackgroundColor.Alt1}
               >
-                <TextBlock
-                  mt={6}
-                  mb={6}
-                  ml={2}
-                  level={TypographyLevel.Text1}
-                  textColor={TextColor.Secondary}
-                >
+                <Text1 mt={6} mb={6} ml={2} textColor={TextColor.Secondary}>
                   Container size=ContainerSize.Medium bgColor=ColorType.Primary
-                </TextBlock>
+                </Text1>
               </Container>
             </Box>
             <Box mb={4}>
@@ -175,16 +130,10 @@ const UiKitPage: React.FC = () => {
                 size={ContainerSize.MediumSmall}
                 bgColor={BackgroundColor.Alt2}
               >
-                <TextBlock
-                  mt={6}
-                  mb={6}
-                  ml={2}
-                  level={TypographyLevel.Text1}
-                  textColor={TextColor.Secondary}
-                >
+                <Text1 mt={6} mb={6} ml={2} textColor={TextColor.Secondary}>
                   Container size=ContainerSize.MediumSmall
                   bgColor=ColorType.Secondary
-                </TextBlock>
+                </Text1>
               </Container>
             </Box>
           </Container>
@@ -192,13 +141,7 @@ const UiKitPage: React.FC = () => {
         <Section>
           <Container size={ContainerSize.Large}>
             <Box mb={2}>
-              <TextBlock
-                uppercase
-                level={TypographyLevel.Subtitle1}
-                textColor={TextColor.Accent1}
-              >
-                Buttons
-              </TextBlock>
+              <Subtitle1>Buttons</Subtitle1>
             </Box>
             <Box mb={2}>
               <Button primary={true}>Primary Button</Button>
@@ -213,13 +156,7 @@ const UiKitPage: React.FC = () => {
         </Section>
         <Section>
           <Container size={ContainerSize.Large}>
-            <TextBlock
-              uppercase
-              level={TypographyLevel.Subtitle1}
-              textColor={TextColor.Accent1}
-            >
-              Links
-            </TextBlock>
+            <Subtitle1>Links</Subtitle1>
             <Box mb={2}>
               <Link>Пройти тест</Link>
               <Menu>
@@ -240,38 +177,20 @@ const UiKitPage: React.FC = () => {
         </Section>
         <Section>
           <Container size={ContainerSize.Large}>
-            <TextBlock
-              uppercase
-              level={TypographyLevel.Subtitle1}
-              textColor={TextColor.Accent1}
-            >
-              Icons
-            </TextBlock>
-            <TextBlock level={TypographyLevel.Text1}>todo icons</TextBlock>
+            <Subtitle1>Icons</Subtitle1>
+            <Text1>todo icons</Text1>
           </Container>
         </Section>
         <Section>
           <Container size={ContainerSize.Large}>
-            <TextBlock
-              uppercase
-              level={TypographyLevel.Subtitle1}
-              textColor={TextColor.Accent1}
-            >
-              Animations
-            </TextBlock>
-            <TextBlock level={TypographyLevel.Text1}>todo animations</TextBlock>
+            <Subtitle1>Animations</Subtitle1>
+            <Text1>todo animations</Text1>
           </Container>
         </Section>
         <Section>
           <Container size={ContainerSize.Large}>
-            <TextBlock
-              uppercase
-              level={TypographyLevel.Subtitle1}
-              textColor={TextColor.Accent1}
-            >
-              Inputs
-            </TextBlock>
-            <TextBlock level={TypographyLevel.Text1}>todo inputs</TextBlock>
+            <Subtitle1>Inputs</Subtitle1>
+            <Text1>todo inputs</Text1>
           </Container>
         </Section>
       </Main>

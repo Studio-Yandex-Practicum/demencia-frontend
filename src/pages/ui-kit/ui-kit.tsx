@@ -93,13 +93,9 @@ const UiKitPage: React.FC = () => {
               </TextBlock>
             </Box>
             <Box mb={2}>
-              <TextBlock level={TypographyLevel.Caption}>
-                Когнитивные расстройства (Caption)
-              </TextBlock>
-            </Box>
-            <Box mb={2}>
               <TextBlock level={TypographyLevel.Text}>
-                сложные функции головного мозга, когнитивное здоровье (Text)
+                сложные <strong>функции</strong> головного мозга, когнитивное
+                здоровье (Text)
               </TextBlock>
             </Box>
             <Box mb={2}>

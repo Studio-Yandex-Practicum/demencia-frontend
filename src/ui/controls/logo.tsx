@@ -1,6 +1,7 @@
 import styled, { css } from "styled-components";
 import logoImage from "../../images/logo.svg";
 import { cursorMixin } from "./cursor";
+import React from "react";
 
 interface LogoBlockProps {
   maxWidth?: number;
@@ -19,7 +20,7 @@ export const Logo = styled.img`
   padding: 0;
 `;
 
-export const LogoBlock: React.FunctionComponent<LogoBlockProps> = (props) => {
+export const LogoBlock: React.FC<LogoBlockProps> = (props) => {
   return (
     <a href={props.link} aria-label={props.altText}>
       <Logo src={logoImage} alt={props.altText} />

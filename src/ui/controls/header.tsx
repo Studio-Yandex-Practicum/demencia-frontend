@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import cursorImage from "../../images/cursor_pointer.svg";
 import burgerImage from "../../images/burger-menu.svg";
 import { ScreenSize } from "../types";
 import { cursorMixin } from "./cursor";

@@ -29,12 +29,12 @@ const zoomHoverElementMixIn = css`
 `;
 
 const colorChangeHoverPrimaryMixIn = css`
-  color: ${(p) => p.theme.colors.secondary};
+  color: ${(p) => p.theme.colors.textAccent2};
   transition: color 0.5s ease 0s;
 `;
 
 const colorChangeHoverSecondaryMixIn = css`
-  color: ${(p) => p.theme.colors.secondary};
+  color: ${(p) => p.theme.colors.textAccent2};
   transition: color 0.5s ease 0s;
 `;
 

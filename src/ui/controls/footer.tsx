@@ -4,7 +4,7 @@ import { ScreenSize } from "../types";
 const Footer = styled.footer`
   width: 100%;
   min-height: 140px;
-  background-color: ${(p) => p.theme.colors.backgroundFooter};
+  background-color: ${(p) => p.theme.colors.background};
   display: flex;
   align-items: center;
 

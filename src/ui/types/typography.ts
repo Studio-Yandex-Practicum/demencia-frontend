@@ -1,16 +1,15 @@
 import { FontStyle } from "./font-style";
 
 export interface Typography {
-  headline: FontStyle;
+  mainTitle: FontStyle;
   title: FontStyle;
-  title2: FontStyle;
-  subheading2: FontStyle;
-  subheading1: FontStyle;
-  body1: FontStyle;
-  body2: FontStyle;
-  body3: FontStyle;
-  caption: FontStyle;
-  text: FontStyle;
-  smallText: FontStyle;
+  subtitle1: FontStyle;
+  subtitle2: FontStyle;
+  subtitle3: FontStyle;
+  subtitle4: FontStyle;
+  text1: FontStyle;
+  text2: FontStyle;
+  text3: FontStyle;
+  text4: FontStyle;
   footer: FontStyle;
 }

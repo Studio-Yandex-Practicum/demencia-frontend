@@ -4,14 +4,14 @@ import { ColorTheme, Palette, PaletteColor } from "./types";
 // TODO: update palette properly
 const defaultPalette: Palette = {
   background: PaletteColor.White,
-  backgroundFooter: PaletteColor.White,
-  default: PaletteColor.White,
-  primary: PaletteColor.DarkPurple,
-  secondary: PaletteColor.Green,
-  accent: PaletteColor.LightGreen,
+  backgroundAlt1: PaletteColor.DarkPurple,
+  backgroundAlt2: PaletteColor.Green,
+  backgroundAlt3: PaletteColor.LightGreen,
   textPrimary: PaletteColor.Black,
   textSecondary: PaletteColor.White,
-  shadow: PaletteColor.Grey,
+  textAccent1: PaletteColor.DarkPurple,
+  textAccent2: PaletteColor.Green,
+  textShadow: PaletteColor.Grey,
 };
 
 const basicColorTheme: ColorTheme = {
@@ -19,7 +19,7 @@ const basicColorTheme: ColorTheme = {
   PrimaryVariant: PaletteColor.DarkPurple,
   Secondary: PaletteColor.Green,
   SecondaryVariant: PaletteColor.LightGreen,
-  Background: PaletteColor.SoftWhite,
+  Background: PaletteColor.White,
   Surface: PaletteColor.White,
   Error: PaletteColor.White, // todo: error
   OnPrimary: PaletteColor.White,
@@ -58,67 +58,61 @@ const themeLight: DefaultTheme = {
   },
   colors: defaultPalette /* todo */,
   typography: {
-    headline: {
+    mainTitle: {
       // Новости #772988
       fontSize: 62,
       fontWeight: 700,
       lineHeight: 1.55,
     },
     title: {
-      // Когнитивные функции, Головной мозг #772988 #FFF
-      fontSize: 45,
-      fontWeight: 700,
-      lineHeight: 1,
-    },
-    title2: {
       // Что нового? Кто с нами?
       fontSize: 60,
       fontWeight: 400,
       lineHeight: 1.55,
     },
-    subheading2: {
+    subtitle1: {
+      // Когнитивные функции, Головной мозг #772988 #FFF
+      fontSize: 45,
+      fontWeight: 700,
+      lineHeight: 1,
+    },
+    subtitle2: {
       // Внимание, восприятие #772988 #FFF + underline
       fontSize: 30,
       fontWeight: 700,
       lineHeight: 1.35,
     },
-    subheading1: {
-      // Отвечает за: #FFF
-      fontSize: 18,
-      fontWeight: 700,
-      lineHeight: 1.55,
-    },
-    body1: {
-      // Способность воспринимать, Перейти к ленте новостей, Пройди тест вместе #000 #FFF #666
-      fontSize: 18,
-      fontWeight: 300,
-      lineHeight: 1.55,
-    },
-    body2: {
+    subtitle3: {
       // Как он устроен, что это такое #FFF #666
       fontSize: 20,
       fontWeight: 700,
       lineHeight: 1.35,
     },
-    body3: {
-      // Перейти к ленте новостей #666
+    subtitle4: {
+      // Отвечает за: #FFF
       fontSize: 18,
-      fontWeight: 400,
-      lineHeight: 1.35,
-    },
-    caption: {
-      // Когнитивные расстройства #FFF
-      fontSize: 20,
       fontWeight: 700,
-      lineHeight: 1.2,
+      lineHeight: 1.55,
     },
-    text: {
+    text1: {
       // Сложные функции головного мозга #FFF #000 (Когнитивное здоровье)
       fontSize: 20,
       fontWeight: 400,
       lineHeight: 1.55,
     },
-    smallText: {
+    text2: {
+      // Способность воспринимать, Перейти к ленте новостей, Пройди тест вместе #000 #FFF #666
+      fontSize: 18,
+      fontWeight: 300,
+      lineHeight: 1.55,
+    },
+    text3: {
+      // Перейти к ленте новостей #666
+      fontSize: 18,
+      fontWeight: 400,
+      lineHeight: 1.35,
+    },
+    text4: {
       // Благотворительный фонд, Деменция - стойкое #000 #fff #772988
       fontSize: 14,
       fontWeight: 400,

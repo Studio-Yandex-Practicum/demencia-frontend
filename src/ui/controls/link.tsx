@@ -1,8 +1,7 @@
-import { ReactNode } from "react";
+import React, { ReactNode } from "react";
 import styled, { css } from "styled-components";
 import { ThemeProps } from "./layout";
 import { cursorMixin } from "./cursor";
-import { FontStyle } from "../types/font-style";
 
 interface LinkStyleProps extends ThemeProps {
   animated?: boolean;
@@ -23,8 +22,8 @@ export const linkMixin = css<LinkProps>`
   vertical-align: baseline;
   font-family: ${(p) => p.theme.layout.fontFamily};
   font-size: ${linkFontSize}px;
-  font-weight: ${(p) => p.theme.typography.subheading2.fontWeight};
-  line-height: ${(p) => p.theme.typography.subheading2.lineHeight}em;
+  font-weight: ${(p) => p.theme.typography.subtitle2.fontWeight};
+  line-height: ${(p) => p.theme.typography.subtitle2.lineHeight};
   white-space: nowrap;
   text-decoration: none;
   text-transform: uppercase;
@@ -36,7 +35,7 @@ export const linkMixin = css<LinkProps>`
   &:hover {
     font-size: ${(p) => Math.floor(linkFontSize * 1.1)}px;
     border-bottom: ${(p) => p.theme.layout.borderSize}px solid
-      ${(p) => p.theme.colors.primary}; // link hovered
+      ${(p) => p.theme.colors.textAccent1}; // link hovered
   }
 `;
 
@@ -44,6 +43,6 @@ export const A = styled.a<LinkProps>`
   ${linkMixin}
 `;
 
-export const Link: React.FunctionComponent<LinkProps> = (props) => {
+export const Link: React.FC<LinkProps> = (props) => {
   return <A>{props.children}</A>;
 };

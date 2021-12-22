@@ -1,34 +1,34 @@
 import React, { ReactNode } from "react";
 import styled, { css, DefaultTheme } from "styled-components";
-import { ColorType, TypographyLevel } from "../types";
+import { TextColor, TypographyLevel } from "../types";
 import { BoxProps, getBoxStyles } from "./box";
 import { ThemeProps } from "./layout";
 
 interface TextProps extends BoxProps {
-  readonly level?: TypographyLevel;
-  readonly type?: ColorType;
-  readonly uppercase?: boolean;
-  readonly underlined?: boolean;
+  level?: TypographyLevel;
+  textColor?: TextColor;
+  uppercase?: boolean;
+  underlined?: boolean;
 }
 
 interface TextBlockProps extends TextProps {
   renderTag?: string;
   className?: string;
   children?: ReactNode;
-  type?: ColorType;
+  textColor?: TextColor;
 }
 
 interface FontLevelProps extends ThemeProps {
-  readonly level?: TypographyLevel;
+  level?: TypographyLevel;
 }
 
 interface FontColorProps extends ThemeProps {
-  readonly type?: ColorType;
+  textColor?: TextColor;
 }
 
 export const typographySizeMixIn = (props: FontLevelProps): string => {
   const { typography } = props.theme;
-  const selectedSize = typography[props.level || TypographyLevel.Body1];
+  const selectedSize = typography[props.level || TypographyLevel.Text1];
   return `
         font-weight: ${selectedSize.fontWeight};
         font-size: ${selectedSize.fontSize}px;
@@ -39,29 +39,26 @@ export const typographySizeMixIn = (props: FontLevelProps): string => {
 export const typographyColorMixIn = (props: FontColorProps): string => {
   const selectedColor = () => {
     const { colors } = props.theme;
-    const type = props.type || ColorType.Default;
+    const type = props.textColor || TextColor.Primary;
     switch (type) {
-      case ColorType.Default: {
-        return colors.textPrimary;
-      }
-      case ColorType.Primary: {
+      case TextColor.Primary: {
         return colors.textPrimary;
       }
 
-      case ColorType.Secondary: {
+      case TextColor.Secondary: {
         return colors.textSecondary;
       }
 
-      case ColorType.Accent: {
-        return colors.primary;
+      case TextColor.Accent1: {
+        return colors.textAccent1;
       }
 
-      case ColorType.AccentAlt: {
-        return colors.secondary;
+      case TextColor.Accent2: {
+        return colors.textAccent2;
       }
 
-      case ColorType.Caption: {
-        return colors.shadow;
+      case TextColor.Shadow: {
+        return colors.textShadow;
       }
 
       default: {
@@ -129,125 +126,30 @@ export const H6 = styled.h6<TextProps>`
   ${typographyMixin}
 `;
 
-export const TextBlock: React.FunctionComponent<TextBlockProps> = (props) => {
-  props = { pb: 1, ...props }; // set default margin below
-  switch (props.renderTag) {
+export const TextBlock: React.FC<TextBlockProps> = (props) => {
+  //props = { pb: 1, ...props }; // set default margin below
+  const { renderTag, children, ...rest } = props;
+  switch (renderTag) {
     case "p": {
-      return (
-        <P level={props.level || TypographyLevel.Body1}>{props.children}</P>
-      );
+      return <P {...rest}>{children}</P>;
     }
     case "h1":
-      return (
-        <H1 level={props.level || TypographyLevel.Headline} type={props.type}>
-          {props.children}
-        </H1>
-      );
+      return <H1 {...rest}>{children}</H1>;
     case "h2":
-      return (
-        <H2 level={props.level || TypographyLevel.Title} type={props.type}>
-          {props.children}
-        </H2>
-      );
+      return <H2 {...rest}>{children}</H2>;
     case "h3":
-      return (
-        <H3
-          level={props.level || TypographyLevel.Subheading2}
-          type={props.type}
-        >
-          {props.children}
-        </H3>
-      );
+      return <H3 {...rest}>{children} </H3>;
     case "h4":
-      return (
-        <H4
-          level={props.level || TypographyLevel.Subheading1}
-          type={props.type}
-        >
-          {props.children}
-        </H4>
-      );
+      return <H4 {...rest}>{children}</H4>;
     case "h5":
-      return (
-        <H5 level={props.level || TypographyLevel.Body2} type={props.type}>
-          {props.children}
-        </H5>
-      );
+      return <H5 {...rest}>{children}</H5>;
     case "h6":
-      return (
-        <H6 level={props.level || TypographyLevel.Body2} type={props.type}>
-          {props.children}
-        </H6>
-      );
+      return <H6 {...rest}>{children}</H6>;
     case "span": {
-      return (
-        <Span level={props.level || TypographyLevel.Caption} type={props.type}>
-          {props.children}
-        </Span>
-      );
+      return <Span {...rest}>{children}</Span>;
     }
     default: {
-      return (
-        <P level={props.level || TypographyLevel.Body1} type={props.type}>
-          {props.children}
-        </P>
-      );
+      return <Span {...rest}>{children}</Span>;
     }
   }
-};
-
-export const MainTitle: React.FunctionComponent = (props) => {
-  return (
-    <H1
-      level={TypographyLevel.Headline}
-      type={ColorType.Accent}
-      uppercase={true}
-    >
-      {props.children}
-    </H1>
-  );
-};
-
-export const PrimaryTitle: React.FunctionComponent = (props) => {
-  return (
-    <H2 level={TypographyLevel.Title} type={ColorType.Accent} uppercase={true}>
-      {props.children}
-    </H2>
-  );
-};
-
-export const SecondaryTitle: React.FunctionComponent = (props) => {
-  return (
-    <H3
-      level={TypographyLevel.Subheading2}
-      type={ColorType.Accent}
-      uppercase={true}
-    >
-      {props.children}
-    </H3>
-  );
-};
-
-export const Subtitle: React.FunctionComponent = (props) => {
-  return (
-    <P level={TypographyLevel.Body2} type={ColorType.Caption} uppercase={true}>
-      {props.children}
-    </P>
-  );
-};
-
-export const Subtitle1: React.FC = (props) => {
-  return (
-    <H4 uppercase level={TypographyLevel.Subheading1} type={ColorType.Primary}>
-      {props.children}
-    </H4>
-  );
-};
-
-export const Title2: React.FC = (props) => {
-  return (
-    <P uppercase level={TypographyLevel.Title2} type={ColorType.Accent}>
-      {props.children}
-    </P>
-  );
 };

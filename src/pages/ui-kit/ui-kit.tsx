@@ -111,7 +111,8 @@ const UiKitPage: React.FC = () => {
                 bgColor={BackgroundColor.Alt3}
               >
                 <Text1 mt={6} mb={6} ml={2} textColor={TextColor.Accent1}>
-                  Container size=ContainerSize.Large bgColor=ColorType.Accent
+                  Container size=ContainerSize.Large
+                  bgColor=BackgroundColor.Alt3
                 </Text1>
               </Container>
             </Box>
@@ -121,7 +122,8 @@ const UiKitPage: React.FC = () => {
                 bgColor={BackgroundColor.Alt1}
               >
                 <Text1 mt={6} mb={6} ml={2} textColor={TextColor.Secondary}>
-                  Container size=ContainerSize.Medium bgColor=ColorType.Primary
+                  Container size=ContainerSize.Medium
+                  bgColor=BackgroundColor.Alt1
                 </Text1>
               </Container>
             </Box>
@@ -132,7 +134,7 @@ const UiKitPage: React.FC = () => {
               >
                 <Text1 mt={6} mb={6} ml={2} textColor={TextColor.Secondary}>
                   Container size=ContainerSize.MediumSmall
-                  bgColor=ColorType.Secondary
+                  bgColor=BackgroundColor.Alt2
                 </Text1>
               </Container>
             </Box>
@@ -144,7 +146,9 @@ const UiKitPage: React.FC = () => {
               <Subtitle1>Buttons</Subtitle1>
             </Box>
             <Box mb={2}>
-              <Button primary={true}>Primary Button</Button>
+              <Button primary uppercase>
+                Primary Button
+              </Button>
             </Box>
             <Box mb={2}>
               <LinkButton>LinkButton</LinkButton>

@@ -3,8 +3,8 @@ import { ColorTheme, Palette, PaletteColor } from "./types";
 
 // TODO: update palette properly
 const defaultPalette: Palette = {
-  background: PaletteColor.SoftWhite,
-  backgroundFooter: PaletteColor.WhiteBlue,
+  background: PaletteColor.White,
+  backgroundFooter: PaletteColor.White,
   default: PaletteColor.White,
   primary: PaletteColor.DarkPurple,
   secondary: PaletteColor.Green,

@@ -1,15 +1,15 @@
 import { css } from "styled-components";
 
 export const shadowHoverButtonMixIn = css`
-  box-shadow: 5px 5px 20px 2px ${(p) => p.theme.colors.shadow};
+  box-shadow: 5px 5px 20px 2px ${(p) => p.theme.colors.textShadow};
 `;
 
 export const shadowLargeButtonMixIn = css`
-  box-shadow: 5px 5px 15px 2px ${(p) => p.theme.colors.shadow};
+  box-shadow: 5px 5px 15px 2px ${(p) => p.theme.colors.textShadow};
 `;
 
 export const shadowHoverLargeButtonMixIn = css`
-  box-shadow: 5px 5px 20px 4px ${(p) => p.theme.colors.shadow};
+  box-shadow: 5px 5px 20px 4px ${(p) => p.theme.colors.textShadow};
 `;
 
 export const shadowCardMixIn = css`
@@ -17,5 +17,5 @@ export const shadowCardMixIn = css`
 `;
 
 export const shadowPopupMixIn = css`
-  box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 0 25px rgba(0, 0, 0, 0.15);
 `;

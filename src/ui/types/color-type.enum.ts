@@ -1,9 +1,14 @@
-export enum ColorType {
-  None = 0,
-  Default,
+export enum TextColor {
   Primary,
   Secondary,
-  Accent,
-  AccentAlt,
-  Caption,
+  Accent1,
+  Accent2,
+  Shadow,
+}
+
+export enum BackgroundColor {
+  Default,
+  Alt1,
+  Alt2,
+  Alt3,
 }

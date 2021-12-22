@@ -1,14 +1,15 @@
 import styled from "styled-components";
-import { ColorType, ContainerSize } from "../types";
+import { ContainerSize } from "../types";
 import { ThemeProps } from "./layout";
+import { BackgroundColor } from "../types/color-type.enum";
 
 export interface ContainerProps {
   size?: ContainerSize;
-  bgColor?: ColorType;
+  bgColor?: BackgroundColor;
 }
 
 interface ColorProps extends ThemeProps {
-  bgColor?: ColorType;
+  bgColor?: BackgroundColor;
 }
 
 export const colorMixIn = (props: ColorProps): string => {
@@ -18,22 +19,19 @@ export const colorMixIn = (props: ColorProps): string => {
 
   const { colors } = props.theme;
   switch (props.bgColor) {
-    case ColorType.Default: {
-      return `background-color: ${colors.default}`;
-    }
-    case ColorType.Primary: {
-      return `background-color: ${colors.primary};
+    case BackgroundColor.Alt1: {
+      return `background-color: ${colors.backgroundAlt1};
               color: ${colors.textSecondary}`;
     }
-    case ColorType.Secondary: {
-      return `background-color: ${colors.secondary};
+    case BackgroundColor.Alt2: {
+      return `background-color: ${colors.backgroundAlt2};
               color: ${colors.textSecondary}`;
     }
-    case ColorType.Accent: {
-      return `background-color: ${colors.accent}`;
+    case BackgroundColor.Alt3: {
+      return `background-color: ${colors.backgroundAlt3};`;
     }
     default: {
-      return "";
+      return `background-color: ${colors.background}`;
     }
   }
 };

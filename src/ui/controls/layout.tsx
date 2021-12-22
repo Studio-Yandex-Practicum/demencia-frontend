@@ -1,4 +1,4 @@
-import styled, { css, DefaultTheme } from "styled-components";
+import styled, { DefaultTheme } from "styled-components";
 import { BoxProps } from "./box";
 
 export interface ThemeProps {
@@ -19,7 +19,7 @@ export const Layout = styled.div<LayoutProps>`
   margin: auto;
   box-sizing: border-box;
   overflow: hidden;
-  background-color: ${(props) => props.theme.colors.default};
+  background-color: ${(props) => props.theme.colors.background};
 `;
 
 export const Main = styled.main`

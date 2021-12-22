@@ -4,11 +4,11 @@ import { ThemeProps } from "./layout";
 import { typographySizeMixIn } from "./typography";
 import {
   shadowHoverButtonMixIn,
-  shadowLargeButtonMixIn,
   shadowHoverLargeButtonMixIn,
+  shadowLargeButtonMixIn,
 } from "./shadows";
 import { cursorMixin } from "./cursor";
-import { ButtonStyle, ButtonType } from "../types";
+import { ButtonStyle, ButtonType, TypographyLevel } from "../types";
 
 interface ButtonProps extends ThemeProps, BoxProps {
   fullWidth: boolean;
@@ -98,12 +98,14 @@ export const Button = styled.button.attrs((props: ButtonProps) => ({
   pl: 4,
   pr: 4,
   animated: true,
+  level: props.primary ? TypographyLevel.Subtitle3 : TypographyLevel.Text1,
   ...props,
 }))`
   ${buttonBaseMixin}
   ${buttonStyleMixIn}
   ${buttonAnimationMixin}
   width: ${(p) => (p.fullWidth ? "100%" : "auto")};
+  ${(props) => (!props.primary ? "" : "text-transform: uppercase;")}
 `;
 
 export const LinkButton = styled.button.attrs((props: ButtonProps) => ({

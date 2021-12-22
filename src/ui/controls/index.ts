@@ -1,4 +1,3 @@
-import * as typography from "./typography";
 import { Button, LinkButton } from "./button";
 import { Box } from "./box";
 import { Link } from "./link";

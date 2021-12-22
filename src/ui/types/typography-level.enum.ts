@@ -1,14 +1,13 @@
 export enum TypographyLevel {
-  Headline = "headline", // big Section heading corresponding to the <h1> tag. О деменции
-  Title = "title", // medium corresponding to h2 Когнитивные функции/Головной мозг
-  Title2 = "title2",
-  Subheading2 = "subheading2", // Внимание/Восприятие
-  Subheading1 = "subheading1", // list title отвечает за (
-  Body1 = "body1", // base body text способность воспринимать
-  Body2 = "body2", // bolder body text Как он устроен/Что это такое?
-  Body3 = "body3",
-  Caption = "caption", // smaller body and hint text
-  Text = "text",
-  SmallText = "smallText",
+  MainTitle = "mainTitle",
+  Title = "title",
+  Subtitle1 = "subtitle1",
+  Subtitle2 = "subtitle2",
+  Subtitle3 = "subtitle3",
+  Subtitle4 = "subtitle4",
+  Text1 = "text1",
+  Text2 = "text2",
+  Text3 = "text3",
+  Text4 = "text4",
   Footer = "footer",
 }

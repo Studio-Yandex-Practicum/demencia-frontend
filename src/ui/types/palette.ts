@@ -7,12 +7,12 @@ export interface ColorInfo {
 
 export interface Palette {
   background: PaletteColor;
-  backgroundFooter: PaletteColor;
-  default: PaletteColor;
-  primary: PaletteColor;
-  secondary: PaletteColor;
-  accent: PaletteColor;
+  backgroundAlt1: PaletteColor;
+  backgroundAlt2: PaletteColor;
+  backgroundAlt3: PaletteColor;
   textPrimary: PaletteColor;
   textSecondary: PaletteColor;
-  shadow: PaletteColor;
+  textAccent1: PaletteColor;
+  textAccent2: PaletteColor;
+  textShadow: PaletteColor;
 }

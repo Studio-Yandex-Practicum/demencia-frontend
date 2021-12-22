@@ -27,13 +27,13 @@ export const linkMixin = css<LinkProps>`
   white-space: nowrap;
   text-decoration: none;
   text-transform: uppercase;
-  ${cursorMixin}
+  ${cursorMixin};
   color: ${(p) => p.theme.colors.textPrimary};
   transition: font-size 0.5s ease,
     border-bottom 0.5s cubic-bezier(0.2, -2, 0.8, 2);
 
   &:hover {
-    font-size: ${(p) => Math.floor(linkFontSize * 1.1)}px;
+    font-size: ${() => Math.floor(linkFontSize * 1.1)}px;
     border-bottom: ${(p) => p.theme.layout.borderSize}px solid
       ${(p) => p.theme.colors.textAccent1}; // link hovered
   }

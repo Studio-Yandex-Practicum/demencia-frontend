@@ -1,4 +1,4 @@
-import styled, { css } from "styled-components";
+import styled from "styled-components";
 import logoImage from "../../images/logo.svg";
 import { cursorMixin } from "./cursor";
 import React from "react";

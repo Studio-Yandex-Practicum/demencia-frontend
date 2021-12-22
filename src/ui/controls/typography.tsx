@@ -1,5 +1,5 @@
 import React, { ReactNode } from "react";
-import styled, { css, DefaultTheme } from "styled-components";
+import styled, { css } from "styled-components";
 import { TextColor, TypographyLevel } from "../types";
 import { BoxProps, getBoxStyles } from "./box";
 import { ThemeProps } from "./layout";

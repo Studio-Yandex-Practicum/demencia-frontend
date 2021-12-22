@@ -26,7 +26,7 @@ const getShift = (val: number, defaultSpacing: number): number => {
 };
 
 // "m", "mt", "ml", "mb", "mr", "p", "pt", "pl", "pb", "pr"
-export const getBoxStyles = (p: BoxStyleProps) => {
+export const getBoxStyles = (p: BoxStyleProps): string => {
   const shiftStyles = [];
   const { defaultSpacing } = p.theme.layout;
 

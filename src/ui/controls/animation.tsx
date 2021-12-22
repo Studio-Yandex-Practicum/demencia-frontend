@@ -91,9 +91,6 @@ export const colorChangeOnHoverMixIn = (
 interface AppearAnimationProps {
   speed: number;
 }
-interface ColorChangeAnimationProps {
-  speed: number;
-}
 
 const rotation = keyframes`
 0% {
@@ -113,20 +110,6 @@ const translate = keyframes`
 
 const zoomHoverElementMixIn = css`
   transform: scale(${zoomScale});
-`;
-
-const colorChangeTransitionMixIn = css`
-  color: ${(p) => p.theme.colors.textAccent2};
-  transition: color 0.5s ease;
-`;
-const colorChangeHoverPrimaryMixIn = css`
-  color: ${(p) => p.theme.colors.textAccent2};
-  transition: color 0.5s ease;
-`;
-
-const colorChangeHoverSecondaryMixIn = css`
-  color: ${(p) => p.theme.colors.textAccent2};
-  transition: color 0.5s ease;
 `;
 
 const opacityInvisible = `

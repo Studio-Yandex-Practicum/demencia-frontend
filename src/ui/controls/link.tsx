@@ -1,45 +1,51 @@
 import React, { ReactNode } from "react";
-import styled, { css } from "styled-components";
-import { ThemeProps } from "./layout";
+import styled, { css, DefaultTheme, ThemeProps } from "styled-components";
 import { cursorMixin } from "./cursor";
+import {
+  borderBottomOnHoverMixIn,
+  BorderBottomOnHoverProps,
+  TextSizeAnimationProps,
+  textUppercaseMixIn,
+  TextUppercaseProps,
+  zoomTextOnHoverMixIn,
+} from "./animation";
 
-interface LinkStyleProps extends ThemeProps {
-  animated?: boolean;
-}
-
-interface LinkProps {
-  animated?: boolean;
-  uppercased?: boolean;
+const linkFontSize = 20; //todo: move to use typography
+export interface LinkProps {
   children?: ReactNode;
 }
 
-const linkFontSize = 20;
-
-export const linkMixin = css<LinkProps>`
+export const linkMixin = css<
+  TextSizeAnimationProps & TextUppercaseProps & BorderBottomOnHoverProps
+>`
   margin: 0;
   padding: 0;
   border: 0;
   vertical-align: baseline;
-  font-family: ${(p) => p.theme.layout.fontFamily};
-  font-size: ${linkFontSize}px;
-  font-weight: ${(p) => p.theme.typography.subtitle2.fontWeight};
-  line-height: ${(p) => p.theme.typography.subtitle2.lineHeight};
+  font-family: ${(p) =>
+    p.theme.layout.fontFamily}; // todo: use typography mixin
+  font-weight: ${(p) =>
+    p.theme.typography.subtitle2.fontWeight}; // todo: use typography mixin
+  line-height: ${(p) =>
+    p.theme.typography.subtitle2.lineHeight}; // todo: use typography mixin
   white-space: nowrap;
   text-decoration: none;
-  text-transform: uppercase;
+  ${textUppercaseMixIn};
   ${cursorMixin};
   color: ${(p) => p.theme.colors.textPrimary};
-  transition: font-size 0.5s ease,
-    border-bottom 0.5s cubic-bezier(0.2, -2, 0.8, 2);
-
-  &:hover {
-    font-size: ${() => Math.floor(linkFontSize * 1.1)}px;
-    border-bottom: ${(p) => p.theme.layout.borderSize}px solid
-      ${(p) => p.theme.colors.textAccent1}; // link hovered
-  }
+  ${borderBottomOnHoverMixIn}
+  ${zoomTextOnHoverMixIn}
 `;
 
-export const A = styled.a<LinkProps>`
+export const A = styled.a.attrs((props: ThemeProps<DefaultTheme>) => ({
+  textUppercase: true,
+  zoomTextOnHover: true,
+  borderBottomOnHover: true,
+  borderSize: props.theme.layout.borderSize,
+  borderColor: props.theme.colors.textAccent1,
+  fontSize: linkFontSize,
+  ...props,
+}))`
   ${linkMixin}
 `;
 

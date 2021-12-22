@@ -59,38 +59,74 @@ const themeLight: DefaultTheme = {
   colors: defaultPalette /* todo */,
   typography: {
     headline: {
+      // Новости #772988
       fontSize: 62,
       fontWeight: 700,
       lineHeight: 1.55,
     },
     title: {
+      // Когнитивные функции, Головной мозг #772988 #FFF
       fontSize: 45,
       fontWeight: 700,
       lineHeight: 1,
     },
+    title2: {
+      // Что нового? Кто с нами?
+      fontSize: 60,
+      fontWeight: 400,
+      lineHeight: 1.55,
+    },
     subheading2: {
+      // Внимание, восприятие #772988 #FFF + underline
       fontSize: 30,
-      fontWeight: 700, // ubuntu 600 to download
+      fontWeight: 700,
       lineHeight: 1.35,
     },
     subheading1: {
+      // Отвечает за: #FFF
       fontSize: 18,
-      fontWeight: 700, // ubuntu 600 to download
+      fontWeight: 700,
       lineHeight: 1.55,
     },
     body1: {
+      // Способность воспринимать, Перейти к ленте новостей, Пройди тест вместе #000 #FFF #666
       fontSize: 18,
       fontWeight: 300,
       lineHeight: 1.55,
     },
     body2: {
-      fontSize: 16,
+      // Как он устроен, что это такое #FFF #666
+      fontSize: 20,
       fontWeight: 700,
       lineHeight: 1.35,
     },
+    body3: {
+      // Перейти к ленте новостей #666
+      fontSize: 18,
+      fontWeight: 400,
+      lineHeight: 1.35,
+    },
     caption: {
+      // Когнитивные расстройства #FFF
+      fontSize: 20,
+      fontWeight: 700,
+      lineHeight: 1.2,
+    },
+    text: {
+      // Сложные функции головного мозга #FFF #000 (Когнитивное здоровье)
+      fontSize: 20,
+      fontWeight: 400,
+      lineHeight: 1.55,
+    },
+    smallText: {
+      // Благотворительный фонд, Деменция - стойкое #000 #fff #772988
       fontSize: 14,
-      fontWeight: 600,
+      fontWeight: 400,
+      lineHeight: 1.2,
+    },
+    footer: {
+      fontSize: 14,
+      fontWeight: 700,
       lineHeight: 1.55,
     },
   },

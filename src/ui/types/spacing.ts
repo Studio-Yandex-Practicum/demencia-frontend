@@ -1,3 +1,1 @@
-export interface Spacing {
-
-}
+export interface Spacing {}

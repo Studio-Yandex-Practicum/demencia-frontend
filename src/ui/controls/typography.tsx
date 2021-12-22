@@ -32,7 +32,7 @@ export const typographySizeMixIn = (props: FontLevelProps): string => {
   return `
         font-weight: ${selectedSize.fontWeight};
         font-size: ${selectedSize.fontSize}px;
-        line-height: ${selectedSize.lineHeight}em;
+        line-height: ${selectedSize.lineHeight};
     `;
 };
 
@@ -231,6 +231,22 @@ export const SecondaryTitle: React.FunctionComponent = (props) => {
 export const Subtitle: React.FunctionComponent = (props) => {
   return (
     <P level={TypographyLevel.Body2} type={ColorType.Caption} uppercase={true}>
+      {props.children}
+    </P>
+  );
+};
+
+export const Subtitle1: React.FC = (props) => {
+  return (
+    <H4 uppercase level={TypographyLevel.Subheading1} type={ColorType.Primary}>
+      {props.children}
+    </H4>
+  );
+};
+
+export const Title2: React.FC = (props) => {
+  return (
+    <P uppercase level={TypographyLevel.Title2} type={ColorType.Accent}>
       {props.children}
     </P>
   );

@@ -1,5 +1,5 @@
 export enum TextAnimationType {
-    None = 0,
-    ChangeColor = 1,
-    Appear = 2,
+  None = 0,
+  ChangeColor = 1,
+  Appear = 2,
 }

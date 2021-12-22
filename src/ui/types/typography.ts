@@ -1,10 +1,11 @@
 import { FontStyle } from "./font-style";
 
 export interface Typography {
-    huge: FontStyle,
-    large: FontStyle,
-    medium: FontStyle,
-    default: FontStyle,
-    small: FontStyle,
-    /* todo: more fonts to add */
+    headline: FontStyle,
+    title: FontStyle,
+    subheading2: FontStyle,
+    subheading1: FontStyle,
+    body1: FontStyle,
+    body2: FontStyle,
+    caption: FontStyle
 }

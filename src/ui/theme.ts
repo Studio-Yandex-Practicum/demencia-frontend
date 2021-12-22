@@ -58,30 +58,40 @@ const themeLight: DefaultTheme = {
   },
   colors: defaultPalette /* todo */,
   typography: {
-    huge: {
-      fontSize: 86,
+    headline: {
+      fontSize: 62,
       fontWeight: 700,
-      lineHeight: 1.15,
+      lineHeight: 1.55,
     },
-    large: {
-      fontSize: 40,
+    title: {
+      fontSize: 45,
       fontWeight: 700,
-      lineHeight: 1.15,
+      lineHeight: 1,
     },
-    medium: {
+    subheading2: {
       fontSize: 30,
-      fontWeight: 700,
-      lineHeight: 1.15,
+      fontWeight: 700, // ubuntu 600 to download
+      lineHeight: 1.35,
     },
-    default: {
-      fontSize: 20,
-      fontWeight: 400,
-      lineHeight: 1.15,
+    subheading1: {
+      fontSize: 18,
+      fontWeight: 700, // ubuntu 600 to download
+      lineHeight: 1.55,
     },
-    small: {
-      fontSize: 20,
+    body1: {
+      fontSize: 18,
       fontWeight: 300,
-      lineHeight: 1.15,
+      lineHeight: 1.55,
+    },
+    body2: {
+      fontSize: 16,
+      fontWeight: 700,
+      lineHeight: 1.35,
+    },
+    caption: {
+      fontSize: 14,
+      fontWeight: 600,
+      lineHeight: 1.55,
     },
   },
   spacing: {},

@@ -1,5 +1,4 @@
 import styled, { css } from "styled-components";
-import { FontSize } from "../types/font-size.enum";
 import { BoxProps, getBoxStyles } from "./box";
 import { ThemeProps } from "./layout";
 import { typographySizeMixIn } from "./typography";
@@ -16,7 +15,6 @@ interface ButtonProps extends ThemeProps, BoxProps {
   primary?: boolean;
   animated?: boolean;
   uppercase?: boolean;
-  fontSize?: FontSize;
 }
 
 const buildButtonStyle = (buttonStyle: ButtonStyle): string => {
@@ -91,7 +89,7 @@ export const buttonBaseMixin = css<ButtonProps>`
   text-align: center;
   text-decoration: none;
   ${cursorMixin}
-  ${(p) => typographySizeMixIn({ theme: p.theme, size: p.fontSize })};
+  ${typographySizeMixIn}
   ${getBoxStyles}
 `;
 export const Button = styled.button.attrs((props: ButtonProps) => ({
@@ -99,7 +97,6 @@ export const Button = styled.button.attrs((props: ButtonProps) => ({
   pb: 1,
   pl: 4,
   pr: 4,
-  fontSize: FontSize.Medium,
   animated: true,
   ...props,
 }))`

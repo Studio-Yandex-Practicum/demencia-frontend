@@ -14,15 +14,17 @@ interface LinkProps {
   children?: ReactNode;
 }
 
+const linkFontSize = 20;
+
 export const linkMixin = css<LinkProps>`
   margin: 0;
   padding: 0;
   border: 0;
   vertical-align: baseline;
   font-family: ${(p) => p.theme.layout.fontFamily};
-  font-size: ${(p) => p.theme.typography.default.fontSize}px;
-  font-weight: ${(p) => p.theme.typography.default.fontWeight};
-  line-height: ${(p) => p.theme.typography.default.lineHeight}em;
+  font-size: ${linkFontSize}px;
+  font-weight: ${(p) => p.theme.typography.subheading2.fontWeight};
+  line-height: ${(p) => p.theme.typography.subheading2.lineHeight}em;
   white-space: nowrap;
   text-decoration: none;
   text-transform: uppercase;
@@ -32,8 +34,7 @@ export const linkMixin = css<LinkProps>`
     border-bottom 0.5s cubic-bezier(0.2, -2, 0.8, 2);
 
   &:hover {
-    font-size: ${(p) =>
-      Math.floor(p.theme.typography.default.fontSize * 1.1)}px;
+    font-size: ${(p) => Math.floor(linkFontSize * 1.1)}px;
     border-bottom: ${(p) => p.theme.layout.borderSize}px solid
       ${(p) => p.theme.colors.primary}; // link hovered
   }

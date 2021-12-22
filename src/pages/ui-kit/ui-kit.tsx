@@ -23,7 +23,7 @@ import {
   LogoBlock,
   Footer,
 } from "../../ui/controls";
-import { FontSize, ContainerSize, ColorType } from "../../ui/types";
+import { ContainerSize, ColorType, TypographyLevel } from "../../ui/types";
 // TODO: this is a temporary page to display the ui components
 const UiKitPage: React.FC = () => {
   return (
@@ -84,18 +84,39 @@ const UiKitPage: React.FC = () => {
               <PrimaryTitle>Typography</PrimaryTitle>
             </Box>
             <Box mb={2}>
-              <TextBlock size={FontSize.Huge} renderTag={"h2"}>
-                This is a huge text
+              <TextBlock level={TypographyLevel.Headline} renderTag={"h2"}>
+                This is a headline text
               </TextBlock>
             </Box>
             <Box mb={2}>
-              <TextBlock size={FontSize.Large}>This is a large text</TextBlock>
+              <TextBlock level={TypographyLevel.Title}>
+                This is a Title text
+              </TextBlock>
             </Box>
             <Box mb={2}>
-              <TextBlock size={FontSize.Medium}>This is medium text</TextBlock>
+              <TextBlock level={TypographyLevel.Subheading2}>
+                This is Subheading2 text
+              </TextBlock>
             </Box>
             <Box mb={2}>
-              <TextBlock size={FontSize.Default}>This is text</TextBlock>
+              <TextBlock level={TypographyLevel.Subheading1}>
+                This is Subheading1 text
+              </TextBlock>
+            </Box>
+            <Box mb={2}>
+              <TextBlock level={TypographyLevel.Body1}>
+                This is body1 text
+              </TextBlock>
+            </Box>
+            <Box mb={2}>
+              <TextBlock level={TypographyLevel.Body2}>
+                This is body2 text
+              </TextBlock>
+            </Box>
+            <Box mb={2}>
+              <TextBlock level={TypographyLevel.Caption}>
+                This is caption text
+              </TextBlock>
             </Box>
             <Box mb={2}>
               <TextBlock type={ColorType.Primary}>
@@ -166,7 +187,7 @@ const UiKitPage: React.FC = () => {
               <LinkButton>LinkButton</LinkButton>
             </Box>
             <Box mb={2}>
-              <Button fontSize={FontSize.Default}>Button</Button>
+              <Button>Button</Button>
             </Box>
           </Container>
         </Section>

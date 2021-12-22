@@ -1,11 +1,11 @@
 import React, { ReactNode } from "react";
 import styled, { css, DefaultTheme } from "styled-components";
-import { FontSize, ColorType } from "../types";
+import { ColorType, TypographyLevel } from "../types";
 import { BoxProps, getBoxStyles } from "./box";
 import { ThemeProps } from "./layout";
 
 interface TextProps extends BoxProps {
-  readonly size?: FontSize;
+  readonly level?: TypographyLevel;
   readonly type?: ColorType;
   readonly uppercase?: boolean;
   readonly underlined?: boolean;
@@ -18,17 +18,17 @@ interface TextBlockProps extends TextProps {
   type?: ColorType;
 }
 
-interface FontSizeProps extends ThemeProps {
-  readonly size?: FontSize;
+interface FontLevelProps extends ThemeProps {
+  readonly level?: TypographyLevel;
 }
 
 interface FontColorProps extends ThemeProps {
   readonly type?: ColorType;
 }
 
-export const typographySizeMixIn = (props: FontSizeProps): string => {
+export const typographySizeMixIn = (props: FontLevelProps): string => {
   const { typography } = props.theme;
-  const selectedSize = typography[props.size || FontSize.Default];
+  const selectedSize = typography[props.level || TypographyLevel.Body1];
   return `
         font-weight: ${selectedSize.fontWeight};
         font-size: ${selectedSize.fontSize}px;
@@ -133,54 +133,62 @@ export const TextBlock: React.FunctionComponent<TextBlockProps> = (props) => {
   props = { pb: 1, ...props }; // set default margin below
   switch (props.renderTag) {
     case "p": {
-      return <P size={props.size || FontSize.Default}>{props.children}</P>;
+      return (
+        <P level={props.level || TypographyLevel.Body1}>{props.children}</P>
+      );
     }
     case "h1":
       return (
-        <H1 size={props.size} type={props.type}>
+        <H1 level={props.level || TypographyLevel.Headline} type={props.type}>
           {props.children}
         </H1>
       );
     case "h2":
       return (
-        <H2 size={props.size} type={props.type}>
+        <H2 level={props.level || TypographyLevel.Title} type={props.type}>
           {props.children}
         </H2>
       );
     case "h3":
       return (
-        <H3 size={props.size} type={props.type}>
+        <H3
+          level={props.level || TypographyLevel.Subheading2}
+          type={props.type}
+        >
           {props.children}
         </H3>
       );
     case "h4":
       return (
-        <H4 size={props.size} type={props.type}>
+        <H4
+          level={props.level || TypographyLevel.Subheading1}
+          type={props.type}
+        >
           {props.children}
         </H4>
       );
     case "h5":
       return (
-        <H5 size={props.size} type={props.type}>
+        <H5 level={props.level || TypographyLevel.Body2} type={props.type}>
           {props.children}
         </H5>
       );
     case "h6":
       return (
-        <H6 size={props.size} type={props.type}>
+        <H6 level={props.level || TypographyLevel.Body2} type={props.type}>
           {props.children}
         </H6>
       );
     case "span": {
       return (
-        <Span size={props.size} type={props.type}>
+        <Span level={props.level || TypographyLevel.Caption} type={props.type}>
           {props.children}
         </Span>
       );
     }
     default: {
       return (
-        <P size={props.size} type={props.type}>
+        <P level={props.level || TypographyLevel.Body1} type={props.type}>
           {props.children}
         </P>
       );
@@ -190,7 +198,11 @@ export const TextBlock: React.FunctionComponent<TextBlockProps> = (props) => {
 
 export const MainTitle: React.FunctionComponent = (props) => {
   return (
-    <H1 size={FontSize.Huge} type={ColorType.Accent} uppercase={true}>
+    <H1
+      level={TypographyLevel.Headline}
+      type={ColorType.Accent}
+      uppercase={true}
+    >
       {props.children}
     </H1>
   );
@@ -198,7 +210,7 @@ export const MainTitle: React.FunctionComponent = (props) => {
 
 export const PrimaryTitle: React.FunctionComponent = (props) => {
   return (
-    <H2 size={FontSize.Large} type={ColorType.Accent} uppercase={true}>
+    <H2 level={TypographyLevel.Title} type={ColorType.Accent} uppercase={true}>
       {props.children}
     </H2>
   );
@@ -206,7 +218,11 @@ export const PrimaryTitle: React.FunctionComponent = (props) => {
 
 export const SecondaryTitle: React.FunctionComponent = (props) => {
   return (
-    <H3 size={FontSize.Medium} type={ColorType.Accent} uppercase={true}>
+    <H3
+      level={TypographyLevel.Subheading2}
+      type={ColorType.Accent}
+      uppercase={true}
+    >
       {props.children}
     </H3>
   );
@@ -214,7 +230,7 @@ export const SecondaryTitle: React.FunctionComponent = (props) => {
 
 export const Subtitle: React.FunctionComponent = (props) => {
   return (
-    <P size={FontSize.Default} type={ColorType.Caption} uppercase={true}>
+    <P level={TypographyLevel.Body2} type={ColorType.Caption} uppercase={true}>
       {props.children}
     </P>
   );

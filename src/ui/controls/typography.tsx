@@ -274,9 +274,9 @@ export const Title: React.FC<TextBlockProps> = (props) => {
     ...props,
   };
   return (
-    <TextBlock uppercase level={TypographyLevel.Title} {...rest}>
+    <H2 uppercase level={TypographyLevel.Title} {...rest}>
       {children}
-    </TextBlock>
+    </H2>
   );
 };
 

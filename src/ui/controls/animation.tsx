@@ -1,9 +1,98 @@
-import { keyframes, css } from "styled-components";
-import { FontStyle } from "../types/font-style";
-import { P } from "./typography";
+import { keyframes, css, DefaultTheme, ThemeProps } from "styled-components";
+import { TextColor } from "../types";
+import { getTextSelectedColor } from "./typography";
 
 const zoomScale = 1.1;
 
+export interface TextUppercaseProps {
+  uppercase?: boolean;
+}
+
+export const textUppercaseMixIn = (props: TextUppercaseProps): string => {
+  if (!props.uppercase) {
+    return "";
+  }
+
+  return `
+  text-transform: uppercase;
+`;
+};
+
+export interface TextSizeAnimationProps {
+  zoomTextOnHover?: boolean;
+  fontSize?: number;
+}
+
+const buildTransitionFast = (ccsPropName: string): string => {
+  return `
+  transition: ${ccsPropName} 0.5s ease;`;
+};
+
+export const zoomTextOnHoverMixIn = (props: TextSizeAnimationProps): string => {
+  if (!props.zoomTextOnHover || !props.fontSize) {
+    return "";
+  }
+
+  return `
+  font-size: ${props.fontSize}px;
+  ${buildTransitionFast("font-size")}
+
+  &:hover {
+    font-size: ${Math.floor(props.fontSize * zoomScale)}px;
+  }
+`;
+};
+
+export interface BorderBottomOnHoverProps {
+  borderBottomOnHover?: boolean;
+  borderSize?: number; // todo
+  borderColor: string;
+}
+
+export const borderBottomOnHoverMixIn = (
+  props: BorderBottomOnHoverProps
+): string => {
+  if (!props.borderBottomOnHover || !props.borderSize) {
+    return "";
+  }
+
+  return `
+  transition: border-bottom 0.5s cubic-bezier(0.2, -2, 0.8, 2);
+
+  &:hover {
+    border-bottom: ${props.borderSize}px solid ${props.borderColor};
+  }
+`;
+};
+
+export interface ColorChangeOnHoverProps {
+  onHoverColor?: TextColor;
+}
+
+export const colorChangeOnHoverMixIn = (
+  props: ColorChangeOnHoverProps & ThemeProps<DefaultTheme>
+): string => {
+  if (!props.onHoverColor) {
+    return "";
+  }
+
+  const colorToApply = getTextSelectedColor({
+    ...props,
+    textColor: props.onHoverColor, // important order, props may already contain textColor
+  });
+  return `
+  &:hover {
+    color: ${colorToApply};
+    ${buildTransitionFast("color")}
+  }
+`;
+};
+
+interface AppearAnimationProps {
+  speed: number;
+}
+
+// todo: below animations:
 const rotation = keyframes`
 0% {
     transform: rotate(0deg);
@@ -20,49 +109,38 @@ const translate = keyframes`
         transform: translate(0px, 0px);
     }`;
 
-const zoomHoverTextMixIn = css<FontStyle>`
-  font-size: ${(p) => Math.floor(p.fontSize * zoomScale)}px;
-`;
-
 const zoomHoverElementMixIn = css`
   transform: scale(${zoomScale});
 `;
 
-const colorChangeHoverPrimaryMixIn = css`
-  color: ${(p) => p.theme.colors.textAccent2};
-  transition: color 0.5s ease 0s;
+const opacityInvisible = `
+  opacity: 0;
 `;
 
-const colorChangeHoverSecondaryMixIn = css`
-  color: ${(p) => p.theme.colors.textAccent2};
-  transition: color 0.5s ease 0s;
+const opacityFullVisible = `
+  opacity: 1;
 `;
-
-interface AppearProps {
-  speed: number;
-}
 
 const appearCompleteMixIn = css`
   transform: translate(0px, 0px);
-  opacity: 1;
+  ${opacityFullVisible}
 `;
 
 const appearBottomInitialMixIn = css`
   transform: translate(0px, 120%);
-  opacity: 0;
+  ${opacityInvisible}
 `;
 
 const appearLeftInitialMixIn = css`
   transform: transform: translate(-80%, 0px);
-  opacity: 0;
+  ${opacityInvisible}
 `;
 
 const appearRightInitialMixIn = css`
-    transform: translate(50%, 0%)
-    opacity: 0;
+  transform: translate(50%, 0%) ${opacityInvisible};
 `;
 
-const appearSpeedMixin = css<AppearProps>`
+const appearSpeedMixin = css<AppearAnimationProps>`
   transition: all ${(p) => p.speed}s ease;
 `;
 

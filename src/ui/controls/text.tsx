@@ -3,7 +3,7 @@ import { TextColor, TypographyLevel } from "../types";
 import { TextBlock, TextBlockProps } from "./typography";
 
 export const MainTitle: React.FC<TextBlockProps> = (props) => {
-  const { children, ...rest } = props;
+  const { children, ...rest } = { onHoverColor: TextColor.Accent2, ...props };
   return (
     <TextBlock
       uppercase
@@ -17,7 +17,7 @@ export const MainTitle: React.FC<TextBlockProps> = (props) => {
 };
 
 export const Title: React.FC<TextBlockProps> = (props) => {
-  const { children, ...rest } = props;
+  const { children, ...rest } = { onHoverColor: TextColor.Accent1, ...props };
   return (
     <TextBlock
       uppercase
@@ -31,7 +31,7 @@ export const Title: React.FC<TextBlockProps> = (props) => {
 };
 
 export const Subtitle1: React.FC<TextBlockProps> = (props) => {
-  const { children, ...rest } = props;
+  const { children, ...rest } = { onHoverColor: TextColor.Accent2, ...props };
   return (
     <TextBlock
       uppercase
@@ -45,7 +45,7 @@ export const Subtitle1: React.FC<TextBlockProps> = (props) => {
 };
 
 export const Subtitle2: React.FC<TextBlockProps> = (props) => {
-  const { children, ...rest } = props;
+  const { children, ...rest } = { onHoverColor: TextColor.Accent2, ...props };
   return (
     <TextBlock
       uppercase

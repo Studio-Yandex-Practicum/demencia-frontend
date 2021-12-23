@@ -23,14 +23,11 @@ export interface FontColorProps {
 
 export interface TextBlockProps
   extends BoxProps,
-    FontLevelProps,
     FontColorProps,
     TextUppercaseProps,
     TextUnderlinedProps,
     ColorChangeOnHoverProps,
-    TextSizeAnimationProps {
-  children?: ReactNode;
-}
+    TextSizeAnimationProps {}
 
 export const getTextSelectedColor = (
   props: ThemeProps<DefaultTheme> & FontColorProps
@@ -120,16 +117,77 @@ export const typographyMixin = css<
   ${colorChangeOnHoverMixIn}
 `;
 
-export const P = styled.p.attrs(
-  (
-    props: ThemeProps<DefaultTheme> &
-      BoxProps &
-      FontColorProps &
-      TextUppercaseProps &
-      TextUnderlinedProps &
-      ColorChangeOnHoverProps &
-      TextSizeAnimationProps
-  ) => ({
+export const MainTitle = styled.h1.attrs(
+  (props: ThemeProps<DefaultTheme> & TextBlockProps) => ({
+    level: TypographyLevel.MainTitle,
+    uppercase: true,
+    textColor: TextColor.Accent1, // default values
+    hoverColor: TextColor.Accent2,
+    ...props,
+  })
+)`
+  ${typographyMixin}
+`;
+
+export const Title = styled.h2.attrs(
+  (props: ThemeProps<DefaultTheme> & TextBlockProps) => ({
+    level: TypographyLevel.Title,
+    uppercase: true,
+    textColor: TextColor.Accent2, // default values
+    hoverColor: TextColor.Accent1,
+    ...props,
+  })
+)`
+  ${typographyMixin}
+`;
+
+export const Subtitle1 = styled.h3.attrs(
+  (props: ThemeProps<DefaultTheme> & TextBlockProps) => ({
+    level: TypographyLevel.Subtitle1,
+    uppercase: true,
+    textColor: TextColor.Accent1, // default values
+    hoverColor: TextColor.Accent2,
+    ...props,
+  })
+)`
+  ${typographyMixin}
+`;
+
+export const Subtitle2 = styled.h4.attrs(
+  (props: ThemeProps<DefaultTheme> & TextBlockProps) => ({
+    level: TypographyLevel.Subtitle2,
+    uppercase: true,
+    textColor: TextColor.Accent1, // default values
+    hoverColor: TextColor.Accent2,
+    ...props,
+  })
+)`
+  ${typographyMixin}
+`;
+
+export const Subtitle3 = styled.h5.attrs(
+  (props: ThemeProps<DefaultTheme> & TextBlockProps) => ({
+    level: TypographyLevel.Subtitle3,
+    uppercase: true,
+    textColor: TextColor.Shadow,
+    ...props,
+  })
+)`
+  ${typographyMixin}
+`;
+
+export const Subtitle4 = styled.h6.attrs(
+  (props: ThemeProps<DefaultTheme> & TextBlockProps) => ({
+    level: TypographyLevel.Subtitle4,
+    uppercase: true,
+    ...props,
+  })
+)`
+  ${typographyMixin}
+`;
+
+export const Text1 = styled.p.attrs(
+  (props: ThemeProps<DefaultTheme> & TextBlockProps) => ({
     level: TypographyLevel.Text1,
     ...props,
   })
@@ -137,15 +195,8 @@ export const P = styled.p.attrs(
   ${typographyMixin}
 `;
 
-export const Span = styled.span.attrs(
-  (
-    props: ThemeProps<DefaultTheme> &
-      BoxProps &
-      FontColorProps &
-      TextUppercaseProps &
-      TextUnderlinedProps &
-      ColorChangeOnHoverProps
-  ) => ({
+export const Text2 = styled.p.attrs(
+  (props: ThemeProps<DefaultTheme> & TextBlockProps) => ({
     level: TypographyLevel.Text2,
     ...props,
   })
@@ -153,209 +204,26 @@ export const Span = styled.span.attrs(
   ${typographyMixin}
 `;
 
-export const H1 = styled.h1.attrs(
-  (
-    props: ThemeProps<DefaultTheme> &
-      BoxProps &
-      FontColorProps &
-      TextUppercaseProps &
-      TextUnderlinedProps &
-      ColorChangeOnHoverProps
-  ) => ({
-    level: TypographyLevel.MainTitle,
+export const Text3 = styled.p.attrs(
+  (props: ThemeProps<DefaultTheme> & TextBlockProps) => ({
+    level: TypographyLevel.Text3,
     ...props,
   })
 )`
   ${typographyMixin}
 `;
 
-export const H2 = styled.h2.attrs(
-  (
-    props: ThemeProps<DefaultTheme> &
-      BoxProps &
-      FontColorProps &
-      TextUppercaseProps &
-      TextUnderlinedProps &
-      ColorChangeOnHoverProps
-  ) => ({
-    level: TypographyLevel.Title,
+export const Text4 = styled.p.attrs(
+  (props: ThemeProps<DefaultTheme> & TextBlockProps) => ({
+    level: TypographyLevel.Text4,
     ...props,
   })
 )`
   ${typographyMixin}
 `;
 
-export const H3 = styled.h3.attrs(
-  (
-    props: ThemeProps<DefaultTheme> &
-      BoxProps &
-      FontColorProps &
-      TextUppercaseProps &
-      TextUnderlinedProps &
-      ColorChangeOnHoverProps
-  ) => ({
-    level: TypographyLevel.Subtitle1,
-    ...props,
-  })
-)`
+export const TextBlock = styled.div<
+  ThemeProps<DefaultTheme> & FontLevelProps & TextBlockProps
+>`
   ${typographyMixin}
 `;
-
-export const H4 = styled.h4.attrs(
-  (
-    props: ThemeProps<DefaultTheme> &
-      BoxProps &
-      FontColorProps &
-      TextUppercaseProps &
-      TextUnderlinedProps &
-      ColorChangeOnHoverProps
-  ) => ({
-    level: TypographyLevel.Subtitle2,
-    ...props,
-  })
-)`
-  ${typographyMixin}
-`;
-
-export const H5 = styled.h5.attrs(
-  (
-    props: ThemeProps<DefaultTheme> &
-      BoxProps &
-      FontColorProps &
-      TextUppercaseProps &
-      TextUnderlinedProps &
-      ColorChangeOnHoverProps
-  ) => ({
-    level: TypographyLevel.Subtitle3,
-    ...props,
-  })
-)`
-  ${typographyMixin}
-`;
-
-export const H6 = styled.h6.attrs(
-  (
-    props: ThemeProps<DefaultTheme> &
-      BoxProps &
-      FontColorProps &
-      TextUppercaseProps &
-      TextUnderlinedProps &
-      ColorChangeOnHoverProps
-  ) => ({
-    level: TypographyLevel.Subtitle4,
-    ...props,
-  })
-)`
-  ${typographyMixin}
-`;
-
-export const TextBlock: React.FC<TextBlockProps> = (props) => {
-  return <P {...props}>{props.children}</P>;
-};
-
-export const MainTitle: React.FC<TextBlockProps> = (props) => {
-  const { children, ...rest } = {
-    textColor: TextColor.Accent1, // default values
-    hoverColor: TextColor.Accent2,
-    ...props,
-  };
-
-  return (
-    <H1 uppercase level={TypographyLevel.MainTitle} {...rest}>
-      {children}
-    </H1>
-  );
-};
-
-export const Title: React.FC<TextBlockProps> = (props) => {
-  const { children, ...rest } = {
-    textColor: TextColor.Accent2,
-    hoverColor: TextColor.Accent1,
-    ...props,
-  };
-  return (
-    <H2 uppercase level={TypographyLevel.Title} {...rest}>
-      {children}
-    </H2>
-  );
-};
-
-export const Subtitle1: React.FC<TextBlockProps> = (props) => {
-  const { children, ...rest } = {
-    textColor: TextColor.Accent1,
-    hoverColor: TextColor.Accent2,
-    ...props,
-  };
-  return (
-    <H3 uppercase level={TypographyLevel.Subtitle1} {...rest}>
-      {children}
-    </H3>
-  );
-};
-
-export const Subtitle2: React.FC<TextBlockProps> = (props) => {
-  const { children, ...rest } = {
-    textColor: TextColor.Accent1,
-    hoverColor: TextColor.Accent2,
-    ...props,
-  };
-  return (
-    <H4 uppercase level={TypographyLevel.Subtitle2} {...rest}>
-      {children}
-    </H4>
-  );
-};
-
-export const Subtitle3: React.FC<TextBlockProps> = (props) => {
-  const { children, ...rest } = { textColor: TextColor.Shadow, ...props };
-  return (
-    <H5 uppercase level={TypographyLevel.Subtitle3} {...rest}>
-      {children}
-    </H5>
-  );
-};
-
-export const Subtitle4: React.FC<TextBlockProps> = (props) => {
-  const { children, ...rest } = props;
-  return (
-    <H6 uppercase level={TypographyLevel.Subtitle4} {...rest}>
-      {children}
-    </H6>
-  );
-};
-
-export const Text1: React.FC<TextBlockProps> = (props) => {
-  const { children, ...rest } = props;
-  return (
-    <P level={TypographyLevel.Text1} {...rest}>
-      {children}
-    </P>
-  );
-};
-
-export const Text2: React.FC<TextBlockProps> = (props) => {
-  const { children, ...rest } = props;
-  return (
-    <P level={TypographyLevel.Text2} {...rest}>
-      {children}
-    </P>
-  );
-};
-
-export const Text3: React.FC<TextBlockProps> = (props) => {
-  const { children, ...rest } = props;
-  return (
-    <P level={TypographyLevel.Text3} textColor={TextColor.Shadow} {...rest}>
-      {children}
-    </P>
-  );
-};
-
-export const Text4: React.FC<TextBlockProps> = (props) => {
-  const { children, ...rest } = props;
-  return (
-    <P level={TypographyLevel.Text4} {...rest}>
-      {children}
-    </P>
-  );
-};

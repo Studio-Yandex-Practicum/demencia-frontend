@@ -256,7 +256,7 @@ export const TextBlock: React.FC<TextBlockProps> = (props) => {
 export const MainTitle: React.FC<TextBlockProps> = (props) => {
   const { children, ...rest } = {
     textColor: TextColor.Accent1, // default values
-    onHoverColor: TextColor.Accent2,
+    hoverColor: TextColor.Accent2,
     ...props,
   };
 
@@ -270,7 +270,7 @@ export const MainTitle: React.FC<TextBlockProps> = (props) => {
 export const Title: React.FC<TextBlockProps> = (props) => {
   const { children, ...rest } = {
     textColor: TextColor.Accent2,
-    onHoverColor: TextColor.Accent1,
+    hoverColor: TextColor.Accent1,
     ...props,
   };
   return (
@@ -283,7 +283,7 @@ export const Title: React.FC<TextBlockProps> = (props) => {
 export const Subtitle1: React.FC<TextBlockProps> = (props) => {
   const { children, ...rest } = {
     textColor: TextColor.Accent1,
-    onHoverColor: TextColor.Accent2,
+    hoverColor: TextColor.Accent2,
     ...props,
   };
   return (
@@ -296,7 +296,7 @@ export const Subtitle1: React.FC<TextBlockProps> = (props) => {
 export const Subtitle2: React.FC<TextBlockProps> = (props) => {
   const { children, ...rest } = {
     textColor: TextColor.Accent1,
-    onHoverColor: TextColor.Accent2,
+    hoverColor: TextColor.Accent2,
     ...props,
   };
   return (

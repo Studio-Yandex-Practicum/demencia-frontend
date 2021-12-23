@@ -189,17 +189,17 @@ const UiKitPage: React.FC = () => {
           <Container size={ContainerSize.Large}>
             <Subtitle1>Animations</Subtitle1>
             <Box mb={3}>
-              <Text1 onHoverColor={TextColor.Accent1}>
-                Text change on mouse hover: onHoverColor=TextColor.Accent1
+              <Text1 hoverColor={TextColor.Accent1}>
+                Text change on mouse hover: hoverColor=TextColor.Accent1
               </Text1>
             </Box>
             <Box mb={3}>
               <Text1
                 textColor={TextColor.Accent1}
-                onHoverColor={TextColor.Accent2}
+                hoverColor={TextColor.Accent2}
               >
                 Text change on mouse hover: textColor=TextColor.Accent1
-                onHoverColor=TextColor.Accent2
+                hoverColor=TextColor.Accent2
               </Text1>
             </Box>
           </Container>

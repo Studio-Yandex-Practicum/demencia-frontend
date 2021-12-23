@@ -70,19 +70,19 @@ export const borderBottomOnHoverMixIn = (
 };
 
 export interface ColorChangeOnHoverProps {
-  onHoverColor?: TextColor;
+  hoverColor?: TextColor;
 }
 
 export const colorChangeOnHoverMixIn = (
   props: ColorChangeOnHoverProps & ThemeProps<DefaultTheme>
 ): string => {
-  if (!props.onHoverColor) {
+  if (!props.hoverColor) {
     return "";
   }
 
   const colorToApply = getTextSelectedColor({
     ...props,
-    textColor: props.onHoverColor, // important order, props may already contain textColor
+    textColor: props.hoverColor, // important order, props may already contain textColor
   });
   return `
   &:hover {

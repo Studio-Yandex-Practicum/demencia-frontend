@@ -16,7 +16,7 @@ import {
   MenuItems,
 } from "../../ui/controls";
 import { ContainerSize, TextColor, TypographyLevel } from "../../ui/types";
-import { BackgroundColor } from "../../ui/types/color-type.enum";
+import { BackgroundColor } from "../../ui/types/background-color.enum";
 import {
   MainTitle,
   Subtitle1,

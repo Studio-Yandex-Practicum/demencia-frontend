@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { ContainerSize } from "../types";
 import { ThemeProps } from "./layout";
-import { BackgroundColor } from "../types/color-type.enum";
+import { BackgroundColor } from "../types/background-color.enum";
 
 export interface ContainerProps {
   size?: ContainerSize;

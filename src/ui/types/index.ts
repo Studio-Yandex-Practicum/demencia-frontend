@@ -2,7 +2,7 @@ import { Palette } from "./palette";
 import { PaletteColor } from "./palette-color.enum";
 import { Layout } from "./layout";
 import { Typography } from "./typography";
-import { TextColor } from "./color-type.enum";
+import { TextColor } from "./text-color.enum";
 import { ScreenSize } from "./screen-size.enum";
 import { ContainerSize } from "./container-size.enum";
 import { ButtonSize } from "./button-size.enum";

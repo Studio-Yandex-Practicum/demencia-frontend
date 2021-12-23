@@ -20,7 +20,7 @@ const StyledBurgerButton = styled.button<{ isOpen: boolean }>`
 
   @media (max-width: 1290px) {
     display: flex;
-    position: fixed;
+    position: ${({ isOpen }) => (isOpen ? "fixed" : "absolute")};
     top: 30px;
     right: 25px;
   }

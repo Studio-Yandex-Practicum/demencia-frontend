@@ -55,30 +55,32 @@ const NewsGridPage: React.FC = () => {
       <Heading>НОВОСТИ</Heading>
       <NewsGridPuzzle
         puzzleImageSource={testGreenPuzzle}
-        newsGridPuzzleClass="news-grid__green-puzzle rotation"
+        newsGridPuzzleType="news-grid__green-puzzle rotation"
+        rotation
       />
       <NewsGridPuzzle
         puzzleImageSource={purpleSemicircle}
-        newsGridPuzzleClass="news-grid__semicircle _active"
+        newsGridPuzzleType="news-grid__semicircle"
       />
       <NewsGridPuzzle
         puzzleImageSource={purplePuzzle}
-        newsGridPuzzleClass="news-grid__purple-puzzle"
+        newsGridPuzzleType="news-grid__purple-puzzle"
       />
       <NewsGridSection>
-        <NewsGridBackground newsGridBackgroundClass="news-grid__background news-grid__background_theme_lightgreen _active" />
-        <NewsGridBackground newsGridBackgroundClass="news-grid__background news-grid__background_theme_purple _active" />
+        <NewsGridBackground backgroundType="news-grid__background news-grid__background_theme_lightgreen" />
+        <NewsGridBackground backgroundType="news-grid__background news-grid__background_theme_purple" />
         <NewsGridPuzzle
           puzzleImageSource={halfGreenPuzzle}
-          newsGridPuzzleClass="news-grid__half-green-puzzle _active"
+          newsGridPuzzleType="news-grid__half-green-puzzle"
         />
         <NewsGridPuzzle
           puzzleImageSource={purplePuzzleBottom}
-          newsGridPuzzleClass="news-grid__purple-puzzle-bottom rotation"
+          newsGridPuzzleType="news-grid__bottom-purple-puzzle"
+          rotation
         />
         <NewsGridPuzzle
           puzzleImageSource={halfGreenPuzzleTranslucent}
-          newsGridPuzzleClass="news-grid__half-green-puzzle-translucent _active"
+          newsGridPuzzleType="news-grid__translucent-half-green-puzzle"
         />
         <NewsGridList>
           <Card
@@ -88,6 +90,7 @@ const NewsGridPage: React.FC = () => {
             cardDateTimeText="01.10.2021"
             imageSource={cardImage}
             cardLinkTo="/article"
+            place="newsGrid"
           />
           <Card
             cardHeading="В Москве открылись пункты для диагностики болезни Альцгеймера и других когнитивных изменений"
@@ -96,6 +99,7 @@ const NewsGridPage: React.FC = () => {
             cardDateTimeText="01.10.2021"
             imageSource={cardImage}
             cardLinkTo="/article"
+            place="newsGrid"
           />
           <Card
             cardHeading="В Москве открылись пункты для диагностики болезни Альцгеймера и других когнитивных изменений"
@@ -104,6 +108,7 @@ const NewsGridPage: React.FC = () => {
             cardDateTimeText="01.10.2021"
             imageSource={cardImage}
             cardLinkTo="/article"
+            place="newsGrid"
           />
           <Card
             cardHeading="В Москве открылись пункты для диагностики болезни Альцгеймера и других когнитивных изменений"
@@ -112,6 +117,7 @@ const NewsGridPage: React.FC = () => {
             cardDateTimeText="01.10.2021"
             imageSource={cardImage}
             cardLinkTo="/article"
+            place="newsGrid"
           />
           <Card
             cardHeading="В Москве открылись пункты для диагностики болезни Альцгеймера и других когнитивных изменений"
@@ -120,6 +126,7 @@ const NewsGridPage: React.FC = () => {
             cardDateTimeText="01.10.2021"
             imageSource={cardImage}
             cardLinkTo="/article"
+            place="newsGrid"
           />
           <Card
             cardHeading="В Москве открылись пункты для диагностики болезни Альцгеймера и других когнитивных изменений"
@@ -128,6 +135,7 @@ const NewsGridPage: React.FC = () => {
             cardDateTimeText="01.10.2021"
             imageSource={cardImage}
             cardLinkTo="/article"
+            place="newsGrid"
           />
           <Card
             cardHeading="В Москве открылись пункты для диагностики болезни Альцгеймера и других когнитивных изменений"
@@ -136,6 +144,7 @@ const NewsGridPage: React.FC = () => {
             cardDateTimeText="01.10.2021"
             imageSource={cardImage}
             cardLinkTo="/article"
+            place="newsGrid"
           />
           <Card
             cardHeading="В Москве открылись пункты для диагностики болезни Альцгеймера и других когнитивных изменений"
@@ -144,6 +153,7 @@ const NewsGridPage: React.FC = () => {
             cardDateTimeText="01.10.2021"
             imageSource={cardImage}
             cardLinkTo="/article"
+            place="newsGrid"
           />
           <Card
             cardHeading="В Москве открылись пункты для диагностики болезни Альцгеймера и других когнитивных изменений"
@@ -152,6 +162,7 @@ const NewsGridPage: React.FC = () => {
             cardDateTimeText="01.10.2021"
             imageSource={cardImage}
             cardLinkTo="/article"
+            place="newsGrid"
           />
         </NewsGridList>
       </NewsGridSection>

@@ -23,11 +23,11 @@ export interface TextBlockProps extends TextProps {
   children?: ReactNode;
 }
 
-interface FontLevelProps extends ThemeProps {
+export interface FontLevelProps extends ThemeProps {
   level?: TypographyLevel;
 }
 
-interface FontColorProps extends ThemeProps {
+export interface FontColorProps extends ThemeProps {
   textColor?: TextColor;
 }
 

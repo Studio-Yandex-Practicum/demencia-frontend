@@ -9,30 +9,38 @@ import {
   TextUppercaseProps,
   zoomTextOnHoverMixIn,
 } from "./animation";
+import {
+  FontColorProps,
+  FontLevelProps,
+  typographyColorMixIn,
+  typographySizeMixIn,
+} from "./typography";
+import { TextColor, TypographyLevel } from "../types";
 
 const linkFontSize = 20; //todo: move to use typography
 export interface LinkProps {
+  level?: TypographyLevel;
+  textColor?: TextColor;
   children?: ReactNode;
 }
 
 export const linkMixin = css<
-  TextSizeAnimationProps & TextUppercaseProps & BorderBottomOnHoverProps
+  FontLevelProps &
+    FontColorProps &
+    TextSizeAnimationProps &
+    TextUppercaseProps &
+    BorderBottomOnHoverProps
 >`
   margin: 0;
   padding: 0;
   border: 0;
   vertical-align: baseline;
-  font-family: ${(p) =>
-    p.theme.layout.fontFamily}; // todo: use typography mixin
-  font-weight: ${(p) =>
-    p.theme.typography.subtitle2.fontWeight}; // todo: use typography mixin
-  line-height: ${(p) =>
-    p.theme.typography.subtitle2.lineHeight}; // todo: use typography mixin
   white-space: nowrap;
   text-decoration: none;
+  ${typographySizeMixIn};
   ${textUppercaseMixIn};
+  ${typographyColorMixIn};
   ${cursorMixin};
-  color: ${(p) => p.theme.colors.textPrimary};
   ${borderBottomOnHoverMixIn}
   ${zoomTextOnHoverMixIn}
 `;
@@ -50,5 +58,6 @@ export const A = styled.a.attrs((props: ThemeProps<DefaultTheme>) => ({
 `;
 
 export const Link: React.FC<LinkProps> = (props) => {
-  return <A>{props.children}</A>;
+  const typographyLevel = props.level || TypographyLevel.Subtitle3;
+  return <A level={typographyLevel}>{props.children}</A>;
 };

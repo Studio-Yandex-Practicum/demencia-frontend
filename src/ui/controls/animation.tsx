@@ -1,6 +1,6 @@
 import { keyframes, css, DefaultTheme, ThemeProps } from "styled-components";
-import { TextColor } from "../types";
-import { getTextSelectedColor } from "./typography";
+import { TextColor, TypographyLevel } from "../types";
+import { FontLevelProps, getTextSelectedColor } from "./typography";
 
 const zoomScale = 1.1;
 
@@ -20,7 +20,6 @@ export const textUppercaseMixIn = (props: TextUppercaseProps): string => {
 
 export interface TextSizeAnimationProps {
   zoomTextOnHover?: boolean;
-  fontSize?: number;
 }
 
 const buildTransitionFast = (ccsPropName: string): string => {
@@ -28,17 +27,22 @@ const buildTransitionFast = (ccsPropName: string): string => {
   transition: ${ccsPropName} 0.5s ease;`;
 };
 
-export const zoomTextOnHoverMixIn = (props: TextSizeAnimationProps): string => {
-  if (!props.zoomTextOnHover || !props.fontSize) {
+export const zoomTextOnHoverMixIn = (
+  props: ThemeProps<DefaultTheme> & TextSizeAnimationProps & FontLevelProps
+): string => {
+  const level = props.level || TypographyLevel.Text1;
+  if (!props.zoomTextOnHover || !props.level) {
     return "";
   }
 
+  const fontSize = props.theme.typography[level].fontSize;
+
   return `
-  font-size: ${props.fontSize}px;
+  font-size: ${fontSize}px;
   ${buildTransitionFast("font-size")}
 
   &:hover {
-    font-size: ${Math.floor(props.fontSize * zoomScale)}px;
+    font-size: ${Math.floor(fontSize * zoomScale)}px;
   }
 `;
 };

@@ -17,7 +17,6 @@ import {
 } from "./typography";
 import { TextColor, TypographyLevel } from "../types";
 
-const linkFontSize = 20; //todo: move to use typography
 export interface LinkProps {
   level?: TypographyLevel;
   textColor?: TextColor;
@@ -46,12 +45,12 @@ export const linkMixin = css<
 `;
 
 export const A = styled.a.attrs((props: ThemeProps<DefaultTheme>) => ({
-  textUppercase: true,
+  uppercase: true,
   zoomTextOnHover: true,
   borderBottomOnHover: true,
   borderSize: props.theme.layout.borderSize,
   borderColor: props.theme.colors.textAccent1,
-  fontSize: linkFontSize,
+  level: TypographyLevel.Subtitle3,
   ...props,
 }))`
   ${linkMixin}

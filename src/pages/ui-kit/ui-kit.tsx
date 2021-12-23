@@ -1,6 +1,5 @@
 import React from "react";
 import { Layout, Main, Section } from "../../ui/controls/layout";
-import { TextBlock } from "../../ui/controls/typography";
 import {
   Box,
   BurgerButton,
@@ -18,6 +17,7 @@ import {
 import { ContainerSize, TextColor, TypographyLevel } from "../../ui/types";
 import { BackgroundColor } from "../../ui/types/background-color.enum";
 import {
+  TextBlock,
   MainTitle,
   Subtitle1,
   Subtitle2,
@@ -28,7 +28,7 @@ import {
   Text3,
   Text4,
   Title,
-} from "../../ui/controls/text";
+} from "../../ui/controls/typography";
 // TODO: this is a temporary page to display the ui components
 const UiKitPage: React.FC = () => {
   return (
@@ -42,7 +42,7 @@ const UiKitPage: React.FC = () => {
           <Menu>
             <MenuItems>
               <MenuItem>
-                <Link>О ДЕМЕНЦИИ</Link>
+                <Link>О деменции</Link>
               </MenuItem>
               <MenuItem>
                 <Link>ПАРТНЕРЫ</Link>

@@ -1,6 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import App from "./components/app/app";
+import App from "./components/app";
 import reportWebVitals from "./reportWebVitals";
 // todo: this should be imported as module
 import { GlobalStyle } from "./ui/controls/style";

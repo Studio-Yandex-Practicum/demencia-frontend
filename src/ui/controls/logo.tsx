@@ -13,7 +13,7 @@ interface LogoBlockProps {
 export const Logo = styled.img`
   background-size: cover;
   background-repeat: no-repeat;
-  ${cursorMixin}
+  ${cursorMixin};
   width: 220px; // todo: move this to container
   height: 164px; // todo: move this to container
   margin: 0;

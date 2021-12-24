@@ -1,6 +1,6 @@
 import React, { ReactNode } from "react";
 import styled, { css, DefaultTheme, ThemeProps } from "styled-components";
-import { TextColor, TypographyLevel } from "../types";
+import { PaletteColor, TextColor, TypographyLevel } from "../types";
 import {
   colorChangeOnHoverMixIn,
   ColorChangeOnHoverProps,

@@ -1,4 +1,3 @@
-import React, { ReactNode } from "react";
 import { Link as RouterLink } from "react-router-dom";
 import styled, { css, DefaultTheme, ThemeProps } from "styled-components";
 import { cursorMixin } from "./cursor";

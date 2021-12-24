@@ -125,17 +125,17 @@ const UiKitPage: React.FC = () => {
         <Container size={ContainerSize.Large}>
           <Subtitle1>Links</Subtitle1>
           <Box mb={2}>
-            <Link>Пройти тест</Link>
+            <Link to="/ui-kit">Пройти тест</Link>
             <Menu>
               <MenuItems vertical={true}>
                 <MenuItem>
-                  <Link>Тест на деменцию</Link>
+                  <Link to="/ui-kit">Тест на деменцию</Link>
                 </MenuItem>
                 <MenuItem>
-                  <Link>Центры профилактики</Link>
+                  <Link to="/ui-kit">Центры профилактики</Link>
                 </MenuItem>
                 <MenuItem>
-                  <Link>Знания</Link>
+                  <Link to="/ui-kit">Знания</Link>
                 </MenuItem>
               </MenuItems>
             </Menu>

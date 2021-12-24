@@ -1,4 +1,5 @@
 import React, { ReactNode } from "react";
+import { Link as RouterLink } from "react-router-dom";
 import styled, { css, DefaultTheme, ThemeProps } from "styled-components";
 import { cursorMixin } from "./cursor";
 import {
@@ -15,13 +16,7 @@ import {
   typographyColorMixIn,
   typographySizeMixIn,
 } from "./typography";
-import { TextColor, TypographyLevel } from "../types";
-
-export interface LinkProps {
-  level?: TypographyLevel;
-  textColor?: TextColor;
-  children?: ReactNode;
-}
+import { TypographyLevel } from "../types";
 
 export const linkMixin = css<
   FontLevelProps &
@@ -44,19 +39,23 @@ export const linkMixin = css<
   ${zoomTextOnHoverMixIn}
 `;
 
-export const A = styled.a.attrs((props: ThemeProps<DefaultTheme>) => ({
-  uppercase: true,
-  zoomTextOnHover: true,
-  borderBottomOnHover: true,
-  borderSize: props.theme.layout.borderSize,
-  borderColor: props.theme.colors.textAccent1,
-  level: TypographyLevel.Subtitle3,
-  ...props,
-}))`
+export const Link = styled(RouterLink).attrs(
+  (
+    props: ThemeProps<DefaultTheme> &
+      FontLevelProps &
+      FontColorProps &
+      TextSizeAnimationProps &
+      TextUppercaseProps &
+      BorderBottomOnHoverProps
+  ) => ({
+    uppercase: true,
+    zoomTextOnHover: true,
+    borderBottomOnHover: true,
+    borderSize: props.theme.layout.borderSize,
+    borderColor: props.theme.colors.textAccent1,
+    level: TypographyLevel.Subtitle3,
+    ...props,
+  })
+)`
   ${linkMixin}
 `;
-
-export const Link: React.FC<LinkProps> = (props) => {
-  const typographyLevel = props.level || TypographyLevel.Subtitle3;
-  return <A level={typographyLevel}>{props.children}</A>;
-};

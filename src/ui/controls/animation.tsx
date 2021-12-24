@@ -50,13 +50,13 @@ export const zoomTextOnHoverMixIn = (
 export interface BorderBottomOnHoverProps {
   borderBottomOnHover?: boolean;
   borderSize?: number; // todo
-  borderColor: string;
+  borderColor?: string;
 }
 
 export const borderBottomOnHoverMixIn = (
   props: BorderBottomOnHoverProps
 ): string => {
-  if (!props.borderBottomOnHover || !props.borderSize) {
+  if (!props.borderBottomOnHover || !props.borderSize || !props.borderColor) {
     return "";
   }
 

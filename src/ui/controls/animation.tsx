@@ -92,10 +92,6 @@ export const colorChangeOnHoverMixIn = (
 `;
 };
 
-interface AppearAnimationProps {
-  speed: number;
-}
-
 // todo: below animations:
 const rotation = keyframes`
 0% {
@@ -115,37 +111,6 @@ const translate = keyframes`
 
 const zoomHoverElementMixIn = css`
   transform: scale(${zoomScale});
-`;
-
-const opacityInvisible = `
-  opacity: 0;
-`;
-
-const opacityFullVisible = `
-  opacity: 1;
-`;
-
-const appearCompleteMixIn = css`
-  transform: translate(0px, 0px);
-  ${opacityFullVisible}
-`;
-
-const appearBottomInitialMixIn = css`
-  transform: translate(0px, 120%);
-  ${opacityInvisible}
-`;
-
-const appearLeftInitialMixIn = css`
-  transform: transform: translate(-80%, 0px);
-  ${opacityInvisible}
-`;
-
-const appearRightInitialMixIn = css`
-  transform: translate(50%, 0%) ${opacityInvisible};
-`;
-
-const appearSpeedMixin = css<AppearAnimationProps>`
-  transition: all ${(p) => p.speed}s ease;
 `;
 
 export { rotation, translate, zoomHoverElementMixIn };

@@ -31,7 +31,7 @@ export interface TextBlockProps
 
 export const getTextSelectedColor = (
   props: ThemeProps<DefaultTheme> & FontColorProps
-) => {
+): PaletteColor | null => {
   const type = props.textColor || TextColor.Primary;
   const { colors } = props.theme;
 

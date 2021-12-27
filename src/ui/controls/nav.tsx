@@ -3,6 +3,8 @@ import { ScreenSize } from "../types";
 
 export interface MenuProps {
   vertical?: boolean;
+  gap?: number;
+  gapSmallScreen?: number;
 }
 
 enum MenuGap {
@@ -16,11 +18,11 @@ export const MenuItems = styled.ul<MenuProps>`
   display: flex;
   ${(p) => (!p.vertical ? "" : "flex-direction:column;")}
   list-style: none;
-  gap: ${MenuGap.L}px;
+  gap: ${(p) => p.gap || MenuGap.L}px;
 
   @media screen and (max-width: ${ScreenSize.Small}px) {
     display: none;
-    gap: ${MenuGap.Sm}px;
+    gap: ${(p) => p.gapSmallScreen || MenuGap.Sm}px;
   }
 `;
 

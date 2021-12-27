@@ -127,7 +127,7 @@ const UiKitPage: React.FC = () => {
           <Box mb={2}>
             <Link to="/ui-kit">Пройти тест</Link>
             <Menu>
-              <MenuItems vertical={true}>
+              <MenuItems vertical={true} gap={18} gapSmallScreen={12}>
                 <MenuItem>
                   <Link to="/ui-kit">Тест на деменцию</Link>
                 </MenuItem>

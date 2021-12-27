@@ -21,19 +21,19 @@ const PageHeader: React.FC = () => {
         <Menu>
           <MenuItems>
             <MenuItem>
-              <Link to="/">О деменции</Link>
+              <Link to="/#info">О деменции</Link>
             </MenuItem>
             <MenuItem>
-              <Link to="/">Партнеры</Link>
+              <Link to="/#sponsors">Партнеры</Link>
             </MenuItem>
             <MenuItem>
-              <Link to="/">Новости</Link>
+              <Link to="/news-grid">Новости</Link>
             </MenuItem>
             <MenuItem>
-              <Link to="/">О фонде</Link>
+              <Link to="/#about">О фонде</Link>
             </MenuItem>
             <MenuItem>
-              <Link to="/">Контакты</Link>
+              <Link to="/#about">Контакты</Link>
             </MenuItem>
           </MenuItems>
         </Menu>

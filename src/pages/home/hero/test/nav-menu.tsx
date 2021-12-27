@@ -7,19 +7,13 @@ const NavMenu: React.FC = () => {
     <Menu>
       <MenuItems vertical={true}>
         <MenuItem>
-          <Link level={TypographyLevel.Text4}>О деменции</Link>
+          <Link level={TypographyLevel.Text4}>тест на деменцию</Link>
         </MenuItem>
         <MenuItem>
-          <Link level={TypographyLevel.Text4}>Партнеры</Link>
+          <Link level={TypographyLevel.Text4}>центры профилактики</Link>
         </MenuItem>
         <MenuItem>
-          <Link level={TypographyLevel.Text4}>Новости</Link>
-        </MenuItem>
-        <MenuItem>
-          <Link level={TypographyLevel.Text4}>О фонде</Link>
-        </MenuItem>
-        <MenuItem>
-          <Link level={TypographyLevel.Text4}>Контакты</Link>
+          <Link level={TypographyLevel.Text4}>подробнее о деменции</Link>
         </MenuItem>
       </MenuItems>
     </Menu>

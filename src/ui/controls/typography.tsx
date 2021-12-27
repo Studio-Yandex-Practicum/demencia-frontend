@@ -1,12 +1,15 @@
 import React, { ReactNode } from "react";
 import styled, { css, DefaultTheme, ThemeProps } from "styled-components";
 import { PaletteColor, TextColor, TypographyLevel } from "../types";
-import { TextUppercaseProps, textUppercaseMixIn } from "./mixins";
 import {
+  TextUppercaseProps,
+  textUppercaseMixIn,
+  FontColorProps,
+  getTextSelectedColor,
   colorChangeOnHoverMixIn,
   ColorChangeOnHoverProps,
-  TextSizeAnimationProps,
-} from "./animation";
+} from "./mixins";
+import { TextSizeAnimationProps } from "./animation";
 import { BoxProps, getBoxStyles } from "./box";
 
 interface TextUnderlinedProps {
@@ -15,11 +18,6 @@ interface TextUnderlinedProps {
 export interface FontLevelProps {
   level?: TypographyLevel;
 }
-
-export interface FontColorProps {
-  textColor?: TextColor;
-}
-
 export interface TextBlockProps
   extends BoxProps,
     FontColorProps,
@@ -27,39 +25,6 @@ export interface TextBlockProps
     TextUnderlinedProps,
     ColorChangeOnHoverProps,
     TextSizeAnimationProps {}
-
-export const getTextSelectedColor = (
-  props: ThemeProps<DefaultTheme> & FontColorProps
-): PaletteColor | null => {
-  const type = props.textColor || TextColor.Primary;
-  const { colors } = props.theme;
-
-  switch (type) {
-    case TextColor.Primary: {
-      return colors.textPrimary;
-    }
-
-    case TextColor.Secondary: {
-      return colors.textSecondary;
-    }
-
-    case TextColor.Accent1: {
-      return colors.textAccent1;
-    }
-
-    case TextColor.Accent2: {
-      return colors.textAccent2;
-    }
-
-    case TextColor.Shadow: {
-      return colors.textShadow;
-    }
-
-    default: {
-      return null;
-    }
-  }
-};
 
 export const textUnderlinedMixin = (props: TextUnderlinedProps): string => {
   if (!props.underlined) {

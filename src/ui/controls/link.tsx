@@ -1,6 +1,10 @@
 import { Link as RouterLink } from "react-router-dom";
 import styled, { css, DefaultTheme, ThemeProps } from "styled-components";
-import { TextUppercaseProps, textUppercaseMixIn } from "./mixins";
+import {
+  TextUppercaseProps,
+  textUppercaseMixIn,
+  FontColorProps,
+} from "./mixins";
 import { cursorMixin } from "./cursor";
 import {
   borderBottomOnHoverMixIn,
@@ -9,7 +13,6 @@ import {
   zoomTextOnHoverMixIn,
 } from "./animation";
 import {
-  FontColorProps,
   FontLevelProps,
   typographyColorMixIn,
   typographySizeMixIn,

@@ -15,6 +15,8 @@ enum MenuGap {
 export const MenuItem = styled.li``;
 
 export const MenuItems = styled.ul<MenuProps>`
+  margin: 0;
+  padding: 0;
   display: flex;
   ${(p) => (!p.vertical ? "" : "flex-direction:column;")}
   list-style: none;

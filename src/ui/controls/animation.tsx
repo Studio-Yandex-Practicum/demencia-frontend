@@ -28,6 +28,24 @@ export const zoomTextOnHoverMixIn = (
 `;
 };
 
+export interface ElementAnimationProps {
+  zoomOnHover?: boolean;
+}
+
+export const zoomOnHoverMixIn = (props: ElementAnimationProps): string => {
+  if (!props.zoomOnHover) {
+    return "";
+  }
+
+  return `
+  ${buildTransitionFast("all")}
+
+  &:hover {
+    transform: scale(${zoomScale});
+  }
+`;
+};
+
 export interface BorderBottomOnHoverProps {
   borderBottomOnHover?: boolean;
   borderSize?: number; // todo
@@ -67,8 +85,4 @@ const translate = keyframes`
         transform: translate(0px, 0px);
     }`;
 
-const zoomHoverElementMixIn = css`
-  transform: scale(${zoomScale});
-`;
-
-export { rotation, translate, zoomHoverElementMixIn };
+export { rotation, translate };

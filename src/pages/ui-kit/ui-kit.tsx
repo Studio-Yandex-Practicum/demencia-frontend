@@ -10,7 +10,7 @@ import {
   MenuItem,
   MenuItems,
 } from "../../ui/controls";
-import { ContainerSize, TextColor } from "../../ui/types";
+import { ContainerSize, TextColor, ButtonType } from "../../ui/types";
 import { BackgroundColor } from "../../ui/types/background-color.enum";
 import {
   MainTitle,
@@ -109,15 +109,15 @@ const UiKitPage: React.FC = () => {
             <Subtitle1>Buttons</Subtitle1>
           </Box>
           <Box mb={2}>
-            <Button primary uppercase>
-              Primary Button
-            </Button>
+            <Button uppercase>Primary Button</Button>
           </Box>
           <Box mb={2}>
             <LinkButton>LinkButton</LinkButton>
           </Box>
           <Box mb={2}>
-            <Button>Button</Button>
+            <Button type={ButtonType.Secondary} ghost>
+              Button
+            </Button>
           </Box>
         </Container>
       </Section>

@@ -5,5 +5,5 @@ export interface ButtonStyle {
   borderRadius?: number;
   borderColor?: PaletteColor;
   color: PaletteColor;
-  backgroundColor: PaletteColor;
+  backgroundColor?: PaletteColor;
 }

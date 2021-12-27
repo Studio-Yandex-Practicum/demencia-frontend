@@ -25,7 +25,8 @@ const themeLight: DefaultTheme = {
   },
   buttons: {
     primary: {
-      borderRadius: 25,
+      borderWidth: 1,
+      borderRadius: 60,
       color: PaletteColor.White,
       backgroundColor: PaletteColor.DarkPurple,
     },
@@ -33,12 +34,11 @@ const themeLight: DefaultTheme = {
       borderWidth: 2,
       borderRadius: 30,
       borderColor: PaletteColor.Green,
-      color: PaletteColor.Green,
-      backgroundColor: PaletteColor.White,
+      color: PaletteColor.White,
+      backgroundColor: PaletteColor.Green,
     },
     link: {
       color: PaletteColor.DarkPurple,
-      backgroundColor: PaletteColor.White,
     },
   },
   colors: defaultPalette /* todo */,

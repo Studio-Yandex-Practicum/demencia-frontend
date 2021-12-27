@@ -6,6 +6,11 @@ export const buildTransitionFast = (ccsPropName: string): string => {
     transition: ${ccsPropName} 0.5s ease;`;
 };
 
+export const buildTransitionSimple = (ccsPropName: string): string => {
+  return `
+    transition: ${ccsPropName} 1s ease;`;
+};
+
 export interface TextUppercaseProps {
   uppercase?: boolean;
 }

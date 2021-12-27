@@ -10,6 +10,7 @@ import { ButtonStyle } from "./button-style";
 import { ButtonType } from "./button-type.enum";
 import { TypographyLevel } from "./typography-level.enum";
 import { ColorTheme } from "./color-theme";
+import { ButtonShape } from "./button-shape.enum";
 
 export {
   PaletteColor,
@@ -18,6 +19,7 @@ export {
   ContainerSize,
   ButtonSize,
   ButtonType,
+  ButtonShape,
   TypographyLevel,
 };
 export type { Layout, Typography, Palette, ButtonStyle, ColorTheme };

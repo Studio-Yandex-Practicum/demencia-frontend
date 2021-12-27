@@ -1,12 +1,11 @@
 import React, { ReactNode } from "react";
 import styled, { css, DefaultTheme, ThemeProps } from "styled-components";
 import { PaletteColor, TextColor, TypographyLevel } from "../types";
+import { TextUppercaseProps, textUppercaseMixIn } from "./mixins";
 import {
   colorChangeOnHoverMixIn,
   ColorChangeOnHoverProps,
   TextSizeAnimationProps,
-  textUppercaseMixIn,
-  TextUppercaseProps,
 } from "./animation";
 import { BoxProps, getBoxStyles } from "./box";
 

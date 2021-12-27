@@ -3,21 +3,6 @@ import { TextColor, TypographyLevel } from "../types";
 import { FontLevelProps, getTextSelectedColor } from "./typography";
 
 const zoomScale = 1.1;
-
-export interface TextUppercaseProps {
-  uppercase?: boolean;
-}
-
-export const textUppercaseMixIn = (props: TextUppercaseProps): string => {
-  if (!props.uppercase) {
-    return "";
-  }
-
-  return `
-  text-transform: uppercase;
-`;
-};
-
 export interface TextSizeAnimationProps {
   zoomTextOnHover?: boolean;
 }

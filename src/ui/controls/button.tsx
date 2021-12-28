@@ -1,11 +1,6 @@
 import styled, { css, DefaultTheme, ThemeProps } from "styled-components";
 import { BoxProps, getBoxStyles } from "./box";
-import { typographySizeMixIn } from "./typography";
-import {
-  shadowHoverButtonMixIn,
-  shadowHoverLargeButtonMixIn,
-  shadowLargeButtonMixIn,
-} from "./shadows";
+import { FontLevelProps, typographySizeMixIn } from "./typography";
 import { cursorMixin } from "./cursor";
 import {
   ButtonShape,
@@ -13,12 +8,20 @@ import {
   ButtonType,
   TypographyLevel,
 } from "../types";
-import { TextUppercaseProps, textUppercaseMixIn } from "./mixins";
+import {
+  TextUppercaseProps,
+  textUppercaseMixIn,
+  FontColorProps,
+} from "./mixins";
 import { ElementAnimationProps, zoomOnHoverMixIn } from "./animation";
-import { ReactNode } from "react";
+import { PropsWithChildren, ReactNode } from "react";
+import { BackgroundColorProps } from "./container";
 
 interface ButtonProps
   extends BoxProps,
+    FontColorProps,
+    FontLevelProps,
+    BackgroundColorProps,
     TextUppercaseProps,
     ElementAnimationProps {
   fullWidth?: boolean;
@@ -54,10 +57,14 @@ const buildButtonStyleMixIn = (
     ${borderRadius}
     border: ${borderValue};
     
-    color: ${!props.ghost ? buttonStyle.color : buttonStyle.backgroundColor}};
+    color: ${
+      props.textColor || !props.ghost
+        ? buttonStyle.color
+        : buttonStyle.backgroundColor
+    }};
     background-color: ${
       !props.ghost
-        ? buttonStyle.backgroundColor || "transparent"
+        ? props.bgColor || buttonStyle.backgroundColor || "transparent"
         : "transparent"
     };
   `;
@@ -94,7 +101,9 @@ export const Button = styled.button.attrs((props: ButtonProps) => ({
   ${buttonBaseMixin}
 `;
 
-export const LinkButton: React.FC<ButtonProps> = (props) => {
+export const LinkButton: React.FC<ButtonProps> = (
+  props: PropsWithChildren<ButtonProps>
+) => {
   return (
     <Button type={ButtonType.Link} level={TypographyLevel.Text1}>
       {props.children}

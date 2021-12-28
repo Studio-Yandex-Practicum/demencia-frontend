@@ -1,7 +1,7 @@
 import { Button } from "../controls/button";
 import { Box } from "../controls/box";
 import { ComponentStory, ComponentMeta } from "@storybook/react";
-import { ButtonType } from "../types";
+import { ButtonType, TypographyLevel } from "../types";
 
 export default {
   title: "Button",
@@ -10,6 +10,11 @@ export default {
 
 const Template: ComponentStory<typeof Button> = (args) => (
   <>
+    <Box p={2}>
+      <Button uppercase level={TypographyLevel.Subtitle2} {...args}>
+        Начать тестирование
+      </Button>
+    </Box>
     <Box p={2}>
       <Button uppercase {...args}>
         Пройти Тест

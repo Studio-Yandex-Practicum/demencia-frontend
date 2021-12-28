@@ -53,7 +53,7 @@ export const Link = styled(RouterLink).attrs(
     zoomTextOnHover: true,
     borderBottomOnHover: true,
     borderSize: props.theme.layout.borderSize,
-    borderColor: props.theme.colors.textAccent1,
+    borderColor: props.theme.colors.backgroundAlt1,
     level: TypographyLevel.Subtitle3,
     ...props,
   })

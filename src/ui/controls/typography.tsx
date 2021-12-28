@@ -1,6 +1,5 @@
-import React, { ReactNode } from "react";
 import styled, { css, DefaultTheme, ThemeProps } from "styled-components";
-import { PaletteColor, TextColor, TypographyLevel } from "../types";
+import { TextColor, TypographyLevel } from "../types";
 import {
   TextUppercaseProps,
   textUppercaseMixIn,

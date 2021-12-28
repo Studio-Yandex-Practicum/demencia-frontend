@@ -1,3 +1,4 @@
+import React from "react";
 import {
   Box,
   BurgerButton,
@@ -8,32 +9,31 @@ import {
   MenuItem,
   MenuItems,
 } from "../ui/controls";
-import React from "react";
 
 const PageHeader: React.FC = () => {
   return (
     <Header>
       <BurgerButton />
-      <Box mt={3} ml={12}>
-        <LogoBlock altText="Логотип" link="#" />
+      <Box mt={3} ml={5}>
+        <LogoBlock altText="Логотип" to="/" />
       </Box>
       <Box mt={4} mr={4}>
         <Menu>
           <MenuItems>
             <MenuItem>
-              <Link>О деменции</Link>
+              <Link to="/#info">О деменции</Link>
             </MenuItem>
             <MenuItem>
-              <Link>Партнеры</Link>
+              <Link to="/#sponsors">Партнеры</Link>
             </MenuItem>
             <MenuItem>
-              <Link>Новости</Link>
+              <Link to="/news-grid">Новости</Link>
             </MenuItem>
             <MenuItem>
-              <Link>О фонде</Link>
+              <Link to="/#about">О фонде</Link>
             </MenuItem>
             <MenuItem>
-              <Link>Контакты</Link>
+              <Link to="/#about">Контакты</Link>
             </MenuItem>
           </MenuItems>
         </Menu>

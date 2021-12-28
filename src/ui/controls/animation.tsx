@@ -1,31 +1,12 @@
 import { keyframes, css, DefaultTheme, ThemeProps } from "styled-components";
 import { TextColor, TypographyLevel } from "../types";
-import { FontLevelProps, getTextSelectedColor } from "./typography";
+import { FontLevelProps } from "./typography";
+import { buildTransitionFast } from "./mixins";
 
 const zoomScale = 1.1;
-
-export interface TextUppercaseProps {
-  uppercase?: boolean;
-}
-
-export const textUppercaseMixIn = (props: TextUppercaseProps): string => {
-  if (!props.uppercase) {
-    return "";
-  }
-
-  return `
-  text-transform: uppercase;
-`;
-};
-
 export interface TextSizeAnimationProps {
   zoomTextOnHover?: boolean;
 }
-
-const buildTransitionFast = (ccsPropName: string): string => {
-  return `
-  transition: ${ccsPropName} 0.5s ease;`;
-};
 
 export const zoomTextOnHoverMixIn = (
   props: ThemeProps<DefaultTheme> & TextSizeAnimationProps & FontLevelProps
@@ -47,16 +28,34 @@ export const zoomTextOnHoverMixIn = (
 `;
 };
 
+export interface ElementAnimationProps {
+  zoomOnHover?: boolean;
+}
+
+export const zoomOnHoverMixIn = (props: ElementAnimationProps): string => {
+  if (!props.zoomOnHover) {
+    return "";
+  }
+
+  return `
+  ${buildTransitionFast("all")}
+
+  &:hover {
+    transform: scale(${zoomScale});
+  }
+`;
+};
+
 export interface BorderBottomOnHoverProps {
   borderBottomOnHover?: boolean;
   borderSize?: number; // todo
-  borderColor: string;
+  borderColor?: string;
 }
 
 export const borderBottomOnHoverMixIn = (
   props: BorderBottomOnHoverProps
 ): string => {
-  if (!props.borderBottomOnHover || !props.borderSize) {
+  if (!props.borderBottomOnHover || !props.borderSize || !props.borderColor) {
     return "";
   }
 
@@ -65,29 +64,6 @@ export const borderBottomOnHoverMixIn = (
 
   &:hover {
     border-bottom: ${props.borderSize}px solid ${props.borderColor};
-  }
-`;
-};
-
-export interface ColorChangeOnHoverProps {
-  hoverColor?: TextColor;
-}
-
-export const colorChangeOnHoverMixIn = (
-  props: ColorChangeOnHoverProps & ThemeProps<DefaultTheme>
-): string => {
-  if (!props.hoverColor) {
-    return "";
-  }
-
-  const colorToApply = getTextSelectedColor({
-    ...props,
-    textColor: props.hoverColor, // important order, props may already contain textColor
-  });
-  return `
-  &:hover {
-    color: ${colorToApply};
-    ${buildTransitionFast("color")}
   }
 `;
 };
@@ -109,8 +85,4 @@ const translate = keyframes`
         transform: translate(0px, 0px);
     }`;
 
-const zoomHoverElementMixIn = css`
-  transform: scale(${zoomScale});
-`;
-
-export { rotation, translate, zoomHoverElementMixIn };
+export { rotation, translate };

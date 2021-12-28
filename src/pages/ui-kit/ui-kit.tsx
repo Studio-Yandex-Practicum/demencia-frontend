@@ -10,7 +10,7 @@ import {
   MenuItem,
   MenuItems,
 } from "../../ui/controls";
-import { ContainerSize, TextColor } from "../../ui/types";
+import { ContainerSize, TextColor, ButtonType } from "../../ui/types";
 import { BackgroundColor } from "../../ui/types/background-color.enum";
 import {
   MainTitle,
@@ -109,15 +109,15 @@ const UiKitPage: React.FC = () => {
             <Subtitle1>Buttons</Subtitle1>
           </Box>
           <Box mb={2}>
-            <Button primary uppercase>
-              Primary Button
-            </Button>
+            <Button uppercase>Primary Button</Button>
           </Box>
           <Box mb={2}>
             <LinkButton>LinkButton</LinkButton>
           </Box>
           <Box mb={2}>
-            <Button>Button</Button>
+            <Button type={ButtonType.Secondary} ghost>
+              Button
+            </Button>
           </Box>
         </Container>
       </Section>
@@ -125,17 +125,17 @@ const UiKitPage: React.FC = () => {
         <Container size={ContainerSize.Large}>
           <Subtitle1>Links</Subtitle1>
           <Box mb={2}>
-            <Link>Пройти тест</Link>
+            <Link to="/ui-kit">Пройти тест</Link>
             <Menu>
-              <MenuItems vertical={true}>
+              <MenuItems vertical={true} gap={18} gapSmallScreen={12}>
                 <MenuItem>
-                  <Link>Тест на деменцию</Link>
+                  <Link to="/ui-kit">Тест на деменцию</Link>
                 </MenuItem>
                 <MenuItem>
-                  <Link>Центры профилактики</Link>
+                  <Link to="/ui-kit">Центры профилактики</Link>
                 </MenuItem>
                 <MenuItem>
-                  <Link>Знания</Link>
+                  <Link to="/ui-kit">Знания</Link>
                 </MenuItem>
               </MenuItems>
             </Menu>

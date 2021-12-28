@@ -9,7 +9,7 @@ export const BurgerButton = styled.button`
   ${cursorMixin}
   alight-self: flex-end;
 
-  @media screen and (max-width: ${ScreenSize.Small}px) {
+  @media screen and (max-width: ${ScreenSize.Large}px) {
     display: block;
     width: 49px;
     height: 33px;

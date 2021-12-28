@@ -1,7 +1,7 @@
 export enum ScreenSize {
   XLarge = 1920,
-  Large = 1400,
-  Medium = 900,
-  Small = 767,
+  Large = 1215,
+  Medium = 960,
+  Small = 640,
   XSmall = 320,
 }

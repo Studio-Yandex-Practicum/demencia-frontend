@@ -1,19 +1,25 @@
 import React from "react";
 import { Link, Menu, MenuItem, MenuItems } from "../../../../ui/controls";
-import { TypographyLevel } from "../../../../ui/types";
+import { Text3 } from "../../../../ui/controls/typography";
 
 const NavMenu: React.FC = () => {
   return (
     <Menu>
       <MenuItems vertical={true}>
         <MenuItem>
-          <Link level={TypographyLevel.Text4}>тест на деменцию</Link>
+          <Link>
+            <Text3>тест на деменцию</Text3>
+          </Link>
         </MenuItem>
         <MenuItem>
-          <Link level={TypographyLevel.Text4}>центры профилактики</Link>
+          <Link>
+            <Text3>центры профилактики</Text3>
+          </Link>
         </MenuItem>
         <MenuItem>
-          <Link level={TypographyLevel.Text4}>подробнее о деменции</Link>
+          <Link>
+            <Text3>подробнее о деменции</Text3>
+          </Link>
         </MenuItem>
       </MenuItems>
     </Menu>

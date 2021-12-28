@@ -1,15 +1,29 @@
 import React from "react";
 import styled from "styled-components";
-import { Section } from "../../../../ui/controls/layout";
-import { Button } from "../../../../ui/controls";
+import {
+  Pazzles,
+  GreenPuzzle,
+  BigCircle,
+  MediumCircle,
+  SmallCircle,
+} from "./decor";
+import { Button, Box } from "../../../../ui/controls";
 import NavMenu from "./nav-menu";
-import Decor from "./decor";
 import halfCircle from "../../../../images/halfcirclegreen.png";
 
-const ActionArea = styled.div`
+const Grid = styled.div`
+  display: grid;
+  grid-template-columns: 1fr max-content;
+  grid-template-rows: 150px 1fr 150px;
+`;
+const MenuCell = styled.div`
+  grid-area: 1/1/2/2;
+`;
+const ActionCell = styled.div`
   display: flex;
   box-sizing: border-box;
   align-items: center;
+  grid-area: 3/1/4/3;
   margin-left: 40px;
 `;
 const Image = styled.img.attrs((props) => ({
@@ -17,20 +31,33 @@ const Image = styled.img.attrs((props) => ({
   alt: props.alt || "",
 }))`
   z-index: 300;
+  transform: translate(-15px, 0);
 `;
 
 const HomePage: React.FC = () => {
   return (
-    <Section>
-      <NavMenu />
-      <Decor />
-      <ActionArea>
+    <Grid>
+      <MenuCell>
+        <NavMenu />
+      </MenuCell>
+      <Box ml={5}>
+        <GreenPuzzle />
+      </Box>
+      <Box ml={5} mt={10}>
+        <Pazzles />
+      </Box>
+      <Box>
+        <SmallCircle />
+        <MediumCircle />
+        <BigCircle />
+      </Box>
+      <ActionCell>
         <Button primary uppercase>
           Пройти тест
         </Button>
         <Image src={halfCircle} alt="" />
-      </ActionArea>
-    </Section>
+      </ActionCell>
+    </Grid>
   );
 };
 

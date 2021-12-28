@@ -1,11 +1,20 @@
 import React from "react";
 import styled from "styled-components";
+import { Swiper, SwiperSlide } from "swiper/react";
+import SwiperCore, { Autoplay, Pagination, Navigation } from "swiper";
 // eslint-disable-next-line import/extensions
 import image from "./img.webp";
 import cursorPointer from "../../../../images/cursor_pointer.svg";
 import whiteHalfCircle from "../../../../images/test_halfcircle_white.svg";
 import pinkHalfCircle from "../../../../images/decor_halfcirlce_pink.svg";
+import "./styles.css";
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
+import "swiper/css/scrollbar";
 import { Link } from "react-router-dom";
+
+SwiperCore.use([Autoplay, Pagination, Navigation]);
 
 const Content = styled.div`
   width: 100%;
@@ -21,7 +30,7 @@ const Info = styled.div`
   align-items: flex-start;
   padding-top: 10px;
   position: relative;
-  bottom: 58%;
+  bottom: 170px;
 `;
 
 const Image = styled.img.attrs((props) => ({
@@ -118,16 +127,56 @@ const LINK = styled.div`
 
 const Slider: React.FC = () => {
   return (
-    <Content>
-      <Image src={image} />
-      <Info>
-        <Title>ЗАГОЛОВОК СТАТЬИ</Title>
-        <LINK>
-          <Link to="/">ПОДРОБНЕЕ</Link>
-        </LINK>
-        <Decor />
-      </Info>
-    </Content>
+    <Swiper
+      spaceBetween={10}
+      centeredSlides={true}
+      autoplay={{
+        delay: 1500,
+        disableOnInteraction: false,
+      }}
+      pagination={{
+        clickable: true,
+      }}
+      navigation={true}
+      className="myStyles"
+    >
+      <SwiperSlide>
+        <Content>
+          <Image src={image} />
+          <Info>
+            <Title>ЗАГОЛОВОК СТАТЬИ</Title>
+            <LINK>
+              <Link to="/">ПОДРОБНЕЕ</Link>
+            </LINK>
+            <Decor />
+          </Info>
+        </Content>
+      </SwiperSlide>
+      <SwiperSlide>
+        <Content>
+          <Image src={image} />
+          <Info>
+            <Title>ЗАГОЛОВОК СТАТЬИ</Title>
+            <LINK>
+              <Link to="/">ПОДРОБНЕЕ</Link>
+            </LINK>
+            <Decor />
+          </Info>
+        </Content>
+      </SwiperSlide>
+      <SwiperSlide>
+        <Content>
+          <Image src={image} />
+          <Info>
+            <Title>ЗАГОЛОВОК СТАТЬИ</Title>
+            <LINK>
+              <Link to="/">ПОДРОБНЕЕ</Link>
+            </LINK>
+            <Decor />
+          </Info>
+        </Content>
+      </SwiperSlide>
+    </Swiper>
   );
 };
 

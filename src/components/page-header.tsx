@@ -14,7 +14,7 @@ const PageHeader: React.FC = () => {
   return (
     <Header>
       <BurgerButton />
-      <Box mt={3} ml={12}>
+      <Box mt={3} ml={5}>
         <LogoBlock altText="Логотип" to="/" />
       </Box>
       <Box mt={4} mr={4}>

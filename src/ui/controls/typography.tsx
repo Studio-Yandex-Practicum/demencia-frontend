@@ -171,6 +171,7 @@ export const Text2 = styled.p.attrs(
 export const Text3 = styled.p.attrs(
   (props: ThemeProps<DefaultTheme> & TextBlockProps) => ({
     level: TypographyLevel.Text3,
+    textColor: TextColor.Shadow,
     ...props,
   })
 )`

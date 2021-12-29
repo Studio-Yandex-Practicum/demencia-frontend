@@ -11,11 +11,6 @@ import { Button, Box } from "../../../../ui/controls";
 import NavMenu from "./nav-menu";
 import halfCircle from "../../../../images/halfcirclegreen.png";
 
-const Grid = styled.div`
-  display: grid;
-  grid-template-columns: 1fr max-content;
-  grid-template-rows: 150px 1fr 150px;
-`;
 const MenuCell = styled.div`
   grid-area: 1/1/2/2;
 `;
@@ -36,28 +31,24 @@ const Image = styled.img.attrs((props) => ({
 
 const HomePage: React.FC = () => {
   return (
-    <Grid>
+    <>
       <MenuCell>
         <NavMenu />
       </MenuCell>
       <Box ml={5}>
         <GreenPuzzle />
       </Box>
-      <Box ml={5} mt={10}>
-        <Pazzles />
-      </Box>
-      <Box>
-        <SmallCircle />
-        <MediumCircle />
-        <BigCircle />
-      </Box>
+      <Pazzles />
+      <SmallCircle />
+      <MediumCircle />
+      <BigCircle />
       <ActionCell>
         <Button primary uppercase>
           Пройти тест
         </Button>
         <Image src={halfCircle} alt="" />
       </ActionCell>
-    </Grid>
+    </>
   );
 };
 

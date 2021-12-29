@@ -37,6 +37,18 @@ const themeLight: DefaultTheme = {
       color: PaletteColor.White,
       backgroundColor: PaletteColor.Green,
     },
+    default: {
+      borderWidth: 2,
+      borderRadius: 30,
+      borderColor: PaletteColor.Green,
+      color: PaletteColor.White,
+      backgroundColor: PaletteColor.Green,
+    },
+    alt3: {
+      borderColor: PaletteColor.LightGreen,
+      color: PaletteColor.White,
+      backgroundColor: PaletteColor.LightGreen,
+    },
     link: {
       color: PaletteColor.DarkPurple,
     },

@@ -12,6 +12,7 @@ import {
   TextUppercaseProps,
   textUppercaseMixIn,
   FontColorProps,
+  getTextSelectedColor,
 } from "./mixins";
 import { ElementAnimationProps, zoomOnHoverMixIn } from "./animation";
 import { PropsWithChildren, ReactNode } from "react";
@@ -53,15 +54,16 @@ const buildButtonStyleMixIn = (
     borderRadius = `border-radius: 50%;`;
   }
 
+
+  const color =
+    !!props.textColor && getTextSelectedColor(props) ||
+    (!props.ghost ? buttonStyle.color : buttonStyle.backgroundColor);
+
   return `
     ${borderRadius}
     border: ${borderValue};
     
-    color: ${
-      props.textColor || !props.ghost
-        ? buttonStyle.color
-        : buttonStyle.backgroundColor
-    }};
+    color: ${color};
     background-color: ${
       !props.ghost
         ? props.bgColor || buttonStyle.backgroundColor || "transparent"

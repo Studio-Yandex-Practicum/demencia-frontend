@@ -6,6 +6,8 @@ import { ColorInfo } from "../types/palette";
 interface ButtonTypes {
   primary: ButtonStyle;
   secondary: ButtonStyle;
+  default: ButtonStyle,
+  alt3: ButtonStyle,
   link: ButtonStyle;
 }
 

@@ -4,7 +4,6 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import SwiperCore, { Autoplay, Pagination, Navigation } from "swiper";
 // eslint-disable-next-line import/extensions
 import image from "./img.webp";
-import whiteHalfCircle from "../../../../images/test_halfcircle_white.svg";
 import pinkHalfCircle from "../../../../images/decor_halfcirlce_pink.svg";
 import "./styles.css";
 import "swiper/css";
@@ -33,7 +32,7 @@ const Decor = styled.div`
   background-repeat: no-repeat;
   position: absolute;
   bottom: -20px;
-  left: 115px;
+  left: 370px;
 `;
 const Wrapper = styled.div`
   position: relative;

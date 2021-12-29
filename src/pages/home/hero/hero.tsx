@@ -8,6 +8,9 @@ const Grid = styled.div`
   grid-template-columns: 280px repeat(2, minmax(320px, 1fr));
   max-width: 1920px;
   margin-right: 32px;
+  @media screen and (max-width: 1200px) {
+    grid-template-columns: 1fr;
+  }
 `;
 
 const HomePage: React.FC = () => {

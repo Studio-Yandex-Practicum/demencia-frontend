@@ -7,7 +7,7 @@ import {
   MediumCircle,
   SmallCircle,
 } from "./decor";
-import { Button, Box } from "../../../../ui/controls";
+import { Button } from "../../../../ui/controls";
 import NavMenu from "./nav-menu";
 import halfCircle from "../../../../images/halfcirclegreen.png";
 
@@ -20,6 +20,7 @@ const ActionCell = styled.div`
   align-items: center;
   grid-area: 3/1/4/3;
   margin-left: 40px;
+  z-index: 350;
 `;
 const Image = styled.img.attrs((props) => ({
   src: props.src || halfCircle,
@@ -29,19 +30,27 @@ const Image = styled.img.attrs((props) => ({
   transform: translate(-15px, 0);
 `;
 
+const DecorCell = styled.div`
+  grid-area: 2/1/4/3;
+`;
+
 const HomePage: React.FC = () => {
   return (
     <>
       <MenuCell>
         <NavMenu />
       </MenuCell>
-      <Box ml={5}>
+      <DecorCell>
         <GreenPuzzle />
-      </Box>
+      </DecorCell>
       <Pazzles />
-      <SmallCircle />
-      <MediumCircle />
       <BigCircle />
+      <DecorCell>
+        <SmallCircle />
+      </DecorCell>
+      <DecorCell>
+        <MediumCircle />
+      </DecorCell>
       <ActionCell>
         <Button primary uppercase>
           Пройти тест

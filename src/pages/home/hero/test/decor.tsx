@@ -64,36 +64,48 @@ export const Pazzles = styled.div`
   background-size: contain;
   grid-area: 2/1/3/2;
   z-index: 301;
+  margin-left: 40px;
 `;
 
 export const GreenPuzzle = styled.div`
-  width: 100px;
-  height: 100px;
+  width: 120px;
+  height: 120px;
   background: url(${greenPazzle});
   background-repeat: no-repeat;
   background-size: contain;
   position: relative;
-  left: 72%;
+  left: 65%;
+  bottom: 40%;
   z-index: 300;
   grid-area: 1/2/2/3;
   animation: ${pazzleRotation} 15s linear infinite normal;
+  @media screen and (max-width: 1024px) {
+    width: 100px;
+    height: 100px;
+    left: 55%;
+  }
+  @media screen and (max-width: 800px) {
+    width: 80px;
+    height: 80px;
+  }
 `;
 
 export const BigCircle = styled.div`
-  width: 500px;
-  height: 500px;
+  display: flex;
+  width: 50%;
+  height: auto;
   background: url(${bigCircle});
   background-repeat: no-repeat;
   background-size: contain;
-  position: relative;
   z-index: 299;
   animation: ${circleSwing} 8s infinite linear;
-  grid-area: 2/1/3/3;
+  grid-area: 2/1/4/3;
+  margin: 0 auto;
 `;
 
 export const MediumCircle = styled.div`
-  width: 300px;
-  height: 300px;
+  width: 35%;
+  height: 400px;
   background: url(${mediumCircle});
   background-repeat: no-repeat;
   background-size: contain;
@@ -101,18 +113,18 @@ export const MediumCircle = styled.div`
   animation: ${circleSwingReversed} 8s infinite linear;
   grid-area: 2/2/3/3;
   position: relative;
-  bottom: 65px;
-  left: 200px;
+  bottom: 10%;
+  left: 40%;
 `;
 
 export const SmallCircle = styled.div`
-  width: 100px;
-  height: 100px;
+  width: 150px;
+  height: 150px;
   background: url(${smallCircle});
   background-repeat: no-repeat;
   background-size: contain;
   position: relative;
-  left: 25%;
+  left: 35%;
   z-index: 297;
   grid-area: 2/2/3/3;
 `;

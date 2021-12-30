@@ -7,7 +7,7 @@ export const BurgerButton = styled.button`
   display: none;
   z-index: 2;
   ${cursorMixin}
-  alight-self: flex-end;
+  align-self: flex-end;
 
   @media screen and (max-width: ${ScreenSize.Large}px) {
     display: block;

@@ -24,6 +24,10 @@ export const Layout = styled.div<LayoutProps>`
 
 export const Main = styled.main`
   position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 `;
 
 export const Section = styled.section<SectionProps>`

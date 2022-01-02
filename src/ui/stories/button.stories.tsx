@@ -17,28 +17,19 @@ export default {
       name: "type",
       description: "Вид кнопки",
       defaultValue: ButtonType.Primary,
-      options: [
-        ButtonType.Primary,
-        ButtonType.Secondary,
-        ButtonType.Link
-      ],
+      options: [ButtonType.Primary, ButtonType.Secondary, ButtonType.Link],
       control: "select",
     },
     shape: {
       ame: "type",
       description: "Вид кнопки",
       defaultValue: ButtonShape.Default,
-      options: [
-        ButtonShape.Default,
-        ButtonShape.Rounded,
-        ButtonShape.Circle
-      ],
+      options: [ButtonShape.Default, ButtonShape.Rounded, ButtonShape.Circle],
       control: "select",
     },
     ghost: {
       name: "ghost",
-      description:
-        "Значение, задать кнонке прозрачный фон",
+      description: "Значение, задать кнонке прозрачный фон",
       defaultValue: false,
       options: [true, false],
       control: "boolean",
@@ -110,4 +101,4 @@ export const Link = Template.bind({});
 Link.args = { type: ButtonType.Link, level: TypographyLevel.Text1 };
 
 export const Circle = Template.bind({});
-Circle.args = { shape: ButtonShape.Circle};
+Circle.args = { shape: ButtonShape.Circle };

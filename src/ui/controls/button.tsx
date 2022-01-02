@@ -54,9 +54,8 @@ const buildButtonStyleMixIn = (
     borderRadius = `border-radius: 50%;`;
   }
 
-
   const color =
-    !!props.textColor && getTextSelectedColor(props) ||
+    (!!props.textColor && getTextSelectedColor(props)) ||
     (!props.ghost ? buttonStyle.color : buttonStyle.backgroundColor);
 
   return `

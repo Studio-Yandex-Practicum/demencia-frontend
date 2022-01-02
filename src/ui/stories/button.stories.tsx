@@ -1,4 +1,4 @@
-import { Button } from "../controls/button";
+import { Button, CircleButton } from "../controls/button";
 import { Box } from "../controls/box";
 import { ComponentStory, ComponentMeta } from "@storybook/react";
 import { ButtonShape, ButtonType, TextColor, TypographyLevel } from "../types";
@@ -17,7 +17,12 @@ export default {
       name: "type",
       description: "Вид кнопки",
       defaultValue: ButtonType.Primary,
-      options: [ButtonType.Primary, ButtonType.Secondary, ButtonType.Link],
+      options: [
+        ButtonType.Primary,
+        ButtonType.Secondary,
+        ButtonType.Default,
+        ButtonType.Link,
+      ],
       control: "select",
     },
     shape: {
@@ -82,6 +87,10 @@ const Template: ComponentStory<typeof Button> = (args) => (
   <Button {...args}>Пройти Тест</Button>
 );
 
+const CircleButtonTemplate: ComponentStory<typeof Button> = (args) => (
+  <CircleButton {...args}>12</CircleButton>
+);
+
 export const Default = Template.bind({});
 Default.args = {};
 
@@ -100,5 +109,5 @@ SecondaryColor.args = { type: ButtonType.Secondary };
 export const Link = Template.bind({});
 Link.args = { type: ButtonType.Link, level: TypographyLevel.Text1 };
 
-export const Circle = Template.bind({});
+export const Circle = CircleButtonTemplate.bind({});
 Circle.args = { shape: ButtonShape.Circle };

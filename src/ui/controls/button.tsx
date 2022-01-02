@@ -4,6 +4,7 @@ import { FontLevelProps, typographySizeMixIn } from "./typography";
 import { cursorMixin } from "./cursor";
 import {
   ButtonShape,
+  ButtonSize,
   ButtonStyle,
   ButtonType,
   TypographyLevel,
@@ -27,6 +28,7 @@ interface ButtonProps
     ElementAnimationProps {
   fullWidth?: boolean;
   type?: ButtonType;
+  size?: ButtonSize;
   shape?: ButtonShape;
   ghost?: boolean;
   icon?: ReactNode;
@@ -37,28 +39,34 @@ const buildButtonStyleMixIn = (
 ): string => {
   const { buttons } = props.theme;
   const buttonStyleType = props.type || ButtonType.Primary;
-  const buttonStyle = buttons[buttonStyleType];
+  const buttonStyle = !!buttons && buttons.types[buttonStyleType];
+  const buttonSizeType = props.size || ButtonSize.Default;
+  const buttonSize = buttons.sizes[buttonSizeType];
   const borderColor = !props.ghost
     ? buttonStyle.borderColor || "transparent"
     : buttonStyle.backgroundColor;
   const borderValue =
-    typeof buttonStyle.borderWidth === "undefined"
+    typeof buttonSize.borderWidth === "undefined"
       ? "none"
-      : `${buttonStyle.borderWidth}px solid ${borderColor || ""};`;
+      : `${buttonSize.borderWidth}px solid ${borderColor || ""};`;
 
-  let borderRadius = !!buttonStyle.borderRadius
-    ? `border-radius: ${buttonStyle.borderRadius}px;`
+  let borderRadius = !!buttonSize.borderRadius
+    ? `border-radius: ${buttonSize.borderRadius}px;`
     : "";
 
   if (props.shape === ButtonShape.Circle) {
     borderRadius = `border-radius: 50%;`;
   }
 
+  const minWidthStyle =
+    props.shape === ButtonShape.Circle ? "min-width: 50px;" : "";
+
   const color =
     (!!props.textColor && getTextSelectedColor(props)) ||
     (!props.ghost ? buttonStyle.color : buttonStyle.backgroundColor);
 
   return `
+    ${minWidthStyle}
     ${borderRadius}
     border: ${borderValue};
     
@@ -107,6 +115,20 @@ export const LinkButton: React.FC<ButtonProps> = (
 ) => {
   return (
     <Button type={ButtonType.Link} level={TypographyLevel.Text1}>
+      {props.children}
+    </Button>
+  );
+};
+
+export const CircleButton: React.FC<ButtonProps> = (
+  props: PropsWithChildren<ButtonProps>
+) => {
+  return (
+    <Button
+      type={ButtonType.Secondary}
+      shape={ButtonShape.Circle}
+      level={TypographyLevel.Text1}
+    >
       {props.children}
     </Button>
   );

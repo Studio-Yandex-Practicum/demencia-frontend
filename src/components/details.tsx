@@ -37,13 +37,14 @@ const FlexColumn = styled.div<{
   padding?: string;
   borderLeftRight?: boolean;
   alignItems?: string;
+  maxWidth?: string;
 }>`
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: ${({ alignItems }) => alignItems};
   width: 100%;
-  max-width: 1200px;
+  max-width: ${({ maxWidth = "1200px" }) => maxWidth};
   padding: ${({ padding }) => padding};
   border-left: ${({ borderLeftRight }) =>
     borderLeftRight ? `2px solid #772988` : ``};
@@ -51,21 +52,20 @@ const FlexColumn = styled.div<{
     borderLeftRight ? `2px solid #772988` : ``};
 `;
 
+const FlexColumnSection = styled(FlexColumn)`
+  max-width: 1980px;
+`;
+
 const FlexRow = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: flex-start;
+  align-self: center;
   width: 100%;
   max-width: 1200px;
   z-index: 10;
   position: relative;
-`;
-
-const FlexShrink = styled.div<{
-  shrink?: number;
-}>`
-  flex-shrink: ${({ shrink = 1 }) => shrink};
 `;
 
 const AbsolutePositionPurpleRect = styled.div`
@@ -351,6 +351,23 @@ const Details: React.FC = () => {
           </FlexRow>
         </Box>
       </FlexColumn>
+
+      <Section>
+        <Box mt={6} backgroundColor={PaletteColor.DarkPurple}>
+          <FlexColumn maxWidth="100%">
+            <FlexRow>
+              <FlexColumn>
+                <Subtitle1 mt={7} textColor={TextColor.Secondary}>
+                  ГОЛОВНОЙ МОЗГ
+                </Subtitle1>
+                <Subtitle3 mt={1} mb={6} textColor={TextColor.Secondary}>
+                  КАК ОН УСТРОЕН
+                </Subtitle3>
+              </FlexColumn>
+            </FlexRow>
+          </FlexColumn>
+        </Box>
+      </Section>
     </>
   );
 };

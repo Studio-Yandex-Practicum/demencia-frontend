@@ -32,6 +32,10 @@ import praxisPic from "../images/praxis-pic.png";
 import sensePic from "../images/sense-pic.png";
 import speechPic from "../images/speech-pic.png";
 import purplePuzzleTranslucent from "../images/purple-puzzle-translucent.svg";
+import parietalLobePic from "../images/parietal-lobe-pic.png";
+import frontalLobePic from "../images/frontal-lobe-pic.png";
+import temporalLobePic from "../images/temporal-lobe-pic.png";
+import occipitalLobePic from "../images/occipital-lobe-pic.png";
 
 const FlexColumn = styled.div<{
   padding?: string;
@@ -50,10 +54,6 @@ const FlexColumn = styled.div<{
     borderLeftRight ? `2px solid #772988` : ``};
   border-right: ${({ borderLeftRight }) =>
     borderLeftRight ? `2px solid #772988` : ``};
-`;
-
-const FlexColumnSection = styled(FlexColumn)`
-  max-width: 1980px;
 `;
 
 const FlexRow = styled.div`
@@ -106,12 +106,15 @@ const StyledImg = styled.img<{
   object-position: top;
 `;
 
-const List = styled.ul`
+const List = styled.ul<{
+  color?: string;
+}>`
   margin: 0;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   align-items: flex-start;
+  color: ${({ color = "black" }) => color};
 `;
 
 const Details: React.FC = () => {
@@ -354,17 +357,299 @@ const Details: React.FC = () => {
 
       <Section>
         <Box mt={6} backgroundColor={PaletteColor.DarkPurple}>
-          <FlexColumn maxWidth="100%">
-            <FlexRow>
-              <FlexColumn>
-                <Subtitle1 mt={7} textColor={TextColor.Secondary}>
-                  ГОЛОВНОЙ МОЗГ
-                </Subtitle1>
-                <Subtitle3 mt={1} mb={6} textColor={TextColor.Secondary}>
-                  КАК ОН УСТРОЕН
-                </Subtitle3>
-              </FlexColumn>
-            </FlexRow>
+          <FlexColumn maxWidth="100%" alignItems="center">
+            <FlexColumn>
+              <Subtitle1 mt={7} textColor={TextColor.Secondary}>
+                ГОЛОВНОЙ МОЗГ
+              </Subtitle1>
+              <Subtitle3 mt={1} mb={6} textColor={TextColor.Secondary}>
+                КАК ОН УСТРОЕН
+              </Subtitle3>
+            </FlexColumn>
+          </FlexColumn>
+        </Box>
+      </Section>
+
+      <Section>
+        <Box backgroundColor={PaletteColor.Green} pb={12}>
+          <FlexColumn maxWidth="100%" alignItems="center">
+            <GridContainer>
+              <Box mt={7}>
+                <FlexRow>
+                  <StyledImg src={parietalLobePic} />
+                  <FlexColumn>
+                    <Subtitle2
+                      ml={2}
+                      uppercase={true}
+                      underlined={true}
+                      textColor={TextColor.Secondary}
+                      hoverColor={TextColor.Accent1}
+                    >
+                      ТЕМЕННАЯ
+                    </Subtitle2>
+                    <Subtitle3 mt={2} ml={2} textColor={TextColor.Secondary}>
+                      ОТВЕЧАЕТ ЗА:
+                    </Subtitle3>
+                    <List color="white">
+                      <li>
+                        <Text1 textColor={TextColor.Secondary} mr={4}>
+                          счет, письмо, различение правой и левой сторон
+                        </Text1>
+                      </li>
+                      <li>
+                        <Text1 textColor={TextColor.Secondary} mr={4}>
+                          тактильную и слуховую информацию
+                        </Text1>
+                      </li>
+                      <li>
+                        <Text1 textColor={TextColor.Secondary} mr={4}>
+                          анализ сигналов от других органов чувств
+                        </Text1>
+                      </li>
+                      <li>
+                        <Text1 textColor={TextColor.Secondary} mr={4}>
+                          распознавание сведений о форме предметов, их текстуре
+                          и массе
+                        </Text1>
+                      </li>
+                      <li>
+                        <Text1 textColor={TextColor.Secondary} mr={4}>
+                          трехмерное восприятие окружающего мира
+                        </Text1>
+                      </li>
+                    </List>
+                    <Subtitle3 mt={2} ml={2} textColor={TextColor.Secondary}>
+                      ПРИ ПОВРЕЖДЕНИИ:
+                    </Subtitle3>
+                    <List color="white">
+                      <li>
+                        <Text1 textColor={TextColor.Secondary} mr={4}>
+                          неспособность распознавать предметы, лица
+                        </Text1>
+                      </li>
+                      <li>
+                        <Text1 textColor={TextColor.Secondary} mr={4}>
+                          нарушение способности писать, считать, различать
+                          правую и левую стороны
+                        </Text1>
+                      </li>
+                      <li>
+                        <Text1 textColor={TextColor.Secondary} mr={4}>
+                          неспособность воспринимать ощущения органами чувств
+                        </Text1>
+                      </li>
+                      <li>
+                        <Text1 textColor={TextColor.Secondary} mr={4}>
+                          забывание порядка действий в процессе
+                        </Text1>
+                      </li>
+                    </List>
+                  </FlexColumn>
+                </FlexRow>
+              </Box>
+
+              <Box mt={7}>
+                <FlexRow>
+                  <StyledImg src={frontalLobePic} />
+                  <FlexColumn>
+                    <Subtitle2
+                      ml={2}
+                      uppercase={true}
+                      underlined={true}
+                      textColor={TextColor.Secondary}
+                      hoverColor={TextColor.Accent1}
+                    >
+                      ЛОБНАЯ
+                    </Subtitle2>
+                    <Subtitle3 mt={2} ml={2} textColor={TextColor.Secondary}>
+                      ОТВЕЧАЕТ ЗА:
+                    </Subtitle3>
+                    <List color="white">
+                      <li>
+                        <Text1 textColor={TextColor.Secondary} mr={4}>
+                          абстрактное мышление
+                        </Text1>
+                      </li>
+                      <li>
+                        <Text1 textColor={TextColor.Secondary} mr={4}>
+                          программирование действий и принятие решений
+                        </Text1>
+                      </li>
+                      <li>
+                        <Text1 textColor={TextColor.Secondary} mr={4}>
+                          регулирование социального поведения
+                        </Text1>
+                      </li>
+                      <li>
+                        <Text1 textColor={TextColor.Secondary} mr={4}>
+                          побуждение и мотивацию человека
+                        </Text1>
+                      </li>
+                      <li>
+                        <Text1 textColor={TextColor.Secondary} mr={4}>
+                          освоение навыков
+                        </Text1>
+                      </li>
+                      <li>
+                        <Text1 textColor={TextColor.Secondary} mr={4}>
+                          поддержание вертикального положения тела
+                        </Text1>
+                      </li>
+                      <li>
+                        <Text1 textColor={TextColor.Secondary} mr={4}>
+                          некоторые речевые функции
+                        </Text1>
+                      </li>
+                    </List>
+                    <Subtitle3 mt={2} ml={2} textColor={TextColor.Secondary}>
+                      ПРИ ПОВРЕЖДЕНИИ:
+                    </Subtitle3>
+                    <List color="white">
+                      <li>
+                        <Text1 textColor={TextColor.Secondary} mr={4}>
+                          зацикленность на действии
+                        </Text1>
+                      </li>
+                      <li>
+                        <Text1 textColor={TextColor.Secondary} mr={4}>
+                          повторение одного и того же слова/фразы
+                        </Text1>
+                      </li>
+                      <li>
+                        <Text1 textColor={TextColor.Secondary} mr={4}>
+                          перекладывание предметов с места на место
+                        </Text1>
+                      </li>
+                      <li>
+                        <Text1 textColor={TextColor.Secondary} mr={4}>
+                          мелкая семенящая походка и сгорбленная поза
+                        </Text1>
+                      </li>
+                      <li>
+                        <Text1 textColor={TextColor.Secondary} mr={4}>
+                          замедленность реакций, безынициативность
+                        </Text1>
+                      </li>
+                      <li>
+                        <Text1 textColor={TextColor.Secondary} mr={4}>
+                          беспокойное поведение
+                        </Text1>
+                      </li>
+                      <li>
+                        <Text1 textColor={TextColor.Secondary} mr={4}>
+                          социальная навязчивость
+                        </Text1>
+                      </li>
+                      <li>
+                        <Text1 textColor={TextColor.Secondary} mr={4}>
+                          затрудненное произнесение слов
+                        </Text1>
+                      </li>
+                    </List>
+                  </FlexColumn>
+                </FlexRow>
+              </Box>
+
+              <Box mt={7}>
+                <FlexRow>
+                  <StyledImg src={temporalLobePic} />
+                  <FlexColumn>
+                    <Subtitle2
+                      ml={2}
+                      uppercase={true}
+                      underlined={true}
+                      textColor={TextColor.Secondary}
+                      hoverColor={TextColor.Accent1}
+                    >
+                      ВИСОЧНАЯ
+                    </Subtitle2>
+                    <Subtitle3 mt={2} ml={2} textColor={TextColor.Secondary}>
+                      ОТВЕЧАЕТ ЗА:
+                    </Subtitle3>
+                    <List color="white">
+                      <li>
+                        <Text1 textColor={TextColor.Secondary} mr={4}>
+                          слух
+                        </Text1>
+                      </li>
+                      <li>
+                        <Text1 textColor={TextColor.Secondary} mr={4}>
+                          понимание речи
+                        </Text1>
+                      </li>
+                      <li>
+                        <Text1 textColor={TextColor.Secondary} mr={4}>
+                          зрительную память
+                        </Text1>
+                      </li>
+                      <li>
+                        <Text1 textColor={TextColor.Secondary} mr={4}>
+                          долговременную память
+                        </Text1>
+                      </li>
+                      <li>
+                        <Text1 textColor={TextColor.Secondary} mr={4}>
+                          обоняние
+                        </Text1>
+                      </li>
+                    </List>
+                    <Subtitle3 mt={2} ml={2} textColor={TextColor.Secondary}>
+                      ПРИ ПОВРЕЖДЕНИИ:
+                    </Subtitle3>
+                    <List color="white">
+                      <li>
+                        <Text1 textColor={TextColor.Secondary} mr={4}>
+                          расстройство сознания, памяти, построения и понимания
+                          речи
+                        </Text1>
+                      </li>
+                    </List>
+                  </FlexColumn>
+                </FlexRow>
+              </Box>
+
+              <Box mt={7}>
+                <FlexRow>
+                  <StyledImg src={occipitalLobePic} />
+                  <FlexColumn>
+                    <Subtitle2
+                      ml={2}
+                      uppercase={true}
+                      underlined={true}
+                      textColor={TextColor.Secondary}
+                      hoverColor={TextColor.Accent1}
+                    >
+                      ЗАТЫЛОЧНАЯ
+                    </Subtitle2>
+                    <Subtitle3 mt={2} ml={2} textColor={TextColor.Secondary}>
+                      ОТВЕЧАЕТ ЗА:
+                    </Subtitle3>
+                    <List color="white">
+                      <li>
+                        <Text1 textColor={TextColor.Secondary} mr={4}>
+                          зрительное восприятие
+                        </Text1>
+                      </li>
+                      <li>
+                        <Text1 textColor={TextColor.Secondary} mr={4}>
+                          восприятие цвета, формы, движения
+                        </Text1>
+                      </li>
+                    </List>
+                    <Subtitle3 mt={2} ml={2} textColor={TextColor.Secondary}>
+                      ПРИ ПОВРЕЖДЕНИИ:
+                    </Subtitle3>
+                    <List color="white">
+                      <li>
+                        <Text1 textColor={TextColor.Secondary} mr={4}>
+                          невозможность зрительного восприятия
+                        </Text1>
+                      </li>
+                    </List>
+                  </FlexColumn>
+                </FlexRow>
+              </Box>
+            </GridContainer>
           </FlexColumn>
         </Box>
       </Section>

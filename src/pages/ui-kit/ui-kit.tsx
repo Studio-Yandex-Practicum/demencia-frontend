@@ -10,7 +10,12 @@ import {
   MenuItem,
   MenuItems,
 } from "../../ui/controls";
-import { ContainerSize, TextColor, ButtonType } from "../../ui/types";
+import {
+  ContainerSize,
+  TextColor,
+  ButtonType,
+  ButtonShape,
+} from "../../ui/types";
 import { BackgroundColor } from "../../ui/types/background-color.enum";
 import {
   MainTitle,
@@ -117,6 +122,11 @@ const UiKitPage: React.FC = () => {
           <Box mb={2}>
             <Button type={ButtonType.Secondary} ghost>
               Button
+            </Button>
+          </Box>
+          <Box mb={2}>
+            <Button shape={ButtonShape.Circle} type={ButtonType.Alt}>
+              12
             </Button>
           </Box>
         </Container>

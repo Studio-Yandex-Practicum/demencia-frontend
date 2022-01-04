@@ -64,7 +64,8 @@ const buildCircleButtonStyleMixIn = (
   const buttonStyleType = props.type || ButtonType.Primary;
   const buttonStyle = !!buttons && buttons.types[buttonStyleType];
   const buttonSizeType = props.size || ButtonSize.Default;
-  const buttonSize = buttons.sizes[buttonSizeType];
+  const buttonSize =
+    buttons.sizes[`${buttonSizeType}Circle`] || buttons.sizes.defaultCircle;
   const color =
     (!!props.textColor && getTextSelectedColor(props)) ||
     (!props.ghost ? buttonStyle.color : buttonStyle.backgroundColor);
@@ -75,8 +76,10 @@ const buildCircleButtonStyleMixIn = (
 
   return `
     padding: 0;
-    border-weight: 0;
+    border: 0;
     border-radius: 50%;
+    height: ${buttonSize.height}px;
+    width: ${buttonSize.height}px;
     ${fontStyles}
     color: ${color};
     background-color: ${
@@ -94,6 +97,10 @@ const buildButtonStyleMixIn = (
   const buttonStyleType = props.type || ButtonType.Primary;
   if (buttonStyleType === ButtonType.Link) {
     return buildLinkButtonStyleMixIn(props);
+  }
+
+  if (!!props?.shape && props.shape === ButtonShape.Circle) {
+    return buildCircleButtonStyleMixIn(props);
   }
 
   const buttonStyle = !!buttons && buttons.types[buttonStyleType];
@@ -156,6 +163,7 @@ export const buttonBaseMixin = css<ButtonProps>`
   ${cursorMixin}
   ${zoomOnHoverMixIn}
 `;
+
 export const Button = styled.button.attrs((props: ButtonProps) => ({
   zoomOnHover: true,
   uppercase: props.type === ButtonType.Primary,
@@ -178,11 +186,7 @@ export const CircleButton: React.FC<ButtonProps> = (
   props: PropsWithChildren<ButtonProps>
 ) => {
   return (
-    <Button
-      type={ButtonType.Secondary}
-      shape={ButtonShape.Circle}
-      level={TypographyLevel.Text1}
-    >
+    <Button type={ButtonType.Secondary} shape={ButtonShape.Circle}>
       {props.children}
     </Button>
   );

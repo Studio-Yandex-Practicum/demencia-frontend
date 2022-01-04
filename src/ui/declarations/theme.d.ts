@@ -18,9 +18,11 @@ interface ButtonSizes {
   medium: ButtonSizeStyle;
   smaller: ButtonSizeStyle;
   small: ButtonSizeStyle;
+  largeCircle?: ButtonSizeStyle;
   mediumCircle?: ButtonSizeStyle;
-  defaultCircle?: ButtonSizeStyle;
+  defaultCircle: ButtonSizeStyle;
   smallerCircle?: ButtonSizeStyle;
+  smallCircle?: ButtonSizeStyle;
 }
 
 interface ButtonSettings {

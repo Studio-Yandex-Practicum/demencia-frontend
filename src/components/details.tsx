@@ -1,28 +1,14 @@
 import React from "react";
-import { Section, TwoColumnSection, Main } from "../ui/controls/layout";
-import {
-  Box,
-  Button,
-  Container,
-  Link,
-  LinkButton,
-  Menu,
-  MenuItem,
-  MenuItems,
-} from "../ui/controls";
+import { Section, TwoColumnSection } from "../ui/controls/layout";
+import { Box, Container } from "../ui/controls";
 import { ContainerSize, PaletteColor, TextColor } from "../ui/types";
 import { BackgroundColor } from "../ui/types/background-color.enum";
 import {
-  MainTitle,
   Subtitle1,
   Subtitle2,
   Subtitle3,
-  Subtitle4,
   Text1,
   Text2,
-  Text3,
-  Text4,
-  Title,
 } from "../ui/controls/typography";
 import styled from "styled-components";
 import attentionPic from "../images/attention-pic.png";
@@ -78,15 +64,6 @@ const AbsolutePositionPurpleRect = styled.div`
   height: 150px;
   left: calc(50% + 30px);
   top: -30px;
-`;
-
-const AbsolutePositionGreenRect = styled.div`
-  display: flex;
-  position: absolute;
-  z-index: -1;
-  width: 50vw;
-  height: 100%;
-  left: 50%;
 `;
 
 const GridContainer = styled.div`

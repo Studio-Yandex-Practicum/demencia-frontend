@@ -1,5 +1,5 @@
 import React from "react";
-import { Section } from "../../ui/controls/layout";
+import { Section, TwoColumnSection, Main } from "../ui/controls/layout";
 import {
   Box,
   Button,
@@ -9,9 +9,9 @@ import {
   Menu,
   MenuItem,
   MenuItems,
-} from "../../ui/controls";
-import { ContainerSize, TextColor } from "../../ui/types";
-import { BackgroundColor } from "../../ui/types/background-color.enum";
+} from "../ui/controls";
+import { ContainerSize, PaletteColor, TextColor } from "../ui/types";
+import { BackgroundColor } from "../ui/types/background-color.enum";
 import {
   MainTitle,
   Subtitle1,
@@ -23,14 +23,15 @@ import {
   Text3,
   Text4,
   Title,
-} from "../../ui/controls/typography";
+} from "../ui/controls/typography";
 import styled from "styled-components";
-import attentionPic from "../../images/attention-pic.png";
-import controlPic from "../../images/control-functions-pic.png";
-import memoryPic from "../../images/memory-pic.png";
-import praxisPic from "../../images/praxis-pic.png";
-import sensePic from "../../images/sense-pic.png";
-import speechPic from "../../images/speech-pic.png";
+import attentionPic from "../images/attention-pic.png";
+import controlPic from "../images/control-functions-pic.png";
+import memoryPic from "../images/memory-pic.png";
+import praxisPic from "../images/praxis-pic.png";
+import sensePic from "../images/sense-pic.png";
+import speechPic from "../images/speech-pic.png";
+import purplePuzzleTranslucent from "../images/purple-puzzle-translucent.svg";
 
 const FlexColumn = styled.div<{
   padding?: string;
@@ -42,6 +43,7 @@ const FlexColumn = styled.div<{
   justify-content: center;
   align-items: ${({ alignItems }) => alignItems};
   width: 100%;
+  max-width: 1200px;
   padding: ${({ padding }) => padding};
   border-left: ${({ borderLeftRight }) =>
     borderLeftRight ? `2px solid #772988` : ``};
@@ -55,19 +57,15 @@ const FlexRow = styled.div`
   justify-content: center;
   align-items: flex-start;
   width: 100%;
+  max-width: 1200px;
   z-index: 10;
   position: relative;
 `;
 
-const GridContainer = styled.div`
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(600px, 2fr));
-  width: 100%;
-`;
-
-const StyledImg = styled.img`
-  object-fit: contain;
-  object-position: top;
+const FlexShrink = styled.div<{
+  shrink?: number;
+}>`
+  flex-shrink: ${({ shrink = 1 }) => shrink};
 `;
 
 const AbsolutePositionPurpleRect = styled.div`
@@ -85,8 +83,27 @@ const AbsolutePositionGreenRect = styled.div`
   position: absolute;
   z-index: -1;
   width: 50vw;
-  height: 343px;
+  height: 100%;
   left: 50%;
+`;
+
+const GridContainer = styled.div`
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(600px, 2fr));
+  width: 100%;
+  max-width: 1200px;
+`;
+
+const StyledImg = styled.img<{
+  margin?: string;
+  position?: string;
+  top?: string;
+}>`
+  margin: ${({ margin }) => margin};
+  position: ${({ position }) => position};
+  top: ${({ top }) => top};
+  object-fit: contain;
+  object-position: top;
 `;
 
 const List = styled.ul`
@@ -97,9 +114,9 @@ const List = styled.ul`
   align-items: flex-start;
 `;
 
-const DetailedSection: React.FC = () => {
+const Details: React.FC = () => {
   return (
-    <div>
+    <>
       <FlexColumn>
         <FlexRow>
           <Box mr={8}>
@@ -123,102 +140,114 @@ const DetailedSection: React.FC = () => {
             ></Container>
           </AbsolutePositionPurpleRect>
         </FlexRow>
-        <GridContainer>
-          <Box mt={7}>
-            <FlexRow>
-              <StyledImg src={attentionPic} />
-              <FlexColumn>
-                <Subtitle2 ml={3}>ВНИМАНИЕ</Subtitle2>
-                <Text2 ml={3}>
-                  способность поддерживать требуемый для умственной работы
-                  уровень уровень психической активности и фокусировать
-                  деятельность на задаче
-                </Text2>
-              </FlexColumn>
-            </FlexRow>
-          </Box>
+      </FlexColumn>
 
-          <Box mt={7}>
-            <FlexRow>
-              <StyledImg src={sensePic} />
-              <FlexColumn>
-                <Subtitle2 ml={3}>ВОСПРИЯТИЕ (ГНОЗИС)</Subtitle2>
-                <Text2 ml={3}>
-                  способность воспринимать и распознавать информацию,
-                  поступающую от органов чувств
-                </Text2>
-              </FlexColumn>
-            </FlexRow>
-          </Box>
-
-          <Box mt={7}>
-            <FlexRow>
-              <StyledImg src={memoryPic} />
-              <FlexColumn>
-                <Subtitle2 ml={3}>ПАМЯТЬ</Subtitle2>
-                <Text2 ml={3}>
-                  способность запечатлевать, сохранять и многократно
-                  воспроизводить получаемую в течение жизни информацию
-                </Text2>
-              </FlexColumn>
-            </FlexRow>
-          </Box>
-
-          <Box mt={7}>
-            <FlexRow>
-              <StyledImg src={praxisPic} />
-              <FlexColumn>
-                <Subtitle2 ml={3}>ПРАКСИС</Subtitle2>
-                <Text2 ml={3}>
-                  способность приобретать, сохранять или использовать различные
-                  двигательные навыки
-                </Text2>
-              </FlexColumn>
-            </FlexRow>
-          </Box>
-
-          <Box mt={7}>
-            <FlexRow>
-              <StyledImg src={speechPic} />
-              <FlexColumn>
-                <Subtitle2 ml={3}>РЕЧЬ</Subtitle2>
-                <Text2 ml={3}>
-                  способность к коммуникации в устной и письменной форме,
-                  включая понимание обращенной речи и построение собственного
-                  высказывания
-                </Text2>
-              </FlexColumn>
-            </FlexRow>
-          </Box>
-
-          <Box mt={7}>
-            <FlexRow>
-              <StyledImg src={controlPic} />
-              <FlexColumn>
-                <Subtitle2 ml={3}>УПРАВЛЯЮЩИЕ ФУНКЦИИ (РЕГУЛЯТОРНЫЕ)</Subtitle2>
-                <Text2 ml={3}>
-                  способность управлять своей познавательной деятельностью и
-                  поведением, включая планирование и контроль за выполнением
-                  совершаемых действий
-                </Text2>
-              </FlexColumn>
-            </FlexRow>
-          </Box>
-        </GridContainer>
-        <Box mt={7}>
-          <Container size={ContainerSize.Large} bgColor={BackgroundColor.Alt3}>
-            <Text1 mt={4} mb={4} ml={12} mr={4} textColor={TextColor.Primary}>
-              Когнитивное здоровье - способность четко мыслить, учиться и
-              помнить. Эти способности важны для повседневной жизни, выполнения
-              различных задач. Когнитивные функции помогают адаптироваться к
-              новым условиям, пользоваться имеющимися знаниями.
-            </Text1>
-          </Container>
-        </Box>
+      <GridContainer>
         <Box mt={7}>
           <FlexRow>
-            <Box mr={8}>
-              <Subtitle1>КОГНИТИВНЫЕ ФУНКЦИИ</Subtitle1>
+            <StyledImg src={attentionPic} />
+            <FlexColumn>
+              <Subtitle2 ml={3}>ВНИМАНИЕ</Subtitle2>
+              <Text2 ml={3}>
+                способность поддерживать требуемый для умственной работы уровень
+                уровень психической активности и фокусировать деятельность на
+                задаче
+              </Text2>
+            </FlexColumn>
+          </FlexRow>
+        </Box>
+
+        <Box mt={7}>
+          <FlexRow>
+            <StyledImg src={sensePic} />
+            <FlexColumn>
+              <Subtitle2 ml={3}>ВОСПРИЯТИЕ (ГНОЗИС)</Subtitle2>
+              <Text2 ml={3}>
+                способность воспринимать и распознавать информацию, поступающую
+                от органов чувств
+              </Text2>
+            </FlexColumn>
+          </FlexRow>
+        </Box>
+
+        <Box mt={7}>
+          <FlexRow>
+            <StyledImg src={memoryPic} />
+            <FlexColumn>
+              <Subtitle2 ml={3}>ПАМЯТЬ</Subtitle2>
+              <Text2 ml={3}>
+                способность запечатлевать, сохранять и многократно
+                воспроизводить получаемую в течение жизни информацию
+              </Text2>
+            </FlexColumn>
+          </FlexRow>
+        </Box>
+
+        <Box mt={7}>
+          <FlexRow>
+            <StyledImg src={praxisPic} />
+            <FlexColumn>
+              <Subtitle2 ml={3}>ПРАКСИС</Subtitle2>
+              <Text2 ml={3}>
+                способность приобретать, сохранять или использовать различные
+                двигательные навыки
+              </Text2>
+            </FlexColumn>
+          </FlexRow>
+        </Box>
+
+        <Box mt={7}>
+          <FlexRow>
+            <StyledImg src={speechPic} />
+            <FlexColumn>
+              <Subtitle2 ml={3}>РЕЧЬ</Subtitle2>
+              <Text2 ml={3}>
+                способность к коммуникации в устной и письменной форме, включая
+                понимание обращенной речи и построение собственного высказывания
+              </Text2>
+            </FlexColumn>
+          </FlexRow>
+        </Box>
+
+        <Box mt={7}>
+          <FlexRow>
+            <StyledImg src={controlPic} />
+            <FlexColumn>
+              <Subtitle2 ml={3}>УПРАВЛЯЮЩИЕ ФУНКЦИИ (РЕГУЛЯТОРНЫЕ)</Subtitle2>
+              <Text2 ml={3}>
+                способность управлять своей познавательной деятельностью и
+                поведением, включая планирование и контроль за выполнением
+                совершаемых действий
+              </Text2>
+            </FlexColumn>
+          </FlexRow>
+        </Box>
+      </GridContainer>
+
+      <FlexColumn>
+        <Box mt={7} backgroundColor={PaletteColor.LightGreen}>
+          <FlexRow>
+            <StyledImg
+              src={purplePuzzleTranslucent}
+              margin="0 0 0 20px"
+              position="relative"
+              top="-30px"
+            />
+            <Text1 mt={4} mb={4} ml={4} mr={4} textColor={TextColor.Primary}>
+              Когнитивное здоровье - способность четко мыслить, учиться и
+              помнить. Эти способности важны для повседневной жизни, выполнения
+              задач. Когнитивные функции помогают адаптироваться к новым
+              условиям, пользоваться имеющимися знаниями.
+            </Text1>
+          </FlexRow>
+        </Box>
+      </FlexColumn>
+
+      <FlexColumn>
+        <Box mt={7}>
+          <TwoColumnSection>
+            <Box mt={8} mr={8}>
+              <Subtitle1>КОГНИТИВНЫЕ РАССТРОЙСТВА</Subtitle1>
               <Subtitle3 mt={2}>Что это такое?</Subtitle3>
             </Box>
             <Container
@@ -241,14 +270,11 @@ const DetailedSection: React.FC = () => {
                 и бытовой деятельности.
               </Text1>
             </Container>
-            <AbsolutePositionGreenRect>
-              <Container
-                bgColor={BackgroundColor.Alt2}
-                size={ContainerSize.Medium}
-              ></Container>
-            </AbsolutePositionGreenRect>
-          </FlexRow>
+          </TwoColumnSection>
         </Box>
+      </FlexColumn>
+
+      <FlexColumn>
         <Box mt={7}>
           <FlexRow>
             <FlexColumn padding={`0 30px 0 0`} alignItems={`center`}>
@@ -325,8 +351,8 @@ const DetailedSection: React.FC = () => {
           </FlexRow>
         </Box>
       </FlexColumn>
-    </div>
+    </>
   );
 };
 
-export default DetailedSection;
+export default Details;

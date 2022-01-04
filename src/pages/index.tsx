@@ -1,6 +1,6 @@
 import ArticlePage from "./article/article";
 import HomePage from "./home/home";
 import NewsGridPage from "./news-grid/news-grid";
-import PageWithDetailed from "./detailed/page-with-detailed";
+import DetailsPage from "./details/details";
 
-export { HomePage, NewsGridPage, ArticlePage, PageWithDetailed };
+export { HomePage, NewsGridPage, ArticlePage, DetailsPage };

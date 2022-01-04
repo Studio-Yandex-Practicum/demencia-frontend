@@ -36,6 +36,8 @@ import parietalLobePic from "../images/parietal-lobe-pic.png";
 import frontalLobePic from "../images/frontal-lobe-pic.png";
 import temporalLobePic from "../images/temporal-lobe-pic.png";
 import occipitalLobePic from "../images/occipital-lobe-pic.png";
+import purpleHalfCirclePic from "../images/purple-half-circle-pic.png";
+import greenHalfCirclePic from "../images/green-half-circle-pic.png";
 
 const FlexColumn = styled.div<{
   padding?: string;
@@ -359,10 +361,19 @@ const Details: React.FC = () => {
         <Box mt={6} backgroundColor={PaletteColor.DarkPurple}>
           <FlexColumn maxWidth="100%" alignItems="center">
             <FlexColumn>
-              <Subtitle1 mt={7} textColor={TextColor.Secondary}>
+              <Subtitle1
+                mt={7}
+                textColor={TextColor.Secondary}
+                uppercase={true}
+              >
                 ГОЛОВНОЙ МОЗГ
               </Subtitle1>
-              <Subtitle3 mt={1} mb={6} textColor={TextColor.Secondary}>
+              <Subtitle3
+                mt={1}
+                mb={6}
+                textColor={TextColor.Secondary}
+                uppercase={true}
+              >
                 КАК ОН УСТРОЕН
               </Subtitle3>
             </FlexColumn>
@@ -643,6 +654,147 @@ const Details: React.FC = () => {
                       <li>
                         <Text1 textColor={TextColor.Secondary} mr={4}>
                           невозможность зрительного восприятия
+                        </Text1>
+                      </li>
+                    </List>
+                  </FlexColumn>
+                </FlexRow>
+              </Box>
+            </GridContainer>
+          </FlexColumn>
+        </Box>
+      </Section>
+
+      <Section>
+        <Box backgroundColor={PaletteColor.LightGreen} pb={12}>
+          <FlexColumn maxWidth="100%" alignItems="center">
+            <FlexColumn alignItems="center">
+              <Subtitle1 mt={4} textColor={TextColor.Accent1} uppercase={true}>
+                РАЗВИТИЕ КОГНИТИВНЫХ РАССТРОЙСТВ
+              </Subtitle1>
+            </FlexColumn>
+
+            <GridContainer>
+              <Box mt={6}>
+                <FlexRow>
+                  <StyledImg src={purpleHalfCirclePic} />
+                  <FlexColumn>
+                    <Subtitle2
+                      ml={2}
+                      uppercase={true}
+                      textColor={TextColor.Accent1}
+                      hoverColor={TextColor.Accent2}
+                    >
+                      ФАКТОРЫ РИСКА
+                    </Subtitle2>
+                    <List>
+                      <li>
+                        <Text1 textColor={TextColor.Primary} mr={4} mt={2}>
+                          возраст 65+
+                        </Text1>
+                      </li>
+                      <li>
+                        <Text1 textColor={TextColor.Primary} mr={4}>
+                          генетика
+                        </Text1>
+                      </li>
+                      <li>
+                        <Text1 textColor={TextColor.Primary} mr={4}>
+                          гипертония и сердечно-сосудистые заболевания
+                        </Text1>
+                      </li>
+                      <li>
+                        <Text1 textColor={TextColor.Primary} mr={4}>
+                          ожирение
+                        </Text1>
+                      </li>
+                      <li>
+                        <Text1 textColor={TextColor.Primary} mr={4}>
+                          сахарный диабет
+                        </Text1>
+                      </li>
+                      <li>
+                        <Text1 textColor={TextColor.Primary} mr={4}>
+                          вредные привычки (курение, употребление алкоголя)
+                        </Text1>
+                      </li>
+                      <li>
+                        <Text1 textColor={TextColor.Primary} mr={4}>
+                          низкая физическая активность
+                        </Text1>
+                      </li>
+                      <li>
+                        <Text1 textColor={TextColor.Primary} mr={4}>
+                          низкая когнитивная активность
+                        </Text1>
+                      </li>
+                      <li>
+                        <Text1 textColor={TextColor.Primary} mr={4}>
+                          социальная изоляция
+                        </Text1>
+                      </li>
+                      <li>
+                        <Text1 textColor={TextColor.Primary} mr={4}>
+                          низкий уровень образования
+                        </Text1>
+                      </li>
+                      <li>
+                        <Text1 textColor={TextColor.Primary} mr={4}>
+                          черепно-мозговые травмы
+                        </Text1>
+                      </li>
+                    </List>
+                  </FlexColumn>
+                </FlexRow>
+              </Box>
+
+              <Box mt={6}>
+                <FlexRow>
+                  <StyledImg src={greenHalfCirclePic} />
+                  <FlexColumn>
+                    <Subtitle2
+                      ml={2}
+                      uppercase={true}
+                      textColor={TextColor.Accent2}
+                      hoverColor={TextColor.Accent1}
+                    >
+                      ПРОФИЛАКТИКА
+                    </Subtitle2>
+                    <List>
+                      <li>
+                        <Text1 textColor={TextColor.Primary} mr={4} mt={2}>
+                          отказ от вредных привычек (курение, употребление
+                          алкоголя)
+                        </Text1>
+                      </li>
+                      <li>
+                        <Text1 textColor={TextColor.Primary} mr={4}>
+                          физическая активность
+                        </Text1>
+                      </li>
+                      <li>
+                        <Text1 textColor={TextColor.Primary} mr={4}>
+                          когнитивная активность
+                        </Text1>
+                      </li>
+                      <li>
+                        <Text1 textColor={TextColor.Primary} mr={4}>
+                          правильное питание
+                        </Text1>
+                      </li>
+                      <li>
+                        <Text1 textColor={TextColor.Primary} mr={4}>
+                          своевременное лечение заболеваний
+                        </Text1>
+                      </li>
+                      <li>
+                        <Text1 textColor={TextColor.Primary} mr={4}>
+                          социальная активность
+                        </Text1>
+                      </li>
+                      <li>
+                        <Text1 textColor={TextColor.Primary} mr={4}>
+                          контроль уровня давления, сахара в крови, холестерина
                         </Text1>
                       </li>
                     </List>

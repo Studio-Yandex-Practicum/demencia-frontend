@@ -3,17 +3,18 @@ import {
   Box,
   BurgerButton,
   Header,
+  IconBurger,
   Link,
   LogoBlock,
   Menu,
   MenuItem,
   MenuItems,
 } from "../ui/controls";
+import { ButtonShape, PaletteColor, TypographyLevel } from "../ui/types";
 
 const PageHeader: React.FC = () => {
   return (
     <Header>
-      <BurgerButton />
       <Box mt={3} ml={5}>
         <LogoBlock altText="Логотип" to="/" />
       </Box>
@@ -38,6 +39,9 @@ const PageHeader: React.FC = () => {
           </MenuItems>
         </Menu>
       </Box>
+      <BurgerButton>
+        <IconBurger fillColor={PaletteColor.White} />
+      </BurgerButton>
     </Header>
   );
 };

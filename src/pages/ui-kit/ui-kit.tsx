@@ -2,8 +2,11 @@ import React from "react";
 import { Section } from "../../ui/controls/layout";
 import {
   Box,
+  BurgerButton,
   Button,
   Container,
+  IconBurger,
+  IconClose,
   Link,
   LinkButton,
   Menu,
@@ -155,7 +158,12 @@ const UiKitPage: React.FC = () => {
       <Section>
         <Container size={ContainerSize.Large}>
           <Subtitle1>Icons</Subtitle1>
-          <Text1>todo icons</Text1>
+          <Box m={4}>
+            <IconBurger />
+          </Box>
+          <Box m={4}>
+            <IconClose />
+          </Box>
         </Container>
       </Section>
       <Section>

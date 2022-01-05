@@ -12,7 +12,7 @@ import { ElementAnimationProps, zoomOnHoverMixIn } from "./animation";
 import { PropsWithChildren, ReactNode } from "react";
 import { BackgroundColorProps } from "./container";
 
-interface ButtonProps
+export interface ButtonProps
   extends FontColorProps,
     FontLevelProps,
     BackgroundColorProps,

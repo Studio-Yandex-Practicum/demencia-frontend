@@ -2,6 +2,7 @@ import { Button, LinkButton } from "./button";
 import { Box } from "./box";
 import { Link } from "./link";
 import Header from "./header";
+import { IconBurger, IconClose } from "./icon";
 import { BurgerButton } from "./header";
 import Footer from "./footer";
 import { Layout } from "./layout";
@@ -23,4 +24,6 @@ export {
   MenuItems,
   MenuItem,
   LogoBlock,
+  IconBurger,
+  IconClose,
 };

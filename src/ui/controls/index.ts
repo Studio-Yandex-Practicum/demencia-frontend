@@ -9,6 +9,7 @@ import { Layout } from "./layout";
 import Container from "./container";
 import { Menu, MenuItem, MenuItems } from "./nav";
 import { LogoBlock } from "./logo";
+import { Overlay } from "./overlay";
 
 export {
   Layout,
@@ -26,4 +27,5 @@ export {
   LogoBlock,
   IconBurger,
   IconClose,
+  Overlay,
 };

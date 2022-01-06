@@ -8,7 +8,7 @@ interface IconProps {
   fillColor?: string;
 }
 
-const IconBurgerDefault: React.FC<IconProps> = (props) => {
+const BurgerSvg: React.FC<IconProps> = (props) => {
   const proportionScale = 2;
   const height = props.height || 14;
   const width = height * proportionScale;
@@ -43,7 +43,7 @@ const IconBurgerDefault: React.FC<IconProps> = (props) => {
   );
 };
 
-const IconCloseDefault: React.FC<IconProps> = (props) => {
+const CloseSvg: React.FC<IconProps> = (props) => {
   const proportionScale = 1;
   const height = props.height || 23;
   const width = height * proportionScale;
@@ -76,14 +76,14 @@ const IconCloseDefault: React.FC<IconProps> = (props) => {
   );
 };
 
-export const IconBurger = styled(IconBurgerDefault).attrs(
+export const IconBurger = styled(BurgerSvg).attrs(
   (props: ThemeProps<DefaultTheme> & FontColorProps & IconProps) => ({
     fillColor: getTextSelectedColor(props),
     ...props,
   })
 )``;
 
-export const IconClose = styled(IconCloseDefault).attrs(
+export const IconClose = styled(CloseSvg).attrs(
   (props: ThemeProps<DefaultTheme> & FontColorProps & IconProps) => ({
     fillColor: getTextSelectedColor(props),
     ...props,

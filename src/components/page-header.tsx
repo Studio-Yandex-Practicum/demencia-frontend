@@ -8,7 +8,7 @@ import {
   LogoBlock,
   Menu,
   MenuItem,
-  MenuItems,
+  Nav,
 } from "../ui/controls";
 import { ButtonShape, PaletteColor, TypographyLevel } from "../ui/types";
 
@@ -19,8 +19,8 @@ const PageHeader: React.FC = () => {
         <LogoBlock altText="Логотип" to="/" />
       </Box>
       <Box mt={4} mr={4}>
-        <Menu>
-          <MenuItems>
+        <Nav>
+          <Menu>
             <MenuItem>
               <Link to="/#info">О деменции</Link>
             </MenuItem>
@@ -36,8 +36,8 @@ const PageHeader: React.FC = () => {
             <MenuItem>
               <Link to="/#about">Контакты</Link>
             </MenuItem>
-          </MenuItems>
-        </Menu>
+          </Menu>
+        </Nav>
       </Box>
       <BurgerButton>
         <IconBurger fillColor={PaletteColor.White} />

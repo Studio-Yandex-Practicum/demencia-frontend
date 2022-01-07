@@ -1,4 +1,6 @@
+import React, { useState } from "react";
 import styled from "styled-components";
+import { BurgerButton, LogoBlock, Overlay, Sider } from ".";
 import { ScreenSize } from "../types";
 
 export interface MenuProps {
@@ -14,7 +16,7 @@ enum MenuGap {
 // todo: move margins and screen sizes to enum
 export const MenuItem = styled.li``;
 
-export const MenuItems = styled.ul<MenuProps>`
+export const Menu = styled.ul<MenuProps>`
   margin: 0;
   padding: 0;
   display: flex;
@@ -22,10 +24,30 @@ export const MenuItems = styled.ul<MenuProps>`
   list-style: none;
   gap: ${(p) => p.gap || MenuGap.Large}px;
 
-  @media screen and (max-width: ${ScreenSize.Small}px) {
-    display: none;
+  @media screen and (max-width: ${ScreenSize.Large}px) {
     gap: ${(p) => p.gapSmallScreen || MenuGap.Small}px;
   }
 `;
 
-export const Menu = styled.nav``;
+export const Nav = styled.nav`
+  @media screen and (max-width: ${ScreenSize.Large}px) {
+    display: none;
+  }
+`;
+
+export const HeaderNavigation: React.FC = () => {
+  const [opened, setOpened] = useState(false);
+
+  return (
+    <>
+      <Nav>
+        <Menu></Menu>
+      </Nav>
+      <BurgerButton></BurgerButton>
+      <Overlay isVisible={opened}></Overlay>
+      <Sider>
+        <LogoBlock altText={"Логотип"} to={"/"} />
+      </Sider>
+    </>
+  );
+};

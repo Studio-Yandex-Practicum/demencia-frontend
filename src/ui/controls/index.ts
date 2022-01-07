@@ -7,9 +7,10 @@ import { BurgerButton } from "./header";
 import Footer from "./footer";
 import { Layout } from "./layout";
 import Container from "./container";
-import { Menu, MenuItem, MenuItems } from "./nav";
+import { Nav, Menu, MenuItem } from "./nav";
 import { LogoBlock } from "./logo";
 import { Overlay } from "./overlay";
+import { Sider } from "./sider";
 
 export {
   Layout,
@@ -21,11 +22,12 @@ export {
   LinkButton,
   Box,
   Link,
+  Nav,
   Menu,
-  MenuItems,
   MenuItem,
   LogoBlock,
   IconBurger,
   IconClose,
   Overlay,
+  Sider,
 };

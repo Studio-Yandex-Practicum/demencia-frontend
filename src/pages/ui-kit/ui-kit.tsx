@@ -11,7 +11,6 @@ import {
   LinkButton,
   Menu,
   MenuItem,
-  MenuItems,
 } from "../../ui/controls";
 import {
   ContainerSize,
@@ -139,18 +138,16 @@ const UiKitPage: React.FC = () => {
           <Subtitle1>Links</Subtitle1>
           <Box mb={2}>
             <Link to="/ui-kit">Пройти тест</Link>
-            <Menu>
-              <MenuItems vertical={true} gap={18} gapSmallScreen={12}>
-                <MenuItem>
-                  <Link to="/ui-kit">Тест на деменцию</Link>
-                </MenuItem>
-                <MenuItem>
-                  <Link to="/ui-kit">Центры профилактики</Link>
-                </MenuItem>
-                <MenuItem>
-                  <Link to="/ui-kit">Знания</Link>
-                </MenuItem>
-              </MenuItems>
+            <Menu vertical={true} gap={18} gapSmallScreen={12}>
+              <MenuItem>
+                <Link to="/ui-kit">Тест на деменцию</Link>
+              </MenuItem>
+              <MenuItem>
+                <Link to="/ui-kit">Центры профилактики</Link>
+              </MenuItem>
+              <MenuItem>
+                <Link to="/ui-kit">Знания</Link>
+              </MenuItem>
             </Menu>
           </Box>
         </Container>
@@ -174,6 +171,7 @@ const UiKitPage: React.FC = () => {
               Text change on mouse hover: hoverColor=TextColor.Accent1
             </Text1>
           </Box>
+          nhj
           <Box mb={3}>
             <Text1 textColor={TextColor.Accent1} hoverColor={TextColor.Accent2}>
               Text change on mouse hover: textColor=TextColor.Accent1

@@ -8,6 +8,7 @@ import {
   IconClose,
   Link,
   LinkButton,
+  LogoBlock,
   Menu,
   MenuItem,
   Sider,
@@ -17,6 +18,7 @@ import {
   TextColor,
   ButtonType,
   ButtonShape,
+  LogoSize,
 } from "../../ui/types";
 import { BackgroundColor } from "../../ui/types/background-color.enum";
 import {
@@ -35,7 +37,28 @@ import {
 const UiKitPage: React.FC = () => {
   return (
     <>
-      <Sider></Sider>
+      <Sider>
+        <Box pb={3}>
+          <LogoBlock altText="Логотип" to="/" size={LogoSize.Small}></LogoBlock>
+        </Box>
+        <Menu vertical={true}>
+          <MenuItem>
+            <Link to="/#info">О деменции</Link>
+          </MenuItem>
+          <MenuItem>
+            <Link to="/#sponsors">Партнеры</Link>
+          </MenuItem>
+          <MenuItem>
+            <Link to="/news-grid">Новости</Link>
+          </MenuItem>
+          <MenuItem>
+            <Link to="/#about">О фонде</Link>
+          </MenuItem>
+          <MenuItem>
+            <Link to="/#about">Контакты</Link>
+          </MenuItem>
+        </Menu>
+      </Sider>
       <Container size={ContainerSize.Large}>
         <MainTitle>Новости (Main Title)</MainTitle>
       </Container>

@@ -9,6 +9,7 @@ import {
   ScreenSize,
   TypographyLevel,
 } from "../types";
+import { BoxProps, getBoxStyles } from "./box";
 import { ButtonProps, LinkButton } from "./button";
 
 const SiderNav = styled.nav<{ isVisible: boolean; alignRight: boolean }>`
@@ -24,6 +25,10 @@ const SiderNav = styled.nav<{ isVisible: boolean; alignRight: boolean }>`
   z-index: 999999;
   transition: transform ease-in-out 0.3s;
   background-color: ${PaletteColor.White};
+
+  @media screen and (min-width: ${ScreenSize.Large - 1}px) {
+    display: none;
+  }
 `;
 
 const SiderBtn = styled(Button).attrs(
@@ -38,6 +43,10 @@ const SiderBtn = styled(Button).attrs(
   position: fixed;
   top: 20px;
   right: 15px;
+
+  @media screen and (min-width: ${ScreenSize.Large - 1}px) {
+    display: none;
+  }
 `;
 
 const SiderCloseBtn = styled(LinkButton)`
@@ -47,18 +56,30 @@ const SiderCloseBtn = styled(LinkButton)`
   z-index: 999999;
 `;
 
-const SiderContainer = styled.div`
+const SiderContainer = styled.div.attrs(
+  (props: ThemeProps<DefaultTheme> & BoxProps) => ({
+    pt: 6,
+    pb: 5,
+    pl: 5,
+    pr: 5,
+    ...props,
+  })
+)`
   box-sizing: border-box;
-  padding: 48px 40px 38px;
   position: relative;
   height: 100%;
+  display: flex;
+  flex-direction: column;
+  ${getBoxStyles}
 `;
 export interface SiderProps {
   children?: ReactNode;
+  closeOnNavigationChanged?: boolean;
 }
 
 export const Sider: React.FC<SiderProps> = (props) => {
   const [opened, setOpened] = React.useState(false);
+
   function toggleNav() {
     setOpened(!opened);
   }
@@ -89,7 +110,7 @@ export const Sider: React.FC<SiderProps> = (props) => {
         </SiderCloseBtn>
         <SiderContainer>{props.children}</SiderContainer>
       </SiderNav>
-      <Overlay isOpened={opened}></Overlay>
+      <Overlay isVisible={opened}></Overlay>
     </>
   );
 };

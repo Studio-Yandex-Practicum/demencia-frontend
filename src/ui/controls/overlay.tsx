@@ -1,7 +1,7 @@
-import React from "react";
 import styled from "styled-components";
+import { buildTransitionFaster } from "./mixins";
 
-const OverlayContainer = styled.div<{ isVisible: boolean }>`
+export const Overlay = styled.div<{ isVisible: boolean }>`
   display: ${(props) => (!props.isVisible ? "none" : "block")};
   position: fixed;
   top: 0;
@@ -11,13 +11,5 @@ const OverlayContainer = styled.div<{ isVisible: boolean }>`
   background-color: rgba(0, 0, 0, 0.6);
   z-index: ${(props) => (!props.isVisible ? -1 : 99999)};
   opacity: ${(props) => (!props.isVisible ? 0 : 1)};
-  transition: opacity ease-in-out 0.3s;
+  ${buildTransitionFaster("opacity")}
 `;
-
-export interface OverlayProps {
-  isOpened: boolean;
-}
-
-export const Overlay: React.FC<OverlayProps> = (props: OverlayProps) => {
-  return <OverlayContainer isVisible={props.isOpened || false} />;
-};

@@ -1,7 +1,6 @@
 import React from "react";
 import {
   Box,
-  BurgerButton,
   Header,
   IconBurger,
   Link,
@@ -39,9 +38,6 @@ const PageHeader: React.FC = () => {
           </Menu>
         </Nav>
       </Box>
-      <BurgerButton>
-        <IconBurger fillColor={PaletteColor.White} />
-      </BurgerButton>
     </Header>
   );
 };

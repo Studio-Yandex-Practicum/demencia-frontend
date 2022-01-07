@@ -2,7 +2,6 @@ import React from "react";
 import { Section } from "../../ui/controls/layout";
 import {
   Box,
-  BurgerButton,
   Button,
   Container,
   IconBurger,
@@ -11,6 +10,7 @@ import {
   LinkButton,
   Menu,
   MenuItem,
+  Sider,
 } from "../../ui/controls";
 import {
   ContainerSize,
@@ -35,6 +35,7 @@ import {
 const UiKitPage: React.FC = () => {
   return (
     <>
+      <Sider></Sider>
       <Container size={ContainerSize.Large}>
         <MainTitle>Новости (Main Title)</MainTitle>
       </Container>

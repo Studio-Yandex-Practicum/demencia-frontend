@@ -3,7 +3,6 @@ import { Box } from "./box";
 import { Link } from "./link";
 import Header from "./header";
 import { IconBurger, IconClose } from "./icon";
-import { BurgerButton } from "./header";
 import Footer from "./footer";
 import { Layout } from "./layout";
 import Container from "./container";
@@ -16,7 +15,6 @@ export {
   Layout,
   Container,
   Header,
-  BurgerButton,
   Footer,
   Button,
   LinkButton,

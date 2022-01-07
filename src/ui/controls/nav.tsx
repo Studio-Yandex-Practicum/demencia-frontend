@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-import { BurgerButton, LogoBlock, Overlay, Sider } from ".";
+import { LogoBlock, Overlay, Sider } from ".";
 import { ScreenSize } from "../types";
 
 export interface MenuProps {
@@ -43,10 +43,9 @@ export const HeaderNavigation: React.FC = () => {
       <Nav>
         <Menu></Menu>
       </Nav>
-      <BurgerButton></BurgerButton>
-      <Overlay isVisible={opened}></Overlay>
       <Sider>
         <LogoBlock altText={"Логотип"} to={"/"} />
+        <Menu></Menu>
       </Sider>
     </>
   );

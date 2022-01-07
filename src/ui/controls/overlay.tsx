@@ -1,6 +1,7 @@
+import React from "react";
 import styled from "styled-components";
 
-export const Overlay = styled.div<{ isVisible: boolean }>`
+const OverlayContainer = styled.div<{ isVisible: boolean }>`
   display: ${(props) => (!props.isVisible ? "none" : "block")};
   position: fixed;
   top: 0;
@@ -12,3 +13,11 @@ export const Overlay = styled.div<{ isVisible: boolean }>`
   opacity: ${(props) => (!props.isVisible ? 0 : 1)};
   transition: opacity ease-in-out 0.3s;
 `;
+
+export interface OverlayProps {
+  isOpened: boolean;
+}
+
+export const Overlay: React.FC<OverlayProps> = (props: OverlayProps) => {
+  return <OverlayContainer isVisible={props.isOpened || false} />;
+};

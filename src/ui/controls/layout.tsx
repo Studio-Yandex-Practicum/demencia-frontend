@@ -1,4 +1,5 @@
 import styled, { DefaultTheme } from "styled-components";
+import { ScreenSize } from "../types";
 import { BoxProps } from "./box";
 
 export interface ThemeProps {
@@ -34,6 +35,9 @@ export const Section = styled.section<SectionProps>`
 
 export const TwoColumnSection = styled(Section)<SectionProps>`
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  grid-template-columns: repeat(
+    auto-fit,
+    minmax(${ScreenSize.Medium / 2}px, 1fr)
+  );
   grid-gap: 0;
 `;

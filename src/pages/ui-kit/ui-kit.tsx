@@ -1,5 +1,10 @@
 import React, { createRef } from "react";
-import { Section } from "../../ui/controls/layout";
+import {
+  Section,
+  SeparatedColumn,
+  ThreeColumnSection,
+  TwoColumnSection,
+} from "../../ui/controls/layout";
 import {
   Box,
   Button,
@@ -96,9 +101,76 @@ const UiKitPage: React.FC = () => {
           </Box>
         </Container>
       </Section>
+      <TwoColumnSection>
+        <Subtitle1>2х колоночная секция: 1ая колонка</Subtitle1>
+        <Subtitle1>2х колоночная секция: 2ая колонка</Subtitle1>
+      </TwoColumnSection>
+      <ThreeColumnSection>
+        <SeparatedColumn>
+          <Subtitle2>3х колоночная секция: 1ая колонка</Subtitle2>
+          <Box mb={2}>
+            <Text2>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam
+              congue imperdiet justo, eget egestas urna. Nulla suscipit
+              facilisis semper. Cras tincidunt turpis in nulla efficitur, nec
+              vulputate lectus hendrerit. Donec et neque eu dui dapibus gravida.
+              Pellentesque non justo a tortor maximus placerat. Pellentesque
+              porttitor id justo at finibus. Mauris non libero eleifend, aliquet
+              nunc eget, ornare ipsum. Vivamus facilisis quis arcu et varius.
+              Morbi commodo nisi et ante feugiat, quis egestas lacus fringilla.
+              Curabitur pellentesque, ante ut vehicula feugiat, nisi odio
+              sodales nunc, a malesuada diam ante sed nibh. Nam scelerisque,
+              odio nec malesuada varius, sem erat pulvinar neque, id sodales
+              nisl mi ut velit. Nulla tincidunt arcu vitae nibh accumsan, vel
+              placerat ligula placerat. Nam feugiat tortor quis nulla
+              ullamcorper rhoncus.
+            </Text2>
+          </Box>
+        </SeparatedColumn>
+        <SeparatedColumn>
+          <Subtitle2>3х колоночная секция: 2ая колонка</Subtitle2>
+          <Box mb={2}>
+            <Text2>
+              Aenean facilisis sed nibh at iaculis. Fusce molestie, nunc eu
+              egestas ornare, tellus diam dapibus erat, eget suscipit tortor
+              risus vel sem. Nullam ut enim a neque feugiat euismod. Suspendisse
+              vestibulum enim vitae turpis blandit congue. Nam porttitor pretium
+              nisi, quis placerat libero aliquet eu. Sed pretium, augue sed
+              tincidunt laoreet, dolor sapien vestibulum sem, eu sagittis ex
+              arcu rhoncus massa. Quisque placerat, quam ac placerat laoreet,
+              dolor leo imperdiet erat, eu pulvinar augue nibh vel nibh.
+              Praesent tincidunt, massa ut suscipit placerat, ex mauris placerat
+              lacus, vel commodo dolor magna id velit. Phasellus bibendum quis
+              mauris tempus suscipit.
+            </Text2>
+          </Box>
+        </SeparatedColumn>
+        <SeparatedColumn>
+          <Subtitle2>3х колоночная секция: 3я колонка</Subtitle2>
+          <Box mb={2}>
+            <Text2>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam
+              congue imperdiet justo, eget egestas urna. Nulla suscipit
+              facilisis semper. Cras tincidunt turpis in nulla efficitur, nec
+              vulputate lectus hendrerit. Donec et neque eu dui dapibus gravida.
+              Pellentesque non justo a tortor maximus placerat. Pellentesque
+              porttitor id justo at finibus. Mauris non libero eleifend, aliquet
+              nunc eget, ornare ipsum. Vivamus facilisis quis arcu et varius.
+              Morbi commodo nisi et ante feugiat, quis egestas lacus fringilla.
+              Curabitur pellentesque, ante ut vehicula feugiat, nisi odio
+              sodales nunc, a malesuada diam ante sed nibh. Nam scelerisque,
+              odio nec malesuada varius, sem erat pulvinar neque, id sodales
+              nisl mi ut velit. Nulla tincidunt arcu vitae nibh accumsan, vel
+              placerat ligula placerat. Nam feugiat tortor quis nulla
+              ullamcorper rhoncus.
+            </Text2>
+          </Box>
+        </SeparatedColumn>
+      </ThreeColumnSection>
+
       <Section>
         <Container size={ContainerSize.Large}>
-          <Box mb={2}>
+          <Box mb={2} mt={6}>
             <Subtitle1>Containers</Subtitle1>
           </Box>
           <Box mb={4}>

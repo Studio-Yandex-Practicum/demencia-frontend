@@ -4,7 +4,7 @@ import { Link } from "./link";
 import Header from "./header";
 import { IconBurger, IconClose } from "./icon";
 import Footer from "./footer";
-import { Layout } from "./layout";
+import { Layout, ThreeColumnSection, SeparatedColumn } from "./layout";
 import Container from "./container";
 import { Nav, Menu, MenuItem } from "./nav";
 import { LogoBlock } from "./logo";
@@ -14,6 +14,8 @@ import Grid from "./grid";
 
 export {
   Layout,
+  ThreeColumnSection,
+  SeparatedColumn,
   Container,
   Header,
   Footer,

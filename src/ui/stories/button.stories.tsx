@@ -11,6 +11,7 @@ export default {
     theme: { table: { disable: true } },
     as: { table: { disable: true } },
     forwardedAs: { table: { disable: true } },
+    ref: { table: { disable: true } },
     borderSize: { table: { disable: true } },
     borderColor: { table: { disable: true } },
     type: {

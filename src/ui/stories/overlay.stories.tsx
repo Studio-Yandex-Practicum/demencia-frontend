@@ -11,8 +11,7 @@ export default {
     ref: { table: { disable: true } },
     isVisible: {
       name: "isVisible",
-      description:
-        "Значение указывает, видим ли overlay",
+      description: "Значение указывает, видим ли overlay",
       defaultValue: false,
       options: [true, false],
       control: "boolean",

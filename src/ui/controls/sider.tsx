@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useCallback, useEffect } from "react";
 import { ReactNode } from "react";
 import styled, { DefaultTheme, ThemeProps } from "styled-components";
 import { Button, IconBurger, IconClose, Overlay } from ".";
@@ -79,14 +79,17 @@ export interface SiderProps {
 
 export const Sider: React.FC<SiderProps> = (props) => {
   const [opened, setOpened] = React.useState(false);
+  const siderNavRef = React.useRef<HTMLBaseElement>(null);
 
   function toggleNav() {
     setOpened(!opened);
   }
 
-  function close(): void {
-    setOpened(false);
-  }
+  const close = useCallback(() => {
+    if (opened) {
+      setOpened(false);
+    }
+  }, [opened]);
 
   useEffect(() => {
     const handleEsc = (e: KeyboardEvent) => {
@@ -97,14 +100,31 @@ export const Sider: React.FC<SiderProps> = (props) => {
 
     window.addEventListener("keydown", handleEsc);
     return () => window.removeEventListener("keydown", handleEsc);
-  }, []);
+  }, [close]);
+
+  // todo: move this to a separate hook if possible
+  useEffect(() => {
+    const handleClickOutside = (event: any) => {
+      if (
+        siderNavRef.current &&
+        !siderNavRef.current.contains(event.target as Node)
+      ) {
+        close();
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [siderNavRef, close]);
 
   return (
     <>
       <SiderBtn onClick={toggleNav}>
         <IconBurger fillColor={PaletteColor.White} />
       </SiderBtn>
-      <SiderNav isVisible={opened} alignRight={true}>
+      <SiderNav isVisible={opened} alignRight={true} ref={siderNavRef}>
         <SiderCloseBtn onClick={close}>
           <IconClose height={24}></IconClose>
         </SiderCloseBtn>

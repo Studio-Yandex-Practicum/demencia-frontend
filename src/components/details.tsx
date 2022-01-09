@@ -96,33 +96,67 @@ const List = styled.ul<{
   color: ${({ color = "black" }) => color};
 `;
 
+// export const Section = styled.section<SectionProps>`
+//   width: 100%;
+//   margin: 0;
+//   padding: 0;
+// `;
+//
+// export const TwoColumnSection = styled(Section)<SectionProps>`
+//   display: grid;
+//   grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+//   grid-gap: 0;
+// `;
+
 const Details: React.FC = () => {
   return (
     <>
-      <FlexColumn>
-        <FlexRow>
-          <Box mr={8}>
-            <Subtitle1>КОГНИТИВНЫЕ ФУНКЦИИ</Subtitle1>
-            <Subtitle3 mt={2}>Что это такое?</Subtitle3>
-          </Box>
+      <TwoColumnSection>
+        <Box mr={8}>
+          <Subtitle1>КОГНИТИВНЫЕ ФУНКЦИИ</Subtitle1>
+          <Subtitle3 mt={2}>Что это такое?</Subtitle3>
+        </Box>
+        <Container
+          size={ContainerSize.MediumSmall}
+          bgColor={BackgroundColor.Alt2}
+        >
+          <Text1 mt={4} mb={4} ml={4} mr={12} textColor={TextColor.Secondary}>
+            <strong>Когнитивные функции</strong> - сложные функции головного
+            мозга, с помощью которых осуществляется процесс познания мира и
+            обеспечивается взаимодействие с ним.
+          </Text1>
+        </Container>
+        <AbsolutePositionPurpleRect>
           <Container
-            size={ContainerSize.MediumSmall}
-            bgColor={BackgroundColor.Alt2}
-          >
-            <Text1 mt={4} mb={4} ml={4} mr={12} textColor={TextColor.Secondary}>
-              <strong>Когнитивные функции</strong> - сложные функции головного
-              мозга, с помощью которых осуществляется процесс познания мира и
-              обеспечивается взаимодействие с ним.
-            </Text1>
-          </Container>
-          <AbsolutePositionPurpleRect>
-            <Container
-              bgColor={BackgroundColor.Alt1}
-              size={ContainerSize.Medium}
-            ></Container>
-          </AbsolutePositionPurpleRect>
-        </FlexRow>
-      </FlexColumn>
+            bgColor={BackgroundColor.Alt1}
+            size={ContainerSize.Medium}
+          ></Container>
+        </AbsolutePositionPurpleRect>
+      </TwoColumnSection>
+      {/*<FlexColumn>*/}
+      {/*  <FlexRow>*/}
+      {/*    <Box mr={8}>*/}
+      {/*      <Subtitle1>КОГНИТИВНЫЕ ФУНКЦИИ</Subtitle1>*/}
+      {/*      <Subtitle3 mt={2}>Что это такое?</Subtitle3>*/}
+      {/*    </Box>*/}
+      {/*    <Container*/}
+      {/*      size={ContainerSize.MediumSmall}*/}
+      {/*      bgColor={BackgroundColor.Alt2}*/}
+      {/*    >*/}
+      {/*      <Text1 mt={4} mb={4} ml={4} mr={12} textColor={TextColor.Secondary}>*/}
+      {/*        <strong>Когнитивные функции</strong> - сложные функции головного*/}
+      {/*        мозга, с помощью которых осуществляется процесс познания мира и*/}
+      {/*        обеспечивается взаимодействие с ним.*/}
+      {/*      </Text1>*/}
+      {/*    </Container>*/}
+      {/*    <AbsolutePositionPurpleRect>*/}
+      {/*      <Container*/}
+      {/*        bgColor={BackgroundColor.Alt1}*/}
+      {/*        size={ContainerSize.Medium}*/}
+      {/*      ></Container>*/}
+      {/*    </AbsolutePositionPurpleRect>*/}
+      {/*  </FlexRow>*/}
+      {/*</FlexColumn>*/}
 
       <GridContainer>
         <Box mt={7}>

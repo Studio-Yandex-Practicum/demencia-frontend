@@ -8,7 +8,7 @@ import {
   FontColorProps,
   getTextSelectedColor,
 } from "./mixins";
-import { ElementAnimationProps, zoomOnHoverMixIn } from "./animation";
+import { ElementAnimationProps, zoomOutOnHoverMixIn } from "./animation";
 import { PropsWithChildren, ReactNode } from "react";
 import { BackgroundColorProps } from "./container";
 
@@ -161,12 +161,12 @@ export const buttonBaseMixin = css<ButtonProps>`
   ${typographySizeMixIn}
   ${buildButtonStyleMixIn}
   ${cursorMixin}
-  ${zoomOnHoverMixIn}
+  ${zoomOutOnHoverMixIn}
   line-height: 0;
 `;
 
 export const Button = styled.button.attrs((props: ButtonProps) => ({
-  zoomOnHover: true,
+  zoomOutOnHover: true,
   uppercase: props.type === ButtonType.Primary,
   ...props,
 }))`

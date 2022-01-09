@@ -30,6 +30,7 @@ export const zoomTextOnHoverMixIn = (
 
 export interface ElementAnimationProps {
   zoomOnHover?: boolean;
+  zoomOutOnHover?: boolean;
 }
 
 export const zoomOnHoverMixIn = (props: ElementAnimationProps): string => {

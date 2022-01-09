@@ -10,6 +10,7 @@ import { Nav, Menu, MenuItem } from "./nav";
 import { LogoBlock } from "./logo";
 import { Overlay } from "./overlay";
 import { Sider } from "./sider";
+import Grid from "./grid";
 
 export {
   Layout,
@@ -28,4 +29,5 @@ export {
   IconClose,
   Overlay,
   Sider,
+  Grid,
 };

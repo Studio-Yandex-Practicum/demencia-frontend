@@ -62,7 +62,6 @@ const FlexRow = styled.div`
 `;
 
 const PurpleRect = styled.div`
-  //display: flex;
   position: absolute;
   z-index: 1;
   width: calc(50% - 32px);
@@ -135,8 +134,8 @@ const Details: React.FC = () => {
       </Section>
 
       <Section flex centered>
-        <GridContainer>
-          <Box mt={7}>
+        <TwoColumnGrid>
+          <Box mt={7} maxWidth={600}>
             <FlexRow>
               <StyledImg src={attentionPic} />
               <FlexColumn>
@@ -150,7 +149,7 @@ const Details: React.FC = () => {
             </FlexRow>
           </Box>
 
-          <Box mt={7}>
+          <Box mt={7} maxWidth={600}>
             <FlexRow>
               <StyledImg src={sensePic} />
               <FlexColumn>
@@ -163,7 +162,7 @@ const Details: React.FC = () => {
             </FlexRow>
           </Box>
 
-          <Box mt={7}>
+          <Box mt={7} maxWidth={600}>
             <FlexRow>
               <StyledImg src={memoryPic} />
               <FlexColumn>
@@ -176,7 +175,7 @@ const Details: React.FC = () => {
             </FlexRow>
           </Box>
 
-          <Box mt={7}>
+          <Box mt={7} maxWidth={600}>
             <FlexRow>
               <StyledImg src={praxisPic} />
               <FlexColumn>
@@ -189,7 +188,7 @@ const Details: React.FC = () => {
             </FlexRow>
           </Box>
 
-          <Box mt={7}>
+          <Box mt={7} maxWidth={600}>
             <FlexRow>
               <StyledImg src={speechPic} />
               <FlexColumn>
@@ -203,7 +202,7 @@ const Details: React.FC = () => {
             </FlexRow>
           </Box>
 
-          <Box mt={7}>
+          <Box mt={7} maxWidth={600}>
             <FlexRow>
               <StyledImg src={controlPic} />
               <FlexColumn>
@@ -216,10 +215,10 @@ const Details: React.FC = () => {
               </FlexColumn>
             </FlexRow>
           </Box>
-        </GridContainer>
+        </TwoColumnGrid>
       </Section>
 
-      <FlexColumn>
+      <Section flex centered>
         <Box mt={7} backgroundColor={PaletteColor.LightGreen}>
           <FlexRow>
             <StyledImg
@@ -236,38 +235,30 @@ const Details: React.FC = () => {
             </Text1>
           </FlexRow>
         </Box>
-      </FlexColumn>
+      </Section>
 
-      <FlexColumn>
-        <Box mt={7}>
-          <TwoColumnGrid>
-            <Box mt={8} mr={8}>
-              <Subtitle1>КОГНИТИВНЫЕ РАССТРОЙСТВА</Subtitle1>
-              <Subtitle3 mt={2}>Что это такое?</Subtitle3>
-            </Box>
-            <Container
-              size={ContainerSize.MediumSmall}
-              bgColor={BackgroundColor.Alt2}
-            >
-              <Text1
-                mt={4}
-                mb={4}
-                ml={4}
-                mr={4}
-                textColor={TextColor.Secondary}
-              >
-                <strong>Когнитивные расстройства</strong> - когнитивных функций
-                (внимания, памяти, речи, восприятия, восприятия, праксиса,
-                управляющих функций) по сравнению с исходным индивидуальным
-                и/или средними возрастными и образовательными уровнями
-                вследствие патологии головного мозга и нарушения его функций,
-                влияющее на эффективность обучения, профессиональной, социальной
-                и бытовой деятельности.
-              </Text1>
-            </Container>
-          </TwoColumnGrid>
-        </Box>
-      </FlexColumn>
+      <Section flex centered mt={7}>
+        <TwoColumnGrid>
+          <Box mr={8} maxWidth={370}>
+            <Subtitle1>КОГНИТИВНЫЕ РАССТРОЙСТВА</Subtitle1>
+            <Subtitle3 mt={2}>Что это такое?</Subtitle3>
+          </Box>
+          <Container
+            size={ContainerSize.MediumSmall}
+            bgColor={BackgroundColor.Alt2}
+          >
+            <Text1 mt={4} mb={4} ml={4} mr={4} textColor={TextColor.Secondary}>
+              <strong>Когнитивные расстройства</strong> - когнитивных функций
+              (внимания, памяти, речи, восприятия, восприятия, праксиса,
+              управляющих функций) по сравнению с исходным индивидуальным и/или
+              средними возрастными и образовательными уровнями вследствие
+              патологии головного мозга и нарушения его функций, влияющее на
+              эффективность обучения, профессиональной, социальной и бытовой
+              деятельности.
+            </Text1>
+          </Container>
+        </TwoColumnGrid>
+      </Section>
 
       <FlexColumn>
         <Box mt={7}>

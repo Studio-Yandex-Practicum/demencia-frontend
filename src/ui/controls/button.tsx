@@ -162,6 +162,7 @@ export const buttonBaseMixin = css<ButtonProps>`
   ${buildButtonStyleMixIn}
   ${cursorMixin}
   ${zoomOnHoverMixIn}
+  line-height: 0;
 `;
 
 export const Button = styled.button.attrs((props: ButtonProps) => ({

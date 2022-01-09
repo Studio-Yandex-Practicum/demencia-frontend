@@ -1,15 +1,37 @@
-import React from "react";
+import { prependOnceListener } from "process";
+import React, { ReactNode } from "react";
 import {
   Box,
   Header,
-  IconBurger,
   Link,
   LogoBlock,
   Menu,
   MenuItem,
   Nav,
+  Sider,
 } from "../ui/controls";
-import { ButtonShape, PaletteColor, TypographyLevel } from "../ui/types";
+
+const NavMenu: React.FC<{ vertical?: boolean }> = (props) => {
+  return (
+    <Menu vertical={!!props.vertical}>
+      <MenuItem>
+        <Link to="/#info">О деменции</Link>
+      </MenuItem>
+      <MenuItem>
+        <Link to="/#sponsors">Партнеры</Link>
+      </MenuItem>
+      <MenuItem>
+        <Link to="/news-grid">Новости</Link>
+      </MenuItem>
+      <MenuItem>
+        <Link to="/#about">О фонде</Link>
+      </MenuItem>
+      <MenuItem>
+        <Link to="/#about">Контакты</Link>
+      </MenuItem>
+    </Menu>
+  );
+};
 
 const PageHeader: React.FC = () => {
   return (
@@ -19,25 +41,15 @@ const PageHeader: React.FC = () => {
       </Box>
       <Box mt={4} mr={4}>
         <Nav>
-          <Menu>
-            <MenuItem>
-              <Link to="/#info">О деменции</Link>
-            </MenuItem>
-            <MenuItem>
-              <Link to="/#sponsors">Партнеры</Link>
-            </MenuItem>
-            <MenuItem>
-              <Link to="/news-grid">Новости</Link>
-            </MenuItem>
-            <MenuItem>
-              <Link to="/#about">О фонде</Link>
-            </MenuItem>
-            <MenuItem>
-              <Link to="/#about">Контакты</Link>
-            </MenuItem>
-          </Menu>
+          <NavMenu></NavMenu>
         </Nav>
       </Box>
+      <Sider>
+        <LogoBlock altText={"Логотип"} to={"/"} />
+        <Box mt={5}>
+          <NavMenu vertical={true}></NavMenu>
+        </Box>
+      </Sider>
     </Header>
   );
 };

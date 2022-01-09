@@ -13,7 +13,7 @@ interface LogoBlockProps extends BoxProps {
 }
 
 const logoDefaultMaxWidth = 220;
-const logoSmallMaxWidth = 150;
+const logoSmallMaxWidth = 120;
 // todo: logo size think of
 export const Logo = styled.img<{ size?: LogoSize }>`
   background-size: cover;

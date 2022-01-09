@@ -49,7 +49,7 @@ const FlexColumn = styled.div<{
     borderLeftRight ? `2px solid #772988` : ``};
 `;
 
-const FlexRow = styled.div`
+const FlexRow = styled.div<{ adaptive?: boolean }>`
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -59,6 +59,10 @@ const FlexRow = styled.div`
   max-width: 1200px;
   z-index: 10;
   position: relative;
+
+  @media (max-width: ${ScreenSize.Small}px) {
+    flex-direction: ${(p) => (p.adaptive ? "column" : "row")};
+  }
 `;
 
 const PurpleRect = styled.div`
@@ -93,6 +97,12 @@ const StyledImg = styled.img<{
   top: ${({ top }) => top};
   object-fit: contain;
   object-position: top;
+
+  width: 80px;
+
+  @media (max-width: ${ScreenSize.Small}px) {
+    width: 40px;
+  }
 `;
 
 const List = styled.ul<{
@@ -123,7 +133,7 @@ const Details: React.FC = () => {
             size={ContainerSize.MediumSmall}
             bgColor={BackgroundColor.Alt2}
           >
-            <Text1 mt={4} mb={4} ml={4} mr={12} textColor={TextColor.Secondary}>
+            <Text1 mt={4} mb={4} ml={4} mr={4} textColor={TextColor.Secondary}>
               <strong>Когнитивные функции</strong> - сложные функции головного
               мозга, с помощью которых осуществляется процесс познания мира и
               обеспечивается взаимодействие с ним.
@@ -220,12 +230,12 @@ const Details: React.FC = () => {
 
       <Section flex centered>
         <Box mt={7} backgroundColor={PaletteColor.LightGreen}>
-          <FlexRow>
+          <FlexRow adaptive>
             <StyledImg
               src={purplePuzzleTranslucent}
               margin="0 0 0 20px"
               position="relative"
-              top="-30px"
+              top="-10px"
             />
             <Text1 mt={4} mb={4} ml={4} mr={4} textColor={TextColor.Primary}>
               Когнитивное здоровье - способность четко мыслить, учиться и
@@ -239,7 +249,7 @@ const Details: React.FC = () => {
 
       <Section flex centered mt={7}>
         <TwoColumnGrid>
-          <Box mr={8} maxWidth={370}>
+          <Box maxWidth={370}>
             <Subtitle1>КОГНИТИВНЫЕ РАССТРОЙСТВА</Subtitle1>
             <Subtitle3 mt={2}>Что это такое?</Subtitle3>
           </Box>
@@ -260,83 +270,81 @@ const Details: React.FC = () => {
         </TwoColumnGrid>
       </Section>
 
-      <FlexColumn>
-        <Box mt={7}>
-          <FlexRow>
-            <FlexColumn padding={`0 30px 0 0`} alignItems={`center`}>
-              <Subtitle2 uppercase={false}>Легкие</Subtitle2>
-              <List>
-                <Box>
-                  <li>
-                    <Text1 textColor={TextColor.Primary} mr={4}>
-                      когнитивные расстройства выражены минимально
-                    </Text1>
-                  </li>
-                </Box>
+      <Section flex centered mt={7}>
+        <FlexRow>
+          <FlexColumn padding={`0 30px 0 0`} alignItems={`center`}>
+            <Subtitle2 uppercase={false}>Легкие</Subtitle2>
+            <List>
+              <Box>
                 <li>
                   <Text1 textColor={TextColor.Primary} mr={4}>
-                    проявляется снижение концентрации внимания и нарушение
-                    кратковременной памяти
+                    когнитивные расстройства выражены минимально
                   </Text1>
                 </li>
-                <li>
-                  <Text1 textColor={TextColor.Primary} mr={4}>
-                    когнитивные нарушения могут вызывать обеспокоенность
-                    человека и снижение качества его жизни
-                  </Text1>
-                </li>
-              </List>
-            </FlexColumn>
-            <FlexColumn
-              padding={`0 30px`}
-              borderLeftRight={true}
-              alignItems={`center`}
-            >
-              <Subtitle2 uppercase={false}>Умеренные</Subtitle2>
-              <List>
-                <li>
-                  <Text1 textColor={TextColor.Primary} mr={4}>
-                    нарушения одной или нескольких когнитивных функций
-                  </Text1>
-                </li>
-                <li>
-                  <Text1 textColor={TextColor.Primary} mr={4}>
-                    нарушения выходят за пределы возрастной нормы, но не
-                    ограничивают повседневную активность
-                  </Text1>
-                </li>
-                <li>
-                  <Text1 textColor={TextColor.Primary} mr={4}>
-                    когнитивные нарушения вызывают беспокойство человека и
-                    обращают на себя внимание окружающих
-                  </Text1>
-                </li>
-              </List>
-            </FlexColumn>
-            <FlexColumn padding={`0 0 0 30px`} alignItems={`center`}>
-              <Subtitle2 uppercase={false}>Тяжелые</Subtitle2>
-              <List>
-                <li>
-                  <Text1 textColor={TextColor.Primary} mr={4}>
-                    серьезные нарушения памяти и других когнитивных функций
-                  </Text1>
-                </li>
-                <li>
-                  <Text1 textColor={TextColor.Primary} mr={4}>
-                    нарушения влияют и ограничивают повседневную жизнь
-                  </Text1>
-                </li>
-                <li>
-                  <Text1 textColor={TextColor.Primary} mr={4}>
-                    наиболее тяжелым видом когнитивных расстройств является
-                    деменция
-                  </Text1>
-                </li>
-              </List>
-            </FlexColumn>
-          </FlexRow>
-        </Box>
-      </FlexColumn>
+              </Box>
+              <li>
+                <Text1 textColor={TextColor.Primary} mr={4}>
+                  проявляется снижение концентрации внимания и нарушение
+                  кратковременной памяти
+                </Text1>
+              </li>
+              <li>
+                <Text1 textColor={TextColor.Primary} mr={4}>
+                  когнитивные нарушения могут вызывать обеспокоенность человека
+                  и снижение качества его жизни
+                </Text1>
+              </li>
+            </List>
+          </FlexColumn>
+          <FlexColumn
+            padding={`0 30px`}
+            borderLeftRight={true}
+            alignItems={`center`}
+          >
+            <Subtitle2 uppercase={false}>Умеренные</Subtitle2>
+            <List>
+              <li>
+                <Text1 textColor={TextColor.Primary} mr={4}>
+                  нарушения одной или нескольких когнитивных функций
+                </Text1>
+              </li>
+              <li>
+                <Text1 textColor={TextColor.Primary} mr={4}>
+                  нарушения выходят за пределы возрастной нормы, но не
+                  ограничивают повседневную активность
+                </Text1>
+              </li>
+              <li>
+                <Text1 textColor={TextColor.Primary} mr={4}>
+                  когнитивные нарушения вызывают беспокойство человека и
+                  обращают на себя внимание окружающих
+                </Text1>
+              </li>
+            </List>
+          </FlexColumn>
+          <FlexColumn padding={`0 0 0 30px`} alignItems={`center`}>
+            <Subtitle2 uppercase={false}>Тяжелые</Subtitle2>
+            <List>
+              <li>
+                <Text1 textColor={TextColor.Primary} mr={4}>
+                  серьезные нарушения памяти и других когнитивных функций
+                </Text1>
+              </li>
+              <li>
+                <Text1 textColor={TextColor.Primary} mr={4}>
+                  нарушения влияют и ограничивают повседневную жизнь
+                </Text1>
+              </li>
+              <li>
+                <Text1 textColor={TextColor.Primary} mr={4}>
+                  наиболее тяжелым видом когнитивных расстройств является
+                  деменция
+                </Text1>
+              </li>
+            </List>
+          </FlexColumn>
+        </FlexRow>
+      </Section>
 
       <Section>
         <Box mt={6} backgroundColor={PaletteColor.DarkPurple}>

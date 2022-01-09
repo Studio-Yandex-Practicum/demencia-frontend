@@ -55,7 +55,7 @@ export const TwoColumnGrid = styled.div<GridProps>`
   z-index: ${(p) => (p.zIndex ? p.zIndex : 0)};
   display: grid;
   grid-row-gap: 32px;
-  grid-template-columns: minmax(${ScreenSize.XSmall}, 1fr);
+  grid-template-columns: minmax(${ScreenSize.XXSmall}, 1fr);
 
   @media screen and (min-width: ${ScreenSize.Medium}px) {
     grid-column-gap: 0;

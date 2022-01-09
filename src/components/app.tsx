@@ -6,6 +6,7 @@ import UIKitPage from "../pages/ui-kit/ui-kit";
 import { Layout } from "../ui/controls";
 import PageHeader from "./page-header";
 import { Main } from "../ui/controls/layout";
+import PageFooter from "./page-footer";
 
 const App: React.FC = () => {
   return (
@@ -21,6 +22,7 @@ const App: React.FC = () => {
             <Route path="/details" element={<DetailsPage />} />
           </Routes>
         </Main>
+        <PageFooter />
       </Layout>
     </Router>
   );

@@ -1,7 +1,12 @@
 import React from "react";
-import { Section, TwoColumnSection } from "../ui/controls/layout";
+import { Section, TwoColumnGrid } from "../ui/controls/layout";
 import { Box, Container } from "../ui/controls";
-import { ContainerSize, PaletteColor, TextColor } from "../ui/types";
+import {
+  ContainerSize,
+  PaletteColor,
+  ScreenSize,
+  TextColor,
+} from "../ui/types";
 import { BackgroundColor } from "../ui/types/background-color.enum";
 import {
   Subtitle1,
@@ -56,14 +61,20 @@ const FlexRow = styled.div`
   position: relative;
 `;
 
-const AbsolutePositionPurpleRect = styled.div`
-  display: flex;
+const PurpleRect = styled.div`
+  //display: flex;
   position: absolute;
-  z-index: -1;
-  width: 50vw;
-  height: 150px;
-  left: calc(50% + 30px);
-  top: -30px;
+  z-index: 1;
+  width: calc(50% - 32px);
+  height: 136px;
+  background-color: ${(p) => p.theme.colors.backgroundAlt1};
+  right: 0;
+  top: 0;
+  visibility: hidden;
+
+  @media screen and (min-width: ${ScreenSize.Medium}px) {
+    visibility: visible;
+  }
 `;
 
 const GridContainer = styled.div`
@@ -96,149 +107,117 @@ const List = styled.ul<{
   color: ${({ color = "black" }) => color};
 `;
 
-// export const Section = styled.section<SectionProps>`
-//   width: 100%;
-//   margin: 0;
-//   padding: 0;
-// `;
-//
-// export const TwoColumnSection = styled(Section)<SectionProps>`
-//   display: grid;
-//   grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-//   grid-gap: 0;
-// `;
+const CognitiveFunctionsGrid = styled(TwoColumnGrid)`
+  z-index: 2;
+`;
 
 const Details: React.FC = () => {
   return (
     <>
-      <TwoColumnSection>
-        <Box mr={8}>
-          <Subtitle1>КОГНИТИВНЫЕ ФУНКЦИИ</Subtitle1>
-          <Subtitle3 mt={2}>Что это такое?</Subtitle3>
-        </Box>
-        <Container
-          size={ContainerSize.MediumSmall}
-          bgColor={BackgroundColor.Alt2}
-        >
-          <Text1 mt={4} mb={4} ml={4} mr={12} textColor={TextColor.Secondary}>
-            <strong>Когнитивные функции</strong> - сложные функции головного
-            мозга, с помощью которых осуществляется процесс познания мира и
-            обеспечивается взаимодействие с ним.
-          </Text1>
-        </Container>
-        <AbsolutePositionPurpleRect>
+      <Section flex centered>
+        <CognitiveFunctionsGrid mt={5}>
+          <Box mr={8} maxWidth={370}>
+            <Subtitle1>КОГНИТИВНЫЕ ФУНКЦИИ</Subtitle1>
+            <Subtitle3 mt={2}>Что это такое?</Subtitle3>
+          </Box>
           <Container
-            bgColor={BackgroundColor.Alt1}
-            size={ContainerSize.Medium}
-          ></Container>
-        </AbsolutePositionPurpleRect>
-      </TwoColumnSection>
-      {/*<FlexColumn>*/}
-      {/*  <FlexRow>*/}
-      {/*    <Box mr={8}>*/}
-      {/*      <Subtitle1>КОГНИТИВНЫЕ ФУНКЦИИ</Subtitle1>*/}
-      {/*      <Subtitle3 mt={2}>Что это такое?</Subtitle3>*/}
-      {/*    </Box>*/}
-      {/*    <Container*/}
-      {/*      size={ContainerSize.MediumSmall}*/}
-      {/*      bgColor={BackgroundColor.Alt2}*/}
-      {/*    >*/}
-      {/*      <Text1 mt={4} mb={4} ml={4} mr={12} textColor={TextColor.Secondary}>*/}
-      {/*        <strong>Когнитивные функции</strong> - сложные функции головного*/}
-      {/*        мозга, с помощью которых осуществляется процесс познания мира и*/}
-      {/*        обеспечивается взаимодействие с ним.*/}
-      {/*      </Text1>*/}
-      {/*    </Container>*/}
-      {/*    <AbsolutePositionPurpleRect>*/}
-      {/*      <Container*/}
-      {/*        bgColor={BackgroundColor.Alt1}*/}
-      {/*        size={ContainerSize.Medium}*/}
-      {/*      ></Container>*/}
-      {/*    </AbsolutePositionPurpleRect>*/}
-      {/*  </FlexRow>*/}
-      {/*</FlexColumn>*/}
+            size={ContainerSize.MediumSmall}
+            bgColor={BackgroundColor.Alt2}
+          >
+            <Text1 mt={4} mb={4} ml={4} mr={12} textColor={TextColor.Secondary}>
+              <strong>Когнитивные функции</strong> - сложные функции головного
+              мозга, с помощью которых осуществляется процесс познания мира и
+              обеспечивается взаимодействие с ним.
+            </Text1>
+          </Container>
+        </CognitiveFunctionsGrid>
+        <PurpleRect />
+      </Section>
 
-      <GridContainer>
-        <Box mt={7}>
-          <FlexRow>
-            <StyledImg src={attentionPic} />
-            <FlexColumn>
-              <Subtitle2 ml={3}>ВНИМАНИЕ</Subtitle2>
-              <Text2 ml={3}>
-                способность поддерживать требуемый для умственной работы уровень
-                уровень психической активности и фокусировать деятельность на
-                задаче
-              </Text2>
-            </FlexColumn>
-          </FlexRow>
-        </Box>
+      <Section flex centered>
+        <GridContainer>
+          <Box mt={7}>
+            <FlexRow>
+              <StyledImg src={attentionPic} />
+              <FlexColumn>
+                <Subtitle2 ml={3}>ВНИМАНИЕ</Subtitle2>
+                <Text2 ml={3}>
+                  способность поддерживать требуемый для умственной работы
+                  уровень уровень психической активности и фокусировать
+                  деятельность на задаче
+                </Text2>
+              </FlexColumn>
+            </FlexRow>
+          </Box>
 
-        <Box mt={7}>
-          <FlexRow>
-            <StyledImg src={sensePic} />
-            <FlexColumn>
-              <Subtitle2 ml={3}>ВОСПРИЯТИЕ (ГНОЗИС)</Subtitle2>
-              <Text2 ml={3}>
-                способность воспринимать и распознавать информацию, поступающую
-                от органов чувств
-              </Text2>
-            </FlexColumn>
-          </FlexRow>
-        </Box>
+          <Box mt={7}>
+            <FlexRow>
+              <StyledImg src={sensePic} />
+              <FlexColumn>
+                <Subtitle2 ml={3}>ВОСПРИЯТИЕ (ГНОЗИС)</Subtitle2>
+                <Text2 ml={3}>
+                  способность воспринимать и распознавать информацию,
+                  поступающую от органов чувств
+                </Text2>
+              </FlexColumn>
+            </FlexRow>
+          </Box>
 
-        <Box mt={7}>
-          <FlexRow>
-            <StyledImg src={memoryPic} />
-            <FlexColumn>
-              <Subtitle2 ml={3}>ПАМЯТЬ</Subtitle2>
-              <Text2 ml={3}>
-                способность запечатлевать, сохранять и многократно
-                воспроизводить получаемую в течение жизни информацию
-              </Text2>
-            </FlexColumn>
-          </FlexRow>
-        </Box>
+          <Box mt={7}>
+            <FlexRow>
+              <StyledImg src={memoryPic} />
+              <FlexColumn>
+                <Subtitle2 ml={3}>ПАМЯТЬ</Subtitle2>
+                <Text2 ml={3}>
+                  способность запечатлевать, сохранять и многократно
+                  воспроизводить получаемую в течение жизни информацию
+                </Text2>
+              </FlexColumn>
+            </FlexRow>
+          </Box>
 
-        <Box mt={7}>
-          <FlexRow>
-            <StyledImg src={praxisPic} />
-            <FlexColumn>
-              <Subtitle2 ml={3}>ПРАКСИС</Subtitle2>
-              <Text2 ml={3}>
-                способность приобретать, сохранять или использовать различные
-                двигательные навыки
-              </Text2>
-            </FlexColumn>
-          </FlexRow>
-        </Box>
+          <Box mt={7}>
+            <FlexRow>
+              <StyledImg src={praxisPic} />
+              <FlexColumn>
+                <Subtitle2 ml={3}>ПРАКСИС</Subtitle2>
+                <Text2 ml={3}>
+                  способность приобретать, сохранять или использовать различные
+                  двигательные навыки
+                </Text2>
+              </FlexColumn>
+            </FlexRow>
+          </Box>
 
-        <Box mt={7}>
-          <FlexRow>
-            <StyledImg src={speechPic} />
-            <FlexColumn>
-              <Subtitle2 ml={3}>РЕЧЬ</Subtitle2>
-              <Text2 ml={3}>
-                способность к коммуникации в устной и письменной форме, включая
-                понимание обращенной речи и построение собственного высказывания
-              </Text2>
-            </FlexColumn>
-          </FlexRow>
-        </Box>
+          <Box mt={7}>
+            <FlexRow>
+              <StyledImg src={speechPic} />
+              <FlexColumn>
+                <Subtitle2 ml={3}>РЕЧЬ</Subtitle2>
+                <Text2 ml={3}>
+                  способность к коммуникации в устной и письменной форме,
+                  включая понимание обращенной речи и построение собственного
+                  высказывания
+                </Text2>
+              </FlexColumn>
+            </FlexRow>
+          </Box>
 
-        <Box mt={7}>
-          <FlexRow>
-            <StyledImg src={controlPic} />
-            <FlexColumn>
-              <Subtitle2 ml={3}>УПРАВЛЯЮЩИЕ ФУНКЦИИ (РЕГУЛЯТОРНЫЕ)</Subtitle2>
-              <Text2 ml={3}>
-                способность управлять своей познавательной деятельностью и
-                поведением, включая планирование и контроль за выполнением
-                совершаемых действий
-              </Text2>
-            </FlexColumn>
-          </FlexRow>
-        </Box>
-      </GridContainer>
+          <Box mt={7}>
+            <FlexRow>
+              <StyledImg src={controlPic} />
+              <FlexColumn>
+                <Subtitle2 ml={3}>УПРАВЛЯЮЩИЕ ФУНКЦИИ (РЕГУЛЯТОРНЫЕ)</Subtitle2>
+                <Text2 ml={3}>
+                  способность управлять своей познавательной деятельностью и
+                  поведением, включая планирование и контроль за выполнением
+                  совершаемых действий
+                </Text2>
+              </FlexColumn>
+            </FlexRow>
+          </Box>
+        </GridContainer>
+      </Section>
 
       <FlexColumn>
         <Box mt={7} backgroundColor={PaletteColor.LightGreen}>
@@ -261,7 +240,7 @@ const Details: React.FC = () => {
 
       <FlexColumn>
         <Box mt={7}>
-          <TwoColumnSection>
+          <TwoColumnGrid>
             <Box mt={8} mr={8}>
               <Subtitle1>КОГНИТИВНЫЕ РАССТРОЙСТВА</Subtitle1>
               <Subtitle3 mt={2}>Что это такое?</Subtitle3>
@@ -286,7 +265,7 @@ const Details: React.FC = () => {
                 и бытовой деятельности.
               </Text1>
             </Container>
-          </TwoColumnSection>
+          </TwoColumnGrid>
         </Box>
       </FlexColumn>
 

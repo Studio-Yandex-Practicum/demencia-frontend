@@ -41,7 +41,7 @@ const Container = styled.div<ContainerProps>`
   display: flex;
   flex-direction: column;
   width: 100%;
-  margin: 0 auto;
+  //margin: 0 auto;
   ${(p) => (!!p.size ? `max-width: ${p.size}px` : "")};
   ${colorMixIn};
 `;

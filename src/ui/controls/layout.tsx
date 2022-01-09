@@ -1,5 +1,6 @@
 import styled, { DefaultTheme } from "styled-components";
-import { BoxProps } from "./box";
+import { BoxProps, getBoxStyles } from "./box";
+import { ScreenSize } from "../types";
 
 export interface ThemeProps {
   theme: DefaultTheme;
@@ -11,6 +12,13 @@ interface LayoutProps extends ThemeProps {
 interface SectionProps extends ThemeProps, BoxProps {
   // todo: add own props
   col?: number;
+  flex?: boolean;
+  centered?: boolean;
+  zIndex?: number;
+}
+
+interface GridProps extends ThemeProps, BoxProps {
+  zIndex?: number;
 }
 
 export const Layout = styled.div<LayoutProps>`
@@ -23,21 +31,34 @@ export const Layout = styled.div<LayoutProps>`
 `;
 
 export const Main = styled.main`
-  position: relative;
+  //position: relative;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  //justify-content: center;
+  align-items: stretch;
+  margin-left: 32px;
+  margin-right: 32px;
 `;
 
 export const Section = styled.section<SectionProps>`
   width: 100%;
-  margin: 0;
-  padding: 0;
+  position: relative;
+  ${getBoxStyles};
+  display: ${(p) => (p.flex ? "flex" : "block")};
+  flex-direction: ${(p) => (p.flex ? "column" : undefined)};
+  align-items: ${(p) => (p.centered ? "center" : "start")};
+  z-index: ${(p) => (p.zIndex ? p.zIndex : 0)};
 `;
 
-export const TwoColumnSection = styled(Section)<SectionProps>`
+export const TwoColumnGrid = styled.div<GridProps>`
+  ${getBoxStyles};
+  z-index: ${(p) => (p.zIndex ? p.zIndex : 0)};
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-  grid-gap: 0;
+  grid-row-gap: 32px;
+  grid-template-columns: minmax(${ScreenSize.XSmall}, 1fr);
+
+  @media screen and (min-width: ${ScreenSize.Medium}px) {
+    grid-column-gap: 0;
+    grid-template-columns: 1fr 1fr;
+  }
 `;

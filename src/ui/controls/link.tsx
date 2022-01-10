@@ -1,4 +1,4 @@
-import { Link as RouterLink } from "react-router-dom";
+import { Link as RouterLink, LinkProps } from "react-router-dom";
 import styled, { css, DefaultTheme, ThemeProps } from "styled-components";
 import {
   TextUppercaseProps,
@@ -18,6 +18,7 @@ import {
   typographySizeMixIn,
 } from "./typography";
 import { TypographyLevel } from "../types";
+import * as React from "react";
 
 export const linkMixin = css<
   FontLevelProps &
@@ -40,7 +41,24 @@ export const linkMixin = css<
   ${zoomTextOnHoverMixIn}
 `;
 
-export const Link = styled(RouterLink).attrs(
+export const Link = styled(
+  ({
+    uppercase,
+    zoomTextOnHover,
+    borderBottomOnHover,
+    borderSize,
+    borderColor,
+    level,
+    ...rest
+  }: ThemeProps<DefaultTheme> &
+    FontLevelProps &
+    FontColorProps &
+    TextSizeAnimationProps &
+    TextUppercaseProps &
+    BorderBottomOnHoverProps &
+    LinkProps &
+    React.RefAttributes<HTMLAnchorElement>) => <RouterLink {...rest} />
+).attrs(
   (
     props: ThemeProps<DefaultTheme> &
       FontLevelProps &
@@ -53,7 +71,7 @@ export const Link = styled(RouterLink).attrs(
     zoomTextOnHover: true,
     borderBottomOnHover: true,
     borderSize: props.theme.layout.borderSize,
-    borderColor: props.theme.colors.textAccent1,
+    borderColor: props.theme.colors.backgroundAlt1,
     level: TypographyLevel.Subtitle3,
     ...props,
   })

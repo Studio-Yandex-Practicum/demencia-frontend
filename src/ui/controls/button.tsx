@@ -1,63 +1,150 @@
 import styled, { css, DefaultTheme, ThemeProps } from "styled-components";
-import { BoxProps, getBoxStyles } from "./box";
-import { typographySizeMixIn } from "./typography";
-import {
-  shadowHoverButtonMixIn,
-  shadowHoverLargeButtonMixIn,
-  shadowLargeButtonMixIn,
-} from "./shadows";
+import { FontLevelProps, typographySizeMixIn } from "./typography";
 import { cursorMixin } from "./cursor";
+import { ButtonShape, ButtonSize, ButtonType } from "../types";
 import {
-  ButtonShape,
-  ButtonStyle,
-  ButtonType,
-  TypographyLevel,
-} from "../types";
-import { TextUppercaseProps, textUppercaseMixIn } from "./mixins";
-import { ElementAnimationProps, zoomOnHoverMixIn } from "./animation";
-import { ReactNode } from "react";
+  TextUppercaseProps,
+  textUppercaseMixIn,
+  FontColorProps,
+  getTextSelectedColor,
+} from "./mixins";
+import { ElementAnimationProps, zoomOutOnHoverMixIn } from "./animation";
+import { PropsWithChildren, ReactNode } from "react";
+import { BackgroundColorProps } from "./container";
 
-interface ButtonProps
-  extends BoxProps,
+export interface ButtonProps
+  extends FontColorProps,
+    FontLevelProps,
+    BackgroundColorProps,
     TextUppercaseProps,
     ElementAnimationProps {
   fullWidth?: boolean;
   type?: ButtonType;
+  size?: ButtonSize;
   shape?: ButtonShape;
   ghost?: boolean;
   icon?: ReactNode;
 }
+
+const buildLinkButtonStyleMixIn = (
+  props: ThemeProps<DefaultTheme> & ButtonProps
+): string => {
+  if (!props.type || props.type !== ButtonType.Link) {
+    return "";
+  }
+
+  const { buttons } = props.theme;
+  const buttonStyleType = props.type || ButtonType.Primary;
+  const buttonStyle = !!buttons && buttons.types[buttonStyleType];
+  const buttonSizeType = props.size || ButtonSize.Default;
+  const buttonSize = buttons.sizes[buttonSizeType];
+  const color =
+    (!!props.textColor && getTextSelectedColor(props)) || buttonStyle.color;
+
+  const fontStyles = !props.level
+    ? `font-size: ${buttonSize.fontSize}px; font-weight: ${buttonSize.fontWeight};`
+    : "";
+
+  return `
+    border: none;
+    ${fontStyles}
+    color: ${color};
+    background-color: transparent;
+  `;
+};
+
+const buildCircleButtonStyleMixIn = (
+  props: ThemeProps<DefaultTheme> & ButtonProps
+): string => {
+  if (!props?.shape || props.shape !== ButtonShape.Circle) {
+    return "";
+  }
+
+  const { buttons } = props.theme;
+  const buttonStyleType = props.type || ButtonType.Primary;
+  const buttonStyle = !!buttons && buttons.types[buttonStyleType];
+  const buttonSizeType = props.size || ButtonSize.Default;
+  const buttonSize =
+    buttons.sizes[`${buttonSizeType}Circle`] || buttons.sizes.defaultCircle;
+  const color =
+    (!!props.textColor && getTextSelectedColor(props)) ||
+    (!props.ghost ? buttonStyle.color : buttonStyle.backgroundColor);
+
+  const fontStyles = !props.level
+    ? `font-size: ${buttonSize.fontSize}px; font-weight: ${buttonSize.fontWeight};`
+    : "";
+
+  return `
+    padding: 0;
+    border: 0;
+    border-radius: 50%;
+    height: ${buttonSize.height}px;
+    width: ${buttonSize.height}px;
+    ${fontStyles}
+    color: ${color};
+    background-color: ${
+      !props.ghost
+        ? props.bgColor || buttonStyle.backgroundColor || "transparent"
+        : "transparent"
+    };
+  `;
+};
 
 const buildButtonStyleMixIn = (
   props: ThemeProps<DefaultTheme> & ButtonProps
 ): string => {
   const { buttons } = props.theme;
   const buttonStyleType = props.type || ButtonType.Primary;
-  const buttonStyle = buttons[buttonStyleType];
+  if (buttonStyleType === ButtonType.Link) {
+    return buildLinkButtonStyleMixIn(props);
+  }
+
+  if (!!props?.shape && props.shape === ButtonShape.Circle) {
+    return buildCircleButtonStyleMixIn(props);
+  }
+
+  const buttonStyle = !!buttons && buttons.types[buttonStyleType];
+  const buttonSizeType = props.size || ButtonSize.Default;
+  const buttonSize = buttons.sizes[buttonSizeType];
   const borderColor = !props.ghost
     ? buttonStyle.borderColor || "transparent"
     : buttonStyle.backgroundColor;
   const borderValue =
-    typeof buttonStyle.borderWidth === "undefined"
+    typeof buttonSize.borderWidth === "undefined"
       ? "none"
-      : `${buttonStyle.borderWidth}px solid ${borderColor || ""};`;
+      : `${buttonSize.borderWidth}px solid ${borderColor || ""};`;
 
-  let borderRadius = !!buttonStyle.borderRadius
-    ? `border-radius: ${buttonStyle.borderRadius}px;`
+  let borderRadius = !!buttonSize.borderRadius
+    ? `border-radius: ${buttonSize.borderRadius}px;`
     : "";
 
   if (props.shape === ButtonShape.Circle) {
     borderRadius = `border-radius: 50%;`;
   }
 
+  // todo:
+  const minWidthStyle =
+    props.shape === ButtonShape.Circle ? "min-width: 50px;" : "";
+
+  const color =
+    (!!props.textColor && getTextSelectedColor(props)) ||
+    (!props.ghost ? buttonStyle.color : buttonStyle.backgroundColor);
+
+  const fontStyles = !props.level
+    ? `font-size: ${buttonSize.fontSize}px; font-weight: ${buttonSize.fontWeight}; line-height: 0;`
+    : "";
+
   return `
+    height: ${buttonSize.height}px;
+    padding: ${buttonSize.paddingVertical}px ${buttonSize.paddingHorizontal}px;
+    ${minWidthStyle}
     ${borderRadius}
     border: ${borderValue};
-    
-    color: ${!props.ghost ? buttonStyle.color : buttonStyle.backgroundColor}};
+    ${fontStyles}
+    color: ${color};
     background-color: ${
       !props.ghost
-        ? buttonStyle.backgroundColor || "transparent"
+        ? props.bgColor || buttonStyle.backgroundColor || "transparent"
         : "transparent"
     };
   `;
@@ -71,32 +158,36 @@ export const buttonBaseMixin = css<ButtonProps>`
   text-align: center;
   text-decoration: none;
   ${textUppercaseMixIn}
+  ${typographySizeMixIn}
   ${buildButtonStyleMixIn}
   ${cursorMixin}
-  ${typographySizeMixIn}
-  ${getBoxStyles}
-  ${zoomOnHoverMixIn}
+  ${zoomOutOnHoverMixIn}
+  line-height: 0;
 `;
+
 export const Button = styled.button.attrs((props: ButtonProps) => ({
-  pt: 1,
-  pb: 1,
-  pl: 4,
-  pr: 4,
-  type: ButtonType.Primary,
-  zoomOnHover: true,
+  zoomOutOnHover: true,
   uppercase: props.type === ButtonType.Primary,
-  level:
-    !props.type || props.type === ButtonType.Primary
-      ? TypographyLevel.Subtitle3
-      : TypographyLevel.Text1,
   ...props,
 }))`
   ${buttonBaseMixin}
 `;
 
-export const LinkButton: React.FC<ButtonProps> = (props) => {
+export const LinkButton = styled.button.attrs((props: ButtonProps) => ({
+  type: ButtonType.Link,
+  zoomOnHover: true,
+  uppercase: true,
+  ...props,
+}))`
+  ${buttonBaseMixin};
+  padding: 0;
+`;
+
+export const CircleButton: React.FC<ButtonProps> = (
+  props: PropsWithChildren<ButtonProps>
+) => {
   return (
-    <Button type={ButtonType.Link} level={TypographyLevel.Text1}>
+    <Button type={ButtonType.Secondary} shape={ButtonShape.Circle}>
       {props.children}
     </Button>
   );

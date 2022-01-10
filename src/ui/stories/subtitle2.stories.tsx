@@ -1,9 +1,9 @@
-import { Title } from "../controls/typography";
+import { Subtitle2 } from "../controls/typography";
 import { ComponentStory, ComponentMeta } from "@storybook/react";
 
 export default {
-  title: "Title",
-  component: Title,
+  title: "Subtitle2",
+  component: Subtitle2,
   argTypes: {
     theme: { table: { disable: true } },
     as: { table: { disable: true } },
@@ -20,14 +20,11 @@ export default {
     ml: { table: { disable: true } },
     mr: { table: { disable: true } },
   },
-} as ComponentMeta<typeof Title>;
+} as ComponentMeta<typeof Subtitle2>;
 
-const Template: ComponentStory<typeof Title> = (args) => (
-  <Title {...args}>Что нового?</Title>
+const Template: ComponentStory<typeof Subtitle2> = (args) => (
+  <Subtitle2 {...args}>Внимание, Восприятие </Subtitle2>
 );
 
-export const DefaultTitle = Template.bind({});
-DefaultTitle.args = {};
-
-export const InvertedTitle = Template.bind({});
-InvertedTitle.args = { textColor: "accent1" };
+export const Default = Template.bind({});
+Default.args = {};

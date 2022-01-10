@@ -1,6 +1,5 @@
 import styled, { css, DefaultTheme, ThemeProps } from "styled-components";
 import { ScreenSize, TextColor, TypographyLevel } from "../types";
-import { TextColor, TypographyLevel } from "../types";
 import {
   TextUppercaseProps,
   textUppercaseMixIn,

@@ -1,14 +1,14 @@
 import { ComponentStory, ComponentMeta } from "@storybook/react";
 
-import { Box, ThreeColumnSection } from "../controls";
+import { Box, ThreeColumnGrid } from "../controls";
 import { SeparatedColumn } from "../controls";
 import { Subtitle2, Text2 } from "../controls/typography";
 
 const boxOptionValues = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
 
 export default {
-  title: "Three-Column Section",
-  component: ThreeColumnSection,
+  title: "Three-Column Grid",
+  component: ThreeColumnGrid,
   subcomponents: { SeparatedColumn, Subtitle2, Text2, Box },
   argTypes: {
     theme: { table: { disable: true } },
@@ -82,10 +82,10 @@ export default {
       control: "select",
     },
   },
-} as ComponentMeta<typeof ThreeColumnSection>;
+} as ComponentMeta<typeof ThreeColumnGrid>;
 
-const Template: ComponentStory<typeof ThreeColumnSection> = () => (
-  <ThreeColumnSection>
+const Template: ComponentStory<typeof ThreeColumnGrid> = () => (
+  <ThreeColumnGrid>
     <SeparatedColumn>
       <Subtitle2>3х колоночная секция: 1ая колонка</Subtitle2>
       <Box mb={2}>
@@ -143,7 +143,7 @@ const Template: ComponentStory<typeof ThreeColumnSection> = () => (
         </Text2>
       </Box>
     </SeparatedColumn>
-  </ThreeColumnSection>
+  </ThreeColumnGrid>
 );
 
 export const Default = Template.bind({});

@@ -2,8 +2,8 @@ import React from "react";
 import {
   Section,
   SeparatedColumn,
-  ThreeColumnSection,
-  TwoColumnSection,
+  ThreeColumnGrid,
+  TwoColumnGrid,
 } from "../../ui/controls/layout";
 import {
   Box,
@@ -101,11 +101,11 @@ const UiKitPage: React.FC = () => {
           </Box>
         </Container>
       </Section>
-      <TwoColumnSection>
+      <TwoColumnGrid>
         <Subtitle1>2х колоночная секция: 1ая колонка</Subtitle1>
         <Subtitle1>2х колоночная секция: 2ая колонка</Subtitle1>
-      </TwoColumnSection>
-      <ThreeColumnSection>
+      </TwoColumnGrid>
+      <ThreeColumnGrid>
         <SeparatedColumn>
           <Subtitle2>3х колоночная секция: 1ая колонка</Subtitle2>
           <Box mb={2}>
@@ -166,7 +166,7 @@ const UiKitPage: React.FC = () => {
             </Text2>
           </Box>
         </SeparatedColumn>
-      </ThreeColumnSection>
+      </ThreeColumnGrid>
 
       <Section>
         <Container size={ContainerSize.Large}>

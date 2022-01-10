@@ -20,7 +20,7 @@ export default {
 } as ComponentMeta<typeof Overlay>;
 
 const Template: ComponentStory<typeof Overlay> = (args) => (
-  <Overlay {...args}></Overlay>
+  <Overlay {...args} />
 );
 
 export const Default = Template.bind({});

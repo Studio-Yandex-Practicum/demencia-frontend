@@ -84,7 +84,7 @@ export default {
   },
 } as ComponentMeta<typeof ThreeColumnSection>;
 
-const Template: ComponentStory<typeof ThreeColumnSection> = (args) => (
+const Template: ComponentStory<typeof ThreeColumnSection> = () => (
   <ThreeColumnSection>
     <SeparatedColumn>
       <Subtitle2>3х колоночная секция: 1ая колонка</Subtitle2>

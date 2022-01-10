@@ -1,7 +1,7 @@
 import styled, { css, DefaultTheme, ThemeProps } from "styled-components";
 import { FontLevelProps, typographySizeMixIn } from "./typography";
 import { cursorMixin } from "./cursor";
-import { ButtonShape, ButtonSize, ButtonType, TypographyLevel } from "../types";
+import { ButtonShape, ButtonSize, ButtonType } from "../types";
 import {
   TextUppercaseProps,
   textUppercaseMixIn,

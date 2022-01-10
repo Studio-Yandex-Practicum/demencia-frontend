@@ -1,8 +1,6 @@
 import { Button, CircleButton } from "../controls/button";
-import { Box } from "../controls/box";
 import { ComponentStory, ComponentMeta } from "@storybook/react";
 import { ButtonShape, ButtonType, TextColor, TypographyLevel } from "../types";
-import { BackgroundColor } from "../types/background-color.enum";
 
 export default {
   title: "Button",

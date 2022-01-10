@@ -1,5 +1,5 @@
-import { keyframes, css, DefaultTheme, ThemeProps } from "styled-components";
-import { TextColor, TypographyLevel } from "../types";
+import { keyframes, DefaultTheme, ThemeProps } from "styled-components";
+import { TypographyLevel } from "../types";
 import { FontLevelProps } from "./typography";
 import { buildTransitionFast } from "./mixins";
 

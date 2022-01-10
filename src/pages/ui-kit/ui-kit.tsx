@@ -1,4 +1,4 @@
-import React, { createRef } from "react";
+import React from "react";
 import {
   Section,
   SeparatedColumn,
@@ -44,7 +44,7 @@ const UiKitPage: React.FC = () => {
     <>
       <Sider>
         <Box pb={3}>
-          <LogoBlock altText="Логотип" to="/" size={LogoSize.Small}></LogoBlock>
+          <LogoBlock altText="Логотип" to="/" size={LogoSize.Small} />
         </Box>
         <Menu vertical={true}>
           <MenuItem>

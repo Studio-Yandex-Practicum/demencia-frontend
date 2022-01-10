@@ -1,5 +1,4 @@
-import { prependOnceListener } from "process";
-import React, { ReactNode } from "react";
+import React from "react";
 import {
   Box,
   Header,
@@ -41,13 +40,13 @@ const PageHeader: React.FC = () => {
       </Box>
       <Box mt={4} mr={4}>
         <Nav>
-          <NavMenu></NavMenu>
+          <NavMenu />
         </Nav>
       </Box>
       <Sider>
         <LogoBlock altText={"Логотип"} to={"/"} />
         <Box mt={5}>
-          <NavMenu vertical={true}></NavMenu>
+          <NavMenu vertical={true} />
         </Box>
       </Sider>
     </Header>

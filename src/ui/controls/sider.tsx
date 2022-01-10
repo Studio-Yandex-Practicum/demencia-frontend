@@ -104,7 +104,7 @@ export const Sider: React.FC<SiderProps> = (props) => {
 
   // todo: move this to a separate hook if possible
   useEffect(() => {
-    const handleClickOutside = (event: any) => {
+    const handleClickOutside = (event: Event) => {
       if (
         siderNavRef.current &&
         !siderNavRef.current.contains(event.target as Node)
@@ -126,11 +126,11 @@ export const Sider: React.FC<SiderProps> = (props) => {
       </SiderBtn>
       <SiderNav isVisible={opened} alignRight={true} ref={siderNavRef}>
         <SiderCloseBtn onClick={close}>
-          <IconClose height={24}></IconClose>
+          <IconClose height={24} />
         </SiderCloseBtn>
         <SiderContainer>{props.children}</SiderContainer>
       </SiderNav>
-      <Overlay isVisible={opened}></Overlay>
+      <Overlay isVisible={opened} />
     </>
   );
 };

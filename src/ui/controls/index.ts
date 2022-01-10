@@ -2,25 +2,34 @@ import { Button, LinkButton } from "./button";
 import { Box } from "./box";
 import { Link } from "./link";
 import Header from "./header";
-import { BurgerButton } from "./header";
+import { IconBurger, IconClose } from "./icon";
 import Footer from "./footer";
-import { Layout } from "./layout";
+import { Layout, ThreeColumnSection, SeparatedColumn } from "./layout";
 import Container from "./container";
-import { Menu, MenuItem, MenuItems } from "./nav";
+import { Nav, Menu, MenuItem } from "./nav";
 import { LogoBlock } from "./logo";
+import { Overlay } from "./overlay";
+import { Sider } from "./sider";
+import Grid from "./grid";
 
 export {
   Layout,
+  ThreeColumnSection,
+  SeparatedColumn,
   Container,
   Header,
-  BurgerButton,
   Footer,
   Button,
   LinkButton,
   Box,
   Link,
+  Nav,
   Menu,
-  MenuItems,
   MenuItem,
   LogoBlock,
+  IconBurger,
+  IconClose,
+  Overlay,
+  Sider,
+  Grid,
 };

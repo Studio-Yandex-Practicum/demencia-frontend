@@ -1,5 +1,6 @@
 export enum AnimationType {
   ZoomHoverElement,
+  ZoomOutHoverElement,
   ZoomText,
   ChangeTextColor,
   AppearFromBottom,

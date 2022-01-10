@@ -65,3 +65,35 @@ export const TwoColumnGrid = styled.div<GridProps>`
     grid-template-columns: 1fr 1fr;
   }
 `;
+
+export const SeparatedColumn = styled.div`
+  margin: 0;
+  padding: 25px;
+  border-right: 2px solid ${PaletteColor.DarkPurple};
+  border-top: none;
+  &:nth-child(3) {
+    border-right: none;
+  }
+
+  @media screen and (max-width: ${ScreenSize.Medium}px) {
+    &:first-child {
+      border-top: none;
+    }
+
+    border-right: none;
+    border-top: 2px solid ${PaletteColor.DarkPurple};
+  }
+`;
+
+export const ThreeColumnGrid = styled.div<GridProps>`
+  ${getBoxStyles};
+  z-index: ${(p) => (p.zIndex ? p.zIndex : 0)};
+  display: grid;
+  justify-content: center;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 0;
+
+  @media screen and (max-width: ${ScreenSize.Medium}px) {
+    grid-template-columns: 1fr;
+  }
+`;

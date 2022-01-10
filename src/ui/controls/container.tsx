@@ -1,18 +1,16 @@
-import styled from "styled-components";
+import styled, { DefaultTheme, ThemeProps } from "styled-components";
 import { ContainerSize } from "../types";
-import { ThemeProps } from "./layout";
 import { BackgroundColor } from "../types/background-color.enum";
 
-export interface ContainerProps {
+export interface BackgroundColorProps {
+  bgColor?: BackgroundColor;
+}
+export interface ContainerProps extends BackgroundColorProps {
   size?: ContainerSize;
-  bgColor?: BackgroundColor;
 }
-
-interface ColorProps extends ThemeProps {
-  bgColor?: BackgroundColor;
-}
-
-export const colorMixIn = (props: ColorProps): string => {
+export const colorMixIn = (
+  props: ThemeProps<DefaultTheme> & BackgroundColorProps
+): string => {
   if (!props.bgColor) {
     return "";
   }

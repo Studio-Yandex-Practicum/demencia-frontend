@@ -17,6 +17,7 @@ export interface BoxProps {
 interface BoxStyleProps extends BoxProps {
   theme: DefaultTheme;
   backgroundColor?: PaletteColor;
+  maxWidth?: number;
 }
 
 const getShift = (val: number, defaultSpacing: number): number => {
@@ -69,6 +70,8 @@ export const getBoxStyles = (p: BoxStyleProps): string => {
 export const Box = styled.div<BoxStyleProps>`
   display: block;
   box-sizing: border-box;
+  max-width: ${(p) =>
+    p.maxWidth !== undefined ? `${p.maxWidth}px` : undefined};
   ${getBoxStyles}
   ${(p) =>
     "background-color:" + p.backgroundColor || p.theme.colors.background};

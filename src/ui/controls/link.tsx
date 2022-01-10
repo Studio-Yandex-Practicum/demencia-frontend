@@ -1,27 +1,24 @@
-import React, { ReactNode } from "react";
+import { Link as RouterLink, LinkProps } from "react-router-dom";
 import styled, { css, DefaultTheme, ThemeProps } from "styled-components";
+import {
+  TextUppercaseProps,
+  textUppercaseMixIn,
+  FontColorProps,
+} from "./mixins";
 import { cursorMixin } from "./cursor";
 import {
   borderBottomOnHoverMixIn,
   BorderBottomOnHoverProps,
   TextSizeAnimationProps,
-  textUppercaseMixIn,
-  TextUppercaseProps,
   zoomTextOnHoverMixIn,
 } from "./animation";
 import {
-  FontColorProps,
   FontLevelProps,
   typographyColorMixIn,
   typographySizeMixIn,
 } from "./typography";
-import { TextColor, TypographyLevel } from "../types";
-
-export interface LinkProps {
-  level?: TypographyLevel;
-  textColor?: TextColor;
-  children?: ReactNode;
-}
+import { TypographyLevel } from "../types";
+import * as React from "react";
 
 export const linkMixin = css<
   FontLevelProps &
@@ -44,19 +41,40 @@ export const linkMixin = css<
   ${zoomTextOnHoverMixIn}
 `;
 
-export const A = styled.a.attrs((props: ThemeProps<DefaultTheme>) => ({
-  uppercase: true,
-  zoomTextOnHover: true,
-  borderBottomOnHover: true,
-  borderSize: props.theme.layout.borderSize,
-  borderColor: props.theme.colors.textAccent1,
-  level: TypographyLevel.Subtitle3,
-  ...props,
-}))`
+export const Link = styled(
+  ({
+    uppercase,
+    zoomTextOnHover,
+    borderBottomOnHover,
+    borderSize,
+    borderColor,
+    level,
+    ...rest
+  }: ThemeProps<DefaultTheme> &
+    FontLevelProps &
+    FontColorProps &
+    TextSizeAnimationProps &
+    TextUppercaseProps &
+    BorderBottomOnHoverProps &
+    LinkProps &
+    React.RefAttributes<HTMLAnchorElement>) => <RouterLink {...rest} />
+).attrs(
+  (
+    props: ThemeProps<DefaultTheme> &
+      FontLevelProps &
+      FontColorProps &
+      TextSizeAnimationProps &
+      TextUppercaseProps &
+      BorderBottomOnHoverProps
+  ) => ({
+    uppercase: true,
+    zoomTextOnHover: true,
+    borderBottomOnHover: true,
+    borderSize: props.theme.layout.borderSize,
+    borderColor: props.theme.colors.backgroundAlt1,
+    level: TypographyLevel.Subtitle3,
+    ...props,
+  })
+)`
   ${linkMixin}
 `;
-
-export const Link: React.FC<LinkProps> = (props) => {
-  const typographyLevel = props.level || TypographyLevel.Subtitle3;
-  return <A level={typographyLevel}>{props.children}</A>;
-};

@@ -1,7 +1,8 @@
 export enum ScreenSize {
   XLarge = 1920,
-  Large = 1400,
-  Medium = 900,
-  Small = 767,
-  XSmall = 320,
+  Large = 1215,
+  Medium = 960,
+  Small = 640,
+  XSmall = 480, // font sizes are changed at this screen size
+  XXSmall = 320,
 }

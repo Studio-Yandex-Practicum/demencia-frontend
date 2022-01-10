@@ -178,7 +178,7 @@ export const LinkButton = styled.button.attrs((props: ButtonProps) => ({
   uppercase: true,
   ...props,
 }))`
-  ${buttonBaseMixin}
+  ${buttonBaseMixin};
   padding: 0;
 `;
 

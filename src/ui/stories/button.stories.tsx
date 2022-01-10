@@ -11,11 +11,12 @@ export default {
     theme: { table: { disable: true } },
     as: { table: { disable: true } },
     forwardedAs: { table: { disable: true } },
+    ref: { table: { disable: true } },
     borderSize: { table: { disable: true } },
     borderColor: { table: { disable: true } },
     type: {
       name: "type",
-      description: "Вид кнопки",
+      description: "Тип кнопки",
       defaultValue: ButtonType.Primary,
       options: [
         ButtonType.Primary,
@@ -34,7 +35,7 @@ export default {
     },
     ghost: {
       name: "ghost",
-      description: "Значение, задать кнонке прозрачный фон",
+      description: "Значение, задать кнопке прозрачный фон",
       defaultValue: false,
       options: [true, false],
       control: "boolean",

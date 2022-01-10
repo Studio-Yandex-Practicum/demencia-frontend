@@ -4,6 +4,7 @@ import { FontLevelProps } from "./typography";
 import { buildTransitionFast } from "./mixins";
 
 const zoomScale = 1.1;
+const zoomOutScale = 0.9;
 export interface TextSizeAnimationProps {
   zoomTextOnHover?: boolean;
 }
@@ -30,6 +31,7 @@ export const zoomTextOnHoverMixIn = (
 
 export interface ElementAnimationProps {
   zoomOnHover?: boolean;
+  zoomOutOnHover?: boolean;
 }
 
 export const zoomOnHoverMixIn = (props: ElementAnimationProps): string => {
@@ -42,6 +44,21 @@ export const zoomOnHoverMixIn = (props: ElementAnimationProps): string => {
 
   &:hover {
     transform: scale(${zoomScale});
+  }
+`;
+};
+
+export const zoomOutOnHoverMixIn = (props: ElementAnimationProps): string => {
+  if (!props.zoomOutOnHover) {
+    return "";
+  }
+
+  return `
+  transform: scale(${zoomScale});
+  ${buildTransitionFast("all")}
+
+  &:hover {
+    transform: scale(${zoomOutScale});
   }
 `;
 };

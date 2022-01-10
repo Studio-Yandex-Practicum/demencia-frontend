@@ -1,6 +1,4 @@
-import React, { useState } from "react";
 import styled from "styled-components";
-import { LogoBlock, Overlay, Sider } from ".";
 import { ScreenSize } from "../types";
 
 export interface MenuProps {
@@ -34,19 +32,3 @@ export const Nav = styled.nav`
     display: none;
   }
 `;
-
-export const HeaderNavigation: React.FC = () => {
-  const [opened, setOpened] = useState(false);
-
-  return (
-    <>
-      <Nav>
-        <Menu></Menu>
-      </Nav>
-      <Sider>
-        <LogoBlock altText={"Логотип"} to={"/"} />
-        <Menu></Menu>
-      </Sider>
-    </>
-  );
-};

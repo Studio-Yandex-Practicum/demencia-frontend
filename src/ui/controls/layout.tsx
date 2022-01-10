@@ -1,6 +1,6 @@
 import styled, { DefaultTheme } from "styled-components";
 import { BoxProps, getBoxStyles } from "./box";
-import { ScreenSize } from "../types";
+import { PaletteColor, ScreenSize } from "../types";
 
 export interface ThemeProps {
   theme: DefaultTheme;
@@ -15,6 +15,7 @@ interface SectionProps extends ThemeProps, BoxProps {
   flex?: boolean;
   centered?: boolean;
   zIndex?: number;
+  backgroundColor?: PaletteColor;
 }
 
 interface GridProps extends ThemeProps, BoxProps {
@@ -48,6 +49,8 @@ export const Section = styled.section<SectionProps>`
   flex-direction: ${(p) => (p.flex ? "column" : undefined)};
   align-items: ${(p) => (p.centered ? "center" : "start")};
   z-index: ${(p) => (p.zIndex ? p.zIndex : 0)};
+  ${(p) =>
+    "background-color:" + p.backgroundColor || p.theme.colors.background};
 `;
 
 export const TwoColumnGrid = styled.div<GridProps>`

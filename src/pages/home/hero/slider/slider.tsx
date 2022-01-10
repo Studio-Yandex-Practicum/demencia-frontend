@@ -64,7 +64,9 @@ const Slider: React.FC = () => {
               диагностике когнитивных изменений
             </Text1>
             <Box ml={2} mb={1}>
-              <Link textColor={TextColor.Secondary}>Подробнее...</Link>
+              <Link to="#" textColor={TextColor.Secondary}>
+                Подробнее...
+              </Link>
             </Box>
           </Container>
         </Wrapper>
@@ -79,7 +81,9 @@ const Slider: React.FC = () => {
               диагностике когнитивных изменений
             </Text1>
             <Box ml={2} mb={1}>
-              <Link textColor={TextColor.Secondary}>Подробнее...</Link>
+              <Link to="#" textColor={TextColor.Secondary}>
+                Подробнее...
+              </Link>
             </Box>
           </Container>
         </Wrapper>

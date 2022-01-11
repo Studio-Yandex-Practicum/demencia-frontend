@@ -13,7 +13,6 @@ import { BoxProps, getBoxStyles } from "./box";
 import { ButtonProps, LinkButton } from "./button";
 
 const SiderNav = styled.nav<{ isVisible: boolean; alignRight: boolean }>`
-  display: ${(p) => (!p.isVisible ? "none" : "block")};
   position: fixed;
   top: 0;
   bottom: 0;
@@ -21,7 +20,7 @@ const SiderNav = styled.nav<{ isVisible: boolean; alignRight: boolean }>`
   width: 100%;
   overflow: hidden;
   ${(p) => (!p.alignRight ? "left" : "right")}: 0;
-  transform: translate(0, 0);
+  transform: translate(${(p) => (!p.isVisible ? "100%" : "0")}, 0);
   z-index: 999999;
   transition: transform ease-in-out 0.3s;
   background-color: ${PaletteColor.White};

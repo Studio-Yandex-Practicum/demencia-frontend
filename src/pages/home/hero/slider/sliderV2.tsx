@@ -17,10 +17,7 @@ SwiperCore.use([Autoplay, Pagination, Navigation]);
 
 const Content = styled.div`
   width: 100%;
-  height: 100%;
-  @media screen and (max-width: 1200px) {
-    height: auto;
-  }
+  height: auto;
 `;
 
 const Info = styled.div`
@@ -127,30 +124,6 @@ const Slider: React.FC = () => {
       navigation={true}
       className="myStyles"
     >
-      <SwiperSlide>
-        <Content>
-          <Image src={image} />
-          <Info>
-            <Title>ЗАГОЛОВОК СТАТЬИ</Title>
-            <LINK>
-              <Link to="/">ПОДРОБНЕЕ</Link>
-            </LINK>
-            <Decor />
-          </Info>
-        </Content>
-      </SwiperSlide>
-      <SwiperSlide>
-        <Content>
-          <Image src={image} />
-          <Info>
-            <Title>ЗАГОЛОВОК СТАТЬИ</Title>
-            <LINK>
-              <Link to="/">ПОДРОБНЕЕ</Link>
-            </LINK>
-            <Decor />
-          </Info>
-        </Content>
-      </SwiperSlide>
       <SwiperSlide>
         <Content>
           <Image src={image} />

@@ -57,50 +57,53 @@ transform: rotate(0deg);
 `;
 
 export const Pazzles = styled.div`
-  width: 150px;
-  height: 150px;
+  width: 140px;
+  height: 140px;
   background: url(${pazzles});
   background-repeat: no-repeat;
   background-size: contain;
-  grid-area: 2/1/3/2;
   z-index: 301;
-  margin-left: 40px;
+  margin-top: 200px;
+  @media screen and (max-width: 1200px) {
+    width: 90px;
+    height: 90px;
+    margin-top: 80px;
+  }
 `;
 
 export const GreenPuzzle = styled.div`
-  width: 120px;
-  height: 120px;
+  width: 90px;
+  height: 90px;
   background: url(${greenPazzle});
   background-repeat: no-repeat;
   background-size: contain;
-  position: relative;
-  left: 65%;
-  bottom: 40%;
+  position: absolute;
+  right: 0;
   z-index: 300;
-  grid-area: 1/2/2/3;
-  animation: ${pazzleRotation} 15s linear infinite normal;
-  @media screen and (max-width: 1024px) {
-    width: 100px;
-    height: 100px;
-    left: 55%;
-  }
-  @media screen and (max-width: 800px) {
-    width: 80px;
-    height: 80px;
+  transform: translateY(-95px);
+  @media screen and (max-width: 1200px) {
+    width: 60px;
+    height: 60px;
   }
 `;
 
 export const BigCircle = styled.div`
   display: flex;
-  width: 50%;
-  height: auto;
+  width: 500px;
+  height: 500px;
   background: url(${bigCircle});
   background-repeat: no-repeat;
   background-size: contain;
   z-index: 299;
-  animation: ${circleSwing} 8s infinite linear;
-  grid-area: 2/1/4/3;
-  margin: 0 auto;
+  position: absolute;
+  top: 30vh;
+  left: 10vw;
+  @media screen and (max-width: 1200px) {
+    width: 300px;
+    height: 300px;
+    top: 51vh;
+    left: 10vw;
+  }
 `;
 
 export const MediumCircle = styled.div`
@@ -110,21 +113,25 @@ export const MediumCircle = styled.div`
   background-repeat: no-repeat;
   background-size: contain;
   z-index: 298;
-  animation: ${circleSwingReversed} 8s infinite linear;
-  grid-area: 2/2/3/3;
   position: relative;
   bottom: 10%;
   left: 40%;
 `;
 
 export const SmallCircle = styled.div`
-  width: 150px;
-  height: 150px;
+  width: 80px;
+  height: 80px;
   background: url(${smallCircle});
   background-repeat: no-repeat;
   background-size: contain;
   position: relative;
-  left: 35%;
+  left: 50%;
+  top: 50%;
   z-index: 297;
-  grid-area: 2/2/3/3;
+  transform: translate(-140%, -270%);
+  @media screen and (max-width: 1200px) {
+    width: 50px;
+    height: 50px;
+    transform: translate(-135%, -256%);
+  }
 `;

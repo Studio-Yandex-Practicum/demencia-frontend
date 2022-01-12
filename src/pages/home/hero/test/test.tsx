@@ -7,18 +7,15 @@ import {
   MediumCircle,
   SmallCircle,
 } from "./decor";
-import { Button } from "../../../../ui/controls";
+import { Button, Box } from "../../../../ui/controls";
 import NavMenu from "./nav-menu";
 import halfCircle from "../../../../images/halfcirclegreen.png";
+import { StringValueNode } from "graphql";
 
-const MenuCell = styled.div`
-  grid-area: 1/1/2/2;
-`;
 const ActionCell = styled.div`
   display: flex;
   box-sizing: border-box;
   align-items: center;
-  grid-area: 3/1/4/3;
   margin-left: 40px;
   z-index: 350;
 `;
@@ -30,34 +27,41 @@ const Image = styled.img.attrs((props) => ({
   transform: translate(-15px, 0);
 `;
 
-const DecorCell = styled.div`
-  grid-area: 2/1/4/3;
+const Container = styled.div<{
+  margin?: string;
+  grid?: string;
+  pos?: string;
+}>`
+  display: block;
+  box-sizing: border-box;
+  margin: ${({ margin }) => margin};
+  position: ${({ pos }) => pos};
+  grid-area: ${({ grid }) => grid};
 `;
 
 const HomePage: React.FC = () => {
   return (
-    <>
-      <MenuCell>
+    <Container grid="1/1/2/3" margin="200px 5vw 0 0">
+      <Box>
+        <Container pos="relative">
+          <GreenPuzzle />
+        </Container>
         <NavMenu />
-      </MenuCell>
-      <DecorCell>
-        <GreenPuzzle />
-      </DecorCell>
-      <Pazzles />
-      <BigCircle />
-      <DecorCell>
-        <SmallCircle />
-      </DecorCell>
-      <DecorCell>
-        <MediumCircle />
-      </DecorCell>
+      </Box>
+      <Container>
+        <Pazzles />
+        <BigCircle>
+          <SmallCircle />
+        </BigCircle>
+      </Container>
+      {/* <MediumCircle />
       <ActionCell>
         <Button primary uppercase>
           Пройти тест
         </Button>
         <Image src={halfCircle} alt="" />
-      </ActionCell>
-    </>
+      </ActionCell> */}
+    </Container>
   );
 };
 

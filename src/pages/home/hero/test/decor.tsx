@@ -77,33 +77,17 @@ export const GreenPuzzle = styled.img.attrs((props) => ({
 }))`
   width: 90px;
   height: 90px;
-  position: absolute;
-  right: 48px;
-  bottom: 25px;
   z-index: 300;
-  @media screen and (max-width: 1200px) {
-    width: 60px;
-    height: 60px;
-  }
+  transform: translate(185px, -162px);
 `;
 
 export const BigCircle = styled.img.attrs((props) => ({
   src: props.src || bigCircle,
   alt: props.alt || "",
 }))`
-  display: flex;
-  width: 450px;
-  height: 450px;
+  width: 500px;
   z-index: 299;
-  position: absolute;
-  top: 265px;
-  left: 175px;
-  @media screen and (max-width: 1200px) {
-    width: 300px;
-    height: 300px;
-    top: -10vh;
-    left: 0;
-  }
+  position: relative;
 `;
 
 export const MediumCircle = styled.img.attrs((props) => ({
@@ -114,8 +98,8 @@ export const MediumCircle = styled.img.attrs((props) => ({
   height: 300px;
   z-index: 298;
   position: absolute;
-  top: 190px;
-  left: 310px;
+  top: 110px;
+  right: 40px;
 `;
 
 export const SmallCircle = styled.img.attrs((props) => ({
@@ -124,12 +108,8 @@ export const SmallCircle = styled.img.attrs((props) => ({
 }))`
   width: 90px;
   height: 90px;
-  position: absolute;
-  left: 285px;
-  top: 270px;
+  position: relative;
+  right: 73px;
+  top: 115px;
   z-index: 297;
-  @media screen and (max-width: 1200px) {
-    width: 50px;
-    height: 50px;
-  }
 `;

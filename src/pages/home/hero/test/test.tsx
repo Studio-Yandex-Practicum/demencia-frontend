@@ -17,7 +17,9 @@ const ActionCell = styled.div`
   display: flex;
   box-sizing: border-box;
   align-items: center;
-  margin-left: 16px;
+  align-self: flex-start;
+  transform: translate(-83px, -122px);
+  z-index: 302;
 `;
 const Image = styled.img.attrs((props) => ({
   src: props.src || halfCircle,
@@ -35,37 +37,66 @@ const Container = styled.div<{
 }>`
   display: block;
   box-sizing: border-box;
+  outline: 1px solid red;
+  width: 50%;
   margin: ${({ margin }) => margin};
   position: ${({ pos }) => pos};
   grid-area: ${({ grid }) => grid};
 `;
 
+const FlexColumn = styled.div<{
+  align?: string;
+  zIndex?: number;
+  transform?: string;
+}>`
+  display: flex;
+  box-sizing: border-box;
+  outline: 1px solid red;
+  position: relative;
+  flex-direction: column;
+  align-items: ${({ align }) => align};
+  z-index: ${({ zIndex }) => zIndex};
+  transform: ${({ transform }) => transform};
+`;
+
+const FlexRow = styled.div`
+  display: flex;
+  box-sizing: border-box;
+  outline: 1px solid red;
+  justify-content: flex-end;
+`;
+
 const HomePage: React.FC = () => {
   return (
-    <Container grid="1/1/2/3" margin="200px 5vw 0 0">
+    <Container margin="200px 0 0 0">
       <Box>
-        <Container pos="relative">
-          <GreenPuzzle />
-        </Container>
-        <NavMenu />
+        <TwoColumnGrid>
+          <FlexColumn zIndex={10}>
+            <NavMenu />
+            <Pazzles />
+          </FlexColumn>
+          <FlexColumn
+            transform="translate(-255px, -18px)"
+            align="center"
+            zIndex={9}
+          >
+            <GreenPuzzle />
+            <MediumCircle />
+            <SmallCircle />
+            <BigCircle />
+            <ActionCell>
+              <Button primary uppercase large>
+                Пройти тест
+              </Button>
+              <Image src={halfCircle} alt="" />
+            </ActionCell>
+          </FlexColumn>
+        </TwoColumnGrid>
       </Box>
       <Box>
         <TwoColumnGrid>
-          <Box>
-            <Pazzles />
-          </Box>
-          <Box>
-            <SmallCircle />
-            <BigCircle />
-            <MediumCircle />
-          </Box>
+          <Box></Box>
         </TwoColumnGrid>
-        <ActionCell>
-          <Button primary uppercase>
-            Пройти тест
-          </Button>
-          <Image src={halfCircle} alt="" />
-        </ActionCell>
       </Box>
     </Container>
   );

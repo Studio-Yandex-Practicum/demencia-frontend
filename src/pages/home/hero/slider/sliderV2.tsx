@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { Swiper, SwiperSlide } from "swiper/react";
 import SwiperCore, { Autoplay, Pagination, Navigation } from "swiper";
 // eslint-disable-next-line import/extensions
-import image from "./img.webp";
+import image from "./pechkin.png";
 import cursorPointer from "../../../../images/cursor_pointer.svg";
 import pinkHalfCircle from "../../../../images/decor_halfcirlce_pink.svg";
 import "./styles.css";
@@ -35,8 +35,8 @@ const Info = styled.div`
 const Image = styled.img.attrs((props) => ({
   src: props.src || image,
 }))`
-  width: 100%;
-  height: 100%;
+  width: 55vw;
+  margin-left: -89px;
 `;
 
 const Title = styled.h2`
@@ -112,7 +112,7 @@ const LINK = styled.div`
 const Slider: React.FC = () => {
   return (
     <Swiper
-      spaceBetween={10}
+      spaceBetween={0}
       centeredSlides={true}
       autoplay={{
         delay: 1500,

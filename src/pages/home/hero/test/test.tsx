@@ -11,19 +11,20 @@ import { Button, Box } from "../../../../ui/controls";
 import NavMenu from "./nav-menu";
 import halfCircle from "../../../../images/halfcirclegreen.png";
 import { StringValueNode } from "graphql";
+import { TwoColumnGrid } from "../../../../ui/controls/layout";
 
 const ActionCell = styled.div`
   display: flex;
   box-sizing: border-box;
   align-items: center;
-  margin-left: 40px;
-  z-index: 350;
+  margin-left: 16px;
 `;
 const Image = styled.img.attrs((props) => ({
   src: props.src || halfCircle,
   alt: props.alt || "",
 }))`
   z-index: 300;
+  width: 70px;
   transform: translate(-15px, 0);
 `;
 
@@ -48,19 +49,24 @@ const HomePage: React.FC = () => {
         </Container>
         <NavMenu />
       </Box>
-      <Container>
-        <Pazzles />
-        <BigCircle>
-          <SmallCircle />
-        </BigCircle>
-      </Container>
-      {/* <MediumCircle />
-      <ActionCell>
-        <Button primary uppercase>
-          Пройти тест
-        </Button>
-        <Image src={halfCircle} alt="" />
-      </ActionCell> */}
+      <Box>
+        <TwoColumnGrid>
+          <Box>
+            <Pazzles />
+          </Box>
+          <Box>
+            <SmallCircle />
+            <BigCircle />
+            <MediumCircle />
+          </Box>
+        </TwoColumnGrid>
+        <ActionCell>
+          <Button primary uppercase>
+            Пройти тест
+          </Button>
+          <Image src={halfCircle} alt="" />
+        </ActionCell>
+      </Box>
     </Container>
   );
 };

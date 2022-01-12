@@ -56,14 +56,14 @@ transform: rotate(0deg);
 }
 `;
 
-export const Pazzles = styled.div`
+export const Pazzles = styled.img.attrs((props) => ({
+  src: props.src || pazzles,
+  alt: props.alt || "",
+}))`
   width: 140px;
   height: 140px;
-  background: url(${pazzles});
-  background-repeat: no-repeat;
-  background-size: contain;
   z-index: 301;
-  margin-top: 200px;
+  margin-top: 118px;
   @media screen and (max-width: 1200px) {
     width: 90px;
     height: 90px;
@@ -71,67 +71,65 @@ export const Pazzles = styled.div`
   }
 `;
 
-export const GreenPuzzle = styled.div`
+export const GreenPuzzle = styled.img.attrs((props) => ({
+  src: props.src || greenPazzle,
+  alt: props.alt || "",
+}))`
   width: 90px;
   height: 90px;
-  background: url(${greenPazzle});
-  background-repeat: no-repeat;
-  background-size: contain;
   position: absolute;
-  right: 0;
+  right: 48px;
+  bottom: 25px;
   z-index: 300;
-  transform: translateY(-95px);
   @media screen and (max-width: 1200px) {
     width: 60px;
     height: 60px;
   }
 `;
 
-export const BigCircle = styled.div`
+export const BigCircle = styled.img.attrs((props) => ({
+  src: props.src || bigCircle,
+  alt: props.alt || "",
+}))`
   display: flex;
-  width: 500px;
-  height: 500px;
-  background: url(${bigCircle});
-  background-repeat: no-repeat;
-  background-size: contain;
+  width: 450px;
+  height: 450px;
   z-index: 299;
   position: absolute;
-  top: 30vh;
-  left: 10vw;
+  top: 265px;
+  left: 175px;
   @media screen and (max-width: 1200px) {
     width: 300px;
     height: 300px;
-    top: 51vh;
-    left: 10vw;
+    top: -10vh;
+    left: 0;
   }
 `;
 
-export const MediumCircle = styled.div`
-  width: 35%;
-  height: 400px;
-  background: url(${mediumCircle});
-  background-repeat: no-repeat;
-  background-size: contain;
+export const MediumCircle = styled.img.attrs((props) => ({
+  src: props.src || mediumCircle,
+  alt: props.alt || "",
+}))`
+  width: 300px;
+  height: 300px;
   z-index: 298;
-  position: relative;
-  bottom: 10%;
-  left: 40%;
+  position: absolute;
+  top: 190px;
+  left: 310px;
 `;
 
-export const SmallCircle = styled.div`
-  width: 80px;
-  height: 80px;
-  background: url(${smallCircle});
-  background-repeat: no-repeat;
-  background-size: contain;
-  position: relative;
-  left: 50%;
-  top: 50%;
+export const SmallCircle = styled.img.attrs((props) => ({
+  src: props.src || smallCircle,
+  alt: props.alt || "",
+}))`
+  width: 90px;
+  height: 90px;
+  position: absolute;
+  left: 285px;
+  top: 270px;
   z-index: 297;
-  transform: translate(-140%, -270%);
   @media screen and (max-width: 1200px) {
     width: 50px;
     height: 50px;
-    transform: translate(-135%, -256%);
   }
 `;

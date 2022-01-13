@@ -21,7 +21,7 @@ export const zoomTextOnHoverMixIn = (
 
   return `
   font-size: ${fontSize}px;
-  ${buildTransitionFast("font-size")}
+  ${buildTransitionFast("all")}
 
   &:hover {
     font-size: ${Math.floor(fontSize * zoomScale)}px;
@@ -81,6 +81,17 @@ export const borderBottomOnHoverMixIn = (
 
   &:hover {
     border-bottom: ${props.borderSize}px solid ${props.borderColor};
+  }
+`;
+};
+
+const slideLeftMixin = (props: ElementAnimationProps): string => {
+  return `
+  transform: scale(${zoomScale});
+  ${buildTransitionFast("all")}
+
+  &:hover {
+    transform: scale(${zoomOutScale});
   }
 `;
 };

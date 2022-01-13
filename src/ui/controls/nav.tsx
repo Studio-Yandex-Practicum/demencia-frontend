@@ -12,7 +12,9 @@ enum MenuGap {
   Small = 25,
 }
 // todo: move margins and screen sizes to enum
-export const MenuItem = styled.li``;
+export const MenuItem = styled.li`
+  position: relative;
+`;
 
 export const Menu = styled.ul<MenuProps>`
   margin: 0;

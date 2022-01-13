@@ -64,10 +64,17 @@ export const Pazzles = styled.img.attrs((props) => ({
   height: 140px;
   z-index: 301;
   margin-top: 118px;
-  @media screen and (max-width: 1200px) {
+  @media screen and (max-width: 1350px) {
     width: 90px;
     height: 90px;
     margin-top: 80px;
+  }
+  @media screen and (max-width: 1100px) {
+    width: 70px;
+    height: 70px;
+    position: relative;
+    left: 50px;
+    bottom: 15px;
   }
 `;
 
@@ -77,17 +84,37 @@ export const GreenPuzzle = styled.img.attrs((props) => ({
 }))`
   width: 90px;
   height: 90px;
+  position: relative;
+  bottom: 200px;
+  left: 145px;
   z-index: 300;
-  transform: translate(185px, -162px);
+  @media screen and (max-width: 1350px) {
+    width: 60px;
+    height: 60px;
+  }
 `;
 
 export const BigCircle = styled.img.attrs((props) => ({
   src: props.src || bigCircle,
   alt: props.alt || "",
 }))`
-  width: 500px;
+  display: flex;
+  width: 450px;
+  height: 450px;
   z-index: 299;
-  position: relative;
+  position: absolute;
+  top: 265px;
+  left: 175px;
+  @media screen and (max-width: 1350px) {
+    width: 300px;
+    height: 300px;
+  }
+  @media screen and (max-width: 1100px) {
+    width: 250px;
+    height: 250px;
+    top: 285px;
+    left: 145px;
+  }
 `;
 
 export const MediumCircle = styled.img.attrs((props) => ({
@@ -98,8 +125,18 @@ export const MediumCircle = styled.img.attrs((props) => ({
   height: 300px;
   z-index: 298;
   position: absolute;
-  top: 110px;
-  right: 40px;
+  top: 190px;
+  left: 310px;
+  @media screen and (max-width: 1350px) {
+    width: 200px;
+    height: 200px;
+    top: 220px;
+    left: 295px;
+  }
+  @media screen and (max-width: 1100px) {
+    left: 210px;
+    top: 250px;
+  }
 `;
 
 export const SmallCircle = styled.img.attrs((props) => ({
@@ -108,8 +145,16 @@ export const SmallCircle = styled.img.attrs((props) => ({
 }))`
   width: 90px;
   height: 90px;
-  position: relative;
-  right: 73px;
-  top: 115px;
+  position: absolute;
+  left: 285px;
+  top: 270px;
   z-index: 297;
+  @media screen and (max-width: 1350px) {
+    width: 50px;
+    height: 50px;
+  }
+  @media screen and (max-width: 1100px) {
+    left: 205px;
+    top: 300px;
+  }
 `;

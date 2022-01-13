@@ -5,70 +5,49 @@ import SwiperCore, { Autoplay, Pagination, Navigation } from "swiper";
 // eslint-disable-next-line import/extensions
 import image from "./pechkin.png";
 import cursorPointer from "../../../../images/cursor_pointer.svg";
-import pinkHalfCircle from "../../../../images/decor_halfcirlce_pink.svg";
+import whiteHalfCircle from "../../../../images/test_halfcircle_white.svg";
 import "./styles.css";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "swiper/css/scrollbar";
 import { Link } from "react-router-dom";
+import { Container } from "../../../../ui/controls";
+import { ContainerSize, TextColor } from "../../../../ui/types";
+import { BackgroundColor } from "../../../../ui/types/background-color.enum";
+import { Text1 } from "../../../../ui/controls/typography";
 
 SwiperCore.use([Autoplay, Pagination, Navigation]);
 
 const Content = styled.div`
   width: 100%;
   height: auto;
-`;
-
-const Info = styled.div`
-  max-width: 195px;
-  min-height: 71px;
-  background-color: #00926f;
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
-  padding-top: 10px;
-  position: relative;
-  bottom: 170px;
+`;
+const Wrapper = styled.div`
+  position: fixed;
+  bottom: 250px;
 `;
 
 const Image = styled.img.attrs((props) => ({
   src: props.src || image,
 }))`
-  width: 55vw;
-  margin-left: -89px;
-`;
-
-const Title = styled.h2`
-  max-width: 150px;
-  font-size: 19px;
-  line-height: 18px;
-  font-weight: 400;
-  letter-spacing: 1.6px;
-  color: white;
-  margin: 3px 0 0 19px;
-  text-overflow: ellipsis;
-  overflow: hidden;
-  z-index: 1;
-  @media screen and (max-width: 767px) {
-    max-width: 135px;
-    font-size: 15px;
-    line-height: 15px;
-  }
-  @media screen and (max-width: 369px) {
-    margin: 10px 0 0 29px;
-  }
+  max-width: 55vw;
+  max-heigth: 700px;
+  object-fit: cover;
+  object-position: top;
 `;
 
 const Decor = styled.div`
-  width: 63px;
-  height: 125px;
-  background-image: url(${pinkHalfCircle});
+  width: 135px;
+  height: 266px;
+  background-image: url(${whiteHalfCircle});
   background-size: cover;
   background-repeat: no-repeat;
   position: absolute;
-  bottom: -20px;
-  left: 115px;
+  bottom: -45px;
+  left: 466px;
 
   @media screen and (max-width: 767px) {
     width: 53px;
@@ -127,13 +106,27 @@ const Slider: React.FC = () => {
       <SwiperSlide>
         <Content>
           <Image src={image} />
-          <Info>
-            <Title>ЗАГОЛОВОК СТАТЬИ</Title>
-            <LINK>
-              <Link to="/">ПОДРОБНЕЕ</Link>
-            </LINK>
-            <Decor />
-          </Info>
+          <Wrapper>
+            <Container
+              size={ContainerSize.MediumSmall}
+              bgColor={BackgroundColor.Alt2}
+            >
+              <Text1
+                mt={4}
+                mb={4}
+                ml={2}
+                mr={4}
+                textColor={TextColor.Secondary}
+              >
+                ФОНД «ПАМЯТЬ ПОКОЛЕНИЙ» И «СОЮЗМУЛЬТФИЛЬМ» ВЫПУСТИЛИ МУЛЬТФИЛЬМ
+                О ДИАГНОСТИКЕ КОГНИТИВНЫХ ИЗМЕНЕНИЙ
+              </Text1>
+              <LINK>
+                <Link to="/">ПОДРОБНЕЕ</Link>
+              </LINK>
+              <Decor />
+            </Container>
+          </Wrapper>
         </Content>
       </SwiperSlide>
     </Swiper>

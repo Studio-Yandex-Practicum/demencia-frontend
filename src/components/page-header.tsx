@@ -1,4 +1,4 @@
-import React from "react";
+import React, { createRef, useEffect } from "react";
 import {
   Box,
   Header,
@@ -10,24 +10,37 @@ import {
   Sider,
 } from "../ui/controls";
 
+interface MenuItemLinkInfo {
+  to: string;
+  title: string;
+}
+
+const MenuItemLink: React.FC<MenuItemLinkInfo> = (props: MenuItemLinkInfo) => {
+  // set menu item width
+  const menuItemRef = createRef<HTMLLIElement>();
+  useEffect(() => {
+    if (!menuItemRef.current) {
+      return;
+    }
+
+    menuItemRef.current.style.width = menuItemRef.current.offsetWidth + "px";
+  }, [menuItemRef]);
+
+  return (
+    <MenuItem ref={menuItemRef}>
+      <Link to={props.to}>{props.title}</Link>
+    </MenuItem>
+  );
+};
+
 const NavMenu: React.FC<{ vertical?: boolean }> = (props) => {
   return (
     <Menu vertical={!!props.vertical}>
-      <MenuItem>
-        <Link to="/#info">О деменции</Link>
-      </MenuItem>
-      <MenuItem>
-        <Link to="/#sponsors">Партнеры</Link>
-      </MenuItem>
-      <MenuItem>
-        <Link to="/news-grid">Новости</Link>
-      </MenuItem>
-      <MenuItem>
-        <Link to="/#about">О фонде</Link>
-      </MenuItem>
-      <MenuItem>
-        <Link to="/#about">Контакты</Link>
-      </MenuItem>
+      <MenuItemLink to={"/#info"} title={"О деменции"} />
+      <MenuItemLink to={"/#sponsors"} title={"Партнеры"} />
+      <MenuItemLink to={"/news-grid"} title={"Новости"} />
+      <MenuItemLink to={"/#about"} title={"О фонде"} />
+      <MenuItemLink to={"/#about"} title={"Контакты"} />
     </Menu>
   );
 };

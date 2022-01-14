@@ -375,8 +375,8 @@ const Details: React.FC = () => {
       </Section>
 
       <Section flex centered backgroundColor={PaletteColor.Green} pb={12}>
-        <GridContainer>
-          <Box mt={7}>
+        <TwoColumnGrid>
+          <Box mt={7} maxWidth={600}>
             <FlexRow>
               <StyledImg src={parietalLobePic} width={100} />
               <FlexColumn>
@@ -450,7 +450,7 @@ const Details: React.FC = () => {
             </FlexRow>
           </Box>
 
-          <Box mt={7}>
+          <Box mt={7} maxWidth={600}>
             <FlexRow>
               <StyledImg src={frontalLobePic} width={100} />
               <FlexColumn>
@@ -552,7 +552,7 @@ const Details: React.FC = () => {
             </FlexRow>
           </Box>
 
-          <Box mt={7}>
+          <Box mt={7} maxWidth={600}>
             <FlexRow>
               <StyledImg src={temporalLobePic} width={100} />
               <FlexColumn>
@@ -609,7 +609,7 @@ const Details: React.FC = () => {
             </FlexRow>
           </Box>
 
-          <Box mt={7}>
+          <Box mt={7} maxWidth={600}>
             <FlexRow>
               <StyledImg src={occipitalLobePic} width={100} />
               <FlexColumn>
@@ -650,7 +650,7 @@ const Details: React.FC = () => {
               </FlexColumn>
             </FlexRow>
           </Box>
-        </GridContainer>
+        </TwoColumnGrid>
       </Section>
 
       <Section flex centered backgroundColor={PaletteColor.LightGreen} pb={12}>

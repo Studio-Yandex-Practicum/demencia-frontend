@@ -66,9 +66,12 @@ export const TwoColumnGrid = styled.div<GridProps>`
   }
 `;
 
-export const SeparatedColumn = styled.div`
+export const SeparatedColumn = styled.div<SectionProps>`
   margin: 0;
   padding: 25px;
+  display: ${(p) => (p.flex ? "flex" : "block")};
+  flex-direction: ${(p) => (p.flex ? "column" : undefined)};
+  align-items: ${(p) => (p.centered ? "center" : "start")};
   border-right: 2px solid ${PaletteColor.DarkPurple};
   border-top: none;
   &:nth-child(3) {

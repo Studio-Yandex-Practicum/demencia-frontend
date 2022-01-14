@@ -351,6 +351,7 @@ const Details: React.FC = () => {
         mt={6}
         pt={7}
         pl={3}
+        pr={3}
         backgroundColor={PaletteColor.DarkPurple}
         borderBox
       >

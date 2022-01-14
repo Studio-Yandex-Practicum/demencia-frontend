@@ -1,5 +1,10 @@
 import React from "react";
-import { Section, TwoColumnGrid } from "../ui/controls/layout";
+import {
+  Section,
+  TwoColumnGrid,
+  ThreeColumnGrid,
+  SeparatedColumn,
+} from "../ui/controls/layout";
 import { Box, Container } from "../ui/controls";
 import {
   ContainerSize,
@@ -32,21 +37,16 @@ import greenHalfCirclePic from "../images/green-half-circle-pic.png";
 
 const FlexColumn = styled.div<{
   padding?: string;
-  borderLeftRight?: boolean;
   alignItems?: string;
   maxWidth?: string;
 }>`
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: top;
   align-items: ${({ alignItems }) => alignItems};
   width: 100%;
   max-width: ${({ maxWidth = "1200px" }) => maxWidth};
   padding: ${({ padding }) => padding};
-  border-left: ${({ borderLeftRight }) =>
-    borderLeftRight ? `2px solid #772988` : ``};
-  border-right: ${({ borderLeftRight }) =>
-    borderLeftRight ? `2px solid #772988` : ``};
 `;
 
 const FlexRow = styled.div<{ adaptive?: boolean }>`
@@ -274,11 +274,11 @@ const Details: React.FC = () => {
       </Section>
 
       <Section flex centered mt={7}>
-        <FlexRow>
-          <FlexColumn padding={`0 30px 0 0`} alignItems={`center`}>
+        <ThreeColumnGrid>
+          <SeparatedColumn flex centered>
             <Subtitle2 uppercase={false}>Легкие</Subtitle2>
             <List>
-              <Box>
+              <Box mt={2}>
                 <li>
                   <Text1 textColor={TextColor.Primary} mr={4}>
                     когнитивные расстройства выражены минимально
@@ -298,19 +298,17 @@ const Details: React.FC = () => {
                 </Text1>
               </li>
             </List>
-          </FlexColumn>
-          <FlexColumn
-            padding={`0 30px`}
-            borderLeftRight={true}
-            alignItems={`center`}
-          >
+          </SeparatedColumn>
+          <SeparatedColumn flex centered>
             <Subtitle2 uppercase={false}>Умеренные</Subtitle2>
             <List>
-              <li>
-                <Text1 textColor={TextColor.Primary} mr={4}>
-                  нарушения одной или нескольких когнитивных функций
-                </Text1>
-              </li>
+              <Box mt={2}>
+                <li>
+                  <Text1 textColor={TextColor.Primary} mr={4}>
+                    нарушения одной или нескольких когнитивных функций
+                  </Text1>
+                </li>
+              </Box>
               <li>
                 <Text1 textColor={TextColor.Primary} mr={4}>
                   нарушения выходят за пределы возрастной нормы, но не
@@ -324,15 +322,17 @@ const Details: React.FC = () => {
                 </Text1>
               </li>
             </List>
-          </FlexColumn>
-          <FlexColumn padding={`0 0 0 30px`} alignItems={`center`}>
+          </SeparatedColumn>
+          <SeparatedColumn flex centered>
             <Subtitle2 uppercase={false}>Тяжелые</Subtitle2>
             <List>
-              <li>
-                <Text1 textColor={TextColor.Primary} mr={4}>
-                  серьезные нарушения памяти и других когнитивных функций
-                </Text1>
-              </li>
+              <Box mt={2}>
+                <li>
+                  <Text1 textColor={TextColor.Primary} mr={4}>
+                    серьезные нарушения памяти и других когнитивных функций
+                  </Text1>
+                </li>
+              </Box>
               <li>
                 <Text1 textColor={TextColor.Primary} mr={4}>
                   нарушения влияют и ограничивают повседневную жизнь
@@ -345,8 +345,8 @@ const Details: React.FC = () => {
                 </Text1>
               </li>
             </List>
-          </FlexColumn>
-        </FlexRow>
+          </SeparatedColumn>
+        </ThreeColumnGrid>
       </Section>
 
       <Section

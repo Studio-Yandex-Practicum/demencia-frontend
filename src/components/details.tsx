@@ -80,15 +80,6 @@ const PurpleRect = styled.div`
   }
 `;
 
-const GridContainer = styled.div`
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(600px, 2fr));
-  width: 100%;
-  max-width: 1200px;
-  margin-left: 16px;
-  margin-right: 16px;
-`;
-
 const StyledImg = styled.img<{
   margin?: string;
   position?: string;
@@ -647,13 +638,23 @@ const Details: React.FC = () => {
         </TwoColumnGrid>
       </Section>
 
-      <Section flex centered backgroundColor={PaletteColor.LightGreen} pb={12}>
-        <Subtitle1 mt={4} textColor={TextColor.Accent1} uppercase={true}>
+      <Section
+        flex
+        centered
+        pt={4}
+        pl={3}
+        pr={3}
+        backgroundColor={PaletteColor.LightGreen}
+        borderBox
+      >
+        <Subtitle1 textColor={TextColor.Accent1} uppercase={true}>
           РАЗВИТИЕ КОГНИТИВНЫХ РАССТРОЙСТВ
         </Subtitle1>
+      </Section>
 
-        <GridContainer>
-          <Box mt={6}>
+      <Section flex centered backgroundColor={PaletteColor.LightGreen} pb={12}>
+        <TwoColumnGrid>
+          <Box mt={6} maxWidth={600}>
             <FlexRow>
               <StyledImg src={purpleHalfCirclePic} />
               <FlexColumn>
@@ -726,7 +727,7 @@ const Details: React.FC = () => {
             </FlexRow>
           </Box>
 
-          <Box mt={6}>
+          <Box mt={6} maxWidth={600}>
             <FlexRow>
               <StyledImg src={greenHalfCirclePic} />
               <FlexColumn>
@@ -778,7 +779,7 @@ const Details: React.FC = () => {
               </FlexColumn>
             </FlexRow>
           </Box>
-        </GridContainer>
+        </TwoColumnGrid>
       </Section>
     </>
   );

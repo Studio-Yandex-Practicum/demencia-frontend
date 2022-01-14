@@ -85,6 +85,10 @@ export const SeparatedColumn = styled.div<SectionProps>`
       border-top: none;
     }
 
+    &:first-child {
+      padding-top: 0;
+    }
+
     border-right: none;
     border-top: 2px solid ${PaletteColor.DarkPurple};
   }

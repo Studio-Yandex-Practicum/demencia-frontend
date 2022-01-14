@@ -278,7 +278,7 @@ const Details: React.FC = () => {
           <SeparatedColumn flex centered>
             <Subtitle2 uppercase={false}>Легкие</Subtitle2>
             <List>
-              <Box>
+              <Box mt={2}>
                 <li>
                   <Text1 textColor={TextColor.Primary} mr={4}>
                     когнитивные расстройства выражены минимально
@@ -302,11 +302,13 @@ const Details: React.FC = () => {
           <SeparatedColumn flex centered>
             <Subtitle2 uppercase={false}>Умеренные</Subtitle2>
             <List>
-              <li>
-                <Text1 textColor={TextColor.Primary} mr={4}>
-                  нарушения одной или нескольких когнитивных функций
-                </Text1>
-              </li>
+              <Box mt={2}>
+                <li>
+                  <Text1 textColor={TextColor.Primary} mr={4}>
+                    нарушения одной или нескольких когнитивных функций
+                  </Text1>
+                </li>
+              </Box>
               <li>
                 <Text1 textColor={TextColor.Primary} mr={4}>
                   нарушения выходят за пределы возрастной нормы, но не
@@ -324,11 +326,13 @@ const Details: React.FC = () => {
           <SeparatedColumn flex centered>
             <Subtitle2 uppercase={false}>Тяжелые</Subtitle2>
             <List>
-              <li>
-                <Text1 textColor={TextColor.Primary} mr={4}>
-                  серьезные нарушения памяти и других когнитивных функций
-                </Text1>
-              </li>
+              <Box mt={2}>
+                <li>
+                  <Text1 textColor={TextColor.Primary} mr={4}>
+                    серьезные нарушения памяти и других когнитивных функций
+                  </Text1>
+                </li>
+              </Box>
               <li>
                 <Text1 textColor={TextColor.Primary} mr={4}>
                   нарушения влияют и ограничивают повседневную жизнь

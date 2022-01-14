@@ -35,7 +35,7 @@ const NavMenu: React.FC<{ vertical?: boolean }> = (props) => {
 const PageHeader: React.FC = () => {
   return (
     <Header>
-      <Box mt={3} ml={5}>
+      <Box mt={3} ml={4}>
         <LogoBlock altText="Логотип" to="/" />
       </Box>
       <Box mt={4} mr={4}>

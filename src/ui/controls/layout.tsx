@@ -16,6 +16,7 @@ interface SectionProps extends ThemeProps, BoxProps {
   centered?: boolean;
   zIndex?: number;
   backgroundColor?: PaletteColor;
+  borderBox?: boolean;
 }
 
 interface GridProps extends ThemeProps, BoxProps {
@@ -44,6 +45,7 @@ export const Main = styled.main`
 export const Section = styled.section<SectionProps>`
   width: 100%;
   position: relative;
+  box-sizing: ${(p) => (p.borderBox ? "border-box" : "content-box")};
   ${getBoxStyles};
   display: ${(p) => (p.flex ? "flex" : "block")};
   flex-direction: ${(p) => (p.flex ? "column" : undefined)};

@@ -350,7 +350,9 @@ const Details: React.FC = () => {
         centered
         mt={6}
         pt={7}
+        pl={3}
         backgroundColor={PaletteColor.DarkPurple}
+        borderBox
       >
         <FlexColumn>
           <Subtitle1 textColor={TextColor.Secondary} uppercase={true}>

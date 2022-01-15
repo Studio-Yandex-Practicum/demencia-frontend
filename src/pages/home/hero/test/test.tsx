@@ -28,6 +28,16 @@ const ActionCell = styled.div`
     justify-content: center;
     top: -15px;
   }
+  @media (max-width: ${ScreenSize.Small}px) {
+    top: 5px;
+  }
+  @media (max-width: ${ScreenSize.XSmall}px) {
+    top: 0;
+    margin-top: 80px;
+    width: 290px;
+    height: 50px;
+    left: calc(100% / 2 - 290px / 2);
+  }
 `;
 
 const Container = styled.div`

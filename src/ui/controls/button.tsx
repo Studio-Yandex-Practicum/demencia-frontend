@@ -24,6 +24,8 @@ export interface ButtonProps
   shape?: ButtonShape;
   ghost?: boolean;
   icon?: ReactNode;
+  width?: number;
+  zIndex?: number;
 }
 
 const buildLinkButtonStyleMixIn = (
@@ -133,8 +135,12 @@ const buildButtonStyleMixIn = (
   const fontStyles = !props.level
     ? `font-size: ${buttonSize.fontSize}px; font-weight: ${buttonSize.fontWeight}; line-height: 0;`
     : "";
+  const width = props.width;
+  const zIndex = props.zIndex;
 
   return `
+    z-index: ${zIndex};
+    width: ${width}px;
     height: ${buttonSize.height}px;
     padding: ${buttonSize.paddingVertical}px ${buttonSize.paddingHorizontal}px;
     ${minWidthStyle}

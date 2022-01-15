@@ -36,9 +36,6 @@ const Image = styled.img.attrs((props) => ({
   src: props.src || image,
 }))`
   max-width: 55vw;
-  max-heigth: 700px;
-  object-fit: cover;
-  object-position: top;
 `;
 
 const Decor = styled.div`

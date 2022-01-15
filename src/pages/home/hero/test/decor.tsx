@@ -4,6 +4,7 @@ import greenPazzle from "../../../../images/test_green_puzzle.svg";
 import bigCircle from "../../../../images/circlebg.png";
 import mediumCircle from "../../../../images/circlesm.png";
 import smallCircle from "../../../../images/smallcircle.png";
+import halfCircle from "../../../../images/halfcirclegreen.png";
 
 const pazzleRotation = keyframes`
 0% {
@@ -157,4 +158,13 @@ export const SmallCircle = styled.img.attrs((props) => ({
     left: 205px;
     top: 300px;
   }
+`;
+
+export const HalfCircle = styled.img.attrs((props) => ({
+  src: props.src || halfCircle,
+  alt: props.alt || "",
+}))`
+  z-index: 300;
+  width: 70px;
+  transform: translate(-20px, 0);
 `;

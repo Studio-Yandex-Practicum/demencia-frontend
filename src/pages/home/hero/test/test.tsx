@@ -57,7 +57,7 @@ const HomePage: React.FC = () => {
           </Box>
         </TwoColumnGrid>
         <ActionCell>
-          <Button primary uppercase>
+          <Button primary uppercase width={328} zIndex={310}>
             Пройти тест
           </Button>
           <HalfCircle />

@@ -24,10 +24,12 @@ const Content = styled.div`
   height: auto;
   display: flex;
   flex-direction: column;
+  position: relative;
 `;
 const Wrapper = styled.div`
-  position: fixed;
-  bottom: 250px;
+  position: absolute;
+  top: calc(100% / 2 - 175px / 2);
+  z-index: 1;
 `;
 
 const Image = styled.img.attrs((props) => ({
@@ -49,13 +51,7 @@ const Decor = styled.div`
   bottom: -45px;
   left: 466px;
 
-  @media screen and (max-width: 767px) {
-    width: 53px;
-    height: 105px;
-    bottom: 57px;
-    left: 105px;
-  }
-  @media screen and (max-width: 639px) {
+  @media screen and (max-width: 1200px) {
     display: none;
   }
 `;
@@ -104,30 +100,22 @@ const Slider: React.FC = () => {
       className="myStyles"
     >
       <SwiperSlide>
-        <Content>
-          <Image src={image} />
-          <Wrapper>
-            <Container
-              size={ContainerSize.MediumSmall}
-              bgColor={BackgroundColor.Alt2}
-            >
-              <Text1
-                mt={4}
-                mb={4}
-                ml={2}
-                mr={4}
-                textColor={TextColor.Secondary}
-              >
-                ФОНД «ПАМЯТЬ ПОКОЛЕНИЙ» И «СОЮЗМУЛЬТФИЛЬМ» ВЫПУСТИЛИ МУЛЬТФИЛЬМ
-                О ДИАГНОСТИКЕ КОГНИТИВНЫХ ИЗМЕНЕНИЙ
-              </Text1>
-              <LINK>
-                <Link to="/">ПОДРОБНЕЕ</Link>
-              </LINK>
-              <Decor />
-            </Container>
-          </Wrapper>
-        </Content>
+        <Wrapper>
+          <Container
+            size={ContainerSize.MediumSmall}
+            bgColor={BackgroundColor.Alt2}
+          >
+            <Text1 mt={4} mb={4} ml={2} mr={4} textColor={TextColor.Secondary}>
+              ФОНД «ПАМЯТЬ ПОКОЛЕНИЙ» И «СОЮЗМУЛЬТФИЛЬМ» ВЫПУСТИЛИ МУЛЬТФИЛЬМ О
+              ДИАГНОСТИКЕ КОГНИТИВНЫХ ИЗМЕНЕНИЙ
+            </Text1>
+            <LINK>
+              <Link to="/">ПОДРОБНЕЕ</Link>
+            </LINK>
+            <Decor />
+          </Container>
+        </Wrapper>
+        <Image src={image} />
       </SwiperSlide>
     </Swiper>
   );

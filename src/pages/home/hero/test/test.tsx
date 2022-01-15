@@ -42,7 +42,7 @@ const Container = styled.div<{
 
 const HomePage: React.FC = () => {
   return (
-    <Container grid="1/1/2/3" margin="200px 5vw 0 0">
+    <Container grid="1/1/2/3" margin="200px 0 0 0">
       <Box>
         <Container pos="relative"></Container>
         <NavMenu />

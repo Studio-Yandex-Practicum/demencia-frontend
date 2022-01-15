@@ -4,3 +4,9 @@
   height: auto;
   max-height: 900px;
 }
+
+@media screen and (max-width:960px){
+  .myStyles{
+    width: 100%;
+  }
+}

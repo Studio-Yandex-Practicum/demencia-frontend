@@ -16,26 +16,26 @@ import { Container } from "../../../../ui/controls";
 import { ContainerSize, TextColor } from "../../../../ui/types";
 import { BackgroundColor } from "../../../../ui/types/background-color.enum";
 import { Text1 } from "../../../../ui/controls/typography";
+import { ScreenSize } from "../../../../ui/types";
 
 SwiperCore.use([Autoplay, Pagination, Navigation]);
 
-const Content = styled.div`
-  width: 100%;
-  height: auto;
-  display: flex;
-  flex-direction: column;
-  position: relative;
-`;
 const Wrapper = styled.div`
   position: absolute;
-  top: calc(100% / 2 - 175px / 2);
+  bottom: calc(100% / 2 - 175px / 2);
   z-index: 1;
+  @media (max-width: ${ScreenSize.XSmall}px) {
+    bottom: 0;
+  }
 `;
 
 const Image = styled.img.attrs((props) => ({
   src: props.src || image,
 }))`
   max-width: 55vw;
+  @media (max-width: ${ScreenSize.Medium}px) {
+    max-width: 100%;
+  }
 `;
 
 const Decor = styled.div`
@@ -45,39 +45,47 @@ const Decor = styled.div`
   background-size: cover;
   background-repeat: no-repeat;
   position: absolute;
-  bottom: -45px;
-  left: 466px;
+  bottom: calc(100% / 2 - 266px / 2);
+  left: 77%;
 
-  @media screen and (max-width: 1200px) {
+  @media (max-width: ${ScreenSize.Large}px) {
+    display: none;
+  }
+  @media (max-width: ${ScreenSize.Medium}px) {
+    display: block;
+  }
+  @media (max-width: ${ScreenSize.Small}px) {
     display: none;
   }
 `;
 
 const LINK = styled.div`
   a {
-    font-size: 14px;
+    font-size: 20px;
     line-height: 10px;
     font-weight: 400;
     color: white;
-    margin: 11px 0 5px 20px;
-    letter-spacing: 1px;
+    margin: 16px;
     text-decoration: none;
     transition: border-bottom 0.5s cubic-bezier(0.2, -2, 0.8, 2);
     cursor: url(${cursorPointer}), pointer;
     &:hover {
       border-bottom: 2px solid #6d097a;
     }
-    @media screen and (max-width: 767px) {
-      font-size: 7px;
-      line-height: 7px;
+    @media (max-width: ${ScreenSize.Small}px) {
+      font-size: 16px;
+      margin: 10px;
     }
-    @media screen and (max-width: 639px) {
-      font-size: 5px;
-      line-height: 5px;
-    }
-    @media screen and (max-width: 369px) {
-      margin: 10px 0 10px 30px;
-    }
+  }
+`;
+
+const StyledText = styled(Text1)`
+  @media (max-width: ${ScreenSize.Medium}px) {
+    font-size: 16px;
+    margin: 16px;
+  }
+  @media (max-width: ${ScreenSize.Small}px) {
+    margin: 10px;
   }
 `;
 
@@ -102,10 +110,16 @@ const Slider: React.FC = () => {
             size={ContainerSize.MediumSmall}
             bgColor={BackgroundColor.Alt2}
           >
-            <Text1 mt={4} mb={4} ml={2} mr={4} textColor={TextColor.Secondary}>
+            <StyledText
+              mt={4}
+              mb={4}
+              ml={2}
+              mr={4}
+              textColor={TextColor.Secondary}
+            >
               ФОНД «ПАМЯТЬ ПОКОЛЕНИЙ» И «СОЮЗМУЛЬТФИЛЬМ» ВЫПУСТИЛИ МУЛЬТФИЛЬМ О
               ДИАГНОСТИКЕ КОГНИТИВНЫХ ИЗМЕНЕНИЙ
-            </Text1>
+            </StyledText>
             <LINK>
               <Link to="/">ПОДРОБНЕЕ</Link>
             </LINK>

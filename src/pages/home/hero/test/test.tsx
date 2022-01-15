@@ -20,13 +20,9 @@ const ActionCell = styled.div`
   position: relative;
   top: 115px;
 
-  @media (max-width: ${ScreenSize.Large}px) {
-    top: 165px;
-  }
-
   @media (max-width: ${ScreenSize.Medium}px) {
     justify-content: center;
-    top: -15px;
+    top: 5px;
   }
   @media (max-width: ${ScreenSize.Small}px) {
     top: 5px;

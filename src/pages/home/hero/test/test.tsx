@@ -17,6 +17,17 @@ import { TwoColumnGrid } from "../../../../ui/controls/layout";
 const ActionCell = styled.div`
   display: flex;
   align-items: center;
+  position: relative;
+  top: 115px;
+
+  @media (max-width: ${ScreenSize.Large}px) {
+    top: 165px;
+  }
+
+  @media (max-width: ${ScreenSize.Medium}px) {
+    justify-content: center;
+    top: -15px;
+  }
 `;
 
 const Container = styled.div`

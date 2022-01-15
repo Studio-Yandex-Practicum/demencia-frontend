@@ -5,6 +5,7 @@ import bigCircle from "../../../../images/circlebg.png";
 import mediumCircle from "../../../../images/circlesm.png";
 import smallCircle from "../../../../images/smallcircle.png";
 import halfCircle from "../../../../images/halfcirclegreen.png";
+import { ScreenSize } from "../../../../ui/types";
 
 const pazzleRotation = keyframes`
 0% {
@@ -64,18 +65,18 @@ export const Pazzles = styled.img.attrs((props) => ({
   width: 140px;
   height: 140px;
   z-index: 301;
-  margin-top: 118px;
-  @media screen and (max-width: 1350px) {
-    width: 90px;
-    height: 90px;
-    margin-top: 80px;
+  position: relative;
+  top: 100px;
+
+  @media (max-width: ${ScreenSize.Large}px) {
+    width: 100px;
+    height: 100px;
   }
-  @media screen and (max-width: 1100px) {
-    width: 70px;
-    height: 70px;
-    position: relative;
-    left: 50px;
-    bottom: 15px;
+  @media (max-width: ${ScreenSize.Medium}px) {
+    width: 100px;
+    height: 100px;
+    left: 180px;
+    top: 35px;
   }
 `;
 
@@ -83,15 +84,23 @@ export const GreenPuzzle = styled.img.attrs((props) => ({
   src: props.src || greenPazzle,
   alt: props.alt || "",
 }))`
-  width: 90px;
-  height: 90px;
+  width: 100px;
+  height: 100px;
   position: relative;
-  bottom: 200px;
-  left: 145px;
+  bottom: 300px;
+  left: 160px;
   z-index: 300;
-  @media screen and (max-width: 1350px) {
-    width: 60px;
-    height: 60px;
+  @media (max-width: ${ScreenSize.Large}px) {
+    width: 65px;
+    height: 65px;
+    bottom: 150px;
+    left: 115px;
+  }
+  @media (max-width: ${ScreenSize.Medium}px) {
+    width: 70px;
+    height: 70px;
+    left: 585px;
+    top: -370px;
   }
 `;
 

@@ -135,12 +135,12 @@ const buildButtonStyleMixIn = (
   const fontStyles = !props.level
     ? `font-size: ${buttonSize.fontSize}px; font-weight: ${buttonSize.fontWeight}; line-height: 0;`
     : "";
-  const width = props.width;
-  const zIndex = props.zIndex;
+  const width = props.width !== undefined ? `width: ${props.width}px;` : "";
+  const zIndex = props.zIndex !== undefined ? `z-index: ${props.zIndex};` : "";
 
   return `
-    z-index: ${zIndex};
-    width: ${width}px;
+    ${zIndex}
+    ${width}
     height: ${buttonSize.height}px;
     padding: ${buttonSize.paddingVertical}px ${buttonSize.paddingHorizontal}px;
     ${minWidthStyle}

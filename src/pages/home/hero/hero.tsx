@@ -12,7 +12,7 @@ const OffsetY = styled.div`
 const Hero: React.FC = () => {
   return (
     <OffsetY>
-      <Box ml={1}>
+      <Box>
         <TwoColumnGrid>
           <Test />
           <Slider />

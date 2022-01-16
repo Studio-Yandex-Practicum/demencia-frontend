@@ -65,7 +65,7 @@ const LINK = styled.div`
     line-height: 10px;
     font-weight: 400;
     color: white;
-    margin: 16px;
+    margin-top: 24px;
     text-decoration: none;
     transition: border-bottom 0.5s cubic-bezier(0.2, -2, 0.8, 2);
     cursor: url(${cursorPointer}), pointer;
@@ -74,7 +74,6 @@ const LINK = styled.div`
     }
     @media (max-width: ${ScreenSize.Small}px) {
       font-size: 16px;
-      margin: 10px;
     }
   }
 `;
@@ -82,7 +81,6 @@ const LINK = styled.div`
 const StyledText = styled(Text1)`
   @media (max-width: ${ScreenSize.Medium}px) {
     font-size: 16px;
-    margin: 16px;
   }
   @media (max-width: ${ScreenSize.Small}px) {
     margin: 10px;
@@ -112,17 +110,17 @@ const Slider: React.FC = () => {
           >
             <StyledText
               mt={4}
-              mb={4}
+              mb={2}
               ml={2}
-              mr={4}
+              mr={12}
               textColor={TextColor.Secondary}
             >
               ФОНД «ПАМЯТЬ ПОКОЛЕНИЙ» И «СОЮЗМУЛЬТФИЛЬМ» ВЫПУСТИЛИ МУЛЬТФИЛЬМ О
               ДИАГНОСТИКЕ КОГНИТИВНЫХ ИЗМЕНЕНИЙ
+              <LINK>
+                <Link to="/">Подробнее...</Link>
+              </LINK>
             </StyledText>
-            <LINK>
-              <Link to="/">ПОДРОБНЕЕ</Link>
-            </LINK>
             <Decor />
           </Container>
         </Wrapper>

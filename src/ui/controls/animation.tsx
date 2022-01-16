@@ -1,5 +1,10 @@
-import { keyframes, DefaultTheme, ThemeProps } from "styled-components";
-import { TypographyLevel } from "../types";
+import styled, {
+  keyframes,
+  DefaultTheme,
+  ThemeProps,
+  css,
+} from "styled-components";
+import { AnimationSpeed, TypographyLevel } from "../types";
 import { FontLevelProps } from "./typography";
 import { buildTransitionFast } from "./mixins";
 
@@ -85,7 +90,6 @@ export const borderBottomOnHoverMixIn = (
 `;
 };
 
-// todo: below animations:
 const rotation = keyframes`
 0% {
     transform: rotate(0deg);
@@ -102,4 +106,33 @@ const translate = keyframes`
         transform: translate(0px, 0px);
     }`;
 
-export { rotation, translate };
+const circleRotation = keyframes`
+      0% {
+          transform: rotate(0deg);
+      }
+      25% {
+          transform: rotate(9deg);
+      }
+    
+      50% {
+        transform: rotate(0deg);
+      }
+    
+      75% {
+        transform: rotate(-9deg);
+      }
+    
+      100% {
+        transform: rotate(0deg);
+      }
+`;
+
+export { rotation, translate, circleRotation };
+
+const animationMixin = css<{ speed: AnimationSpeed }>`
+  animation: ${rotation} ${(p) => p.speed}s linear infinite;
+`;
+export const Rotate = styled.div<{ speed: AnimationSpeed }>`
+  display: inline-block;
+  ${animationMixin}
+`;

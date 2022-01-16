@@ -24,6 +24,7 @@ import {
   ButtonType,
   ButtonShape,
   LogoSize,
+  AnimationSpeed,
 } from "../../ui/types";
 import { BackgroundColor } from "../../ui/types/background-color.enum";
 import {
@@ -38,6 +39,18 @@ import {
   Text4,
   Title,
 } from "../../ui/controls/typography";
+import styled from "styled-components";
+import greenPuzzleImage from "../../images/figures/test_green_puzzle.svg";
+import { Rotate } from "../../ui/controls/animation";
+
+const FigurePuzzle = styled.div`
+  width: 48px;
+  height: 56px;
+  background: url(${greenPuzzleImage});
+  background-repeat: no-repeat;
+  background-size: contain;
+`;
+
 // TODO: this is a temporary page to display the ui components
 const UiKitPage: React.FC = () => {
   return (
@@ -267,12 +280,16 @@ const UiKitPage: React.FC = () => {
               Text change on mouse hover: hoverColor=TextColor.Accent1
             </Text1>
           </Box>
-          nhj
           <Box mb={3}>
             <Text1 textColor={TextColor.Accent1} hoverColor={TextColor.Accent2}>
               Text change on mouse hover: textColor=TextColor.Accent1
               hoverColor=TextColor.Accent2
             </Text1>
+          </Box>
+          <Box mb={3}>
+            <Rotate speed={AnimationSpeed.VerySlow}>
+              <FigurePuzzle></FigurePuzzle>
+            </Rotate>
           </Box>
         </Container>
       </Section>

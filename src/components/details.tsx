@@ -372,6 +372,7 @@ const Details: React.FC = () => {
         backgroundColor={PaletteColor.Green}
         pb={12}
         pl={2}
+        pr={2}
       >
         <TwoColumnGrid>
           <Box mt={7} maxWidth={600}>
@@ -672,6 +673,7 @@ const Details: React.FC = () => {
         backgroundColor={PaletteColor.LightGreen}
         pb={12}
         pl={2}
+        pr={2}
       >
         <TwoColumnGrid>
           <Box mt={6} maxWidth={600}>

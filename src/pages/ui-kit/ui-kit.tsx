@@ -24,6 +24,7 @@ import {
   ButtonType,
   ButtonShape,
   LogoSize,
+  AnimationSpeed,
 } from "../../ui/types";
 import { BackgroundColor } from "../../ui/types/background-color.enum";
 import {
@@ -38,6 +39,23 @@ import {
   Text4,
   Title,
 } from "../../ui/controls/typography";
+import styled from "styled-components";
+import greenPuzzleImage from "../../images/test_green_puzzle.svg";
+import {
+  Rotate,
+  Rotate180OnHover,
+  Tumble,
+  TumbleBackward,
+} from "../../ui/controls/animation";
+
+const FigurePuzzle = styled.div`
+  width: 48px;
+  height: 56px;
+  background: url(${greenPuzzleImage});
+  background-repeat: no-repeat;
+  background-size: contain;
+`;
+
 // TODO: this is a temporary page to display the ui components
 const UiKitPage: React.FC = () => {
   return (
@@ -267,12 +285,35 @@ const UiKitPage: React.FC = () => {
               Text change on mouse hover: hoverColor=TextColor.Accent1
             </Text1>
           </Box>
-          nhj
           <Box mb={3}>
             <Text1 textColor={TextColor.Accent1} hoverColor={TextColor.Accent2}>
               Text change on mouse hover: textColor=TextColor.Accent1
               hoverColor=TextColor.Accent2
             </Text1>
+          </Box>
+          <Box mb={3}>
+            <Text2>{"<Rotate speed={AnimationSpeed.VerySlow}>"}</Text2>
+            <Rotate speed={AnimationSpeed.VerySlow}>
+              <FigurePuzzle />
+            </Rotate>
+          </Box>
+          <Box mb={3}>
+            <Text2>{"<Tumble speed={AnimationSpeed.Slow}>"}</Text2>
+            <Tumble speed={AnimationSpeed.Slow}>
+              <FigurePuzzle />
+            </Tumble>
+          </Box>
+          <Box mb={3}>
+            <Text2>{"<TumbleBackward speed={AnimationSpeed.Slow}>"}</Text2>
+            <TumbleBackward speed={AnimationSpeed.Slow}>
+              <FigurePuzzle />
+            </TumbleBackward>
+          </Box>
+          <Box mb={3}>
+            <Text2>{"<Rotate180OnHover>"}</Text2>
+            <Rotate180OnHover>
+              <FigurePuzzle />
+            </Rotate180OnHover>
           </Box>
         </Container>
       </Section>

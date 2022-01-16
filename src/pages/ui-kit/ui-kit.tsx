@@ -40,7 +40,7 @@ import {
   Title,
 } from "../../ui/controls/typography";
 import styled from "styled-components";
-import greenPuzzleImage from "../../images/figures/test_green_puzzle.svg";
+import greenPuzzleImage from "../../images/test_green_puzzle.svg";
 import {
   Rotate,
   Rotate180OnHover,
@@ -294,25 +294,25 @@ const UiKitPage: React.FC = () => {
           <Box mb={3}>
             <Text2>{"<Rotate speed={AnimationSpeed.VerySlow}>"}</Text2>
             <Rotate speed={AnimationSpeed.VerySlow}>
-              <FigurePuzzle></FigurePuzzle>
+              <FigurePuzzle />
             </Rotate>
           </Box>
           <Box mb={3}>
             <Text2>{"<Tumble speed={AnimationSpeed.Slow}>"}</Text2>
             <Tumble speed={AnimationSpeed.Slow}>
-              <FigurePuzzle></FigurePuzzle>
+              <FigurePuzzle />
             </Tumble>
           </Box>
           <Box mb={3}>
             <Text2>{"<TumbleBackward speed={AnimationSpeed.Slow}>"}</Text2>
             <TumbleBackward speed={AnimationSpeed.Slow}>
-              <FigurePuzzle></FigurePuzzle>
+              <FigurePuzzle />
             </TumbleBackward>
           </Box>
           <Box mb={3}>
             <Text2>{"<Rotate180OnHover>"}</Text2>
             <Rotate180OnHover>
-              <FigurePuzzle></FigurePuzzle>
+              <FigurePuzzle />
             </Rotate180OnHover>
           </Box>
         </Container>

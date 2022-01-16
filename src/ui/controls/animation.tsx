@@ -1,9 +1,4 @@
-import styled, {
-  keyframes,
-  DefaultTheme,
-  ThemeProps,
-  css,
-} from "styled-components";
+import styled, { keyframes, DefaultTheme, ThemeProps } from "styled-components";
 import { AnimationSpeed, TypographyLevel } from "../types";
 import { FontLevelProps } from "./typography";
 import { buildTransitionFast } from "./mixins";

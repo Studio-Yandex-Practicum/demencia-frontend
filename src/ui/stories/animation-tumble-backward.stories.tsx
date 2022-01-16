@@ -1,7 +1,7 @@
 import { ComponentStory, ComponentMeta } from "@storybook/react";
 import { TumbleBackward } from "../controls/animation";
 import { AnimationSpeed } from "../types";
-import greenPuzzleImage from "../../images/figures/test_green_puzzle.svg";
+import greenPuzzleImage from "../../images/test_green_puzzle.svg";
 import styled from "styled-components";
 
 export default {
@@ -41,7 +41,7 @@ const FigurePuzzle = styled.div`
 
 const Template: ComponentStory<typeof TumbleBackward> = (args) => (
   <TumbleBackward {...args}>
-    <FigurePuzzle></FigurePuzzle>
+    <FigurePuzzle />
   </TumbleBackward>
 );
 

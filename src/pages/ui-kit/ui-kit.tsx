@@ -41,7 +41,12 @@ import {
 } from "../../ui/controls/typography";
 import styled from "styled-components";
 import greenPuzzleImage from "../../images/figures/test_green_puzzle.svg";
-import { Rotate } from "../../ui/controls/animation";
+import {
+  Rotate,
+  Rotate180OnHover,
+  Tumble,
+  TumbleBackward,
+} from "../../ui/controls/animation";
 
 const FigurePuzzle = styled.div`
   width: 48px;
@@ -287,9 +292,28 @@ const UiKitPage: React.FC = () => {
             </Text1>
           </Box>
           <Box mb={3}>
+            <Text2>{"<Rotate speed={AnimationSpeed.VerySlow}>"}</Text2>
             <Rotate speed={AnimationSpeed.VerySlow}>
               <FigurePuzzle></FigurePuzzle>
             </Rotate>
+          </Box>
+          <Box mb={3}>
+            <Text2>{"<Tumble speed={AnimationSpeed.Slow}>"}</Text2>
+            <Tumble speed={AnimationSpeed.Slow}>
+              <FigurePuzzle></FigurePuzzle>
+            </Tumble>
+          </Box>
+          <Box mb={3}>
+            <Text2>{"<TumbleBackward speed={AnimationSpeed.Slow}>"}</Text2>
+            <TumbleBackward speed={AnimationSpeed.Slow}>
+              <FigurePuzzle></FigurePuzzle>
+            </TumbleBackward>
+          </Box>
+          <Box mb={3}>
+            <Text2>{"<Rotate180OnHover>"}</Text2>
+            <Rotate180OnHover>
+              <FigurePuzzle></FigurePuzzle>
+            </Rotate180OnHover>
           </Box>
         </Container>
       </Section>

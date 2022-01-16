@@ -41,6 +41,7 @@ const SiderBtn = styled(Button).attrs(
   position: fixed;
   top: 20px;
   right: 15px;
+  z-index: 3;
   @media screen and (min-width: ${ScreenSize.Large - 1}px) {
     display: none;
   }

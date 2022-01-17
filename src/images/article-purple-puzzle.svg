@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 95.39 80.36">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #6d097a;
+        fill-rule: evenodd;
+      }
+    </style>
+  </defs>
+  <g id="Слой_2" data-name="Слой 2">
+    <g id="Слой_1-2" data-name="Слой 1">
+      <path class="cls-1" d="M95.39,0V80.36H15V56.19a15,15,0,0,1,0-30V0L40.25.07c1.92,8.48,9.27,13.43,16,13.25S68.21,9.07,70.41.14Z"/>
+    </g>
+  </g>
+</svg>

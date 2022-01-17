@@ -1,62 +1,11 @@
-import styled, { keyframes } from "styled-components";
+import styled from "styled-components";
+import { ScreenSize } from "../../../../ui/types";
 import pazzles from "../../../../images/test_puzzlesdecor.svg";
 import greenPazzle from "../../../../images/test_green_puzzle.svg";
 import bigCircle from "../../../../images/circlebg.png";
 import mediumCircle from "../../../../images/circlesm.png";
 import smallCircle from "../../../../images/smallcircle.png";
 import halfCircle from "../../../../images/halfcirclegreen.png";
-import { ScreenSize } from "../../../../ui/types";
-
-const pazzleRotation = keyframes`
-0% {
-  transform: rotate(0deg);
-}
-100% {
-  transform: rotate(360deg);
-}
-`;
-
-const circleSwing = keyframes`
-0% {
-  transform: rotate(0deg);
-}
-25% {
-  transform: rotate(9deg);
-}
-
-50% {
-transform: rotate(0deg);
-}
-
-75% {
-transform: rotate(-9deg);
-}
-
-100% {
-transform: rotate(0deg);
-}
-`;
-
-const circleSwingReversed = keyframes`
-0% {
-  transform: rotate(0deg);
-}
-25% {
-  transform: rotate(-9deg);
-}
-
-50% {
-transform: rotate(0deg);
-}
-
-75% {
-transform: rotate(9deg);
-}
-
-100% {
-transform: rotate(0deg);
-}
-`;
 
 export const Pazzles = styled.img.attrs((props) => ({
   src: props.src || pazzles,

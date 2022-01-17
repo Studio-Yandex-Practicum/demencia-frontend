@@ -5,6 +5,36 @@
   max-height: 900px;
 }
 
+.swiper-button-prev{
+  background-image: url('./slid-left.svg');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size:contain; 
+  position: absolute;
+  top: 50%;
+  width: 50px;
+  height: 50px;
+}
+
+.swiper-button-prev::after{
+  display: none;
+}
+
+.swiper-button-next{
+  background-image: url('./slid-right.svg');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size:contain; 
+  position: absolute;
+  top: 50%;
+  width: 50px;
+  height: 50px;
+}
+
+.swiper-button-next::after{
+  display: none;
+}
+
 @media screen and (max-width:960px){
   .myStyles{
     width: 100%;

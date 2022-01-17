@@ -12,7 +12,7 @@ import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "swiper/css/scrollbar";
 import { Link } from "react-router-dom";
-import { Container } from "../../../../ui/controls";
+import { Container, Box } from "../../../../ui/controls";
 import { ContainerSize, TextColor } from "../../../../ui/types";
 import { BackgroundColor } from "../../../../ui/types/background-color.enum";
 import { Text1 } from "../../../../ui/controls/typography";
@@ -22,8 +22,11 @@ SwiperCore.use([Autoplay, Pagination, Navigation]);
 
 const Wrapper = styled.div`
   position: absolute;
-  bottom: calc(100% / 2 - 175px / 2);
+  bottom: calc(100% / 2 - 175px / 0.65);
   z-index: 1;
+  @media (max-width: ${ScreenSize.XSmall}px) {
+    bottom: calc(100% / 2 - 175px / 0.8);
+  }
   @media (max-width: ${ScreenSize.XSmall}px) {
     bottom: 0;
   }
@@ -82,8 +85,11 @@ const StyledText = styled(Text1)`
   @media (max-width: ${ScreenSize.Medium}px) {
     font-size: 16px;
   }
-  @media (max-width: ${ScreenSize.Small}px) {
-    margin: 10px;
+`;
+
+const StyledBox = styled(Box)`
+  @media (max-width: ${ScreenSize.XSmall}px) {
+    margin: 8px;
   }
 `;
 
@@ -99,7 +105,10 @@ const Slider: React.FC = () => {
       pagination={{
         clickable: true,
       }}
-      navigation={true}
+      navigation={{
+        nextEl: ".swiper-button-next",
+        prevEl: ".swiper-button-prev",
+      }}
       className="myStyles"
     >
       <SwiperSlide>
@@ -108,24 +117,63 @@ const Slider: React.FC = () => {
             size={ContainerSize.MediumSmall}
             bgColor={BackgroundColor.Alt2}
           >
-            <StyledText
-              mt={4}
-              mb={2}
-              ml={2}
-              mr={12}
-              textColor={TextColor.Secondary}
-            >
-              ФОНД «ПАМЯТЬ ПОКОЛЕНИЙ» И «СОЮЗМУЛЬТФИЛЬМ» ВЫПУСТИЛИ МУЛЬТФИЛЬМ О
-              ДИАГНОСТИКЕ КОГНИТИВНЫХ ИЗМЕНЕНИЙ
+            <StyledBox mt={4} mb={2} ml={2} mr={12}>
+              <StyledText mb={2} textColor={TextColor.Secondary}>
+                ФОНД «ПАМЯТЬ ПОКОЛЕНИЙ» И «СОЮЗМУЛЬТФИЛЬМ» ВЫПУСТИЛИ МУЛЬТФИЛЬМ
+                О ДИАГНОСТИКЕ КОГНИТИВНЫХ ИЗМЕНЕНИЙ
+              </StyledText>
               <LINK>
                 <Link to="/">Подробнее...</Link>
               </LINK>
-            </StyledText>
+            </StyledBox>
             <Decor />
           </Container>
         </Wrapper>
         <Image src={image} />
       </SwiperSlide>
+      <SwiperSlide>
+        <Wrapper>
+          <Container
+            size={ContainerSize.MediumSmall}
+            bgColor={BackgroundColor.Alt2}
+          >
+            <StyledBox mt={4} mb={2} ml={2} mr={12}>
+              <StyledText mb={2} textColor={TextColor.Secondary}>
+                ФОНД «ПАМЯТЬ ПОКОЛЕНИЙ» И «СОЮЗМУЛЬТФИЛЬМ» ВЫПУСТИЛИ МУЛЬТФИЛЬМ
+                О ДИАГНОСТИКЕ КОГНИТИВНЫХ ИЗМЕНЕНИЙ
+              </StyledText>
+              <LINK>
+                <Link to="/">Подробнее...</Link>
+              </LINK>
+            </StyledBox>
+            <Decor />
+          </Container>
+        </Wrapper>
+        <Image src={image} />
+      </SwiperSlide>
+      <SwiperSlide>
+        <Wrapper>
+          <Container
+            size={ContainerSize.MediumSmall}
+            bgColor={BackgroundColor.Alt2}
+          >
+            <StyledBox mt={4} mb={2} ml={2} mr={12}>
+              <StyledText mb={2} textColor={TextColor.Secondary}>
+                ФОНД «ПАМЯТЬ ПОКОЛЕНИЙ» И «СОЮЗМУЛЬТФИЛЬМ» ВЫПУСТИЛИ МУЛЬТФИЛЬМ
+                О ДИАГНОСТИКЕ КОГНИТИВНЫХ ИЗМЕНЕНИЙ
+              </StyledText>
+              <LINK>
+                <Link to="/">Подробнее...</Link>
+              </LINK>
+            </StyledBox>
+            <Decor />
+          </Container>
+        </Wrapper>
+        <Box />
+        <Image src={image} />
+      </SwiperSlide>
+      <div className="swiper-button-prev"></div>
+      <div className="swiper-button-next"></div>
     </Swiper>
   );
 };

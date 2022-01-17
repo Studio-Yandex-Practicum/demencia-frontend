@@ -365,7 +365,15 @@ const Details: React.FC = () => {
         </FlexColumn>
       </Section>
 
-      <Section flex centered backgroundColor={PaletteColor.Green} pb={12}>
+      <Section
+        flex
+        centered
+        borderBox
+        backgroundColor={PaletteColor.Green}
+        pb={12}
+        pl={2}
+        pr={2}
+      >
         <TwoColumnGrid>
           <Box mt={7} maxWidth={600}>
             <FlexRow>
@@ -658,7 +666,15 @@ const Details: React.FC = () => {
         </Subtitle1>
       </Section>
 
-      <Section flex centered backgroundColor={PaletteColor.LightGreen} pb={12}>
+      <Section
+        flex
+        centered
+        borderBox
+        backgroundColor={PaletteColor.LightGreen}
+        pb={12}
+        pl={2}
+        pr={2}
+      >
         <TwoColumnGrid>
           <Box mt={6} maxWidth={600}>
             <FlexRow>

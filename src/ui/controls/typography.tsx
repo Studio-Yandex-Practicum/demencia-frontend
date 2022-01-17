@@ -119,6 +119,10 @@ export const Subtitle1 = styled.h3.attrs(
 )`
   ${typographyMixin};
 
+  @media (max-width: ${ScreenSize.Small}px) {
+    font-size: 35px;
+  }
+
   @media (max-width: ${ScreenSize.XSmall}px) {
     font-size: 30px;
   }
@@ -135,8 +139,12 @@ export const Subtitle2 = styled.h4.attrs(
 )`
   ${typographyMixin};
 
+  @media (max-width: ${ScreenSize.Small}px) {
+    font-size: 28px;
+  }
+
   @media (max-width: ${ScreenSize.XSmall}px) {
-    font-size: 29px;
+    font-size: 25px;
   }
 `;
 
@@ -148,7 +156,15 @@ export const Subtitle3 = styled.h5.attrs(
     ...props,
   })
 )`
-  ${typographyMixin}
+  ${typographyMixin};
+
+  @media (max-width: ${ScreenSize.Small}px) {
+    font-size: 19px;
+  }
+
+  @media (max-width: ${ScreenSize.XSmall}px) {
+    font-size: 18px;
+  }
 `;
 
 export const Subtitle4 = styled.h6.attrs(
@@ -167,7 +183,15 @@ export const Text1 = styled.p.attrs(
     ...props,
   })
 )`
-  ${typographyMixin}
+  ${typographyMixin};
+
+  @media (max-width: ${ScreenSize.Small}px) {
+    font-size: 18px;
+  }
+
+  @media (max-width: ${ScreenSize.XSmall}px) {
+    font-size: 16px;
+  }
 `;
 
 export const Text2 = styled.p.attrs(

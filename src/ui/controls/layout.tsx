@@ -41,6 +41,11 @@ export const Main = styled.main`
   align-items: stretch;
   margin-left: 32px;
   margin-right: 32px;
+
+  @media screen and (max-width: ${ScreenSize.Small}px) {
+    margin-left: 16px;
+    margin-right: 16px;
+  }
 `;
 
 export const Section = styled.section<SectionProps>`

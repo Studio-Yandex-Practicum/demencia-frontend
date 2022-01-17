@@ -1,5 +1,5 @@
-import { keyframes, DefaultTheme, ThemeProps } from "styled-components";
-import { TypographyLevel } from "../types";
+import styled, { keyframes, DefaultTheme, ThemeProps } from "styled-components";
+import { AnimationSpeed, TypographyLevel } from "../types";
 import { FontLevelProps } from "./typography";
 import { buildTransitionFast } from "./mixins";
 
@@ -32,6 +32,7 @@ export const zoomTextOnHoverMixIn = (
 export interface ElementAnimationProps {
   zoomOnHover?: boolean;
   zoomOutOnHover?: boolean;
+  rotate180OnHoverMixIn?: boolean;
 }
 
 export const zoomOnHoverMixIn = (props: ElementAnimationProps): string => {
@@ -85,7 +86,6 @@ export const borderBottomOnHoverMixIn = (
 `;
 };
 
-// todo: below animations:
 const rotation = keyframes`
 0% {
     transform: rotate(0deg);
@@ -93,6 +93,27 @@ const rotation = keyframes`
 100% {
     transform: rotate(360deg);
 }`;
+
+const tumbleRotation = (direction: boolean) => keyframes`
+      0% {
+          transform: rotate(0deg);
+      }
+      25% {
+          transform: rotate(${!direction ? "-" : ""}9deg);
+      }
+    
+      50% {
+        transform: rotate(0deg);
+      }
+    
+      75% {
+        transform: rotate(${!direction ? "" : "-"}9deg);
+      }
+    
+      100% {
+        transform: rotate(0deg);
+      }
+`;
 
 const translate = keyframes`
     0% {
@@ -102,4 +123,41 @@ const translate = keyframes`
         transform: translate(0px, 0px);
     }`;
 
-export { rotation, translate };
+export { rotation, translate, tumbleRotation };
+
+export const Rotate = styled.div<{ speed: AnimationSpeed }>`
+  display: inline-block;
+  animation: ${rotation} ${(p) => p.speed}s linear infinite;
+`;
+
+export const Tumble = styled.div<{ speed: AnimationSpeed }>`
+  display: inline-block;
+  animation: ${tumbleRotation(true)} ${(p) => p.speed}s linear infinite;
+`;
+
+export const TumbleBackward = styled.div<{ speed: AnimationSpeed }>`
+  display: inline-block;
+  animation: ${tumbleRotation(false)} ${(p) => p.speed}s linear infinite;
+`;
+
+export const rotate180OnHoverMixIn = (props: {
+  rotate180OnHover?: boolean;
+}): string => {
+  if (!props.rotate180OnHover) {
+    return "";
+  }
+
+  return `
+  transform: rotate(0deg);
+  ${buildTransitionFast("all")}
+
+  &:hover {
+    transform: rotate(180deg);
+  }
+`;
+};
+
+export const Rotate180OnHover = styled.div`
+  display: inline-block;
+  ${rotate180OnHoverMixIn({ rotate180OnHover: true })}
+`;

@@ -22,17 +22,17 @@ const ActionCell = styled.div`
 
   @media (max-width: ${ScreenSize.Medium}px) {
     justify-content: center;
-    top: 5px;
+    top: -5px;
   }
   @media (max-width: ${ScreenSize.Small}px) {
-    top: 5px;
+    top: 50px;
   }
   @media (max-width: ${ScreenSize.XSmall}px) {
     top: 0;
-    margin-top: 80px;
-    width: 290px;
-    height: 50px;
-    left: calc(100% / 2 - 290px / 2);
+    margin-top: 75px;
+    width: 272px;
+    height: 45px;
+    left: calc(100% / 2 - 240px / 2);
   }
 `;
 
@@ -41,6 +41,12 @@ const Container = styled.div`
 
   @media (max-width: ${ScreenSize.Medium}px) {
     margin-top: 165px;
+  }
+`;
+const StyledButton = styled(Button)`
+  @media (max-width: ${ScreenSize.XSmall}px) {
+    height: 45px;
+    font-size: 16px;
   }
 `;
 
@@ -63,9 +69,9 @@ const HomePage: React.FC = () => {
           </Box>
         </TwoColumnGrid>
         <ActionCell>
-          <Button primary uppercase width={328} zIndex={310}>
+          <StyledButton primary uppercase width={328} zIndex={310}>
             Пройти тест
-          </Button>
+          </StyledButton>
           <HalfCircle />
         </ActionCell>
       </Box>

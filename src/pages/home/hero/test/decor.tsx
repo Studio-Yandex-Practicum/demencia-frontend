@@ -79,16 +79,23 @@ export const Pazzles = styled.img.attrs((props) => ({
     top: 35px;
   }
   @media (max-width: ${ScreenSize.Small}px) {
-    left: 35px;
+    left: 75px;
+    top: 65px;
+  }
+  @media (max-width: 550px) {
+    left: 10px;
   }
   @media (max-width: ${ScreenSize.XSmall}px) {
-    top: 60px;
-    left: 0;
+    width: 60px;
+    height: 60px;
+    top: 75px;
+    left: 80px;
   }
-  @media (max-width: ${ScreenSize.XXSmall}px) {
+  @media (max-width: 400px) {
     width: 60px;
     height: 60px;
     top: 70px;
+    left: 0;
   }
 `;
 
@@ -111,19 +118,28 @@ export const GreenPuzzle = styled.img.attrs((props) => ({
   @media (max-width: ${ScreenSize.Medium}px) {
     width: 70px;
     height: 70px;
-    top: -370px;
-    left: 85%;
+    top: -365px;
+    left: 590px;
+  }
+  @media (max-width: 700px) {
+    left: 535px;
   }
   @media (max-width: ${ScreenSize.Small}px) {
-    top: -330px;
+    top: -300px;
+    left: 435px;
+    width: 60px;
+    height: 60px;
+  }
+  @media (max-width: 550px) {
+    left: 405px;
   }
   @media (max-width: ${ScreenSize.XSmall}px) {
-    width: 65px;
-    height: 65px;
-    top: -295px;
-    left: 70vw;
+    width: 40px;
+    height: 40px;
+    top: -180px;
+    left: 67vw;
   }
-  @media (max-width: ${ScreenSize.XXSmall}px) {
+  @media (max-width: 365px) {
     width: 40px;
     height: 40px;
     top: -175px;
@@ -155,11 +171,17 @@ export const BigCircle = styled.img.attrs((props) => ({
   @media (max-width: ${ScreenSize.Medium}px) {
     width: 350px;
     height: 350px;
-    top: 190px;
-    left: 260px;
+    top: 165px;
+    left: 310px;
+  }
+  @media (max-width: 700px) {
+    left: 270px;
   }
   @media (max-width: ${ScreenSize.Small}px) {
-    left: 160px;
+    left: 190px;
+    top: 215px;
+    width: 310px;
+    height: 310px;
   }
   @media (max-width: 550px) {
     width: 300px;
@@ -167,11 +189,15 @@ export const BigCircle = styled.img.attrs((props) => ({
     top: 250px;
     left: 115px;
   }
-  @media (max-width: 440px) {
-    width: 200px;
-    height: 200px;
-    top: 270px;
-    left: 80px;
+  @media (max-width: ${ScreenSize.XSmall}px) {
+    width: 210px;
+    height: 210px;
+    top: 260px;
+    left: 160px;
+  }
+  @media (max-width: 400px) {
+    top: 265px;
+    left: 70px;
   }
 `;
 
@@ -196,11 +222,15 @@ export const MediumCircle = styled.img.attrs((props) => ({
     left: 210px;
   }
   @media (max-width: ${ScreenSize.Medium}px) {
-    top: 165px;
-    left: 370px;
+    top: 120px;
+    left: 440px;
+  }
+  @media (max-width: 700px) {
+    left: 400px;
   }
   @media (max-width: ${ScreenSize.Small}px) {
     left: 280px;
+    top: 170px;
   }
   @media (max-width: 550px) {
     width: 185px;
@@ -208,11 +238,17 @@ export const MediumCircle = styled.img.attrs((props) => ({
     top: 225px;
     left: 210px;
   }
-  @media (max-width: 440px) {
-    width: 100px;
-    height: 100px;
-    top: 255px;
-    left: 165px;
+  @media (max-width: ${ScreenSize.XSmall}px) {
+    width: 130px;
+    height: 130px;
+    top: 230px;
+    left: 225px;
+  }
+  @media (max-width: 400px) {
+    width: 120px;
+    height: 120px;
+    top: 240px;
+    left: 160px;
   }
 `;
 
@@ -237,11 +273,15 @@ export const SmallCircle = styled.img.attrs((props) => ({
   @media (max-width: ${ScreenSize.Medium}px) {
     width: 90px;
     height: 90px;
-    top: 195px;
+    top: 170px;
+    left: 400px;
+  }
+  @media (max-width: 700px) {
     left: 360px;
   }
   @media (max-width: ${ScreenSize.Small}px) {
     left: 265px;
+    top: 210px;
   }
   @media (max-width: 550px) {
     width: 70px;
@@ -249,11 +289,17 @@ export const SmallCircle = styled.img.attrs((props) => ({
     top: 265px;
     left: 200px;
   }
-  @media (max-width: 440px) {
+  @media (max-width: ${ScreenSize.XSmall}px) {
     width: 50px;
     height: 50px;
-    top: 270px;
-    left: 145px;
+    top: 260px;
+    left: 205px;
+  }
+  @media (max-width: 400px) {
+    width: 50px;
+    height: 50px;
+    top: 265px;
+    left: 140px;
   }
 `;
 
@@ -266,6 +312,8 @@ export const HalfCircle = styled.img.attrs((props) => ({
   transform: translate(-20px, 0);
 
   @media (max-width: ${ScreenSize.XSmall}px) {
-    width: 85px;
+    width: 75px;
+    height: 110px;
+    transform: translate(-10px, 0);
   }
 `;

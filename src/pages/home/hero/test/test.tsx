@@ -54,11 +54,14 @@ const StyledButton = styled(Button)`
   }
 `;
 
-const StyledBox = styled(Box)`
-  position: absolute;
+const StyledBox = styled(Box)<{
+  width?: string;
+  position?: string;
+}>`
+  position: ${({ position }) => position};
   left: 0;
   top: 0;
-  width: 100%;
+  width: ${({ width }) => width};
   height: 100px;
 `;
 
@@ -66,9 +69,11 @@ const HomePage: React.FC = () => {
   return (
     <Decoration>
       <GreenPuzzle />
-      <NavMenu />
+      <StyledBox width="fit-content" position="relative">
+        <NavMenu />
+      </StyledBox>
       <Pazzles />
-      <StyledBox>
+      <StyledBox width="100%" position="absolute">
         <SmallCircle />
         <MediumCircle />
         <BigCircle />

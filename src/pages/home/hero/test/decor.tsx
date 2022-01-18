@@ -15,19 +15,21 @@ export const GreenPuzzle = styled.img.attrs((props) => ({
   height: 100px;
   position: absolute;
   z-index: 300;
-  bottom: 185px;
+  top: -192px;
   right: 0;
-  margin-right: 13%;
-  @media (max-width: ${ScreenSize.Large}px) {
+  margin-right: 18%;
+
+  @media screen and (max-width: 1600px) {
     width: 65px;
     height: 65px;
-    bottom: 150px;
+    top: -50px;
   }
+
   @media (max-width: ${ScreenSize.Medium}px) {
     width: 70px;
     height: 70px;
-    right: 235px;
-    top: -230px;
+    right: -305px;
+    top: -170px;
   }
   @media (max-width: ${ScreenSize.Small}px) {
     top: -330px;
@@ -48,21 +50,20 @@ export const Pazzles = styled.img.attrs((props) => ({
   src: props.src || pazzles,
   alt: props.alt || "",
 }))`
-  width: 140px;
-  height: 140px;
+  width: 145px;
+  height: auto;
   z-index: 301;
-  position: absolute;
+  position: relative;
+  left: 0;
   top: 100px;
 
-  @media (max-width: ${ScreenSize.Large}px) {
+  @media screen and (max-width: 1600px) {
     width: 100px;
-    height: 100px;
   }
+
   @media (max-width: ${ScreenSize.Medium}px) {
-    width: 100px;
-    height: 100px;
-    right: 38rem;
-    top: 35px;
+    top: 20px;
+    left: 180px;
   }
   @media (max-width: ${ScreenSize.Small}px) {
     left: 35px;
@@ -82,23 +83,26 @@ export const SmallCircle = styled.img.attrs((props) => ({
   src: props.src || smallCircle,
   alt: props.alt || "",
 }))`
-  width: 90px;
-  height: 90px;
+  width: 130px;
+  height: auto;
   position: absolute;
-  top: 270px;
+  right: 405px;
+  top: 20px;
   z-index: 297;
-  @media screen and (max-width: 1350px) {
-    width: 50px;
-    height: 50px;
+
+  @media screen and (max-width: 1600px) {
+    width: 90px;
+    right: 255px;
+    top: 85px;
   }
   @media screen and (max-width: 1100px) {
-    top: 300px;
+    right: 135px;
+    top: 70px;
   }
   @media (max-width: ${ScreenSize.Medium}px) {
     width: 80px;
-    height: 80px;
-    top: -90px;
-    right: 420px;
+    top: -25px;
+    right: -42px;
   }
   @media (max-width: ${ScreenSize.Small}px) {
     left: 265px;
@@ -122,23 +126,24 @@ export const MediumCircle = styled.img.attrs((props) => ({
   alt: props.alt || "",
 }))`
   width: 300px;
-  height: 300px;
+  height: auto;
   z-index: 298;
   position: absolute;
-  top: 190px;
-  @media screen and (max-width: 1350px) {
+  top: -51px;
+  right: 180px;
+
+  @media screen and (max-width: 1600px) {
     width: 200px;
-    height: 200px;
-    top: 220px;
+    top: 35px;
+    right: 110px;
   }
   @media screen and (max-width: 1100px) {
-    top: 250px;
+    right: 0;
   }
   @media (max-width: ${ScreenSize.Medium}px) {
     width: 220px;
-    height: 220px;
-    top: -140px;
-    right: 250px;
+    top: -77px;
+    right: -210px;
   }
   @media (max-width: ${ScreenSize.Small}px) {
     left: 280px;
@@ -160,26 +165,25 @@ export const BigCircle = styled.img.attrs((props) => ({
   src: props.src || bigCircle,
   alt: props.alt || "",
 }))`
-  display: flex;
-  width: 450px;
-  height: 450px;
+  width: 550px;
+  height: auto;
   z-index: 299;
   position: absolute;
-  top: 265px;
-  @media screen and (max-width: 1350px) {
-    width: 300px;
-    height: 300px;
+  top: 0;
+  right: 15%;
+
+  @media screen and (max-width: 1600px) {
+    width: 350px;
+    top: 70px;
+    right: 85px;
   }
   @media screen and (max-width: 1100px) {
-    width: 250px;
-    height: 250px;
-    top: 285px;
+    right: 18px;
   }
   @media (max-width: ${ScreenSize.Medium}px) {
     width: 365px;
-    height: 365px;
-    top: -100px;
-    right: 230px;
+    top: -35px;
+    right: -234px;
   }
   @media (max-width: ${ScreenSize.Small}px) {
     left: 160px;

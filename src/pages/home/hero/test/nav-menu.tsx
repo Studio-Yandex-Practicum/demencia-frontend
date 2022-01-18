@@ -9,10 +9,19 @@ const StyledText = styled(Text3)`
     font-size: 16px;
   }
 `;
+const StyledMenu = styled(Menu)`
+  position: relative;
+  z-index: 400;
+  top: 0;
+  left: 0;
+  @media (max-width: ${ScreenSize.Medium}px) {
+    top: -30px;
+  }
+`;
 
 const NavMenu: React.FC = () => {
   return (
-    <Menu vertical={true} gap={16} gapSmallScreen={12}>
+    <StyledMenu vertical={true} gap={16} gapSmallScreen={12}>
       <MenuItem>
         <Link to="#">
           <StyledText>тест на деменцию</StyledText>
@@ -28,7 +37,7 @@ const NavMenu: React.FC = () => {
           <StyledText>подробнее о деменции</StyledText>
         </Link>
       </MenuItem>
-    </Menu>
+    </StyledMenu>
   );
 };
 

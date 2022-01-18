@@ -38,7 +38,6 @@ const Decoration = styled.div`
   margin-top: 75px;
   max-width: 50vw;
   position: relative;
-  display: flex;
 `;
 
 const Spacer = styled.div`
@@ -56,19 +55,13 @@ const StyledButton = styled(Button)`
 const HomePage: React.FC = () => {
   return (
     <Decoration>
-      <TwoColumnGrid>
-        <Box>
-          <NavMenu />
-          <Pazzles />
-        </Box>
-        <Box>
-          <GreenPuzzle />
-          <SmallCircle />
-          <MediumCircle />
-          <BigCircle />
-          <Spacer />
-        </Box>
-      </TwoColumnGrid>
+      <Pazzles />
+      <GreenPuzzle />
+      <SmallCircle />
+      <MediumCircle />
+      <BigCircle />
+      <Spacer />
+      <NavMenu />
       <ActionCell>
         <StyledButton primary uppercase width={300} zIndex={310}>
           Пройти тест

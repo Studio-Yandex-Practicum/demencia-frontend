@@ -35,9 +35,11 @@ const Wrapper = styled.div`
 const Image = styled.img.attrs((props) => ({
   src: props.src || image,
 }))`
-  max-width: 55vw;
+  max-width: 905px;
+  width: 55vw;
   @media (max-width: ${ScreenSize.Medium}px) {
     max-width: 100%;
+    width: 100%;
   }
 `;
 

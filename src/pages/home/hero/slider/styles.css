@@ -3,6 +3,14 @@
   max-width: 1050px;
   height: auto;
   max-height: 900px;
+  transform: translateY(-120px);
+}
+
+@media screen and (max-width:960px){
+  .myStyles{
+    width: 100%;
+    transform: translateY(0);
+  }
 }
 
 .swiper-button-prev{
@@ -35,8 +43,3 @@
   display: none;
 }
 
-@media screen and (max-width:960px){
-  .myStyles{
-    width: 100%;
-  }
-}

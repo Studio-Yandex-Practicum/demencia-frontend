@@ -13,7 +13,7 @@ import { Button, Box } from "../../../../ui/controls";
 import NavMenu from "./nav-menu";
 import { StringValueNode } from "graphql";
 
-const ActionCell = styled.div`
+const Actions = styled.div`
   width: 100vw;
   display: flex;
   align-items: center;
@@ -26,6 +26,13 @@ const ActionCell = styled.div`
     justify-content: center;
     margin-top: 90px;
     margin-left: -25px;
+  }
+  @media (max-width: ${ScreenSize.Small}px) {
+    margin-top: 155px;
+    margin-left: 0;
+  }
+  @media (max-width: ${ScreenSize.XSmall}px) {
+    margin-top: 105px;
   }
 `;
 
@@ -66,12 +73,12 @@ const HomePage: React.FC = () => {
         <MediumCircle />
         <BigCircle />
       </StyledBox>
-      <ActionCell>
+      <Actions>
         <StyledButton primary uppercase width={300} zIndex={310}>
           Пройти тест
         </StyledButton>
         <HalfCircle />
-      </ActionCell>
+      </Actions>
     </Decoration>
   );
 };

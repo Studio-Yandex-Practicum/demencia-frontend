@@ -12,7 +12,7 @@ export const GreenPuzzle = styled.img.attrs((props) => ({
   alt: props.alt || "",
 }))`
   width: 100px;
-  height: 100px;
+  height: auto;
   position: absolute;
   z-index: 300;
   top: -192px;
@@ -21,28 +21,27 @@ export const GreenPuzzle = styled.img.attrs((props) => ({
 
   @media screen and (max-width: 1600px) {
     width: 65px;
-    height: 65px;
     top: -50px;
   }
 
   @media (max-width: ${ScreenSize.Medium}px) {
     width: 70px;
-    height: 70px;
     right: -305px;
     top: -170px;
   }
   @media (max-width: ${ScreenSize.Small}px) {
-    top: -330px;
+    top: -106px;
+    right: -240px;
+    width: 55px;
   }
   @media (max-width: ${ScreenSize.XSmall}px) {
-    width: 65px;
-    height: 65px;
-    top: -295px;
+    width: 35px;
+    top: -17px;
+    right: -39vw;
   }
   @media (max-width: ${ScreenSize.XXSmall}px) {
     width: 40px;
-    height: 40px;
-    top: -175px;
+    right: -50vw;
   }
 `;
 
@@ -63,19 +62,20 @@ export const Pazzles = styled.img.attrs((props) => ({
 
   @media (max-width: ${ScreenSize.Medium}px) {
     top: 20px;
-    left: 180px;
+    left: calc(100% / 2 - 35px);
   }
   @media (max-width: ${ScreenSize.Small}px) {
-    left: 35px;
+    left: 0;
+    top: 47px;
+    width: 90px;
   }
   @media (max-width: ${ScreenSize.XSmall}px) {
-    top: 60px;
-    left: 0;
+    width: 61px;
+    left: calc(100% - 280px / 2);
+    top: 55px;
   }
   @media (max-width: ${ScreenSize.XXSmall}px) {
-    width: 60px;
-    height: 60px;
-    top: 70px;
+    top: 48px;
   }
 `;
 
@@ -105,19 +105,14 @@ export const SmallCircle = styled.img.attrs((props) => ({
     right: -42px;
   }
   @media (max-width: ${ScreenSize.Small}px) {
-    left: 265px;
-  }
-  @media (max-width: 550px) {
     width: 70px;
-    height: 70px;
-    top: 265px;
-    left: 200px;
+    top: 26px;
+    left: 191px;
   }
-  @media (max-width: 440px) {
-    width: 50px;
-    height: 50px;
-    top: 270px;
-    left: 145px;
+  @media (max-width: ${ScreenSize.XSmall}px) {
+    width: 51px;
+    top: 61px;
+    left: calc(100% - 41px / 2);
   }
 `;
 
@@ -146,18 +141,14 @@ export const MediumCircle = styled.img.attrs((props) => ({
     right: -210px;
   }
   @media (max-width: ${ScreenSize.Small}px) {
-    left: 280px;
-  }
-  @media (max-width: 550px) {
     width: 185px;
-    height: 185px;
-    top: 225px;
+    top: -21px;
+    left: 221px;
   }
-  @media (max-width: 440px) {
-    width: 100px;
-    height: 100px;
-    top: 255px;
-    left: 165px;
+  @media (max-width: ${ScreenSize.XSmall}px) {
+    width: 133px;
+    top: 36px;
+    left: calc(100% - 18px / 2);
   }
 `;
 
@@ -186,17 +177,14 @@ export const BigCircle = styled.img.attrs((props) => ({
     right: -234px;
   }
   @media (max-width: ${ScreenSize.Small}px) {
-    left: 160px;
+    width: 330px;
+    top: 10px;
+    left: 107px;
   }
-  @media (max-width: 550px) {
-    width: 300px;
-    height: 300px;
-    top: 250px;
-  }
-  @media (max-width: 440px) {
-    width: 200px;
-    height: 200px;
-    top: 270px;
+  @media (max-width: ${ScreenSize.XSmall}px) {
+    width: 218px;
+    top: 59px;
+    left: calc(100% - 145px / 2);
   }
 `;
 

@@ -39,7 +39,6 @@ const Actions = styled.div`
 const Decoration = styled.div`
   margin-top: 75px;
   max-width: 45vw;
-  nim-height: 1050px;
   position: relative;
 `;
 

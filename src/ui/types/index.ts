@@ -11,6 +11,8 @@ import { ButtonType } from "./button-type.enum";
 import { TypographyLevel } from "./typography-level.enum";
 import { ColorTheme } from "./color-theme";
 import { ButtonShape } from "./button-shape.enum";
+import { LogoSize } from "./logo-size.enum";
+import { AnimationSpeed } from "./animation-speed.enum";
 
 export {
   PaletteColor,
@@ -21,5 +23,7 @@ export {
   ButtonType,
   ButtonShape,
   TypographyLevel,
+  LogoSize,
+  AnimationSpeed,
 };
 export type { Layout, Typography, Palette, ButtonStyle, ColorTheme };

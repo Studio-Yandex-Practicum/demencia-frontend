@@ -1,4 +1,5 @@
 export enum ButtonShape {
-  Default = "default",
+  Default = "Default",
+  Rounded = "Rounded",
   Circle = "circle",
 }

@@ -1,6 +1,11 @@
 import { DefaultTheme, ThemeProps } from "styled-components";
 import { PaletteColor, TextColor } from "../types";
 
+export const buildTransitionFaster = (ccsPropName: string): string => {
+  return `
+    transition: ${ccsPropName} 0.3s ease;`;
+};
+
 export const buildTransitionFast = (ccsPropName: string): string => {
   return `
     transition: ${ccsPropName} 0.5s ease;`;

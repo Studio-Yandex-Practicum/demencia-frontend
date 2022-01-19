@@ -1,33 +1,112 @@
-import { Button } from "../controls/button";
-import { Box } from "../controls/box";
+import { Button, CircleButton } from "../controls/button";
 import { ComponentStory, ComponentMeta } from "@storybook/react";
-import { ButtonType } from "../types";
+import { ButtonShape, ButtonType, TextColor, TypographyLevel } from "../types";
 
 export default {
   title: "Button",
   component: Button,
+  argTypes: {
+    theme: { table: { disable: true } },
+    as: { table: { disable: true } },
+    forwardedAs: { table: { disable: true } },
+    ref: { table: { disable: true } },
+    borderSize: { table: { disable: true } },
+    borderColor: { table: { disable: true } },
+    type: {
+      name: "type",
+      description: "Тип кнопки",
+      defaultValue: ButtonType.Primary,
+      options: [
+        ButtonType.Primary,
+        ButtonType.Secondary,
+        ButtonType.Default,
+        ButtonType.Link,
+      ],
+      control: "select",
+    },
+    shape: {
+      ame: "type",
+      description: "Вид кнопки",
+      defaultValue: ButtonShape.Default,
+      options: [ButtonShape.Default, ButtonShape.Rounded, ButtonShape.Circle],
+      control: "select",
+    },
+    ghost: {
+      name: "ghost",
+      description: "Значение, задать кнопке прозрачный фон",
+      defaultValue: false,
+      options: [true, false],
+      control: "boolean",
+    },
+    uppercase: {
+      name: "uppercase",
+      description:
+        "Значение, задает возможность перевести текст в верхний регистр",
+      defaultValue: true,
+      options: [true, false],
+      control: "boolean",
+    },
+    level: {
+      name: "level",
+      description: "Размер текста ссылки",
+      defaultValue: TypographyLevel.Subtitle3,
+      options: [
+        TypographyLevel.MainTitle,
+        TypographyLevel.Title,
+        TypographyLevel.Subtitle1,
+        TypographyLevel.Subtitle2,
+        TypographyLevel.Subtitle3,
+        TypographyLevel.Subtitle4,
+        TypographyLevel.Text1,
+        TypographyLevel.Text2,
+        TypographyLevel.Text3,
+        TypographyLevel.Text4,
+        TypographyLevel.Footer,
+      ],
+      control: "select",
+    },
+    textColor: {
+      name: "textColor",
+      description: "Цвет текста ссылки",
+      defaultValue: undefined,
+      options: [
+        undefined,
+        TextColor.Primary,
+        TextColor.Secondary,
+        TextColor.Accent1,
+        TextColor.Accent2,
+        TextColor.Shadow,
+      ],
+      control: "select",
+    },
+  },
 } as ComponentMeta<typeof Button>;
 
 const Template: ComponentStory<typeof Button> = (args) => (
-  <>
-    <Box p={2}>
-      <Button uppercase {...args}>
-        Пройти Тест
-      </Button>
-    </Box>
-    <Box p={2}>
-      <Button {...args}>Пройти Тест</Button>
-    </Box>
-    <Box p={2}>
-      <Button ghost {...args}>
-        Пройти Тест
-      </Button>
-    </Box>
-  </>
+  <Button {...args}>Пройти Тест</Button>
 );
+
+const CircleButtonTemplate: ComponentStory<typeof Button> = (args) => (
+  <CircleButton {...args}>12</CircleButton>
+);
+
+export const Default = Template.bind({});
+Default.args = {};
 
 export const Primary = Template.bind({});
 Primary.args = {};
 
+export const Large = Template.bind({});
+Large.args = { uppercase: true, level: TypographyLevel.Subtitle2 };
+
 export const Secondary = Template.bind({});
-Secondary.args = { type: ButtonType.Secondary };
+Secondary.args = { type: ButtonType.Secondary, ghost: true };
+
+export const SecondaryColor = Template.bind({});
+SecondaryColor.args = { type: ButtonType.Secondary };
+
+export const Link = Template.bind({});
+Link.args = { type: ButtonType.Link, level: TypographyLevel.Text1 };
+
+export const Circle = CircleButtonTemplate.bind({});
+Circle.args = { shape: ButtonShape.Circle };

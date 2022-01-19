@@ -1,6 +1,5 @@
-import React, { ReactNode } from "react";
 import styled, { css, DefaultTheme, ThemeProps } from "styled-components";
-import { PaletteColor, TextColor, TypographyLevel } from "../types";
+import { ScreenSize, TextColor, TypographyLevel } from "../types";
 import {
   TextUppercaseProps,
   textUppercaseMixIn,
@@ -24,7 +23,9 @@ export interface TextBlockProps
     TextUppercaseProps,
     TextUnderlinedProps,
     ColorChangeOnHoverProps,
-    TextSizeAnimationProps {}
+    TextSizeAnimationProps {
+  maxWidth?: number;
+}
 
 export const textUnderlinedMixin = (props: TextUnderlinedProps): string => {
   if (!props.underlined) {
@@ -65,13 +66,15 @@ export const typographyMixin = css<
     FontColorProps &
     TextUppercaseProps &
     TextUnderlinedProps &
-    ColorChangeOnHoverProps
+    ColorChangeOnHoverProps & { maxWidth?: number }
 >`
   margin: 0;
   padding: 0;
   border: 0;
   vertical-align: baseline;
   font-family: ${(props) => props.theme.layout.fontFamily};
+  max-width: ${(p) =>
+    p.maxWidth !== undefined ? `${p.maxWidth}px` : undefined};
   word-break: break-word;
   ${typographySizeMixIn};
   ${typographyColorMixIn};
@@ -114,7 +117,15 @@ export const Subtitle1 = styled.h3.attrs(
     ...props,
   })
 )`
-  ${typographyMixin}
+  ${typographyMixin};
+
+  @media (max-width: ${ScreenSize.Small}px) {
+    font-size: 35px;
+  }
+
+  @media (max-width: ${ScreenSize.XSmall}px) {
+    font-size: 30px;
+  }
 `;
 
 export const Subtitle2 = styled.h4.attrs(
@@ -126,7 +137,15 @@ export const Subtitle2 = styled.h4.attrs(
     ...props,
   })
 )`
-  ${typographyMixin}
+  ${typographyMixin};
+
+  @media (max-width: ${ScreenSize.Small}px) {
+    font-size: 28px;
+  }
+
+  @media (max-width: ${ScreenSize.XSmall}px) {
+    font-size: 25px;
+  }
 `;
 
 export const Subtitle3 = styled.h5.attrs(
@@ -137,7 +156,15 @@ export const Subtitle3 = styled.h5.attrs(
     ...props,
   })
 )`
-  ${typographyMixin}
+  ${typographyMixin};
+
+  @media (max-width: ${ScreenSize.Small}px) {
+    font-size: 19px;
+  }
+
+  @media (max-width: ${ScreenSize.XSmall}px) {
+    font-size: 18px;
+  }
 `;
 
 export const Subtitle4 = styled.h6.attrs(
@@ -156,7 +183,15 @@ export const Text1 = styled.p.attrs(
     ...props,
   })
 )`
-  ${typographyMixin}
+  ${typographyMixin};
+
+  @media (max-width: ${ScreenSize.Small}px) {
+    font-size: 18px;
+  }
+
+  @media (max-width: ${ScreenSize.XSmall}px) {
+    font-size: 16px;
+  }
 `;
 
 export const Text2 = styled.p.attrs(

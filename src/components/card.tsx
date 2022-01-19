@@ -38,8 +38,10 @@ const StyledCard = styled.div`
   @media (max-width: ${ScreenSize.XSmall}px) {
     & {
       height: 430px;
-      pointer-events: none;
       margin: 0 10px 0 10px;
+    }
+    &:hover {
+      transform: scale(1.05);
     }
   }
 

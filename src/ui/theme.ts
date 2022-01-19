@@ -120,9 +120,9 @@ const themeLight: DefaultTheme = {
   typography: {
     mainTitle: {
       // Новости #772988
-      fontSize: 62,
-      fontWeight: 700,
-      lineHeight: 1.55,
+      fontSize: 86,
+      fontWeight: 800,
+      lineHeight: 1.15,
     },
     title: {
       // Что нового? Кто с нами?

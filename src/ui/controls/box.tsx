@@ -18,6 +18,17 @@ interface BoxStyleProps extends BoxProps {
   theme: DefaultTheme;
   backgroundColor?: PaletteColor;
   maxWidth?: number;
+  width?: string;
+  height?: string;
+  flex?: boolean;
+  between?: boolean;
+  marginTopAuto?: boolean;
+  absolute?: boolean;
+  top?: string;
+  left?: string;
+  right?: string;
+  bottom?: string;
+  zIndex?: number;
 }
 
 const getShift = (val: number, defaultSpacing: number): number => {
@@ -68,10 +79,20 @@ export const getBoxStyles = (p: BoxStyleProps): string => {
 };
 
 export const Box = styled.div<BoxStyleProps>`
-  display: block;
+  display: ${(p) => (p.flex ? "flex" : "block")};
+  justify-content: ${(p) => (p.between ? "space-between" : "")};
   box-sizing: border-box;
   max-width: ${(p) =>
     p.maxWidth !== undefined ? `${p.maxWidth}px` : undefined};
+  width: ${(p) => (p.width !== undefined ? `${p.width}` : undefined)};
+  height: ${(p) => (p.height !== undefined ? `${p.height}` : undefined)};
+  margin-top: ${(p) => (p.marginTopAuto ? "auto" : "")};
+  position: ${(p) => (p.absolute ? "absolute" : "")};
+  top: ${(p) => (p.top !== undefined ? `${p.top}` : undefined)};
+  left: ${(p) => (p.left !== undefined ? `${p.left}` : undefined)};
+  right: ${(p) => (p.right !== undefined ? `${p.right}` : undefined)};
+  bottom: ${(p) => (p.bottom !== undefined ? `${p.bottom}` : undefined)};
+  z-index: ${(p) => (p.zIndex ? p.zIndex : 0)};
   ${getBoxStyles}
   ${(p) =>
     "background-color:" + p.backgroundColor || p.theme.colors.background};

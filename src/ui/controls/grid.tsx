@@ -4,6 +4,7 @@ import { getBoxStyles } from "./box";
 
 const Grid = styled.div`
   ${getBoxStyles};
+  z-index: ${(p) => (p.zIndex ? p.zIndex : 0)};
   width: 100%;
   display: grid;
   grid-template-columns: repeat(auto-fit, 456px);

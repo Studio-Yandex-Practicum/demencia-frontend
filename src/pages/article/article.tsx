@@ -4,8 +4,11 @@ import greenPuzzleImg from "../../images/article-green-puzzle.svg";
 import unsplashImg from "../../images/unsplash.jpg";
 import purpleSemicircleImg from "../../images/purple-semicircle.svg";
 import { MainTitle, Subtitle2, Text1 } from "../../ui/controls/typography";
-import { Box, Link } from "../../ui/controls";
+import { Box, Container, Link } from "../../ui/controls";
 import styled from "styled-components";
+import { Section } from "../../ui/controls/layout";
+import { BackgroundColor } from "../../ui/types/background-color.enum";
+import { ContainerSize } from "../../ui/types/container-size.enum";
 
 const ArticleSection = styled.div`
   position: relative;
@@ -13,7 +16,7 @@ const ArticleSection = styled.div`
   margin: 0 auto;
 `;
 
-const MainTitleArticle = styled.h1`
+const MainTitleArticle = styled.div`
   text-align: center;
 `;
 
@@ -33,24 +36,23 @@ const PurplePuzzle = styled.img`
   height: 96px;
   position: absolute;
   bottom: 0;
-  right: 12.5%;
+  right: 22.5%;
 `;
 
 const ArticleBackground = styled.div`
   position: absolute;
   margin-top: 2em;
-  background-color: #cae6df;
+  background-color: ${(p) => p.theme.colors.backgroundAlt3};
   width: 100%;
-  max-width: 1920px;
   height: 400px;
-  // z-index: -2;
+  z-index: 0;
 `;
 
 const GreenPuzzle = styled.img`
   position: absolute;
-  width: 5.1%;
+  width: 10.1%;
   top: -5.5%;
-  right: -2.1%;
+  right: -7.1%;
 `;
 
 const Unsplash = styled.img`
@@ -58,8 +60,8 @@ const Unsplash = styled.img`
 `;
 
 const PurpleSemicircle = styled.img`
-  width: 10%;
-  height: 18%;
+  width: 104px;
+  height: 208px;
   margin-top: -10em;
   margin-right: 2em;
   margin-left: 6em;
@@ -73,15 +75,18 @@ const ArticleContainer = styled.div`
 `;
 
 const ImageBox = styled.div`
+  margin-top: 128px;
   position: relative;
 `;
 
 const DescriptionCase = styled.div`
   display: flex;
   flex-direction: row;
-  justify-content: flex-end;
-  margin: 34px auto;
-  max-width: 1440px;
+  justify-content: center;
+  align-self: center;
+  margin: 32px auto;
+  z-index: 1;
+  width: calc(1400px - 20%);
 `;
 
 const TextBox = styled.div`
@@ -95,7 +100,7 @@ const LinkBox = styled.div`
 const ArticlePage: React.FC = () => {
   return (
     <>
-      <ArticleSection>
+      <Section flex mt={4}>
         <MainTitleArticle>
           <MainTitle>
             В Москве открылись пункты для диагностики болезни Альцгеймера и
@@ -104,11 +109,10 @@ const ArticlePage: React.FC = () => {
         </MainTitleArticle>
         <Date>14.10.2021</Date>
         <PurplePuzzle src={purplePuzzleImg} alt="." />
-      </ArticleSection>
+      </Section>
 
-      <ArticleBackground />
-
-      <ArticleContainer>
+      <Section flex centered>
+        <ArticleBackground />
         <ImageBox>
           <GreenPuzzle src={greenPuzzleImg} alt="." />
           <Unsplash src={unsplashImg} alt="." />
@@ -122,7 +126,7 @@ const ArticlePage: React.FC = () => {
             когнитивных изменений.
           </Subtitle2>
         </DescriptionCase>
-      </ArticleContainer>
+      </Section>
 
       <ArticleSection>
         <TextBox>

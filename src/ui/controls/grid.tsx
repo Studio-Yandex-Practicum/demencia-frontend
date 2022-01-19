@@ -26,7 +26,7 @@ const Grid = styled.div`
   }
 
   @media screen and (max-width: ${ScreenSize.XSmall}px) {
-    grid-template-columns: repeat(auto-fit, minmax(300px, 380px));
+    grid-template-columns: repeat(auto-fit, minmax(280px, 360px));
     gap: 20px;
   }
 `;

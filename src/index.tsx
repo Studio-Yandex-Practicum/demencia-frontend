@@ -6,12 +6,34 @@ import reportWebVitals from "./reportWebVitals";
 import { GlobalStyle } from "./ui/controls/style";
 import { themeLight } from "./ui/theme";
 import { ThemeProvider } from "styled-components";
+import {
+  ApolloClient,
+  ApolloProvider,
+  InMemoryCache,
+  createHttpLink,
+} from "@apollo/client";
+import { API_URL } from "./constants";
+
+const httpLink = createHttpLink({
+  uri: API_URL,
+});
+
+const cache = new InMemoryCache();
+
+const client = new ApolloClient({
+  link: httpLink,
+  cache,
+  resolvers: {},
+  connectToDevTools: true,
+});
 
 ReactDOM.render(
   <React.StrictMode>
     <ThemeProvider theme={themeLight}>
-      <GlobalStyle />
-      <App />
+      <ApolloProvider client={client}>
+        <GlobalStyle />
+        <App />
+      </ApolloProvider>
     </ThemeProvider>
   </React.StrictMode>,
   document.getElementById("root")

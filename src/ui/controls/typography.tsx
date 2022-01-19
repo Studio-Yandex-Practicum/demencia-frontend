@@ -25,6 +25,7 @@ export interface TextBlockProps
     ColorChangeOnHoverProps,
     TextSizeAnimationProps {
   maxWidth?: number;
+  newsGrid?: boolean;
 }
 
 export const textUnderlinedMixin = (props: TextUnderlinedProps): string => {
@@ -93,7 +94,19 @@ export const MainTitle = styled.h1.attrs(
     ...props,
   })
 )`
-  ${typographyMixin}
+  ${typographyMixin};
+
+  @media (max-width: ${ScreenSize.Medium}px) {
+    font-size: 64px;
+  }
+
+  @media (max-width: ${ScreenSize.Small}px) {
+    font-size: 56px;
+  }
+
+  @media (max-width: ${ScreenSize.XSmall}px) {
+    font-size: 42px;
+  }
 `;
 
 export const Title = styled.h2.attrs(
@@ -210,7 +223,34 @@ export const Text3 = styled.p.attrs(
     ...props,
   })
 )`
-  ${typographyMixin}
+  ${typographyMixin};
+
+  ${(p) =>
+    p.newsGrid
+      ? `
+        display: -webkit-box;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        -webkit-line-clamp: 4;
+        -webkit-box-orient: vertical;
+      `
+      : ""};
+
+  @media (max-width: ${ScreenSize.Large}px) {
+    line-height: 1.15;
+  }
+
+  @media (max-width: ${ScreenSize.Medium}px) {
+    font-size: 16px;
+  }
+
+  @media (max-width: ${ScreenSize.Small}px) {
+    font-size: 14px;
+  }
+
+  @media (max-width: ${ScreenSize.XSmall}px) {
+    font-size: 12px;
+  }
 `;
 
 export const Text4 = styled.p.attrs(

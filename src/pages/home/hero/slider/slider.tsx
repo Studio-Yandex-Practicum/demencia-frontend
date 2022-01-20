@@ -2,7 +2,6 @@ import React from "react";
 import styled from "styled-components";
 import { Swiper, SwiperSlide } from "swiper/react";
 import SwiperCore, { Autoplay, Pagination, Navigation } from "swiper";
-// eslint-disable-next-line import/extensions
 import image from "../../../../images/pechkin.png";
 import whiteHalfCircle from "../../../../images/test_halfcircle_white.svg";
 import "./styles.css";
@@ -92,12 +91,15 @@ const Slider: React.FC = () => {
     <Swiper
       spaceBetween={0}
       centeredSlides={true}
-      autoplay={{
-        delay: 1500,
-        disableOnInteraction: false,
-      }}
+      // autoplay={{
+      //   delay: 10500,
+      //   disableOnInteraction: false,
+      // }}
       pagination={{
+        el: ".swiper-pagination",
         clickable: true,
+        renderBullet: (index, className) =>
+          `<div class=${className} key=${index}></div>`,
       }}
       navigation={{
         nextEl: ".swiper-button-next",
@@ -131,8 +133,35 @@ const Slider: React.FC = () => {
         </Wrapper>
         <Image src={image} />
       </SwiperSlide>
-      <div className="swiper-button-prev"></div>
-      <div className="swiper-button-next"></div>
+      <SwiperSlide>
+        <Wrapper>
+          <Container
+            size={ContainerSize.MediumSmall}
+            bgColor={BackgroundColor.Alt2}
+          >
+            <StyledBox mt={2} mb={2} ml={2} mr={2}>
+              <StyledBox mb={3}>
+                <Subtitle3 uppercase={false} textColor={TextColor.Secondary}>
+                  ФОНД «ПАМЯТЬ ПОКОЛЕНИЙ» И «СОЮЗМУЛЬТФИЛЬМ» ВЫПУСТИЛИ
+                  МУЛЬТФИЛЬМ О ДИАГНОСТИКЕ КОГНИТИВНЫХ ИЗМЕНЕНИЙ
+                </Subtitle3>
+              </StyledBox>
+              <StyledBox>
+                <Link to="/details">
+                  <Subtitle3 uppercase={false} textColor={TextColor.Secondary}>
+                    Подробнее...
+                  </Subtitle3>
+                </Link>
+              </StyledBox>
+              <Decor />
+            </StyledBox>
+          </Container>
+        </Wrapper>
+        <Image src={image} />
+      </SwiperSlide>
+      <div className="swiper-pagination" />
+      <div className="swiper-button-prev" />
+      <div className="swiper-button-next" />
     </Swiper>
   );
 };

@@ -14,7 +14,7 @@
 }
 
 .swiper-button-prev{
-  background-image: url('./slid-left.svg');
+  background-image: url('../../../../images/slid-left.svg');
   background-repeat: no-repeat;
   background-position: center;
   background-size:contain; 
@@ -29,7 +29,7 @@
 }
 
 .swiper-button-next{
-  background-image: url('./slid-right.svg');
+  background-image: url('../../../../images/slid-right.svg');
   background-repeat: no-repeat;
   background-position: center;
   background-size:contain; 

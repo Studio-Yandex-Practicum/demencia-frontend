@@ -4,7 +4,6 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import SwiperCore, { Autoplay, Pagination, Navigation } from "swiper";
 // eslint-disable-next-line import/extensions
 import image from "../../../../images/pechkin.png";
-import cursorPointer from "../../../../images/cursor_pointer.svg";
 import whiteHalfCircle from "../../../../images/test_halfcircle_white.svg";
 import "./styles.css";
 import "swiper/css";
@@ -14,7 +13,7 @@ import "swiper/css/scrollbar";
 import { Container, Box, Link } from "../../../../ui/controls";
 import { ContainerSize, TextColor } from "../../../../ui/types";
 import { BackgroundColor } from "../../../../ui/types/background-color.enum";
-import { Text1, Subtitle3 } from "../../../../ui/controls/typography";
+import { Subtitle3 } from "../../../../ui/controls/typography";
 import { ScreenSize } from "../../../../ui/types";
 
 SwiperCore.use([Autoplay, Pagination, Navigation]);
@@ -24,11 +23,19 @@ const Wrapper = styled.div`
   bottom: calc(100% / 2 - 175px / 0.65);
   z-index: 1;
   max-width: 450px;
-  @media (max-width: ${ScreenSize.XSmall}px) {
-    bottom: calc(100% / 2 - 175px / 0.8);
+  left: -15px;
+  @media (max-width: ${ScreenSize.Medium}px) {
+    left: 0;
+    max-width: 600px;
+  }
+  @media (max-width: ${ScreenSize.Small}px) {
+    left: 15px;
+    max-width: 450px;
   }
   @media (max-width: ${ScreenSize.XSmall}px) {
     bottom: 0;
+    left: 0;
+    max-width: 100%;
   }
 `;
 
@@ -37,9 +44,15 @@ const Image = styled.img.attrs((props) => ({
 }))`
   max-width: 905px;
   width: 55vw;
+  height: 700px;
+  object-fit: cover;
+  object-position: top;
   @media (max-width: ${ScreenSize.Medium}px) {
-    max-width: 100%;
     width: 100%;
+  }
+  @media (max-width: ${ScreenSize.Small}px) {
+    max-width: 100%;
+    height: 75%;
   }
 `;
 
@@ -53,20 +66,14 @@ const Decor = styled.div`
   bottom: calc(100% / 2 - 266px / 2);
   left: 69%;
 
-  @media (max-width: ${ScreenSize.Large}px) {
-    display: none;
-  }
   @media (max-width: ${ScreenSize.Medium}px) {
-    display: block;
+    bottom: calc(100% / 2 - 240px / 2);
+    left: 79%;
+    width: 124px;
+    height: 240px;
   }
   @media (max-width: ${ScreenSize.Small}px) {
     display: none;
-  }
-`;
-
-const StyledText = styled(Text1)`
-  @media (max-width: ${ScreenSize.Medium}px) {
-    font-size: 16px;
   }
 `;
 
@@ -114,8 +121,8 @@ const Slider: React.FC = () => {
                   </Subtitle3>
                 </Link>
               </StyledBox>
+              <Decor />
             </StyledBox>
-            <Decor />
           </Container>
         </Wrapper>
         <Image src={image} />

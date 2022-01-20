@@ -30,7 +30,8 @@ const Wrapper = styled.div`
   }
   @media (max-width: ${ScreenSize.Small}px) {
     left: 15px;
-    max-width: 450px;
+    max-width: 70vw;
+    bottom: calc(100% / 2 - 70px / 0.65);
   }
   @media (max-width: ${ScreenSize.XSmall}px) {
     bottom: 0;
@@ -53,6 +54,9 @@ const Image = styled.img.attrs((props) => ({
   @media (max-width: ${ScreenSize.Small}px) {
     max-width: 100%;
     height: 75%;
+  }
+  @media (max-width: ${ScreenSize.XSmall}px) {
+    height: 100%;
   }
 `;
 

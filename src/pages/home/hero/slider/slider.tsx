@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef } from "react";
 import styled from "styled-components";
 import { Swiper, SwiperSlide } from "swiper/react";
 import SwiperCore, { Autoplay, Pagination, Navigation } from "swiper";
@@ -14,6 +14,7 @@ import { ContainerSize, TextColor } from "../../../../ui/types";
 import { BackgroundColor } from "../../../../ui/types/background-color.enum";
 import { Subtitle3 } from "../../../../ui/controls/typography";
 import { ScreenSize } from "../../../../ui/types";
+import SwiperButton from "./swiper-button";
 
 SwiperCore.use([Autoplay, Pagination, Navigation]);
 
@@ -90,14 +91,17 @@ const StyledBox = styled(Box)`
 `;
 
 const Slider: React.FC = () => {
+  const prevRef = useRef(null);
+  const nextRef = useRef(null);
+
   return (
     <Swiper
       spaceBetween={0}
       centeredSlides={true}
-      // autoplay={{
-      //   delay: 10500,
-      //   disableOnInteraction: false,
-      // }}
+      autoplay={{
+        delay: 5000,
+        disableOnInteraction: false,
+      }}
       pagination={{
         el: ".swiper-pagination",
         clickable: true,
@@ -105,8 +109,8 @@ const Slider: React.FC = () => {
           `<div class=${className} key=${index}></div>`,
       }}
       navigation={{
-        nextEl: ".swiper-button-next",
-        prevEl: ".swiper-button-prev",
+        nextEl: nextRef.current,
+        prevEl: prevRef.current,
       }}
       className="myStyles"
     >
@@ -163,8 +167,9 @@ const Slider: React.FC = () => {
         <Image src={image} />
       </SwiperSlide>
       <div className="swiper-pagination" />
-      <div className="swiper-button-prev" />
-      <div className="swiper-button-next" />
+      {/* TODO: Make slides move on click */}
+      <SwiperButton type="left" ref={prevRef} />
+      <SwiperButton type="right" ref={nextRef} />
     </Swiper>
   );
 };

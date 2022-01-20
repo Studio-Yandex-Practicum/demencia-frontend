@@ -7,6 +7,8 @@ import { Layout } from "../ui/controls";
 import PageHeader from "./page-header";
 import { Main } from "../ui/controls/layout";
 import PageFooter from "./page-footer";
+import GraphqlTestPage from "../pages/graphql/graphql";
+import { Toaster } from "react-hot-toast";
 
 const App: React.FC = () => {
   return (
@@ -20,9 +22,11 @@ const App: React.FC = () => {
             <Route path="/article" element={<ArticlePage />} />
             <Route path="/ui-kit" element={<UIKitPage />} />
             <Route path="/details" element={<DetailsPage />} />
+            <Route path="/graphql" element={<GraphqlTestPage />} />
           </Routes>
         </Main>
         <PageFooter />
+        <Toaster />
       </Layout>
     </Router>
   );

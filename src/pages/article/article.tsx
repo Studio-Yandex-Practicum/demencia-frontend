@@ -4,11 +4,9 @@ import greenPuzzleImg from "../../images/article-green-puzzle.svg";
 import unsplashImg from "../../images/unsplash.jpg";
 import purpleSemicircleImg from "../../images/purple-semicircle.svg";
 import { MainTitle, Subtitle2, Text1 } from "../../ui/controls/typography";
-import { Box, Container, Link } from "../../ui/controls";
+import { Link } from "../../ui/controls";
 import styled from "styled-components";
 import { Section } from "../../ui/controls/layout";
-import { BackgroundColor } from "../../ui/types/background-color.enum";
-import { ContainerSize } from "../../ui/types/container-size.enum";
 
 const ArticleSection = styled.div`
   position: relative;
@@ -65,13 +63,6 @@ const PurpleSemicircle = styled.img`
   margin-top: -10em;
   margin-right: 2em;
   margin-left: 6em;
-`;
-
-const ArticleContainer = styled.div`
-  position: relative;
-  max-width: 1080px;
-  padding: 130px 20px 20px 20px;
-  margin: 0 auto;
 `;
 
 const ImageBox = styled.div`

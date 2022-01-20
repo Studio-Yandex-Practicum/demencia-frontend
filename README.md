@@ -25,5 +25,10 @@
 
 * Адрес: http://dev-demencia.tk/graphql
 
+### GraphQL
+
+* Описание языка GraphQL https://graphql.org/learn/
+* Документация по клиенту React для GraphQL: https://www.apollographql.com/docs/react/
+
 
 

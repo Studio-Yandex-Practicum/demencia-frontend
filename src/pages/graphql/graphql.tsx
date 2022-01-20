@@ -24,7 +24,7 @@ const GraphqlTestPage: React.FC = () => {
   }
 
   if (error) {
-    setTimeout(() => toast.error(`${error}`, { id: "error" }), 500);
+    toast.error(`${error}`, { id: "error" });
     return <Empty />;
   }
 

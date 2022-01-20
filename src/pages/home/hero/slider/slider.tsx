@@ -22,7 +22,7 @@ const Wrapper = styled.div`
   bottom: calc(100% / 2 - 175px / 0.65);
   z-index: 1;
   max-width: 450px;
-  left: -15px;
+  left: 0;
   @media (max-width: ${ScreenSize.Medium}px) {
     left: 0;
     max-width: 600px;
@@ -44,9 +44,12 @@ const Image = styled.img.attrs((props) => ({
 }))`
   max-width: 905px;
   width: 55vw;
-  height: 700px;
+  height: 900px;
   object-fit: cover;
   object-position: top;
+  @media (max-width: ${ScreenSize.Large}px) {
+    height: 800px;
+  }
   @media (max-width: ${ScreenSize.Medium}px) {
     width: 100%;
   }

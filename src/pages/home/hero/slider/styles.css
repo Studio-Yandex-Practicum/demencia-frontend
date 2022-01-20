@@ -12,6 +12,7 @@
   background-repeat: no-repeat;
   background-position: center;
   background-size: contain;
+  cursor: url("../../../../images/cursor_pointer.svg"), auto !important;
 }
 
 .swiper-button-prev::after {
@@ -24,6 +25,7 @@
   background-repeat: no-repeat;
   background-position: center;
   background-size: contain;
+  cursor: url("../../../../images/cursor_pointer.svg"), auto !important;
 }
 
 .swiper-button-next::after {
@@ -39,6 +41,10 @@
   bottom: 10px;
   left: 0;
   width: 100%;
+}
+
+.swiper-pagination-bullet {
+  cursor: url("../../../../images/cursor_pointer.svg"), auto !important;
 }
 
 @media screen and (max-width: 960px) {

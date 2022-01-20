@@ -11,11 +11,10 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "swiper/css/scrollbar";
-import { Link } from "react-router-dom";
-import { Container, Box } from "../../../../ui/controls";
+import { Container, Box, Link } from "../../../../ui/controls";
 import { ContainerSize, TextColor } from "../../../../ui/types";
 import { BackgroundColor } from "../../../../ui/types/background-color.enum";
-import { Text1 } from "../../../../ui/controls/typography";
+import { Text1, Subtitle3 } from "../../../../ui/controls/typography";
 import { ScreenSize } from "../../../../ui/types";
 
 SwiperCore.use([Autoplay, Pagination, Navigation]);
@@ -24,6 +23,7 @@ const Wrapper = styled.div`
   position: absolute;
   bottom: calc(100% / 2 - 175px / 0.65);
   z-index: 1;
+  max-width: 450px;
   @media (max-width: ${ScreenSize.XSmall}px) {
     bottom: calc(100% / 2 - 175px / 0.8);
   }
@@ -51,7 +51,7 @@ const Decor = styled.div`
   background-repeat: no-repeat;
   position: absolute;
   bottom: calc(100% / 2 - 266px / 2);
-  left: 77%;
+  left: 69%;
 
   @media (max-width: ${ScreenSize.Large}px) {
     display: none;
@@ -64,25 +64,6 @@ const Decor = styled.div`
   }
 `;
 
-const LINK = styled.div`
-  a {
-    font-size: 20px;
-    line-height: 10px;
-    font-weight: 400;
-    color: white;
-    margin-top: 24px;
-    text-decoration: none;
-    transition: border-bottom 0.5s cubic-bezier(0.2, -2, 0.8, 2);
-    cursor: url(${cursorPointer}), pointer;
-    &:hover {
-      border-bottom: 2px solid #6d097a;
-    }
-    @media (max-width: ${ScreenSize.Small}px) {
-      font-size: 16px;
-    }
-  }
-`;
-
 const StyledText = styled(Text1)`
   @media (max-width: ${ScreenSize.Medium}px) {
     font-size: 16px;
@@ -91,7 +72,7 @@ const StyledText = styled(Text1)`
 
 const StyledBox = styled(Box)`
   @media (max-width: ${ScreenSize.XSmall}px) {
-    margin: 8px;
+    margin: 8px 4px;
   }
 `;
 
@@ -119,59 +100,24 @@ const Slider: React.FC = () => {
             size={ContainerSize.MediumSmall}
             bgColor={BackgroundColor.Alt2}
           >
-            <StyledBox mt={4} mb={2} ml={2} mr={12}>
-              <StyledText mb={2} textColor={TextColor.Secondary}>
-                ФОНД «ПАМЯТЬ ПОКОЛЕНИЙ» И «СОЮЗМУЛЬТФИЛЬМ» ВЫПУСТИЛИ МУЛЬТФИЛЬМ
-                О ДИАГНОСТИКЕ КОГНИТИВНЫХ ИЗМЕНЕНИЙ
-              </StyledText>
-              <LINK>
-                <Link to="/">Подробнее...</Link>
-              </LINK>
+            <StyledBox mt={2} mb={2} ml={2} mr={2}>
+              <StyledBox mb={3}>
+                <Subtitle3 uppercase={false} textColor={TextColor.Secondary}>
+                  ФОНД «ПАМЯТЬ ПОКОЛЕНИЙ» И «СОЮЗМУЛЬТФИЛЬМ» ВЫПУСТИЛИ
+                  МУЛЬТФИЛЬМ О ДИАГНОСТИКЕ КОГНИТИВНЫХ ИЗМЕНЕНИЙ
+                </Subtitle3>
+              </StyledBox>
+              <StyledBox>
+                <Link to="/details">
+                  <Subtitle3 uppercase={false} textColor={TextColor.Secondary}>
+                    Подробнее...
+                  </Subtitle3>
+                </Link>
+              </StyledBox>
             </StyledBox>
             <Decor />
           </Container>
         </Wrapper>
-        <Image src={image} />
-      </SwiperSlide>
-      <SwiperSlide>
-        <Wrapper>
-          <Container
-            size={ContainerSize.MediumSmall}
-            bgColor={BackgroundColor.Alt2}
-          >
-            <StyledBox mt={4} mb={2} ml={2} mr={12}>
-              <StyledText mb={2} textColor={TextColor.Secondary}>
-                ФОНД «ПАМЯТЬ ПОКОЛЕНИЙ» И «СОЮЗМУЛЬТФИЛЬМ» ВЫПУСТИЛИ МУЛЬТФИЛЬМ
-                О ДИАГНОСТИКЕ КОГНИТИВНЫХ ИЗМЕНЕНИЙ
-              </StyledText>
-              <LINK>
-                <Link to="/">Подробнее...</Link>
-              </LINK>
-            </StyledBox>
-            <Decor />
-          </Container>
-        </Wrapper>
-        <Image src={image} />
-      </SwiperSlide>
-      <SwiperSlide>
-        <Wrapper>
-          <Container
-            size={ContainerSize.MediumSmall}
-            bgColor={BackgroundColor.Alt2}
-          >
-            <StyledBox mt={4} mb={2} ml={2} mr={12}>
-              <StyledText mb={2} textColor={TextColor.Secondary}>
-                ФОНД «ПАМЯТЬ ПОКОЛЕНИЙ» И «СОЮЗМУЛЬТФИЛЬМ» ВЫПУСТИЛИ МУЛЬТФИЛЬМ
-                О ДИАГНОСТИКЕ КОГНИТИВНЫХ ИЗМЕНЕНИЙ
-              </StyledText>
-              <LINK>
-                <Link to="/">Подробнее...</Link>
-              </LINK>
-            </StyledBox>
-            <Decor />
-          </Container>
-        </Wrapper>
-        <Box />
         <Image src={image} />
       </SwiperSlide>
       <div className="swiper-button-prev"></div>

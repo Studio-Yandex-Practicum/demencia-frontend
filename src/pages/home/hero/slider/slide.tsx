@@ -85,6 +85,13 @@ interface SlideProps {
   linkTo?: string;
 }
 
+function textElipsis(t: string | undefined) {
+  if (t !== undefined && t.length > 100) {
+    return `${t.substring(0, 100)}...`;
+  }
+  return t;
+}
+
 const Slide: React.FC<SlideProps> = ({ imageSource, text, linkTo }) => {
   return (
     <>
@@ -96,7 +103,7 @@ const Slide: React.FC<SlideProps> = ({ imageSource, text, linkTo }) => {
           <StyledBox height="140px" mt={2} mb={2} ml={2} mr={5}>
             <StyledBox mb={3}>
               <Subtitle3 uppercase={false} textColor={TextColor.Secondary}>
-                {text}
+                {textElipsis(text)}
               </Subtitle3>
             </StyledBox>
             <StyledBox>

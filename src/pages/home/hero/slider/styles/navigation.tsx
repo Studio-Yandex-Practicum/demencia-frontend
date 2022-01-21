@@ -30,7 +30,7 @@ const SwiperButton = styled.div<{
   & ::after {
     display: none;
   }
-  & :disabled {
+  &.disabled {
     opacity: 0.35;
     pointer-events: none;
   }

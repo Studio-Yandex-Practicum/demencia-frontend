@@ -34,6 +34,7 @@ const Slider: React.FC = () => {
       navigation={{
         nextEl: nextRef.current,
         prevEl: prevRef.current,
+        disabledClass: "disabled",
       }}
     >
       <SwiperSlide>

@@ -14,7 +14,8 @@ import { ContainerSize, TextColor } from "../../../../ui/types";
 import { BackgroundColor } from "../../../../ui/types/background-color.enum";
 import { Subtitle3 } from "../../../../ui/controls/typography";
 import { ScreenSize } from "../../../../ui/types";
-import SwiperButton from "./swiper-button";
+import SwiperButton from "./styles/navigation";
+import StyledSwiper from "./styles/swiper";
 
 SwiperCore.use([Autoplay, Pagination, Navigation]);
 

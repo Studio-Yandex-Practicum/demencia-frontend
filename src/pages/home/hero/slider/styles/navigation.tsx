@@ -1,7 +1,7 @@
 import styled from "styled-components";
-import slideLeft from "../../../../images/slid-left.svg";
-import slideRight from "../../../../images/slid-right.svg";
-import cursor from "../../../../images/cursor_pointer.svg";
+import slideLeft from "../../../../../images/slid-left.svg";
+import slideRight from "../../../../../images/slid-right.svg";
+import cursor from "../../../../../images/cursor_pointer.svg";
 
 const SwiperButton = styled.div<{
   type?: string;

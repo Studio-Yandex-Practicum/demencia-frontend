@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { Swiper } from "swiper/react";
+import { ScreenSize } from "../../../../../ui/types";
 
 const StyledSwiper = styled(Swiper)`
   height: auto;
@@ -8,7 +9,7 @@ const StyledSwiper = styled(Swiper)`
   margin-left: 0 !important;
   margin-right: 0 !important;
 
-  @media screen and (max-width: 640px) {
+  @media (max-width: ${ScreenSize.Small}px) {
     top: 30% !important;
   }
 `;

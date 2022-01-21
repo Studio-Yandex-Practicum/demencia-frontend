@@ -15,6 +15,7 @@ import { Subtitle3 } from "../../../../ui/controls/typography";
 import { ScreenSize } from "../../../../ui/types";
 import SwiperButton from "./styles/navigation";
 import StyledSwiper from "./styles/swiper";
+import { StyledPagination, StyledBullet } from "./styles/pagination";
 
 SwiperCore.use([Autoplay, Pagination, Navigation]);
 
@@ -93,6 +94,8 @@ const StyledBox = styled(Box)`
 const Slider: React.FC = () => {
   const prevRef = useRef(null);
   const nextRef = useRef(null);
+  const paginationRef = useRef(null);
+  const bulletRef = useRef(null);
 
   return (
     <StyledSwiper
@@ -103,10 +106,9 @@ const Slider: React.FC = () => {
         disableOnInteraction: false,
       }}
       pagination={{
-        el: ".swiper-pagination",
+        el: paginationRef.current,
         clickable: true,
-        renderBullet: (index, className) =>
-          `<div class=${className} key=${index}></div>`,
+        renderBullet: (index) => <StyledBullet ref={bulletRef} key={index} />,
       }}
       navigation={{
         nextEl: nextRef.current,
@@ -165,7 +167,8 @@ const Slider: React.FC = () => {
         </Wrapper>
         <Image src={image} />
       </SwiperSlide>
-      <div className="swiper-pagination" />
+      {/* TODO: Make pagination visible */}
+      <StyledPagination ref={paginationRef} />
       {/* TODO: Make slides move on click */}
       <SwiperButton type="left" ref={prevRef} />
       <SwiperButton type="right" ref={nextRef} />

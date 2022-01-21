@@ -10,4 +10,17 @@ const GET_LEFT_MENU_ITEMS = gql`
   }
 `;
 
-export { GET_LEFT_MENU_ITEMS };
+const GET_NEWS_ARTICLES = gql`
+  query getNewsArticles {
+    newsArticles {
+      image
+      title
+      subTitle
+      createdAt
+      url
+      isActive
+    }
+  }
+`;
+
+export { GET_LEFT_MENU_ITEMS, GET_NEWS_ARTICLES };

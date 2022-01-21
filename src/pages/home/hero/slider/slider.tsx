@@ -1,6 +1,6 @@
 import React, { useRef } from "react";
 import styled from "styled-components";
-import { Swiper, SwiperSlide } from "swiper/react";
+import { SwiperSlide } from "swiper/react";
 import SwiperCore, { Autoplay, Pagination, Navigation } from "swiper";
 import image from "../../../../images/pechkin.png";
 import whiteHalfCircle from "../../../../images/test_halfcircle_white.svg";
@@ -8,7 +8,6 @@ import "./styles.css";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
-import "swiper/css/scrollbar";
 import { Container, Box, Link } from "../../../../ui/controls";
 import { ContainerSize, TextColor } from "../../../../ui/types";
 import { BackgroundColor } from "../../../../ui/types/background-color.enum";
@@ -96,7 +95,7 @@ const Slider: React.FC = () => {
   const nextRef = useRef(null);
 
   return (
-    <Swiper
+    <StyledSwiper
       spaceBetween={0}
       centeredSlides={true}
       autoplay={{
@@ -113,7 +112,6 @@ const Slider: React.FC = () => {
         nextEl: nextRef.current,
         prevEl: prevRef.current,
       }}
-      className="myStyles"
     >
       <SwiperSlide>
         <Wrapper>
@@ -171,7 +169,7 @@ const Slider: React.FC = () => {
       {/* TODO: Make slides move on click */}
       <SwiperButton type="left" ref={prevRef} />
       <SwiperButton type="right" ref={nextRef} />
-    </Swiper>
+    </StyledSwiper>
   );
 };
 

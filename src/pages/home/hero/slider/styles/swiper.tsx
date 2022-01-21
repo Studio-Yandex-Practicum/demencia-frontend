@@ -1,6 +1,7 @@
 import styled from "styled-components";
+import { Swiper } from "swiper/react";
 
-const StyledSwiper = styled.div`
+const StyledSwiper = styled(Swiper)`
   height: auto;
   max-height: 900px;
   transform: translateY(-120px);

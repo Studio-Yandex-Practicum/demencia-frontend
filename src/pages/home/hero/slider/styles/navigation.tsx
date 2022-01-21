@@ -7,7 +7,6 @@ import cursor from "../../../../../images/cursor_pointer.svg";
 const SwiperButton = styled.div<{
   type?: string;
 }>`
-  outline: 3px solid red;
   background-image: url(${({ type }) =>
     type === "left" ? slideLeft : slideRight});
   background-repeat: no-repeat;

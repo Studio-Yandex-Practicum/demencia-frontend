@@ -1,22 +1,19 @@
 import React, { useRef } from "react";
 import { SwiperSlide } from "swiper/react";
 import SwiperCore, { Autoplay, Pagination, Navigation } from "swiper";
-import "./styles.css";
+import "./styles/pagination.css";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import SwiperButton from "./styles/navigation";
 import StyledSwiper from "./styles/swiper";
-import { StyledPagination, StyledBullet } from "./styles/pagination";
 import Slide from "./slide";
 
 SwiperCore.use([Autoplay, Pagination, Navigation]);
 
 const Slider: React.FC = () => {
-  const prevRef = useRef(null);
-  const nextRef = useRef(null);
-  const paginationRef = useRef(null);
-  const bulletRef = useRef(null);
+  const prevRef = useRef<HTMLDivElement>(null);
+  const nextRef = useRef<HTMLDivElement>(null);
 
   return (
     <StyledSwiper
@@ -27,14 +24,19 @@ const Slider: React.FC = () => {
         disableOnInteraction: false,
       }}
       pagination={{
-        el: paginationRef.current,
+        el: ".swiper-pagination",
         clickable: true,
-        renderBullet: (index) => <StyledBullet ref={bulletRef} key={index} />,
+        renderBullet: (index, className) =>
+          `<div class=${className} key=${index}></div>`,
       }}
-      navigation={{
-        nextEl: nextRef.current,
-        prevEl: prevRef.current,
-        disabledClass: "disabled",
+      onBeforeInit={(swiper) => {
+        if (typeof swiper.params.navigation !== "boolean") {
+          const navigation = swiper.params.navigation;
+          // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+          navigation!.prevEl = prevRef.current;
+          // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+          navigation!.nextEl = nextRef.current;
+        }
       }}
     >
       <SwiperSlide>
@@ -47,9 +49,7 @@ const Slider: React.FC = () => {
         <Slide text="Третья новость, тоже на главной странице. Текста тут еще больше, чем в предыдущей новости. Проверка размеров контейнера под разный контент" />
       </SwiperSlide>
 
-      {/* TODO: Make pagination visible */}
-      <StyledPagination ref={paginationRef} />
-      {/* TODO: Make slides move on click */}
+      <div className="swiper-pagination" />
       <SwiperButton type="left" ref={prevRef} />
       <SwiperButton type="right" ref={nextRef} />
     </StyledSwiper>

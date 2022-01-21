@@ -1,0 +1,32 @@
+
+.swiper-pagination {
+  position: absolute;
+  text-align: center;
+  transition: 0.3s opacity;
+  transform: translate3d(0, 0, 0);
+  z-index: 10;
+  bottom: 10px;
+  left: 0;
+  width: 100%;
+}
+
+.swiper-pagination-bullet {
+  cursor: url("../../../../../images/cursor_pointer.svg"), auto !important;
+}
+
+@media screen and (max-width: 960px) {
+  .myStyles {
+    width: 100%;
+    transform: translateY(0);
+  }
+}
+@media screen and (max-width: 640px) {
+  .swiper-pagination {
+    bottom: 20% !important;
+  }
+}
+@media screen and (max-width: 480px) {
+  .swiper-pagination {
+    bottom: 0 !important;
+  }
+}

@@ -95,7 +95,7 @@ const Preloader = () => {
   return (
     <StyledPreloader>
       <div className="preloader__container">
-        <span className="preloader__round"></span>
+        <span className="preloader__round">Загрузка...</span>
       </div>
     </StyledPreloader>
   );

@@ -13,6 +13,7 @@ const GET_LEFT_MENU_ITEMS = gql`
 const GET_NEWS_ARTICLES = gql`
   query getNewsArticles {
     newsArticles {
+      id
       image
       title
       subTitle

@@ -1,8 +1,7 @@
 import React from "react";
-import { Grid, Section, MainTitle, Box, Subtitle1 } from "../../ui/controls";
+import { Grid, Section, MainTitle, Box } from "../../ui/controls";
 import { PaletteColor } from "../../ui/types";
 import Card from "../../components/card";
-import Preloader from "../../components/preloader";
 import cardDefImg from "../../images/card-default-img.jpg";
 import testGreenPuzzle from "../../images/test_green_puzzle.svg";
 import purpleSemicircle from "../../images/purple-semicircle.svg";
@@ -14,20 +13,29 @@ import StyledImage from "./styled-image";
 
 import { GET_NEWS_ARTICLES } from "../../gql/query";
 import { useQuery } from "@apollo/client";
-import { NewsArticlesData } from "../../types";
+import { NewsArticlesData } from "../../types/news";
 import { toast } from "react-hot-toast";
 import { MEDIA_BASE_URL } from "../../constants";
+import { Subtitle3 } from "../../ui/controls/typography";
 
 const Empty: React.FC = () => (
   <Section borderBox flex centered>
     <MainTitle mb={5}>НОВОСТИ</MainTitle>
-    <Subtitle1>Список пуст</Subtitle1>
-    <Preloader />
+    <Subtitle3>Список пуст</Subtitle3>
   </Section>
 );
 
 const NewsGridPage: React.FC = () => {
-  const { data, error } = useQuery<NewsArticlesData>(GET_NEWS_ARTICLES);
+  const { loading, data, error } =
+    useQuery<NewsArticlesData>(GET_NEWS_ARTICLES);
+
+  if (loading) {
+    return (
+      <Section flex centered>
+        <Subtitle3>Загрузка...</Subtitle3>
+      </Section>
+    );
+  }
 
   if (error) {
     toast.error(`${error}`, { id: "error" });
@@ -39,6 +47,10 @@ const NewsGridPage: React.FC = () => {
   }
 
   const newsArticlesData = data.newsArticles;
+
+  if (!data.newsArticles || data.newsArticles.length === 0) {
+    return <Empty />;
+  }
 
   return (
     <Section borderBox flex centered>
@@ -64,7 +76,7 @@ const NewsGridPage: React.FC = () => {
         flex
         absolute
         top="160px"
-      ></Box>
+      />
       <Box
         backgroundColor={PaletteColor.DarkPurple}
         height="800px"
@@ -72,7 +84,7 @@ const NewsGridPage: React.FC = () => {
         flex
         absolute
         top="875px"
-      ></Box>
+      />
 
       <MainTitle mb={10}>НОВОСТИ</MainTitle>
       <Grid mt={10} zIndex={2}>
@@ -87,11 +99,11 @@ const NewsGridPage: React.FC = () => {
             <Card
               key={article.createdAt}
               cardHeading={article.title || "Заголовок новости"}
-              cardText={article.subTitle || "Описание новости"}
+              cardText={article.subTitle}
               cardDateTime={article.createdAt}
               cardDateTimeText={formattedDate || "Дата новости"}
               imageSource={`${MEDIA_BASE_URL}${article.image}` || cardDefImg}
-              cardLinkTo={article.url || "#"}
+              // cardLinkTo={article.url || "#"}  /article/${article.id}
             />
           );
         })}

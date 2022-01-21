@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { ScreenSize } from "../../../../../ui/types";
 import slideLeft from "../../../../../images/slid-left.svg";
 import slideRight from "../../../../../images/slid-right.svg";
 import cursor from "../../../../../images/cursor_pointer.svg";
@@ -19,10 +20,17 @@ const SwiperButton = styled.div<{
   width: 50px;
   height: 50px;
   cursor: url(${cursor}), auto !important;
-  ::after {
+  @media (max-width: ${ScreenSize.Small}px) {
+    top: calc(100% / 2 - 239px / 2);
+  }
+  @media (max-width: ${ScreenSize.XSmall}px) {
+    top: calc(100% / 2 - 137px / 2);
+  }
+
+  & ::after {
     display: none;
   }
-  :disabled {
+  & :disabled {
     opacity: 0.35;
     pointer-events: none;
   }

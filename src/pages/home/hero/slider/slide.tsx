@@ -93,7 +93,7 @@ const Slide: React.FC<SlideProps> = ({ imageSource, text, linkTo }) => {
           size={ContainerSize.MediumSmall}
           bgColor={BackgroundColor.Alt2}
         >
-          <StyledBox mt={2} mb={2} ml={2} mr={5}>
+          <StyledBox height="140px" mt={2} mb={2} ml={2} mr={5}>
             <StyledBox mb={3}>
               <Subtitle3 uppercase={false} textColor={TextColor.Secondary}>
                 {text}

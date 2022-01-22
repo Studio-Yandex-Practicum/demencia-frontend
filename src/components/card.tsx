@@ -3,7 +3,7 @@ import React from "react";
 import styled from "styled-components";
 import { ScreenSize } from "../ui/types";
 import { Subtitle3, Text3 } from "../ui/controls/typography";
-import { Box, LinkButton } from "../ui/controls";
+import { Box, Link, LinkButton } from "../ui/controls";
 
 const StyledCard = styled.div`
   margin: 0;
@@ -84,12 +84,12 @@ const StyledCard = styled.div`
 `;
 
 interface CardProps {
-  imageSource?: string;
-  cardHeading?: string;
+  imageSource: string;
+  cardHeading: string;
   cardText?: string;
   cardDateTime?: string;
-  cardDateTimeText?: string;
-  cardLinkTo?: string;
+  cardDateTimeText: string;
+  cardLinkTo: string;
 }
 
 const Card: React.FC<CardProps> = ({
@@ -113,9 +113,13 @@ const Card: React.FC<CardProps> = ({
         <time className="card__date" dateTime={cardDateTime}>
           {cardDateTimeText}
         </time>
-        <a href={cardLinkTo} target={"_blank"}>
+        <Link
+          zoomTextOnHover={false}
+          borderBottomOnHover={false}
+          to={cardLinkTo}
+        >
           <LinkButton>подробнее</LinkButton>
-        </a>
+        </Link>
       </Box>
     </StyledCard>
   );

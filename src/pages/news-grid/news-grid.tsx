@@ -46,7 +46,13 @@ const NewsGridPage: React.FC = () => {
     return <Empty />;
   }
 
-  const newsArticlesData = [...data.newsArticles];
+  if (!data.newsArticles || data.newsArticles.length === 0) {
+    return <Empty />;
+  }
+
+  const newsArticlesData = data.newsArticles.filter(
+    (item) => item && item.isActive
+  );
 
   newsArticlesData.sort(function (a, b) {
     if (a.createdAt > b.createdAt) {
@@ -58,10 +64,6 @@ const NewsGridPage: React.FC = () => {
 
     return 0;
   });
-
-  if (!data.newsArticles || data.newsArticles.length === 0) {
-    return <Empty />;
-  }
 
   return (
     <Section borderBox flex centered>

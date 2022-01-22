@@ -57,6 +57,7 @@ const StyledBox = styled(Box)`
   }
   @media screen and (max-width: 365px) {
     margin: 0 4px;
+    bottom: 15px;
   }
 `;
 

@@ -20,7 +20,7 @@ const SwiperButton = styled.div<{
   height: 50px;
   cursor: url(${cursor}), auto;
   @media (max-width: ${ScreenSize.Small}px) {
-    top: calc(100% / 2 - 55px / 2);
+    top: calc(100% / 2 - 80px / 2);
   }
   @media (max-width: ${ScreenSize.XSmall}px) {
     top: calc(100% / 2 - 137px / 2);

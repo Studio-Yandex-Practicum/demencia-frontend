@@ -14,6 +14,9 @@ SwiperCore.use([Autoplay, Pagination, Navigation]);
 
 function textElipsis(t: string | undefined) {
   if (t !== undefined && t.length > 95) {
+    if (window.innerWidth >= ScreenSize.Medium) {
+      return `${t.substring(0, 79)}...`;
+    }
     if (window.innerWidth <= ScreenSize.XSmall) {
       return `${t.substring(0, 85)}...`;
     }

@@ -17,14 +17,14 @@ const Actions = styled.div`
   width: 100vw;
   display: flex;
   align-items: center;
-  margin-top: 115px;
+  margin-top: 170px;
   margin-left: 8px;
   @media (max-width: ${ScreenSize.Large}px) {
-    margin-top: 170px;
+    margin-top: 185px;
   }
   @media (max-width: ${ScreenSize.Medium}px) {
     justify-content: center;
-    margin-top: 90px;
+    margin-top: 105px;
     margin-left: -25px;
   }
   @media (max-width: ${ScreenSize.Small}px) {
@@ -32,11 +32,11 @@ const Actions = styled.div`
     margin-left: 0;
   }
   @media (max-width: ${ScreenSize.XSmall}px) {
-    margin-top: 105px;
+    margin-top: 125px;
   }
 `;
 
-const Decoration = styled.div`
+const StyledBox = styled(Box)`
   margin-top: 75px;
   max-width: 45vw;
   position: relative;
@@ -53,37 +53,26 @@ const StyledButton = styled(Button)`
   }
 `;
 
-const StyledBox = styled(Box)<{
-  width?: string;
-  position?: string;
-}>`
-  position: ${({ position }) => position};
-  left: 0;
-  top: 0;
-  width: ${({ width }) => width};
-  height: 100px;
-`;
-
 const HomePage: React.FC = () => {
   return (
-    <Decoration>
+    <StyledBox>
       <GreenPuzzle />
-      <StyledBox width="fit-content" position="relative">
+      <Box width="fit-content">
         <NavMenu />
-      </StyledBox>
+      </Box>
       <Pazzles />
-      <StyledBox width="100%" position="absolute">
+      <Box width="100%" height="100px" absolute top="0" left="0">
         <SmallCircle />
         <MediumCircle />
         <BigCircle />
-      </StyledBox>
+      </Box>
       <Actions>
         <StyledButton primary uppercase width={300} zIndex={310}>
           Пройти тест
         </StyledButton>
         <HalfCircle />
       </Actions>
-    </Decoration>
+    </StyledBox>
   );
 };
 

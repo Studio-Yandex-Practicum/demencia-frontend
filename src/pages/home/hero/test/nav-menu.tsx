@@ -4,11 +4,6 @@ import { Link, Menu, MenuItem } from "../../../../ui/controls";
 import { Text3 } from "../../../../ui/controls/typography";
 import { ScreenSize } from "../../../../ui/types";
 
-const StyledText = styled(Text3)`
-  @media (max-width: ${ScreenSize.Medium}px) {
-    font-size: 16px;
-  }
-`;
 const StyledMenu = styled(Menu)`
   position: relative;
   z-index: 400;
@@ -24,17 +19,17 @@ const NavMenu: React.FC = () => {
     <StyledMenu vertical={true} gap={16} gapSmallScreen={12}>
       <MenuItem>
         <Link to="#">
-          <StyledText>тест на деменцию</StyledText>
+          <Text3>тест на деменцию</Text3>
         </Link>
       </MenuItem>
       <MenuItem>
         <Link to="#">
-          <StyledText>центры профилактики</StyledText>
+          <Text3>центры профилактики</Text3>
         </Link>
       </MenuItem>
       <MenuItem>
         <Link to="/details">
-          <StyledText>подробнее о деменции</StyledText>
+          <Text3>подробнее о деменции</Text3>
         </Link>
       </MenuItem>
     </StyledMenu>

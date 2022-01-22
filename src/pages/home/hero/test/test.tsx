@@ -53,7 +53,7 @@ const StyledButton = styled(Button)`
   }
 `;
 
-const HomePage: React.FC = () => {
+const Test: React.FC = () => {
   return (
     <StyledBox>
       <GreenPuzzle />
@@ -76,4 +76,4 @@ const HomePage: React.FC = () => {
   );
 };
 
-export default HomePage;
+export default Test;

@@ -36,7 +36,7 @@ const Decor = styled.div`
   background-repeat: no-repeat;
   position: absolute;
   bottom: calc(100% / 2 - 266px / 2);
-  right: 20px;
+  right: 10px;
 
   @media (max-width: ${ScreenSize.Medium}px) {
     bottom: calc(100% / 2 - 240px / 2);
@@ -97,13 +97,6 @@ interface SlideProps {
   linkTo?: string;
 }
 
-function textElipsis(t: string | undefined) {
-  if (t !== undefined && t.length > 95) {
-    return `${t.substring(0, 95)}...`;
-  }
-  return t;
-}
-
 const Slide: React.FC<SlideProps> = ({ imageSource, text, linkTo }) => {
   return (
     <>
@@ -112,13 +105,13 @@ const Slide: React.FC<SlideProps> = ({ imageSource, text, linkTo }) => {
           size={ContainerSize.MediumSmall}
           bgColor={BackgroundColor.Alt2}
         >
-          <StyledBox height="140px" mt={2} mb={2} ml={2} mr={6}>
+          <StyledBox height="140px" mt={2} mb={2} ml={2} mr={8}>
             <StyledBox mb={3}>
               <Subtitle3 uppercase={false} textColor={TextColor.Secondary}>
-                {textElipsis(text)}
+                {text}
               </Subtitle3>
             </StyledBox>
-            <StyledBox>
+            <StyledBox absolute bottom="10px">
               <Link to={linkTo || ""}>
                 <Subtitle3 uppercase={false} textColor={TextColor.Secondary}>
                   Подробнее...

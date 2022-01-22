@@ -20,7 +20,7 @@ const Wrapper = styled.div`
   @media (max-width: ${ScreenSize.Small}px) {
     left: 15px;
     max-width: 70vw;
-    bottom: calc(100% / 2 - 70px / 0.65);
+    bottom: calc(100% / 2 - 140px / 0.65);
   }
   @media (max-width: ${ScreenSize.XSmall}px) {
     bottom: 0;
@@ -56,14 +56,21 @@ const StyledBox = styled(Box)`
   }
 `;
 
-const Image = styled.img.attrs((props) => ({
-  src: props.src || image,
-}))`
+const StyledBgImage = styled.div<{
+  url?: string;
+}>`
   max-width: 905px;
   width: 55vw;
   height: 900px;
-  object-fit: cover;
-  object-position: top;
+  background: rgb(0, 0, 0);
+  background-image: radial-gradient(
+      circle,
+      rgba(255, 255, 255, 0.4) 0%,
+      rgba(0, 0, 0, 0.15) 0%
+    ),
+    url(${(props) => props.url || image});
+  background-size: cover;
+  background-position: top;
   @media (max-width: ${ScreenSize.Large}px) {
     height: 800px;
   }
@@ -72,10 +79,7 @@ const Image = styled.img.attrs((props) => ({
   }
   @media (max-width: ${ScreenSize.Small}px) {
     max-width: 100%;
-    height: 75%;
-  }
-  @media (max-width: ${ScreenSize.XSmall}px) {
-    height: 100%;
+    height: 85vw;
   }
 `;
 
@@ -117,7 +121,7 @@ const Slide: React.FC<SlideProps> = ({ imageSource, text, linkTo }) => {
           </StyledBox>
         </Container>
       </Wrapper>
-      <Image src={imageSource} />
+      <StyledBgImage url={imageSource} />
     </>
   );
 };

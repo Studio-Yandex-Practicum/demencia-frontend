@@ -14,16 +14,17 @@ const SwiperButton = styled.div<{
   background-size: contain;
   z-index: 1000;
   position: absolute;
-  ${({ type }) => (type === "left" ? "left: 0;" : "right: 0;")}
+  ${({ type }) => (type === "left" ? "left: 10px;" : "right: 10px;")}
   top: 50%;
   width: 50px;
   height: 50px;
   cursor: url(${cursor}), auto;
   @media (max-width: ${ScreenSize.Small}px) {
-    top: calc(100% / 2 - 239px / 2);
+    top: calc(100% / 2 - 55px / 2);
   }
   @media (max-width: ${ScreenSize.XSmall}px) {
     top: calc(100% / 2 - 137px / 2);
+    ${({ type }) => (type === "left" ? "left: 0;" : "right: 0;")}
   }
 
   &::after {

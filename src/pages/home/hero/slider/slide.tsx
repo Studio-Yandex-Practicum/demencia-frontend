@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import image from "../../../../images/pechkin.png";
+import defaultImage from "../../../../images/default-image.png";
 import whiteHalfCircle from "../../../../images/test_halfcircle_white.svg";
 import { Container, Box, Link } from "../../../../ui/controls";
 import { ContainerSize, TextColor } from "../../../../ui/types";
@@ -73,7 +73,7 @@ const StyledBgImage = styled.div<{
       rgba(255, 255, 255, 0.4) 0%,
       rgba(0, 0, 0, 0.15) 0%
     ),
-    url(${(props) => props.url || image});
+    url(${(props) => props.url || defaultImage});
   background-size: cover;
   background-position: top;
   @media (max-width: ${ScreenSize.Large}px) {

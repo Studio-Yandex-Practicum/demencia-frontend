@@ -8,9 +8,11 @@ const StyledSwiper = styled(Swiper)`
   transform: translateY(-120px);
   margin-left: 0 !important;
   margin-right: 0 !important;
+  margin-bottom: -120px;
 
-  @media (max-width: ${ScreenSize.Small}px) {
-    top: 30% !important;
+  @media (max-width: ${ScreenSize.Medium}px) {
+    margin-bottom: 0;
+    transform: translateY(0);
   }
 `;
 

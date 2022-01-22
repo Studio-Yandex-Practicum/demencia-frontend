@@ -26,7 +26,7 @@ const SwiperButton = styled.div<{
     top: calc(100% / 2 - 137px / 2);
   }
 
-  & ::after {
+  &::after {
     display: none;
   }
   &.disabled {

@@ -86,8 +86,8 @@ interface SlideProps {
 }
 
 function textElipsis(t: string | undefined) {
-  if (t !== undefined && t.length > 100) {
-    return `${t.substring(0, 100)}...`;
+  if (t !== undefined && t.length > 95) {
+    return `${t.substring(0, 95)}...`;
   }
   return t;
 }
@@ -100,7 +100,7 @@ const Slide: React.FC<SlideProps> = ({ imageSource, text, linkTo }) => {
           size={ContainerSize.MediumSmall}
           bgColor={BackgroundColor.Alt2}
         >
-          <StyledBox height="140px" mt={2} mb={2} ml={2} mr={5}>
+          <StyledBox height="140px" mt={2} mb={2} ml={2} mr={6}>
             <StyledBox mb={3}>
               <Subtitle3 uppercase={false} textColor={TextColor.Secondary}>
                 {textElipsis(text)}

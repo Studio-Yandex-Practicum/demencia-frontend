@@ -15,7 +15,6 @@ import { GET_NEWS_ARTICLES } from "../../gql/query";
 import { useQuery } from "@apollo/client";
 import { NewsArticlesData } from "../../types/news";
 import { toast } from "react-hot-toast";
-import { MEDIA_BASE_URL } from "../../constants";
 import { Subtitle3 } from "../../ui/controls/typography";
 
 const Empty: React.FC = () => (
@@ -115,7 +114,7 @@ const NewsGridPage: React.FC = () => {
               cardText={article.subTitle}
               cardDateTime={article.createdAt}
               cardDateTimeText={formattedDate || "Дата новости"}
-              imageSource={`${MEDIA_BASE_URL}${article.image}` || cardDefImg}
+              imageSource={article.image || cardDefImg}
               cardLinkTo={`/article/${article.id}`}
             />
           );

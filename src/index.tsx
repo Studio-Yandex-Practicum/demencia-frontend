@@ -25,6 +25,11 @@ const client = new ApolloClient({
   cache,
   resolvers: {},
   connectToDevTools: true,
+  defaultOptions: {
+    watchQuery: {
+      fetchPolicy: "cache-and-network",
+    },
+  },
 });
 
 ReactDOM.render(

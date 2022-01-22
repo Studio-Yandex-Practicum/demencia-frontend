@@ -2,7 +2,7 @@ import React from "react";
 import { Grid, Section, MainTitle, Box } from "../../ui/controls";
 import { PaletteColor } from "../../ui/types";
 import Card from "../../components/card";
-import cardDefImg from "../../images/card-default-img.jpg";
+import cardDefImg from "../../images/default-image.png";
 import testGreenPuzzle from "../../images/test_green_puzzle.svg";
 import purpleSemicircle from "../../images/purple-semicircle.svg";
 import purplePuzzle from "../../images/purple-puzzle-translucent.svg";
@@ -11,7 +11,60 @@ import purplePuzzleBottom from "../../images/purple-puzzle-bottom.svg";
 import halfGreenPuzzleTranslucent from "../../images/half-green-puzzle-translucent.svg";
 import StyledImage from "./styled-image";
 
+import { GET_NEWS_ARTICLES } from "../../gql/query";
+import { useQuery } from "@apollo/client";
+import { NewsArticlesData } from "../../types/news";
+import { toast } from "react-hot-toast";
+import { MEDIA_BASE_URL } from "../../constants";
+import { Subtitle3 } from "../../ui/controls/typography";
+
+const Empty: React.FC = () => (
+  <Section borderBox flex centered>
+    <MainTitle mb={5}>НОВОСТИ</MainTitle>
+    <Subtitle3>Список пуст</Subtitle3>
+  </Section>
+);
+
 const NewsGridPage: React.FC = () => {
+  const { loading, data, error } =
+    useQuery<NewsArticlesData>(GET_NEWS_ARTICLES);
+
+  if (loading) {
+    return (
+      <Section flex centered>
+        <Subtitle3>Загрузка...</Subtitle3>
+      </Section>
+    );
+  }
+
+  if (error) {
+    toast.error(`${error}`, { id: "error" });
+    return <Empty />;
+  }
+
+  if (!data) {
+    return <Empty />;
+  }
+
+  if (!data.newsArticles || data.newsArticles.length === 0) {
+    return <Empty />;
+  }
+
+  const newsArticlesData = data.newsArticles.filter(
+    (item) => item && item.isActive
+  );
+
+  newsArticlesData.sort(function (a, b) {
+    if (a.createdAt > b.createdAt) {
+      return -1;
+    }
+    if (a.createdAt < b.createdAt) {
+      return 1;
+    }
+
+    return 0;
+  });
+
   return (
     <Section borderBox flex centered>
       <StyledImage src={testGreenPuzzle} puzzleType="news-grid__green-puzzle" />
@@ -36,7 +89,7 @@ const NewsGridPage: React.FC = () => {
         flex
         absolute
         top="160px"
-      ></Box>
+      />
       <Box
         backgroundColor={PaletteColor.DarkPurple}
         height="800px"
@@ -44,82 +97,29 @@ const NewsGridPage: React.FC = () => {
         flex
         absolute
         top="875px"
-      ></Box>
+      />
 
       <MainTitle mb={10}>НОВОСТИ</MainTitle>
       <Grid mt={10} zIndex={2}>
-        <Card
-          cardHeading="В Москве открылись пункты для диагностики болезни Альцгеймера и других когнитивных изменений"
-          cardText="1 октября в рамках проекта Деменция.net благотворительного фонда «Память поколений» открылись корнеры по ранней диагностике когнитивных изменений. 1 октября в рамках проекта Деменция.net благотворительного фонда «Память поколений» открылись корнеры по ранней диагностике когнитивных изменений."
-          cardDateTime="2021-10-01"
-          cardDateTimeText="01.10.2021"
-          imageSource={cardDefImg}
-          cardLinkTo="/article"
-        />
-        <Card
-          cardHeading="В Москве открылись пункты для диагностики болезни Альцгеймера и других когнитивных изменений"
-          cardText="1 октября в рамках проекта Деменция.net."
-          cardDateTime="2021-10-01"
-          cardDateTimeText="01.10.2021"
-          imageSource={cardDefImg}
-          cardLinkTo="/article"
-        />
-        <Card
-          cardHeading="В Москве открылись пункты для диагностики болезни Альцгеймера и других когнитивных изменений"
-          cardText="1 октября в рамках проекта Деменция.net благотворительного фонда «Память поколений» открылись корнеры по ранней диагностике когнитивных изменений."
-          cardDateTime="2021-10-01"
-          cardDateTimeText="01.10.2021"
-          imageSource={cardDefImg}
-          cardLinkTo="/article"
-        />
-        <Card
-          cardHeading="В Москве открылись пункты для диагностики болезни Альцгеймера и других когнитивных изменений"
-          cardText="1 октября в рамках проекта Деменция.net благотворительного фонда «Память поколений» открылись корнеры по ранней диагностике когнитивных изменений."
-          cardDateTime="2021-10-01"
-          cardDateTimeText="01.10.2021"
-          imageSource={cardDefImg}
-          cardLinkTo="/article"
-        />
-        <Card
-          cardHeading="В Москве открылись пункты для диагностики болезни Альцгеймера и других когнитивных изменений"
-          cardText="1 октября в рамках проекта Деменция.net благотворительного фонда «Память поколений» открылись корнеры по ранней диагностике когнитивных изменений."
-          cardDateTime="2021-10-01"
-          cardDateTimeText="01.10.2021"
-          imageSource={cardDefImg}
-          cardLinkTo="/article"
-        />
-        <Card
-          cardHeading="В Москве открылись пункты для диагностики болезни Альцгеймера и других когнитивных изменений"
-          cardText="1 октября в рамках проекта Деменция.net благотворительного фонда «Память поколений» открылись корнеры по ранней диагностике когнитивных изменений."
-          cardDateTime="2021-10-01"
-          cardDateTimeText="01.10.2021"
-          imageSource={cardDefImg}
-          cardLinkTo="/article"
-        />
-        <Card
-          cardHeading="В Москве открылись пункты для диагностики болезни Альцгеймера и других когнитивных изменений"
-          cardText="1 октября в рамках проекта Деменция.net благотворительного фонда «Память поколений» открылись корнеры по ранней диагностике когнитивных изменений."
-          cardDateTime="2021-10-01"
-          cardDateTimeText="01.10.2021"
-          imageSource={cardDefImg}
-          cardLinkTo="/article"
-        />
-        <Card
-          cardHeading="В Москве открылись пункты для диагностики болезни Альцгеймера и других когнитивных изменений"
-          cardText="1 октября в рамках проекта Деменция.net благотворительного фонда «Память поколений» открылись корнеры по ранней диагностике когнитивных изменений."
-          cardDateTime="2021-10-01"
-          cardDateTimeText="01.10.2021"
-          imageSource={cardDefImg}
-          cardLinkTo="/article"
-        />
-        <Card
-          cardHeading="В Москве открылись пункты для диагностики болезни Альцгеймера и других когнитивных изменений"
-          cardText="1 октября в рамках проекта Деменция.net благотворительного фонда «Память поколений» открылись корнеры по ранней диагностике когнитивных изменений."
-          cardDateTime="2021-10-01"
-          cardDateTimeText="01.10.2021"
-          imageSource={cardDefImg}
-          cardLinkTo="/article"
-        />
+        {newsArticlesData.map((article) => {
+          const date = new Date(article.createdAt || "");
+          const formattedDate = date.toLocaleString("default", {
+            day: "numeric",
+            month: "numeric",
+            year: "numeric",
+          });
+          return (
+            <Card
+              key={article.createdAt}
+              cardHeading={article.title || "Заголовок новости"}
+              cardText={article.subTitle}
+              cardDateTime={article.createdAt}
+              cardDateTimeText={formattedDate || "Дата новости"}
+              imageSource={`${MEDIA_BASE_URL}${article.image}` || cardDefImg}
+              cardLinkTo={`/article/${article.id}`}
+            />
+          );
+        })}
       </Grid>
     </Section>
   );

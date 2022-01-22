@@ -2,7 +2,7 @@ import React from "react";
 import { Grid, Section, MainTitle, Box } from "../../ui/controls";
 import { PaletteColor } from "../../ui/types";
 import Card from "../../components/card";
-import cardDefImg from "../../images/card-default-img.jpg";
+import cardDefImg from "../../images/default-image.png";
 import testGreenPuzzle from "../../images/test_green_puzzle.svg";
 import purpleSemicircle from "../../images/purple-semicircle.svg";
 import purplePuzzle from "../../images/purple-puzzle-translucent.svg";
@@ -46,7 +46,18 @@ const NewsGridPage: React.FC = () => {
     return <Empty />;
   }
 
-  const newsArticlesData = data.newsArticles;
+  const newsArticlesData = [...data.newsArticles];
+
+  newsArticlesData.sort(function (a, b) {
+    if (a.createdAt > b.createdAt) {
+      return -1;
+    }
+    if (a.createdAt < b.createdAt) {
+      return 1;
+    }
+
+    return 0;
+  });
 
   if (!data.newsArticles || data.newsArticles.length === 0) {
     return <Empty />;
@@ -103,7 +114,7 @@ const NewsGridPage: React.FC = () => {
               cardDateTime={article.createdAt}
               cardDateTimeText={formattedDate || "Дата новости"}
               imageSource={`${MEDIA_BASE_URL}${article.image}` || cardDefImg}
-              // cardLinkTo={article.url || "#"}  /article/${article.id}
+              cardLinkTo={`/article/${article.id}`}
             />
           );
         })}

@@ -11,21 +11,20 @@ const Wrapper = styled.div`
   position: absolute;
   bottom: calc(100% / 2 - 175px / 0.65);
   z-index: 1;
-  max-width: 450px;
+  width: min(100% - 100px, 450px);
   left: 0;
   @media (max-width: ${ScreenSize.Medium}px) {
-    left: 0;
-    max-width: 600px;
+    width: min(100% - 100px, 520px);
   }
   @media (max-width: ${ScreenSize.Small}px) {
-    left: 15px;
-    max-width: 70vw;
-    bottom: calc(100% / 2 - 140px / 0.65);
+    left: 20px;
+    bottom: 50px;
+    height: min(140px, 50%);
   }
   @media (max-width: ${ScreenSize.XSmall}px) {
     bottom: 0;
     left: 0;
-    max-width: 100%;
+    width: 100%;
   }
 `;
 
@@ -37,11 +36,10 @@ const Decor = styled.div`
   background-repeat: no-repeat;
   position: absolute;
   bottom: calc(100% / 2 - 266px / 2);
-  left: 69%;
+  right: 20px;
 
   @media (max-width: ${ScreenSize.Medium}px) {
     bottom: calc(100% / 2 - 240px / 2);
-    left: 79%;
     width: 124px;
     height: 240px;
   }
@@ -51,8 +49,14 @@ const Decor = styled.div`
 `;
 
 const StyledBox = styled(Box)`
+  @media (max-width: ${ScreenSize.Small}px) {
+    margin-right: 16px;
+  }
   @media (max-width: ${ScreenSize.XSmall}px) {
     margin: 8px 4px;
+  }
+  @media screen and (max-width: 365px) {
+    margin: 0 4px;
   }
 `;
 
@@ -83,6 +87,10 @@ const StyledBgImage = styled.div<{
   }
 `;
 
+const StyledContainer = styled(Container)`
+  position: relative;
+`;
+
 interface SlideProps {
   imageSource?: string;
   text?: string;
@@ -100,7 +108,7 @@ const Slide: React.FC<SlideProps> = ({ imageSource, text, linkTo }) => {
   return (
     <>
       <Wrapper>
-        <Container
+        <StyledContainer
           size={ContainerSize.MediumSmall}
           bgColor={BackgroundColor.Alt2}
         >
@@ -119,7 +127,7 @@ const Slide: React.FC<SlideProps> = ({ imageSource, text, linkTo }) => {
             </StyledBox>
             <Decor />
           </StyledBox>
-        </Container>
+        </StyledContainer>
       </Wrapper>
       <StyledBgImage url={imageSource} />
     </>

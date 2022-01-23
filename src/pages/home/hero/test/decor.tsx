@@ -90,6 +90,10 @@ export const SmallCircle = styled.img.attrs((props) => ({
   top: 20px;
   z-index: 297;
 
+  @media screen and (max-width: 1800px) {
+    width: 90px;
+    right: 375px;
+  }
   @media screen and (max-width: 1600px) {
     width: 90px;
     right: 255px;
@@ -127,6 +131,9 @@ export const MediumCircle = styled.img.attrs((props) => ({
   top: -51px;
   right: 180px;
 
+  @media screen and (max-width: 1800px) {
+    right: 140px;
+  }
   @media screen and (max-width: 1600px) {
     width: 200px;
     top: 35px;
@@ -163,6 +170,9 @@ export const BigCircle = styled.img.attrs((props) => ({
   top: 0;
   right: 15%;
 
+  @media screen and (max-width: 1800px) {
+    width: 450px;
+  }
   @media screen and (max-width: 1600px) {
     width: 350px;
     top: 70px;

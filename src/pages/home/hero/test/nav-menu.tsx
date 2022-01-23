@@ -14,22 +14,33 @@ const StyledMenu = styled(Menu)`
   }
 `;
 
+function textElipsis(t: string | undefined) {
+  if (t !== undefined && t.length > 20) {
+    return `${t.substring(0, 20)}...`;
+  }
+  return t;
+}
+
 const NavMenu: React.FC = () => {
   return (
     <StyledMenu vertical={true} gap={16} gapSmallScreen={12}>
       <MenuItem>
         <Link to="#">
-          <Text3>тест на деменцию</Text3>
+          <Text3>{textElipsis("тест на деменцию тест на деменцию")}</Text3>
         </Link>
       </MenuItem>
       <MenuItem>
         <Link to="#">
-          <Text3>центры профилактики</Text3>
+          <Text3>
+            {textElipsis("центры профилактики центры профилактики")}
+          </Text3>
         </Link>
       </MenuItem>
       <MenuItem>
         <Link to="/details">
-          <Text3>подробнее о деменции</Text3>
+          <Text3>
+            {textElipsis("подробнее о деменции подробнее о деменции")}
+          </Text3>
         </Link>
       </MenuItem>
     </StyledMenu>

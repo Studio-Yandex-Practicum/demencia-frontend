@@ -1,15 +1,5 @@
 import { gql } from "@apollo/client";
 
-const GET_LEFT_MENU_ITEMS = gql`
-  query getLeftMenuItems {
-    leftMenuElements {
-      isActive
-      name
-      url
-    }
-  }
-`;
-
 const GET_NEWS_ARTICLES = gql`
   query getNewsArticles {
     newsArticles {
@@ -23,5 +13,4 @@ const GET_NEWS_ARTICLES = gql`
     }
   }
 `;
-
-export { GET_LEFT_MENU_ITEMS, GET_NEWS_ARTICLES };
+export { GET_NEWS_ARTICLES };

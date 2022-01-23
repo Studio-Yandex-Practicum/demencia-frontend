@@ -3,60 +3,53 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { ArticlePage, HomePage, NewsGridPage, DetailsPage } from "../pages";
 // TODO: Remove this temporary page.
 import UIKitPage from "../pages/ui-kit/ui-kit";
-import { Layout } from "../ui/controls";
+import { Layout, Section } from "../ui/controls";
 import PageHeader from "./page-header";
 import { Main } from "../ui/controls";
 import PageFooter from "./page-footer";
 import GraphqlTestPage from "../pages/graphql/graphql";
-import { Toaster } from "react-hot-toast";
-import { Helmet } from "react-helmet";
+import { toast, Toaster } from "react-hot-toast";
+import { HelmetProvider, Helmet } from "react-helmet-async";
 import { useQuery } from "@apollo/client";
-import { SettingsData } from "../types/meta-settings";
-import { GET_SETTINGS } from "../gql/query/meta-settings";
+import { SettingsData } from "../types/settings";
+import { GET_SETTINGS } from "../gql/query/settings";
 import { DEFAULT_SITE_NAME } from "../constants";
+import { Subtitle3 } from "../ui/controls/typography";
 
 const App: React.FC = () => {
-  let { data: options } = useQuery<SettingsData>(GET_SETTINGS, {
+  const { loading, error, data } = useQuery<SettingsData>(GET_SETTINGS, {
     fetchPolicy: "cache-first",
   });
 
-  if (!options) {
-    options = {
-      settings: {
-        metaDescription: "",
-        siteName: DEFAULT_SITE_NAME,
-        copyright: "",
-        mainSectionButtonLabel: "",
-        aboutSection: "",
-        aboutSectionTerm: "",
-        aboutSectionTermOpenLabel: "",
-        aboutSectionTermCloseLabel: "",
-        aboutSectionActionTitle: "",
-        aboutSectionActionSubtitle: "",
-        aboutSectionInfo: "",
-        aboutSectionButtonLabel: "",
-        newsSection: "",
-        newsSectionUrlLabel: "",
-        partnersSection: "",
-        partnersSectionSubtitle: "",
-        mapSection: "",
-        mapSectionSubtitle: "",
-        mapSectionInfo: "",
-        fundSection: "",
-        fundSectionInfo: "",
-        fundSectionUrlLabel: "",
-        fundSectionUrl: "",
-      },
-    };
+  if (loading) {
+    return (
+      <Section flex centered mt={5}>
+        <Subtitle3>Загрузка...</Subtitle3>
+      </Section>
+    );
   }
 
-  const settingsData = options.settings;
+  if (error) {
+    toast.error(`${error}`, { id: "error" });
+    return <div />;
+  }
+
+  if (!data || !data.settings) {
+    toast.error("Не удалось получить настроек сайта", { id: "error" });
+    return <div />;
+  }
+
+  if (data.settings.siteName === "") {
+    data.settings.siteName = DEFAULT_SITE_NAME;
+  }
+
+  const settings = data.settings;
 
   return (
-    <>
+    <HelmetProvider>
       <Helmet>
-        <meta name="description" content={settingsData.metaDescription} />
-        <title>{settingsData.siteName}</title>
+        <meta name="description" content={settings.metaDescription} />
+        <title>{settings.siteName}</title>
       </Helmet>
       <Router>
         <Layout>
@@ -75,7 +68,7 @@ const App: React.FC = () => {
           <Toaster />
         </Layout>
       </Router>
-    </>
+    </HelmetProvider>
   );
 };
 

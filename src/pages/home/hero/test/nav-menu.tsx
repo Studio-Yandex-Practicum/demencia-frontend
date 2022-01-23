@@ -6,7 +6,7 @@ import { LeftMenuElementsData } from "../../../../types/left-menu";
 import { Link, Menu, MenuItem, Box } from "../../../../ui/controls";
 import { Text3 } from "../../../../ui/controls/typography";
 import { ScreenSize } from "../../../../ui/types";
-import { GET_LEFT_MENU_ITEMS } from "../../../../gql/left-menu";
+import { GET_LEFT_MENU_ITEMS } from "../../../../gql/query/left-menu";
 
 const StyledMenu = styled(Menu)`
   position: relative;

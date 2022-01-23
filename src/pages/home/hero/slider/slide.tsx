@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import defaultImage from "../../../../images/default-image.png";
+import defaultImage from "../../../../images/slider-default-image.png";
 import whiteHalfCircle from "../../../../images/test_halfcircle_white.svg";
 import { Container, Box, Link } from "../../../../ui/controls";
 import { ContainerSize, TextColor } from "../../../../ui/types";

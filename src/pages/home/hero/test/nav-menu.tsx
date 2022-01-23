@@ -15,8 +15,8 @@ const StyledMenu = styled(Menu)`
 `;
 
 function textElipsis(t: string | undefined) {
-  if (t !== undefined && t.length > 27) {
-    return `${t.substring(0, 27)}...`;
+  if (t !== undefined && t.length > 20) {
+    return `${t.substring(0, 20)}...`;
   }
   return t;
 }

@@ -11,31 +11,52 @@ import GraphqlTestPage from "../pages/graphql/graphql";
 import { Toaster } from "react-hot-toast";
 import { Helmet } from "react-helmet";
 import { useQuery } from "@apollo/client";
-import { MetaSettingsData } from "../types/meta-settings";
-import { GET_META_SETTINGS } from "../gql/query/meta-settings";
+import { SettingsData } from "../types/meta-settings";
+import { GET_SETTINGS } from "../gql/query/meta-settings";
 import { DEFAULT_SITE_NAME } from "../constants";
 
 const App: React.FC = () => {
-  let { data: metaData } = useQuery<MetaSettingsData>(GET_META_SETTINGS, {
+  let { data: options } = useQuery<SettingsData>(GET_SETTINGS, {
     fetchPolicy: "cache-first",
   });
 
-  if (!metaData) {
-    metaData = {
+  if (!options) {
+    options = {
       settings: {
         metaDescription: "",
         siteName: DEFAULT_SITE_NAME,
+        copyright: "",
+        mainSectionButtonLabel: "",
+        aboutSection: "",
+        aboutSectionTerm: "",
+        aboutSectionTermOpenLabel: "",
+        aboutSectionTermCloseLabel: "",
+        aboutSectionActionTitle: "",
+        aboutSectionActionSubtitle: "",
+        aboutSectionInfo: "",
+        aboutSectionButtonLabel: "",
+        newsSection: "",
+        newsSectionUrlLabel: "",
+        partnersSection: "",
+        partnersSectionSubtitle: "",
+        mapSection: "",
+        mapSectionSubtitle: "",
+        mapSectionInfo: "",
+        fundSection: "",
+        fundSectionInfo: "",
+        fundSectionUrlLabel: "",
+        fundSectionUrl: "",
       },
     };
   }
 
-  const metaSettingsData = metaData.settings;
+  const settingsData = options.settings;
 
   return (
     <>
       <Helmet>
-        <meta name="description" content={metaSettingsData.metaDescription} />
-        <title>{metaSettingsData.siteName}</title>
+        <meta name="description" content={settingsData.metaDescription} />
+        <title>{settingsData.siteName}</title>
       </Helmet>
       <Router>
         <Layout>

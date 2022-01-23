@@ -11,11 +11,11 @@ import purplePuzzleBottom from "../../images/purple-puzzle-bottom.svg";
 import halfGreenPuzzleTranslucent from "../../images/half-green-puzzle-translucent.svg";
 import StyledImage from "./styled-image";
 
-import { GET_NEWS_ARTICLES } from "../../gql/query";
 import { useQuery } from "@apollo/client";
 import { NewsArticlesData } from "../../types/news";
 import { toast } from "react-hot-toast";
 import { Subtitle3 } from "../../ui/controls/typography";
+import { GET_NEWS_ARTICLES } from "../../gql/query/news";
 
 const Empty: React.FC = () => (
   <Section borderBox flex centered>

@@ -1,6 +1,6 @@
 import React from "react";
 import { Box, Link, Menu, MenuItem } from "../../ui/controls";
-import { GET_LEFT_MENU_ITEMS } from "../../gql/query";
+import { GET_LEFT_MENU_ITEMS } from "../../gql/query/left-menu";
 import { useQuery } from "@apollo/client";
 import { toast } from "react-hot-toast";
 import { LeftMenuElementsData } from "../../types/left-menu";

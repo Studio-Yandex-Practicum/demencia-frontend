@@ -5,14 +5,15 @@ import { ArticlePage, HomePage, NewsGridPage, DetailsPage } from "../pages";
 import UIKitPage from "../pages/ui-kit/ui-kit";
 import { Layout } from "../ui/controls";
 import PageHeader from "./page-header";
-import { Main } from "../ui/controls/layout";
+import { Main } from "../ui/controls";
 import PageFooter from "./page-footer";
 import GraphqlTestPage from "../pages/graphql/graphql";
 import { Toaster } from "react-hot-toast";
 import { Helmet } from "react-helmet";
-import { GET_META_SETTINGS } from "../gql/query";
 import { useQuery } from "@apollo/client";
 import { MetaSettingsData } from "../types/meta-settings";
+import { GET_META_SETTINGS } from "../gql/query/meta-settings";
+import { DEFAULT_SITE_NAME } from "../constants";
 
 const App: React.FC = () => {
   let { data: metaData } = useQuery<MetaSettingsData>(GET_META_SETTINGS, {
@@ -22,9 +23,8 @@ const App: React.FC = () => {
   if (!metaData) {
     metaData = {
       settings: {
-        id: "",
         metaDescription: "",
-        siteName: "",
+        siteName: DEFAULT_SITE_NAME,
       },
     };
   }

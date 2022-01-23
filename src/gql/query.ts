@@ -24,4 +24,14 @@ const GET_NEWS_ARTICLES = gql`
   }
 `;
 
-export { GET_LEFT_MENU_ITEMS, GET_NEWS_ARTICLES };
+const GET_META_SETTINGS = gql`
+  query getMetaSettings {
+    settings {
+      id
+      siteName
+      metaDescription
+    }
+  }
+`;
+
+export { GET_LEFT_MENU_ITEMS, GET_NEWS_ARTICLES, GET_META_SETTINGS };

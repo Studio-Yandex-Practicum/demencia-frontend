@@ -99,7 +99,7 @@ const NewsGridPage: React.FC = () => {
       />
 
       <MainTitle mb={10}>НОВОСТИ</MainTitle>
-      <Grid mt={10} zIndex={2}>
+      <Grid mt={10} zIndex={2} pl={5} pr={5}>
         {newsArticlesData.map((article) => {
           const date = new Date(article.createdAt || "");
           const formattedDate = date.toLocaleString("default", {

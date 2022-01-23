@@ -7,7 +7,6 @@ import { Link, Menu, MenuItem, Box } from "../../../../ui/controls";
 import { Text3 } from "../../../../ui/controls/typography";
 import { ScreenSize } from "../../../../ui/types";
 import { GET_LEFT_MENU_ITEMS } from "../../../../gql/query/left-menu";
-import cursor from "../../../../images/cursor_pointer.svg";
 
 const StyledMenu = styled(Menu)`
   position: relative;
@@ -19,15 +18,7 @@ const StyledMenu = styled(Menu)`
   }
 `;
 
-const StyledLink = styled.a<{
-  cursor?: string;
-}>`
-  text-decoration: none;
-  text-transform: uppercase;
-  cursor: url(${cursor}), auto;
-`;
-
-function textElipsis(t: string | undefined) {
+function textEllipsis(t: string | undefined) {
   if (t !== undefined && t.length > 20) {
     return `${t.substring(0, 20)}...`;
   }
@@ -75,15 +66,9 @@ const NavMenu: React.FC = () => {
     <StyledMenu vertical={true} gap={16} gapSmallScreen={12}>
       {items.map((item, index) => (
         <MenuItem key={index}>
-          {/(http(s?)):\/\//i.test(item.url) ? (
-            <StyledLink href={item.url} target="_blank">
-              <Text3>{textElipsis(item.name)}</Text3>
-            </StyledLink>
-          ) : (
-            <Link to={item.url}>
-              <Text3>{textElipsis(item.name)}</Text3>
-            </Link>
-          )}
+          <Link to={item.url}>
+            <Text3>{textEllipsis(item.name)}</Text3>
+          </Link>
         </MenuItem>
       ))}
     </StyledMenu>

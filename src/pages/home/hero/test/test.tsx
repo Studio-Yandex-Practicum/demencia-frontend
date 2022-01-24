@@ -58,23 +58,23 @@ const StyledButton = styled(Button)`
   }
 `;
 
-const DefaultCaption: React.FC = () => <Text3>Пройти тест</Text3>;
+const DefaultCaption: React.FC<{ title: string }> = ({ title }) => <>{title}</>;
 
 const Test: React.FC = () => {
   const { data, loading, error } = useQuery<SettingsData>(GET_SETTINGS);
 
   if (error) {
     toast.error(`Не удалось загрузить данные с сервера`, { id: "error" });
-    return <DefaultCaption />;
+    return <DefaultCaption title="Пройти тест" />;
   }
 
-  if (loading) return <Text3>Загрузка...</Text3>;
+  if (loading) return <DefaultCaption title="Загрузка..." />;
 
-  if (!data || !data.settings) return <DefaultCaption />;
+  if (!data || !data.settings) return <DefaultCaption title="Пройти тест" />;
 
   const buttonCaption = data.settings.mainSectionButtonLabel;
 
-  if (!buttonCaption.length) return <DefaultCaption />;
+  if (!buttonCaption.length) return <DefaultCaption title="Пройти тест" />;
 
   return (
     <StyledBox>

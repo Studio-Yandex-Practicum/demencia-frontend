@@ -17,10 +17,10 @@ const Actions = styled.div`
   width: 100vw;
   display: flex;
   align-items: center;
-  margin-top: 170px;
+  margin-top: -33px;
   margin-left: 8px;
   @media (max-width: ${ScreenSize.Large}px) {
-    margin-top: 185px;
+    margin-top: 0;
   }
   @media (max-width: ${ScreenSize.Medium}px) {
     justify-content: center;
@@ -37,9 +37,14 @@ const Actions = styled.div`
 `;
 
 const StyledBox = styled(Box)`
-  margin-top: 75px;
+  border: 2px solid red;
+  margin-top: 126px;
   max-width: 45vw;
+  min-height: 520px;
   position: relative;
+  @media (max-width: ${ScreenSize.Medium}px) {
+    margin-top: 60px;
+  }
 `;
 
 const StyledButton = styled(Button)`
@@ -53,14 +58,19 @@ const StyledButton = styled(Button)`
   }
 `;
 
+const StyledNavBox = styled(Box)`
+  min-height: 340px;
+  width: fit-content;
+`;
+
 const Test: React.FC = () => {
   return (
     <StyledBox>
       <GreenPuzzle />
-      <Box width="fit-content">
+      <StyledNavBox>
         <NavMenu />
-      </Box>
-      <Pazzles />
+        <Pazzles />
+      </StyledNavBox>
       <Box width="100%" height="100px" absolute top="0" left="0">
         <SmallCircle />
         <MediumCircle />

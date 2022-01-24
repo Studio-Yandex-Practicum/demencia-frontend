@@ -61,7 +61,7 @@ const NavMenu: React.FC = () => {
   if (!items.length) {
     return <Empty />;
   }
-
+  console.log(window.innerWidth);
   return (
     <StyledMenu vertical={true} gap={16} gapSmallScreen={12}>
       {items.map((item, index) => (

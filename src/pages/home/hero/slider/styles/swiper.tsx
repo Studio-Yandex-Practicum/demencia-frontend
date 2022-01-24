@@ -4,8 +4,7 @@ import { ScreenSize } from "../../../../../ui/types";
 
 const StyledSwiper = styled(Swiper)`
   height: auto;
-  max-height: 900px;
-  transform: translateY(-120px);
+  max-height: 100%;
   margin-left: 0 !important;
   margin-right: 0 !important;
   margin-bottom: -120px;

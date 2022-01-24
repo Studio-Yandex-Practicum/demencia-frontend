@@ -64,9 +64,7 @@ const StyledBox = styled(Box)`
 const StyledBgImage = styled.div<{
   url?: string;
 }>`
-  max-width: 905px;
-  width: 55vw;
-  height: 900px;
+  height: 100%;
   background: rgb(0, 0, 0);
   background-image: radial-gradient(
       circle,
@@ -76,9 +74,6 @@ const StyledBgImage = styled.div<{
     url(${(props) => props.url || defaultImage});
   background-size: cover;
   background-position: top;
-  @media (max-width: ${ScreenSize.Large}px) {
-    height: 800px;
-  }
   @media (max-width: ${ScreenSize.Medium}px) {
     width: 100%;
   }

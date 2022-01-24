@@ -53,11 +53,11 @@ export const Pazzles = styled.img.attrs((props) => ({
   height: auto;
   z-index: 301;
   position: relative;
-  left: 0;
-  top: 100px;
+  margin-top: 30%;
 
   @media screen and (max-width: 1600px) {
     width: 100px;
+    margin-top: 40%;
   }
 
   @media (max-width: ${ScreenSize.Medium}px) {

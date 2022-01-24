@@ -11,23 +11,21 @@ export const GreenPuzzle = styled.img.attrs((props) => ({
   src: props.src || greenPazzle,
   alt: props.alt || "",
 }))`
-  width: 100px;
+  width: 80px;
   height: auto;
   position: absolute;
   z-index: 300;
-  top: -192px;
-  right: 0;
-  margin-right: 18%;
+  top: -120px;
+  right: 20px;
 
   @media screen and (max-width: 1600px) {
     width: 65px;
-    top: -50px;
   }
 
   @media (max-width: ${ScreenSize.Medium}px) {
-    width: 70px;
-    right: -305px;
-    top: -170px;
+    width: 55px;
+    right: -220px;
+    top: -135px;
   }
   @media (max-width: ${ScreenSize.Small}px) {
     top: -106px;
@@ -40,8 +38,9 @@ export const GreenPuzzle = styled.img.attrs((props) => ({
     right: -39vw;
   }
   @media (max-width: ${ScreenSize.XXSmall}px) {
-    width: 40px;
-    right: -50vw;
+    width: 30px;
+    right: -87px;
+    top: -37px;
   }
 `;
 
@@ -61,8 +60,8 @@ export const Pazzles = styled.img.attrs((props) => ({
   }
 
   @media (max-width: ${ScreenSize.Medium}px) {
-    top: 20px;
-    left: calc(100% / 2 - 35px);
+    left: 50%;
+    margin-top: 20%;
   }
   @media (max-width: ${ScreenSize.Small}px) {
     left: 0;
@@ -105,8 +104,8 @@ export const SmallCircle = styled.img.attrs((props) => ({
   }
   @media (max-width: ${ScreenSize.Medium}px) {
     width: 80px;
-    top: -25px;
-    right: -42px;
+    top: 13px;
+    right: -60px;
   }
   @media (max-width: ${ScreenSize.Small}px) {
     width: 70px;
@@ -144,8 +143,8 @@ export const MediumCircle = styled.img.attrs((props) => ({
   }
   @media (max-width: ${ScreenSize.Medium}px) {
     width: 220px;
-    top: -77px;
-    right: -210px;
+    top: -34px;
+    right: -220px;
   }
   @media (max-width: ${ScreenSize.Small}px) {
     width: 185px;
@@ -179,12 +178,12 @@ export const BigCircle = styled.img.attrs((props) => ({
     right: 85px;
   }
   @media screen and (max-width: 1100px) {
-    right: 18px;
+    right: -15px;
   }
   @media (max-width: ${ScreenSize.Medium}px) {
     width: 365px;
-    top: -35px;
-    right: -234px;
+    top: 0;
+    right: -244px;
   }
   @media (max-width: ${ScreenSize.Small}px) {
     width: 330px;

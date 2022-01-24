@@ -9,7 +9,7 @@ import { ScreenSize } from "../../../../ui/types";
 
 const Wrapper = styled.div`
   position: absolute;
-  bottom: calc(100% / 2 - 175px / 0.65);
+  bottom: calc(100% / 2 - 160px / 0.65);
   z-index: 1;
   width: min(100% - 100px, 450px);
   left: 0;

@@ -5,7 +5,7 @@ import { toast } from "react-hot-toast";
 import { LeftMenuElementsData } from "../../../../types/left-menu";
 import { Link, Menu, MenuItem, Box } from "../../../../ui/controls";
 import { Text3 } from "../../../../ui/controls/typography";
-import { ScreenSize } from "../../../../ui/types";
+// import { ScreenSize } from "../../../../ui/types";
 import { GET_LEFT_MENU_ITEMS } from "../../../../gql/query/left-menu";
 
 const StyledMenu = styled(Menu)`
@@ -13,9 +13,6 @@ const StyledMenu = styled(Menu)`
   z-index: 400;
   top: 0;
   left: 0;
-  @media (max-width: ${ScreenSize.Medium}px) {
-    top: -30px;
-  }
 `;
 
 function textEllipsis(t: string | undefined) {
@@ -61,7 +58,7 @@ const NavMenu: React.FC = () => {
   if (!items.length) {
     return <Empty />;
   }
-  console.log(window.innerWidth);
+
   return (
     <StyledMenu vertical={true} gap={16} gapSmallScreen={12}>
       {items.map((item, index) => (

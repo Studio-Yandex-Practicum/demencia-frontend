@@ -12,6 +12,12 @@ const StyledSection = styled(Section)`
     margin-bottom: 0;
     transform: translateY(0);
   }
+  @media (max-width: ${ScreenSize.Small}px) {
+    margin-bottom: -200px;
+  }
+  @media (max-width: ${ScreenSize.XSmall}px) {
+    margin-bottom: -300px;
+  }
 `;
 
 const Hero: React.FC = () => {

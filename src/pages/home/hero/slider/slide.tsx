@@ -53,11 +53,8 @@ const StyledBox = styled(Box)`
     margin-right: 16px;
   }
   @media (max-width: ${ScreenSize.XSmall}px) {
-    margin: 8px 4px;
-  }
-  @media screen and (max-width: 365px) {
     margin: 0 4px;
-    bottom: 15px;
+    bottom: 22px;
   }
 `;
 
@@ -76,10 +73,10 @@ const StyledBgImage = styled.div<{
   background-position: top;
   @media (max-width: ${ScreenSize.Medium}px) {
     width: 100%;
+    height: 85vh;
   }
-  @media (max-width: ${ScreenSize.Small}px) {
-    max-width: 100%;
-    height: 85vw;
+  @media (max-width: ${ScreenSize.XSmall}px) {
+    background-position-y: -100px;
   }
 `;
 

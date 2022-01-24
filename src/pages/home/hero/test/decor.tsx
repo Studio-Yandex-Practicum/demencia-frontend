@@ -28,14 +28,14 @@ export const GreenPuzzle = styled.img.attrs((props) => ({
     top: -135px;
   }
   @media (max-width: ${ScreenSize.Small}px) {
-    top: -106px;
-    right: -240px;
+    top: -96px;
+    right: -226px;
     width: 55px;
   }
   @media (max-width: ${ScreenSize.XSmall}px) {
     width: 35px;
     top: -17px;
-    right: -39vw;
+    right: -150px;
   }
   @media (max-width: ${ScreenSize.XXSmall}px) {
     width: 30px;
@@ -60,18 +60,17 @@ export const Pazzles = styled.img.attrs((props) => ({
   }
 
   @media (max-width: ${ScreenSize.Medium}px) {
-    left: 50%;
     margin-top: 20%;
+    position: absolute;
+    right: 14vw;
   }
   @media (max-width: ${ScreenSize.Small}px) {
-    left: 0;
-    top: 47px;
     width: 90px;
   }
   @media (max-width: ${ScreenSize.XSmall}px) {
     width: 61px;
     left: calc(100% - 280px / 2);
-    top: 55px;
+    top: 100px;
   }
   @media (max-width: ${ScreenSize.XXSmall}px) {
     top: 48px;
@@ -110,12 +109,12 @@ export const SmallCircle = styled.img.attrs((props) => ({
   @media (max-width: ${ScreenSize.Small}px) {
     width: 70px;
     top: 26px;
-    left: 191px;
+    right: -75px;
   }
   @media (max-width: ${ScreenSize.XSmall}px) {
     width: 51px;
     top: 61px;
-    left: calc(100% - 41px / 2);
+    right: -50px;
   }
 `;
 
@@ -149,12 +148,11 @@ export const MediumCircle = styled.img.attrs((props) => ({
   @media (max-width: ${ScreenSize.Small}px) {
     width: 185px;
     top: -21px;
-    left: 221px;
   }
   @media (max-width: ${ScreenSize.XSmall}px) {
     width: 133px;
     top: 36px;
-    left: calc(100% - 18px / 2);
+    right: -140px;
   }
 `;
 
@@ -188,7 +186,6 @@ export const BigCircle = styled.img.attrs((props) => ({
   @media (max-width: ${ScreenSize.Small}px) {
     width: 330px;
     top: 10px;
-    left: 107px;
   }
   @media (max-width: ${ScreenSize.XSmall}px) {
     width: 218px;

@@ -10,8 +10,13 @@ import {
 } from "./decor";
 import { ScreenSize } from "../../../../ui/types";
 import { Button, Box } from "../../../../ui/controls";
+import { Text3 } from "../../../../ui/controls/typography";
 import NavMenu from "./nav-menu";
 import { StringValueNode } from "graphql";
+import { useQuery } from "@apollo/client";
+import { toast } from "react-hot-toast";
+import { SettingsData } from "../../../../types/settings";
+import { GET_SETTINGS } from "../../../../gql/query/settings";
 
 const Actions = styled.div`
   width: 100vw;
@@ -53,7 +58,24 @@ const StyledButton = styled(Button)`
   }
 `;
 
+const DefaultCaption: React.FC = () => <Text3>Пройти тест</Text3>;
+
 const Test: React.FC = () => {
+  const { data, loading, error } = useQuery<SettingsData>(GET_SETTINGS);
+
+  if (error) {
+    toast.error(`Не удалось загрузить данные с сервера`, { id: "error" });
+    return <DefaultCaption />;
+  }
+
+  if (loading) return <Text3>Загрузка...</Text3>;
+
+  if (!data || !data.settings) return <DefaultCaption />;
+
+  const buttonCaption = data.settings.mainSectionButtonLabel;
+
+  if (!buttonCaption.length) return <DefaultCaption />;
+
   return (
     <StyledBox>
       <GreenPuzzle />
@@ -68,7 +90,7 @@ const Test: React.FC = () => {
       </Box>
       <Actions>
         <StyledButton primary uppercase width={300} zIndex={310}>
-          Пройти тест
+          {buttonCaption}
         </StyledButton>
         <HalfCircle />
       </Actions>

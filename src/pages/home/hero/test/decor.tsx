@@ -16,10 +16,11 @@ export const GreenPuzzle = styled.img.attrs((props) => ({
   position: absolute;
   z-index: 300;
   top: -120px;
-  right: 20px;
+  right: 70px;
 
   @media screen and (max-width: 1600px) {
     width: 65px;
+    right: 30px;
   }
 
   @media (max-width: ${ScreenSize.Medium}px) {

@@ -4,7 +4,7 @@ import greenPuzzleImg from "../../images/article-green-puzzle.svg";
 import unsplashImg from "../../images/unsplash.jpg";
 import purpleSemicircleImg from "../../images/purple-semicircle.svg";
 import styled from "styled-components";
-import { Text1 } from "../../ui/controls/typography";
+import { Subtitle2, Text1 } from "../../ui/controls/typography";
 import { Link, Box } from "../../ui/controls";
 import { Section } from "../../ui/controls/layout";
 import { ScreenSize } from "../../ui/types";
@@ -200,34 +200,6 @@ const DescriptionCase = styled.div`
   max-width: 1440px;
 `;
 
-const DescriptionText = styled.p`
-  display: inline-block;
-  color: ${(p) => p.theme.colors.textAccent1};
-  font-size: 34px;
-  line-height: 1.1;
-  font-weight: 700;
-  font-style: normal;
-  max-width: 1150px;
-  margin: 32px 0 0 0;
-
-  @media (max-width: ${ScreenSize.Medium}px) {
-    font-size: 28px;
-  }
-
-  @media (max-width: ${ScreenSize.Small}px) {
-    font-size: 24px;
-  }
-
-  @media (max-width: ${ScreenSize.XSmall}px) {
-  }
-
-  @media (max-width: ${ScreenSize.XXSmall}px) {
-    margin-top: 0.5em;
-    font-size: 16px;
-    font-weight: 600;
-  }
-`;
-
 const ArticlePage: React.FC = () => {
   return (
     <>
@@ -248,11 +220,11 @@ const ArticlePage: React.FC = () => {
 
           <DescriptionCase>
             <PurpleSemicircle src={purpleSemicircleImg} alt="." />
-            <DescriptionText>
+            <Subtitle2 mt={4}>
               1 октября в рамках проекта Деменция.net благотворительного фонда
               «Память поколений» открылись корнеры по ранней диагностике
               когнитивных изменений.
-            </DescriptionText>
+            </Subtitle2>
           </DescriptionCase>
 
           <Box mt={4}>

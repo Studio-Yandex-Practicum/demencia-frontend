@@ -1,0 +1,17 @@
+<svg width="640" height="480" xmlns="http://www.w3.org/2000/svg">
+ <!-- Created with SVG Editor - http://github.com/mzalive/SVG Editor/ -->
+ <g>
+  <title>background</title>
+  <rect fill="#6f117a" id="canvas_background" height="482" width="642" y="-1" x="-1"/>
+  <g display="none" overflow="visible" y="0" x="0" height="100%" width="100%" id="canvasGrid">
+   <rect fill="url(#gridpattern)" stroke-width="0" y="0" x="0" height="100%" width="100%"/>
+  </g>
+ </g>
+ <g>
+  <title>Layer 1</title>
+  <ellipse ry="70" rx="70" id="svg_2" cy="238.453125" cx="383" stroke-width="1.5" stroke="#000" fill="#fff"/>
+  <rect id="svg_4" height="232" width="95" y="122.453125" x="288.5" stroke-width="1.5" fill="#6f117a"/>
+  <ellipse ry="50" rx="50" id="svg_5" cy="238.453126" cx="382.999997" stroke-width="1.5" fill="#6f117a"/>
+  <text font-style="normal" font-weight="bold" xml:space="preserve" text-anchor="start" font-family="'Courier New', Courier, monospace" font-size="24" id="svg_3" y="246.5" x="238.28125" stroke-width="0" stroke="#000" fill="#ffffff">Загрузка...</text>
+ </g>
+</svg>

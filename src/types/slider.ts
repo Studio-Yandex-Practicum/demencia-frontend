@@ -1,0 +1,14 @@
+export interface Slider {
+  id: string;
+  createdAt: string;
+  updatedAt: string;
+  isActive: boolean;
+  title: string;
+  image: string;
+  url: string;
+  urlLabel: string;
+}
+
+export interface SliderData {
+  sliders: Slider[];
+}

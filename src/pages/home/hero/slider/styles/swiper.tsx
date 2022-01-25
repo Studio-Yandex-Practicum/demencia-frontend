@@ -3,7 +3,7 @@ import { Swiper } from "swiper/react";
 import { ScreenSize } from "../../../../../ui/types";
 import { Container, Box } from "../../../../../ui/controls";
 import whiteHalfCircle from "../../../../../images/test_halfcircle_white.svg";
-import defaultImage from "../../../../../images/slider-default-image.png";
+import defaultImage from "../../../../../images/slider-default.svg";
 
 const StyledSwiper = styled(Swiper)`
   height: auto;

@@ -12,6 +12,9 @@ import { ScreenSize } from "../../../../ui/types";
 import { Button, Box } from "../../../../ui/controls";
 import NavMenu from "./nav-menu";
 import { StringValueNode } from "graphql";
+import { useQuery } from "@apollo/client";
+import { SettingsData } from "../../../../types/settings";
+import { GET_SETTINGS } from "../../../../gql/query/settings";
 
 const Actions = styled.div`
   width: 100vw;
@@ -68,7 +71,20 @@ const StyledNavBox = styled(Box)`
   }
 `;
 
+const DefaultCaption: React.FC<{ title: string }> = ({ title }) => <>{title}</>;
+
 const Test: React.FC = () => {
+  const { data } = useQuery<SettingsData>(GET_SETTINGS, {
+    fetchPolicy: "cache-first",
+  });
+
+  if (!data || !data.settings.mainSectionButtonLabel)
+    return <DefaultCaption title="Пройти тест" />;
+
+  const buttonCaption = data.settings.mainSectionButtonLabel;
+
+  if (!buttonCaption.length) return <DefaultCaption title="Пройти тест" />;
+
   return (
     <StyledBox>
       <GreenPuzzle />
@@ -83,7 +99,7 @@ const Test: React.FC = () => {
       </Box>
       <Actions>
         <StyledButton primary uppercase width={300} zIndex={310}>
-          Пройти тест
+          {buttonCaption}
         </StyledButton>
         <HalfCircle />
       </Actions>

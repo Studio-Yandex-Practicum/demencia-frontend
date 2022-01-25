@@ -1,7 +1,7 @@
 import { gql } from "@apollo/client";
 
 const GET_SETTINGS = gql`
-  query getMetaSettings {
+  query getSettings {
     settings {
       siteName
       copyright

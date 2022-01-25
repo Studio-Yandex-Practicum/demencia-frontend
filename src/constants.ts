@@ -1,2 +1,2 @@
 export const API_URL = "http://dev-demencia.tk/graphql/";
-export const MEDIA_BASE_URL = "http://dev-demencia.tk/media/";
+export const DEFAULT_SITE_NAME = "Память поколений";

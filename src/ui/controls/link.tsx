@@ -49,6 +49,8 @@ export const Link = styled(
     borderSize,
     borderColor,
     level,
+    to,
+    children,
     ...rest
   }: ThemeProps<DefaultTheme> &
     FontLevelProps &
@@ -57,7 +59,16 @@ export const Link = styled(
     TextUppercaseProps &
     BorderBottomOnHoverProps &
     LinkProps &
-    React.RefAttributes<HTMLAnchorElement>) => <RouterLink {...rest} />
+    React.RefAttributes<HTMLAnchorElement>) =>
+    /(http(s?)):\/\//i.test(to.toString()) ? (
+      <a href={to.toString()} target="_blank" {...rest}>
+        {children}
+      </a>
+    ) : (
+      <RouterLink to={to} {...rest}>
+        {children}
+      </RouterLink>
+    )
 ).attrs(
   (
     props: ThemeProps<DefaultTheme> &

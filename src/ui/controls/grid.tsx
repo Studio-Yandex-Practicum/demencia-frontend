@@ -10,6 +10,7 @@ const Grid = styled.div`
   grid-template-columns: repeat(auto-fit, 456px);
   justify-content: center;
   grid-gap: 40px;
+  box-sizing: border-box;
 
   @media screen and (max-width: ${ScreenSize.Large}px) {
     grid-template-columns: repeat(auto-fit, 420px);
@@ -28,6 +29,8 @@ const Grid = styled.div`
   @media screen and (max-width: ${ScreenSize.XSmall}px) {
     grid-template-columns: repeat(auto-fit, minmax(280px, 360px));
     gap: 20px;
+    padding-left: 0;
+    padding-right: 0;
   }
 `;
 

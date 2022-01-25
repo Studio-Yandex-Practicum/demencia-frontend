@@ -1,9 +1,9 @@
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 import React from "react";
 import styled from "styled-components";
 import { ScreenSize } from "../ui/types";
 import { Subtitle3, Text3 } from "../ui/controls/typography";
-import { Box, LinkButton } from "../ui/controls";
+import { Box, Link, LinkButton } from "../ui/controls";
 
 const StyledCard = styled.div`
   margin: 0;
@@ -16,6 +16,7 @@ const StyledCard = styled.div`
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.25), 0 5px 5px rgba(0, 0, 0, 0.22);
   transition: all 1s ease;
   max-width: 100%;
+  width: 100%;
   height: 592px;
   padding: 16px;
 
@@ -33,12 +34,15 @@ const StyledCard = styled.div`
     & {
       height: 500px;
     }
+    &:hover {
+      transform: scale(1.05);
+    }
   }
 
   @media (max-width: ${ScreenSize.XSmall}px) {
     & {
+      width: 92%;
       height: 430px;
-      margin: 0 10px 0 10px;
     }
     &:hover {
       transform: scale(1.05);
@@ -80,12 +84,12 @@ const StyledCard = styled.div`
 `;
 
 interface CardProps {
-  imageSource?: string;
-  cardHeading?: string;
+  imageSource: string;
+  cardHeading: string;
   cardText?: string;
   cardDateTime?: string;
-  cardDateTimeText?: string;
-  cardLinkTo?: string;
+  cardDateTimeText: string;
+  cardLinkTo: string;
 }
 
 const Card: React.FC<CardProps> = ({
@@ -109,7 +113,11 @@ const Card: React.FC<CardProps> = ({
         <time className="card__date" dateTime={cardDateTime}>
           {cardDateTimeText}
         </time>
-        <Link to={cardLinkTo || ""}>
+        <Link
+          zoomTextOnHover={false}
+          borderBottomOnHover={false}
+          to={cardLinkTo}
+        >
           <LinkButton>подробнее</LinkButton>
         </Link>
       </Box>

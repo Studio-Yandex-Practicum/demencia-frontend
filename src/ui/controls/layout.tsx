@@ -15,6 +15,7 @@ interface SectionProps extends ThemeProps, BoxProps {
   flex?: boolean;
   centered?: boolean;
   zIndex?: number;
+  direction?: string;
   backgroundColor?: PaletteColor;
   borderBox?: boolean;
 }
@@ -53,7 +54,8 @@ export const Section = styled.section<SectionProps>`
   box-sizing: ${(p) => (p.borderBox ? "border-box" : "content-box")};
   ${getBoxStyles};
   display: ${(p) => (p.flex ? "flex" : "block")};
-  flex-direction: ${(p) => (p.flex ? "column" : undefined)};
+  flex-direction: ${(p) =>
+    p.flex ? (p.direction ? p.direction : "column") : undefined};
   align-items: ${(p) => (p.centered ? "center" : "start")};
   z-index: ${(p) => (p.zIndex ? p.zIndex : 0)};
   ${(p) =>

@@ -17,7 +17,7 @@ import { LogoBlock } from "./logo";
 import { Overlay } from "./overlay";
 import { Sider } from "./sider";
 import Grid from "./grid";
-import { MainTitle } from "./typography";
+import { MainTitle, Subtitle1 } from "./typography";
 
 export {
   Layout,
@@ -42,4 +42,5 @@ export {
   Sider,
   Grid,
   MainTitle,
+  Subtitle1,
 };

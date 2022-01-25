@@ -6,9 +6,14 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import SwiperButton from "./styles/navigation";
-import StyledSwiper from "./styles/swiper";
+import { StyledSwiper, StyledBgImage } from "./styles/swiper";
 import Slide from "./slide";
 import { ScreenSize } from "../../../../ui/types";
+import { useQuery } from "@apollo/client";
+import { toast } from "react-hot-toast";
+import { SliderData } from "../../../../types/slider";
+import { GET_SLIDER_ITEMS } from "../../../../gql/query/slider";
+import loadingImage from "../../../../images/slider-loading.svg";
 
 SwiperCore.use([Autoplay, Pagination, Navigation]);
 
@@ -25,9 +30,42 @@ function textEllipsis(t: string | undefined) {
   return t;
 }
 
+const EmptySlide: React.FC = () => (
+  <StyledSwiper>
+    <SwiperSlide>
+      <Slide
+        imageSource=""
+        text={textEllipsis("Очень скоро здесь появится полезная информация.")}
+        linkTitle=""
+        linkTo=""
+      />
+    </SwiperSlide>
+  </StyledSwiper>
+);
+
 const Slider: React.FC = () => {
   const prevRef = useRef<HTMLDivElement>(null);
   const nextRef = useRef<HTMLDivElement>(null);
+  const { data, loading, error } = useQuery<SliderData>(GET_SLIDER_ITEMS, {
+    fetchPolicy: "cache-first",
+  });
+
+  if (loading) return <StyledBgImage url={loadingImage} />;
+
+  if (error) {
+    toast.error(`Не удалось загрузить меню с сервера`, { id: "error" });
+    return <EmptySlide />;
+  }
+
+  if (!data || !data.sliders) {
+    return <EmptySlide />;
+  }
+
+  const items = data.sliders.filter((el) => el && el.isActive);
+
+  if (!items.length) {
+    return <EmptySlide />;
+  }
 
   return (
     <StyledSwiper
@@ -53,35 +91,16 @@ const Slider: React.FC = () => {
         }
       }}
     >
-      <SwiperSlide>
-        <Slide
-          imageSource="http://dev-demencia.tk/media/news/c689b3e21f25887.jpg"
-          text={textEllipsis("Первая новость, картина 1280х960, 60 символов.")}
-        />
-      </SwiperSlide>
-      <SwiperSlide>
-        <Slide
-          imageSource="https://cdn.suwalls.com/wallpapers/nature/snowy-rocky-mountains-36084-1920x1080.jpg"
-          text={textEllipsis(
-            "Еще одна новость, картинка 1920х1080. Текста тут чуть больше, 80 символов."
-          )}
-        />
-      </SwiperSlide>
-      <SwiperSlide>
-        <Slide
-          text={textEllipsis(
-            "Третья новость, картинка 1680х1634. Текста тут еще больше, 135 символов. Проверка размеров контейнера под разный контент."
-          )}
-        />
-      </SwiperSlide>
-      <SwiperSlide>
-        <Slide
-          imageSource="https://img2.goodfon.ru/original/640x480/2/9f/gory-sneg-siniy.jpg"
-          text={textEllipsis(
-            "Четвертая новость, картинка 640x480. 115 символов. Проверка размеров контейнера под разный контент."
-          )}
-        />
-      </SwiperSlide>
+      {items.map((item) => (
+        <SwiperSlide key={item.id}>
+          <Slide
+            imageSource={item.image}
+            text={textEllipsis(item.title)}
+            linkTo={item.url}
+            linkTitle={item.urlLabel}
+          />
+        </SwiperSlide>
+      ))}
 
       <div className="swiper-pagination" />
       <SwiperButton type="left" ref={prevRef} />

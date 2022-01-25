@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import defaultImage from "../../../../images/slider-default-image.png";
+import defaultImage from "../../../../images/slider-default.svg";
 import whiteHalfCircle from "../../../../images/test_halfcircle_white.svg";
 import { Container, Box, Link } from "../../../../ui/controls";
 import { ContainerSize, TextColor } from "../../../../ui/types";
@@ -88,9 +88,15 @@ interface SlideProps {
   imageSource?: string;
   text?: string;
   linkTo?: string;
+  linkTitle?: string;
 }
 
-const Slide: React.FC<SlideProps> = ({ imageSource, text, linkTo }) => {
+const Slide: React.FC<SlideProps> = ({
+  imageSource,
+  text,
+  linkTo,
+  linkTitle,
+}) => {
   return (
     <>
       <Wrapper>
@@ -107,7 +113,7 @@ const Slide: React.FC<SlideProps> = ({ imageSource, text, linkTo }) => {
             <StyledBox absolute bottom="10px">
               <Link to={linkTo || ""}>
                 <Subtitle3 uppercase={false} textColor={TextColor.Secondary}>
-                  Подробнее...
+                  {linkTitle || "Подробнее..."}
                 </Subtitle3>
               </Link>
             </StyledBox>

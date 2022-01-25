@@ -9,7 +9,7 @@ import { ScreenSize } from "../../../../ui/types";
 
 const Wrapper = styled.div`
   position: absolute;
-  bottom: calc(100% / 2 - 175px / 0.65);
+  bottom: calc(100% / 2 - 160px / 0.65);
   z-index: 1;
   width: min(100% - 100px, 450px);
   left: 0;
@@ -53,20 +53,15 @@ const StyledBox = styled(Box)`
     margin-right: 16px;
   }
   @media (max-width: ${ScreenSize.XSmall}px) {
-    margin: 8px 4px;
-  }
-  @media screen and (max-width: 365px) {
     margin: 0 4px;
-    bottom: 15px;
+    bottom: 22px;
   }
 `;
 
 const StyledBgImage = styled.div<{
   url?: string;
 }>`
-  max-width: 905px;
-  width: 55vw;
-  height: 900px;
+  height: 100%;
   background: rgb(0, 0, 0);
   background-image: radial-gradient(
       circle,
@@ -76,15 +71,12 @@ const StyledBgImage = styled.div<{
     url(${(props) => props.url || defaultImage});
   background-size: cover;
   background-position: top;
-  @media (max-width: ${ScreenSize.Large}px) {
-    height: 800px;
-  }
   @media (max-width: ${ScreenSize.Medium}px) {
     width: 100%;
+    height: 85vh;
   }
-  @media (max-width: ${ScreenSize.Small}px) {
-    max-width: 100%;
-    height: 85vw;
+  @media (max-width: ${ScreenSize.XSmall}px) {
+    background-position-y: -100px;
   }
 `;
 

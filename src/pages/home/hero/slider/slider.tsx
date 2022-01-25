@@ -46,14 +46,12 @@ const EmptySlide: React.FC = () => (
 const Slider: React.FC = () => {
   const prevRef = useRef<HTMLDivElement>(null);
   const nextRef = useRef<HTMLDivElement>(null);
-  const { data, loading, error } = useQuery<SliderData>(GET_SLIDER_ITEMS, {
-    fetchPolicy: "cache-first",
-  });
+  const { data, loading, error } = useQuery<SliderData>(GET_SLIDER_ITEMS);
 
   if (loading) return <StyledBgImage url={loadingImage} />;
 
   if (error) {
-    toast.error(`Не удалось загрузить меню с сервера`, { id: "error" });
+    toast.error(`Не удалось загрузить слайды с сервера`, { id: "error" });
     return <EmptySlide />;
   }
 

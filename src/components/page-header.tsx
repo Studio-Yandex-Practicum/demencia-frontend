@@ -37,9 +37,6 @@ const DefaultMenu: React.FC<{ vertical?: boolean }> = (props) => {
       <MenuItem>
         <Link to="/#about">О фонде</Link>
       </MenuItem>
-      <MenuItem>
-        <Link to="/#about">Контакты</Link>
-      </MenuItem>
     </Menu>
   );
 };
@@ -64,7 +61,9 @@ const NavMenu: React.FC<{ vertical?: boolean }> = (props) => {
     return <DefaultMenu />;
   }
 
-  const items = data.mainMenuElements.filter((el) => el && el.isActive);
+  const items = data.mainMenuElements.filter(
+    (el) => el && el.isActive && el.name !== ""
+  );
 
   if (!items.length) {
     return <DefaultMenu />;

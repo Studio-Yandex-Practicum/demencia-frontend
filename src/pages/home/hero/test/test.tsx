@@ -13,7 +13,6 @@ import { Button, Box } from "../../../../ui/controls";
 import NavMenu from "./nav-menu";
 import { StringValueNode } from "graphql";
 import { useQuery } from "@apollo/client";
-import { toast } from "react-hot-toast";
 import { SettingsData } from "../../../../types/settings";
 import { GET_SETTINGS } from "../../../../gql/query/settings";
 
@@ -64,7 +63,6 @@ const StyledButton = styled(Button)`
   }
 `;
 
-const DefaultCaption: React.FC<{ title: string }> = ({ title }) => <>{title}</>;
 const StyledNavBox = styled(Box)`
   min-height: 340px;
   width: fit-content;
@@ -73,17 +71,15 @@ const StyledNavBox = styled(Box)`
   }
 `;
 
+const DefaultCaption: React.FC<{ title: string }> = ({ title }) => <>{title}</>;
+
 const Test: React.FC = () => {
-  const { data, loading, error } = useQuery<SettingsData>(GET_SETTINGS);
+  const { data } = useQuery<SettingsData>(GET_SETTINGS, {
+    fetchPolicy: "cache-first",
+  });
 
-  if (error) {
-    toast.error(`Не удалось загрузить данные с сервера`, { id: "error" });
+  if (!data || !data.settings.mainSectionButtonLabel)
     return <DefaultCaption title="Пройти тест" />;
-  }
-
-  if (loading) return <DefaultCaption title="Загрузка..." />;
-
-  if (!data || !data.settings) return <DefaultCaption title="Пройти тест" />;
 
   const buttonCaption = data.settings.mainSectionButtonLabel;
 

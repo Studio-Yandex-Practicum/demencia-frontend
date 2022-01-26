@@ -20,6 +20,9 @@ const StyledSection = styled(Section)<{
 }>`
   min-height: ${(props) => props.minHeight};
   height: ${(props) => props.height};
+  @media (max-width: ${ScreenSize.XSmall}px) {
+    height: 640px;
+  }
 `;
 
 const StyledSwiper = styled(Container)`
@@ -27,23 +30,34 @@ const StyledSwiper = styled(Container)`
   bottom: 0;
 `;
 
+const StyledTitle = styled(Title)`
+  @media (max-width: ${ScreenSize.XSmall}px) {
+    font-size: 30px;
+  }
+`;
+
+const StyledText3 = styled(Text3)`
+  font-size: 18px !important;
+`;
+
 const News: React.FC = () => {
   return (
-    <StyledSection flex centered height="92vh">
+    <StyledSection flex centered height="735px">
       <StyledSection
         flex
         centered
         pt={3}
+        pr={3}
         backgroundColor={PaletteColor.LightGreen}
         borderBox
         minHeight="60%"
       >
         <StyledContainer size={ContainerSize.Large}>
           <Box>
-            <Title>Что нового?</Title>
+            <StyledTitle>Что нового?</StyledTitle>
           </Box>
           <Box mb={5}>
-            <Text3>Перейти к ленте новостей</Text3>
+            <StyledText3>Перейти к ленте новостей</StyledText3>
           </Box>
         </StyledContainer>
       </StyledSection>

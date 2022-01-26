@@ -17,7 +17,7 @@ const Slider: React.FC = () => {
   return (
     <StyledSwiper
       slidesPerView={5}
-      spaceBetween={10}
+      spaceBetween={15}
       breakpoints={{
         320: {
           slidesPerView: 1,
@@ -26,18 +26,18 @@ const Slider: React.FC = () => {
           slidesPerView: 2,
         },
         640: {
-          slidesPerView: 1,
+          slidesPerView: 2,
         },
-        960: {
+        800: {
           slidesPerView: 4,
-          spaceBetween: 5,
+          spaceBetween: 10,
         },
         1215: {
           slidesPerView: 5,
-          spaceBetween: 10,
+          spaceBetween: 15,
         },
       }}
-      centeredSlides={true}
+      centeredSlides={false}
       roundLengths={true}
       loop={true}
       loopAdditionalSlides={10}
@@ -58,7 +58,7 @@ const Slider: React.FC = () => {
       <SwiperSlide key={12}>
         <Slide
           imageSource={defaultImage}
-          slideTitle="Заголовок новости"
+          slideTitle="Заголовок новости1"
           slideText="{article.subTitle}"
           linkTo="/article"
           linkTitle="Article"
@@ -67,7 +67,7 @@ const Slider: React.FC = () => {
       <SwiperSlide key={32}>
         <Slide
           imageSource={defaultImage}
-          slideTitle="Заголовок новости"
+          slideTitle="Заголовок новости2"
           slideText="{article.subTitle}"
           linkTo="/article"
           linkTitle="Article"
@@ -76,7 +76,7 @@ const Slider: React.FC = () => {
       <SwiperSlide key={42}>
         <Slide
           imageSource={defaultImage}
-          slideTitle="Заголовок новости"
+          slideTitle="Заголовок новости3"
           slideText="{article.subTitle}"
           linkTo="/article"
           linkTitle="Article"
@@ -85,7 +85,7 @@ const Slider: React.FC = () => {
       <SwiperSlide key={432}>
         <Slide
           imageSource={defaultImage}
-          slideTitle="Заголовок новости"
+          slideTitle="Заголовок новости4"
           slideText="{article.subTitle}"
           linkTo="/article"
           linkTitle="Article"
@@ -94,7 +94,7 @@ const Slider: React.FC = () => {
       <SwiperSlide key={442}>
         <Slide
           imageSource={defaultImage}
-          slideTitle="Заголовок новости"
+          slideTitle="Заголовок новости5"
           slideText="{article.subTitle}"
           linkTo="/article"
           linkTitle="Article"

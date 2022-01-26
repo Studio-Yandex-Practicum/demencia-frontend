@@ -3,6 +3,7 @@ import React from "react";
 import styled from "styled-components";
 import { Subtitle3, Text3 } from "../../../ui/controls/typography";
 import { Box, Link, LinkButton } from "../../../ui/controls";
+import { ScreenSize } from "../../../ui/types";
 
 const StyledSlide = styled.div`
   background-color: #fff;
@@ -16,6 +17,9 @@ const StyledSlide = styled.div`
   &:hover {
     transform: scale(1.1);
   }
+  @media (max-width: ${ScreenSize.XSmall}px) {
+    align-items: center;
+  }
 `;
 
 const StyledImage = styled.img`
@@ -23,6 +27,9 @@ const StyledImage = styled.img`
   transition: all 1s ease;
   width: 100%;
   flex-shrink: 0;
+  @media (max-width: ${ScreenSize.XSmall}px) {
+    width: 200px;
+  }
 `;
 
 const StyledBox = styled(Box)`

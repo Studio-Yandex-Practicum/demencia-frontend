@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import { SwiperSlide } from "swiper/react";
 import SwiperCore, { Autoplay, Navigation } from "swiper";
 import "swiper/css";
@@ -10,13 +10,40 @@ import defaultImage from "../../../images/default-image.png";
 
 SwiperCore.use([Autoplay, Navigation]);
 
+interface SWidth {
+  width: number;
+}
+
 const Slider: React.FC = () => {
   const prevRef = useRef<HTMLDivElement>(null);
   const nextRef = useRef<HTMLDivElement>(null);
+  const sliderRef = useRef<HTMLDivElement>(null);
+  const viewportWidth = window.innerWidth;
+  const [width, setWidth] = useState<SWidth>({
+    width: viewportWidth,
+  });
+
+  const getWidth = () => {
+    const newWidth = sliderRef.current.clientWidth;
+    setWidth(newWidth);
+  };
+
+  useEffect(() => {
+    getWidth();
+  }, [width]);
+
+  useEffect(() => {
+    window.addEventListener("resize", getWidth);
+  }, []);
+
+  // window.addEventListener("resize", () =>
+  //   setScreenWidth({ width: viewportWidth })
+  // );
 
   return (
     <StyledSwiper
-      slidesPerView={5}
+      ref={sliderRef}
+      slidesPerView={screenWidth.width < +1200 ? 3 : 5}
       spaceBetween={10}
       centeredSlides={true}
       roundLengths={true}

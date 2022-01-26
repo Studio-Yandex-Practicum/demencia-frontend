@@ -21,6 +21,7 @@ interface BoxStyleProps extends BoxProps {
   width?: string;
   height?: string;
   flex?: boolean;
+  column?: boolean;
   between?: boolean;
   marginTopAuto?: boolean;
   absolute?: boolean;
@@ -80,6 +81,7 @@ export const getBoxStyles = (p: BoxStyleProps): string => {
 
 export const Box = styled.div<BoxStyleProps>`
   display: ${(p) => (p.flex ? "flex" : "block")};
+  flex-direction: ${(p) => (p.column ? "column" : "")};
   justify-content: ${(p) => (p.between ? "space-between" : "")};
   box-sizing: border-box;
   max-width: ${(p) =>

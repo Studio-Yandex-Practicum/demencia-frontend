@@ -1,11 +1,12 @@
 import React from "react";
 import Hero from "./hero/hero";
+import InfoSection from "./info-section/info-section";
 
 const HomePage: React.FC = () => {
   return (
     <>
       <Hero />
-      <div>Info block</div>
+      <InfoSection />
       <div>News block</div>
       <div>Map block</div>
       <div>About block</div>

@@ -2,6 +2,7 @@ import styled from "styled-components";
 import slideLeft from "../../../../images/slid-left.svg";
 import slideRight from "../../../../images/slid-right.svg";
 import cursor from "../../../../images/cursor_pointer.svg";
+import { ScreenSize } from "../../../../ui/types";
 
 const SwiperButton = styled.div<{
   type?: string;
@@ -13,7 +14,7 @@ const SwiperButton = styled.div<{
   background-size: contain;
   z-index: 1000;
   position: absolute;
-  ${({ type }) => (type === "left" ? "left: 0;" : "right: 0;")}
+  ${({ type }) => (type === "left" ? "left: 10px;" : "right: 10px;")}
   top: 50%;
   width: 50px;
   height: 50px;
@@ -24,6 +25,9 @@ const SwiperButton = styled.div<{
   &.disabled {
     opacity: 0.35;
     pointer-events: none;
+  }
+  @media (max-width: ${ScreenSize.XSmall}px) {
+    ${({ type }) => (type === "left" ? "left: 0;" : "right: 0;")}
   }
 `;
 

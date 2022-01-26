@@ -17,24 +17,25 @@ const Slider: React.FC = () => {
   return (
     <StyledSwiper
       slidesPerView={5}
-      spaceBetween={15}
+      spaceBetween={30}
       breakpoints={{
-        320: {
+        300: {
           slidesPerView: 1,
         },
-        480: {
+        750: {
           slidesPerView: 2,
         },
-        640: {
-          slidesPerView: 2,
+        1024: {
+          slidesPerView: 3,
+          spaceBetween: 20,
         },
-        800: {
+        1300: {
           slidesPerView: 4,
-          spaceBetween: 10,
+          spaceBetween: 25,
         },
-        1215: {
+        1920: {
           slidesPerView: 5,
-          spaceBetween: 15,
+          spaceBetween: 30,
         },
       }}
       centeredSlides={false}

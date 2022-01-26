@@ -3,14 +3,16 @@ import styled from "styled-components";
 import { Section } from "../../../ui/controls/layout";
 import { Container, Box } from "../../../ui/controls";
 import { ContainerSize, PaletteColor, ScreenSize } from "../../../ui/types";
-import { BackgroundColor } from "../../../ui/types/background-color.enum";
 import { Title, Text3 } from "../../../ui/controls/typography";
 import Slider from "./slider";
 
 const StyledContainer = styled(Container)`
   align-items: flex-end;
-  @media (max-width: ${ScreenSize.XSmall}px) {
+  align-self: end;
+  margin-right: 6vw;
+  @media (max-width: ${ScreenSize.Small}px) {
     align-items: center;
+    margin-right: 0;
   }
 `;
 
@@ -20,14 +22,32 @@ const StyledSection = styled(Section)<{
 }>`
   min-height: ${(props) => props.minHeight};
   height: ${(props) => props.height};
+  @media (max-width: ${ScreenSize.Large}px) {
+    height: 680px;
+  }
+  @media (max-width: ${ScreenSize.Medium}px) {
+    padding-top: 0;
+    height: 620px;
+  }
+  @media (max-width: ${ScreenSize.Small}px) {
+    height: 540px;
+  }
   @media (max-width: ${ScreenSize.XSmall}px) {
-    height: 640px;
+    height: 500px;
+  }
+  @media (max-width: ${ScreenSize.XXSmall}px) {
+    height: 380px;
   }
 `;
 
-const StyledSwiper = styled(Container)`
-  position: absolute;
-  bottom: 0;
+const StyledBox = styled(Box)`
+  @media (max-width: ${ScreenSize.Medium}px) {
+    padding-bottom: 48px;
+  }
+  @media (max-width: ${ScreenSize.Small}px) {
+    padding: 16px 56px;
+    width: 100%;
+  }
 `;
 
 const StyledTitle = styled(Title)`
@@ -50,7 +70,7 @@ const News: React.FC = () => {
         pr={3}
         backgroundColor={PaletteColor.LightGreen}
         borderBox
-        minHeight="60%"
+        minHeight="90%"
       >
         <StyledContainer size={ContainerSize.Large}>
           <Box>
@@ -61,11 +81,18 @@ const News: React.FC = () => {
           </Box>
         </StyledContainer>
       </StyledSection>
-      <StyledSwiper size={ContainerSize.Large} bgColor={BackgroundColor.Alt1}>
-        <Box pt={2} pl={2} pb={2} pr={2}>
-          <Slider />
-        </Box>
-      </StyledSwiper>
+      <StyledBox
+        width="calc(100% - 48px)"
+        pt={6}
+        pl={12}
+        pb={12}
+        pr={12}
+        backgroundColor={PaletteColor.DarkPurple}
+        absolute
+        bottom="0"
+      >
+        <Slider />
+      </StyledBox>
     </StyledSection>
   );
 };

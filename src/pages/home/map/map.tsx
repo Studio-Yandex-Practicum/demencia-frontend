@@ -4,30 +4,54 @@ import { Title, Subtitle4 } from "../../../ui/controls/typography";
 import { Box } from "../../../ui/controls";
 import { Section } from "../../../ui/controls/layout";
 import { ScreenSize } from "../../../ui/types";
-import cursor from "../../../images/cursor_pointer.svg";
 import interactiveMap from "../../../images/map.svg";
 
-// const StyledImage = styled.svg.attrs((props) => ({
-//   src: props.src || interactiveMap,
-//   alt: props.alt || "",
-// }))`
-//   width: 100%;
-//   cursor: url(${cursor}), auto;
-//   pointer-events: all;
-// `;
+const StyledTitle = styled(Title)`
+  @media (max-width: ${ScreenSize.Medium}px) {
+    font-size: 30px;
+  }
+  @media (max-width: ${ScreenSize.Small}px) {
+    font-size: 23px;
+  }
+`;
+
+const StyledText = styled(Subtitle4)`
+  @media (max-width: ${ScreenSize.Small}px) {
+    font-size: 12px;
+  }
+`;
+
+const TextWrapper = styled(Box)`
+  @media (max-width: ${ScreenSize.Small}px) {
+    margin-left: 32px;
+  }
+  @media (max-width: ${ScreenSize.XSmall}px) {
+    margin: 0;
+  }
+`;
+
+const MapWrapper = styled(Box)`
+  @media (max-width: ${ScreenSize.Small}px) {
+    margin-left: 32px;
+    margin-right: 32px;
+  }
+  @media (max-width: ${ScreenSize.XSmall}px) {
+    margin: 0;
+  }
+`;
 
 const Map: React.FC = () => {
   return (
-    <Section>
-      <Box ml={6}>
-        <Title>куда идти?</Title>
-      </Box>
-      <Box ml={6}>
-        <Subtitle4>карта центров профилактики</Subtitle4>
-      </Box>
-      <Box ml={6} mr={6}>
+    <Section mt={4}>
+      <TextWrapper ml={6}>
+        <StyledTitle>куда идти?</StyledTitle>
+      </TextWrapper>
+      <TextWrapper ml={6}>
+        <StyledText>карта центров профилактики</StyledText>
+      </TextWrapper>
+      <MapWrapper ml={6} mr={6}>
         <object type="image/svg+xml" data={interactiveMap} />
-      </Box>
+      </MapWrapper>
     </Section>
   );
 };

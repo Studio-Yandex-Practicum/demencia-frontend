@@ -7,13 +7,14 @@ import { ScreenSize } from "../../../ui/types";
 import cursor from "../../../images/cursor_pointer.svg";
 import interactiveMap from "../../../images/map.svg";
 
-const StyledImage = styled.img.attrs((props) => ({
-  src: props.src || interactiveMap,
-  alt: props.alt || "",
-}))`
-  width: 100%;
-  cursor: url(${cursor}), auto;
-`;
+// const StyledImage = styled.svg.attrs((props) => ({
+//   src: props.src || interactiveMap,
+//   alt: props.alt || "",
+// }))`
+//   width: 100%;
+//   cursor: url(${cursor}), auto;
+//   pointer-events: all;
+// `;
 
 const Map: React.FC = () => {
   return (
@@ -25,7 +26,7 @@ const Map: React.FC = () => {
         <Subtitle4>карта центров профилактики</Subtitle4>
       </Box>
       <Box ml={6} mr={6}>
-        <StyledImage />
+        <object type="image/svg+xml" data={interactiveMap} />
       </Box>
     </Section>
   );

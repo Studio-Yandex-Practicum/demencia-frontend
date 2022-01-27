@@ -46,12 +46,12 @@ export const GreenPuzzle = styled.img`
 
   @media (max-width: ${ScreenSize.XSmall}px) {
     top: -5%;
-    right: -3%;
+    right: 1%;
   }
 
   @media (max-width: ${ScreenSize.XXSmall}px) {
     top: -4%;
-    right: -3%;
+    right: 3%;
   }
 `;
 
@@ -107,20 +107,13 @@ export const PurpleSemicircle = styled.img`
     margin-left: 20px;
     width: 68px;
   }
-
-  @media (max-width: ${ScreenSize.XXSmall}px) {
-    margin-top: -260px;
-    margin-right: 40px;
-    margin-left: 30px;
-    width: 51px;
-  }
 `;
 
 export const ArticleBackground = styled.div`
   position: absolute;
   margin-top: 2em;
   background-color: ${(p) => p.theme.colors.backgroundAlt3};
-  width: 100%;
+  width: calc(100% - 64px);
   height: 400px;
   z-index: -1;
   padding: 0 32px;

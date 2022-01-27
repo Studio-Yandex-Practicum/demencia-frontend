@@ -15,9 +15,15 @@ import {
   PurpleSemicircle,
 } from "./decor";
 import { ArticleItemBox, DescriptionBox, ImageBox } from "./box";
+import { ScreenSize } from "../../ui/types";
 
 const Cover = styled.img`
   width: 100%;
+
+  @media (max-width: ${ScreenSize.XSmall}px) {
+    width: calc(100% - 32px);
+    margin-left: 16px;
+  }
 `;
 
 const ArticlePage: React.FC = () => {

@@ -58,7 +58,7 @@ const App: React.FC = () => {
             <Routes>
               <Route path="/" element={<HomePage />} />
               <Route path="/news-grid" element={<NewsGridPage />} />
-              <Route path="/article" element={<ArticlePage />} />
+              <Route path="/article/:id" element={<ArticlePage />} />
               <Route path="/ui-kit" element={<UIKitPage />} />
               <Route path="/details" element={<DetailsPage />} />
               <Route path="/graphql" element={<GraphqlTestPage />} />

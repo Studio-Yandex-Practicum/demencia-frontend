@@ -38,6 +38,15 @@ const StyledImage = styled.img`
 
 const StyledBox = styled(Box)`
   align-self: self-end;
+  @media (max-width: ${ScreenSize.XSmall}px) {
+    margin-bottom: 0;
+  }
+`;
+
+const StyledTitle = styled(Subtitle3)`
+  @media (max-width: ${ScreenSize.XSmall}px) {
+    font-size: 16px;
+  }
 `;
 
 const StyledTitle = styled(Subtitle3)`

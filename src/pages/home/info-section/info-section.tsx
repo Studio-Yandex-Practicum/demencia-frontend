@@ -301,7 +301,7 @@ const InfoSection: React.FC = () => {
   const [isDetailsOpen, setIsDetailsOpen] = useState(false);
 
   return (
-    <StyledInfoSection borderBox flex centered>
+    <StyledInfoSection borderBox flex centered mb={1}>
       <TwoColumnGridInfo width="100%" className="info__about-grid">
         <RelativeBox flex column className="info__about">
           <FlexColumn className="about__column">

@@ -1,4 +1,3 @@
-// import { Link } from "react-router-dom";
 import React from "react";
 import styled from "styled-components";
 import { Subtitle3, Text3 } from "../../../ui/controls/typography";
@@ -40,12 +39,6 @@ const StyledBox = styled(Box)`
   align-self: self-end;
   @media (max-width: ${ScreenSize.XSmall}px) {
     margin-bottom: 0;
-  }
-`;
-
-const StyledTitle = styled(Subtitle3)`
-  @media (max-width: ${ScreenSize.XSmall}px) {
-    font-size: 16px;
   }
 `;
 

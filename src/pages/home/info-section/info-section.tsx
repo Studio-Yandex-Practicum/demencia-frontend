@@ -15,6 +15,8 @@ import greenPuzzleTranslucentPic from "../../../images/green-puzzle-translucent.
 import purpleHalfGreenPuzzzlePic from "../../../images/purple-and-green-puzzle.svg";
 import grandparentsPic from "../../../images/grandparents.jpg";
 import greenSemicirclePic from "../../../images/green-semicircle.svg";
+import Details from "../../../components/details";
+import { useState } from "react";
 
 const StyledInfoSection = styled(Section)`
   .info__about {
@@ -29,7 +31,7 @@ const StyledInfoSection = styled(Section)`
 
   .tip__box {
     left: -65px;
-    max-width: 520px;
+    max-width: 100%;
     min-height: 170px;
     padding-right: 170px;
     z-index: 5;
@@ -39,14 +41,14 @@ const StyledInfoSection = styled(Section)`
     width: 25px;
     position: absolute;
     top: calc(50% - 45px);
-    left: 80%;
+    left: 85%;
   }
 
   .tip__pink-semicircle-pic {
     height: 240px;
     position: absolute;
     top: calc(50% - 120px);
-    left: 75%;
+    left: 80%;
   }
 
   .info__more-button-box {
@@ -59,8 +61,12 @@ const StyledInfoSection = styled(Section)`
     align-items: flex-start;
   }
 
+  .info__more-button {
+    width: 190px;
+  }
+
   .about__column {
-    max-width: 520px;
+    max-width: 100%;
   }
 
   .info__help-grid {
@@ -127,6 +133,16 @@ const StyledInfoSection = styled(Section)`
     position: absolute;
     top: -32px;
     left: 270px;
+  }
+
+  @media (max-width: ${ScreenSize.Large}px) {
+    .tip__i-pic {
+      left: 80%;
+    }
+
+    .tip__pink-semicircle-pic {
+      left: 75%;
+    }
   }
 
   @media (max-width: ${ScreenSize.Medium}px) {
@@ -237,6 +253,10 @@ const StyledInfoSection = styled(Section)`
       width: 58px;
     }
 
+    .tip__box {
+      padding-right: 85px;
+    }
+
     .info__test-button {
       grid-area: info__test-button;
       transform: scale(0.7);
@@ -277,6 +297,8 @@ const StyledImg = styled.img`
 `;
 
 const InfoSection: React.FC = () => {
+  const [isDetailsOpen, setIsDetailsOpen] = useState(false);
+
   return (
     <StyledInfoSection borderBox flex centered>
       <TwoColumnGridInfo width="100%" className="info__about-grid">
@@ -324,8 +346,9 @@ const InfoSection: React.FC = () => {
               type={ButtonType.Secondary}
               ghost
               className="info__more-button"
+              onClick={() => setIsDetailsOpen(!isDetailsOpen)}
             >
-              Подробнее
+              {isDetailsOpen ? "Скрыть" : "Подробнее"}
             </Button>
           </FlexColumn>
         </RelativeBox>
@@ -340,6 +363,8 @@ const InfoSection: React.FC = () => {
           />
         </RelativeBox>
       </TwoColumnGridInfo>
+
+      {isDetailsOpen ? <Details /> : ""}
 
       <TwoColumnGridInfo width="100%" className="info__help-grid">
         <RelativeBox className="info__help">

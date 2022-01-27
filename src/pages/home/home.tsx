@@ -1,5 +1,6 @@
 import React from "react";
 import Hero from "./hero/hero";
+import Map from "./map/map";
 import News from "./news/news";
 
 const HomePage: React.FC = () => {
@@ -8,7 +9,7 @@ const HomePage: React.FC = () => {
       <Hero />
       <div>Info block</div>
       <News />
-      <div>Map block</div>
+      <Map />
       <div>About block</div>
       <div>Sponsors block</div>
     </>

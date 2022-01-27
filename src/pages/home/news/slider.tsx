@@ -106,7 +106,7 @@ const Slider: React.FC = () => {
               textEllipsis(item.subTitle) ||
               "Скоро тут появится интересная новость"
             }
-            linkTo={item.url || "/"}
+            linkTo={`/article/${item.id}`}
             linkTitle={item.urlLabel || "Подробнее"}
           />
         </SwiperSlide>

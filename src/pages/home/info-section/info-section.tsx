@@ -17,6 +17,7 @@ import grandparentsPic from "../../../images/grandparents.jpg";
 import greenSemicirclePic from "../../../images/green-semicircle.svg";
 import Details from "../../../components/details";
 import { useState } from "react";
+import { Text1, Text2, Text3 } from "../../../ui/controls/typography";
 
 const StyledInfoSection = styled(Section)`
   .info__about {
@@ -304,8 +305,8 @@ const InfoSection: React.FC = () => {
       <TwoColumnGridInfo width="100%" className="info__about-grid">
         <RelativeBox flex column className="info__about">
           <FlexColumn className="about__column">
-            <Subtitle1 mb={1}>О ДЕМЕНЦИИ</Subtitle1>
-            <Text4>
+            <Subtitle1 mb={2}>О ДЕМЕНЦИИ</Subtitle1>
+            <Text1>
               Деменция — это синдром, обычно хронический или прогрессирующий,
               при котором происходит деградация когнитивных функций: памяти,
               мышления, понимания, речи и способности ориентироваться, считать,
@@ -313,7 +314,7 @@ const InfoSection: React.FC = () => {
               психологическое, социальное и экономическое воздействие не только
               на страдающих ею людей, но и на людей, осуществляющих уход, на их
               семьи и общество в целом.
-            </Text4>
+            </Text1>
           </FlexColumn>
         </RelativeBox>
         <RelativeBox
@@ -324,7 +325,7 @@ const InfoSection: React.FC = () => {
             backgroundColor={PaletteColor.LightGreen}
             className="tip__box"
           >
-            <Text4 mt={1} mb={1} ml={4}>
+            <Text4 mt={3} mb={1} ml={4}>
               Согласно оценкам экспертов Всемирной Организации Здравоохранения,
               деменцией в мире страдает более 55 миллионов человек в возрасте
               старше 65 лет. Ожидается, что к 2030 г. этот показатель вырастет
@@ -345,6 +346,7 @@ const InfoSection: React.FC = () => {
             <Button
               type={ButtonType.Secondary}
               ghost
+              borderWidth={2}
               className="info__more-button"
               onClick={() => setIsDetailsOpen(!isDetailsOpen)}
             >

@@ -26,17 +26,16 @@ const StyledSection = styled(Section)<{
     height: 680px;
   }
   @media (max-width: ${ScreenSize.Medium}px) {
-    padding-top: 0;
-    height: 620px;
+    height: 645px;
   }
   @media (max-width: ${ScreenSize.Small}px) {
-    height: 540px;
+    height: 575px;
   }
   @media (max-width: ${ScreenSize.XSmall}px) {
-    height: 500px;
+    height: 525px;
   }
   @media (max-width: ${ScreenSize.XXSmall}px) {
-    height: 380px;
+    height: 450px;
   }
 `;
 

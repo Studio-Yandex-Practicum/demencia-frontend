@@ -24,7 +24,7 @@ const StyledSlide = styled.div`
     align-items: center;
   }
   @media (max-width: ${ScreenSize.XXSmall}px) {
-    height: 270px;
+    height: 300px;
   }
 `;
 

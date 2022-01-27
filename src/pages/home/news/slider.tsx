@@ -7,7 +7,6 @@ import Slide from "./slide";
 import { StyledSwiper } from "./styles/swiper";
 import SwiperButton from "./styles/navigation";
 import defaultImage from "../../../images/default-image.png";
-import { ScreenSize } from "../../../ui/types";
 import { useQuery } from "@apollo/client";
 import { toast } from "react-hot-toast";
 import { NewsArticlesData } from "../../../types/news";

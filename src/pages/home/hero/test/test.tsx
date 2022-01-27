@@ -17,7 +17,6 @@ import { SettingsData } from "../../../../types/settings";
 import { GET_SETTINGS } from "../../../../gql/query/settings";
 
 const Actions = styled.div`
-  width: 100vw;
   display: flex;
   align-items: center;
   margin-top: -33px;
@@ -26,6 +25,7 @@ const Actions = styled.div`
     margin-top: 0;
   }
   @media (max-width: ${ScreenSize.Medium}px) {
+    width: 100%;
     justify-content: center;
     margin-top: 220px;
     margin-left: 0;
@@ -40,10 +40,10 @@ const Actions = styled.div`
 
 const StyledBox = styled(Box)`
   margin-top: 126px;
-  max-width: 45vw;
   min-height: 520px;
   position: relative;
   @media (max-width: ${ScreenSize.Medium}px) {
+    max-width: 45vw;
     margin-top: 50px;
     min-height: 0;
   }

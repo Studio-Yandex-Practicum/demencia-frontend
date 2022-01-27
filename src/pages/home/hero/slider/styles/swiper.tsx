@@ -11,6 +11,7 @@ const StyledSwiper = styled(Swiper)`
   margin-left: 0 !important;
   margin-right: 0 !important;
   margin-bottom: -120px;
+  max-width: 940px;
 
   @media (max-width: ${ScreenSize.Medium}px) {
     margin-bottom: 0;

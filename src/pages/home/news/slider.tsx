@@ -7,12 +7,53 @@ import Slide from "./slide";
 import { StyledSwiper } from "./styles/swiper";
 import SwiperButton from "./styles/navigation";
 import defaultImage from "../../../images/default-image.png";
+import { useQuery } from "@apollo/client";
+import { toast } from "react-hot-toast";
+import { NewsArticlesData } from "../../../types/news";
+import { GET_NEWS_ARTICLES } from "../../../gql/query/news";
 
 SwiperCore.use([Autoplay, Navigation]);
+
+function titleEllipsis(t: string | undefined) {
+  if (t !== undefined && t.length > 20) return `${t.substring(0, 20)}...`;
+}
+
+function textEllipsis(t: string | undefined) {
+  if (t !== undefined && t.length > 70) return `${t.substring(0, 70)}...`;
+}
+
+const EmptySlide: React.FC = () => (
+  <StyledSwiper>
+    <SwiperSlide>
+      <Slide
+        imageSource={defaultImage}
+        slideTitle="Заголовок новости"
+        slideText="Скоро тут появится интересная новость"
+        linkTo="/"
+        linkTitle="Подробнее"
+      />
+    </SwiperSlide>
+  </StyledSwiper>
+);
 
 const Slider: React.FC = () => {
   const prevRef = useRef<HTMLDivElement>(null);
   const nextRef = useRef<HTMLDivElement>(null);
+  const { data, loading, error } =
+    useQuery<NewsArticlesData>(GET_NEWS_ARTICLES);
+
+  if (loading) return <EmptySlide />;
+
+  if (error) {
+    toast.error(`Не удалось загрузить новости с сервера`, { id: "error" });
+    return <EmptySlide />;
+  }
+
+  if (!data || !data.newsArticles) return <EmptySlide />;
+
+  const items = data.newsArticles.filter((el) => el && el.isActive);
+
+  if (!items.length) return <EmptySlide />;
 
   return (
     <StyledSwiper
@@ -56,51 +97,21 @@ const Slider: React.FC = () => {
         }
       }}
     >
-      <SwiperSlide key={12}>
-        <Slide
-          imageSource={defaultImage}
-          slideTitle="Заголовок новости1"
-          slideText="{article.subTitle}"
-          linkTo="/article"
-          linkTitle="Article"
-        />
-      </SwiperSlide>
-      <SwiperSlide key={32}>
-        <Slide
-          imageSource={defaultImage}
-          slideTitle="Заголовок новости2"
-          slideText="{article.subTitle}"
-          linkTo="/article"
-          linkTitle="Article"
-        />
-      </SwiperSlide>
-      <SwiperSlide key={42}>
-        <Slide
-          imageSource={defaultImage}
-          slideTitle="Заголовок новости3"
-          slideText="{article.subTitle}"
-          linkTo="/article"
-          linkTitle="Article"
-        />
-      </SwiperSlide>
-      <SwiperSlide key={432}>
-        <Slide
-          imageSource={defaultImage}
-          slideTitle="Заголовок новости4"
-          slideText="{article.subTitle}"
-          linkTo="/article"
-          linkTitle="Article"
-        />
-      </SwiperSlide>
-      <SwiperSlide key={442}>
-        <Slide
-          imageSource={defaultImage}
-          slideTitle="Заголовок новости5"
-          slideText="{article.subTitle}"
-          linkTo="/article"
-          linkTitle="Article"
-        />
-      </SwiperSlide>
+      {items.map((item) => (
+        <SwiperSlide key={item.id}>
+          <Slide
+            imageSource={item.image || defaultImage}
+            slideTitle={titleEllipsis(item.title) || "Заголовок новости"}
+            slideText={
+              textEllipsis(item.subTitle) ||
+              "Скоро тут появится интересная новость"
+            }
+            linkTo={item.url || "/"}
+            linkTitle={item.urlLabel || "Подробнее"}
+          />
+        </SwiperSlide>
+      ))}
+
       <SwiperButton type="left" ref={prevRef} />
       <SwiperButton type="right" ref={nextRef} />
     </StyledSwiper>

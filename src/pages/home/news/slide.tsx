@@ -1,4 +1,3 @@
-// import { Link } from "react-router-dom";
 import React from "react";
 import styled from "styled-components";
 import { Subtitle3, Text3 } from "../../../ui/controls/typography";

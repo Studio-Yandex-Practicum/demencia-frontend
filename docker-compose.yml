@@ -1,0 +1,10 @@
+version: "3"
+
+services:
+  demencia:
+    image: akruglov/demencia:0.2.0
+    environment:
+      - UI_PATH=/var/ui
+    ports:
+      - "80:4041"
+    restart: always

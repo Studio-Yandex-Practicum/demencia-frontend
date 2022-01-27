@@ -65,7 +65,7 @@ const NewsGridPage: React.FC = () => {
   });
 
   return (
-    <Section borderBox flex centered>
+    <Section flex centered mb={2}>
       <StyledImage src={testGreenPuzzle} puzzleType="news-grid__green-puzzle" />
       <StyledImage src={purpleSemicircle} puzzleType="news-grid__semicircle" />
       <StyledImage src={purplePuzzle} puzzleType="news-grid__purple-puzzle" />
@@ -91,18 +91,18 @@ const NewsGridPage: React.FC = () => {
       />
       <Box
         backgroundColor={PaletteColor.DarkPurple}
-        height="800px"
+        height="630px"
         width="80%"
         flex
         absolute
-        top="875px"
+        top="870px"
       />
 
       <MainTitle mb={10}>НОВОСТИ</MainTitle>
       <Grid mt={10} zIndex={2} pl={5} pr={5}>
         {newsArticlesData.map((article) => {
           const date = new Date(article.createdAt || "");
-          const formattedDate = date.toLocaleString("default", {
+          const formattedDate = date.toLocaleString("ru-RU", {
             day: "numeric",
             month: "numeric",
             year: "numeric",

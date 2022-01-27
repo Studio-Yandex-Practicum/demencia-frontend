@@ -5,6 +5,7 @@ export interface NewsArticlesElement {
   subTitle: string;
   createdAt: string;
   url: string;
+  urlLabel: string;
   isActive: boolean;
   text?: string;
 }

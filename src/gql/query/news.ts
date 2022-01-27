@@ -9,6 +9,7 @@ const GET_NEWS_ARTICLES = gql`
       subTitle
       createdAt
       url
+      urlLabel
       isActive
     }
   }

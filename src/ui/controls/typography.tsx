@@ -152,12 +152,16 @@ export const Subtitle2 = styled.h4.attrs(
 )`
   ${typographyMixin};
 
-  @media (max-width: ${ScreenSize.Small}px) {
+  @media (max-width: ${ScreenSize.Medium}px) {
     font-size: 28px;
   }
 
-  @media (max-width: ${ScreenSize.XSmall}px) {
-    font-size: 25px;
+  @media (max-width: ${ScreenSize.Small}px) {
+    font-size: 24px;
+  }
+
+  @media (max-width: ${ScreenSize.XXSmall}px) {
+    font-size: 16px;
   }
 `;
 

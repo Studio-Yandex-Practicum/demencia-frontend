@@ -1,14 +1,16 @@
 import React from "react";
 import Hero from "./hero/hero";
 import InfoSection from "./info-section/info-section";
+import Map from "./map/map";
+import News from "./news/news";
 
 const HomePage: React.FC = () => {
   return (
     <>
       <Hero />
       <InfoSection />
-      <div>News block</div>
-      <div>Map block</div>
+      <News />
+      <Map />
       <div>About block</div>
       <div>Sponsors block</div>
     </>

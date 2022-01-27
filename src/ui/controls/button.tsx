@@ -26,6 +26,7 @@ export interface ButtonProps
   icon?: ReactNode;
   width?: number;
   zIndex?: number;
+  borderWidth?: number;
 }
 
 const buildLinkButtonStyleMixIn = (
@@ -111,10 +112,14 @@ const buildButtonStyleMixIn = (
   const borderColor = !props.ghost
     ? buttonStyle.borderColor || "transparent"
     : buttonStyle.backgroundColor;
+  const borderWidth =
+    props.borderWidth !== undefined
+      ? props.borderWidth
+      : buttonSize.borderWidth;
   const borderValue =
-    typeof buttonSize.borderWidth === "undefined"
+    typeof borderWidth === "undefined"
       ? "none"
-      : `${buttonSize.borderWidth}px solid ${borderColor || ""};`;
+      : `${borderWidth}px solid ${borderColor || ""};`;
 
   let borderRadius = !!buttonSize.borderRadius
     ? `border-radius: ${buttonSize.borderRadius}px;`

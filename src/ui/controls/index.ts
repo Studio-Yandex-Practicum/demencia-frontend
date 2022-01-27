@@ -6,6 +6,7 @@ import { IconBurger, IconClose } from "./icon";
 import Footer from "./footer";
 import {
   Layout,
+  TwoColumnGrid,
   ThreeColumnGrid,
   SeparatedColumn,
   Section,
@@ -17,10 +18,19 @@ import { LogoBlock } from "./logo";
 import { Overlay } from "./overlay";
 import { Sider } from "./sider";
 import Grid from "./grid";
-import { MainTitle, Subtitle1 } from "./typography";
+import {
+  MainTitle,
+  Title,
+  Subtitle1,
+  Subtitle3,
+  Text2,
+  Text3,
+  Text4,
+} from "./typography";
 
 export {
   Layout,
+  TwoColumnGrid,
   ThreeColumnGrid,
   SeparatedColumn,
   Section,
@@ -42,5 +52,10 @@ export {
   Sider,
   Grid,
   MainTitle,
+  Title,
   Subtitle1,
+  Subtitle3,
+  Text2,
+  Text3,
+  Text4,
 };

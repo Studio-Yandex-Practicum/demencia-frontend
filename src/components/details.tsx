@@ -68,7 +68,7 @@ const FlexRow = styled.div<{ adaptive?: boolean }>`
 const PurpleRect = styled.div`
   position: absolute;
   z-index: 1;
-  width: calc(50% - 32px);
+  width: 50%;
   height: 136px;
   background-color: ${(p) => p.theme.colors.backgroundAlt1};
   right: 0;
@@ -112,6 +112,16 @@ const List = styled.ul<{
 
 const CognitiveFunctionsGrid = styled(TwoColumnGrid)`
   z-index: 2;
+
+  .info__cognitive-container {
+    transform: translateX(-30px);
+  }
+
+  @media (max-width: ${ScreenSize.Medium}px) {
+    .info__cognitive-container {
+      transform: translateX(0);
+    }
+  }
 `;
 
 const Details: React.FC = () => {
@@ -126,6 +136,7 @@ const Details: React.FC = () => {
           <Container
             size={ContainerSize.MediumSmall}
             bgColor={BackgroundColor.Alt2}
+            className="info__cognitive-container"
           >
             <Text1 mt={4} mb={4} ml={4} mr={4} textColor={TextColor.Secondary}>
               <strong>Когнитивные функции</strong> - сложные функции головного

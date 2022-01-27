@@ -22,6 +22,7 @@ interface SectionProps extends ThemeProps, BoxProps {
 
 interface GridProps extends ThemeProps, BoxProps {
   zIndex?: number;
+  width?: string;
 }
 
 export const Layout = styled.div<LayoutProps>`
@@ -65,6 +66,7 @@ export const Section = styled.section<SectionProps>`
 export const TwoColumnGrid = styled.div<GridProps>`
   ${getBoxStyles};
   z-index: ${(p) => (p.zIndex ? p.zIndex : 0)};
+  width: ${(p) => (p.width !== undefined ? `${p.width}` : undefined)};
   display: grid;
   grid-row-gap: 32px;
   grid-template-columns: minmax(${ScreenSize.XXSmall}, 1fr);

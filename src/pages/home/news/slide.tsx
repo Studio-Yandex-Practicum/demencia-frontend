@@ -34,9 +34,6 @@ const StyledImage = styled.img`
   width: 100%;
   height: 45%;
   flex-shrink: 0;
-  @media (max-width: ${ScreenSize.XSmall}px) {
-    width: 200px;
-  }
 `;
 
 const StyledBox = styled(Box)`

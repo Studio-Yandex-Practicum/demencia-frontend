@@ -4,5 +4,5 @@ export enum ScreenSize {
   Medium = 960,
   Small = 640,
   XSmall = 480, // font sizes are changed at this screen size
-  XXSmall = 320,
+  XXSmall = 360,
 }

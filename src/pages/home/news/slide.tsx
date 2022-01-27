@@ -38,6 +38,15 @@ const StyledImage = styled.img`
 
 const StyledBox = styled(Box)`
   align-self: self-end;
+  @media (max-width: ${ScreenSize.XSmall}px) {
+    margin-bottom: 0;
+  }
+`;
+
+const StyledTitle = styled(Subtitle3)`
+  @media (max-width: ${ScreenSize.XSmall}px) {
+    font-size: 16px;
+  }
 `;
 
 interface SlideProps {
@@ -59,7 +68,7 @@ const Slide: React.FC<SlideProps> = ({
     <StyledSlide>
       <StyledImage src={imageSource} alt="илюстрация новости" />
       <Box height="100%">
-        <Subtitle3 mt={1}>{slideTitle}</Subtitle3>
+        <StyledTitle mt={1}>{slideTitle}</StyledTitle>
         <Text3 mt={1}>{slideText}</Text3>
       </Box>
       <StyledBox mb={1}>

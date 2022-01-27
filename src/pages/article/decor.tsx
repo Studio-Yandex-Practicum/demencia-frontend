@@ -56,37 +56,63 @@ export const GreenPuzzle = styled.img`
 `;
 
 export const PurpleSemicircle = styled.img`
-  width: 10%;
-  height: 18%;
-  margin-top: -10em;
-  margin-right: 2em;
-  margin-left: 6em;
+  width: 100px;
+  margin-top: -150px;
+  margin-right: 40px;
+  margin-left: 60px;
   z-index: 1;
 
   @media (max-width: ${ScreenSize.Large}px) {
-    margin-top: -8em;
-    margin-right: 2em;
-    margin-left: 7em;
+    margin-top: -200px;
+    margin-right: 40px;
+    margin-left: 60px;
   }
 
   @media (max-width: ${ScreenSize.Medium}px) {
-    margin-top: -6em;
-    margin-left: 5em;
+    margin-top: -250px;
+    margin-right: 40px;
+    margin-left: 60px;
+  }
+
+  @media (max-width: 760px) {
+    margin-top: -300px;
+    margin-right: 40px;
+    margin-left: 60px;
   }
 
   @media (max-width: ${ScreenSize.Small}px) {
-    width: 18%;
-    margin-left: 4em;
+    margin-top: -300px;
+    margin-right: 40px;
+    margin-left: 60px;
+    width: 75px;
+  }
+
+  @media (max-width: 580px) {
+    margin-top: -350px;
+    margin-right: 40px;
+    margin-left: 30px;
+    width: 75px;
   }
 
   @media (max-width: ${ScreenSize.XSmall}px) {
-    margin-top: 2em;
-    margin-right: 1em;
-    margin-left: 1em;
+    margin-top: -150px;
+    margin-right: 40px;
+    margin-left: 30px;
+    width: 75px;
+  }
+
+  @media (max-width: 440px) {
+    margin-top: 25px;
+    margin-right: 20px;
+    margin-left: 20px;
+    width: 68px;
   }
 
   @media (max-width: ${ScreenSize.XXSmall}px) {
-    margin-top: 1em;
+    margin-top: -260px;
+    margin-right: 40px;
+    margin-left: 30px;
+    width: 51px;
   }
 `;
 

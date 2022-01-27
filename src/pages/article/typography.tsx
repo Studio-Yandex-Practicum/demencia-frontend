@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { Subtitle2 } from "../../ui/controls/typography";
 import { ScreenSize } from "../../ui/types";
 
 export const MainTitleArticle = styled.div`
@@ -44,5 +45,13 @@ export const ArticleDate = styled.p`
 
   @media (max-width: ${ScreenSize.Small}px) {
     font-size: 18px;
+  }
+`;
+
+export const DecorationText = styled(Subtitle2)`
+  @media (max-width: 440px) {
+    line-height: 1.15;
+    font-weight: 600;
+    font-size: 16px;
   }
 `;

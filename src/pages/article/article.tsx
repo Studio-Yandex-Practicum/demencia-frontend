@@ -7,7 +7,7 @@ import styled from "styled-components";
 import { Link, Box } from "../../ui/controls";
 import { Section } from "../../ui/controls/layout";
 import { Subtitle2, Text1 } from "../../ui/controls/typography";
-import { ArticleDate, MainTitleArticle } from "./typography";
+import { ArticleDate, DecorationText, MainTitleArticle } from "./typography";
 import {
   ArticleBackground,
   GreenPuzzle,
@@ -42,11 +42,11 @@ const ArticlePage: React.FC = () => {
 
           <DescriptionBox>
             <PurpleSemicircle src={purpleSemicircleImg} alt="." />
-            <Subtitle2 mt={4}>
+            <DecorationText mt={4}>
               1 октября в рамках проекта Деменция.net благотворительного фонда
               «Память поколений» открылись корнеры по ранней диагностике
               когнитивных изменений.
-            </Subtitle2>
+            </DecorationText>
           </DescriptionBox>
 
           <Box mt={4}>

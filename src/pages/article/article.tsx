@@ -1,203 +1,23 @@
 import React from "react";
 import purplePuzzleImg from "../../images/article-purple-puzzle.svg";
 import greenPuzzleImg from "../../images/article-green-puzzle.svg";
-import unsplashImg from "../../images/unsplash.jpg";
 import purpleSemicircleImg from "../../images/purple-semicircle.svg";
+import unsplashImg from "../../images/unsplash.jpg";
 import styled from "styled-components";
-import { Subtitle2, Text1 } from "../../ui/controls/typography";
 import { Link, Box } from "../../ui/controls";
 import { Section } from "../../ui/controls/layout";
-import { ScreenSize } from "../../ui/types";
+import { Subtitle2, Text1 } from "../../ui/controls/typography";
+import { ArticleDate, MainTitleArticle } from "./typography";
+import {
+  ArticleBackground,
+  GreenPuzzle,
+  PurplePuzzle,
+  PurpleSemicircle,
+} from "./decor";
+import { ArticleItemBox, DescriptionBox, ImageBox } from "./box";
 
-const MainTitleArticle = styled.div`
-  color: #6d097a;
-  text-transform: uppercase;
-  font-size: 60px;
-  line-height: 1.15;
-  font-style: normal;
-  font-weight: 600;
-  margin: 60px auto;
-  text-align: center;
-  padding: 0 20px;
-
-  @media (max-width: ${ScreenSize.Large}px) {
-    font-size: 42px;
-    margin: 45px auto;
-  }
-
-  @media (max-width: ${ScreenSize.Small}px) {
-    font-size: 36px;
-    margin: 35px auto;
-  }
-
-  @media (max-width: ${ScreenSize.XSmall}px) {
-    font-size: 24px;
-    margin: 15px auto;
-  }
-`;
-
-const Date = styled.p`
-  max-width: fit-content;
-  color: #5b5b5b;
-  font-size: 32px;
-  line-height: 2.15;
-  font-weight: 600;
-  border-top: 3px solid #5b5b5b;
-  margin: auto;
-  text-align: center;
-
-  @media (max-width: ${ScreenSize.Medium}px) {
-    font-size: 28px;
-  }
-
-  @media (max-width: ${ScreenSize.Small}px) {
-    font-size: 18px;
-  }
-`;
-
-const PurplePuzzle = styled.img`
-  width: 100px;
-  height: 96px;
-  bottom: 0;
-  right: 7.5%;
-  position: absolute;
-  z-index: 2;
-
-  @media (max-width: ${ScreenSize.Small}px) {
-    bottom: 3%;
-    width: 60px;
-  }
-
-  @media (max-width: ${ScreenSize.XSmall}px) {
-    visibility: hidden;
-  }
-`;
-
-const GreenPuzzle = styled.img`
-  width: 7.1%;
-  height: 9.6%;
-  top: 1%;
-  right: 8%;
-  position: absolute;
-
-  @media (max-width: ${ScreenSize.Large}px) {
-    width: 6.1%;
-    top: 1%;
-    right: 1.5%;
-  }
-
-  @media (max-width: ${ScreenSize.Medium}px) {
-    width: 7.1%;
-    top: 0.5%;
-    right: -0.5%;
-  }
-
-  @media (max-width: ${ScreenSize.Small}px) {
-    width: 6.1%;
-    top: 0.5%;
-    right: 1%;
-  }
-
-  @media (max-width: ${ScreenSize.XSmall}px) {
-    top: 1%;
-    right: -1%;
-  }
-
-  @media (max-width: ${ScreenSize.XXSmall}px) {
-    top: -3%;
-    right: -4%;
-  }
-`;
-
-const ArticleBackground = styled.div`
-  position: absolute;
-  margin-top: 2em;
-  background-color: ${(p) => p.theme.colors.backgroundAlt3};
+const Cover = styled.img`
   width: 100%;
-  height: 400px;
-  z-index: -1;
-  padding: 0 32px;
-  
-  @media (max-width: ${ScreenSize.XXSmall}px) {
-    height: 360px;
-    
-`;
-
-const ArticleItem = styled.div`
-  max-width: 1440px;
-  margin: auto;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  box-sizing: border-box;
-  padding: 130px 20px 20px 20px;
-
-  @media (max-width: ${ScreenSize.Large}px) {
-    max-width: 1080px;
-  }
-
-  @media (max-width: ${ScreenSize.Medium}px) {
-    max-width: 880px;
-  }
-
-  @media (max-width: ${ScreenSize.Small}px) {
-    max-width: 600px;
-  }
-
-  @media (max-width: ${ScreenSize.XSmall}px) {
-    padding: 130px 0 20px 0;
-  }
-
-  @media (max-width: ${ScreenSize.XXSmall}px) {
-    max-width: 300px;
-    padding: 50px 8px 8px 0;
-  }
-`;
-
-const Unsplash = styled.img`
-  width: 100%;
-`;
-
-const PurpleSemicircle = styled.img`
-  width: 10%;
-  height: 18%;
-  margin-top: -10em;
-  margin-right: 2em;
-  margin-left: 6em;
-
-  @media (max-width: ${ScreenSize.Large}px) {
-    margin-top: -8em;
-    margin-right: 2em;
-    margin-left: 7em;
-  }
-
-  @media (max-width: ${ScreenSize.Medium}px) {
-    margin-top: -6em;
-    margin-left: 5em;
-  }
-
-  @media (max-width: ${ScreenSize.Small}px) {
-    width: 18%;
-    margin-left: 4em;
-  }
-
-  @media (max-width: ${ScreenSize.XSmall}px) {
-    margin-top: 2em;
-    margin-right: 1em;
-    margin-left: 1em;
-  }
-
-  @media (max-width: ${ScreenSize.XXSmall}px) {
-    margin-top: 1em;
-  }
-`;
-
-const DescriptionCase = styled.div`
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-end;
-  margin: auto;
-  max-width: 1440px;
 `;
 
 const ArticlePage: React.FC = () => {
@@ -208,24 +28,26 @@ const ArticlePage: React.FC = () => {
           В Москве открылись пункты для диагностики болезни Альцгеймера и других
           когнитивных изменений
         </MainTitleArticle>
-        <Date>14.10.2021</Date>
+        <ArticleDate>14.10.2021</ArticleDate>
         <PurplePuzzle src={purplePuzzleImg} alt="." />
       </Section>
 
       <Section flex centered>
         <ArticleBackground />
-        <ArticleItem>
-          <GreenPuzzle src={greenPuzzleImg} alt="." />
-          <Unsplash src={unsplashImg} alt="." />
+        <ArticleItemBox>
+          <ImageBox>
+            <GreenPuzzle src={greenPuzzleImg} alt="." />
+            <Cover src={unsplashImg} alt="." />
+          </ImageBox>
 
-          <DescriptionCase>
+          <DescriptionBox>
             <PurpleSemicircle src={purpleSemicircleImg} alt="." />
             <Subtitle2 mt={4}>
               1 октября в рамках проекта Деменция.net благотворительного фонда
               «Память поколений» открылись корнеры по ранней диагностике
               когнитивных изменений.
             </Subtitle2>
-          </DescriptionCase>
+          </DescriptionBox>
 
           <Box mt={4}>
             <Text1>
@@ -276,7 +98,7 @@ const ArticlePage: React.FC = () => {
           <Box mt={3}>
             <Link to="/news-grid">Перейти к ленте новостей</Link>
           </Box>
-        </ArticleItem>
+        </ArticleItemBox>
       </Section>
     </>
   );

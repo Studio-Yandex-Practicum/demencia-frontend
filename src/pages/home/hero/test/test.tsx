@@ -25,7 +25,8 @@ const Actions = styled.div`
     margin-top: 0;
   }
   @media (max-width: ${ScreenSize.Medium}px) {
-    width: 100%;
+    position: relative;
+    width: 100vw;
     justify-content: center;
     margin-top: 220px;
     margin-left: 0;
@@ -43,7 +44,7 @@ const StyledBox = styled(Box)`
   min-height: 520px;
   position: relative;
   @media (max-width: ${ScreenSize.Medium}px) {
-    max-width: 45vw;
+    width: 45vw;
     margin-top: 50px;
     min-height: 0;
   }

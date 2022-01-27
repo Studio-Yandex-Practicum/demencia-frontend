@@ -20,13 +20,7 @@ function titleEllipsis(t: string | undefined) {
 }
 
 function textEllipsis(t: string | undefined) {
-  if (t !== undefined && t.length > 80) {
-    if (window.innerWidth <= ScreenSize.Medium) {
-      return `${t.substring(0, 30)}...`;
-    }
-    return `${t.substring(0, 50)}...`;
-  }
-  return t;
+  if (t !== undefined && t.length > 70) return `${t.substring(0, 70)}...`;
 }
 
 const EmptySlide: React.FC = () => (

@@ -11,16 +11,17 @@ const StyledSwiper = styled(Swiper)`
   margin-left: 0 !important;
   margin-right: 0 !important;
   margin-bottom: -120px;
+  max-width: 940px;
 
   @media (max-width: ${ScreenSize.Medium}px) {
     margin-bottom: 0;
     transform: translateY(0);
   }
   @media (max-width: ${ScreenSize.Small}px) {
-    max-height: 70%;
+    max-height: 68.5%;
   }
   @media (max-width: ${ScreenSize.XSmall}px) {
-    max-height: 55%;
+    max-height: 52.8%;
   }
 `;
 

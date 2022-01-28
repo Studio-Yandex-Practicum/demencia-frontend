@@ -25,6 +25,14 @@ import { Settings } from "../../../types/settings";
 
 const InfoSection: React.FC<{ settings: Settings }> = ({ settings }) => {
   const [isDetailsOpen, setIsDetailsOpen] = useState(false);
+  function StringToArray(string: string): HTMLElement[] {
+    const domArray = Array.from(
+      new DOMParser()
+        .parseFromString(string, "text/html")
+        .getElementsByTagName("p")
+    );
+    return domArray;
+  }
 
   return (
     <StyledInfoSection borderBox flex centered mb={1}>
@@ -35,7 +43,9 @@ const InfoSection: React.FC<{ settings: Settings }> = ({ settings }) => {
               {settings.aboutSection || "О ДЕМЕНЦИИ"}
             </Subtitle1>
             <Text1>
-              {settings.aboutSectionTerm ||
+              {StringToArray(settings.aboutSectionTerm).map((i) => (
+                <p>{i.innerText}</p>
+              )) ||
                 "Деменция — это синдром, обычно хронический или прогрессирующий, при котором происходит деградация когнитивных функций: памяти, мышления, понимания, речи и способности ориентироваться, считать, познавать и рассуждать. Деменция оказывает физическое, психологическое, социальное и экономическое воздействие не только на страдающих ею людей, но и на людей, осуществляющих уход, на их семьи и общество в целом."}
             </Text1>
           </FlexColumn>
@@ -49,7 +59,9 @@ const InfoSection: React.FC<{ settings: Settings }> = ({ settings }) => {
             className="tip__box"
           >
             <Text4 mt={3} mb={1} ml={4}>
-              {settings.aboutSectionInfo ||
+              {StringToArray(settings.aboutSectionInfo).map((i) => (
+                <p>{i.innerText}</p>
+              )) ||
                 "Согласно оценкам экспертов Всемирной Организации Здравоохранения, деменцией в мире страдает более 55 миллионов человек в возрасте старше 65 лет. Ожидается, что к 2030 г. этот показатель вырастет до 78 миллионов, а к 2050 г. – до 139 миллионов. Согласно статистическим данным новый случай заболевания деменцией появляется каждые 3 секунды. Деменция — это болезнь, а не нормальное проявление старения."}
             </Text4>
             <StyledImg src={iPic} className="tip__i-pic" />

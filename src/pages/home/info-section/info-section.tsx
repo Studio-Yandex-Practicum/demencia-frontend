@@ -21,10 +21,24 @@ import purpleHalfGreenPuzzzlePic from "../../../images/purple-and-green-puzzle.s
 import grandparentsPic from "../../../images/grandparents.jpg";
 import greenSemicirclePic from "../../../images/green-semicircle.svg";
 import Details from "../../../components/details";
-import { Settings } from "../../../types/settings";
+import { useQuery } from "@apollo/client";
+import { SettingsData } from "../../../types/settings";
+import { GET_SETTINGS } from "../../../gql/query/settings";
+import { toast } from "react-hot-toast";
 
-const InfoSection: React.FC<{ settings: Settings }> = ({ settings }) => {
+const InfoSection: React.FC = () => {
   const [isDetailsOpen, setIsDetailsOpen] = useState(false);
+
+  const { data } = useQuery<SettingsData>(GET_SETTINGS, {
+    fetchPolicy: "cache-first",
+  });
+
+  if (!data || !data.settings) {
+    toast.error("Не удалось получить настройки сайта", { id: "error" });
+    return <div />;
+  }
+
+  const settings = data.settings;
 
   return (
     <StyledInfoSection borderBox flex centered mb={1}>

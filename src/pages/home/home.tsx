@@ -3,13 +3,12 @@ import Hero from "./hero/hero";
 import InfoSection from "./info-section/info-section";
 import Map from "./map/map";
 import News from "./news/news";
-import { Settings } from "../../types/settings";
 
-const HomePage: React.FC<{ settings: Settings }> = ({ settings }) => {
+const HomePage: React.FC = () => {
   return (
     <>
       <Hero />
-      <InfoSection settings={settings} />
+      <InfoSection />
       <News />
       <Map />
       <div>About block</div>

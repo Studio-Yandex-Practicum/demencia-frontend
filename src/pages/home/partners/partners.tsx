@@ -2,19 +2,10 @@ import React from "react";
 import styled from "styled-components";
 import { Section } from "../../../ui/controls/layout";
 import { Container, Box } from "../../../ui/controls";
-import { ContainerSize, PaletteColor, ScreenSize } from "../../../ui/types";
-import { Title, Text3 } from "../../../ui/controls/typography";
+import { PaletteColor, ScreenSize, TextColor } from "../../../ui/types";
+import { Title, Subtitle4 } from "../../../ui/controls/typography";
 import Slider from "./slider";
-
-const StyledContainer = styled(Container)`
-  align-items: flex-end;
-  align-self: end;
-  margin-right: 6vw;
-  @media (max-width: ${ScreenSize.Small}px) {
-    align-items: center;
-    margin-right: 0;
-  }
-`;
+import semiCircle from "../../../images/semicircle-purple.svg";
 
 const StyledSection = styled(Section)<{
   minHeight?: string;
@@ -55,38 +46,29 @@ const StyledTitle = styled(Title)`
   }
 `;
 
-const StyledText3 = styled(Text3)`
+const StyledText = styled(Subtitle4)`
   font-size: 18px !important;
 `;
 
-const News: React.FC = () => {
+const Partners: React.FC = () => {
   return (
-    <StyledSection id="partners" flex centered height="735px">
-      <StyledSection
-        flex
-        centered
-        pt={3}
-        pr={3}
-        backgroundColor={PaletteColor.LightGreen}
-        borderBox
-        minHeight="90%"
-      >
-        <StyledContainer size={ContainerSize.Large}>
-          <Box>
-            <StyledTitle>Что нового?</StyledTitle>
-          </Box>
-          <Box mb={5}>
-            <StyledText3>Перейти к ленте новостей</StyledText3>
-          </Box>
-        </StyledContainer>
-      </StyledSection>
+    <StyledSection id="partners" flex centered height="800px">
+      {semiCircle}
+      <Container>
+        <Box ml={8}>
+          <StyledTitle textColor={TextColor.Accent1}>Кто с нами?</StyledTitle>
+        </Box>
+        <Box ml={8}>
+          <StyledText textColor={TextColor.Shadow}>Партнёры</StyledText>
+        </Box>
+      </Container>
+
       <StyledBox
-        width="calc(100% - 48px)"
-        pt={6}
+        width="100%"
         pl={12}
         pb={12}
         pr={12}
-        backgroundColor={PaletteColor.DarkPurple}
+        backgroundColor={PaletteColor.Transparent}
         absolute
         bottom="0"
       >
@@ -96,4 +78,4 @@ const News: React.FC = () => {
   );
 };
 
-export default News;
+export default Partners;

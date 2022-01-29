@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef, useLayoutEffect } from "react";
 import styled from "styled-components";
 import cursor from "../../../images/cursor_pointer.svg";
 import { ScreenSize } from "../../../ui/types";
@@ -39,6 +39,12 @@ const ImageOfMap: React.FC<ImageProps> = (props: ImageProps) => {
   });
   const [size, setSize] = useState(200);
 
+  const imageRef = useRef(null);
+
+  useLayoutEffect(() => {
+    if (imageRef.current !== null) return console.log(imageRef.current);
+  });
+
   return (
     <>
       <StyledImage
@@ -48,6 +54,7 @@ const ImageOfMap: React.FC<ImageProps> = (props: ImageProps) => {
         height="100%"
         preserveAspectRatio="none"
         xmlns="http://www.w3.org/2000/svg"
+        ref={imageRef}
       >
         <path
           d="M547.35 71.28L546.78 72.8999L548.21 73.8501L549.82 72.8999L549.25 70.8999L547.35 71.28Z"

@@ -4,10 +4,10 @@ import { Title, Subtitle4 } from "../../../ui/controls/typography";
 import { Box } from "../../../ui/controls";
 import { Section } from "../../../ui/controls/layout";
 import { ScreenSize } from "../../../ui/types";
-import interactiveMap from "../../../images/map.svg";
 import { useQuery } from "@apollo/client";
 import { SettingsData } from "../../../types/settings";
 import { GET_SETTINGS } from "../../../gql/query/settings";
+import ImageOfMap from "./image-of-map";
 
 const StyledTitle = styled(Title)`
   @media (max-width: ${ScreenSize.Medium}px) {
@@ -73,7 +73,7 @@ const Map: React.FC = () => {
         <StyledText>{subtitle}</StyledText>
       </TextWrapper>
       <MapWrapper ml={6} mr={6}>
-        <object type="image/svg+xml" data={interactiveMap} />
+        <ImageOfMap />
       </MapWrapper>
     </Section>
   );

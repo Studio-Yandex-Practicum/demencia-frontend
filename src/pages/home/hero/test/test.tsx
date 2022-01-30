@@ -54,6 +54,9 @@ const StyledBox = styled(Box)`
 `;
 
 const StyledButton = styled(Button)`
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
   @media (max-width: ${ScreenSize.Medium}px) {
     height: 63px;
   }

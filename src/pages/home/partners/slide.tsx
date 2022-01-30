@@ -21,14 +21,14 @@ const StyledImage = styled.img`
 
 interface SlideProps {
   imageSource: string;
-  name?: string;
-  url?: string;
+  name: string;
+  url: string;
 }
 
 const Slide: React.FC<SlideProps> = ({ imageSource, name, url }) => {
   return (
     <StyledSlide>
-      <Link to="/">
+      <Link to={url}>
         <StyledImage src={imageSource} alt={name} title={name} />
       </Link>
     </StyledSlide>

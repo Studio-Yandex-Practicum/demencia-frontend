@@ -41,7 +41,7 @@ const InfoSection: React.FC = () => {
   const settings = data.settings;
 
   return (
-    <StyledInfoSection borderBox flex centered mb={1}>
+    <StyledInfoSection id="info" borderBox flex centered mb={1}>
       <TwoColumnGridInfo width="100%" className="info__about-grid">
         <RelativeBox flex column className="info__about">
           <FlexColumn className="about__column">

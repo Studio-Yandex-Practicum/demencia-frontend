@@ -3,6 +3,7 @@ import Hero from "./hero/hero";
 import InfoSection from "./info-section/info-section";
 import Map from "./map/map";
 import News from "./news/news";
+import Partners from "./partners/partners";
 
 const HomePage: React.FC = () => {
   return (
@@ -12,7 +13,7 @@ const HomePage: React.FC = () => {
       <News />
       <Map />
       <div>About block</div>
-      <div>Sponsors block</div>
+      <Partners />
     </>
   );
 };

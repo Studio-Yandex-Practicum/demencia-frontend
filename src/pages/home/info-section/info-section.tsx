@@ -21,24 +21,36 @@ import purpleHalfGreenPuzzzlePic from "../../../images/purple-and-green-puzzle.s
 import grandparentsPic from "../../../images/grandparents.jpg";
 import greenSemicirclePic from "../../../images/green-semicircle.svg";
 import Details from "../../../components/details";
+import { useQuery } from "@apollo/client";
+import { SettingsData } from "../../../types/settings";
+import { GET_SETTINGS } from "../../../gql/query/settings";
+import { toast } from "react-hot-toast";
 
 const InfoSection: React.FC = () => {
   const [isDetailsOpen, setIsDetailsOpen] = useState(false);
+
+  const { data } = useQuery<SettingsData>(GET_SETTINGS, {
+    fetchPolicy: "cache-first",
+  });
+
+  if (!data || !data.settings) {
+    toast.error("Не удалось получить настройки сайта", { id: "error" });
+    return <div />;
+  }
+
+  const settings = data.settings;
 
   return (
     <StyledInfoSection borderBox flex centered mb={1}>
       <TwoColumnGridInfo width="100%" className="info__about-grid">
         <RelativeBox flex column className="info__about">
           <FlexColumn className="about__column">
-            <Subtitle1 mb={2}>О ДЕМЕНЦИИ</Subtitle1>
+            <Subtitle1 mb={2}>
+              {settings.aboutSection || "О ДЕМЕНЦИИ"}
+            </Subtitle1>
             <Text1>
-              Деменция — это синдром, обычно хронический или прогрессирующий,
-              при котором происходит деградация когнитивных функций: памяти,
-              мышления, понимания, речи и способности ориентироваться, считать,
-              познавать и рассуждать. Деменция оказывает физическое,
-              психологическое, социальное и экономическое воздействие не только
-              на страдающих ею людей, но и на людей, осуществляющих уход, на их
-              семьи и общество в целом.
+              {settings.aboutSectionTerm ||
+                "Деменция — это синдром, обычно хронический или прогрессирующий, при котором происходит деградация когнитивных функций: памяти, мышления, понимания, речи и способности ориентироваться, считать, познавать и рассуждать. Деменция оказывает физическое, психологическое, социальное и экономическое воздействие не только на страдающих ею людей, но и на людей, осуществляющих уход, на их семьи и общество в целом."}
             </Text1>
           </FlexColumn>
         </RelativeBox>
@@ -51,13 +63,8 @@ const InfoSection: React.FC = () => {
             className="tip__box"
           >
             <Text4 mt={3} mb={1} ml={4}>
-              Согласно оценкам экспертов Всемирной Организации Здравоохранения,
-              деменцией в мире страдает более 55 миллионов человек в возрасте
-              старше 65 лет. Ожидается, что к 2030 г. этот показатель вырастет
-              до 78 миллионов, а к 2050 г. – до 139 миллионов. Согласно
-              статистическим данным новый случай заболевания деменцией
-              появляется каждые 3 секунды. Деменция — это болезнь, а не
-              нормальное проявление старения.
+              {settings.aboutSectionInfo ||
+                "Согласно оценкам экспертов Всемирной Организации Здравоохранения, деменцией в мире страдает более 55 миллионов человек в возрасте старше 65 лет. Ожидается, что к 2030 г. этот показатель вырастет до 78 миллионов, а к 2050 г. – до 139 миллионов. Согласно статистическим данным новый случай заболевания деменцией появляется каждые 3 секунды. Деменция — это болезнь, а не нормальное проявление старения."}
             </Text4>
             <StyledImg src={iPic} className="tip__i-pic" />
             <StyledImg
@@ -75,7 +82,9 @@ const InfoSection: React.FC = () => {
               className="info__more-button"
               onClick={() => setIsDetailsOpen(!isDetailsOpen)}
             >
-              {isDetailsOpen ? "Скрыть" : "Подробнее"}
+              {isDetailsOpen
+                ? `${settings.aboutSectionTermCloseLabel || "Скрыть"}`
+                : `${settings.aboutSectionTermOpenLabel || "Подробнее"}`}
             </Button>
           </FlexColumn>
         </RelativeBox>
@@ -96,9 +105,12 @@ const InfoSection: React.FC = () => {
       <TwoColumnGridInfo width="100%" className="info__help-grid">
         <RelativeBox className="info__help">
           <FlexColumn className="help__column">
-            <Subtitle1 className="help__title">ПОМОГИ БЛИЗКИМ</Subtitle1>
+            <Subtitle1 className="help__title">
+              {settings.aboutSectionActionTitle || "Помоги близким"}
+            </Subtitle1>
             <Subtitle3 className="help__subtitle">
-              Пройди тест вместе с тем, кому нужна помощь
+              {settings.aboutSectionActionSubtitle ||
+                "Пройди тест с тем кому нужна помощь"}
             </Subtitle3>
           </FlexColumn>
           <StyledImg
@@ -112,7 +124,7 @@ const InfoSection: React.FC = () => {
         <RelativeBox className="info__test-button">
           <FlexColumn className="info__test-button-column">
             <Button type={ButtonType.Primary} width={300}>
-              Пройти тест
+              {settings.aboutSectionButtonLabel || "Пройти тест"}
               <StyledImg
                 src={greenSemicirclePic}
                 className="test-button__side-semicircle"

@@ -4,7 +4,11 @@ import { Section } from "../../../ui/controls/layout";
 import { Container, Box } from "../../../ui/controls";
 import { ContainerSize, PaletteColor, ScreenSize } from "../../../ui/types";
 import { Title, Text3 } from "../../../ui/controls/typography";
+import { Link } from "../../../ui/controls";
 import Slider from "./slider";
+import { useQuery } from "@apollo/client";
+import { SettingsData } from "../../../types/settings";
+import { GET_SETTINGS } from "../../../gql/query/settings";
 
 const StyledContainer = styled(Container)`
   align-items: flex-end;
@@ -59,7 +63,26 @@ const StyledText3 = styled(Text3)`
   font-size: 18px !important;
 `;
 
+const DefaultCaption: React.FC<{ title: string }> = ({ title }) => <>{title}</>;
+
 const News: React.FC = () => {
+  const { data } = useQuery<SettingsData>(GET_SETTINGS, {
+    fetchPolicy: "cache-first",
+  });
+
+  if (!data || !data.settings.newsSection)
+    return <DefaultCaption title="Что нового?" />;
+
+  if (!data || !data.settings.newsSectionUrlLabel)
+    return <DefaultCaption title="Перейти к ленте новостей" />;
+
+  const sectionTitle = data.settings.newsSection;
+  const linkTitle = data.settings.newsSectionUrlLabel;
+
+  if (!sectionTitle.length) return <DefaultCaption title="Что нового?" />;
+  if (!linkTitle.length)
+    return <DefaultCaption title="Перейти к ленте новостей" />;
+
   return (
     <StyledSection id="news" flex centered height="735px">
       <StyledSection
@@ -73,10 +96,12 @@ const News: React.FC = () => {
       >
         <StyledContainer size={ContainerSize.Large}>
           <Box>
-            <StyledTitle>Что нового?</StyledTitle>
+            <StyledTitle>{sectionTitle}</StyledTitle>
           </Box>
           <Box mb={5}>
-            <StyledText3>Перейти к ленте новостей</StyledText3>
+            <Link zoomTextOnHover={true} to="/news-grid">
+              <StyledText3>{linkTitle}</StyledText3>
+            </Link>
           </Box>
         </StyledContainer>
       </StyledSection>

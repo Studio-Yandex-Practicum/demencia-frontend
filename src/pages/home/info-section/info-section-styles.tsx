@@ -133,7 +133,10 @@ export const StyledInfoSection = styled(Section)`
     .info__about {
       grid-area: info__about;
       align-items: center;
-      padding: 40px 20px;
+      padding-top: 130px;
+      padding-bottom: 40px;
+      padding-left: 8px;
+      padding-right: 8px;
     }
 
     .about__column {

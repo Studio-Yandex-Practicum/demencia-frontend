@@ -6,32 +6,18 @@ import "swiper/css/navigation";
 import Slide from "./slide";
 import { StyledSwiper } from "./styles/swiper";
 import SwiperButton from "./styles/navigation";
-import defaultImage from "../../../images/default-image.png";
+import defaultImage from "../../../images/slider-default.svg";
 import { useQuery } from "@apollo/client";
 import { toast } from "react-hot-toast";
-import { NewsArticlesData } from "../../../types/news";
-import { GET_NEWS_ARTICLES } from "../../../gql/query/news";
+import { PartnersData } from "../../../types/partners";
+import { GET_PARTNERS } from "../../../gql/query/partners";
 
 SwiperCore.use([Autoplay, Navigation]);
-
-function titleEllipsis(t: string | undefined) {
-  if (t !== undefined && t.length > 20) return `${t.substring(0, 20)}...`;
-}
-
-function textEllipsis(t: string | undefined) {
-  if (t !== undefined && t.length > 70) return `${t.substring(0, 70)}...`;
-}
 
 const EmptySlide: React.FC = () => (
   <StyledSwiper>
     <SwiperSlide>
-      <Slide
-        imageSource={defaultImage}
-        slideTitle="Заголовок новости"
-        slideText="Скоро тут появится интересная новость"
-        linkTo="/"
-        linkTitle="Подробнее"
-      />
+      <Slide imageSource={defaultImage} name="Партнер" url="" />
     </SwiperSlide>
   </StyledSwiper>
 );
@@ -39,19 +25,18 @@ const EmptySlide: React.FC = () => (
 const Slider: React.FC = () => {
   const prevRef = useRef<HTMLDivElement>(null);
   const nextRef = useRef<HTMLDivElement>(null);
-  const { data, loading, error } =
-    useQuery<NewsArticlesData>(GET_NEWS_ARTICLES);
+  const { data, loading, error } = useQuery<PartnersData>(GET_PARTNERS);
 
   if (loading) return <EmptySlide />;
 
   if (error) {
-    toast.error(`Не удалось загрузить новости с сервера`, { id: "error" });
+    toast.error(`Не удалось загрузить партнеров с сервера`, { id: "error" });
     return <EmptySlide />;
   }
 
-  if (!data || !data.newsArticles) return <EmptySlide />;
+  if (!data || !data.partners) return <EmptySlide />;
 
-  const items = data.newsArticles.filter((el) => el && el.isActive);
+  const items = data.partners.filter((el) => el && el.isActive);
 
   if (!items.length) return <EmptySlide />;
 
@@ -61,22 +46,18 @@ const Slider: React.FC = () => {
       spaceBetween={30}
       breakpoints={{
         300: {
-          slidesPerView: 1,
-        },
-        750: {
           slidesPerView: 2,
+          spaceBetween: 5,
         },
-        1024: {
+        480: {
           slidesPerView: 3,
-          spaceBetween: 20,
+          spaceBetween: 10,
         },
-        1300: {
-          slidesPerView: 4,
-          spaceBetween: 25,
+        640: {
+          slidesPerView: 3,
         },
-        1920: {
+        950: {
           slidesPerView: 5,
-          spaceBetween: 30,
         },
       }}
       centeredSlides={false}
@@ -101,13 +82,8 @@ const Slider: React.FC = () => {
         <SwiperSlide key={item.id}>
           <Slide
             imageSource={item.image || defaultImage}
-            slideTitle={titleEllipsis(item.title) || "Заголовок новости"}
-            slideText={
-              textEllipsis(item.subTitle) ||
-              "Скоро тут появится интересная новость"
-            }
-            linkTo={`/article/${item.id}`}
-            linkTitle={item.urlLabel || "Подробнее"}
+            name={item.name || "Партнер"}
+            url={item.url || ""}
           />
         </SwiperSlide>
       ))}

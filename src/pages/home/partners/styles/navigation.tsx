@@ -1,6 +1,6 @@
 import styled from "styled-components";
-import slideLeft from "../../../../images/slid-left.svg";
-import slideRight from "../../../../images/slid-right.svg";
+import slideLeft from "../../../../images/slider-dark-left.svg";
+import slideRight from "../../../../images/slider-dark-right.svg";
 import cursor from "../../../../images/cursor_pointer.svg";
 import { ScreenSize } from "../../../../ui/types";
 
@@ -15,9 +15,9 @@ const SwiperButton = styled.div<{
   z-index: 1000;
   position: absolute;
   ${({ type }) => (type === "left" ? "left: 10px;" : "right: 10px;")}
-  top: 50%;
-  width: 50px;
-  height: 50px;
+  top: 67%;
+  width: 40px;
+  height: 40px;
   cursor: url(${cursor}), auto;
   &::after {
     display: none;
@@ -26,7 +26,7 @@ const SwiperButton = styled.div<{
     opacity: 0.35;
     pointer-events: none;
   }
-  @media (max-width: ${ScreenSize.XSmall}px) {
+  @media (max-width: ${ScreenSize.Medium}px) {
     ${({ type }) => (type === "left" ? "left: 0;" : "right: 0;")}
   }
 `;

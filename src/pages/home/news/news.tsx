@@ -61,7 +61,7 @@ const StyledText3 = styled(Text3)`
 
 const News: React.FC = () => {
   return (
-    <StyledSection id="partners" flex centered height="735px">
+    <StyledSection id="news" flex centered height="735px">
       <StyledSection
         flex
         centered

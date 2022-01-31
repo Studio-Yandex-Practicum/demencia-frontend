@@ -33,6 +33,7 @@ const AboutFundSection: React.FC = () => {
       flex
       centered
       backgroundColor={PaletteColor.Green}
+      mt={4}
     >
       <StyledImage
         src={whiteHalfPuzzle}

@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { Title, Subtitle4 } from "../../../ui/controls/typography";
 import { Box } from "../../../ui/controls";
 import { Section } from "../../../ui/controls/layout";
-import { ScreenSize } from "../../../ui/types";
+import { ScreenSize, TextColor } from "../../../ui/types";
 import { useQuery } from "@apollo/client";
 import { SettingsData } from "../../../types/settings";
 import { GET_SETTINGS } from "../../../gql/query/settings";
@@ -70,7 +70,7 @@ const Map: React.FC = () => {
         <StyledTitle>{sectionTitle}</StyledTitle>
       </TextWrapper>
       <TextWrapper ml={6}>
-        <StyledText>{subtitle}</StyledText>
+        <StyledText textColor={TextColor.Shadow}>{subtitle}</StyledText>
       </TextWrapper>
       <MapWrapper ml={6} mr={6}>
         <ImageOfMap />

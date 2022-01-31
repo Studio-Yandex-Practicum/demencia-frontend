@@ -18,8 +18,8 @@ const StyledSection = styled(Section)<{
 `;
 
 const StyledBox = styled(Box)`
-  @media (max-width: ${ScreenSize.Medium}px) {
-    margin-left: 48px;
+  @media (max-width: ${ScreenSize.Small}px) {
+    margin-left: 32px;
   }
   @media (max-width: ${ScreenSize.XSmall}px) {
     margin-left: 0;
@@ -69,10 +69,10 @@ const Partners: React.FC = () => {
   return (
     <StyledSection id="partners" flex flex-direction="column" centered>
       <Box width="100%" mt={8}>
-        <StyledBox ml={12}>
+        <StyledBox ml={6}>
           <StyledTitle textColor={TextColor.Accent1}>{title}</StyledTitle>
         </StyledBox>
-        <StyledBox ml={12}>
+        <StyledBox ml={6}>
           <StyledText textColor={TextColor.Shadow}>{subTitle}</StyledText>
         </StyledBox>
       </Box>

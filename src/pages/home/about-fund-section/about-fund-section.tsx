@@ -28,7 +28,7 @@ const AboutFundSection: React.FC = () => {
 
   return (
     <StyledAboutFundSection
-      id="fund-section"
+      id="about"
       borderBox
       flex
       centered

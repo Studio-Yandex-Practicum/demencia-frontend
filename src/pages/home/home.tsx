@@ -4,6 +4,7 @@ import InfoSection from "./info-section/info-section";
 import Map from "./map/map";
 import News from "./news/news";
 import AboutFundSection from "./about-fund-section/about-fund-section";
+import Partners from "./partners/partners";
 
 const HomePage: React.FC = () => {
   return (
@@ -13,7 +14,7 @@ const HomePage: React.FC = () => {
       <News />
       <Map />
       <AboutFundSection />
-      <div>Sponsors block</div>
+      <Partners />
     </>
   );
 };

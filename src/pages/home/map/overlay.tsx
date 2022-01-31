@@ -66,7 +66,7 @@ const StyledBox = styled(Box)`
   border-radius: 15px;
 `;
 
-const MapOverlay: React.FC = () => {
+const Overlay: React.FC = () => {
   const imageRef = useRef<SVGSVGElement>(null);
 
   useEffect(() => {
@@ -98,7 +98,11 @@ const MapOverlay: React.FC = () => {
     return DB.forEach((element) => {
       if (imageRef.current !== null) {
         const myEl = imageRef.current.getElementById(element.geocode);
-        myEl.removeEventListener("mouseenter", () => console.log("popup"));
+        myEl.removeEventListener("mouseenter", (e) => {
+          if (e.currentTarget !== null) {
+            console.log(e.currentTarget);
+          }
+        });
       }
     });
   }, []);
@@ -894,4 +898,4 @@ const MapOverlay: React.FC = () => {
   );
 };
 
-export default MapOverlay;
+export default Overlay;

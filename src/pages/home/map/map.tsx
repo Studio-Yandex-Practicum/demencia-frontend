@@ -7,8 +7,9 @@ import { ScreenSize, TextColor } from "../../../ui/types";
 import { useQuery } from "@apollo/client";
 import { SettingsData } from "../../../types/settings";
 import { GET_SETTINGS } from "../../../gql/query/settings";
-import ImageOfMap from "./map-base-layer";
-import MapOverlay from "./map-overlay";
+import BaseLayer from "./base-layer";
+import Overlay from "./overlay";
+import { ReactComponent as MyMap } from "../../../images/map.svg";
 
 const StyledTitle = styled(Title)`
   @media (max-width: ${ScreenSize.Medium}px) {
@@ -77,8 +78,8 @@ const Map: React.FC = () => {
         <StyledText textColor={TextColor.Shadow}>{subtitle}</StyledText>
       </TextWrapper>
       <MapWrapper ml={6} mr={6}>
-        <MapOverlay />
-        <ImageOfMap />
+        <Overlay />
+        <BaseLayer SVG={MyMap} />
       </MapWrapper>
     </Section>
   );

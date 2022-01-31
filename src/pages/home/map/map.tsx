@@ -7,7 +7,8 @@ import { ScreenSize, TextColor } from "../../../ui/types";
 import { useQuery } from "@apollo/client";
 import { SettingsData } from "../../../types/settings";
 import { GET_SETTINGS } from "../../../gql/query/settings";
-import ImageOfMap from "./image-of-map";
+import ImageOfMap from "./map-base-layer";
+import MapOverlay from "./map-overlay";
 
 const StyledTitle = styled(Title)`
   @media (max-width: ${ScreenSize.Medium}px) {
@@ -34,6 +35,9 @@ const TextWrapper = styled(Box)`
 `;
 
 const MapWrapper = styled(Box)`
+  position: relative;
+  width: 100%;
+  height: 100%;
   @media (max-width: ${ScreenSize.Small}px) {
     margin-left: 32px;
     margin-right: 32px;
@@ -73,6 +77,7 @@ const Map: React.FC = () => {
         <StyledText textColor={TextColor.Shadow}>{subtitle}</StyledText>
       </TextWrapper>
       <MapWrapper ml={6} mr={6}>
+        <MapOverlay />
         <ImageOfMap />
       </MapWrapper>
     </Section>

@@ -11,6 +11,8 @@ interface ImageProps {
 }
 
 const StyledImage = styled.svg`
+  position: relative;
+  z-index: 1;
   #regionContainer {
     cursor: url(${cursor}), auto;
   }

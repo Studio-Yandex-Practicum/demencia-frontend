@@ -2,11 +2,10 @@ import React from "react";
 import purplePuzzleImg from "../../images/article-purple-puzzle.svg";
 import greenPuzzleImg from "../../images/article-green-puzzle.svg";
 import purpleSemicircleImg from "../../images/purple-semicircle.svg";
-import unsplashImg from "../../images/unsplash.jpg";
 import styled from "styled-components";
 import { Link, Box } from "../../ui/controls";
 import { Section } from "../../ui/controls/layout";
-import { Subtitle2, Text1 } from "../../ui/controls/typography";
+import { Text1 } from "../../ui/controls/typography";
 import { ArticleDate, DecorationText, MainTitleArticle } from "./typography";
 import {
   ArticleBackground,
@@ -16,6 +15,11 @@ import {
 } from "./decor";
 import { ArticleItemBox, DescriptionBox, ImageBox } from "./box";
 import { ScreenSize } from "../../ui/types";
+import { useQuery } from "@apollo/client";
+import { NewsArticlesData } from "../../types/news";
+import { GET_NEWS_ARTICLES } from "../../gql/query/news";
+import { toast } from "react-hot-toast";
+import { useParams } from "react-router-dom";
 
 const Cover = styled.img`
   width: 100%;
@@ -26,86 +30,78 @@ const Cover = styled.img`
   }
 `;
 
+const Empty: React.FC = () => (
+  <Box mt={2}>
+    <p>Новостей нет</p>
+  </Box>
+);
+
 const ArticlePage: React.FC = () => {
+  const { id } = useParams();
+
+  const { data, loading, error } =
+    useQuery<NewsArticlesData>(GET_NEWS_ARTICLES);
+
+  if (loading) {
+    return (
+      <Box mt={2}>
+        <p>Загрузка...</p>
+      </Box>
+    );
+  }
+
+  if (error) {
+    toast.error(`${error}`, { id: "error" });
+    return <Empty />;
+  }
+
+  if (!data || !id) {
+    return <Empty />;
+  }
+
+  const items = data.newsArticles.filter((el) => el.id === id);
+
+  if (!items.length) {
+    return <Empty />;
+  }
+
   return (
     <>
-      <Section flex mt={4}>
-        <MainTitleArticle>
-          В Москве открылись пункты для диагностики болезни Альцгеймера и других
-          когнитивных изменений
-        </MainTitleArticle>
-        <ArticleDate>14.10.2021</ArticleDate>
-        <PurplePuzzle src={purplePuzzleImg} alt="." />
-      </Section>
+      {items.map((item) => (
+        <>
+          <Section flex mt={4}>
+            <MainTitleArticle>{item.title}</MainTitleArticle>
+            <ArticleDate>
+              {`${item.createdAt.slice(8, 10)}
+               .${item.createdAt.slice(5, 7)}
+              .${item.createdAt.slice(0, 4)}`}
+            </ArticleDate>
+            <PurplePuzzle src={purplePuzzleImg} alt="." />
+          </Section>
 
-      <Section flex centered>
-        <ArticleBackground />
-        <ArticleItemBox>
-          <ImageBox>
-            <GreenPuzzle src={greenPuzzleImg} alt="." />
-            <Cover src={unsplashImg} alt="." />
-          </ImageBox>
+          <Section flex centered>
+            <ArticleBackground />
+            <ArticleItemBox>
+              <ImageBox>
+                <GreenPuzzle src={greenPuzzleImg} alt="." />
+                <Cover src={item.image} alt="." />
+              </ImageBox>
 
-          <DescriptionBox>
-            <PurpleSemicircle src={purpleSemicircleImg} alt="." />
-            <DecorationText mt={4}>
-              1 октября в рамках проекта Деменция.net благотворительного фонда
-              «Память поколений» открылись корнеры по ранней диагностике
-              когнитивных изменений.
-            </DecorationText>
-          </DescriptionBox>
+              <DescriptionBox>
+                <PurpleSemicircle src={purpleSemicircleImg} alt="." />
+                <DecorationText mt={4}>{item.subTitle}</DecorationText>
+              </DescriptionBox>
 
-          <Box mt={4}>
-            <Text1>
-              На четырех стациях метро Москвы 1 октября в рамках проекта
-              Деменция.net благотворительного фонда «Память поколений» открылись
-              корнеры по ранней диагностике когнитивных изменений. Об этом
-              сообщает газета ВЗГЛЯД. Тестирование, которое сможет пройти любой
-              желающий на безвозмездной основе, проходит на станциях «Курская»,
-              «Маяковская», «Тургеневская», «Киевская» при строгом соблюдении
-              мер безопасности — с соблюдением социальной дистанции и в масках.
-              Отмечается, что когнитивные изменения практически неизлечимы, но
-              их можно предупредить на ранней стадии. Кроме того, когнитивные
-              расстройства «молодеют» по всему миру и обретают формат эпидемии,
-              проблема выходит на общенациональный уровень. Корнер на станции
-              «Курская» официально открыл советский, российский участник
-              интеллектуальных игр, бизнесмен и преподаватель Александр
-              Абрамович Друзь. Он прошел тест под модерацией представителей
-              всероссийского общественного движения (ВОД) «Волонтеры-медики»,
-              которые являются партнерами проекта. Все гости мероприятия смогли
-              пройти тестирование и собственным примером продемонстрировать
-              простоту и важность подобных исследований. Мероприятие открывает
-              ряд событий, связанных с когнитивным здоровьем жителей России — их
-              запускают «Память поколений» и «Волонтеры-медики»: запланировано
-              открытие центров в регионах, которые помогут населению сохранить
-              когнитивное здоровье, что особенно важно для старшего поколения,
-              которое с каждым годом все чаще сталкивается с такими серьезными
-              заболеваниями, как деменция и болезнь Альцгеймера. Сегодня свыше 2
-              млн человек в России уже столкнулись с проблемами памяти, мышления
-              и другими когнитивными изменениями, которые являются первыми
-              признаками очень серьезных заболеваний. С подобными проблемами
-              порой сталкиваются и наши подопечные. По прогнозам, к 2030 году
-              более 1 млрд людей по всему миру будут охвачены этими
-              заболеваниями и уже не смогут вернуться к прежней жизни. Мы
-              нацелены на то, чтобы наши проекты по ранней диагностике
-              когнитивных заболеваний были полезны не только подопечным нашего
-              фонда, но всем гражданам нашей страны. Очень надеемся, что наши
-              корнеры и центры помогут справиться с проблемой когнитивного
-              здоровья и улучшат ситуацию по стране в целом», — сказала
-              исполнительный директор фонда «Память поколений» Екатерина
-              Круглова. Указывается, что «Память поколений» существует с 2015
-              года и оказывает высокотехнологичную медицинскую помощь ветеранам
-              Великой Отечественной войны и других боевых действий, а также
-              развивает активное долголетие на территории всей страны. Всего за
-              время существования фонд помог почти 16 тыс. ветеранов,
-              проживающим в различных городах России.
-            </Text1>
-          </Box>
-          <Box mt={3}>
-            <Link to="/news-grid">Перейти к ленте новостей</Link>
-          </Box>
-        </ArticleItemBox>
-      </Section>
+              <Box mt={4}>
+                <Text1>{item.text}</Text1>
+              </Box>
+              <Box mt={3}>
+                <Link to="/news-grid">Перейти к ленте новостей</Link>
+              </Box>
+            </ArticleItemBox>
+          </Section>
+        </>
+      ))}
     </>
   );
 };

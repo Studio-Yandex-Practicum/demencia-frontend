@@ -6,7 +6,6 @@ export interface NewsArticlesElement {
   createdAt: string;
   url: string;
   urlLabel: string;
-  isActive: boolean;
   text?: string;
 }
 

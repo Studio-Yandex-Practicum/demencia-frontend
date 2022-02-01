@@ -54,19 +54,17 @@ const NavMenu: React.FC<{ vertical?: boolean }> = (props) => {
 
   if (error) {
     toast.error(`Не удалось загрузить меню с сервера`, { id: "error" });
-    return <DefaultMenu />;
+    return <DefaultMenu vertical={!!props.vertical} />;
   }
 
   if (!data || !data.mainMenuElements) {
-    return <DefaultMenu />;
+    return <DefaultMenu vertical={!!props.vertical} />;
   }
 
-  const items = data.mainMenuElements.filter(
-    (el) => el && el.isActive && el.name !== ""
-  );
+  const items = data.mainMenuElements.filter((el) => el && el.name !== "");
 
   if (!items.length) {
-    return <DefaultMenu />;
+    return <DefaultMenu vertical={!!props.vertical} />;
   }
 
   return (

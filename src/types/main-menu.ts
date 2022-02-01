@@ -1,6 +1,5 @@
 export interface MainMenuItem {
   id: string;
-  isActive: boolean;
   name: string;
   url: string;
 }

@@ -14,6 +14,9 @@ import { SettingsData } from "../../../types/settings";
 import { GET_SETTINGS } from "../../../gql/query/settings";
 import { toast } from "react-hot-toast";
 
+import DOMPurify from "dompurify";
+import ReactHtmlParser from "react-html-parser";
+
 const AboutFundSection: React.FC = () => {
   const { data } = useQuery<SettingsData>(GET_SETTINGS, {
     fetchPolicy: "cache-first",
@@ -33,6 +36,7 @@ const AboutFundSection: React.FC = () => {
       flex
       centered
       backgroundColor={PaletteColor.Green}
+      mt={4}
     >
       <StyledImage
         src={whiteHalfPuzzle}
@@ -59,7 +63,7 @@ const AboutFundSection: React.FC = () => {
         mt={3}
         mb={3}
       >
-        {settings.fundSectionInfo || (
+        {ReactHtmlParser(DOMPurify.sanitize(settings.fundSectionInfo)) || (
           <>
             <p>
               Благотворительный фонд «Память поколений» был основан почти 6 лет

@@ -10,6 +10,9 @@ import { ContainerSize, TextColor } from "../../../../ui/types";
 import { BackgroundColor } from "../../../../ui/types/background-color.enum";
 import { Subtitle3 } from "../../../../ui/controls/typography";
 
+import DOMPurify from "dompurify";
+import ReactHtmlParser from "react-html-parser";
+
 interface SlideProps {
   imageSource?: string;
   text?: string;
@@ -19,7 +22,7 @@ interface SlideProps {
 
 const Slide: React.FC<SlideProps> = ({
   imageSource,
-  text,
+  text = "<div>Новость</div>",
   linkTo,
   linkTitle,
 }) => {
@@ -33,7 +36,7 @@ const Slide: React.FC<SlideProps> = ({
           <StyledBox height="140px" mt={2} mb={2} ml={2} mr={8}>
             <StyledBox mb={3}>
               <Subtitle3 uppercase={false} textColor={TextColor.Secondary}>
-                {text}
+                {ReactHtmlParser(DOMPurify.sanitize(text))}
               </Subtitle3>
             </StyledBox>
             <StyledBox absolute bottom="10px">

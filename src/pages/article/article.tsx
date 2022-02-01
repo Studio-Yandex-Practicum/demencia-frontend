@@ -34,7 +34,7 @@ const Cover = styled.img`
 
 const Empty: React.FC = () => (
   <Section borderBox flex centered>
-    <Subtitle3>Новостей нет</Subtitle3>
+    <Subtitle3>Новость не найдена</Subtitle3>
   </Section>
 );
 

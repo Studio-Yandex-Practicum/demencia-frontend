@@ -32,7 +32,7 @@ const GraphqlTestPage: React.FC = () => {
     return <Empty />;
   }
 
-  const items = data.leftMenuElements.filter((el) => el.isActive);
+  const items = data.leftMenuElements.filter((el) => !!el);
 
   if (!items.length) {
     return <Empty />;

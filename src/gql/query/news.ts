@@ -13,4 +13,19 @@ const GET_NEWS_ARTICLES = gql`
     }
   }
 `;
-export { GET_NEWS_ARTICLES };
+
+const GET_NEWS_ARTICLE = gql`
+  query getNewsArticle($id: ID!) {
+    newsArticle(id: $id) {
+      id
+      image
+      title
+      subTitle
+      createdAt
+      url
+      text
+    }
+  }
+`;
+
+export { GET_NEWS_ARTICLES, GET_NEWS_ARTICLE };

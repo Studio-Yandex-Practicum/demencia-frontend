@@ -1,9 +1,11 @@
 import React from "react";
+import DOMPurify from "dompurify";
+import ReactHtmlParser from "react-html-parser";
 import purplePuzzleImg from "../../images/article-purple-puzzle.svg";
 import greenPuzzleImg from "../../images/article-green-puzzle.svg";
 import purpleSemicircleImg from "../../images/purple-semicircle.svg";
 import styled from "styled-components";
-import { Link, Box } from "../../ui/controls";
+import { Link, Box, Subtitle3 } from "../../ui/controls";
 import { Section } from "../../ui/controls/layout";
 import { Text1 } from "../../ui/controls/typography";
 import { ArticleDate, DecorationText, MainTitleArticle } from "./typography";
@@ -16,8 +18,8 @@ import {
 import { ArticleItemBox, DescriptionBox, ImageBox } from "./box";
 import { ScreenSize } from "../../ui/types";
 import { useQuery } from "@apollo/client";
-import { NewsArticlesData } from "../../types/news";
-import { GET_NEWS_ARTICLES } from "../../gql/query/news";
+import { NewsArticleData } from "../../types/news";
+import { GET_NEWS_ARTICLE } from "../../gql/query/news";
 import { toast } from "react-hot-toast";
 import { useParams } from "react-router-dom";
 
@@ -31,22 +33,23 @@ const Cover = styled.img`
 `;
 
 const Empty: React.FC = () => (
-  <Box mt={2}>
-    <p>Новостей нет</p>
-  </Box>
+  <Section borderBox flex centered>
+    <Subtitle3>Новостей нет</Subtitle3>
+  </Section>
 );
 
 const ArticlePage: React.FC = () => {
   const { id } = useParams();
 
-  const { data, loading, error } =
-    useQuery<NewsArticlesData>(GET_NEWS_ARTICLES);
+  const { data, loading, error } = useQuery<NewsArticleData>(GET_NEWS_ARTICLE, {
+    variables: { id },
+  });
 
   if (loading) {
     return (
-      <Box mt={2}>
-        <p>Загрузка...</p>
-      </Box>
+      <Section flex centered>
+        <Subtitle3>Загрузка...</Subtitle3>
+      </Section>
     );
   }
 
@@ -55,53 +58,48 @@ const ArticlePage: React.FC = () => {
     return <Empty />;
   }
 
-  if (!data || !id) {
+  if (!data) {
     return <Empty />;
   }
 
-  const items = data.newsArticles.filter((el) => el.id === id);
+  const article = data.newsArticle;
 
-  if (!items.length) {
-    return <Empty />;
-  }
+  const date = new Date(article.createdAt || "");
+  const formattedDate = date.toLocaleString("ru-RU", {
+    day: "numeric",
+    month: "numeric",
+    year: "numeric",
+  });
 
   return (
     <>
-      {items.map((item) => (
-        <>
-          <Section flex mt={4}>
-            <MainTitleArticle>{item.title}</MainTitleArticle>
-            <ArticleDate>
-              {`${item.createdAt.slice(8, 10)}
-               .${item.createdAt.slice(5, 7)}
-              .${item.createdAt.slice(0, 4)}`}
-            </ArticleDate>
-            <PurplePuzzle src={purplePuzzleImg} alt="." />
-          </Section>
+      <Section flex mt={4}>
+        <MainTitleArticle>{article.title}</MainTitleArticle>
+        <ArticleDate>{formattedDate}</ArticleDate>
+        <PurplePuzzle src={purplePuzzleImg} alt="." />
+      </Section>
 
-          <Section flex centered>
-            <ArticleBackground />
-            <ArticleItemBox>
-              <ImageBox>
-                <GreenPuzzle src={greenPuzzleImg} alt="." />
-                <Cover src={item.image} alt="." />
-              </ImageBox>
+      <Section flex centered>
+        <ArticleBackground />
+        <ArticleItemBox>
+          <ImageBox>
+            <GreenPuzzle src={greenPuzzleImg} alt="." />
+            <Cover src={article.image} alt="." />
+          </ImageBox>
 
-              <DescriptionBox>
-                <PurpleSemicircle src={purpleSemicircleImg} alt="." />
-                <DecorationText mt={4}>{item.subTitle}</DecorationText>
-              </DescriptionBox>
+          <DescriptionBox>
+            <PurpleSemicircle src={purpleSemicircleImg} alt="." />
+            <DecorationText mt={4}>{article.subTitle}</DecorationText>
+          </DescriptionBox>
 
-              <Box mt={4}>
-                <Text1>{item.text}</Text1>
-              </Box>
-              <Box mt={3}>
-                <Link to="/news-grid">Перейти к ленте новостей</Link>
-              </Box>
-            </ArticleItemBox>
-          </Section>
-        </>
-      ))}
+          <Box mt={4}>
+            <Text1>{ReactHtmlParser(DOMPurify.sanitize(article.text))}</Text1>
+          </Box>
+          <Box mt={3}>
+            <Link to="/news-grid">Перейти к ленте новостей</Link>
+          </Box>
+        </ArticleItemBox>
+      </Section>
     </>
   );
 };

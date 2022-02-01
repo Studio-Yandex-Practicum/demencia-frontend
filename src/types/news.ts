@@ -6,7 +6,7 @@ export interface NewsArticlesElement {
   createdAt: string;
   url: string;
   urlLabel: string;
-  text?: string;
+  text: string;
 }
 
 export interface NewsArticlesData {

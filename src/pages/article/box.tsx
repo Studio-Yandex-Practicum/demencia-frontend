@@ -34,6 +34,12 @@ export const ArticleItemBox = styled.div`
 
 export const ImageBox = styled.div`
   position: relative;
+  max-width: 70%;
+  margin: 0 auto;
+
+  @media (max-width: ${ScreenSize.Medium}px) {
+    max-width: 100%;
+  }
 `;
 
 export const DescriptionBox = styled.div`
@@ -42,4 +48,9 @@ export const DescriptionBox = styled.div`
   justify-content: flex-end;
   margin: auto;
   max-width: 1440px;
+  max-width: 70%;
+
+  @media (max-width: ${ScreenSize.Medium}px) {
+    max-width: 100%;
+  }
 `;

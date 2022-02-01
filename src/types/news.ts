@@ -12,3 +12,7 @@ export interface NewsArticlesElement {
 export interface NewsArticlesData {
   newsArticles: NewsArticlesElement[];
 }
+
+export interface NewsArticleData {
+  newsArticle: NewsArticlesElement;
+}

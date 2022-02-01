@@ -10,7 +10,6 @@ const GET_NEWS_ARTICLES = gql`
       createdAt
       url
       urlLabel
-      isActive
     }
   }
 `;

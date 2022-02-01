@@ -6,7 +6,6 @@ const GET_SLIDER_ITEMS = gql`
       id
       createdAt
       updatedAt
-      isActive
       title
       image
       url

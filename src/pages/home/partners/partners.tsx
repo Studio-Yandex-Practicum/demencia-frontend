@@ -68,7 +68,7 @@ const Partners: React.FC = () => {
 
   return (
     <StyledSection id="partners" flex flex-direction="column" centered>
-      <Box width="100%" mt={8}>
+      <Box width="100%" mt={4}>
         <StyledBox ml={6}>
           <StyledTitle textColor={TextColor.Accent1}>{title}</StyledTitle>
         </StyledBox>

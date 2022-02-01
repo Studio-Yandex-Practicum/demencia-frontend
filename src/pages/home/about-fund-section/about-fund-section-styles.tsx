@@ -96,7 +96,7 @@ export const StyledAboutFundSection = styled(Section)`
 
   @media (max-width: ${ScreenSize.Small}px) {
     padding: 100px 50px 0 50px;
-    margin-bottom: 20px;
+    margin-bottom: 0;
 
     .about-fund-section__title {
       font-size: 35px;

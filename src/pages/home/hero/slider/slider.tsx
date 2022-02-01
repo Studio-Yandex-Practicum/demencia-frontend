@@ -59,7 +59,7 @@ const Slider: React.FC = () => {
     return <EmptySlide />;
   }
 
-  const items = data.sliders.filter((el) => el && el.isActive);
+  const items = data.sliders.filter((el) => !!el);
 
   if (!items.length) {
     return <EmptySlide />;
@@ -93,7 +93,8 @@ const Slider: React.FC = () => {
         <SwiperSlide key={item.id}>
           <Slide
             imageSource={item.image}
-            text={textEllipsis(item.title)}
+            /* text={textEllipsis(item.title)} */
+            text={item.title}
             linkTo={item.url}
             linkTitle={item.urlLabel}
           />

@@ -49,9 +49,7 @@ const NewsGridPage: React.FC = () => {
     return <Empty />;
   }
 
-  const newsArticlesData = data.newsArticles.filter(
-    (item) => item && item.isActive
-  );
+  const newsArticlesData = data.newsArticles.filter((item) => !!item);
 
   newsArticlesData.sort(function (a, b) {
     if (a.createdAt > b.createdAt) {

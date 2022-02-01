@@ -4,7 +4,6 @@ const GET_MAIN_MENU_ITEMS = gql`
   query getMainMenuItems {
     mainMenuElements {
       id
-      isActive
       name
       url
     }

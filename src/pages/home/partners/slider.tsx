@@ -36,7 +36,7 @@ const Slider: React.FC = () => {
 
   if (!data || !data.partners) return <EmptySlide />;
 
-  const items = data.partners.filter((el) => el && el.isActive);
+  const items = data.partners.filter((el) => !!el);
 
   if (!items.length) return <EmptySlide />;
 

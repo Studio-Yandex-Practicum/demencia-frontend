@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { ScreenSize } from "../../../ui/types";
 import Test from "./test/test";
 import Slider from "./slider/slider";
-import { TwoColumnGrid, Section } from "../../../ui/controls/layout";
+import { TwoColumnGrid, Section } from "../../../ui/controls";
 
 const StyledSection = styled(Section)`
   transform: translateY(-120px);
@@ -22,7 +22,7 @@ const StyledSection = styled(Section)`
 
 const Hero: React.FC = () => {
   return (
-    <StyledSection>
+    <StyledSection mt={2}>
       <TwoColumnGrid>
         <Test />
         <Slider />

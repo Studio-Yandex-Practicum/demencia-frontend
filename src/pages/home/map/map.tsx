@@ -37,7 +37,6 @@ const TextWrapper = styled(Box)`
 
 const MapWrapper = styled(Box)`
   position: relative;
-  width: 100%;
   height: 100%;
   @media (max-width: ${ScreenSize.Small}px) {
     margin-left: 32px;

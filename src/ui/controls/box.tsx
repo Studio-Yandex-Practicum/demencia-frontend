@@ -30,6 +30,7 @@ interface BoxStyleProps extends BoxProps {
   right?: string;
   bottom?: string;
   zIndex?: number;
+  animate?: boolean;
 }
 
 const getShift = (val: number, defaultSpacing: number): number => {
@@ -98,4 +99,12 @@ export const Box = styled.div<BoxStyleProps>`
   ${getBoxStyles}
   ${(p) =>
     "background-color:" + p.backgroundColor || p.theme.colors.background};
+  transition: all 1s ease;
+  ${({ animate }) => {
+    if (animate) {
+      return `
+        transform: translateY(200px);
+      `;
+    }
+  }}
 `;

@@ -70,8 +70,10 @@ const NavMenu: React.FC<{ vertical?: boolean }> = (props) => {
   return (
     <Menu vertical={!!props.vertical}>
       {items.map((item) => (
-        <MenuItem key={item.id}>
-          <Link to={item.url}>{textEllipsis(item.name)}</Link>
+        <MenuItem key={item.id} zoomOnHover>
+          <Link to={item.url} zoomTextOnHover={false}>
+            {textEllipsis(item.name)}
+          </Link>
         </MenuItem>
       ))}
     </Menu>

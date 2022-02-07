@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-non-null-assertion */
-import React, { useRef, useEffect, useState } from "react";
+import React, { useRef, useEffect, useState, useCallback } from "react";
 import styled from "styled-components";
 import cursor from "../../../images/cursor_pointer.svg";
 import { Box } from "../../../ui/controls";
@@ -133,6 +133,24 @@ const Overlay: React.FC = () => {
   const [x, setX] = useState<number>(0);
   const [y, setY] = useState<number>(0);
 
+  const mouseEnter = useCallback((event) => {
+    const e = event as MouseEvent;
+    const el = e.currentTarget as SVGPathElement;
+    const getCity = el.getAttribute("city");
+    const getAdress = el.getAttribute("address");
+    const getPhone = el.getAttribute("phone");
+    setX(e.x - 100);
+    setY(e.y - 100);
+    setCity(getCity!);
+    setAddress(getAdress!);
+    setPhone(getPhone!);
+    setIsVisible("visible");
+  }, []);
+
+  const mouseLeave = useCallback(() => {
+    setIsVisible("");
+  }, []);
+
   useEffect(() => {
     DB.forEach((element) => {
       if (imageRef.current !== null) {
@@ -142,37 +160,23 @@ const Overlay: React.FC = () => {
         regionData.setAttribute("city", element.centers[0].city);
         regionData.setAttribute("address", element.centers[0].address);
         regionData.setAttribute("phone", element.centers[0].phoneNo);
-
         regionData.addEventListener("mouseenter", (event: Event) => {
-          const e = event as MouseEvent;
-          const el = e.currentTarget as SVGPathElement;
-          const getCity = el.getAttribute("city");
-          const getAdress = el.getAttribute("address");
-          const getPhone = el.getAttribute("phone");
-
-          setX(e.x - 100);
-          setY(e.y - 100);
-          setCity(getCity!);
-          setAddress(getAdress!);
-          setPhone(getPhone!);
-          setIsVisible("visible");
+          mouseEnter(event);
         });
         regionData.addEventListener("mouseleave", () => {
-          setIsVisible("");
+          mouseLeave();
         });
       }
     });
-    return DB.forEach((element) => {
-      if (imageRef.current !== null) {
-        const myEl = imageRef.current.getElementById(element.geocode);
-        myEl.removeEventListener("mouseenter", (event: Event) => {
-          if (event.currentTarget !== null) {
-            console.log(event.currentTarget);
-          }
-        });
-      }
-    });
-  }, []);
+    // return () => {
+    //   regionData.removeEventListener("mouseenter", (event: Event) => {
+    //     mouseEnter(event);
+    //   });
+    //   regionData.removeEventListener("mouseleave", () => {
+    //     mouseLeave();
+    //   });
+    // };
+  }, [mouseEnter, mouseLeave]);
 
   return (
     <>

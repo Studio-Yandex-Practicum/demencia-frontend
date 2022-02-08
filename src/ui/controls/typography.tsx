@@ -194,7 +194,7 @@ export const Subtitle4 = styled.h6.attrs(
   ${typographyMixin}
 `;
 
-export const Text1 = styled.p.attrs(
+export const Text1 = styled.div.attrs(
   (props: ThemeProps<DefaultTheme> & TextBlockProps) => ({
     level: TypographyLevel.Text1,
     ...props,
@@ -211,7 +211,7 @@ export const Text1 = styled.p.attrs(
   }
 `;
 
-export const Text2 = styled.p.attrs(
+export const Text2 = styled.div.attrs(
   (props: ThemeProps<DefaultTheme> & TextBlockProps) => ({
     level: TypographyLevel.Text2,
     ...props,
@@ -220,7 +220,7 @@ export const Text2 = styled.p.attrs(
   ${typographyMixin}
 `;
 
-export const Text3 = styled.p.attrs(
+export const Text3 = styled.div.attrs(
   (props: ThemeProps<DefaultTheme> & TextBlockProps) => ({
     level: TypographyLevel.Text3,
     textColor: TextColor.Shadow,
@@ -257,7 +257,7 @@ export const Text3 = styled.p.attrs(
   }
 `;
 
-export const Text4 = styled.p.attrs(
+export const Text4 = styled.div.attrs(
   (props: ThemeProps<DefaultTheme> & TextBlockProps) => ({
     level: TypographyLevel.Text4,
     ...props,

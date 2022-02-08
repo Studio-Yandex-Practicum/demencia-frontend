@@ -161,30 +161,37 @@ const Overlay: React.FC = () => {
   }, []);
 
   useEffect(() => {
+    const regionData = imageRef.current;
+
     DB.forEach((element) => {
-      if (imageRef.current) {
-        const regionData = imageRef.current.getElementById(element.geocode);
-        regionData.classList.add("overlay");
-        regionData.firstElementChild?.classList.add("overlay");
-        regionData.setAttribute("city", element.centers[0].city);
-        regionData.setAttribute("address", element.centers[0].address);
-        regionData.setAttribute("phone", element.centers[0].phoneNo);
-        regionData.addEventListener("mouseenter", (event: Event) => {
+      const region = regionData?.getElementById(element.geocode);
+
+      region?.classList.add("overlay");
+      region?.firstElementChild?.classList.add("overlay");
+      region?.setAttribute("city", element.centers[0].city);
+      region?.setAttribute("address", element.centers[0].address);
+      region?.setAttribute("phone", element.centers[0].phoneNo);
+
+      region?.addEventListener("mouseenter", (event: Event) => {
+        mouseEnter(event);
+      });
+
+      region?.addEventListener("mouseleave", () => {
+        mouseLeave();
+      });
+    });
+
+    return () => {
+      DB.forEach((element) => {
+        const region = regionData?.getElementById(element.geocode);
+        region?.removeEventListener("mouseenter", (event: Event) => {
           mouseEnter(event);
         });
-        regionData.addEventListener("mouseleave", () => {
+        region?.removeEventListener("mouseleave", () => {
           mouseLeave();
         });
-      }
-    });
-    // return () => {
-    //   regionData.removeEventListener("mouseenter", (event: Event) => {
-    //     mouseEnter(event);
-    //   });
-    //   regionData.removeEventListener("mouseleave", () => {
-    //     mouseLeave();
-    //   });
-    // };
+      });
+    };
   }, [mouseEnter, mouseLeave]);
 
   return (

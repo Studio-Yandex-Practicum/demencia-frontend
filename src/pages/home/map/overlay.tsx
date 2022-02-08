@@ -53,7 +53,8 @@ const DB = [
     centers: [
       {
         city: "Москва",
-        address: "улица Главная, дом 22",
+        address:
+          "Самый Главный переулок страны рядом с Красной Площадью, дом 22",
         phoneNo: "+987654321",
       },
     ],
@@ -101,15 +102,17 @@ const StyledBox = styled(Box)<{
   position: absolute;
   border: 3px solid #429e84;
   border-radius: 15px;
+  width: 300px;
+  min-height: 150px;
   ${({ state }) =>
     state === "visible" ? "display: block;" : "display: none;"};
   @media (max-width: ${ScreenSize.Medium}px) {
     width: 250px;
-    height: 90px;
+    min-height: 90px;
   }
   @media (max-width: ${ScreenSize.XSmall}px) {
     width: 100px;
-    height: 50px;
+    min-height: 50px;
   }
 `;
 
@@ -139,8 +142,14 @@ const Overlay: React.FC = () => {
     const getCity = el.getAttribute("city");
     const getAdress = el.getAttribute("address");
     const getPhone = el.getAttribute("phone");
-    setX(e.x - 100);
-    setY(e.y - 100);
+    setX(() => {
+      const width = e.x / window.innerWidth;
+      return e.x * width;
+    });
+    setY(() => {
+      const height = e.y / window.innerHeight;
+      return e.y * height - 150;
+    });
     setCity(getCity!);
     setAddress(getAdress!);
     setPhone(getPhone!);
@@ -153,7 +162,7 @@ const Overlay: React.FC = () => {
 
   useEffect(() => {
     DB.forEach((element) => {
-      if (imageRef.current !== null) {
+      if (imageRef.current) {
         const regionData = imageRef.current.getElementById(element.geocode);
         regionData.classList.add("overlay");
         regionData.firstElementChild?.classList.add("overlay");
@@ -185,10 +194,8 @@ const Overlay: React.FC = () => {
         pl={1}
         pb={1}
         pr={1}
-        top={y !== null ? `${y}px` : "0px"}
-        left={x !== null ? `${x}px` : "0px"}
-        width="400px"
-        height="150px"
+        top={y ? `${y}px` : "0px"}
+        left={x ? `${x}px` : "0px"}
         zIndex={3}
         backgroundColor={PaletteColor.White}
         state={isVisible}

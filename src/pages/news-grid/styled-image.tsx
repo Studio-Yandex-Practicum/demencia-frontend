@@ -8,7 +8,15 @@ const StyledImage = styled.img<{
   z-index: 1;
   position: absolute;
   object-fit: contain;
-  transition: all 1s ease;
+  transition: all 2s ease;
+  @keyframes rotate {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
 
   ${({ puzzleType, animate }) => {
     if (puzzleType.includes("news-grid__green-puzzle")) {
@@ -17,6 +25,7 @@ const StyledImage = styled.img<{
         height: 90px;
         right: 180px;
         top: 0;
+        animation: rotate 10s linear infinite;
    
         @media (max-width: ${ScreenSize.Large}px) {
           & {
@@ -120,6 +129,7 @@ const StyledImage = styled.img<{
         height: 200px;
         bottom: 440px;
         right: 50px;
+        animation: rotate 10s linear infinite;
         `;
     } else if (
       puzzleType.includes("news-grid__translucent-half-green-puzzle")

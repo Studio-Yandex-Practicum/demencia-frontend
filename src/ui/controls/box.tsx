@@ -99,7 +99,7 @@ export const Box = styled.div<BoxStyleProps>`
   ${getBoxStyles}
   ${(p) =>
     "background-color:" + p.backgroundColor || p.theme.colors.background};
-  transition: all 1s ease;
+  transition: all 2s ease;
   ${({ animate }) => {
     if (animate) {
       return `

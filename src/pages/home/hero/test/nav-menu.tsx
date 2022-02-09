@@ -62,7 +62,7 @@ const NavMenu: React.FC = () => {
   return (
     <StyledMenu vertical={true} gap={16} gapSmallScreen={12}>
       {items.map((item, index) => (
-        <MenuItem key={index}>
+        <MenuItem key={index} zoomOnHover>
           <Link to={item.url}>
             <Text3>{textEllipsis(item.name)}</Text3>
           </Link>

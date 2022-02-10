@@ -53,7 +53,7 @@ const StyledBox = styled(Box)`
   }
   @media (max-width: ${ScreenSize.XSmall}px) {
     margin: 4px 4px;
-    bottom: 22px;
+    top: 100px;
   }
 `;
 

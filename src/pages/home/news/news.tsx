@@ -99,8 +99,8 @@ const News: React.FC = () => {
             <StyledTitle>{sectionTitle}</StyledTitle>
           </Box>
           <Box mb={5}>
-            <Link zoomTextOnHover={true} to="/news-grid">
-              <StyledText3>{linkTitle}</StyledText3>
+            <Link to="/news-grid">
+              <StyledText3 zoomOnHover>{linkTitle}</StyledText3>
             </Link>
           </Box>
         </StyledContainer>

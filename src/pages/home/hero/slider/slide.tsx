@@ -39,9 +39,13 @@ const Slide: React.FC<SlideProps> = ({
                 {ReactHtmlParser(DOMPurify.sanitize(text))}
               </Subtitle3>
             </StyledBox>
-            <StyledBox absolute bottom="10px">
+            <StyledBox absolute top="135px">
               <Link to={linkTo || ""}>
-                <Subtitle3 uppercase={false} textColor={TextColor.Secondary}>
+                <Subtitle3
+                  borderBottomOnHover
+                  uppercase={false}
+                  textColor={TextColor.Secondary}
+                >
                   {linkTitle || "Подробнее..."}
                 </Subtitle3>
               </Link>

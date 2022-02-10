@@ -177,10 +177,10 @@ const Overlay: React.FC = () => {
     const e = event as MouseEvent;
     const el = e.currentTarget as SVGPathElement;
     const getCity = el.getAttribute("city");
-    const getAdress = el.getAttribute("address");
+    const getAddress = el.getAttribute("address");
     const getPhone = el.getAttribute("phone");
     setCity(getCity!);
-    setAddress(getAdress!);
+    setAddress(getAddress!);
     setPhone(getPhone!);
     setIsVisible("visible");
   }, []);

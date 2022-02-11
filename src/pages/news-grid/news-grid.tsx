@@ -17,6 +17,8 @@ import { toast } from "react-hot-toast";
 import { Subtitle3 } from "../../ui/controls/typography";
 import { GET_NEWS_ARTICLES } from "../../gql/query/news";
 
+import ButtonWithSemicircle from "../../components/button-with-simecircle";
+
 const Empty: React.FC = () => (
   <Section borderBox flex centered>
     <MainTitle mb={5}>НОВОСТИ</MainTitle>
@@ -64,6 +66,7 @@ const NewsGridPage: React.FC = () => {
 
   return (
     <Section flex centered mb={2}>
+      <ButtonWithSemicircle />
       <StyledImage src={testGreenPuzzle} puzzleType="news-grid__green-puzzle" />
       <StyledImage src={purpleSemicircle} puzzleType="news-grid__semicircle" />
       <StyledImage src={purplePuzzle} puzzleType="news-grid__purple-puzzle" />

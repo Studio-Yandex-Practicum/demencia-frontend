@@ -6,15 +6,14 @@ import {
   BigCircle,
   MediumCircle,
   SmallCircle,
-  HalfCircle,
 } from "./decor";
 import { ScreenSize } from "../../../../ui/types";
-import { Button, Box } from "../../../../ui/controls";
+import { Box } from "../../../../ui/controls";
 import NavMenu from "./nav-menu";
-import { StringValueNode } from "graphql";
 import { useQuery } from "@apollo/client";
 import { SettingsData } from "../../../../types/settings";
 import { GET_SETTINGS } from "../../../../gql/query/settings";
+import ButtonWithSemicircle from "../../../../components/button-with-simecircle";
 
 const Actions = styled.div`
   display: flex;
@@ -53,20 +52,6 @@ const StyledBox = styled(Box)`
   }
 `;
 
-const StyledButton = styled(Button)`
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  overflow: hidden;
-  @media (max-width: ${ScreenSize.Medium}px) {
-    height: 63px;
-  }
-  @media (max-width: ${ScreenSize.XSmall}px) {
-    width: 230px;
-    height: 45px;
-    font-size: 16px;
-  }
-`;
-
 const StyledNavBox = styled(Box)`
   min-height: 340px;
   width: fit-content;
@@ -102,10 +87,7 @@ const Test: React.FC = () => {
         <BigCircle />
       </Box>
       <Actions>
-        <StyledButton primary uppercase width={300} zIndex={310}>
-          {buttonCaption}
-        </StyledButton>
-        <HalfCircle />
+        <ButtonWithSemicircle maxWidth={250} buttonText={buttonCaption} />
       </Actions>
     </StyledBox>
   );

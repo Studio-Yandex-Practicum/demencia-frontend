@@ -27,6 +27,7 @@ export interface ButtonProps
   width?: number;
   zIndex?: number;
   borderWidth?: number;
+  animate?: boolean;
 }
 
 const buildLinkButtonStyleMixIn = (

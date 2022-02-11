@@ -1,4 +1,4 @@
-import { Section } from "../../../ui/controls";
+import { Button, Section, Subtitle1, Text3 } from "../../../ui/controls";
 import { ScreenSize } from "../../../ui/types";
 import styled from "styled-components";
 
@@ -90,7 +90,6 @@ export const StyledAboutFundSection = styled(Section)`
       bottom: -190px;
       left: calc(69.7% - 75px);
       width: 150px;
-      transform: rotate(-90deg);
     }
   }
 
@@ -120,7 +119,37 @@ export const StyledAboutFundSection = styled(Section)`
   }
 `;
 
-export const StyledImage = styled.img`
+export const StyledImage = styled.img<{
+  animate?: boolean;
+  rotate?: boolean;
+}>`
   object-fit: contain;
   object-position: center;
+  transition: all 1s ease;
+  ${({ animate, rotate }) =>
+    animate
+      ? `opacity: 0;  ${
+          rotate
+            ? `transform: rotate(90deg);`
+            : `transform: rotate(-90deg) translateX(-100px) !important;`
+        }`
+      : ""}
+`;
+
+export const FundSubtitle1 = styled(Subtitle1)`
+  transition: all 1s ease;
+  ${({ animate }) =>
+    animate ? "opacity: 0; transform: translateY(100px);" : ""}
+`;
+
+export const FundText3 = styled(Text3)`
+  transition: all 1s ease;
+  ${({ animate }) =>
+    animate ? "opacity: 0; transform: translateY(100px);" : ""}
+`;
+
+export const FundButton = styled(Button)`
+  transition: all 1s ease;
+  ${({ animate }) =>
+    animate ? "opacity: 0; transform: translateY(100px);" : ""}
 `;

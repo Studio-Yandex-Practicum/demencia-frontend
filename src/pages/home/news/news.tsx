@@ -9,6 +9,7 @@ import Slider from "./slider";
 import { useQuery } from "@apollo/client";
 import { SettingsData } from "../../../types/settings";
 import { GET_SETTINGS } from "../../../gql/query/settings";
+import AnimationWrapper from "../../../components/animation-wrapper";
 
 const StyledContainer = styled(Container)`
   align-items: flex-end;
@@ -54,6 +55,10 @@ const StyledBox = styled(Box)`
 `;
 
 const StyledTitle = styled(Title)`
+  transition: all 1s ease;
+  ${({ animate }) =>
+    animate ? "opacity: 0; transform: translateY(100px);" : ""}
+
   @media (max-width: ${ScreenSize.XSmall}px) {
     font-size: 30px;
   }
@@ -96,7 +101,9 @@ const News: React.FC = () => {
       >
         <StyledContainer size={ContainerSize.Large}>
           <Box>
-            <StyledTitle>{sectionTitle}</StyledTitle>
+            <AnimationWrapper>
+              <StyledTitle>{sectionTitle}</StyledTitle>
+            </AnimationWrapper>
           </Box>
           <Box mb={5}>
             <Link zoomTextOnHover={true} to="/news-grid">

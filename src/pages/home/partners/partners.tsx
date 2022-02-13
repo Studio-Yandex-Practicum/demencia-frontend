@@ -8,6 +8,7 @@ import Slider from "./slider";
 import { useQuery } from "@apollo/client";
 import { SettingsData } from "../../../types/settings";
 import { GET_SETTINGS } from "../../../gql/query/settings";
+import AnimationWrapper from "../../../components/animation-wrapper";
 
 const StyledSection = styled(Section)<{
   minHeight?: string;
@@ -27,12 +28,20 @@ const StyledBox = styled(Box)`
 `;
 
 const StyledTitle = styled(Title)`
+  transition: all 1s ease;
+  ${({ animate }) =>
+    animate ? "opacity: 0; transform: translateY(100px);" : ""}
+
   @media (max-width: ${ScreenSize.Medium}px) {
     font-size: 23px;
   }
 `;
 
 const StyledText = styled(Subtitle4)`
+  transition: all 1s ease;
+  ${({ animate }) =>
+    animate ? "opacity: 0; transform: translateY(100px);" : ""}
+
   font-size: 18px !important;
   @media (max-width: ${ScreenSize.Small}px) {
     font-size: 12px !important;
@@ -70,10 +79,14 @@ const Partners: React.FC = () => {
     <StyledSection id="partners" flex flex-direction="column" centered>
       <Box width="100%" mt={4}>
         <StyledBox ml={6}>
-          <StyledTitle textColor={TextColor.Accent1}>{title}</StyledTitle>
+          <AnimationWrapper>
+            <StyledTitle textColor={TextColor.Accent1}>{title}</StyledTitle>
+          </AnimationWrapper>
         </StyledBox>
         <StyledBox ml={6}>
-          <StyledText textColor={TextColor.Shadow}>{subTitle}</StyledText>
+          <AnimationWrapper>
+            <StyledText textColor={TextColor.Shadow}>{subTitle}</StyledText>
+          </AnimationWrapper>
         </StyledBox>
       </Box>
       <StyledSliderWrapper

@@ -15,6 +15,7 @@ import { StringValueNode } from "graphql";
 import { useQuery } from "@apollo/client";
 import { SettingsData } from "../../../../types/settings";
 import { GET_SETTINGS } from "../../../../gql/query/settings";
+import AnimationWrapper from "../../../../components/animation-wrapper";
 
 const Actions = styled.div`
   display: flex;
@@ -57,6 +58,11 @@ const StyledButton = styled(Button)`
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
+
+  transition: all 1s ease;
+  ${({ animate }) =>
+    animate ? "opacity: 0; transform: translateX(-100px);" : ""}
+
   @media (max-width: ${ScreenSize.Medium}px) {
     height: 63px;
   }
@@ -102,10 +108,14 @@ const Test: React.FC = () => {
         <BigCircle />
       </Box>
       <Actions>
-        <StyledButton primary uppercase width={300} zIndex={310}>
-          {buttonCaption}
-        </StyledButton>
-        <HalfCircle />
+        <AnimationWrapper>
+          <StyledButton primary uppercase width={300} zIndex={310}>
+            {buttonCaption}
+          </StyledButton>
+        </AnimationWrapper>
+        <AnimationWrapper>
+          <HalfCircle />
+        </AnimationWrapper>
       </Actions>
     </StyledBox>
   );

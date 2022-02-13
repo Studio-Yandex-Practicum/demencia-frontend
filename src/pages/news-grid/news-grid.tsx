@@ -14,10 +14,11 @@ import StyledImage from "./styled-image";
 import { useQuery } from "@apollo/client";
 import { NewsArticlesData } from "../../types/news";
 import { toast } from "react-hot-toast";
-import { Subtitle3 } from "../../ui/controls/typography";
+import { Subtitle3 } from "../../ui/controls";
 import { GET_NEWS_ARTICLES } from "../../gql/query/news";
 
 import ButtonWithSemicircle from "../../components/button-with-simecircle";
+import AnimationWrapper from "../../components/animation-wrapper";
 
 const Empty: React.FC = () => (
   <Section borderBox flex centered>
@@ -68,38 +69,56 @@ const NewsGridPage: React.FC = () => {
     <Section flex centered mb={2}>
       <ButtonWithSemicircle />
       <StyledImage src={testGreenPuzzle} puzzleType="news-grid__green-puzzle" />
-      <StyledImage src={purpleSemicircle} puzzleType="news-grid__semicircle" />
-      <StyledImage src={purplePuzzle} puzzleType="news-grid__purple-puzzle" />
-      <StyledImage
-        src={halfGreenPuzzle}
-        puzzleType="news-grid__half-green-puzzle"
-      />
+      <AnimationWrapper>
+        <StyledImage
+          src={purpleSemicircle}
+          puzzleType="news-grid__semicircle"
+        />
+      </AnimationWrapper>
+      <AnimationWrapper>
+        <StyledImage src={purplePuzzle} puzzleType="news-grid__purple-puzzle" />
+      </AnimationWrapper>
+      <AnimationWrapper>
+        <StyledImage
+          src={halfGreenPuzzle}
+          puzzleType="news-grid__half-green-puzzle"
+        />
+      </AnimationWrapper>
       <StyledImage
         src={purplePuzzleBottom}
         puzzleType="news-grid__bottom-purple-puzzle"
       />
-      <StyledImage
-        src={halfGreenPuzzleTranslucent}
-        puzzleType="news-grid__translucent-half-green-puzzle"
-      />
-      <Box
-        backgroundColor={PaletteColor.LightGreen}
-        height="775px"
-        width="100%"
-        flex
-        absolute
-        top="160px"
-      />
-      <Box
-        backgroundColor={PaletteColor.DarkPurple}
-        height="630px"
-        width="80%"
-        flex
-        absolute
-        top="870px"
-      />
+      <AnimationWrapper>
+        <StyledImage
+          src={halfGreenPuzzleTranslucent}
+          puzzleType="news-grid__translucent-half-green-puzzle"
+        />
+      </AnimationWrapper>
 
-      <MainTitle mb={10}>НОВОСТИ</MainTitle>
+      <AnimationWrapper>
+        <Box
+          backgroundColor={PaletteColor.LightGreen}
+          height="50%"
+          width="100%"
+          flex
+          absolute
+          top="160px"
+        />
+      </AnimationWrapper>
+      <AnimationWrapper>
+        <Box
+          backgroundColor={PaletteColor.DarkPurple}
+          height="50%"
+          width="80%"
+          flex
+          absolute
+          top="870px"
+        />
+      </AnimationWrapper>
+      <AnimationWrapper>
+        <MainTitle mb={10}>НОВОСТИ</MainTitle>
+      </AnimationWrapper>
+
       <Grid mt={10} zIndex={2} pl={5} pr={5}>
         {newsArticlesData.map((article) => {
           const date = new Date(article.createdAt || "");

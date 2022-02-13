@@ -32,6 +32,7 @@ export interface TextBlockProps
     TextSizeAnimationProps {
   maxWidth?: number;
   newsGrid?: boolean;
+  animate?: boolean;
 }
 
 export const textUnderlinedMixin = (props: TextUnderlinedProps): string => {
@@ -101,6 +102,17 @@ export const MainTitle = styled.h1.attrs(
   })
 )`
   ${typographyMixin};
+
+  transition: all 1s ease;
+
+  ${({ animate }) => {
+    if (animate) {
+      return `
+        opacity: 0;
+        transform: translateY(100px);
+      `;
+    }
+  }}
 
   @media (max-width: ${ScreenSize.Medium}px) {
     font-size: 64px;

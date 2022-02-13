@@ -3,18 +3,30 @@ import { ScreenSize } from "../../ui/types";
 
 const StyledImage = styled.img<{
   puzzleType: string;
+  animate?: boolean;
 }>`
   z-index: 1;
   position: absolute;
   object-fit: contain;
-  ${({ puzzleType }) => {
+  transition: all 2s ease;
+  @keyframes rotate {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+
+  ${({ puzzleType, animate }) => {
     if (puzzleType.includes("news-grid__green-puzzle")) {
       return `
         width: 90px;
         height: 90px;
         right: 180px;
         top: 0;
-
+        animation: rotate 10s linear infinite;
+   
         @media (max-width: ${ScreenSize.Large}px) {
           & {
             right: 250px;
@@ -52,6 +64,8 @@ const StyledImage = styled.img<{
         width: 140px;
         height: 280px;
 
+        ${animate ? "opacity: 0; right: 50px;" : ""}
+
         @media (max-width: ${ScreenSize.Medium}px) {
           & {
             top: 60px;
@@ -75,6 +89,8 @@ const StyledImage = styled.img<{
         left: 130px;
         top: 115px;
 
+        ${animate ? "transform: rotate(360deg); left: -50px; top: 250px;" : ""}
+
         @media (max-width: ${ScreenSize.Small}px) {
           & {
             width: 80px;
@@ -95,8 +111,10 @@ const StyledImage = styled.img<{
       return `
         width: 150px;
         height: 300px;
-        bottom: 600px;
+        bottom: 200px;
         left: 0;
+
+        ${animate ? "" : "bottom: 300px;"}
 
         @media (max-width: ${ScreenSize.XSmall}px) {
           & {
@@ -111,6 +129,7 @@ const StyledImage = styled.img<{
         height: 200px;
         bottom: 440px;
         right: 50px;
+        animation: rotate 10s linear infinite;
         `;
     } else if (
       puzzleType.includes("news-grid__translucent-half-green-puzzle")
@@ -118,8 +137,10 @@ const StyledImage = styled.img<{
       return `
         width: 150px;
         height: 300px;
-        bottom: 50px;
+        bottom: 150px;
         right: 0;
+
+        ${animate ? "" : "bottom: 50px;"}
 
         @media (max-width: ${ScreenSize.XSmall}px) {
           & {

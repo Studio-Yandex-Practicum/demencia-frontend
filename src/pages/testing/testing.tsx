@@ -60,65 +60,62 @@ const StyledTestBox = styled(Box)`
 
 const TestingPage: React.FC = () => {
   return (
-    <>
-      <Box>
-        <StyledSection flex>
-          <StyledContainer
-            size={ContainerSize.Medium}
-            bgColor={BackgroundColor.Alt3}
-          >
-            <Box pt={3} pr={18} pb={3} pl={3}>
-              <Text1 mb={3} textColor={TextColor.Primary}>
-                Когнитивные способности напрямую связаны с работой различных
-                отделов мозга. &nbsp; Их функционирование обеспечивает нашу
-                продуктивность и выполнение различных задач в повседневной
-                жизни.
-              </Text1>
-              <Text1 mb={3} textColor={TextColor.Primary}>
-                С возрастом работа отделов мозга становится менее эффективной,
-                поэтому наблюдение за своим когнитивным состоянием и состоянием
-                своих близких дает возможность раннего диагностирования
-                когнитивных нарушений.
-              </Text1>
-              <Text1 textColor={TextColor.Primary}>
-                Это позволяет замедлить прогрессирование симптомов когнитивных
-                расстройств, избежать их хронического характера и как можно
-                раньше начать лечение.
+    <Box>
+      <StyledSection flex>
+        <StyledContainer
+          size={ContainerSize.Medium}
+          bgColor={BackgroundColor.Alt3}
+        >
+          <Box pt={3} pr={18} pb={3} pl={3}>
+            <Text1 mb={3} textColor={TextColor.Primary}>
+              Когнитивные способности напрямую связаны с работой различных
+              отделов мозга. &nbsp; Их функционирование обеспечивает нашу
+              продуктивность и выполнение различных задач в повседневной жизни.
+            </Text1>
+            <Text1 mb={3} textColor={TextColor.Primary}>
+              С возрастом работа отделов мозга становится менее эффективной,
+              поэтому наблюдение за своим когнитивным состоянием и состоянием
+              своих близких дает возможность раннего диагностирования
+              когнитивных нарушений.
+            </Text1>
+            <Text1 textColor={TextColor.Primary}>
+              Это позволяет замедлить прогрессирование симптомов когнитивных
+              расстройств, избежать их хронического характера и как можно раньше
+              начать лечение.
+            </Text1>
+          </Box>
+          {/* <StyledImg src={greenSemicirclePic} /> */}
+        </StyledContainer>
+      </StyledSection>
+
+      <Section flex centered borderBox pt={7}>
+        <StyledTestBox flex column>
+          <Subtitle3 maxWidth={749} textColor={TextColor.Primary}>
+            Данный тест рекомендуется пройти для проверки своего когнитивного
+            статуса.
+          </Subtitle3>
+          <StyledBox flex>
+            <StyledPazzles />
+            <Box>
+              <Button
+                type={ButtonType.Primary}
+                width={330}
+                level={TypographyLevel.Subtitle3}
+              >
+                Начать тестирование
+              </Button>
+              <Text1 maxWidth={500} mt={5}>
+                Тест рекомендуется использовать в качестве дополнения к
+                профессиональной врачебной диагностике, а не в качестве её
+                замены.
               </Text1>
             </Box>
-            {/* <StyledImg src={greenSemicirclePic} /> */}
-          </StyledContainer>
-        </StyledSection>
 
-        <Section flex centered borderBox pt={7}>
-          <StyledTestBox flex column>
-            <Subtitle3 maxWidth={749} textColor={TextColor.Primary}>
-              Данный тест рекомендуется пройти для проверки своего когнитивного
-              статуса.
-            </Subtitle3>
-            <StyledBox flex>
-              <StyledPazzles />
-              <Box>
-                <Button
-                  type={ButtonType.Primary}
-                  width={330}
-                  level={TypographyLevel.Subtitle3}
-                >
-                  Начать тестирование
-                </Button>
-                <Text1 maxWidth={500} mt={5}>
-                  Тест рекомендуется использовать в качестве дополнения к
-                  профессиональной врачебной диагностике, а не в качестве её
-                  замены.
-                </Text1>
-              </Box>
-
-              <StyledGreenPuzzle />
-            </StyledBox>
-          </StyledTestBox>
-        </Section>
-      </Box>
-    </>
+            <StyledGreenPuzzle />
+          </StyledBox>
+        </StyledTestBox>
+      </Section>
+    </Box>
   );
 };
 

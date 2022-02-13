@@ -18,23 +18,19 @@ import ButtonWithSemicircle from "../../../../components/button-with-simecircle"
 const Actions = styled.div`
   display: flex;
   align-items: center;
-  margin-top: -33px;
-  margin-left: 8px;
-  @media (max-width: ${ScreenSize.Large}px) {
-    margin-top: 0;
-  }
+  margin-top: 10px;
   @media (max-width: ${ScreenSize.Medium}px) {
     position: relative;
     width: 100vw;
     justify-content: center;
-    margin-top: 270px;
-    margin-left: 0;
+    margin-top: 290px;
+    margin-bottom: 15px;
   }
   @media (max-width: ${ScreenSize.Small}px) {
-    margin-top: 250px;
+    margin-top: 280px;
   }
   @media (max-width: ${ScreenSize.XSmall}px) {
-    margin-top: 205px;
+    margin-top: 230px;
   }
 `;
 
@@ -87,7 +83,7 @@ const Test: React.FC = () => {
         <BigCircle />
       </Box>
       <Actions>
-        <ButtonWithSemicircle maxWidth={250} buttonText={buttonCaption} />
+        <ButtonWithSemicircle maxWidth={300} buttonText={buttonCaption} />
       </Actions>
     </StyledBox>
   );

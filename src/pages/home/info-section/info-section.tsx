@@ -19,7 +19,6 @@ import pinkSemicirclePic from "../../../images/decor_halfcirlce_pink.svg";
 import greenPuzzleTranslucentPic from "../../../images/green-puzzle-translucent.svg";
 import purpleHalfGreenPuzzzlePic from "../../../images/purple-and-green-puzzle.svg";
 import grandparentsPic from "../../../images/grandparents.jpg";
-import greenSemicirclePic from "../../../images/green-semicircle.svg";
 import Details from "../../../components/details";
 
 import { useQuery } from "@apollo/client";
@@ -29,6 +28,7 @@ import { toast } from "react-hot-toast";
 
 import DOMPurify from "dompurify";
 import ReactHtmlParser from "react-html-parser";
+import ButtonWithSemicircle from "../../../components/button-with-simecircle";
 
 const InfoSection: React.FC = () => {
   const [isDetailsOpen, setIsDetailsOpen] = useState(false);
@@ -127,13 +127,10 @@ const InfoSection: React.FC = () => {
         </RelativeBox>
         <RelativeBox className="info__test-button">
           <FlexColumn className="info__test-button-column">
-            <Button type={ButtonType.Primary} width={300}>
-              {settings.aboutSectionButtonLabel || "Пройти тест"}
-              <StyledImg
-                src={greenSemicirclePic}
-                className="test-button__side-semicircle"
-              />
-            </Button>
+            <ButtonWithSemicircle
+              maxWidth={350}
+              buttonText={settings.aboutSectionButtonLabel}
+            />
           </FlexColumn>
         </RelativeBox>
       </TwoColumnGridInfo>

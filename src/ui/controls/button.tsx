@@ -8,7 +8,11 @@ import {
   FontColorProps,
   getTextSelectedColor,
 } from "./mixins";
-import { ElementAnimationProps, zoomOutOnHoverMixIn } from "./animation";
+import {
+  ElementAnimationProps,
+  zoomOnHoverMixIn,
+  zoomOutOnHoverMixIn,
+} from "./animation";
 import { PropsWithChildren, ReactNode } from "react";
 import { BackgroundColorProps } from "./container";
 
@@ -168,11 +172,13 @@ export const buttonBaseMixin = css<ButtonProps>`
   font-family: ${(p) => p.theme.layout.fontFamily};
   text-align: center;
   text-decoration: none;
+  position: relative;
   ${textUppercaseMixIn}
   ${typographySizeMixIn}
   ${buildButtonStyleMixIn}
   ${cursorMixin}
   ${zoomOutOnHoverMixIn}
+  ${zoomOnHoverMixIn}
   line-height: 0;
 `;
 

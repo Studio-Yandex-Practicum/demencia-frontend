@@ -28,7 +28,7 @@ import { toast } from "react-hot-toast";
 
 import DOMPurify from "dompurify";
 import ReactHtmlParser from "react-html-parser";
-import ButtonWithSemicircle from "../../../components/button-with-simecircle";
+import ButtonWithSemicircle from "../../../components/button-with-semicircle";
 
 const InfoSection: React.FC = () => {
   const [isDetailsOpen, setIsDetailsOpen] = useState(false);

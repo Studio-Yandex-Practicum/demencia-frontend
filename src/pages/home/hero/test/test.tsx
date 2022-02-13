@@ -13,7 +13,7 @@ import NavMenu from "./nav-menu";
 import { useQuery } from "@apollo/client";
 import { SettingsData } from "../../../../types/settings";
 import { GET_SETTINGS } from "../../../../gql/query/settings";
-import ButtonWithSemicircle from "../../../../components/button-with-simecircle";
+import ButtonWithSemicircle from "../../../../components/button-with-semicircle";
 
 const Actions = styled.div`
   display: flex;

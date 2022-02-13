@@ -69,6 +69,8 @@ const Slider: React.FC = () => {
     <StyledSwiper
       spaceBetween={0}
       centeredSlides={true}
+      loop={true}
+      loopAdditionalSlides={5}
       autoplay={{
         delay: 5000,
         disableOnInteraction: false,

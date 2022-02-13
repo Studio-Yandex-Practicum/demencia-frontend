@@ -11,7 +11,6 @@ import {
 import { ScreenSize } from "../../../../ui/types";
 import { Button, Box } from "../../../../ui/controls";
 import NavMenu from "./nav-menu";
-import { StringValueNode } from "graphql";
 import { useQuery } from "@apollo/client";
 import { SettingsData } from "../../../../types/settings";
 import { GET_SETTINGS } from "../../../../gql/query/settings";

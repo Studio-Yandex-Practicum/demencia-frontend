@@ -1,6 +1,12 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import { ArticlePage, HomePage, NewsGridPage, DetailsPage } from "../pages";
+import {
+  ArticlePage,
+  HomePage,
+  NewsGridPage,
+  DetailsPage,
+  TestingPage,
+} from "../pages";
 // TODO: Remove this temporary page.
 import UIKitPage from "../pages/ui-kit/ui-kit";
 import { Layout, Section } from "../ui/controls";
@@ -62,6 +68,7 @@ const App: React.FC = () => {
               <Route path="/ui-kit" element={<UIKitPage />} />
               <Route path="/details" element={<DetailsPage />} />
               <Route path="/graphql" element={<GraphqlTestPage />} />
+              <Route path="/test" element={<TestingPage />} />
             </Routes>
           </Main>
           <PageFooter />

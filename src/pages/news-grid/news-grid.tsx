@@ -17,7 +17,6 @@ import { toast } from "react-hot-toast";
 import { Subtitle3 } from "../../ui/controls";
 import { GET_NEWS_ARTICLES } from "../../gql/query/news";
 
-import ButtonWithSemicircle from "../../components/button-with-simecircle";
 import AnimationWrapper from "../../components/animation-wrapper";
 
 const Empty: React.FC = () => (
@@ -67,7 +66,6 @@ const NewsGridPage: React.FC = () => {
 
   return (
     <Section flex centered mb={2}>
-      <ButtonWithSemicircle />
       <StyledImage src={testGreenPuzzle} puzzleType="news-grid__green-puzzle" />
       <AnimationWrapper>
         <StyledImage

@@ -1,46 +1,20 @@
 import React from "react";
-import {
-  Section,
-  TwoColumnGrid,
-  ThreeColumnGrid,
-  SeparatedColumn,
-} from "../../ui/controls/layout";
+import { Section } from "../../ui/controls";
 import { Box, Button, Container } from "../../ui/controls";
 import {
   ButtonType,
   ContainerSize,
-  PaletteColor,
   ScreenSize,
   TextColor,
   TypographyLevel,
 } from "../../ui/types";
 import { BackgroundColor } from "../../ui/types/background-color.enum";
-import {
-  Subtitle1,
-  Subtitle2,
-  Subtitle3,
-  Text1,
-  Text2,
-  Text4,
-  MainTitle,
-} from "../../ui/controls/typography";
-import {
-  Pazzles,
-  GreenPuzzle,
-  BigCircle,
-  MediumCircle,
-  SmallCircle,
-  HalfCircle,
-} from "../home/hero/test/decor";
-import greenSemicirclePic from "../../images/green-semicircle.svg";
+import { Subtitle3, Text1 } from "../../ui/controls";
+import { Pazzles, GreenPuzzle } from "../home/hero/test/decor";
 import styled from "styled-components";
-import {
-  RelativeBox,
-  StyledImg,
-} from "../home/info-section/info-section-styles";
 
 const StyledSection = styled(Section)`
-  transform: translateY(-120px);
+  transform: translateY(-110px);
   margin-bottom: -120px;
   @media (max-width: ${ScreenSize.Medium}px) {
     margin-bottom: 0;
@@ -52,6 +26,10 @@ const StyledSection = styled(Section)`
   @media (max-width: ${ScreenSize.XSmall}px) {
     margin-bottom: -300px;
   }
+`;
+
+const StyledContainer = styled(Container)`
+  align-self: flex-end;
 `;
 
 const StyledPazzles = styled(Pazzles)`
@@ -84,16 +62,15 @@ const TestingPage: React.FC = () => {
   return (
     <>
       <Box>
-        <StyledSection flex centered>
-          <Container
-            size={ContainerSize.MediumSmall}
+        <StyledSection flex>
+          <StyledContainer
+            size={ContainerSize.Medium}
             bgColor={BackgroundColor.Alt3}
-            className="info__cognitive-container"
           >
-            <Box pt={3} pr={12} pb={3} pl={3}>
+            <Box pt={3} pr={18} pb={3} pl={3}>
               <Text1 mb={3} textColor={TextColor.Primary}>
                 Когнитивные способности напрямую связаны с работой различных
-                отделов мозга. Их функционирование обеспечивает нашу
+                отделов мозга. &nbsp; Их функционирование обеспечивает нашу
                 продуктивность и выполнение различных задач в повседневной
                 жизни.
               </Text1>
@@ -110,7 +87,7 @@ const TestingPage: React.FC = () => {
               </Text1>
             </Box>
             {/* <StyledImg src={greenSemicirclePic} /> */}
-          </Container>
+          </StyledContainer>
         </StyledSection>
 
         <Section flex centered borderBox pt={7}>

@@ -33,7 +33,9 @@ interface BoxStyleProps extends BoxProps {
 }
 
 const getShift = (val: number, defaultSpacing: number): number => {
-  return [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12].indexOf(val) > -1
+  return [
+    0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18,
+  ].indexOf(val) > -1
     ? val * defaultSpacing
     : 0;
 };

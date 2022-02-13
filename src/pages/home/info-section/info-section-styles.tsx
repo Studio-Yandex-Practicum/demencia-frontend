@@ -238,7 +238,7 @@ export const StyledInfoSection = styled(Section)`
   }
 
   @media (max-width: ${ScreenSize.Small}px) {
-    margin-top: -60px;
+    margin-top: -20px;
 
     .tip__i-pic {
       left: 79%;
@@ -250,7 +250,7 @@ export const StyledInfoSection = styled(Section)`
   }
 
   @media (max-width: ${ScreenSize.XSmall}px) {
-    margin-top: -90px;
+    margin-top: -30px;
 
     .tip__i-pic {
       top: 40px;

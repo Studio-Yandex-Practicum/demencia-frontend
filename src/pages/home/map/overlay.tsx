@@ -6,6 +6,10 @@ import cursor from "../../../images/cursor_pointer.svg";
 import { Box } from "../../../ui/controls";
 import { Subtitle4, Text3 } from "../../../ui/controls/typography";
 import { PaletteColor, ScreenSize } from "../../../ui/types";
+import { useQuery } from "@apollo/client";
+import { toast } from "react-hot-toast";
+import { RegionsData } from "../../../types/map";
+import { GET_REGIONS } from "../../../gql/query/map";
 
 const DB = [
   {
@@ -148,6 +152,10 @@ const Overlay: React.FC = () => {
   const [address, setAddress] = useState<string>("Адрес");
   const [phone, setPhone] = useState<string>("Номер телефона");
   const [isVisible, setIsVisible] = useState<string>("");
+  const { data, loading, error } = useQuery<RegionsData>(GET_REGIONS, {
+    fetchPolicy: "cache-first",
+  });
+  const items = data?.regions.filter((el) => !!el);
   const mouse = useMouse(imageRef, {
     enterDelay: 0,
     leaveDelay: 0,
@@ -192,14 +200,14 @@ const Overlay: React.FC = () => {
   useEffect(() => {
     const regionData = imageRef.current;
 
-    DB.forEach((element) => {
+    items?.map((element) => {
       const region = regionData?.getElementById(element.geocode);
 
       region?.classList.add("overlay");
       region?.firstElementChild?.classList.add("overlay");
-      region?.setAttribute("city", element.centers[0].city);
-      region?.setAttribute("address", element.centers[0].address);
-      region?.setAttribute("phone", element.centers[0].phoneNo);
+      region?.setAttribute("city", element.city);
+      region?.setAttribute("address", element.address);
+      region?.setAttribute("phone", element.phoneNo);
 
       region?.addEventListener("mouseenter", (event: Event) => {
         mouseEnter(event);
@@ -221,7 +229,7 @@ const Overlay: React.FC = () => {
         });
       });
     };
-  }, [mouseEnter, mouseLeave]);
+  }, [items, mouseEnter, mouseLeave]);
 
   return (
     <>
@@ -1440,7 +1448,7 @@ const Overlay: React.FC = () => {
             d="m117.625983,153.348093c0.682613,0.000793 1.337477,0.272332 1.820301,0.755155c0.239032,0.238637 0.428912,0.522465 0.558536,0.834834c0.129625,0.312369 0.196221,0.646936 0.196221,0.985071c0,0.338136 -0.066596,0.6731 -0.196221,0.985072c-0.129624,0.312369 -0.319504,0.596196 -0.558536,0.835229c-0.483221,0.482824 -1.138481,0.754363 -1.821886,0.754363c-0.683801,0 -1.339062,-0.271539 -1.821885,-0.754363c-0.48322,-0.483219 -0.754759,-1.138877 -0.754759,-1.821886c0,-0.683406 0.271539,-1.338667 0.754759,-1.821887c0.23943,-0.23943 0.523653,-0.429309 0.836418,-0.558934c0.313161,-0.129625 0.648522,-0.196221 0.987052,-0.196221l0,0.003567zm1.1805,1.39456c-0.273917,-0.276692 -0.635044,-0.449129 -1.022729,-0.489166c-0.38729,-0.039641 -0.776165,0.056289 -1.100426,0.271538c-0.32426,0.214854 -0.564086,0.535943 -0.678252,0.908169c-0.113768,0.372226 -0.09474,0.772598 0.053515,1.132139c0.148257,0.359937 0.416624,0.657243 0.759912,0.841175c0.342892,0.183933 0.739299,0.243395 1.121038,0.167284c0.382137,-0.075713 0.725821,-0.281845 0.972386,-0.583115c0.246961,-0.300873 0.381344,-0.678252 0.380947,-1.067524c-0.000397,-0.44239 -0.174816,-0.866545 -0.486391,-1.1805z"
           />
         </g>
-        <g id="RU-MOS" className="initState">
+        <g id="RU-MOW" className="initState">
           <path
             id="svg_45"
             fill="transparent"

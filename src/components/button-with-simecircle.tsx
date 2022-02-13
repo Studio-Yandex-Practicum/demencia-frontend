@@ -8,6 +8,7 @@ export const RelativeBox = styled(Box)`
   box-sizing: border-box;
   position: relative;
   align-items: center;
+  margin-right: 60px;
 `;
 
 export const StyledImg = styled.img`

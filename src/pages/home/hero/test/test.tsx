@@ -27,14 +27,14 @@ const Actions = styled.div`
     position: relative;
     width: 100vw;
     justify-content: center;
-    margin-top: 220px;
+    margin-top: 270px;
     margin-left: 0;
   }
   @media (max-width: ${ScreenSize.Small}px) {
-    margin-top: 240px;
+    margin-top: 250px;
   }
   @media (max-width: ${ScreenSize.XSmall}px) {
-    margin-top: 180px;
+    margin-top: 205px;
   }
 `;
 

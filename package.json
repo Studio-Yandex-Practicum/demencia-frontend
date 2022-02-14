@@ -126,6 +126,10 @@
     "eslint-plugin-react": "^7.27.1",
     "eslint-plugin-react-hooks": "^4.3.0",
     "prettier": "^2.5.1",
-    "webpack": "^5.65.0"
-  }
+    "webpack": "^5.68.0"
+  },
+  "main": "index.js",
+  "repository": "https://github.com/Studio-Yandex-Practicum/demencia-frontend.git",
+  "author": "<elena.crivoscheina@yandex.ru>",
+  "license": "MIT"
 }

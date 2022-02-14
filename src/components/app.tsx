@@ -8,6 +8,7 @@ import PageHeader from "./page-header";
 import { Main } from "../ui/controls";
 import PageFooter from "./page-footer";
 import GraphqlTestPage from "../pages/graphql/graphql";
+import TestText from "../pages/page-test/test-two";
 import { toast, Toaster } from "react-hot-toast";
 import { HelmetProvider, Helmet } from "react-helmet-async";
 import { useQuery } from "@apollo/client";
@@ -62,6 +63,7 @@ const App: React.FC = () => {
               <Route path="/ui-kit" element={<UIKitPage />} />
               <Route path="/details" element={<DetailsPage />} />
               <Route path="/graphql" element={<GraphqlTestPage />} />
+              <Route path="/test-two" element={<TestText />} />
             </Routes>
           </Main>
           <PageFooter />

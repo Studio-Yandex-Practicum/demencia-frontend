@@ -5,6 +5,8 @@ import bigCircle from "../../../../images/circlebg.png";
 import mediumCircle from "../../../../images/circlesm.png";
 import smallCircle from "../../../../images/smallcircle.png";
 import halfCircle from "../../../../images/halfcirclegreen.png";
+import arrowLeft from "../../../../images/arrow-left.svg";
+import arrowRight from "../../../../images/arrow-right.svg";
 import { ScreenSize } from "../../../../ui/types";
 
 export const GreenPuzzle = styled.img.attrs((props) => ({
@@ -206,5 +208,33 @@ export const HalfCircle = styled.img.attrs((props) => ({
 
   @media (max-width: ${ScreenSize.XSmall}px) {
     width: 50px;
+  }
+`;
+
+export const ArrowLeft = styled.img.attrs((props) => ({
+  src: props.src || arrowLeft,
+  alt: props.alt || "",
+}))`
+  z-index: 309;
+  width: 60px;
+  position: relative;
+  right: 15px;
+
+  @media (max-width: ${ScreenSize.XSmall}px) {
+    width: 40px;
+  }
+`;
+
+export const ArrowRight = styled.img.attrs((props) => ({
+  src: props.src || arrowRight,
+  alt: props.alt || "",
+}))`
+  z-index: 309;
+  width: 60px;
+  position: relative;
+  right: 15px;
+
+  @media (max-width: ${ScreenSize.XSmall}px) {
+    width: 40px;
   }
 `;

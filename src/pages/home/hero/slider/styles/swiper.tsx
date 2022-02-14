@@ -16,6 +16,7 @@ const StyledSwiper = styled(Swiper)`
   @media (max-width: ${ScreenSize.Medium}px) {
     margin-bottom: 0;
     transform: translateY(0);
+    max-height: 600px;
   }
   @media (max-width: ${ScreenSize.Small}px) {
     max-height: 500px;

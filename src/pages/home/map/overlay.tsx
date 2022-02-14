@@ -155,7 +155,19 @@ const Overlay: React.FC = () => {
   const { data, loading, error } = useQuery<RegionsData>(GET_REGIONS, {
     fetchPolicy: "cache-first",
   });
-  const items = data?.regions.filter((el) => !!el);
+  const items = data?.regions;
+
+  const territory = imageRef.current;
+
+  items?.forEach((element) => {
+    const region = territory?.getElementById(element.geocode);
+    region?.classList.add("overlay");
+    region?.firstElementChild?.classList.add("overlay");
+    region?.setAttribute("city", element.city);
+    region?.setAttribute("address", element.address);
+    region?.setAttribute("phone", element.phoneNo);
+  });
+
   const mouse = useMouse(imageRef, {
     enterDelay: 0,
     leaveDelay: 0,
@@ -198,16 +210,8 @@ const Overlay: React.FC = () => {
   }, []);
 
   useEffect(() => {
-    const regionData = imageRef.current;
-
-    items?.map((element) => {
-      const region = regionData?.getElementById(element.geocode);
-
-      region?.classList.add("overlay");
-      region?.firstElementChild?.classList.add("overlay");
-      region?.setAttribute("city", element.city);
-      region?.setAttribute("address", element.address);
-      region?.setAttribute("phone", element.phoneNo);
+    items?.forEach((element) => {
+      const region = territory?.getElementById(element.geocode);
 
       region?.addEventListener("mouseenter", (event: Event) => {
         mouseEnter(event);
@@ -220,7 +224,7 @@ const Overlay: React.FC = () => {
 
     return () => {
       DB.forEach((element) => {
-        const region = regionData?.getElementById(element.geocode);
+        const region = territory?.getElementById(element.geocode);
         region?.removeEventListener("mouseenter", (event: Event) => {
           mouseEnter(event);
         });
@@ -229,7 +233,7 @@ const Overlay: React.FC = () => {
         });
       });
     };
-  }, [items, mouseEnter, mouseLeave]);
+  }, [items, mouseEnter, mouseLeave, territory]);
 
   return (
     <>

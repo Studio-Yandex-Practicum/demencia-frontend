@@ -214,6 +214,8 @@ const Overlay: React.FC<{ regions: Region[] }> = ({ regions }) => {
     regions?.forEach((element) => {
       const region = territory?.getElementById(element.geocode);
 
+      console.log(element.centers[0].city);
+
       region?.addEventListener("mouseenter", (event: Event) => {
         mouseEnter(event);
       });

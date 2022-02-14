@@ -1,4 +1,4 @@
-export interface Regions {
+export interface Region {
   id: string;
   geocode: string;
   centers: string;
@@ -8,5 +8,5 @@ export interface Regions {
 }
 
 export interface RegionsData {
-  regions: Regions[];
+  regions: Region[];
 }

@@ -1,98 +1,101 @@
 /* eslint-disable @typescript-eslint/no-non-null-assertion */
-import React, { useRef, useEffect, useState, useCallback } from "react";
+import React, {
+  useRef,
+  useEffect,
+  useState,
+  useCallback,
+  RefObject,
+} from "react";
 import styled from "styled-components";
 import useMouse from "@react-hook/mouse-position";
 import cursor from "../../../images/cursor_pointer.svg";
 import { Box } from "../../../ui/controls";
 import { Subtitle4, Text3 } from "../../../ui/controls/typography";
 import { PaletteColor, ScreenSize } from "../../../ui/types";
-import { useQuery } from "@apollo/client";
-import { toast } from "react-hot-toast";
-import { RegionsData } from "../../../types/map";
-import { GET_REGIONS } from "../../../gql/query/map";
+import { Region } from "../../../types/map";
 
-const DB = [
-  {
-    geocode: "RU-VGG",
-    centers: [
-      {
-        city: "Волгоград",
-        address: "улица Советская, дом 22",
-        phoneNo: "+77779992323",
-      },
-    ],
-  },
-  {
-    geocode: "RU-ROS",
-    centers: [
-      {
-        city: "Ростов",
-        address: "улица Ленина, дом 22",
-        phoneNo: "+223344",
-      },
-    ],
-  },
-  {
-    geocode: "RU-PER",
-    centers: [
-      {
-        city: "Пермь",
-        address: "улица Главная, дом 22",
-        phoneNo: "+987654321",
-      },
-    ],
-  },
-  {
-    geocode: "RU-SA",
-    centers: [
-      {
-        city: "Якутия",
-        address: "улица Главная, дом 22",
-        phoneNo: "+987654321",
-      },
-    ],
-  },
-  {
-    geocode: "RU-MOS",
-    centers: [
-      {
-        city: "Москва",
-        address: "Самый Главный переулок, недалеко от Красной Площади",
-        phoneNo: "+987654321",
-      },
-    ],
-  },
-  {
-    geocode: "RU-AD",
-    centers: [
-      {
-        city: "Майкоп",
-        address: "улица Главная, дом 22",
-        phoneNo: "+987654321",
-      },
-    ],
-  },
-  {
-    geocode: "RU-KYA",
-    centers: [
-      {
-        city: "Красноярск",
-        address: "улица Главная, дом 22",
-        phoneNo: "+987654321",
-      },
-    ],
-  },
-  {
-    geocode: "RU-PRI",
-    centers: [
-      {
-        city: "Владивосток",
-        address: "улица Главная, дом 22",
-        phoneNo: "+987654321",
-      },
-    ],
-  },
-];
+// const DB = [
+//   {
+//     geocode: "RU-VGG",
+//     centers: [
+//       {
+//         city: "Волгоград",
+//         address: "улица Советская, дом 22",
+//         phoneNo: "+77779992323",
+//       },
+//     ],
+//   },
+//   {
+//     geocode: "RU-ROS",
+//     centers: [
+//       {
+//         city: "Ростов",
+//         address: "улица Ленина, дом 22",
+//         phoneNo: "+223344",
+//       },
+//     ],
+//   },
+//   {
+//     geocode: "RU-PER",
+//     centers: [
+//       {
+//         city: "Пермь",
+//         address: "улица Главная, дом 22",
+//         phoneNo: "+987654321",
+//       },
+//     ],
+//   },
+//   {
+//     geocode: "RU-SA",
+//     centers: [
+//       {
+//         city: "Якутия",
+//         address: "улица Главная, дом 22",
+//         phoneNo: "+987654321",
+//       },
+//     ],
+//   },
+//   {
+//     geocode: "RU-MOS",
+//     centers: [
+//       {
+//         city: "Москва",
+//         address: "Самый Главный переулок, недалеко от Красной Площади",
+//         phoneNo: "+987654321",
+//       },
+//     ],
+//   },
+//   {
+//     geocode: "RU-AD",
+//     centers: [
+//       {
+//         city: "Майкоп",
+//         address: "улица Главная, дом 22",
+//         phoneNo: "+987654321",
+//       },
+//     ],
+//   },
+//   {
+//     geocode: "RU-KYA",
+//     centers: [
+//       {
+//         city: "Красноярск",
+//         address: "улица Главная, дом 22",
+//         phoneNo: "+987654321",
+//       },
+//     ],
+//   },
+//   {
+//     geocode: "RU-PRI",
+//     centers: [
+//       {
+//         city: "Владивосток",
+//         address: "улица Главная, дом 22",
+//         phoneNo: "+987654321",
+//       },
+//     ],
+//   },
+// ];
 
 const StyledImage = styled.svg`
   position: absolute;
@@ -146,29 +149,27 @@ const StyledText = styled(Text3)`
   }
 `;
 
-const Overlay: React.FC = () => {
-  const imageRef = useRef<any>(null);
+const Overlay: React.FC<{ regions: Region[] }> = ({ regions }) => {
+  const imageRef = useRef<SVGSVGElement>(null);
   const [city, setCity] = useState<string>("Город");
   const [address, setAddress] = useState<string>("Адрес");
   const [phone, setPhone] = useState<string>("Номер телефона");
   const [isVisible, setIsVisible] = useState<string>("");
-  const { data, loading, error } = useQuery<RegionsData>(GET_REGIONS, {
-    fetchPolicy: "cache-first",
-  });
-  const items = data?.regions;
+
+  console.log("regions", regions);
 
   const territory = imageRef.current;
 
-  items?.forEach((element) => {
-    const region = territory?.getElementById(element.geocode);
-    region?.classList.add("overlay");
-    region?.firstElementChild?.classList.add("overlay");
-    region?.setAttribute("city", element.city);
-    region?.setAttribute("address", element.address);
-    region?.setAttribute("phone", element.phoneNo);
-  });
+  // items?.forEach((element) => {
+  //   const region = territory?.getElementById(element.geocode);
+  //   region?.classList.add("overlay");
+  //   region?.firstElementChild?.classList.add("overlay");
+  //   region?.setAttribute("city", element.city);
+  //   region?.setAttribute("address", element.address);
+  //   region?.setAttribute("phone", element.phoneNo);
+  // });
 
-  const mouse = useMouse(imageRef, {
+  const mouse = useMouse(imageRef as unknown as RefObject<HTMLElement>, {
     enterDelay: 0,
     leaveDelay: 0,
   });
@@ -210,7 +211,7 @@ const Overlay: React.FC = () => {
   }, []);
 
   useEffect(() => {
-    items?.forEach((element) => {
+    regions?.forEach((element) => {
       const region = territory?.getElementById(element.geocode);
 
       region?.addEventListener("mouseenter", (event: Event) => {
@@ -223,7 +224,7 @@ const Overlay: React.FC = () => {
     });
 
     return () => {
-      DB.forEach((element) => {
+      regions.forEach((element) => {
         const region = territory?.getElementById(element.geocode);
         region?.removeEventListener("mouseenter", (event: Event) => {
           mouseEnter(event);
@@ -233,7 +234,7 @@ const Overlay: React.FC = () => {
         });
       });
     };
-  }, [items, mouseEnter, mouseLeave, territory]);
+  }, [regions, mouseEnter, mouseLeave, territory]);
 
   return (
     <>
@@ -259,7 +260,7 @@ const Overlay: React.FC = () => {
         height="100%"
         preserveAspectRatio="none"
         xmlns="http://www.w3.org/2000/svg"
-        ref={imageRef}
+        ref={imageRef as RefObject<SVGSVGElement>}
       >
         <title>Карта центров профилактики</title>
         <path

@@ -18,10 +18,10 @@ const StyledSwiper = styled(Swiper)`
     transform: translateY(0);
   }
   @media (max-width: ${ScreenSize.Small}px) {
-    max-height: 68.5%;
+    max-height: 500px;
   }
   @media (max-width: ${ScreenSize.XSmall}px) {
-    max-height: 52.8%;
+    max-height: 385px;
   }
 `;
 

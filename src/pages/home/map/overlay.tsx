@@ -36,6 +36,7 @@ const StyledImage = styled.svg`
     fill: #666;
   }
 `;
+
 const Overlay: React.FC<{ regions: Region[] }> = ({ regions }) => {
   const imageRef = useRef<SVGSVGElement>(null);
 
@@ -47,12 +48,9 @@ const Overlay: React.FC<{ regions: Region[] }> = ({ regions }) => {
   const mouseEnter = useCallback((event) => {
     const e = event as MouseEvent;
     const el = e.currentTarget as SVGPathElement;
-    const getCity = el.getAttribute("city");
-    const getAddress = el.getAttribute("address");
-    const getPhone = el.getAttribute("phone");
-    setCity(getCity!);
-    setAddress(getAddress!);
-    setPhone(getPhone!);
+    setCity(el.getAttribute("city")!);
+    setAddress(el.getAttribute("address")!);
+    setPhone(el.getAttribute("phone")!);
     setIsVisible("visible");
   }, []);
 
@@ -62,6 +60,7 @@ const Overlay: React.FC<{ regions: Region[] }> = ({ regions }) => {
 
   useEffect(() => {
     const territory = imageRef.current;
+
     regions?.forEach((element) => {
       const region = territory?.getElementById(element.geocode);
       region?.classList.add("overlay");

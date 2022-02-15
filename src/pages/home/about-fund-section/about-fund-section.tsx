@@ -1,4 +1,4 @@
-import { Text3, Box, Subtitle1, Button, Link } from "../../../ui/controls";
+import { Box, Link } from "../../../ui/controls";
 import { PaletteColor, TextColor } from "../../../ui/types";
 import {
   FundButton,
@@ -6,6 +6,8 @@ import {
   FundText3,
   StyledAboutFundSection,
   StyledImage,
+  StyledPurpleSemicircleThin,
+  StyledWhiteHalfPuzzle,
 } from "./about-fund-section-styles";
 import whiteHalfPuzzle from "../../../images/half-white-puzzle.svg";
 import lightGreenPuzzle from "../../../images/light-green-puzzle.svg";
@@ -44,14 +46,13 @@ const AboutFundSection: React.FC = () => {
       mt={4}
     >
       <AnimationWrapper>
-        <StyledImage
+        <StyledWhiteHalfPuzzle
           src={whiteHalfPuzzle}
           className="about-fund-section__white-puzzle"
-          rotate
         />
       </AnimationWrapper>
       <AnimationWrapper>
-        <StyledImage
+        <StyledPurpleSemicircleThin
           src={purpleSemicircleThin}
           className="about-fund-section__purple-semicircle"
         />

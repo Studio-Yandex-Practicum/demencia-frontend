@@ -8,7 +8,13 @@ import {
   colorChangeOnHoverMixIn,
   ColorChangeOnHoverProps,
 } from "./mixins";
-import { TextSizeAnimationProps } from "./animation";
+import {
+  borderBottomOnHoverMixIn,
+  BorderBottomOnHoverProps,
+  ElementAnimationProps,
+  TextSizeAnimationProps,
+  zoomOnHoverMixIn,
+} from "./animation";
 import { BoxProps, getBoxStyles } from "./box";
 
 interface TextUnderlinedProps {
@@ -178,14 +184,19 @@ export const Subtitle2 = styled.h4.attrs(
 `;
 
 export const Subtitle3 = styled.h5.attrs(
-  (props: ThemeProps<DefaultTheme> & TextBlockProps) => ({
+  (
+    props: ThemeProps<DefaultTheme> & TextBlockProps & BorderBottomOnHoverProps
+  ) => ({
     level: TypographyLevel.Subtitle3,
     uppercase: true,
     textColor: TextColor.Shadow,
+    borderSize: props.theme.layout.borderSize,
+    borderColor: props.theme.colors.backgroundAlt1,
     ...props,
   })
 )`
   ${typographyMixin};
+  ${borderBottomOnHoverMixIn}
 
   @media (max-width: ${ScreenSize.Small}px) {
     font-size: 19px;
@@ -206,7 +217,7 @@ export const Subtitle4 = styled.h6.attrs(
   ${typographyMixin}
 `;
 
-export const Text1 = styled.p.attrs(
+export const Text1 = styled.div.attrs(
   (props: ThemeProps<DefaultTheme> & TextBlockProps) => ({
     level: TypographyLevel.Text1,
     ...props,
@@ -223,7 +234,7 @@ export const Text1 = styled.p.attrs(
   }
 `;
 
-export const Text2 = styled.p.attrs(
+export const Text2 = styled.div.attrs(
   (props: ThemeProps<DefaultTheme> & TextBlockProps) => ({
     level: TypographyLevel.Text2,
     ...props,
@@ -232,14 +243,17 @@ export const Text2 = styled.p.attrs(
   ${typographyMixin}
 `;
 
-export const Text3 = styled.p.attrs(
-  (props: ThemeProps<DefaultTheme> & TextBlockProps) => ({
+export const Text3 = styled.div.attrs(
+  (
+    props: ThemeProps<DefaultTheme> & TextBlockProps & ElementAnimationProps
+  ) => ({
     level: TypographyLevel.Text3,
     textColor: TextColor.Shadow,
     ...props,
   })
 )`
   ${typographyMixin};
+  ${zoomOnHoverMixIn};
 
   ${(p) =>
     p.newsGrid
@@ -269,7 +283,7 @@ export const Text3 = styled.p.attrs(
   }
 `;
 
-export const Text4 = styled.p.attrs(
+export const Text4 = styled.div.attrs(
   (props: ThemeProps<DefaultTheme> & TextBlockProps) => ({
     level: TypographyLevel.Text4,
     ...props,

@@ -119,21 +119,30 @@ export const StyledAboutFundSection = styled(Section)`
   }
 `;
 
-export const StyledImage = styled.img<{
+export const StyledImage = styled.img`
+  object-fit: contain;
+  object-position: center;
+`;
+
+export const StyledPurpleSemicircleThin = styled.img<{
   animate?: boolean;
-  rotate?: boolean;
 }>`
   object-fit: contain;
   object-position: center;
   transition: all 1s ease;
-  ${({ animate, rotate }) =>
+  ${({ animate }) =>
     animate
-      ? `opacity: 0;  ${
-          rotate
-            ? `transform: rotate(90deg);`
-            : `transform: rotate(-90deg) translateX(-100px) !important;`
-        }`
+      ? `opacity: 0; transform: rotate(-90deg) translateX(-100px) !important;`
       : ""}
+`;
+
+export const StyledWhiteHalfPuzzle = styled.img<{
+  animate?: boolean;
+}>`
+  object-fit: contain;
+  object-position: center;
+  transition: all 1s ease;
+  ${({ animate }) => (animate ? `opacity: 0; transform: rotate(90deg);` : "")}
 `;
 
 export const FundSubtitle1 = styled(Subtitle1)`

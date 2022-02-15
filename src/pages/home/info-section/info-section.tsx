@@ -1,11 +1,5 @@
 import { useState } from "react";
-import {
-  Subtitle1,
-  Subtitle3,
-  Text1,
-  Text4,
-  Button,
-} from "../../../ui/controls";
+import { Text4, Button } from "../../../ui/controls";
 import { PaletteColor, ButtonType } from "../../../ui/types";
 import {
   StyledInfoSection,
@@ -16,14 +10,12 @@ import {
   InfoSubtitle1,
   InfoSubtitle3,
   InfoText1,
-  InfoButton,
 } from "./info-section-styles";
 import iPic from "../../../images/i_icon.svg";
 import pinkSemicirclePic from "../../../images/decor_halfcirlce_pink.svg";
 import greenPuzzleTranslucentPic from "../../../images/green-puzzle-translucent.svg";
 import purpleHalfGreenPuzzzlePic from "../../../images/purple-and-green-puzzle.svg";
 import grandparentsPic from "../../../images/grandparents.jpg";
-import greenSemicirclePic from "../../../images/green-semicircle.svg";
 import Details from "../../../components/details";
 
 import { useQuery } from "@apollo/client";
@@ -33,6 +25,7 @@ import { toast } from "react-hot-toast";
 
 import DOMPurify from "dompurify";
 import ReactHtmlParser from "react-html-parser";
+import ButtonWithSemicircle from "../../../components/button-with-semicircle";
 
 import AnimationWrapper from "../../../components/animation-wrapper";
 
@@ -145,17 +138,11 @@ const InfoSection: React.FC = () => {
         </RelativeBox>
         <RelativeBox className="info__test-button">
           <FlexColumn className="info__test-button-column">
-            <AnimationWrapper>
-              <InfoButton type={ButtonType.Primary} width={300}>
-                {settings.aboutSectionButtonLabel || "Пройти тест"}
-                <AnimationWrapper>
-                  <StyledImg
-                    src={greenSemicirclePic}
-                    className="test-button__side-semicircle"
-                  />
-                </AnimationWrapper>
-              </InfoButton>
-            </AnimationWrapper>
+            <ButtonWithSemicircle
+              maxWidth={350}
+              buttonText={settings.aboutSectionButtonLabel}
+              animate
+            />
           </FlexColumn>
         </RelativeBox>
       </TwoColumnGridInfo>

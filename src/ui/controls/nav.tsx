@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { ScreenSize } from "../types";
+import { zoomOnHoverMixIn, ElementAnimationProps } from "./animation";
 
 export interface MenuProps {
   vertical?: boolean;
@@ -12,7 +13,9 @@ enum MenuGap {
   Small = 25,
 }
 // todo: move margins and screen sizes to enum
-export const MenuItem = styled.li``;
+export const MenuItem = styled.li<ElementAnimationProps>`
+  ${zoomOnHoverMixIn}
+`;
 
 export const Menu = styled.ul<MenuProps>`
   margin: 0;

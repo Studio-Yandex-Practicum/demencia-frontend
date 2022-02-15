@@ -2,45 +2,75 @@ import styled from "styled-components";
 import { Box, Button } from "../ui/controls";
 import { ButtonSize, ButtonType } from "../ui/types";
 import greenSemicirclePic from "../images/green-semicircle.svg";
+import AnimationWrapper from "./animation-wrapper";
 
 export const RelativeBox = styled(Box)`
   width: 100%;
   box-sizing: border-box;
   position: relative;
   align-items: center;
-  margin-right: 60px;
 `;
 
-export const StyledImg = styled.img`
+export const StyledImg = styled.img<{
+  animate?: boolean;
+}>`
   object-fit: contain;
   object-position: center;
   width: 60px;
   position: absolute;
   top: -32px;
   right: -35px;
+  transition: all 1s ease;
+  ${({ animate }) =>
+    animate ? "opacity: 0; transform: translateX(100px);" : ""}
 `;
 
 interface ButtonWithSemicircleProps {
   maxWidth?: number;
+  margin?: string;
   buttonText?: string;
+  animate?: boolean;
 }
 
 const ButtonWithSemicircle: React.FC<ButtonWithSemicircleProps> = ({
   maxWidth,
   buttonText,
+  margin,
+  animate,
 }) => {
   return (
-    <RelativeBox maxWidth={maxWidth}>
-      <Button
-        type={ButtonType.Primary}
-        zoomOnHover
-        zoomOutOnHover={false}
-        fullWidth
-        size={ButtonSize.Default}
-      >
-        {buttonText || "Пройти тест"}
-      </Button>
-      <StyledImg src={greenSemicirclePic} />
+    <RelativeBox maxWidth={maxWidth} margin={margin}>
+      {animate ? (
+        <>
+          <AnimationWrapper>
+            <Button
+              type={ButtonType.Primary}
+              zoomOnHover
+              zoomOutOnHover={false}
+              fullWidth
+              size={ButtonSize.Default}
+            >
+              {buttonText || "Пройти тест"}
+            </Button>
+          </AnimationWrapper>
+          <AnimationWrapper>
+            <StyledImg src={greenSemicirclePic} />
+          </AnimationWrapper>
+        </>
+      ) : (
+        <>
+          <Button
+            type={ButtonType.Primary}
+            zoomOnHover
+            zoomOutOnHover={false}
+            fullWidth
+            size={ButtonSize.Default}
+          >
+            {buttonText || "Пройти тест"}
+          </Button>
+          <StyledImg src={greenSemicirclePic} />
+        </>
+      )}
     </RelativeBox>
   );
 };

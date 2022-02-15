@@ -30,6 +30,7 @@ const Actions = styled.div`
     margin-top: 280px;
   }
   @media (max-width: ${ScreenSize.XSmall}px) {
+    transform: scale(0.8);
     margin-top: 230px;
   }
 `;
@@ -83,7 +84,12 @@ const Test: React.FC = () => {
         <BigCircle />
       </Box>
       <Actions>
-        <ButtonWithSemicircle maxWidth={300} buttonText={buttonCaption} />
+        <ButtonWithSemicircle
+          maxWidth={300}
+          buttonText={buttonCaption}
+          margin={"0 60px 0 0"}
+          animate
+        />
       </Actions>
     </StyledBox>
   );

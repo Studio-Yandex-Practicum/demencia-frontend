@@ -7,95 +7,9 @@ import React, {
   RefObject,
 } from "react";
 import styled from "styled-components";
-import useMouse from "@react-hook/mouse-position";
 import cursor from "../../../images/cursor_pointer.svg";
-import { Box } from "../../../ui/controls";
-import { Subtitle4, Text3 } from "../../../ui/controls/typography";
-import { PaletteColor, ScreenSize } from "../../../ui/types";
 import { Region } from "../../../types/map";
-
-// const DB = [
-//   {
-//     geocode: "RU-VGG",
-//     centers: [
-//       {
-//         city: "Волгоград",
-//         address: "улица Советская, дом 22",
-//         phoneNo: "+77779992323",
-//       },
-//     ],
-//   },
-//   {
-//     geocode: "RU-ROS",
-//     centers: [
-//       {
-//         city: "Ростов",
-//         address: "улица Ленина, дом 22",
-//         phoneNo: "+223344",
-//       },
-//     ],
-//   },
-//   {
-//     geocode: "RU-PER",
-//     centers: [
-//       {
-//         city: "Пермь",
-//         address: "улица Главная, дом 22",
-//         phoneNo: "+987654321",
-//       },
-//     ],
-//   },
-//   {
-//     geocode: "RU-SA",
-//     centers: [
-//       {
-//         city: "Якутия",
-//         address: "улица Главная, дом 22",
-//         phoneNo: "+987654321",
-//       },
-//     ],
-//   },
-//   {
-//     geocode: "RU-MOS",
-//     centers: [
-//       {
-//         city: "Москва",
-//         address: "Самый Главный переулок, недалеко от Красной Площади",
-//         phoneNo: "+987654321",
-//       },
-//     ],
-//   },
-//   {
-//     geocode: "RU-AD",
-//     centers: [
-//       {
-//         city: "Майкоп",
-//         address: "улица Главная, дом 22",
-//         phoneNo: "+987654321",
-//       },
-//     ],
-//   },
-//   {
-//     geocode: "RU-KYA",
-//     centers: [
-//       {
-//         city: "Красноярск",
-//         address: "улица Главная, дом 22",
-//         phoneNo: "+987654321",
-//       },
-//     ],
-//   },
-//   {
-//     geocode: "RU-PRI",
-//     centers: [
-//       {
-//         city: "Владивосток",
-//         address: "улица Главная, дом 22",
-//         phoneNo: "+987654321",
-//       },
-//     ],
-//   },
-// ];
+import Popup from "./popup";
 
 const StyledImage = styled.svg`
   position: absolute;
@@ -122,77 +36,13 @@ const StyledImage = styled.svg`
     fill: #666;
   }
 `;
-const StyledBox = styled(Box)<{
-  state?: string;
-}>`
-  position: absolute;
-  border: 5px solid ${PaletteColor.Green};
-  border-radius: 15px;
-  width: 300px;
-  min-height: 150px;
-  ${({ state }) =>
-    state === "visible" ? "display: block;" : "display: none;"};
-  @media (max-width: ${ScreenSize.Medium}px) {
-    width: 250px;
-    min-height: 90px;
-  }
-`;
-
-const StyledTitle = styled(Subtitle4)`
-  @media (max-width: ${ScreenSize.Medium}px) {
-    font-size: 12px;
-  }
-`;
-const StyledText = styled(Text3)`
-  @media (max-width: ${ScreenSize.Medium}px) {
-    font-size: 10px;
-  }
-`;
-
 const Overlay: React.FC<{ regions: Region[] }> = ({ regions }) => {
   const imageRef = useRef<SVGSVGElement>(null);
+
   const [city, setCity] = useState<string>("Город");
   const [address, setAddress] = useState<string>("Адрес");
   const [phone, setPhone] = useState<string>("Номер телефона");
   const [isVisible, setIsVisible] = useState<string>("");
-
-  console.log("regions", regions);
-
-  const territory = imageRef.current;
-
-  // items?.forEach((element) => {
-  //   const region = territory?.getElementById(element.geocode);
-  //   region?.classList.add("overlay");
-  //   region?.firstElementChild?.classList.add("overlay");
-  //   region?.setAttribute("city", element.city);
-  //   region?.setAttribute("address", element.address);
-  //   region?.setAttribute("phone", element.phoneNo);
-  // });
-
-  const mouse = useMouse(imageRef as unknown as RefObject<HTMLElement>, {
-    enterDelay: 0,
-    leaveDelay: 0,
-  });
-
-  const defineX = () => {
-    if (!mouse.isTouch) {
-      if (mouse.clientX && mouse.x) {
-        const cursorPositionOnMap = mouse.clientX / window.innerWidth;
-        if (cursorPositionOnMap < 0.5) {
-          return mouse.x + 50;
-        }
-        return mouse.x - 300;
-      }
-    }
-    return 0;
-  };
-
-  const defineY = () => {
-    if (!mouse.isTouch) {
-      if (mouse.y) return mouse.y - 150;
-    }
-    return 0;
-  };
 
   const mouseEnter = useCallback((event) => {
     const e = event as MouseEvent;
@@ -211,10 +61,21 @@ const Overlay: React.FC<{ regions: Region[] }> = ({ regions }) => {
   }, []);
 
   useEffect(() => {
+    const territory = imageRef.current;
     regions?.forEach((element) => {
       const region = territory?.getElementById(element.geocode);
+      region?.classList.add("overlay");
+      region?.firstElementChild?.classList.add("overlay");
+      region?.setAttribute("city", element.centers[0].city);
+      region?.setAttribute("address", element.centers[0].address);
+      region?.setAttribute("phone", element.centers[0].phoneNo);
+    });
+  }, [regions]);
 
-      console.log(element.centers[0].city);
+  useEffect(() => {
+    const territory = imageRef.current;
+    regions?.forEach((element) => {
+      const region = territory?.getElementById(element.geocode);
 
       region?.addEventListener("mouseenter", (event: Event) => {
         mouseEnter(event);
@@ -236,25 +97,17 @@ const Overlay: React.FC<{ regions: Region[] }> = ({ regions }) => {
         });
       });
     };
-  }, [regions, mouseEnter, mouseLeave, territory]);
+  }, [regions, mouseEnter, mouseLeave]);
 
   return (
     <>
-      <StyledBox
-        pt={1}
-        pl={1}
-        pb={1}
-        pr={1}
-        top={`${defineY()}px`}
-        left={`${defineX()}px`}
-        zIndex={3}
-        backgroundColor={PaletteColor.White}
-        state={isVisible}
-      >
-        <StyledTitle>{city}</StyledTitle>
-        <StyledText mt={2}>{address}</StyledText>
-        <StyledText mt={1}>{phone}</StyledText>
-      </StyledBox>
+      <Popup
+        mapRef={imageRef}
+        isVisible={isVisible}
+        city={city}
+        address={address}
+        phoneNo={phone}
+      />
       <StyledImage
         viewBox="0 0 691 360"
         fill="none"
@@ -264,7 +117,6 @@ const Overlay: React.FC<{ regions: Region[] }> = ({ regions }) => {
         xmlns="http://www.w3.org/2000/svg"
         ref={imageRef as RefObject<SVGSVGElement>}
       >
-        <title>Карта центров профилактики</title>
         <path
           id="svg_1"
           fill="transparent"

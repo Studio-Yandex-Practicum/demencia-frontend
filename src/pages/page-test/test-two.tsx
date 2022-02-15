@@ -13,7 +13,11 @@ import { ArrowLeft, ArrowRight } from "./decor";
 import styled from "styled-components";
 
 const StyleArrowLeft = styled(ArrowLeft)`
-  margin-right: 20px;
+  margin-right: 7px;
+`;
+
+const StyleArrowRight = styled(ArrowRight)`
+  margin-left: 7px;
 `;
 
 const StyledBox = styled(Box)`
@@ -21,7 +25,7 @@ const StyledBox = styled(Box)`
   flex-direction: row;
   text-align: center;
   justify-content: space-between;
-  @media (max-width: ${ScreenSize.XSmall}px) {
+  @media (max-width: ${ScreenSize.Medium}px) {
     flex-direction: column;
   }
 `;
@@ -32,14 +36,21 @@ const StyledTestBox = styled(Box)`
 `;
 
 const StyledButtonBox = styled(Box)`
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: flex-end;
   padding-top: 0;
-  @media (max-width: ${ScreenSize.XSmall}px) {
+  margin: 0 auto;
+  @media (max-width: ${ScreenSize.Medium}px) {
     margin-top: 40px;
   }
 `;
 
 const StyleText1 = styled(Text1)`
   font-size: 26px;
+  @media (max-width: ${ScreenSize.Medium}px) {
+    margin: 10px auto 0;
+  }
   @media (max-width: ${ScreenSize.XSmall}px) {
     font-size: 18px;
   }
@@ -129,9 +140,9 @@ const TestText: React.FC = () => {
                 Для перехода между заданиями используйте кнопки:
               </StyleText1>
             </Box>
-            <StyledButtonBox>
+            <StyledButtonBox flex maxWidth={170}>
               <StyleArrowLeft />
-              <ArrowRight />
+              <StyleArrowRight />
             </StyledButtonBox>
           </StyledBox>
           <StyleButton

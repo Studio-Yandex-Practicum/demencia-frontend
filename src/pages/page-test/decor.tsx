@@ -10,7 +10,7 @@ export const ArrowLeft = styled.img.attrs((props) => ({
   z-index: 309;
   width: 60px;
   position: relative;
-  right: 15px;
+  right: 0;
 
   @media (max-width: ${ScreenSize.XSmall}px) {
     width: 40px;
@@ -24,7 +24,7 @@ export const ArrowRight = styled.img.attrs((props) => ({
   z-index: 309;
   width: 60px;
   position: relative;
-  right: 15px;
+  right: 0;
 
   @media (max-width: ${ScreenSize.XSmall}px) {
     width: 40px;

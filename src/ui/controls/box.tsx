@@ -24,12 +24,14 @@ interface BoxStyleProps extends BoxProps {
   column?: boolean;
   between?: boolean;
   marginTopAuto?: boolean;
+  margin?: string;
   absolute?: boolean;
   top?: string;
   left?: string;
   right?: string;
   bottom?: string;
   zIndex?: number;
+  animate?: boolean;
 }
 
 const getShift = (val: number, defaultSpacing: number): number => {
@@ -88,6 +90,7 @@ export const Box = styled.div<BoxStyleProps>`
     p.maxWidth !== undefined ? `${p.maxWidth}px` : undefined};
   width: ${(p) => (p.width !== undefined ? `${p.width}` : undefined)};
   height: ${(p) => (p.height !== undefined ? `${p.height}` : undefined)};
+  margin: ${(p) => p.margin};
   margin-top: ${(p) => (p.marginTopAuto ? "auto" : "")};
   position: ${(p) => (p.absolute ? "absolute" : "")};
   top: ${(p) => (p.top !== undefined ? `${p.top}` : undefined)};
@@ -98,4 +101,12 @@ export const Box = styled.div<BoxStyleProps>`
   ${getBoxStyles}
   ${(p) =>
     "background-color:" + p.backgroundColor || p.theme.colors.background};
+  transition: all 2s ease;
+  ${({ animate }) => {
+    if (animate) {
+      return `
+        transform: translateY(200px);
+      `;
+    }
+  }}
 `;

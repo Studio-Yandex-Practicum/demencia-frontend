@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import { Section, Box, TwoColumnGrid } from "../../../ui/controls";
 import { ScreenSize } from "../../../ui/types";
+import { Subtitle1, Subtitle3, Text1, Button } from "../../../ui/controls";
 
 export const StyledInfoSection = styled(Section)`
   .info__about {
@@ -238,7 +239,7 @@ export const StyledInfoSection = styled(Section)`
   }
 
   @media (max-width: ${ScreenSize.Small}px) {
-    margin-top: -60px;
+    margin-top: 200px;
 
     .tip__i-pic {
       left: 79%;
@@ -250,7 +251,7 @@ export const StyledInfoSection = styled(Section)`
   }
 
   @media (max-width: ${ScreenSize.XSmall}px) {
-    margin-top: -90px;
+    margin-top: 290px;
 
     .tip__i-pic {
       top: 40px;
@@ -280,6 +281,7 @@ export const StyledInfoSection = styled(Section)`
 
 export const RelativeBox = styled(Box)<{
   alignItems?: string;
+  animateLeft?: boolean;
 }>`
   box-sizing: border-box;
   position: relative;
@@ -287,6 +289,13 @@ export const RelativeBox = styled(Box)<{
   flex-direction: column;
   justify-content: top;
   align-items: ${({ alignItems }) => alignItems};
+  transition: all 1s ease;
+  ${({ animate, animateLeft }) =>
+    animate
+      ? `opacity: 0; transform: translateX(${
+          animateLeft ? "-200px" : "200px"
+        });`
+      : ""}
 `;
 
 export const TwoColumnGridInfo = styled(TwoColumnGrid)`
@@ -305,7 +314,36 @@ export const FlexColumn = styled.div<{
   align-items: ${({ alignItems }) => alignItems};
 `;
 
-export const StyledImg = styled.img`
+export const StyledImg = styled.img<{
+  animate?: boolean;
+}>`
   object-fit: contain;
   object-position: center;
+  transition: all 1s ease;
+  ${({ animate }) =>
+    animate ? "opacity: 0; transform: translateX(200px);" : ""}
+`;
+
+export const InfoSubtitle1 = styled(Subtitle1)`
+  transition: all 1s ease;
+  ${({ animate }) =>
+    animate ? "opacity: 0; transform: translateX(-200px);" : ""}
+`;
+
+export const InfoSubtitle3 = styled(Subtitle3)`
+  transition: all 1s ease;
+  ${({ animate }) =>
+    animate ? "opacity: 0; transform: translateX(-200px);" : ""}
+`;
+
+export const InfoText1 = styled(Text1)`
+  transition: all 1s ease;
+  ${({ animate }) =>
+    animate ? "opacity: 0; transform: translateY(100px);" : ""}
+`;
+
+export const InfoButton = styled(Button)`
+  transition: all 1s ease;
+  ${({ animate }) =>
+    animate ? "opacity: 0; transform: translateX(-100px);" : ""}
 `;

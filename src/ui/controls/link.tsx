@@ -59,16 +59,27 @@ export const Link = styled(
     TextUppercaseProps &
     BorderBottomOnHoverProps &
     LinkProps &
-    React.RefAttributes<HTMLAnchorElement>) =>
-    /(http(s?)):\/\//i.test(to.toString()) ? (
-      <a href={to.toString()} target="_blank" {...rest}>
-        {children}
-      </a>
-    ) : (
-      <RouterLink to={to} {...rest}>
-        {children}
-      </RouterLink>
-    )
+    React.RefAttributes<HTMLAnchorElement>) => {
+    if (/(http(s?)):\/\//i.test(to.toString())) {
+      return (
+        <a href={to.toString()} target="_blank" {...rest}>
+          {children}
+        </a>
+      );
+    } else if (/.*\/#/i.test(to.toString())) {
+      return (
+        <a href={to.toString()} {...rest}>
+          {children}
+        </a>
+      );
+    } else {
+      return (
+        <RouterLink to={to} {...rest}>
+          {children}
+        </RouterLink>
+      );
+    }
+  }
 ).attrs(
   (
     props: ThemeProps<DefaultTheme> &

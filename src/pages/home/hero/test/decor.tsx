@@ -18,6 +18,16 @@ export const GreenPuzzle = styled.img.attrs((props) => ({
   top: -120px;
   right: 70px;
 
+  @keyframes rotate {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+  animation: rotate 10s linear infinite;
+
   @media screen and (max-width: 1600px) {
     width: 65px;
     right: 30px;
@@ -130,6 +140,29 @@ export const MediumCircle = styled.img.attrs((props) => ({
   top: -51px;
   right: 180px;
 
+  @keyframes rotateMediumCircle {
+    0% {
+      transform: rotate(0deg);
+    }
+
+    25% {
+      transform: rotate(-10deg);
+    }
+
+    50% {
+      transform: rotate(0deg);
+    }
+
+    75% {
+      transform: rotate(10deg);
+    }
+
+    100% {
+      transform: rotate(0deg);
+    }
+  }
+  animation: rotateMediumCircle 10s linear infinite;
+
   @media screen and (max-width: 1800px) {
     right: 140px;
   }
@@ -168,6 +201,29 @@ export const BigCircle = styled.img.attrs((props) => ({
   top: 0;
   right: 15%;
 
+  @keyframes rotateBigCircle {
+    0% {
+      transform: rotate(0deg);
+    }
+
+    25% {
+      transform: rotate(10deg);
+    }
+
+    50% {
+      transform: rotate(0deg);
+    }
+
+    75% {
+      transform: rotate(-10deg);
+    }
+
+    100% {
+      transform: rotate(0deg);
+    }
+  }
+  animation: rotateBigCircle 10s linear infinite;
+
   @media screen and (max-width: 1800px) {
     width: 450px;
   }
@@ -198,7 +254,10 @@ export const BigCircle = styled.img.attrs((props) => ({
 export const HalfCircle = styled.img.attrs((props) => ({
   src: props.src || halfCircle,
   alt: props.alt || "",
-}))`
+}))<{ animate?: boolean }>`
+  transition: all 1s ease;
+  ${({ animate }) =>
+    animate ? "opacity: 0; transform: translateX(100px);" : ""}
   z-index: 311;
   width: 70px;
   position: relative;

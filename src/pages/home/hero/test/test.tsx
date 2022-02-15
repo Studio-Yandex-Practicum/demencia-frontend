@@ -6,36 +6,32 @@ import {
   BigCircle,
   MediumCircle,
   SmallCircle,
-  HalfCircle,
 } from "./decor";
 import { ScreenSize } from "../../../../ui/types";
-import { Button, Box } from "../../../../ui/controls";
+import { Box } from "../../../../ui/controls";
 import NavMenu from "./nav-menu";
-import { StringValueNode } from "graphql";
 import { useQuery } from "@apollo/client";
 import { SettingsData } from "../../../../types/settings";
 import { GET_SETTINGS } from "../../../../gql/query/settings";
+import ButtonWithSemicircle from "../../../../components/button-with-semicircle";
 
 const Actions = styled.div`
   display: flex;
   align-items: center;
-  margin-top: -33px;
-  margin-left: 8px;
-  @media (max-width: ${ScreenSize.Large}px) {
-    margin-top: 0;
-  }
+  margin-top: 10px;
   @media (max-width: ${ScreenSize.Medium}px) {
     position: relative;
     width: 100vw;
     justify-content: center;
-    margin-top: 220px;
-    margin-left: 0;
+    margin-top: 290px;
+    margin-bottom: 15px;
   }
   @media (max-width: ${ScreenSize.Small}px) {
-    margin-top: 240px;
+    margin-top: 280px;
   }
   @media (max-width: ${ScreenSize.XSmall}px) {
-    margin-top: 180px;
+    transform: scale(0.8);
+    margin-top: 230px;
   }
 `;
 
@@ -50,20 +46,6 @@ const StyledBox = styled(Box)`
   }
   @media (max-width: ${ScreenSize.XSmall}px) {
     margin-top: 10px;
-  }
-`;
-
-const StyledButton = styled(Button)`
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  overflow: hidden;
-  @media (max-width: ${ScreenSize.Medium}px) {
-    height: 63px;
-  }
-  @media (max-width: ${ScreenSize.XSmall}px) {
-    width: 230px;
-    height: 45px;
-    font-size: 16px;
   }
 `;
 
@@ -102,10 +84,12 @@ const Test: React.FC = () => {
         <BigCircle />
       </Box>
       <Actions>
-        <StyledButton primary uppercase width={300} zIndex={310}>
-          {buttonCaption}
-        </StyledButton>
-        <HalfCircle />
+        <ButtonWithSemicircle
+          maxWidth={300}
+          buttonText={buttonCaption}
+          margin={"0 60px 0 0"}
+          animate
+        />
       </Actions>
     </StyledBox>
   );

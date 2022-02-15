@@ -68,7 +68,7 @@ const Popup: React.FC<PopupProps> = ({
           if (cursorPositionOnMap < 0.5) {
             return setPosX(mouse.x + 50);
           }
-          return setPosX(mouse.x - 300);
+          return setPosX(mouse.x - 350);
         }
       }
       return setPosX(0);

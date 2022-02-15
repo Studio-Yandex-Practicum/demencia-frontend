@@ -69,13 +69,6 @@ const Overlay: React.FC<{ regions: Region[] }> = ({ regions }) => {
       region?.setAttribute("city", element.centers[0].city);
       region?.setAttribute("address", element.centers[0].address);
       region?.setAttribute("phone", element.centers[0].phoneNo);
-    });
-  }, [regions]);
-
-  useEffect(() => {
-    const territory = imageRef.current;
-    regions?.forEach((element) => {
-      const region = territory?.getElementById(element.geocode);
 
       region?.addEventListener("mouseenter", (event: Event) => {
         mouseEnter(event);

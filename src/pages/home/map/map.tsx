@@ -7,7 +7,9 @@ import { ScreenSize, TextColor } from "../../../ui/types";
 import { useQuery } from "@apollo/client";
 import { SettingsData } from "../../../types/settings";
 import { GET_SETTINGS } from "../../../gql/query/settings";
-import ImageOfMap from "./image-of-map";
+import BaseLayer from "./base-layer";
+import { ReactComponent as MyMap } from "../../../images/map.svg";
+import OverlayWrapper from "./overlay-wrapper";
 import AnimationWrapper from "../../../components/animation-wrapper";
 
 const StyledTitle = styled(Title)`
@@ -43,6 +45,8 @@ const TextWrapper = styled(Box)`
 `;
 
 const MapWrapper = styled(Box)`
+  position: relative;
+  height: 100%;
   @media (max-width: ${ScreenSize.Small}px) {
     margin-left: 32px;
     margin-right: 32px;
@@ -86,7 +90,8 @@ const Map: React.FC = () => {
         </AnimationWrapper>
       </TextWrapper>
       <MapWrapper ml={6} mr={6}>
-        <ImageOfMap />
+        <OverlayWrapper />
+        <BaseLayer SVG={MyMap} />
       </MapWrapper>
     </Section>
   );

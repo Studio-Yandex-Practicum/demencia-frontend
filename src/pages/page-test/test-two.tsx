@@ -1,10 +1,15 @@
 import React from "react";
 import { Section } from "../../ui/controls";
 import { Box, Button } from "../../ui/controls";
-import { ButtonType, TextColor, TypographyLevel } from "../../ui/types";
+import {
+  ButtonType,
+  TextColor,
+  TypographyLevel,
+  ScreenSize,
+} from "../../ui/types";
 import { BackgroundColor } from "../../ui/types/background-color.enum";
 import { Subtitle3, Subtitle1, Text1, Text2 } from "../../ui/controls";
-import { ArrowLeft, ArrowRight } from "../home/hero/test/decor";
+import { ArrowLeft, ArrowRight } from "./decor";
 import styled from "styled-components";
 
 const StyleArrowLeft = styled(ArrowLeft)`
@@ -16,6 +21,9 @@ const StyledBox = styled(Box)`
   flex-direction: row;
   text-align: center;
   justify-content: space-between;
+  @media (max-width: ${ScreenSize.XSmall}px) {
+    flex-direction: column;
+  }
 `;
 
 const StyledTestBox = styled(Box)`
@@ -23,13 +31,26 @@ const StyledTestBox = styled(Box)`
   max-width: 1026px;
 `;
 
+const StyledButtonBox = styled(Box)`
+  padding-top: 0;
+  @media (max-width: ${ScreenSize.XSmall}px) {
+    margin-top: 40px;
+  }
+`;
+
 const StyleText1 = styled(Text1)`
   font-size: 26px;
+  @media (max-width: ${ScreenSize.XSmall}px) {
+    font-size: 18px;
+  }
 `;
 
 const StyleButton = styled(Button)`
   text-aling: center;
   margin: 0 auto;
+  @media (max-width: ${ScreenSize.XSmall}px) {
+    font-size: 14px;
+  }
 `;
 
 const TestText: React.FC = () => {
@@ -108,12 +129,14 @@ const TestText: React.FC = () => {
                 Для перехода между заданиями используйте кнопки:
               </StyleText1>
             </Box>
-            <StyleArrowLeft />
-            <ArrowRight />
+            <StyledButtonBox>
+              <StyleArrowLeft />
+              <ArrowRight />
+            </StyledButtonBox>
           </StyledBox>
           <StyleButton
             type={ButtonType.Primary}
-            width={400}
+            width={310}
             level={TypographyLevel.Subtitle3}
           >
             все понятно. Начать!

@@ -10,7 +10,7 @@ import styled from "styled-components";
 import cursor from "../../../images/cursor_pointer.svg";
 import { Region } from "../../../types/map";
 import Popup from "./popup";
-import useMousePosition from "./useMousePosition";
+import useMousePosition from "./use-mouse-position";
 
 const StyledImage = styled.svg`
   position: absolute;

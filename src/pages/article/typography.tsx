@@ -9,18 +9,18 @@ export const MainTitleArticle = styled.div`
   line-height: 1.15;
   font-style: normal;
   font-weight: 600;
-  margin: 60px auto;
+  margin: 30px auto;
   text-align: center;
   padding: 0 20px;
 
   @media (max-width: ${ScreenSize.Large}px) {
     font-size: 42px;
-    margin: 45px auto;
+    margin: 25px auto;
   }
 
   @media (max-width: ${ScreenSize.Small}px) {
     font-size: 36px;
-    margin: 35px auto;
+    margin: 20px auto;
   }
 
   @media (max-width: ${ScreenSize.XSmall}px) {
@@ -49,9 +49,21 @@ export const ArticleDate = styled.p`
 `;
 
 export const DecorationText = styled(Subtitle2)`
-  @media (max-width: 440px) {
-    line-height: 1.15;
-    font-weight: 600;
-    font-size: 16px;
+  margin-right: 10px;
+
+  @media (max-width: ${ScreenSize.Large}px) {
+    font-size: 22px;
+  }
+
+  @media (max-width: ${ScreenSize.Medium}px) {
+    font-size: 20px;
+  }
+
+  @media (max-width: ${ScreenSize.Small}px) {
+    font-size: 18px;
+  }
+
+  @media (max-width: ${ScreenSize.XSmall}px) {
+    font-size: 14px;
   }
 `;

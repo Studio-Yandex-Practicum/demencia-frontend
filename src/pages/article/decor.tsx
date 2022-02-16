@@ -1,16 +1,15 @@
 import styled from "styled-components";
+import { Link } from "../../ui/controls";
 import { ScreenSize } from "../../ui/types";
 
 export const PurplePuzzle = styled.img`
-  width: 100px;
-  height: 96px;
-  bottom: 0;
+  width: 80px;
+  bottom: 5px;
   right: 7.5%;
   position: absolute;
-  z-index: 2;
+  z-index: 3;
 
   @media (max-width: ${ScreenSize.Small}px) {
-    bottom: 3%;
     width: 60px;
   }
 
@@ -56,69 +55,52 @@ export const GreenPuzzle = styled.img`
 `;
 
 export const PurpleSemicircle = styled.img`
+  position: absolute;
+  top: -100px;
+  left: 25px;
   width: 100px;
-  margin-top: -150px;
-  margin-right: 40px;
-  margin-left: 60px;
   z-index: 1;
 
   @media (max-width: ${ScreenSize.Large}px) {
-    margin-top: -200px;
-    margin-right: 40px;
-    margin-left: 60px;
+    top: -90px;
+    width: 90px;
   }
 
   @media (max-width: ${ScreenSize.Medium}px) {
-    margin-top: -250px;
-    margin-right: 40px;
-    margin-left: 60px;
-  }
-
-  @media (max-width: 760px) {
-    margin-top: -300px;
-    margin-right: 40px;
-    margin-left: 60px;
+    top: -80px;
+    width: 80px;
   }
 
   @media (max-width: ${ScreenSize.Small}px) {
-    margin-top: -300px;
-    margin-right: 40px;
-    margin-left: 60px;
-    width: 75px;
-  }
-
-  @media (max-width: 580px) {
-    margin-top: -350px;
-    margin-right: 40px;
-    margin-left: 30px;
-    width: 75px;
+    top: -70px;
+    width: 70px;
   }
 
   @media (max-width: ${ScreenSize.XSmall}px) {
-    margin-top: -150px;
-    margin-right: 40px;
-    margin-left: 30px;
-    width: 75px;
-  }
-
-  @media (max-width: 440px) {
-    margin-top: 25px;
-    margin-right: 20px;
-    margin-left: 20px;
-    width: 68px;
+    top: -60px;
+    width: 60px;
   }
 `;
 
 export const ArticleBackground = styled.div`
   position: absolute;
-  margin-top: 2em;
   background-color: ${(p) => p.theme.colors.backgroundAlt3};
-  width: calc(100% - 64px);
-  height: 400px;
+  width: 100%;
+  height: 50%;
   z-index: -1;
-  padding: 0 32px;
-  
+
   @media (max-width: ${ScreenSize.XXSmall}px) {
-    height: 360px;
-    
+  }
+`;
+
+export const StyledImage = styled.img`
+  max-width: 100%;
+  object-fit: contain;
+  object-position: center;
+`;
+
+export const ArticleLink = styled(Link)`
+  @media (max-width: ${ScreenSize.XSmall}px) {
+    font-size: 16px;
+  }
 `;

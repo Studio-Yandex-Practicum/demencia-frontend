@@ -1,5 +1,6 @@
 import styled, { DefaultTheme } from "styled-components";
 import { PaletteColor } from "../types";
+import { ElementAnimationProps, zoomOnHoverMixIn } from "./animation";
 
 export interface BoxProps {
   m?: number;
@@ -81,7 +82,7 @@ export const getBoxStyles = (p: BoxStyleProps): string => {
   return shiftStyles.join(" ");
 };
 
-export const Box = styled.div<BoxStyleProps>`
+export const Box = styled.div<BoxStyleProps & ElementAnimationProps>`
   display: ${(p) => (p.flex ? "flex" : "block")};
   flex-direction: ${(p) => (p.column ? "column" : "")};
   justify-content: ${(p) => (p.between ? "space-between" : "")};
@@ -99,6 +100,7 @@ export const Box = styled.div<BoxStyleProps>`
   bottom: ${(p) => (p.bottom !== undefined ? `${p.bottom}` : undefined)};
   z-index: ${(p) => (p.zIndex ? p.zIndex : 0)};
   ${getBoxStyles}
+  ${zoomOnHoverMixIn}
   ${(p) =>
     "background-color:" + p.backgroundColor || p.theme.colors.background};
   transition: all 2s ease;

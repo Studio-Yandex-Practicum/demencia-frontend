@@ -42,11 +42,8 @@ interface PopupProps {
 }
 
 const Popup: React.FC<PopupProps> = ({ currentRegion, left, top }) => {
-  const initData = sessionStorage.getItem(currentRegion);
-
-  if (!initData) {
-    return <div />;
-  }
+  // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+  const initData = sessionStorage.getItem(currentRegion)!;
 
   const data = JSON.parse(initData);
 

@@ -1,11 +1,8 @@
-import React, { useState, RefObject, useEffect } from "react";
 import styled from "styled-components";
-import useMouse from "@react-hook/mouse-position";
 import { Subtitle4, Text3 } from "../../../ui/controls/typography";
 import { PaletteColor, ScreenSize } from "../../../ui/types";
 
 const StyledBox = styled.div<{
-  state?: string;
   left: number;
   top: number;
 }>`
@@ -19,8 +16,8 @@ const StyledBox = styled.div<{
   z-index: 3;
   left: ${(props) => props.left || 0}px;
   top: ${(props) => props.top || 0}px;
-  ${({ state }) =>
-    state === "visible" ? "display: block;" : "display: none;"};
+  display: block;
+
   @media (max-width: ${ScreenSize.Medium}px) {
     width: 250px;
     min-height: 90px;
@@ -39,59 +36,35 @@ const StyledText = styled(Text3)`
 `;
 
 interface PopupProps {
-  mapRef: RefObject<SVGSVGElement>;
-  isVisible: string;
   currentRegion: string;
+  left: number;
+  top: number;
 }
 
-const Popup: React.FC<PopupProps> = ({ mapRef, isVisible, currentRegion }) => {
-  const [posX, setPosX] = useState<number>(0);
-  const [posY, setPosY] = useState<number>(0);
-  const mouse = useMouse(mapRef as unknown as RefObject<HTMLElement>, {
-    enterDelay: 200,
-    leaveDelay: 200,
-  });
+const Popup: React.FC<PopupProps> = ({ currentRegion, left, top }) => {
+  const initData = sessionStorage.getItem(currentRegion);
 
-  useEffect(() => {
-    const defineX = () => {
-      if (!mouse.isTouch) {
-        if (mouse.clientX && mouse.x) {
-          const cursorPositionOnMap = mouse.clientX / window.innerWidth;
-          if (cursorPositionOnMap < 0.5) {
-            return setPosX(mouse.x + 50);
-          }
-          return setPosX(mouse.x - 350);
-        }
-      }
-      return setPosX(0);
-    };
+  if (!initData) {
+    return <div />;
+  }
 
-    const defineY = () => {
-      if (!mouse.isTouch) {
-        if (mouse.y) return setPosY(mouse.y - 150);
-      }
-      return setPosY(0);
-    };
+  const data = JSON.parse(initData);
 
-    if (isVisible === "visible") {
-      defineX();
-      defineY();
-    }
-  });
+  console.log(data);
 
-  const renderPopup = () => {
-    const initData: string = sessionStorage.getItem(currentRegion);
-    const data = JSON.parse(initData);
-    data.map((region: { city: string; address: string; phoneNo: string }) => (
-      <StyledBox key={region.address} left={posX} top={posY} state={isVisible}>
-        <StyledTitle>{region.city}</StyledTitle>
-        <StyledText mt={2}>{region.address}</StyledText>
-        <StyledText mt={1}>{region.phoneNo}</StyledText>
-      </StyledBox>
-    ));
-  };
-
-  return { renderPopup };
+  return (
+    <div>
+      {data.map(
+        (region: { city: string; address: string; phoneNo: string }) => (
+          <StyledBox key={region.address} left={left} top={top}>
+            <StyledTitle>{region.city}</StyledTitle>
+            <StyledText mt={2}>{region.address}</StyledText>
+            <StyledText mt={1}>{region.phoneNo}</StyledText>
+          </StyledBox>
+        )
+      )}
+    </div>
+  );
 };
 
 export default Popup;

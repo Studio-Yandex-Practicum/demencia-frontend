@@ -10,6 +10,7 @@ import styled from "styled-components";
 import cursor from "../../../images/cursor_pointer.svg";
 import { Region } from "../../../types/map";
 import Popup from "./popup";
+import useMousePosition from "./useMousePosition";
 
 const StyledImage = styled.svg`
   position: absolute;
@@ -40,6 +41,10 @@ const StyledImage = styled.svg`
 const Overlay: React.FC<{ regions: Region[] }> = ({ regions }) => {
   const imageRef = useRef<SVGSVGElement>(null);
 
+  const [x, y] = useMousePosition(imageRef);
+
+  //console.log("test");
+
   const [currentRegion, setCurrentRegion] = useState<string>("");
   const [isVisible, setIsVisible] = useState<string>("");
 
@@ -64,7 +69,7 @@ const Overlay: React.FC<{ regions: Region[] }> = ({ regions }) => {
       region?.classList.add("overlay");
       region?.firstElementChild?.classList.add("overlay");
 
-      sessionStorage.geocode = JSON.stringify(element.centers);
+      sessionStorage.setItem(geocode, JSON.stringify(element.centers));
 
       region?.addEventListener("mouseenter", (event: Event) => {
         mouseEnter(event);
@@ -90,11 +95,9 @@ const Overlay: React.FC<{ regions: Region[] }> = ({ regions }) => {
 
   return (
     <>
-      <Popup
-        mapRef={imageRef}
-        isVisible={isVisible}
-        currentRegion={currentRegion}
-      />
+      {isVisible === "visible" && (
+        <Popup currentRegion={currentRegion} left={x} top={y} />
+      )}
       <StyledImage
         viewBox="0 0 691 360"
         fill="none"

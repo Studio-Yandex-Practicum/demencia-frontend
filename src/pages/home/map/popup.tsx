@@ -41,18 +41,10 @@ const StyledText = styled(Text3)`
 interface PopupProps {
   mapRef: RefObject<SVGSVGElement>;
   isVisible: string;
-  city: string;
-  address: string;
-  phoneNo: string;
+  currentRegion: string;
 }
 
-const Popup: React.FC<PopupProps> = ({
-  mapRef,
-  isVisible,
-  city,
-  address,
-  phoneNo,
-}) => {
+const Popup: React.FC<PopupProps> = ({ mapRef, isVisible, currentRegion }) => {
   const [posX, setPosX] = useState<number>(0);
   const [posY, setPosY] = useState<number>(0);
   const mouse = useMouse(mapRef as unknown as RefObject<HTMLElement>, {
@@ -87,13 +79,19 @@ const Popup: React.FC<PopupProps> = ({
     }
   });
 
-  return (
-    <StyledBox left={posX} top={posY} state={isVisible}>
-      <StyledTitle>{city}</StyledTitle>
-      <StyledText mt={2}>{address}</StyledText>
-      <StyledText mt={1}>{phoneNo}</StyledText>
-    </StyledBox>
-  );
+  const renderPopup = () => {
+    const initData: string = sessionStorage.getItem(currentRegion);
+    const data = JSON.parse(initData);
+    data.map((region: { city: string; address: string; phoneNo: string }) => (
+      <StyledBox key={region.address} left={posX} top={posY} state={isVisible}>
+        <StyledTitle>{region.city}</StyledTitle>
+        <StyledText mt={2}>{region.address}</StyledText>
+        <StyledText mt={1}>{region.phoneNo}</StyledText>
+      </StyledBox>
+    ));
+  };
+
+  return { renderPopup };
 };
 
 export default Popup;

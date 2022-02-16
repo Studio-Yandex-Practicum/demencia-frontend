@@ -40,17 +40,13 @@ const StyledImage = styled.svg`
 const Overlay: React.FC<{ regions: Region[] }> = ({ regions }) => {
   const imageRef = useRef<SVGSVGElement>(null);
 
-  const [city, setCity] = useState<string>("Город");
-  const [address, setAddress] = useState<string>("Адрес");
-  const [phone, setPhone] = useState<string>("Номер телефона");
+  const [currentRegion, setCurrentRegion] = useState<string>("");
   const [isVisible, setIsVisible] = useState<string>("");
 
   const mouseEnter = useCallback((event) => {
     const e = event as MouseEvent;
     const el = e.currentTarget as SVGPathElement;
-    setCity(el.getAttribute("city")!);
-    setAddress(el.getAttribute("address")!);
-    setPhone(el.getAttribute("phone")!);
+    setCurrentRegion(el.id);
     setIsVisible("visible");
   }, []);
 
@@ -62,12 +58,13 @@ const Overlay: React.FC<{ regions: Region[] }> = ({ regions }) => {
     const territory = imageRef.current;
 
     regions?.forEach((element) => {
-      const region = territory?.getElementById(element.geocode);
+      const geocode = element.geocode;
+      const region = territory?.getElementById(geocode);
+
       region?.classList.add("overlay");
       region?.firstElementChild?.classList.add("overlay");
-      region?.setAttribute("city", element.centers[0].city);
-      region?.setAttribute("address", element.centers[0].address);
-      region?.setAttribute("phone", element.centers[0].phoneNo);
+
+      sessionStorage.geocode = JSON.stringify(element.centers);
 
       region?.addEventListener("mouseenter", (event: Event) => {
         mouseEnter(event);
@@ -96,9 +93,7 @@ const Overlay: React.FC<{ regions: Region[] }> = ({ regions }) => {
       <Popup
         mapRef={imageRef}
         isVisible={isVisible}
-        city={city}
-        address={address}
-        phoneNo={phone}
+        currentRegion={currentRegion}
       />
       <StyledImage
         viewBox="0 0 691 360"

@@ -50,8 +50,6 @@ const Popup: React.FC<PopupProps> = ({ currentRegion, left, top }) => {
 
   const data = JSON.parse(initData);
 
-  console.log(data);
-
   return (
     <div>
       {data.map(

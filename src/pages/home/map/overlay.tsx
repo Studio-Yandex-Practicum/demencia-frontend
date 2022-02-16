@@ -43,8 +43,6 @@ const Overlay: React.FC<{ regions: Region[] }> = ({ regions }) => {
 
   const [x, y] = useMousePosition(imageRef);
 
-  //console.log("test");
-
   const [currentRegion, setCurrentRegion] = useState<string>("");
   const [isVisible, setIsVisible] = useState<string>("");
 

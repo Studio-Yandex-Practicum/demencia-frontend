@@ -1,20 +1,16 @@
 import React from "react";
 import { Section } from "../../ui/controls";
-import { Box, Button, Container } from "../../ui/controls";
-import {
-  ButtonType,
-  ContainerSize,
-  ScreenSize,
-  TextColor,
-  TypographyLevel,
-} from "../../ui/types";
+import { Box, Container } from "../../ui/controls";
+import { ContainerSize, ScreenSize, TextColor } from "../../ui/types";
 import { BackgroundColor } from "../../ui/types/background-color.enum";
 import { Subtitle3, Text1 } from "../../ui/controls";
 import { Pazzles, GreenPuzzle } from "../home/hero/test/decor";
 import styled from "styled-components";
+import ButtonWithSemicircle from "../../components/button-with-semicircle";
+import largeHalfCircle from "../../images/large-half-circle.svg";
 
 const StyledSection = styled(Section)`
-  transform: translateY(-110px);
+  transform: translateY(-100px);
   margin-bottom: -120px;
   @media (max-width: ${ScreenSize.Medium}px) {
     margin-bottom: 0;
@@ -30,6 +26,8 @@ const StyledSection = styled(Section)`
 
 const StyledContainer = styled(Container)`
   align-self: flex-end;
+  align-items: center;
+  justify-content: center;
 `;
 
 const StyledPazzles = styled(Pazzles)`
@@ -37,7 +35,7 @@ const StyledPazzles = styled(Pazzles)`
   margin-top: 0;
   position: absolute;
   left: 0;
-  margin-left: -120px;
+  margin-left: -250px;
 `;
 
 const StyledGreenPuzzle = styled(GreenPuzzle)`
@@ -45,6 +43,7 @@ const StyledGreenPuzzle = styled(GreenPuzzle)`
   right: 0;
   top: 0;
   position: absolute;
+  margin-right: -200px;
 `;
 
 const StyledBox = styled(Box)`
@@ -56,6 +55,15 @@ const StyledBox = styled(Box)`
 
 const StyledTestBox = styled(Box)`
   text-align: center;
+  align-items: center;
+`;
+
+const StyledImg = styled.img`
+  position: absolute;
+  right: 0;
+  height: 390px;
+  object-fit: contain;
+  object-position: center;
 `;
 
 const TestingPage: React.FC = () => {
@@ -84,32 +92,29 @@ const TestingPage: React.FC = () => {
               начать лечение.
             </Text1>
           </Box>
-          {/* <StyledImg src={greenSemicirclePic} /> */}
+          <StyledImg src={largeHalfCircle} />
         </StyledContainer>
       </StyledSection>
 
       <Section flex centered borderBox pt={7}>
         <StyledTestBox flex column>
-          <Subtitle3 maxWidth={749} textColor={TextColor.Primary}>
+          <Subtitle3 maxWidth={749} mb={3} textColor={TextColor.Primary}>
             Данный тест рекомендуется пройти для проверки своего когнитивного
             статуса.
           </Subtitle3>
           <StyledBox flex>
             <StyledPazzles />
-            <Box>
-              <Button
-                type={ButtonType.Primary}
-                width={330}
-                level={TypographyLevel.Subtitle3}
-              >
-                Начать тестирование
-              </Button>
+            <StyledTestBox flex column>
+              <ButtonWithSemicircle
+                maxWidth={350}
+                buttonText="Начать тестирование"
+              />
               <Text1 maxWidth={500} mt={5}>
                 Тест рекомендуется использовать в качестве дополнения к
                 профессиональной врачебной диагностике, а не в качестве её
                 замены.
               </Text1>
-            </Box>
+            </StyledTestBox>
 
             <StyledGreenPuzzle />
           </StyledBox>

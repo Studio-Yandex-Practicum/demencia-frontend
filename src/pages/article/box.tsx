@@ -22,6 +22,7 @@ export const ArticleItemBox = styled.div`
 export const ImageBox = styled.div`
   position: relative;
   box-sizing: border-box;
+  width: 100%;
   max-width: 50%;
   margin: 0 auto;
 
@@ -43,10 +44,11 @@ export const DescriptionBox = styled.div`
   box-sizing: border-box;
   display: flex;
   flex-direction: row;
-  justify-content: flex-end;
   margin: auto;
   padding-left: 140px;
+  width: 100%;
   max-width: 50%;
+  min-height: 90px;
 
   @media (max-width: ${ScreenSize.Medium}px) {
     max-width: 70%;

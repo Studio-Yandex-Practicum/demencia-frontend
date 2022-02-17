@@ -98,7 +98,7 @@ const TestingPage: React.FC = () => {
 
       <Section flex centered borderBox pt={7}>
         <StyledTestBox flex column>
-          <Subtitle3 maxWidth={749} mb={3} textColor={TextColor.Primary}>
+          <Subtitle3 maxWidth={749} mb={4} textColor={TextColor.Primary}>
             Данный тест рекомендуется пройти для проверки своего когнитивного
             статуса.
           </Subtitle3>

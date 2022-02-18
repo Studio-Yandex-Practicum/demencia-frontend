@@ -1,11 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import styled from "styled-components";
 import { Button, Box } from "../../../ui/controls";
 import { ButtonType, ScreenSize } from "../../../ui/types";
 import puzzle from "../../../images/green-puzzle-translucent.svg";
-import { useQuery } from "@apollo/client";
-import { CentersData } from "../../../types/centers";
-import { GET_CENTERS } from "../../../gql/query/centers";
+import SearchResults from "./search-results";
 
 const StyledDiv = styled.div`
   display: none;
@@ -23,6 +21,19 @@ const StyledDiv = styled.div`
   @media (max-width: ${ScreenSize.XSmall}px) {
     margin: 0 14px;
   }
+  .visible {
+    display: flex;
+  }
+`;
+
+const StyledResultsArea = styled.div`
+  width: 100%;
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+  padding: 15px 0 0;
   .visible {
     display: flex;
   }
@@ -68,22 +79,14 @@ const StyledButton = styled(Button)`
 `;
 
 const SearchForm: React.FC = () => {
-  const [inputData, setInputData] = useState<string>("");
+  const inputRef = useRef<HTMLInputElement>(null);
   const [isVisible, setIsVisible] = useState<boolean>(false);
-  const [fetched, setFetched] = useState<string[]>([]);
+  const [currentValue, setCurrentValue] = useState<string>("");
 
-  const useCityInfo = () => {
-    const { data } = useQuery<CentersData>(GET_CENTERS, {
-      fetchPolicy: "cache-first",
-      variables: { city: inputData },
-    });
-    if (!data || !data.centers) return <div>Нет данных</div>;
-    const centers = data?.centers;
-    if (!centers.length) return <div>Нет данных2</div>;
-    console.log(centers);
+  const onButtonClick = () => {
+    setCurrentValue(inputRef.current ? inputRef.current.value : "");
+    setIsVisible(true);
   };
-
-  const renderData = () => {};
 
   return (
     <StyledDiv>
@@ -92,7 +95,7 @@ const SearchForm: React.FC = () => {
         <StyledInput
           type="text"
           placeholder="Введите название города..."
-          onChange={(e) => setInputData(e.target.value)}
+          ref={inputRef}
         />
       </StyledWrapper>
       <Box>
@@ -100,20 +103,14 @@ const SearchForm: React.FC = () => {
           type={ButtonType.Primary}
           ghost
           borderWidth={0}
-          onClick={useCityInfo}
+          onClick={onButtonClick}
         >
           Поиск
         </StyledButton>
       </Box>
-      {/* <StyledDiv className={`${isVisible ? "visible" : ""}`}>
-        {fetched.map((center, index) => (
-          <StyledWrapper key={index}>
-            <p>{center.city}</p>
-            <p>{center.address}</p>
-            <p>{center.phoneNo}</p>
-          </StyledWrapper>
-        ))}
-      </StyledDiv> */}
+      <StyledResultsArea className={`${isVisible ? "visible" : ""}`}>
+        <SearchResults query={currentValue} />
+      </StyledResultsArea>
     </StyledDiv>
   );
 };

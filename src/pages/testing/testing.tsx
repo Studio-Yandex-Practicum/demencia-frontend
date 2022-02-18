@@ -4,10 +4,11 @@ import { Box, Container } from "../../ui/controls";
 import { ContainerSize, ScreenSize, TextColor } from "../../ui/types";
 import { BackgroundColor } from "../../ui/types/background-color.enum";
 import { Subtitle3, Text1 } from "../../ui/controls";
-import { Pazzles, GreenPuzzle } from "../home/hero/test/decor";
 import styled from "styled-components";
 import ButtonWithSemicircle from "../../components/button-with-semicircle";
 import largeHalfCircle from "../../images/large-half-circle.svg";
+import Puzzles from "../../components/puzzles";
+import GreenPuzzle from "../../components/green-puzzle";
 
 const StyledSection = styled(Section)`
   transform: translateY(-90px);
@@ -30,19 +31,19 @@ const StyledContainer = styled(Container)`
   justify-content: center;
 `;
 
-const StyledPazzles = styled(Pazzles)`
+const StyledPuzzles = styled(Puzzles)`
   width: 230px;
   margin-top: 0;
   position: absolute;
   left: 0;
-  margin-left: -250px;
+  margin-left: -300px;
 `;
 
 const StyledGreenPuzzle = styled(GreenPuzzle)`
   width: 99px;
+  height: auto;
   right: 0;
   top: 0;
-  position: absolute;
   margin-right: -200px;
 `;
 
@@ -103,7 +104,7 @@ const TestingPage: React.FC = () => {
             статуса.
           </Subtitle3>
           <StyledBox flex>
-            <StyledPazzles />
+            <StyledPuzzles />
             <StyledTestBox flex column>
               <ButtonWithSemicircle
                 maxWidth={350}
@@ -116,7 +117,7 @@ const TestingPage: React.FC = () => {
               </Text1>
             </StyledTestBox>
 
-            <StyledGreenPuzzle />
+            <StyledGreenPuzzle animated={false} />
           </StyledBox>
         </StyledTestBox>
       </Section>

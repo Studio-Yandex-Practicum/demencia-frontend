@@ -1,12 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import {
-  Pazzles,
-  GreenPuzzle,
-  BigCircle,
-  MediumCircle,
-  SmallCircle,
-} from "./decor";
+import { BigCircle, MediumCircle, SmallCircle } from "./decor";
 import { ScreenSize } from "../../../../ui/types";
 import { Box } from "../../../../ui/controls";
 import NavMenu from "./nav-menu";
@@ -14,6 +8,8 @@ import { useQuery } from "@apollo/client";
 import { SettingsData } from "../../../../types/settings";
 import { GET_SETTINGS } from "../../../../gql/query/settings";
 import ButtonWithSemicircle from "../../../../components/button-with-semicircle";
+import Puzzles from "../../../../components/puzzles";
+import GreenPuzzle from "../../../../components/green-puzzle";
 
 const Actions = styled.div`
   display: flex;
@@ -76,7 +72,7 @@ const Test: React.FC = () => {
       <GreenPuzzle />
       <StyledNavBox>
         <NavMenu />
-        <Pazzles />
+        <Puzzles />
       </StyledNavBox>
       <Box width="100%" height="100px" absolute top="0" left="0">
         <SmallCircle />

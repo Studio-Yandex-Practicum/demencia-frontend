@@ -1,92 +1,9 @@
 import styled from "styled-components";
-import pazzles from "../../../../images/test_puzzlesdecor.svg";
-import greenPazzle from "../../../../images/test_green_puzzle.svg";
 import bigCircle from "../../../../images/circlebg.png";
 import mediumCircle from "../../../../images/circlesm.png";
 import smallCircle from "../../../../images/smallcircle.png";
 import halfCircle from "../../../../images/halfcirclegreen.png";
 import { ScreenSize } from "../../../../ui/types";
-
-export const GreenPuzzle = styled.img.attrs((props) => ({
-  src: props.src || greenPazzle,
-  alt: props.alt || "",
-}))`
-  width: 80px;
-  height: auto;
-  position: absolute;
-  z-index: 300;
-  top: -120px;
-  right: 70px;
-
-  @keyframes rotate {
-    0% {
-      transform: rotate(0deg);
-    }
-    100% {
-      transform: rotate(360deg);
-    }
-  }
-  animation: rotate 10s linear infinite;
-
-  @media screen and (max-width: 1600px) {
-    width: 65px;
-    right: 30px;
-  }
-
-  @media (max-width: ${ScreenSize.Medium}px) {
-    width: 55px;
-    right: -220px;
-    top: -135px;
-  }
-  @media (max-width: ${ScreenSize.Small}px) {
-    top: -96px;
-    right: -226px;
-    width: 55px;
-  }
-  @media (max-width: ${ScreenSize.XSmall}px) {
-    width: 35px;
-    top: -17px;
-    right: -150px;
-  }
-  @media (max-width: ${ScreenSize.XXSmall}px) {
-    width: 30px;
-    right: -87px;
-    top: -37px;
-  }
-`;
-
-export const Pazzles = styled.img.attrs((props) => ({
-  src: props.src || pazzles,
-  alt: props.alt || "",
-}))`
-  width: 145px;
-  height: auto;
-  z-index: 301;
-  position: relative;
-  margin-top: 30%;
-
-  @media screen and (max-width: 1600px) {
-    width: 100px;
-    margin-top: 40%;
-  }
-
-  @media (max-width: ${ScreenSize.Medium}px) {
-    margin-top: 20%;
-    position: absolute;
-    right: 14vw;
-  }
-  @media (max-width: ${ScreenSize.Small}px) {
-    width: 90px;
-  }
-  @media (max-width: ${ScreenSize.XSmall}px) {
-    width: 61px;
-    left: calc(100% - 280px / 2);
-    top: 100px;
-  }
-  @media (max-width: ${ScreenSize.XXSmall}px) {
-    top: 48px;
-  }
-`;
 
 export const SmallCircle = styled.img.attrs((props) => ({
   src: props.src || smallCircle,

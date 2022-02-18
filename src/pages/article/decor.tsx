@@ -3,14 +3,15 @@ import { Link } from "../../ui/controls";
 import { ScreenSize } from "../../ui/types";
 
 export const PurplePuzzle = styled.img`
-  width: 80px;
-  bottom: 5px;
+  width: 70px;
+  bottom: 20px;
   right: 7.5%;
   position: absolute;
   z-index: 3;
 
   @media (max-width: ${ScreenSize.Small}px) {
-    width: 60px;
+    width: 50px;
+    bottom: 10px;
   }
 
   @media (max-width: ${ScreenSize.XSmall}px) {
@@ -19,38 +20,29 @@ export const PurplePuzzle = styled.img`
 `;
 
 export const GreenPuzzle = styled.img`
-  width: 10.1%;
-  height: 9.6%;
-  top: -6%;
-  right: -5%;
+  width: 50px;
+  top: -30px;
+  right: -25px;
   position: absolute;
+  object-fit: contain;
+  object-position: center;
 
   @media (max-width: ${ScreenSize.Large}px) {
-    width: 5.1%;
-    top: -5.5%;
-    right: -2%;
-  }
-
-  @media (max-width: ${ScreenSize.Medium}px) {
-    width: 10.1%;
-    top: -5.5%;
-    right: -4.5%;
+    width: 50px;
+    top: -30px;
+    right: -25px;
   }
 
   @media (max-width: ${ScreenSize.Small}px) {
-    width: 6.1%;
-    top: -5%;
-    right: -2%;
-  }
-
-  @media (max-width: ${ScreenSize.XSmall}px) {
-    top: -5%;
-    right: 1%;
+    width: 40px;
+    top: -25px;
+    right: -20px;
   }
 
   @media (max-width: ${ScreenSize.XXSmall}px) {
-    top: -4%;
-    right: 3%;
+    width: 25px;
+    top: -15px;
+    right: -10px;
   }
 `;
 
@@ -95,7 +87,8 @@ export const ArticleBackground = styled.div`
 
 export const StyledImage = styled.img`
   width: 100%;
-  object-fit: contain;
+  max-height: 500px;
+  object-fit: cover;
   object-position: center;
 `;
 

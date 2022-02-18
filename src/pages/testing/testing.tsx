@@ -10,7 +10,7 @@ import ButtonWithSemicircle from "../../components/button-with-semicircle";
 import largeHalfCircle from "../../images/large-half-circle.svg";
 
 const StyledSection = styled(Section)`
-  transform: translateY(-100px);
+  transform: translateY(-90px);
   margin-bottom: -120px;
   @media (max-width: ${ScreenSize.Medium}px) {
     margin-bottom: 0;
@@ -96,9 +96,9 @@ const TestingPage: React.FC = () => {
         </StyledContainer>
       </StyledSection>
 
-      <Section flex centered borderBox pt={7}>
+      <Section flex centered borderBox pt={10}>
         <StyledTestBox flex column>
-          <Subtitle3 maxWidth={749} mb={4} textColor={TextColor.Primary}>
+          <Subtitle3 maxWidth={749} mb={10} textColor={TextColor.Primary}>
             Данный тест рекомендуется пройти для проверки своего когнитивного
             статуса.
           </Subtitle3>
@@ -109,7 +109,7 @@ const TestingPage: React.FC = () => {
                 maxWidth={350}
                 buttonText="Начать тестирование"
               />
-              <Text1 maxWidth={500} mt={5}>
+              <Text1 maxWidth={500} mt={10}>
                 Тест рекомендуется использовать в качестве дополнения к
                 профессиональной врачебной диагностике, а не в качестве её
                 замены.

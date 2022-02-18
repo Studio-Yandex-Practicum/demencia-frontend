@@ -7,9 +7,16 @@ import { ScreenSize, TextColor } from "../../../ui/types";
 import { useQuery } from "@apollo/client";
 import { SettingsData } from "../../../types/settings";
 import { GET_SETTINGS } from "../../../gql/query/settings";
-import ImageOfMap from "./image-of-map";
+import BaseLayer from "./base-layer";
+import { ReactComponent as MyMap } from "../../../images/map.svg";
+import OverlayWrapper from "./overlay-wrapper";
+import AnimationWrapper from "../../../components/animation-wrapper";
 
 const StyledTitle = styled(Title)`
+  transition: all 1s ease;
+  ${({ animate }) =>
+    animate ? "opacity: 0; transform: translateY(100px);" : ""}
+
   @media (max-width: ${ScreenSize.Medium}px) {
     font-size: 30px;
   }
@@ -19,6 +26,10 @@ const StyledTitle = styled(Title)`
 `;
 
 const StyledText = styled(Subtitle4)`
+  transition: all 1s ease;
+  ${({ animate }) =>
+    animate ? "opacity: 0; transform: translateY(100px);" : ""}
+
   @media (max-width: ${ScreenSize.Small}px) {
     font-size: 12px;
   }
@@ -34,6 +45,8 @@ const TextWrapper = styled(Box)`
 `;
 
 const MapWrapper = styled(Box)`
+  position: relative;
+  height: 100%;
   @media (max-width: ${ScreenSize.Small}px) {
     margin-left: 32px;
     margin-right: 32px;
@@ -67,13 +80,18 @@ const Map: React.FC = () => {
   return (
     <Section id="map" mt={4}>
       <TextWrapper ml={6}>
-        <StyledTitle>{sectionTitle}</StyledTitle>
+        <AnimationWrapper>
+          <StyledTitle>{sectionTitle}</StyledTitle>
+        </AnimationWrapper>
       </TextWrapper>
       <TextWrapper ml={6}>
-        <StyledText textColor={TextColor.Shadow}>{subtitle}</StyledText>
+        <AnimationWrapper>
+          <StyledText textColor={TextColor.Shadow}>{subtitle}</StyledText>
+        </AnimationWrapper>
       </TextWrapper>
       <MapWrapper ml={6} mr={6}>
-        <ImageOfMap />
+        <OverlayWrapper />
+        <BaseLayer SVG={MyMap} />
       </MapWrapper>
     </Section>
   );

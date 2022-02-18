@@ -78,7 +78,8 @@ export const borderBottomOnHoverMixIn = (
   }
 
   return `
-  transition: border-bottom 0.5s cubic-bezier(0.2, -2, 0.8, 2);
+  border-bottom: ${props.borderSize}px solid transparent;
+  transition: border-bottom 0.5s linear;
 
   &:hover {
     border-bottom: ${props.borderSize}px solid ${props.borderColor};

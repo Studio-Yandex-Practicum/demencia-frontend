@@ -31,6 +31,7 @@ export interface ButtonProps
   width?: number;
   zIndex?: number;
   borderWidth?: number;
+  animate?: boolean;
 }
 
 const buildLinkButtonStyleMixIn = (
@@ -188,6 +189,9 @@ export const Button = styled.button.attrs((props: ButtonProps) => ({
   ...props,
 }))`
   ${buttonBaseMixin}
+  transition: all 1s ease;
+  ${({ animate }) =>
+    animate ? "opacity: 0; transform: translateX(-100px);" : ""}
 `;
 
 export const LinkButton = styled.button.attrs((props: ButtonProps) => ({

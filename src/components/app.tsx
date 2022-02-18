@@ -21,6 +21,7 @@ import { SettingsData } from "../types/settings";
 import { GET_SETTINGS } from "../gql/query/settings";
 import { DEFAULT_SITE_NAME } from "../constants";
 import { Subtitle3 } from "../ui/controls/typography";
+import ScrollToTop from "./scroll-to-top";
 
 const App: React.FC = () => {
   const { loading, error, data } = useQuery<SettingsData>(GET_SETTINGS, {
@@ -58,6 +59,7 @@ const App: React.FC = () => {
         <title>{settings.siteName}</title>
       </Helmet>
       <Router>
+        <ScrollToTop />
         <Layout>
           <PageHeader />
           <Main>

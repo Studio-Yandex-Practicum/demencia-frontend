@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 import { ANIMATION_ACTIVATE_OFFSET } from "../constants";
 
 const AnimationWrapper: React.FC = ({ children }) => {
-  const elRef = useRef<HTMLImageElement>(null);
+  const elRef = useRef<HTMLElement>(null);
   const [animate, setAnimate] = useState(false);
   const [y, setY] = useState(0);
 

@@ -13,7 +13,7 @@ const TestPage = () => {
       <Route path="start" element={<StartPage />} />
       <Route path="description" element={<DescriptionPage />} />
       <Route path="result" element={<ResultPage />} />
-      <Route path=":question" element={<QuestionPage />} />
+      <Route path="question/*" element={<QuestionPage />} />
     </Routes>
   );
 };

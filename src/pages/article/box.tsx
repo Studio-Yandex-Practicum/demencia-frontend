@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import { Box } from "../../ui/controls";
 import { ScreenSize } from "../../ui/types";
 
 export const ArticleItemBox = styled.div`
@@ -59,14 +58,5 @@ export const DescriptionBox = styled.div`
 
   @media (max-width: ${ScreenSize.XSmall}px) {
     padding: 0 0 0 100px;
-  }
-`;
-
-export const ArticleTextBox = styled(Box)`
-  display: flex;
-  @media (max-width: ${ScreenSize.XSmall}px) {
-    justify-content: center;
-    width: 100%;
-    max-width: 100%;
   }
 `;

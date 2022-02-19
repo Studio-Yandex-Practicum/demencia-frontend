@@ -3,34 +3,23 @@ import DOMPurify from "dompurify";
 import ReactHtmlParser from "react-html-parser";
 import purplePuzzleImg from "../../images/article-purple-puzzle.svg";
 import greenPuzzleImg from "../../images/article-green-puzzle.svg";
-import purpleSemicircleImg from "../../images/purple-semicircle.svg";
-import styled from "styled-components";
-import { Link, Box, Subtitle3 } from "../../ui/controls";
-import { Section } from "../../ui/controls/layout";
-import { Text1 } from "../../ui/controls/typography";
+import { Subtitle3 } from "../../ui/controls";
+import { Section } from "../../ui/controls";
+import { Text1 } from "../../ui/controls";
 import { ArticleDate, DecorationText, MainTitleArticle } from "./typography";
 import {
   ArticleBackground,
+  ArticleLink,
   GreenPuzzle,
   PurplePuzzle,
-  PurpleSemicircle,
+  StyledImage,
 } from "./decor";
-import { ArticleItemBox, DescriptionBox, ImageBox } from "./box";
-import { ScreenSize } from "../../ui/types";
+import { ArticleItemBox, ArticleTextBox, ImageBox } from "./box";
 import { useQuery } from "@apollo/client";
 import { NewsArticleData } from "../../types/news";
 import { GET_NEWS_ARTICLE } from "../../gql/query/news";
 import { toast } from "react-hot-toast";
 import { useParams } from "react-router-dom";
-
-const Cover = styled.img`
-  width: 100%;
-
-  @media (max-width: ${ScreenSize.XSmall}px) {
-    width: calc(100% - 32px);
-    margin-left: 16px;
-  }
-`;
 
 const Empty: React.FC = () => (
   <Section borderBox flex centered>
@@ -73,7 +62,7 @@ const ArticlePage: React.FC = () => {
 
   return (
     <>
-      <Section flex mt={4}>
+      <Section flex>
         <MainTitleArticle>{article.title}</MainTitleArticle>
         <ArticleDate>{formattedDate}</ArticleDate>
         <PurplePuzzle src={purplePuzzleImg} alt="." />
@@ -84,20 +73,19 @@ const ArticlePage: React.FC = () => {
         <ArticleItemBox>
           <ImageBox>
             <GreenPuzzle src={greenPuzzleImg} alt="." />
-            <Cover src={article.image} alt="." />
+            <StyledImage src={article.image} alt="." />
           </ImageBox>
 
-          <DescriptionBox>
-            <PurpleSemicircle src={purpleSemicircleImg} alt="." />
-            <DecorationText mt={4}>{article.subTitle}</DecorationText>
-          </DescriptionBox>
+          <DecorationText mt={4}>{article.subTitle}</DecorationText>
 
-          <Box mt={4}>
+          <ArticleTextBox mt={4}>
             <Text1>{ReactHtmlParser(DOMPurify.sanitize(article.text))}</Text1>
-          </Box>
-          <Box mt={3}>
-            <Link to="/news-grid">Перейти к ленте новостей</Link>
-          </Box>
+          </ArticleTextBox>
+          <ArticleTextBox mt={4} centered zoomOnHover maxWidth={350}>
+            <ArticleLink to="/news-grid" zoomTextOnHover={false}>
+              Перейти к ленте новостей
+            </ArticleLink>
+          </ArticleTextBox>
         </ArticleItemBox>
       </Section>
     </>

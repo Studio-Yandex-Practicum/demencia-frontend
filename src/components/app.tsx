@@ -14,8 +14,9 @@ import { useQuery } from "@apollo/client";
 import { SettingsData } from "../types/settings";
 import { GET_SETTINGS } from "../gql/query/settings";
 import { DEFAULT_SITE_NAME } from "../constants";
-import { Subtitle3 } from "../ui/controls/typography";
+import { Subtitle3 } from "../ui/controls";
 import ScrollToTop from "./scroll-to-top";
+import TestPage from "../pages/test/test";
 
 const App: React.FC = () => {
   const { loading, error, data } = useQuery<SettingsData>(GET_SETTINGS, {
@@ -64,6 +65,7 @@ const App: React.FC = () => {
               <Route path="/ui-kit" element={<UIKitPage />} />
               <Route path="/details" element={<DetailsPage />} />
               <Route path="/graphql" element={<GraphqlTestPage />} />
+              <Route path="/test/*" element={<TestPage />} />
             </Routes>
           </Main>
           <PageFooter />

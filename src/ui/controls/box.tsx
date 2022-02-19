@@ -1,5 +1,6 @@
 import styled, { DefaultTheme } from "styled-components";
 import { PaletteColor } from "../types";
+import { ElementAnimationProps, zoomOnHoverMixIn } from "./animation";
 
 export interface BoxProps {
   m?: number;
@@ -35,7 +36,9 @@ interface BoxStyleProps extends BoxProps {
 }
 
 const getShift = (val: number, defaultSpacing: number): number => {
-  return [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12].indexOf(val) > -1
+  return [
+    0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18,
+  ].indexOf(val) > -1
     ? val * defaultSpacing
     : 0;
 };
@@ -81,7 +84,7 @@ export const getBoxStyles = (p: BoxStyleProps): string => {
   return shiftStyles.join(" ");
 };
 
-export const Box = styled.div<BoxStyleProps>`
+export const Box = styled.div<BoxStyleProps & ElementAnimationProps>`
   display: ${(p) => (p.flex ? "flex" : "block")};
   flex-direction: ${(p) => (p.column ? "column" : "")};
   justify-content: ${(p) => (p.between ? "space-between" : "")};
@@ -99,6 +102,7 @@ export const Box = styled.div<BoxStyleProps>`
   bottom: ${(p) => (p.bottom !== undefined ? `${p.bottom}` : undefined)};
   z-index: ${(p) => (p.zIndex ? p.zIndex : 0)};
   ${getBoxStyles}
+  ${zoomOnHoverMixIn}
   ${(p) =>
     "background-color:" + p.backgroundColor || p.theme.colors.background};
   transition: all 2s ease;

@@ -56,14 +56,16 @@ const StyledWrapper = styled.div`
 
 const StyledInput = styled.input`
   width: 100%;
-  height: 45px;
+  height: 55px;
   padding: 0 10px;
   border-radius: 30px;
   border: 2px solid #782988;
+  box-sizing: border-box;
   background-color: #d8eae5;
   font-size: 18px;
   &:focus {
-    outline: 3px solid #782988;
+    outline: none;
+    border: 4px solid #782988;
   }
 `;
 
@@ -107,12 +109,11 @@ const SearchForm: React.FC = () => {
   const buttonRef = useRef<HTMLInputElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
   const [isVisible, setIsVisible] = useState<boolean>(false);
-  const [currentValue, setCurrentValue] = useState<string>("");
   const [getCenters, { called, loading, error, data }] =
-    useLazyQuery<CentersData>(GET_CENTERS);
+    useLazyQuery<CentersData>(GET_CENTERS, { fetchPolicy: "cache-first" });
   const centers = data?.centers;
   const currentCity = centers?.find((item) =>
-    Object.keys(item.city == currentValue)
+    Object.keys(item.city == inputRef.current?.value)
   );
 
   useEffect(() => {
@@ -123,14 +124,17 @@ const SearchForm: React.FC = () => {
     } else {
       if (buttonRef.current) {
         buttonRef.current.disabled = true;
-        setCurrentValue("");
         setIsVisible(false);
       }
     }
-  }, [currentValue]);
+  }, []);
 
   const handleInputChange = () => {
-    if (inputRef.current && inputRef.current.value) {
+    if (
+      inputRef.current &&
+      inputRef.current.value &&
+      inputRef.current.value.length > 2
+    ) {
       if (buttonRef.current) {
         buttonRef.current.disabled = false;
       }
@@ -144,7 +148,6 @@ const SearchForm: React.FC = () => {
 
   const onButtonClick = (e: React.ChangeEvent<HTMLInputElement>) => {
     e.preventDefault();
-    setCurrentValue(inputRef.current ? inputRef.current.value : "");
     getCenters({ variables: { city: inputRef.current?.value } });
     setIsVisible(true);
   };

@@ -1,17 +1,17 @@
 import styled from "styled-components";
+import { Link } from "../../ui/controls";
 import { ScreenSize } from "../../ui/types";
 
 export const PurplePuzzle = styled.img`
-  width: 100px;
-  height: 96px;
-  bottom: 0;
+  width: 70px;
+  bottom: 20px;
   right: 7.5%;
   position: absolute;
-  z-index: 2;
+  z-index: 3;
 
   @media (max-width: ${ScreenSize.Small}px) {
-    bottom: 3%;
-    width: 60px;
+    width: 50px;
+    bottom: 10px;
   }
 
   @media (max-width: ${ScreenSize.XSmall}px) {
@@ -20,105 +20,80 @@ export const PurplePuzzle = styled.img`
 `;
 
 export const GreenPuzzle = styled.img`
-  width: 10.1%;
-  height: 9.6%;
-  top: -6%;
-  right: -5%;
+  width: 50px;
+  top: -30px;
+  right: -25px;
   position: absolute;
+  object-fit: contain;
+  object-position: center;
 
   @media (max-width: ${ScreenSize.Large}px) {
-    width: 5.1%;
-    top: -5.5%;
-    right: -2%;
-  }
-
-  @media (max-width: ${ScreenSize.Medium}px) {
-    width: 10.1%;
-    top: -5.5%;
-    right: -4.5%;
+    width: 50px;
+    top: -30px;
+    right: -25px;
   }
 
   @media (max-width: ${ScreenSize.Small}px) {
-    width: 6.1%;
-    top: -5%;
-    right: -2%;
-  }
-
-  @media (max-width: ${ScreenSize.XSmall}px) {
-    top: -5%;
-    right: 1%;
+    width: 40px;
+    top: -25px;
+    right: -20px;
   }
 
   @media (max-width: ${ScreenSize.XXSmall}px) {
-    top: -4%;
-    right: 3%;
+    width: 25px;
+    top: -15px;
+    right: -10px;
   }
 `;
 
 export const PurpleSemicircle = styled.img`
+  position: absolute;
+  top: -100px;
+  left: 25px;
   width: 100px;
-  margin-top: -150px;
-  margin-right: 40px;
-  margin-left: 60px;
   z-index: 1;
 
   @media (max-width: ${ScreenSize.Large}px) {
-    margin-top: -200px;
-    margin-right: 40px;
-    margin-left: 60px;
+    top: -90px;
+    width: 90px;
   }
 
   @media (max-width: ${ScreenSize.Medium}px) {
-    margin-top: -250px;
-    margin-right: 40px;
-    margin-left: 60px;
-  }
-
-  @media (max-width: 760px) {
-    margin-top: -300px;
-    margin-right: 40px;
-    margin-left: 60px;
+    top: -80px;
+    width: 80px;
   }
 
   @media (max-width: ${ScreenSize.Small}px) {
-    margin-top: -300px;
-    margin-right: 40px;
-    margin-left: 60px;
-    width: 75px;
-  }
-
-  @media (max-width: 580px) {
-    margin-top: -350px;
-    margin-right: 40px;
-    margin-left: 30px;
-    width: 75px;
+    top: -70px;
+    width: 70px;
   }
 
   @media (max-width: ${ScreenSize.XSmall}px) {
-    margin-top: -150px;
-    margin-right: 40px;
-    margin-left: 30px;
-    width: 75px;
-  }
-
-  @media (max-width: 440px) {
-    margin-top: 25px;
-    margin-right: 20px;
-    margin-left: 20px;
-    width: 68px;
+    top: -60px;
+    width: 60px;
   }
 `;
 
 export const ArticleBackground = styled.div`
   position: absolute;
-  margin-top: 2em;
   background-color: ${(p) => p.theme.colors.backgroundAlt3};
-  width: calc(100% - 64px);
-  height: 400px;
+  width: 100%;
+  height: 50%;
   z-index: -1;
-  padding: 0 32px;
-  
+
   @media (max-width: ${ScreenSize.XXSmall}px) {
-    height: 360px;
-    
+  }
+`;
+
+export const StyledImage = styled.img`
+  width: 100%;
+  max-height: 500px;
+  object-fit: cover;
+  object-position: center;
+`;
+
+export const ArticleLink = styled(Link)`
+  @media (max-width: ${ScreenSize.XSmall}px) {
+    font-size: 16px;
+  }
 `;

@@ -1,11 +1,15 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import styled from "styled-components";
 import { Button, Box } from "../../../ui/controls";
-import { ButtonType, ScreenSize } from "../../../ui/types";
+import { ButtonType, ScreenSize, TextColor } from "../../../ui/types";
+import { Subtitle3, Text2 } from "../../../ui/controls/typography";
 import puzzle from "../../../images/green-puzzle-translucent.svg";
-import SearchResults from "./search-results";
+import { useLazyQuery } from "@apollo/client";
+import { toast } from "react-hot-toast";
+import { CentersData } from "../../../types/centers";
+import { GET_CENTERS } from "../../../gql/query/centers";
 
-const StyledDiv = styled.div`
+const StyledSearchForm = styled.div`
   display: none;
   @media (max-width: ${ScreenSize.Small}px) {
     display: flex;
@@ -54,8 +58,8 @@ const StyledInput = styled.input`
   width: 100%;
   height: 45px;
   padding: 0 10px;
-  border: 2px solid #782988;
   border-radius: 30px;
+  border: 2px solid #782988;
   background-color: #d8eae5;
   font-size: 18px;
   &:focus {
@@ -76,25 +80,103 @@ const StyledButton = styled(Button)`
   width: 200px;
   color: #fff;
   background-color: #772988;
+  &:disabled {
+    opacity: 0.6;
+    transform: none;
+    translate: none;
+  }
+`;
+
+const StyledTitle = styled.div`
+  width: 100%;
+  padding: 0 0 15px;
+  border-bottom: 1px solid #429e84;
+  display: flex;
+  place-content: center;
+`;
+
+const StyledCard = styled.div`
+  width: 100%;
+  box-sizing: border-box;
+  border-bottom: 1px solid #429e84;
+  margin: 0;
+  padding: 10px;
 `;
 
 const SearchForm: React.FC = () => {
+  const buttonRef = useRef<HTMLInputElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
   const [isVisible, setIsVisible] = useState<boolean>(false);
   const [currentValue, setCurrentValue] = useState<string>("");
+  const [getCenters, { called, loading, error, data }] =
+    useLazyQuery<CentersData>(GET_CENTERS);
+  const centers = data?.centers;
+  const currentCity = centers?.find((item) =>
+    Object.keys(item.city == currentValue)
+  );
 
-  const onButtonClick = () => {
+  useEffect(() => {
+    if (inputRef.current && inputRef.current.value) {
+      if (buttonRef.current) {
+        buttonRef.current.disabled = false;
+      }
+    } else {
+      if (buttonRef.current) {
+        buttonRef.current.disabled = true;
+        setCurrentValue("");
+        setIsVisible(false);
+      }
+    }
+  }, [currentValue]);
+
+  const handleInputChange = () => {
+    if (inputRef.current && inputRef.current.value) {
+      if (buttonRef.current) {
+        buttonRef.current.disabled = false;
+      }
+    } else {
+      if (buttonRef.current) {
+        buttonRef.current.disabled = true;
+        setIsVisible(false);
+      }
+    }
+  };
+
+  const onButtonClick = (e: React.ChangeEvent<HTMLInputElement>) => {
+    e.preventDefault();
     setCurrentValue(inputRef.current ? inputRef.current.value : "");
+    getCenters({ variables: { city: inputRef.current?.value } });
     setIsVisible(true);
   };
 
+  const handleQueryProcess = () => {
+    if (loading) {
+      return <Subtitle3 textColor={TextColor.Accent1}>Загрузка...</Subtitle3>;
+    }
+
+    if (error) {
+      toast.error(`${error}`, { id: "error" });
+      return <Text2 textColor={TextColor.Shadow}>Ошибка</Text2>;
+    }
+
+    if (!data || !centers) {
+      toast.error("Не удалось получить адреса офисов", { id: "error" });
+      return <Text2 textColor={TextColor.Shadow}>Нет данных</Text2>;
+    }
+
+    if (!centers.length) {
+      return <Text2 textColor={TextColor.Shadow}>Совпадений не найдено</Text2>;
+    }
+  };
+
   return (
-    <StyledDiv>
+    <StyledSearchForm>
       <StyledWrapper>
         <HalfCircle />
         <StyledInput
           type="text"
           placeholder="Введите название города..."
+          onChange={handleInputChange}
           ref={inputRef}
         />
       </StyledWrapper>
@@ -104,14 +186,28 @@ const SearchForm: React.FC = () => {
           ghost
           borderWidth={0}
           onClick={onButtonClick}
+          ref={buttonRef}
         >
           Поиск
         </StyledButton>
       </Box>
       <StyledResultsArea className={`${isVisible ? "visible" : ""}`}>
-        <SearchResults query={currentValue} />
+        {called && handleQueryProcess()}
+        <StyledWrapper>
+          <StyledTitle>
+            <Subtitle3 textColor={TextColor.Accent1}>
+              {currentCity?.city}
+            </Subtitle3>
+          </StyledTitle>
+          {centers?.map((center, index) => (
+            <StyledCard key={index}>
+              <Text2 textColor={TextColor.Shadow}>{center.address}</Text2>
+              <Text2 textColor={TextColor.Shadow}>{center.phoneNo}</Text2>
+            </StyledCard>
+          ))}
+        </StyledWrapper>
       </StyledResultsArea>
-    </StyledDiv>
+    </StyledSearchForm>
   );
 };
 

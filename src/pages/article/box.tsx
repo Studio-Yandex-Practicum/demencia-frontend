@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import { Box } from "../../ui/controls";
 import { ScreenSize } from "../../ui/types";
 
@@ -36,36 +36,42 @@ export const ImageBox = styled.div`
   }
 `;
 
-export const DescriptionBox = styled.div`
-  position: relative;
-  box-sizing: border-box;
+// export const DescriptionBox = styled.div`
+//   position: relative;
+//   box-sizing: border-box;
+//   display: flex;
+//   flex-direction: row;
+//   margin: auto;
+//   padding-left: 150px;
+//   max-width: 50%;
+//   width: 100%;
+//   min-height: 90px;
+//
+//   @media (max-width: ${ScreenSize.Medium}px) {
+//     max-width: 80%;
+//     padding-left: 130px;
+//   }
+//
+//   @media (max-width: ${ScreenSize.Small}px) {
+//     padding-left: 120px;
+//     max-width: 100%;
+//   }
+//
+//   @media (max-width: ${ScreenSize.XSmall}px) {
+//     padding: 0 0 0 100px;
+//   }
+// `;
+
+export const ArticleTextBox = styled(Box)<{ centered?: boolean }>`
   display: flex;
-  flex-direction: row;
-  margin: auto;
-  padding-left: 150px;
-  max-width: 50%;
-  width: 100%;
-  min-height: 90px;
-
-  @media (max-width: ${ScreenSize.Medium}px) {
-    max-width: 80%;
-    padding-left: 130px;
-  }
-
-  @media (max-width: ${ScreenSize.Small}px) {
-    padding-left: 120px;
-    max-width: 100%;
-  }
-
   @media (max-width: ${ScreenSize.XSmall}px) {
-    padding: 0 0 0 100px;
-  }
-`;
-
-export const ArticleTextBox = styled(Box)`
-  display: flex;
-  @media (max-width: ${ScreenSize.XSmall}px) {
-    justify-content: center;
+    ${(p) => {
+      if (p.centered) {
+        return css`
+          justify-content: center;
+        `;
+      }
+    }}
     width: 100%;
     max-width: 100%;
   }

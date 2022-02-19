@@ -49,7 +49,10 @@ export const ArticleDate = styled.p`
 `;
 
 export const DecorationText = styled(Subtitle2)`
-  margin-right: 10px;
+  //margin-right: 10px;
+  text-align: center;
+  max-width: 50%;
+  align-self: center;
 
   @media (max-width: ${ScreenSize.Large}px) {
     font-size: 22px;

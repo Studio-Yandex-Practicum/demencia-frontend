@@ -3,25 +3,18 @@ import DOMPurify from "dompurify";
 import ReactHtmlParser from "react-html-parser";
 import purplePuzzleImg from "../../images/article-purple-puzzle.svg";
 import greenPuzzleImg from "../../images/article-green-puzzle.svg";
-import purpleSemicircleImg from "../../images/purple-semicircle.svg";
 import { Subtitle3 } from "../../ui/controls";
-import { Section } from "../../ui/controls/layout";
-import { Text1 } from "../../ui/controls/typography";
+import { Section } from "../../ui/controls";
+import { Text1 } from "../../ui/controls";
 import { ArticleDate, DecorationText, MainTitleArticle } from "./typography";
 import {
   ArticleBackground,
   ArticleLink,
   GreenPuzzle,
   PurplePuzzle,
-  PurpleSemicircle,
   StyledImage,
 } from "./decor";
-import {
-  ArticleItemBox,
-  ArticleTextBox,
-  DescriptionBox,
-  ImageBox,
-} from "./box";
+import { ArticleItemBox, ArticleTextBox, ImageBox } from "./box";
 import { useQuery } from "@apollo/client";
 import { NewsArticleData } from "../../types/news";
 import { GET_NEWS_ARTICLE } from "../../gql/query/news";
@@ -83,15 +76,12 @@ const ArticlePage: React.FC = () => {
             <StyledImage src={article.image} alt="." />
           </ImageBox>
 
-          <DescriptionBox>
-            <PurpleSemicircle src={purpleSemicircleImg} alt="." />
-            <DecorationText mt={1}>{article.subTitle}</DecorationText>
-          </DescriptionBox>
+          <DecorationText mt={4}>{article.subTitle}</DecorationText>
 
           <ArticleTextBox mt={4}>
             <Text1>{ReactHtmlParser(DOMPurify.sanitize(article.text))}</Text1>
           </ArticleTextBox>
-          <ArticleTextBox mt={3} zoomOnHover maxWidth={350}>
+          <ArticleTextBox mt={4} centered zoomOnHover maxWidth={350}>
             <ArticleLink to="/news-grid" zoomTextOnHover={false}>
               Перейти к ленте новостей
             </ArticleLink>

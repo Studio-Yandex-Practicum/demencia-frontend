@@ -39,18 +39,28 @@ const EmptyPopup: React.FC<{ title: string }> = ({ title }) => (
 );
 
 const OverlayWrapper: React.FC = () => {
-  const { data, loading, error } = useQuery<RegionsData>(GET_REGIONS);
+  const clientWidth = window.innerWidth;
+  const isMobile = clientWidth < ScreenSize.Small;
+  const { data, loading, error } = useQuery<RegionsData>(GET_REGIONS, {
+    skip: isMobile,
+  });
 
-  if (loading) return <EmptyPopup title="Загрузка..." />;
+  const handleQueryProcess = () => {
+    if (loading) return <EmptyPopup title="Загрузка..." />;
 
-  if (error || !data) {
-    toast.error(`Не удалось загрузить центры профилактики с сервера`, {
-      id: "error",
-    });
-    return <EmptyPopup title="Ошибка загрузки данных!" />;
+    if (error || !data) {
+      toast.error(`Не удалось загрузить центры профилактики с сервера`, {
+        id: "error",
+      });
+      return <EmptyPopup title="Ошибка загрузки данных!" />;
+    }
+  };
+
+  if (!isMobile) {
+    handleQueryProcess();
   }
 
-  return <Overlay regions={data.regions} />;
+  return <Overlay regions={data ? data.regions : []} />;
 };
 
 export default OverlayWrapper;

@@ -7,9 +7,13 @@ const Footer = styled.footer`
   background-color: ${(p) => p.theme.colors.background};
   display: flex;
   align-items: center;
+  margin-left: 32px;
+  margin-right: 32px;
 
   @media screen and (max-width: ${ScreenSize.Small}px) {
     min-height: 100px;
+    margin-right: 16px;
+    margin-left: 16px;
   }
 `;
 

@@ -40,7 +40,7 @@ const EmptyPopup: React.FC<{ title: string }> = ({ title }) => (
 
 const OverlayWrapper: React.FC = () => {
   const clientWidth = window.innerWidth;
-  const isMobile = clientWidth < ScreenSize.Small ? true : false;
+  const isMobile = clientWidth < ScreenSize.Small;
   const { data, loading, error } = useQuery<RegionsData>(GET_REGIONS, {
     skip: isMobile,
   });

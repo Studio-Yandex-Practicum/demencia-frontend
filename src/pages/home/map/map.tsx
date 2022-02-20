@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import { Title, Subtitle4 } from "../../../ui/controls/typography";
 import { Box } from "../../../ui/controls";
-import { Section } from "../../../ui/controls/layout";
+import { Section } from "../../../ui/controls";
 import { ScreenSize, TextColor } from "../../../ui/types";
 import { useQuery } from "@apollo/client";
 import { SettingsData } from "../../../types/settings";

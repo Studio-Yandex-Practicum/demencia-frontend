@@ -21,7 +21,7 @@ const Progress: React.FC<Props> = ({ pageID }) => {
   ];
 
   const handleButtonStatus = (currentPage: number) => {
-    if (+pageID > currentPage) return ButtonType.Primary;
+    if (+pageID > currentPage) return ButtonType.Visited;
     if (+pageID == currentPage) return ButtonType.Secondary;
     return ButtonType.Alt;
   };

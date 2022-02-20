@@ -47,6 +47,10 @@ const themeLight: DefaultTheme = {
       link: {
         color: PaletteColor.DarkPurple,
       },
+      visited: {
+        backgroundColor: PaletteColor.SuperLightGrey,
+        color: PaletteColor.Grey,
+      },
     },
     sizes: {
       large: {

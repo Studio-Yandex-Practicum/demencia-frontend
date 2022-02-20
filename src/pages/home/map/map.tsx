@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import { Title, Subtitle4 } from "../../../ui/controls/typography";
 import { Box } from "../../../ui/controls";
-import { Section } from "../../../ui/controls/layout";
+import { Section } from "../../../ui/controls";
 import { ScreenSize, TextColor } from "../../../ui/types";
 import { useQuery } from "@apollo/client";
 import { SettingsData } from "../../../types/settings";
@@ -11,6 +11,7 @@ import BaseLayer from "./base-layer";
 import { ReactComponent as MyMap } from "../../../images/map.svg";
 import OverlayWrapper from "./overlay-wrapper";
 import AnimationWrapper from "../../../components/animation-wrapper";
+import SearchForm from "./search-form";
 
 const StyledTitle = styled(Title)`
   transition: all 1s ease;
@@ -48,11 +49,7 @@ const MapWrapper = styled(Box)`
   position: relative;
   height: 100%;
   @media (max-width: ${ScreenSize.Small}px) {
-    margin-left: 32px;
-    margin-right: 32px;
-  }
-  @media (max-width: ${ScreenSize.XSmall}px) {
-    margin: 0;
+    display: none;
   }
 `;
 
@@ -93,6 +90,7 @@ const Map: React.FC = () => {
         <OverlayWrapper />
         <BaseLayer SVG={MyMap} />
       </MapWrapper>
+      <SearchForm />
     </Section>
   );
 };

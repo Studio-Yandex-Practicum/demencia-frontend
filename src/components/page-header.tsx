@@ -15,7 +15,7 @@ import {
 } from "../ui/controls";
 import { Text3 } from "../ui/controls/typography";
 import { Route, Routes } from "react-router-dom";
-import BoxWithPuzzles from "../pages/test/pages/question/box-with-puzzles";
+import BoxWithPuzzles from "./box-with-puzzles";
 
 function textEllipsis(t: string | undefined) {
   if (t !== undefined && t.length > 10) {
@@ -89,7 +89,9 @@ const PageHeader: React.FC = () => {
         <LogoBlock altText="Логотип" to="/" />
       </Box>
       <Routes>
-        <Route path="/test/question/*" element={<BoxWithPuzzles />} />
+        {["/test/question/*", "/test/result"].map((path) => (
+          <Route path={path} element={<BoxWithPuzzles />} />
+        ))}
       </Routes>
       <Box mt={4} mr={4}>
         <Nav>

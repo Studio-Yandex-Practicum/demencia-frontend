@@ -1,4 +1,4 @@
-import { Box, Footer } from "../ui/controls";
+import { Box } from "../ui/controls";
 import { TextBlock } from "../ui/controls/typography";
 import { TypographyLevel } from "../ui/types";
 import React from "react";
@@ -23,13 +23,11 @@ const NormalPageFooter: React.FC = () => {
   if (!title.length) return <DefaultCaption />;
 
   return (
-    <Footer>
-      <Box ml={5}>
-        <TextBlock level={TypographyLevel.Footer}>
-          &copy; {currentDate.getFullYear()} {title}
-        </TextBlock>
-      </Box>
-    </Footer>
+    <Box mr={2}>
+      <TextBlock level={TypographyLevel.Footer}>
+        &copy; {currentDate.getFullYear()} {title}
+      </TextBlock>
+    </Box>
   );
 };
 

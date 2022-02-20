@@ -1,7 +1,7 @@
 import { useQuery } from "@apollo/client";
 import { RegionsData } from "../../../types/map";
 import { GET_REGIONS } from "../../../gql/query/map";
-import React, { useState, useLayoutEffect } from "react";
+import React from "react";
 import { toast } from "react-hot-toast";
 import Overlay from "./overlay";
 import styled from "styled-components";
@@ -56,12 +56,11 @@ const OverlayWrapper: React.FC = () => {
     }
   };
 
-  if (!isMobile && data) {
+  if (!isMobile) {
     handleQueryProcess();
-    return <Overlay regions={data.regions} />;
   }
 
-  return <Overlay regions={[]} />;
+  return <Overlay regions={data ? data.regions : []} />;
 };
 
 export default OverlayWrapper;

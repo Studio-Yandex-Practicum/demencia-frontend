@@ -13,7 +13,9 @@ import {
   Nav,
   Sider,
 } from "../ui/controls";
-import { Text3 } from "../ui/controls";
+import { Text3 } from "../ui/controls/typography";
+import { useMatch } from "react-router-dom";
+import BoxWithPuzzles from "./box-with-puzzles";
 import styled from "styled-components";
 import { ScreenSize } from "../ui/types";
 
@@ -91,11 +93,15 @@ const NavMenu: React.FC<{ vertical?: boolean }> = (props) => {
 };
 
 const PageHeader: React.FC = () => {
+  const questionMatch = useMatch("/test/question/*");
+  const resultMatch = useMatch("/test/result");
+
   return (
     <Header>
       <StyledBox mt={3}>
         <LogoBlock altText="Логотип" to="/" />
       </StyledBox>
+      {questionMatch || resultMatch ? <BoxWithPuzzles /> : ""}
       <Box mt={4} mr={4}>
         <Nav>
           <NavMenu />

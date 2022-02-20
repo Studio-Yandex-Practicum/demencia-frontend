@@ -1,4 +1,5 @@
 import { Navigate, Route, Routes, useLocation } from "react-router-dom";
+import Progress from "./progress";
 
 const QuestionPage = () => {
   const path = useLocation().pathname;
@@ -13,7 +14,7 @@ const QuestionPage = () => {
       <Routes>
         <Route path=":id" element={<h2>Question</h2>} />
       </Routes>
-      <h1>Progress</h1>
+      <Progress pageID={1} />
     </>
   );
 };

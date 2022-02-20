@@ -13,7 +13,9 @@ import {
   Nav,
   Sider,
 } from "../ui/controls";
-import { Text3 } from "../ui/controls/typography";
+import { Text3 } from "../ui/controls";
+import styled from "styled-components";
+import { ScreenSize } from "../ui/types";
 
 function textEllipsis(t: string | undefined) {
   if (t !== undefined && t.length > 10) {
@@ -21,6 +23,14 @@ function textEllipsis(t: string | undefined) {
   }
   return t;
 }
+
+const StyledBox = styled(Box)`
+  margin-left: 32px;
+
+  @media screen and (max-width: ${ScreenSize.Small}px) {
+    margin-left: 16px;
+  }
+`;
 
 const DefaultMenu: React.FC<{ vertical?: boolean }> = (props) => {
   return (
@@ -83,9 +93,9 @@ const NavMenu: React.FC<{ vertical?: boolean }> = (props) => {
 const PageHeader: React.FC = () => {
   return (
     <Header>
-      <Box mt={3} ml={4}>
+      <StyledBox mt={3}>
         <LogoBlock altText="Логотип" to="/" />
-      </Box>
+      </StyledBox>
       <Box mt={4} mr={4}>
         <Nav>
           <NavMenu />

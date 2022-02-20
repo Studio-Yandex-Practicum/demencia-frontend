@@ -1,21 +1,13 @@
 import React from "react";
 import { useMatch } from "react-router-dom";
-import TestPageFooter from "./page-test-footer";
-import NormalPageFooter from "./page-normal-footer";
+import TestPageFooter from "./test-page-footer";
+import NormalPageFooter from "./normal-page-footer";
 import { Footer } from "../ui/controls";
 
-const DinamicFooter: React.FC = () => {
+const PageFooter: React.FC = () => {
   const match = useMatch("/test/*");
 
-  return match ? <TestPageFooter /> : <NormalPageFooter />;
-};
-
-const PageFooter: React.FC = () => {
-  return (
-    <Footer>
-      <DinamicFooter />
-    </Footer>
-  );
+  return <Footer>{match ? <TestPageFooter /> : <NormalPageFooter />}</Footer>;
 };
 
 export default PageFooter;

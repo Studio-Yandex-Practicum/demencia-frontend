@@ -1,7 +1,7 @@
 import { useQuery } from "@apollo/client";
 import { RegionsData } from "../../../types/map";
 import { GET_REGIONS } from "../../../gql/query/map";
-import React from "react";
+import React, { useState, useLayoutEffect } from "react";
 import { toast } from "react-hot-toast";
 import Overlay from "./overlay";
 import styled from "styled-components";
@@ -39,18 +39,29 @@ const EmptyPopup: React.FC<{ title: string }> = ({ title }) => (
 );
 
 const OverlayWrapper: React.FC = () => {
-  const { data, loading, error } = useQuery<RegionsData>(GET_REGIONS);
+  const clientWidth = window.innerWidth;
+  const isMobile = clientWidth < ScreenSize.Small ? true : false;
+  const { data, loading, error } = useQuery<RegionsData>(GET_REGIONS, {
+    skip: isMobile,
+  });
 
-  if (loading) return <EmptyPopup title="Загрузка..." />;
+  const handleQueryProcess = () => {
+    if (loading) return <EmptyPopup title="Загрузка..." />;
 
-  if (error || !data) {
-    toast.error(`Не удалось загрузить центры профилактики с сервера`, {
-      id: "error",
-    });
-    return <EmptyPopup title="Ошибка загрузки данных!" />;
+    if (error || !data) {
+      toast.error(`Не удалось загрузить центры профилактики с сервера`, {
+        id: "error",
+      });
+      return <EmptyPopup title="Ошибка загрузки данных!" />;
+    }
+  };
+
+  if (!isMobile && data) {
+    handleQueryProcess();
+    return <Overlay regions={data.regions} />;
   }
 
-  return <Overlay regions={data.regions} />;
+  return <Overlay regions={[]} />;
 };
 
 export default OverlayWrapper;

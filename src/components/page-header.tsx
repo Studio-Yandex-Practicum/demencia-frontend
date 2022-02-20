@@ -14,6 +14,8 @@ import {
   Sider,
 } from "../ui/controls";
 import { Text3 } from "../ui/controls/typography";
+import { Route, Routes } from "react-router-dom";
+import BoxWithPuzzles from "../pages/test/pages/question/box-with-puzzles";
 
 function textEllipsis(t: string | undefined) {
   if (t !== undefined && t.length > 10) {
@@ -86,6 +88,9 @@ const PageHeader: React.FC = () => {
       <Box mt={3} ml={4}>
         <LogoBlock altText="Логотип" to="/" />
       </Box>
+      <Routes>
+        <Route path="/test/question/*" element={<BoxWithPuzzles />} />
+      </Routes>
       <Box mt={4} mr={4}>
         <Nav>
           <NavMenu />

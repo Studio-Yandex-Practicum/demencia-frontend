@@ -9,7 +9,6 @@ const QuestionPage = () => {
 
   return (
     <>
-      <h1>Header</h1>
       <Routes>
         <Route path=":id" element={<h2>Question</h2>} />
       </Routes>

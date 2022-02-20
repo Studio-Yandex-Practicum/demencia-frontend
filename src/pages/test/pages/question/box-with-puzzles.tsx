@@ -13,7 +13,7 @@ const StyledImageSemicircle = styled.img`
   object-position: center;
   transform: rotate(180deg);
 `;
-const StyledImagegreenAndPurplePuzzles = styled.img`
+const StyledImageGreenAndPurplePuzzles = styled.img`
   position: absolute;
   width: 200px;
   top: 85px;
@@ -31,7 +31,7 @@ const PuzzlesBox = styled(Box)`
 const BoxWithPuzzles: React.FC = () => {
   return (
     <PuzzlesBox width="100%">
-      <StyledImagegreenAndPurplePuzzles src={greenAndPurplePuzzles} />
+      <StyledImageGreenAndPurplePuzzles src={greenAndPurplePuzzles} />
       <StyledImageSemicircle src={purpleSemicircleThin} />
     </PuzzlesBox>
   );

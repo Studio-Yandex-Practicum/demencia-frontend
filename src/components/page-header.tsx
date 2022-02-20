@@ -99,8 +99,8 @@ const PageHeader: React.FC = () => {
         <LogoBlock altText="Логотип" to="/" />
       </StyledBox>
       <Routes>
-        {["/test/question/*", "/test/result"].map((path) => (
-          <Route path={path} element={<BoxWithPuzzles />} />
+        {["/test/question/*", "/test/result"].map((path, i) => (
+          <Route key={"header" + i} path={path} element={<BoxWithPuzzles />} />
         ))}
       </Routes>
       <Box mt={4} mr={4}>

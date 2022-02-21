@@ -16,7 +16,9 @@ const StyledBox = styled.div<{
   z-index: 3;
   left: ${(props) => props.left || 0}px;
   top: ${(props) => props.top || 0}px;
-  display: block;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
 
   @media (max-width: ${ScreenSize.Medium}px) {
     width: 250px;
@@ -25,6 +27,7 @@ const StyledBox = styled.div<{
 `;
 
 const StyledTitle = styled(Subtitle4)`
+  padding-left: 10px;
   @media (max-width: ${ScreenSize.Medium}px) {
     font-size: 12px;
   }
@@ -33,6 +36,12 @@ const StyledText = styled(Text3)`
   @media (max-width: ${ScreenSize.Medium}px) {
     font-size: 10px;
   }
+`;
+
+const StyledLine = styled.div`
+  border-top: 1px solid ${PaletteColor.Green};
+  padding: 0 10px;
+  margin-bottom: 10px;
 `;
 
 interface PopupProps {
@@ -49,15 +58,19 @@ const Popup: React.FC<PopupProps> = ({ currentRegion, left, top }) => {
 
   return (
     <div>
-      {data.map(
-        (region: { city: string; address: string; phoneNo: string }) => (
-          <StyledBox key={region.address} left={left} top={top}>
-            <StyledTitle>{region.city}</StyledTitle>
-            <StyledText mt={2}>{region.address}</StyledText>
-            <StyledText mt={1}>{region.phoneNo}</StyledText>
-          </StyledBox>
-        )
-      )}
+      <StyledBox left={left} top={top}>
+        {data.map(
+          (region: { city: string; address: string; phoneNo: string }) => (
+            <div key={region.address}>
+              <StyledTitle>{region.city}</StyledTitle>
+              <StyledLine>
+                <StyledText mt={2}>{region.address}</StyledText>
+                <StyledText mt={1}>{region.phoneNo}</StyledText>
+              </StyledLine>
+            </div>
+          )
+        )}
+      </StyledBox>
     </div>
   );
 };

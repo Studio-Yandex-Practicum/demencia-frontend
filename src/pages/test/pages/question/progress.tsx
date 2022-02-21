@@ -11,13 +11,19 @@ const StyledDiv = styled.div`
   margin-top: 30px;
 `;
 
+const StyledButton = styled(Button)`
+  transform: none !important;
+  cursor: default;
+`;
+
 interface Props {
   pageID: string;
 }
 
 const Progress: React.FC<Props> = ({ pageID }) => {
   const pagesArray = [
-    1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20,
+    1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21,
+    22, 23, 24, 25,
   ];
 
   const handleButtonStatus = (currentPage: number) => {
@@ -30,9 +36,12 @@ const Progress: React.FC<Props> = ({ pageID }) => {
     <StyledDiv>
       {pagesArray.map((page) => (
         <Box mb={2} key={page}>
-          <Button shape={ButtonShape.Circle} type={handleButtonStatus(page)}>
+          <StyledButton
+            shape={ButtonShape.Circle}
+            type={handleButtonStatus(page)}
+          >
             {page}
-          </Button>
+          </StyledButton>
         </Box>
       ))}
     </StyledDiv>

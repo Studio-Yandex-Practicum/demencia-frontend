@@ -3,7 +3,7 @@ import Progress from "./progress";
 
 const QuestionPage = () => {
   const path = useLocation().pathname;
-  const pageID = path.match(/\d/g);
+  const pageID = path.match(/\d+/g);
 
   if (path === "/test/question") {
     return <Navigate to="/test/question/1" />;

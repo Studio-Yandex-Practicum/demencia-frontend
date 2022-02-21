@@ -46,18 +46,19 @@ const Popup: React.FC<PopupProps> = ({ currentRegion, left, top }) => {
   const initData = sessionStorage.getItem(currentRegion)!;
 
   const data = JSON.parse(initData);
+  const currentCity = data?.[0].city;
 
   return (
     <div>
-      {data.map(
-        (region: { city: string; address: string; phoneNo: string }) => (
-          <StyledBox key={region.address} left={left} top={top}>
-            <StyledTitle>{region.city}</StyledTitle>
+      <StyledBox left={left} top={top}>
+        <StyledTitle>{currentCity}</StyledTitle>
+        {data.map((region: { address: string; phoneNo: string }) => (
+          <div key={region.address}>
             <StyledText mt={2}>{region.address}</StyledText>
             <StyledText mt={1}>{region.phoneNo}</StyledText>
-          </StyledBox>
-        )
-      )}
+          </div>
+        ))}
+      </StyledBox>
     </div>
   );
 };

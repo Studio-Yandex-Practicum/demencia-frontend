@@ -1,4 +1,5 @@
 import { Navigate, Route, Routes, useLocation } from "react-router-dom";
+import Progress from "./progress";
 import ClockImageQuestion from "./clock-image-question/clock-image-question";
 import PaperImageQuestion from "./paper-image-question/paper-image-question";
 import DateQuestion from "./date-question/date-question";
@@ -15,6 +16,7 @@ import TrianglesQuestion from "./triangles-question/triangles-question";
 
 const QuestionPage = () => {
   const path = useLocation().pathname;
+  const pageID = path.match(/\d+/g);
 
   if (path === "/test/question") {
     return <Navigate to="/test/question/1" />;
@@ -49,7 +51,7 @@ const QuestionPage = () => {
         <Route path="24" element={<TrianglesQuestion />} />
         <Route path="25" element={<TextQuestion number={25} />} />
       </Routes>
-      <h1>Progress</h1>
+      <Progress pageID={pageID ? pageID[0] : ""} />
     </>
   );
 };

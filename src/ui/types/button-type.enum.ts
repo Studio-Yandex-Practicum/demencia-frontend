@@ -4,4 +4,5 @@ export enum ButtonType {
   Default = "default",
   Alt = "alt",
   Link = "link",
+  Visited = "visited",
 }

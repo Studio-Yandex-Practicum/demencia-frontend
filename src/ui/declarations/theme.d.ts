@@ -10,6 +10,7 @@ interface ButtonTypes {
   default: ButtonStyle;
   alt: ButtonStyle;
   link: ButtonStyle;
+  visited: ButtonStyle;
 }
 
 interface ButtonSizes {

@@ -1,4 +1,4 @@
-import { Box, Subtitle3 } from "../../../../ui/controls";
+import { Box } from "../../../../ui/controls";
 import { ContainerSize, TextColor } from "../../../../ui/types";
 import { BackgroundColor } from "../../../../ui/types/background-color.enum";
 import largeHalfCircle from "../../../../images/large-half-circle.svg";

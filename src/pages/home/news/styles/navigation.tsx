@@ -15,7 +15,7 @@ const SwiperButton = styled.div<{
   z-index: 1000;
   position: absolute;
   ${({ type }) => (type === "left" ? "left: 10px;" : "right: 10px;")}
-  top: 50%;
+  top: calc(100% / 2 - 25px);
   width: 50px;
   height: 50px;
   cursor: url(${cursor}), auto;

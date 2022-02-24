@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { Title, Subtitle4 } from "../../../ui/controls/typography";
+import { Title, Subtitle4, Text3 } from "../../../ui/controls/typography";
 import { Box } from "../../../ui/controls";
 import { Section } from "../../../ui/controls";
 import { ScreenSize, TextColor } from "../../../ui/types";
@@ -12,6 +12,7 @@ import { ReactComponent as MyMap } from "../../../images/map.svg";
 import OverlayWrapper from "./overlay-wrapper";
 import AnimationWrapper from "../../../components/animation-wrapper";
 import SearchForm from "./search-form";
+import icon from "../../../images/alert-icon.svg";
 
 const StyledTitle = styled(Title)`
   transition: all 1s ease;
@@ -53,6 +54,31 @@ const MapWrapper = styled(Box)`
   }
 `;
 
+const StyledBox = styled(Box)`
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+`;
+
+const AlertIcon = styled.img.attrs((props) => ({
+  src: props.src || icon,
+  alt: props.alt || "",
+}))`
+  width: 80px;
+  height: auto;
+  margin: 0 20px;
+  padding: 0;
+  @media (max-width: ${ScreenSize.Medium}px) {
+    width: 60px;
+  }
+  @media (max-width: ${ScreenSize.Small}px) {
+    width: 50px;
+  }
+`;
+
 const DefaultCaption: React.FC<{ title: string }> = ({ title }) => <>{title}</>;
 
 const Map: React.FC = () => {
@@ -68,11 +94,14 @@ const Map: React.FC = () => {
 
   const sectionTitle = data.settings.mapSection;
   const subtitle = data.settings.mapSectionSubtitle;
+  const sectionInfo = data.settings.mapSectionInfo;
 
   if (!sectionTitle.length) return <DefaultCaption title="куда идти?" />;
 
   if (!subtitle.length)
     return <DefaultCaption title="карта центров профилактики" />;
+
+  if (!sectionInfo.length) return <></>;
 
   return (
     <Section id="map" mt={4}>
@@ -91,6 +120,12 @@ const Map: React.FC = () => {
         <BaseLayer SVG={MyMap} />
       </MapWrapper>
       <SearchForm />
+      <StyledBox>
+        <AlertIcon />
+        <Box maxWidth={750}>
+          <Text3 textColor={TextColor.Shadow}>{sectionInfo}</Text3>
+        </Box>
+      </StyledBox>
     </Section>
   );
 };

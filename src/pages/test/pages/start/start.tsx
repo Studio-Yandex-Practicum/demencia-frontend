@@ -16,6 +16,7 @@ import {
   StyledTestSection,
   StyledText1,
   StyledText1Container,
+  StyledSubtitle3,
 } from "./start-styles";
 
 const StartPage = () => {
@@ -50,10 +51,10 @@ const StartPage = () => {
 
       <StyledTestSection flex centered borderBox pt={12}>
         <StyledTestBox flex column>
-          <Subtitle3 maxWidth={749} mb={4} textColor={TextColor.Primary}>
+          <StyledSubtitle3 maxWidth={749} mb={10} textColor={TextColor.Primary}>
             Данный тест рекомендуется пройти для проверки своего когнитивного
             статуса.
-          </Subtitle3>
+          </StyledSubtitle3>
           <StyledBox flex>
             <StyledPuzzles />
             <StyledTestBox flex column>

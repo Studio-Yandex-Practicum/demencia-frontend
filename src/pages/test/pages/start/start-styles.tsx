@@ -1,5 +1,11 @@
 import styled from "styled-components";
-import { Box, Container, Section, Text1 } from "../../../../ui/controls";
+import {
+  Box,
+  Container,
+  Section,
+  Text1,
+  Subtitle3,
+} from "../../../../ui/controls";
 import { ScreenSize } from "../../../../ui/types";
 import Puzzles from "../../../../components/puzzles";
 import GreenPuzzle from "../../../../components/green-puzzle";
@@ -11,6 +17,7 @@ export const StyledInfoSection = styled(Section)`
   @media (max-width: 1300px) {
     margin-bottom: 0;
     transform: translateY(0);
+    margin-top: 20px;
   }
 `;
 
@@ -72,10 +79,7 @@ export const StyledTestBox = styled(Box)`
 export const StyledImg = styled.img`
   position: absolute;
   right: 0;
-  height: 280px;
-  @media (max-width: 1300px) {
-    height: 450px;
-  }
+  height: calc(100% + 25px);
   @media (max-width: ${ScreenSize.MediumSmall}px) {
     display: none;
   }
@@ -98,6 +102,12 @@ export const StyledText1 = styled(Text1)`
   }
   @media (max-width: ${ScreenSize.Small}px) {
     margin-top: 60px;
+  }
+`;
+
+export const StyledSubtitle3 = styled(Subtitle3)`
+  @media (max-width: ${ScreenSize.Small}px) {
+    margin-bottom: 60px;
   }
 `;
 

@@ -10,12 +10,8 @@ const StyledSlide = styled.div`
   display: flex;
   flex-direction: column;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.25), 0 5px 5px rgba(0, 0, 0, 0.22);
-  transition: all 1s ease;
   padding: 16px;
   height: 420px;
-  &:hover {
-    transform: scale(1.1);
-  }
   @media (max-width: ${ScreenSize.Large}px) {
     height: 385px;
   }
@@ -29,7 +25,6 @@ const StyledSlide = styled.div`
 
 const StyledImage = styled.img`
   object-fit: cover;
-  transition: all 1s ease;
   width: 100%;
   height: 45%;
   flex-shrink: 0;

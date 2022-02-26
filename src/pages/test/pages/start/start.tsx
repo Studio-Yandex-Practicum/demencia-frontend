@@ -17,11 +17,12 @@ import {
   StyledText1,
   StyledText1Container,
   StyledSubtitle3,
+  Actions,
 } from "./start-styles";
 
 const StartPage = () => {
   return (
-    <Box>
+    <Box mb={5}>
       <StyledInfoSection flex>
         <StyledContainer
           size={ContainerSize.Medium}
@@ -49,9 +50,9 @@ const StartPage = () => {
         </StyledContainer>
       </StyledInfoSection>
 
-      <StyledTestSection flex centered borderBox pt={12}>
+      <StyledTestSection flex centered borderBox pt={8}>
         <StyledTestBox flex column>
-          <StyledSubtitle3 maxWidth={749} mb={10} textColor={TextColor.Primary}>
+          <StyledSubtitle3 maxWidth={749} mb={7} textColor={TextColor.Primary}>
             Данный тест рекомендуется пройти для проверки своего когнитивного
             статуса.
           </StyledSubtitle3>
@@ -59,12 +60,14 @@ const StartPage = () => {
             <StyledPuzzles />
             <StyledTestBox flex column>
               <Link to="/test/description">
-                <StyledButtonWithSemicircle
-                  maxWidth={350}
-                  buttonText="Начать тестирование"
-                />
+                <Actions>
+                  <StyledButtonWithSemicircle
+                    maxWidth={350}
+                    buttonText="Начать тестирование"
+                  />
+                </Actions>
               </Link>
-              <StyledText1 maxWidth={500} mt={10}>
+              <StyledText1 maxWidth={500} mt={7}>
                 Тест рекомендуется использовать в качестве дополнения к
                 профессиональной врачебной диагностике, а не в качестве её
                 замены.

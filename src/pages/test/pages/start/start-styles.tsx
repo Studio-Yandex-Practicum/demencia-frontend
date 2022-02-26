@@ -11,6 +11,19 @@ import Puzzles from "../../../../components/puzzles";
 import GreenPuzzle from "../../../../components/green-puzzle";
 import ButtonWithSemicircle from "../../../../components/button-with-semicircle";
 
+export const Actions = styled.div`
+  display: flex;
+  align-items: center;
+  @media (max-width: ${ScreenSize.Medium}px) {
+    position: relative;
+    width: 100vw;
+    justify-content: center;
+  }
+  @media (max-width: ${ScreenSize.XSmall}px) {
+    transform: scale(0.7);
+  }
+`;
+
 export const StyledInfoSection = styled(Section)`
   transform: translateY(-100px);
   margin-bottom: -120px;
@@ -23,7 +36,7 @@ export const StyledInfoSection = styled(Section)`
 
 export const StyledTestSection = styled(Section)`
   @media (max-width: ${ScreenSize.Small}px) {
-    padding-top: 16px;
+    padding-top: 40px;
   }
 `;
 
@@ -100,14 +113,14 @@ export const StyledText1 = styled(Text1)`
   @media (max-width: ${ScreenSize.Medium}px) {
     max-width: 100%;
   }
-  @media (max-width: ${ScreenSize.Small}px) {
-    margin-top: 60px;
+  @media (max-width: ${ScreenSize.XSmall}px) {
+    margin-top: 30px;
   }
 `;
 
 export const StyledSubtitle3 = styled(Subtitle3)`
-  @media (max-width: ${ScreenSize.Small}px) {
-    margin-bottom: 60px;
+  @media (max-width: ${ScreenSize.XSmall}px) {
+    margin-bottom: 30px;
   }
 `;
 

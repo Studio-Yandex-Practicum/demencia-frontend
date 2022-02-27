@@ -16,7 +16,7 @@ export const Actions = styled.div`
   align-items: center;
   @media (max-width: ${ScreenSize.Medium}px) {
     position: relative;
-    width: 100vw;
+    width: 90vw;
     justify-content: center;
   }
   @media (max-width: ${ScreenSize.XSmall}px) {

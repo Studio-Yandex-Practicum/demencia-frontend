@@ -95,8 +95,7 @@ const Slider: React.FC = () => {
         <SwiperSlide key={item.id}>
           <Slide
             imageSource={item.image}
-            /* text={textEllipsis(item.title)} */
-            text={item.title}
+            text={textEllipsis(item.title)}
             linkTo={item.url}
             linkTitle={item.urlLabel}
           />

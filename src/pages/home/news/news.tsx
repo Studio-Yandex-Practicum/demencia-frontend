@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import { Section } from "../../../ui/controls/layout";
 import { Container, Box } from "../../../ui/controls";
-import { ContainerSize, PaletteColor, ScreenSize } from "../../../ui/types";
+import { PaletteColor, ScreenSize } from "../../../ui/types";
 import { Title, Text3 } from "../../../ui/controls/typography";
 import { Link } from "../../../ui/controls";
 import Slider from "./slider";

@@ -14,7 +14,6 @@ import AnimationWrapper from "../../../components/animation-wrapper";
 const StyledContainer = styled(Container)`
   align-items: flex-end;
   align-self: end;
-  margin-right: 6vw;
   @media (max-width: ${ScreenSize.Small}px) {
     align-items: center;
     margin-right: 0;
@@ -55,6 +54,10 @@ const StyledBox = styled(Box)`
 `;
 
 const StyledTitle = styled(Title)`
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  margin-left: 58px;
   transition: all 1s ease;
   ${({ animate }) =>
     animate ? "opacity: 0; transform: translateY(100px);" : ""}
@@ -62,6 +65,11 @@ const StyledTitle = styled(Title)`
   @media (max-width: ${ScreenSize.XSmall}px) {
     font-size: 30px;
   }
+`;
+
+const StyledWrapper = styled(Box)`
+  width: 100%;
+  text-align: end;
 `;
 
 const StyledText3 = styled(Text3)`
@@ -99,12 +107,12 @@ const News: React.FC = () => {
         borderBox
         minHeight="90%"
       >
-        <StyledContainer size={ContainerSize.Large}>
-          <Box>
+        <StyledContainer>
+          <StyledWrapper>
             <AnimationWrapper>
               <StyledTitle>{sectionTitle}</StyledTitle>
             </AnimationWrapper>
-          </Box>
+          </StyledWrapper>
           <Box mb={5}>
             <Link to="/news-grid">
               <StyledText3 zoomOnHover>{linkTitle}</StyledText3>

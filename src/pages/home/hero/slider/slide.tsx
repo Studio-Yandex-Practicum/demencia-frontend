@@ -1,3 +1,4 @@
+import styled from "styled-components";
 import {
   StyledBgImage,
   StyledBox,
@@ -6,7 +7,7 @@ import {
   Wrapper,
 } from "./styles/swiper";
 import { Link } from "../../../../ui/controls";
-import { ContainerSize, TextColor } from "../../../../ui/types";
+import { ContainerSize, TextColor, ScreenSize } from "../../../../ui/types";
 import { BackgroundColor } from "../../../../ui/types/background-color.enum";
 import { Subtitle3 } from "../../../../ui/controls/typography";
 
@@ -19,6 +20,25 @@ interface SlideProps {
   linkTo?: string;
   linkTitle?: string;
 }
+
+const StyledSubtitle = styled(Subtitle3)`
+  width: 350px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  @media screen and (max-width: 1130px) {
+    width: 250px;
+  }
+  @media (max-width: ${ScreenSize.Medium}px) {
+    width: 400px;
+  }
+  @media screen and (max-width: 560px) {
+    width: 335px;
+  }
+  @media screen and (max-width: 380px) {
+    width: 250px;
+  }
+`;
 
 const Slide: React.FC<SlideProps> = ({
   imageSource,
@@ -41,13 +61,13 @@ const Slide: React.FC<SlideProps> = ({
             </StyledBox>
             <StyledBox absolute top="135px">
               <Link to={linkTo || ""}>
-                <Subtitle3
+                <StyledSubtitle
                   borderBottomOnHover
                   uppercase={false}
                   textColor={TextColor.Secondary}
                 >
                   {linkTitle || "Подробнее..."}
-                </Subtitle3>
+                </StyledSubtitle>
               </Link>
             </StyledBox>
             <Decor />

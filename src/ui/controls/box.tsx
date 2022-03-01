@@ -15,7 +15,7 @@ export interface BoxProps {
   pr?: number;
 }
 
-interface BoxStyleProps extends BoxProps {
+export interface BoxStyleProps extends BoxProps {
   theme: DefaultTheme;
   backgroundColor?: PaletteColor;
   maxWidth?: number;

@@ -26,7 +26,7 @@ const StyledSlide = styled.div`
 const StyledImage = styled.img`
   object-fit: cover;
   width: 100%;
-  height: 45%;
+  height: 100%;
   flex-shrink: 0;
 `;
 
@@ -60,9 +60,22 @@ const Slide: React.FC<SlideProps> = ({
 }) => {
   return (
     <StyledSlide>
-      <StyledImage src={imageSource} alt="илюстрация новости" />
+      <Link
+        zoomTextOnHover={false}
+        borderBottomOnHover={false}
+        to={linkTo || "/"}
+        height={"45%"}
+      >
+        <StyledImage src={imageSource} alt="илюстрация новости" />
+      </Link>
       <Box height="100%">
-        <StyledTitle mt={1}>{slideTitle}</StyledTitle>
+        <Link
+          zoomTextOnHover={false}
+          borderBottomOnHover={false}
+          to={linkTo || "/"}
+        >
+          <StyledTitle mt={1}>{slideTitle}</StyledTitle>
+        </Link>
         <Text3 mt={1}>{slideText}</Text3>
       </Box>
       <StyledBox mb={1}>

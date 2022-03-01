@@ -107,7 +107,7 @@ const Card: React.FC<CardProps> = ({
       </Link>
       <Box>
         <Link to={cardLinkTo} zoomTextOnHover={false}>
-          <Subtitle3 mt={1} mb={1}>
+          <Subtitle3 mt={1} mb={1} newsGrid>
             {cardHeading}
           </Subtitle3>
         </Link>

@@ -15,7 +15,7 @@ const SwiperButton = styled.div<{
   z-index: 1000;
   position: absolute;
   ${({ type }) => (type === "left" ? "left: 10px;" : "right: 10px;")}
-  top: 65%;
+  top: calc(100% / 2 - 20px);
   width: 40px;
   height: 40px;
   cursor: url(${cursor}), auto;
@@ -27,8 +27,7 @@ const SwiperButton = styled.div<{
     pointer-events: none;
   }
   @media (max-width: ${ScreenSize.Medium}px) {
-    ${({ type }) => (type === "left" ? "left: 0;" : "right: 0;")}
-    top: 62%;
+    ${({ type }) => (type === "left" ? "left: 0px;" : "right: 0px;")}
   }
 `;
 

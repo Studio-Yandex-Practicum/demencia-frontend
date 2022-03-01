@@ -27,7 +27,7 @@ const SwiperButton = styled.div<{
     pointer-events: none;
   }
   @media (max-width: ${ScreenSize.Medium}px) {
-    ${({ type }) => (type === "left" ? "left: 0;" : "right: 0;")}
+    ${({ type }) => (type === "left" ? "left: -15px;" : "right: -15px;")}
   }
 `;
 

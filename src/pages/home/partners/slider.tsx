@@ -47,12 +47,11 @@ const Slider: React.FC = () => {
       spaceBetween={30}
       breakpoints={{
         300: {
-          slidesPerView: 2,
-          spaceBetween: 5,
+          slidesPerView: 1,
         },
-        480: {
+        400: {
           slidesPerView: 3,
-          spaceBetween: 10,
+          spaceBetween: 5,
         },
         640: {
           slidesPerView: 3,

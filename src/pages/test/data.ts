@@ -1,4 +1,16 @@
-export const testData = {
+type TQuestionData = {
+  question: string;
+  first?: string;
+  second?: string;
+  third?: string;
+  needFirstDescription?: boolean;
+};
+
+type TTestData = {
+  [key: number]: TQuestionData;
+};
+
+export const testData: TTestData = {
   1: {
     question: "Введите Ваше Имя:",
   },

@@ -19,6 +19,7 @@ import {
 } from "./typography";
 import { TypographyLevel } from "../types";
 import * as React from "react";
+import { BoxStyleProps } from "./box";
 
 export const linkMixin = css<
   FontLevelProps &
@@ -31,7 +32,6 @@ export const linkMixin = css<
   padding: 0;
   border: 0;
   vertical-align: baseline;
-  white-space: nowrap;
   text-decoration: none;
   ${typographySizeMixIn};
   ${textUppercaseMixIn};
@@ -59,6 +59,7 @@ export const Link = styled(
     TextUppercaseProps &
     BorderBottomOnHoverProps &
     LinkProps &
+    BoxStyleProps &
     React.RefAttributes<HTMLAnchorElement>) => {
     if (/(http(s?)):\/\//i.test(to.toString())) {
       return (
@@ -99,4 +100,5 @@ export const Link = styled(
   })
 )`
   ${linkMixin}
+  height: ${(p) => (p.height !== undefined ? `${p.height}` : undefined)};
 `;

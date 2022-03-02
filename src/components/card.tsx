@@ -102,11 +102,15 @@ const Card: React.FC<CardProps> = ({
 }) => {
   return (
     <StyledCard>
-      <img className="card__image" src={imageSource} alt="news-photo" />
+      <Link to={cardLinkTo} zoomTextOnHover={false} borderBottomOnHover={false}>
+        <img className="card__image" src={imageSource} alt="news-photo" />
+      </Link>
       <Box>
-        <Subtitle3 mt={1} mb={1}>
-          {cardHeading}
-        </Subtitle3>
+        <Link to={cardLinkTo} zoomTextOnHover={false}>
+          <Subtitle3 mt={1} mb={1} newsGrid>
+            {cardHeading}
+          </Subtitle3>
+        </Link>
         <Text3 newsGrid>{cardText}</Text3>
       </Box>
       <Box flex between marginTopAuto>

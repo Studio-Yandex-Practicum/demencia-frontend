@@ -198,6 +198,17 @@ export const Subtitle3 = styled.h5.attrs(
   ${typographyMixin};
   ${borderBottomOnHoverMixIn}
 
+  ${(p) =>
+    p.newsGrid
+      ? `
+        display: -webkit-box;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;
+      `
+      : ""};
+
   @media (max-width: ${ScreenSize.Small}px) {
     font-size: 19px;
   }
@@ -263,6 +274,10 @@ export const Text3 = styled.div.attrs(
         text-overflow: ellipsis;
         -webkit-line-clamp: 4;
         -webkit-box-orient: vertical;
+
+        @media (max-width: ${ScreenSize.XSmall}px) {
+          -webkit-line-clamp: 7;
+        }
       `
       : ""};
 

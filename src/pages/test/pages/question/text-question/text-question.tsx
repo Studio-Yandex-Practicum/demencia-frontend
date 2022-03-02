@@ -7,6 +7,7 @@ import {
 } from "../../../../../ui/types";
 import StyledInput from "../../../../../components/input-field";
 import { ArrowLeft, ArrowRight } from "./decor";
+import { testData } from "../../../data";
 
 const StyledSection = styled(Section)`
   justify-content: flex-start;
@@ -65,7 +66,7 @@ const TextQuestion: React.FC<{ number: number }> = ({ number }) => {
           textColor={TextColor.Accent1}
           level={TypographyLevel.Subtitle2}
         >
-          Введите Ваше Имя:
+          {testData[number].question}
         </StyleText1>
       </StyledSection>
 

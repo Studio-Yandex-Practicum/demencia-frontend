@@ -12,6 +12,7 @@ import {
   StyledBoxArrowLeft,
   StyledBoxSelect,
 } from "./date-question-styles";
+import { testData } from "../../../data";
 
 const DateQuestion: React.FC<{ number: number }> = ({ number }) => {
   const years = [...Array(new Date().getFullYear() - 1922 + 1)].map(
@@ -52,7 +53,7 @@ const DateQuestion: React.FC<{ number: number }> = ({ number }) => {
             textColor={TextColor.Accent1}
             level={TypographyLevel.Subtitle2}
           >
-            Введите свою Дату рождения:
+            {testData[number].question}
           </StyleText1>
         </StyledSection>
 

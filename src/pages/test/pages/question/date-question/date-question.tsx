@@ -13,8 +13,10 @@ import {
   StyledBoxSelect,
 } from "./date-question-styles";
 import { testData } from "../../../data";
+import { useNavigate } from "react-router-dom";
 
 const DateQuestion: React.FC<{ number: number }> = ({ number }) => {
+  const navigate = useNavigate();
   const years = [...Array(new Date().getFullYear() - 1922 + 1)].map(
     (_, i) => 1922 + i
   );
@@ -60,7 +62,9 @@ const DateQuestion: React.FC<{ number: number }> = ({ number }) => {
         <Section flex>
           <StyledBoxInput flex maxWidth={1900}>
             <StyledBoxArrowLeft>
-              <ArrowLeft />
+              <ArrowLeft
+                onClick={() => navigate(`/test/question/${number - 1}`)}
+              />
             </StyledBoxArrowLeft>
 
             <StyledBoxSelect flex width="100%">
@@ -82,7 +86,9 @@ const DateQuestion: React.FC<{ number: number }> = ({ number }) => {
             </StyledBoxSelect>
 
             <StyledBoxArrowRight>
-              <ArrowRight />
+              <ArrowRight
+                onClick={() => navigate(`/test/question/${number + 1}`)}
+              />
             </StyledBoxArrowRight>
           </StyledBoxInput>
         </Section>

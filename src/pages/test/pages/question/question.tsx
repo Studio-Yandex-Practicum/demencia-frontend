@@ -1,5 +1,5 @@
 import { Navigate, Route, Routes, useLocation } from "react-router-dom";
-import Progress from "./progress";
+import Progress from "./components/progress";
 import ClockImageQuestion from "./clock-image-question/clock-image-question";
 import PaperImageQuestion from "./paper-image-question/paper-image-question";
 import DateQuestion from "./date-question/date-question";

@@ -18,6 +18,7 @@ import { LogoBlock } from "./logo";
 import { Overlay } from "./overlay";
 import { Sider } from "./sider";
 import Grid from "./grid";
+import { cursorMixin } from "./cursor";
 import {
   MainTitle,
   Title,
@@ -60,4 +61,5 @@ export {
   Text2,
   Text3,
   Text4,
+  cursorMixin,
 };

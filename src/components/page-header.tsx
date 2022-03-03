@@ -101,11 +101,11 @@ const PageHeader: React.FC = () => {
       <StyledBox mt={3}>
         <LogoBlock altText="Логотип" to="/" />
       </StyledBox>
-      {questionMatch || resultMatch ? <BoxWithPuzzles /> : ""}
       <Box mt={4} mr={4}>
         <Nav>
           <NavMenu />
         </Nav>
+        {questionMatch || resultMatch ? <BoxWithPuzzles /> : ""}
       </Box>
       <Sider>
         <LogoBlock altText={"Логотип"} to={"/"} />

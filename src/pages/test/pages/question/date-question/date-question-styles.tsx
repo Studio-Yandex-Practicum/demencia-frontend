@@ -53,12 +53,12 @@ export const StyledBoxInput = styled(Box)`
   flex-direction: row;
   justify-content: space-around;
   align-items: center;
-  margin: 90px auto;
+  margin: 90px auto 50px;
   width: 100%;
   @media (max-width: ${ScreenSize.MediumSmall}px) {
     flex-wrap: wrap;
     justify-content: space-evenly;
-    margin: 50px auto;
+    margin: 50px auto 30px;
   }
 `;
 
@@ -109,4 +109,14 @@ export const StyledImg = styled.img`
   top: 50%;
   right: 1.5rem;
   transform: translateY(-50%);
+`;
+
+export const ErrorText = styled(Text1)`
+  text-align: center;
+  color: red;
+  margin: 20px auto;
+  font-size: 30px;
+  @media (max-width: ${ScreenSize.Small}px) {
+    font-size: 20px;
+  }
 `;

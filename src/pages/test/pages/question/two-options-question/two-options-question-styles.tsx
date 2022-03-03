@@ -1,12 +1,12 @@
 import styled from "styled-components";
-import { Box } from "../../../../../ui/controls";
+import { Box, cursorMixin } from "../../../../../ui/controls";
 import { ScreenSize } from "../../../../../ui/types";
 import StyledInput from "../../../../../components/input-field";
-import { ArrowLeft, ArrowRight } from "../text-question/decor";
+import { ArrowLeft, ArrowRight } from "../components/arrows";
 
 export const StyledBoxInput = styled(Box)`
   flex-direction: row;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
   margin: 90px auto;
   width: 100%;
@@ -49,22 +49,6 @@ export const StyleQuestionInputs = styled(Box)`
     justify-content: space-evenly;
     align-items: center;
     vertical-align: baseline;
-  }
-`;
-
-export const StyleArrowLeft = styled(ArrowLeft)`
-  margin-right: 20px;
-  @media (max-width: ${ScreenSize.MediumSmall}px) {
-    order: 1;
-    margin-right: 0;
-  }
-`;
-
-export const StyleArrowRight = styled(ArrowRight)`
-  margin-left: 20px;
-  @media (max-width: ${ScreenSize.MediumSmall}px) {
-    order: 2;
-    margin-left: 0;
   }
 `;
 

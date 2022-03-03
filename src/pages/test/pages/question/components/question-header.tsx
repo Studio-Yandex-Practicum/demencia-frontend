@@ -1,7 +1,11 @@
 import styled from "styled-components";
-import { Box, Section, Subtitle1, Text1 } from "../../../../ui/controls";
-import { ScreenSize, TextColor, TypographyLevel } from "../../../../ui/types";
-import { testData } from "../../data";
+import { Box, Section, Subtitle1, Text1 } from "../../../../../ui/controls";
+import {
+  ScreenSize,
+  TextColor,
+  TypographyLevel,
+} from "../../../../../ui/types";
+import { testData } from "../../../data";
 
 const StyledSection = styled(Section)`
   justify-content: flex-start;
@@ -33,7 +37,7 @@ const StyleText1 = styled(Text1)`
   }
 `;
 
-const QuestionText: React.FC<{ number: number }> = ({ number }) => {
+const QuestionHeader: React.FC<{ number: number }> = ({ number }) => {
   return (
     <Box>
       <StyledSection flex>
@@ -58,4 +62,4 @@ const QuestionText: React.FC<{ number: number }> = ({ number }) => {
   );
 };
 
-export default QuestionText;
+export default QuestionHeader;

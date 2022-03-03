@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
-import { Box, Section, cursorMixin } from "../../../../../ui/controls";
+import { Box, Section } from "../../../../../ui/controls";
 import StyledInput from "../../../../../components/input-field";
 import { ArrowLeft, ArrowRight } from "../components/arrows";
 import QuestionHeader from "../components/question-header";

@@ -1,63 +1,42 @@
 import { Box, Section } from "../../../../../ui/controls";
-import { TextColor, TypographyLevel } from "../../../../../ui/types";
-import { ArrowLeft, ArrowRight } from "../text-question/decor";
+import { ArrowLeft, ArrowRight } from "../components/arrows";
 import {
   StyleSelect,
   StyleInput,
-  StyleSubtitle1,
-  StyleText1,
-  StyledSection,
   StyledBoxInput,
   StyledBoxArrowRight,
   StyledBoxArrowLeft,
   StyledBoxSelect,
 } from "./date-question-styles";
-import { testData } from "../../../data";
 import { useNavigate } from "react-router-dom";
+import QuestionHeader from "../components/question-header";
+
+const months = [
+  "Январь",
+  "Февраль",
+  "Март",
+  "Апрель",
+  "Май",
+  "Июнь",
+  "Июль",
+  "Август",
+  "Сентябрь",
+  "Октябрь",
+  "Ноябрь",
+  "Декабрь",
+];
+
+const years = [...Array(new Date().getFullYear() - 1922 + 1)].map(
+  (_, i) => 1922 + i
+);
 
 const DateQuestion: React.FC<{ number: number }> = ({ number }) => {
   const navigate = useNavigate();
-  const years = [...Array(new Date().getFullYear() - 1922 + 1)].map(
-    (_, i) => 1922 + i
-  );
-
-  const months = [
-    "Январь",
-    "Февраль",
-    "Март",
-    "Апрель",
-    "Май",
-    "Июнь",
-    "Июль",
-    "Август",
-    "Сентябрь",
-    "Октябрь",
-    "Ноябрь",
-    "Декабрь",
-  ];
 
   return (
     <>
       <Box>
-        <StyledSection flex>
-          <StyleSubtitle1
-            textColor={TextColor.Shadow}
-            level={TypographyLevel.MainTitle}
-            maxWidth={90}
-          >
-            {number}
-          </StyleSubtitle1>
-          <StyleText1
-            maxWidth={810}
-            mt={6}
-            mr={5}
-            ml={0}
-            textColor={TextColor.Accent1}
-            level={TypographyLevel.Subtitle2}
-          >
-            {testData[number].question}
-          </StyleText1>
-        </StyledSection>
+        <QuestionHeader number={number} />
 
         <Section flex>
           <StyledBoxInput flex maxWidth={1900}>

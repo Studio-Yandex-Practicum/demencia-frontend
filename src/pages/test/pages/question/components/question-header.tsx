@@ -10,7 +10,6 @@ import { testData } from "../../../data";
 const StyledSection = styled(Section)`
   justify-content: flex-start;
   flex-direction: row;
-  justify-content: flex-start;
   align-items: center;
   @media (max-width: ${ScreenSize.Medium}px) {
     flex-direction: column;

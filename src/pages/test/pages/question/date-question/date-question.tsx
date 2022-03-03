@@ -7,9 +7,12 @@ import {
   StyledBoxArrowRight,
   StyledBoxArrowLeft,
   StyledBoxSelect,
+  StyledImg,
+  StyledBoxCurrentSelect,
 } from "./date-question-styles";
 import { useNavigate } from "react-router-dom";
 import QuestionHeader from "../components/question-header";
+import arrowSelect from "../../../../../images/arrow-select.svg";
 
 const months = [
   "Январь",
@@ -48,20 +51,26 @@ const DateQuestion: React.FC<{ number: number }> = ({ number }) => {
 
             <StyledBoxSelect flex width="100%">
               <StyleInput type="number" min="1" max="31" defaultValue="1" />
-              <StyleSelect>
-                {months.map((month, index) => (
-                  <option key={index} value={index}>
-                    {month}
-                  </option>
-                ))}
-              </StyleSelect>
-              <StyleSelect>
-                {years.map((year, index) => (
-                  <option key={index} value={index}>
-                    {year}
-                  </option>
-                ))}
-              </StyleSelect>
+              <StyledBoxCurrentSelect>
+                <StyleSelect>
+                  {months.map((month, index) => (
+                    <option key={index} value={index}>
+                      {month}
+                    </option>
+                  ))}
+                </StyleSelect>
+                <StyledImg src={arrowSelect} />
+              </StyledBoxCurrentSelect>
+              <StyledBoxCurrentSelect>
+                <StyleSelect>
+                  {years.map((year, index) => (
+                    <option key={index} value={index}>
+                      {year}
+                    </option>
+                  ))}
+                </StyleSelect>
+                <StyledImg src={arrowSelect} />
+              </StyledBoxCurrentSelect>
             </StyledBoxSelect>
 
             <StyledBoxArrowRight>

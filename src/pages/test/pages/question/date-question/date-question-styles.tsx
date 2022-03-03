@@ -13,26 +13,15 @@ export const StyleSelect = styled.select`
   border: 1px solid #000000;
   font-size: 30px;
   color: #999;
-  margin-right: 10px;
-  margin-left: 10px;
-  @media (max-width: ${ScreenSize.MediumSmall}px) {
-    margin-right: 0;
-    margin-left: 0;
-    margin-bottom: 15px;
-    &:last-child {
-      margin-bottom: 30px;
-    }
-  }
+  appearance: none;
 `;
 
 export const StyleInput = styled(StyledInput)`
   width: 40%;
   margin-right: 10px;
-  margin-left: 10px;
   @media (max-width: ${ScreenSize.MediumSmall}px) {
     width: 100%;
     margin-right: 0;
-    margin-left: 0;
     margin-bottom: 15px;
   }
 `;
@@ -93,4 +82,31 @@ export const StyledBoxSelect = styled(Box)`
   @media (max-width: ${ScreenSize.MediumSmall}px) {
     flex-direction: column;
   }
+`;
+
+export const StyledBoxCurrentSelect = styled(Box)`
+  position: relative;
+  width: 100%;
+  margin-right: 10px;
+  margin-left: 10px;
+  &:last-child {
+    margin-right: 0;
+  }
+  @media (max-width: ${ScreenSize.MediumSmall}px) {
+    margin-right: 0;
+    margin-left: 0;
+    margin-bottom: 15px;
+    &:last-child {
+      margin-bottom: 30px;
+    }
+  }
+`;
+
+export const StyledImg = styled.img`
+  position: absolute;
+  width: 12px;
+  height: 20px;
+  top: 50%;
+  right: 1.5rem;
+  transform: translateY(-50%);
 `;

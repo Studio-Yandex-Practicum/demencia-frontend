@@ -2,7 +2,6 @@ import styled from "styled-components";
 import { Box, cursorMixin } from "../../../../../ui/controls";
 import { ScreenSize } from "../../../../../ui/types";
 import StyledInput from "../../../../../components/input-field";
-import { ArrowLeft, ArrowRight } from "../components/arrows";
 
 export const StyledBoxInput = styled(Box)`
   flex-direction: row;
@@ -49,6 +48,22 @@ export const StyleQuestionInputs = styled(Box)`
     justify-content: space-evenly;
     align-items: center;
     vertical-align: baseline;
+  }
+`;
+
+export const StyledBoxArrowRight = styled(Box)`
+  margin-left: 10px;
+  @media (max-width: ${ScreenSize.MediumSmall}px) {
+    order: 2;
+    margin-left: 0;
+  }
+`;
+
+export const StyledBoxArrowLeft = styled(Box)`
+  margin-right: 10px;
+  @media (max-width: ${ScreenSize.MediumSmall}px) {
+    order: 1;
+    margin-right: 0;
   }
 `;
 

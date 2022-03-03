@@ -8,6 +8,8 @@ import {
   InputBox,
   StyleBoxInputs,
   StyleQuestionInputs,
+  StyledBoxArrowRight,
+  StyledBoxArrowLeft,
   StyledInputList,
   InputOne,
   StyleLabel,
@@ -23,7 +25,11 @@ const TwoOptionsQuestion: React.FC<{ number: number }> = ({ number }) => {
       <QuestionHeader number={number} />
       <Section flex>
         <StyledBoxInput flex maxWidth={1900}>
-          <ArrowLeft onClick={() => navigate(`/test/question/${number - 1}`)} />
+          <StyledBoxArrowLeft>
+            <ArrowLeft
+              onClick={() => navigate(`/test/question/${number - 1}`)}
+            />
+          </StyledBoxArrowLeft>
           <StyleBoxInputs flex maxWidth={850}>
             <StyleQuestionInputs>
               <InputBox>
@@ -49,9 +55,11 @@ const TwoOptionsQuestion: React.FC<{ number: number }> = ({ number }) => {
             </StyleQuestionInputs>
             {!checked && testData[number].needFirstDescription && <InputOne />}
           </StyleBoxInputs>
-          <ArrowRight
-            onClick={() => navigate(`/test/question/${number + 1}`)}
-          />
+          <StyledBoxArrowRight>
+            <ArrowRight
+              onClick={() => navigate(`/test/question/${number + 1}`)}
+            />
+          </StyledBoxArrowRight>
         </StyledBoxInput>
       </Section>
     </Box>

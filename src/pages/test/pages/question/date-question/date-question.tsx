@@ -14,7 +14,7 @@ import {
 import { useNavigate } from "react-router-dom";
 import QuestionHeader from "../components/question-header";
 import arrowSelect from "../../../../../images/arrow-select.svg";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const months = [
   "Январь",
@@ -37,15 +37,54 @@ const years = [...Array(new Date().getFullYear() - 1922 + 1)].map(
 
 const DateQuestion: React.FC<{ number: number }> = ({ number }) => {
   const navigate = useNavigate();
-  const [birthDay, setBirthDay] = useState("");
+  const [date, setDate] = useState("");
+  const [day, setDay] = useState("");
+  const [month, setMonth] = useState("1");
+  const [year, setYear] = useState("1922");
   const [isError, setIsError] = useState(false);
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    if (birthDay.length === 2) {
+  console.log(date);
+  console.log(day);
+  console.log(month);
+  console.log(year);
+
+  const handleChangeDay = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (day.length === 2) {
       e.target.value = e.target.value.slice(0, 2);
     }
-    setBirthDay(e.target.value);
+    setDay(e.target.value);
   };
 
+  const handleChangeMonth = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    const str = e.target.value;
+    if (str) {
+      setMonth(str);
+    }
+  };
+
+  const handleChangeYear = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    const str = e.target.value;
+    if (str) {
+      setYear(str);
+    }
+  };
+
+  useEffect(() => {
+    if (localStorage.getItem(`${number}`)) {
+      const localStorageDate = localStorage.getItem(`${number}`)?.split("-");
+      if (localStorageDate) {
+        const modifiedLocalStorageDate = localStorageDate?.map((item) => {
+          if (item.startsWith("0")) {
+            return item.slice(1);
+          }
+          return item;
+        });
+
+        setDay(modifiedLocalStorageDate[0]);
+        setMonth(modifiedLocalStorageDate[1]);
+        setYear(modifiedLocalStorageDate[2]);
+      }
+    }
+  }, [number]);
   return (
     <>
       <Box>
@@ -64,9 +103,9 @@ const DateQuestion: React.FC<{ number: number }> = ({ number }) => {
                 type="number"
                 min="1"
                 max="31"
-                maxLength={2}
-                defaultValue={birthDay}
-                onChange={handleChange}
+                step="1"
+                defaultValue={day}
+                onChange={handleChangeDay}
                 onKeyPress={(e) => {
                   if (!/[0-9]/.test(e.key)) {
                     e.preventDefault();
@@ -74,20 +113,20 @@ const DateQuestion: React.FC<{ number: number }> = ({ number }) => {
                 }}
               />
               <StyledBoxCurrentSelect>
-                <StyleSelect>
-                  {months.map((month, index) => (
-                    <option key={index} value={index}>
-                      {month}
+                <StyleSelect value={month} onChange={handleChangeMonth}>
+                  {months.map((elem, index) => (
+                    <option key={index} value={index + 1}>
+                      {elem}
                     </option>
                   ))}
                 </StyleSelect>
                 <StyledImg src={arrowSelect} />
               </StyledBoxCurrentSelect>
               <StyledBoxCurrentSelect>
-                <StyleSelect>
-                  {years.map((year, index) => (
-                    <option key={index} value={index}>
-                      {year}
+                <StyleSelect value={year} onChange={handleChangeYear}>
+                  {years.map((elem, index) => (
+                    <option key={index} value={elem}>
+                      {elem}
                     </option>
                   ))}
                 </StyleSelect>
@@ -98,9 +137,24 @@ const DateQuestion: React.FC<{ number: number }> = ({ number }) => {
             <StyledBoxArrowRight>
               <ArrowRight
                 onClick={() => {
-                  if (birthDay) {
+                  if (day && parseInt(day, 10) < 31 && parseInt(day, 10) > 1) {
                     setIsError(false);
-                    navigate(`/test/question/${number + 1}`);
+                    setDate(() => {
+                      const item = `${
+                        day.length === 1 ? `0${day}` : `${day}`
+                      }-${
+                        month.length === 1 ? `0${month}` : `${month}`
+                      }-${year}`;
+
+                      localStorage.setItem(`${number}`, item);
+
+                      return item;
+                    });
+
+                    setTimeout(
+                      () => navigate(`/test/question/${number + 1}`),
+                      1000
+                    );
                   } else {
                     setIsError(true);
                     navigate("");

@@ -10,6 +10,7 @@ import {
 import { Subtitle1, Text1, Text2 } from "../../../../ui/controls";
 import styled from "styled-components";
 import { ArrowLeft, ArrowRight } from "./decor";
+import { useNavigate } from "react-router-dom";
 
 const StyleArrowLeft = styled(ArrowLeft)`
   margin-right: 7px;
@@ -64,6 +65,8 @@ const StyleButton = styled(Button)`
 `;
 
 const DescriptionPage: React.FC = () => {
+  const navigate = useNavigate();
+
   return (
     <Box>
       <Section flex centered borderBox pt={7}>
@@ -148,9 +151,11 @@ const DescriptionPage: React.FC = () => {
             type={ButtonType.Primary}
             width={310}
             level={TypographyLevel.Subtitle3}
+            onClick={() => navigate("/test/question/1")}
           >
             все понятно. Начать!
           </StyleButton>
+          {/* </Link> */}
         </StyledTestBox>
       </Section>
     </Box>

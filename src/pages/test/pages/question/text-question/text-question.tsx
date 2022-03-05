@@ -1,21 +1,9 @@
 import styled from "styled-components";
-import { Box, Section, Subtitle1, Text1 } from "../../../../../ui/controls";
-import {
-  ScreenSize,
-  TextColor,
-  TypographyLevel,
-} from "../../../../../ui/types";
+import { useNavigate } from "react-router-dom";
+import { Box, Section } from "../../../../../ui/controls";
 import StyledInput from "../../../../../components/input-field";
-import { ArrowLeft, ArrowRight } from "./decor";
-import { testData } from "../../../data";
-
-const StyledSection = styled(Section)`
-  justify-content: flex-start;
-  flex-direction: row;
-  @media (max-width: ${ScreenSize.Small}px) {
-    flex-direction: column;
-  }
-`;
+import { ArrowLeft, ArrowRight } from "../components/arrows";
+import QuestionHeader from "../components/question-header";
 
 const StyledBoxInput = styled(Box)`
   flex-direction: row;
@@ -25,56 +13,29 @@ const StyledBoxInput = styled(Box)`
   width: 100%;
 `;
 
-const StyleSubtitle1 = styled(Subtitle1)`
-  @media (max-width: ${ScreenSize.Small}px) {
-    margin: 0 auto;
-    font-size: 60px;
-  }
-`;
-
-const StyleText1 = styled(Text1)`
-  @media (max-width: ${ScreenSize.Small}px) {
-    margin: 20px auto;
-    font-size: 30px;
-  }
-`;
-
-const StyleArrowLeft = styled(ArrowLeft)`
-  margin-right: 20px;
-`;
-
-const StyleArrowRight = styled(ArrowRight)`
-  margin-left: 20px;
-`;
-
 const TextQuestion: React.FC<{ number: number }> = ({ number }) => {
+  const navigate = useNavigate();
+
+  const onBack = () => {
+    if (number > 1) {
+      navigate(`/test/question/${number - 1}`);
+    }
+  };
+
+  const onForward = () => {
+    const to = number === 25 ? "/test/result" : `/test/question/${number + 1}`;
+    navigate(to);
+  };
+
   return (
     <Box>
-      <StyledSection flex>
-        <StyleSubtitle1
-          textColor={TextColor.Shadow}
-          level={TypographyLevel.MainTitle}
-          maxWidth={90}
-        >
-          {number}
-        </StyleSubtitle1>
-        <StyleText1
-          maxWidth={810}
-          mt={6}
-          mr={5}
-          ml={0}
-          textColor={TextColor.Accent1}
-          level={TypographyLevel.Subtitle2}
-        >
-          {testData[number].question}
-        </StyleText1>
-      </StyledSection>
+      <QuestionHeader number={number} />
 
       <Section flex>
         <StyledBoxInput flex maxWidth={1900}>
-          <StyleArrowLeft />
+          <ArrowLeft onClick={() => onBack()} />
           <StyledInput />
-          <StyleArrowRight />
+          <ArrowRight onClick={() => onForward()} />
         </StyledBoxInput>
       </Section>
     </Box>

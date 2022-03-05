@@ -37,15 +37,10 @@ const years = [...Array(new Date().getFullYear() - 1922 + 1)].map(
 
 const DateQuestion: React.FC<{ number: number }> = ({ number }) => {
   const navigate = useNavigate();
-  const [date, setDate] = useState("");
   const [day, setDay] = useState("");
   const [month, setMonth] = useState("1");
   const [year, setYear] = useState("1922");
   const [isError, setIsError] = useState(false);
-  console.log(date);
-  console.log(day);
-  console.log(month);
-  console.log(year);
 
   const handleChangeDay = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (day.length === 2) {
@@ -85,6 +80,28 @@ const DateQuestion: React.FC<{ number: number }> = ({ number }) => {
       }
     }
   }, [number]);
+
+  const calculateDate = () => {
+    return `${day.length === 1 ? `0${day}` : `${day}`}-${
+      month.length === 1 ? `0${month}` : `${month}`
+    }-${year}`;
+  };
+
+  const goForward = () => {
+    if (day && parseInt(day, 10) < 31 && parseInt(day, 10) > 0) {
+      setIsError(false);
+
+      const date = calculateDate();
+
+      localStorage.setItem(`${number}`, date);
+
+      navigate(`/test/question/${number + 1}`);
+    } else {
+      setIsError(true);
+      navigate("");
+    }
+  };
+
   return (
     <>
       <Box>
@@ -135,32 +152,7 @@ const DateQuestion: React.FC<{ number: number }> = ({ number }) => {
             </StyledBoxSelect>
 
             <StyledBoxArrowRight>
-              <ArrowRight
-                onClick={() => {
-                  if (day && parseInt(day, 10) < 31 && parseInt(day, 10) > 1) {
-                    setIsError(false);
-                    setDate(() => {
-                      const item = `${
-                        day.length === 1 ? `0${day}` : `${day}`
-                      }-${
-                        month.length === 1 ? `0${month}` : `${month}`
-                      }-${year}`;
-
-                      localStorage.setItem(`${number}`, item);
-
-                      return item;
-                    });
-
-                    setTimeout(
-                      () => navigate(`/test/question/${number + 1}`),
-                      1000
-                    );
-                  } else {
-                    setIsError(true);
-                    navigate("");
-                  }
-                }}
-              />
+              <ArrowRight onClick={goForward} />
             </StyledBoxArrowRight>
           </StyledBoxInput>
           {isError && (

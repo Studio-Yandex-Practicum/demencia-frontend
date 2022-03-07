@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { Box } from "../../../../../ui/controls";
+import { Box, Text1 } from "../../../../../ui/controls";
 import { ScreenSize } from "../../../../../ui/types";
 import StyledInput from "../../../../../components/input-field";
 
@@ -23,7 +23,7 @@ export const InputBox = styled.div`
   width: 100%;
   border-radius: 60px;
   border: 1px solid #999;
-  padding: 18px;
+  padding: 15px;
   margin: 0 35px;
   @media (max-width: ${ScreenSize.MediumSmall}px) {
     margin: 0 auto 15px;
@@ -49,6 +49,12 @@ export const StyleQuestionInputs = styled(Box)`
     align-items: center;
     vertical-align: baseline;
   }
+`;
+
+export const BoxInputOne = styled(Box)`
+  display: flex;
+  align-items: center;
+  margin-bottom: 1rem;
 `;
 
 export const StyledBoxArrowRight = styled(Box)`
@@ -86,12 +92,13 @@ export const StyledInputList = styled(StyledInput)`
 
 export const InputOne = styled(StyledInput)`
   margin: 0 35px;
-  height: 55px;
   max-width: 850px;
-  width: 90%;
+  width: 100%;
+  border: 1px solid #999;
   box-sizing: border-box;
   @media (max-width: ${ScreenSize.MediumSmall}px) {
-    margin: 0 20px 30px;
+    margin: 0 auto 15px;
+    width: 92%;
   }
 `;
 
@@ -103,4 +110,14 @@ export const StyleLabel = styled.label`
   font-size: 30px;
   font-weight: 700;
   color: #999;
+`;
+
+export const ErrorText = styled(Text1)`
+  text-align: center;
+  color: red;
+  margin: 20px auto;
+  font-size: 30px;
+  @media (max-width: ${ScreenSize.Small}px) {
+    font-size: 20px;
+  }
 `;

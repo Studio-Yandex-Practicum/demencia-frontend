@@ -20,51 +20,51 @@ import { ArrowLeft, ArrowRight } from "../components/arrows";
 
 const TwoOptionsQuestion: React.FC<{ number: number }> = ({ number }) => {
   const navigate = useNavigate();
-  const [checked, setChecked] = useState(true);
+  const [firstChecked, setFirstChecked] = useState(false);
+  const [secondChecked, setSecondChecked] = useState(false);
   const [isError, setIsError] = useState(false);
-  const [some, setSome] = useState("");
-  const [other, setOther] = useState("");
-  const [story, setStory] = useState("");
+  const [firstDescription, setFirstDescription] = useState("");
+
+  const setChecked = (first: boolean, second: boolean) => {
+    setFirstChecked(first);
+    setSecondChecked(second);
+  };
 
   useEffect(() => {
     if (localStorage.getItem(`${number}`)) {
-      const localStorageDate = localStorage.getItem(`${number}`)?.split("-");
-      if (localStorageDate) {
-        const modifiedLocalStorageDate = localStorageDate?.map((item) => {
-          if (item.startsWith("0")) {
-            return item.slice(1);
+      const answer = localStorage.getItem(`${number}`);
+      if (answer) {
+        if (answer === testData[number].second) {
+          setChecked(false, true);
+        } else {
+          setChecked(true, false);
+          if (answer !== testData[number].first) {
+            setFirstDescription(answer);
           }
-          return item;
-        });
-
-        setSome(modifiedLocalStorageDate[0]);
-        setOther(modifiedLocalStorageDate[1]);
-        setStory(modifiedLocalStorageDate[2]);
+        }
       }
     }
   }, [number]);
 
-  const responseOptions = () => {
-    return `${{ some } && { other } && { story }}`;
+  const makeAnswer = () => {
+    return secondChecked
+      ? testData[number].second || ""
+      : firstChecked && firstDescription
+      ? firstDescription
+      : testData[number].first || "";
   };
 
-  const firstId = document.getElementById("first");
-  const secondId = document.getElementById("second");
-
   const goForward = () => {
-    if (!firstId && !secondId) {
-      console.log("IF");
+    if (firstChecked || secondChecked) {
       setIsError(false);
 
-      const date = responseOptions();
+      const answer = makeAnswer();
 
-      localStorage.setItem(`${number}`, date);
+      localStorage.setItem(`${number}`, answer);
 
       navigate(`/test/question/${number + 1}`);
     } else {
-      console.log("ELSE");
       setIsError(true);
-      navigate("");
     }
   };
 
@@ -85,7 +85,7 @@ const TwoOptionsQuestion: React.FC<{ number: number }> = ({ number }) => {
                   id="first"
                   name="a"
                   type="radio"
-                  onChange={() => setChecked(!checked)}
+                  onChange={() => setChecked(true, false)}
                 />
                 <StyleLabel htmlFor="first">
                   {testData[number].first}
@@ -96,16 +96,19 @@ const TwoOptionsQuestion: React.FC<{ number: number }> = ({ number }) => {
                   id="second"
                   name="a"
                   type="radio"
-                  onChange={() => setChecked(checked)}
+                  onChange={() => setChecked(false, true)}
                 />
                 <StyleLabel htmlFor="second">
                   {testData[number].second}
                 </StyleLabel>
               </InputBox>
             </StyleQuestionInputs>
-            {!checked && testData[number].needFirstDescription && (
+            {firstChecked && testData[number].needFirstDescription && (
               <BoxInputOne>
-                <InputOne />
+                <InputOne
+                  value={firstDescription}
+                  onChange={(e) => setFirstDescription(e.target.value)}
+                />
               </BoxInputOne>
             )}
           </StyleBoxInputs>

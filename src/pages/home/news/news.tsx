@@ -10,7 +10,6 @@ import { useQuery } from "@apollo/client";
 import { SettingsData } from "../../../types/settings";
 import { GET_SETTINGS } from "../../../gql/query/settings";
 import AnimationWrapper from "../../../components/animation-wrapper";
-import textEllipsis from "../../../utils";
 
 const StyledContainer = styled(Container)`
   align-items: flex-end;
@@ -108,13 +107,13 @@ const News: React.FC = () => {
         <StyledContainer>
           <StyledWrapper>
             <AnimationWrapper>
-              <StyledTitle ellipsis={true}>{sectionTitle}</StyledTitle>
+              <StyledTitle ellipsis>{sectionTitle}</StyledTitle>
             </AnimationWrapper>
           </StyledWrapper>
-          <Box mb={5}>
+          <Box mb={5} maxWidthPercent={90}>
             <Link to="/news-grid">
-              <StyledText3 zoomOnHover>
-                {textEllipsis(linkTitle, 30)}
+              <StyledText3 zoomOnHover ellipsis>
+                {linkTitle}
               </StyledText3>
             </Link>
           </Box>

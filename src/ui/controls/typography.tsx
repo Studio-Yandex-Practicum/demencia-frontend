@@ -35,7 +35,7 @@ export interface TextBlockProps
   animate?: boolean;
 }
 
-interface TextEllipsisProps {
+export interface TextEllipsisProps {
   ellipsis?: boolean;
 }
 

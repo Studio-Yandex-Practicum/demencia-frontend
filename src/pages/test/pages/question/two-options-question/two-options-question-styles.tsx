@@ -7,13 +7,14 @@ export const StyledBoxInput = styled(Box)`
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  margin: 90px auto;
+  margin: 90px auto 50px;
   width: 100%;
   @media (max-width: ${ScreenSize.MediumSmall}px) {
     flex-wrap: wrap;
     justify-content: space-evenly;
     align-items: center;
     vertical-align: baseline;
+    margin: 50px auto 30px;
   }
 `;
 
@@ -23,11 +24,22 @@ export const InputBox = styled.div`
   width: 100%;
   border-radius: 60px;
   border: 1px solid #999;
-  padding: 15px;
+  padding: 10px 15px;
   margin: 0 35px;
   @media (max-width: ${ScreenSize.MediumSmall}px) {
     margin: 0 auto 15px;
-    width: 85%;
+    width: 94%;
+  }
+`;
+
+export const InputOne = styled(StyledInput)`
+  margin: 0 35px;
+  max-width: 850px;
+  width: 100%;
+  border: 1px solid #999;
+  box-sizing: border-box;
+  @media (max-width: ${ScreenSize.MediumSmall}px) {
+    margin: 0 auto 15px;
   }
 `;
 
@@ -48,6 +60,7 @@ export const StyleQuestionInputs = styled(Box)`
     justify-content: space-evenly;
     align-items: center;
     vertical-align: baseline;
+    margin-bottom: 0;
   }
 `;
 
@@ -87,18 +100,6 @@ export const StyledInputList = styled(StyledInput)`
   display: inline-block;
   &:checked {
     background-color: #5e0b77;
-  }
-`;
-
-export const InputOne = styled(StyledInput)`
-  margin: 0 35px;
-  max-width: 850px;
-  width: 100%;
-  border: 1px solid #999;
-  box-sizing: border-box;
-  @media (max-width: ${ScreenSize.MediumSmall}px) {
-    margin: 0 auto 15px;
-    width: 92%;
   }
 `;
 

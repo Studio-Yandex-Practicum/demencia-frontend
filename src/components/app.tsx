@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { ArticlePage, HomePage, NewsGridPage, DetailsPage } from "../pages";
 // TODO: Remove this temporary page.
@@ -23,6 +23,14 @@ const App: React.FC = () => {
     fetchPolicy: "cache-first",
   });
 
+  useEffect(() => {
+    if (error) {
+      toast.error(`${error}`, { id: "error" });
+    } else if (!data || !data.settings) {
+      toast.error("Не удалось получить настроек сайта", { id: "error" });
+    }
+  });
+
   if (loading) {
     return (
       <Section flex centered mt={5}>
@@ -32,12 +40,10 @@ const App: React.FC = () => {
   }
 
   if (error) {
-    toast.error(`${error}`, { id: "error" });
     return <div />;
   }
 
   if (!data || !data.settings) {
-    toast.error("Не удалось получить настроек сайта", { id: "error" });
     return <div />;
   }
 
@@ -69,7 +75,6 @@ const App: React.FC = () => {
             </Routes>
           </Main>
           <PageFooter />
-          <Toaster />
         </Layout>
       </Router>
     </HelmetProvider>

@@ -54,9 +54,6 @@ const StyledBox = styled(Box)`
 `;
 
 const StyledTitle = styled(Title)`
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
   margin-left: 58px;
   transition: all 1s ease;
   ${({ animate }) =>
@@ -110,12 +107,14 @@ const News: React.FC = () => {
         <StyledContainer>
           <StyledWrapper>
             <AnimationWrapper>
-              <StyledTitle>{sectionTitle}</StyledTitle>
+              <StyledTitle ellipsis>{sectionTitle}</StyledTitle>
             </AnimationWrapper>
           </StyledWrapper>
-          <Box mb={5}>
+          <Box mb={5} maxWidthPercent={90}>
             <Link to="/news-grid">
-              <StyledText3 zoomOnHover>{linkTitle}</StyledText3>
+              <StyledText3 zoomOnHover ellipsis>
+                {linkTitle}
+              </StyledText3>
             </Link>
           </Box>
         </StyledContainer>

@@ -14,14 +14,6 @@ import { GET_NEWS_ARTICLES } from "../../../gql/query/news";
 
 SwiperCore.use([Autoplay, Navigation]);
 
-function titleEllipsis(t: string | undefined) {
-  if (t !== undefined && t.length > 20) return `${t.substring(0, 20)}...`;
-}
-
-function textEllipsis(t: string | undefined) {
-  if (t !== undefined && t.length > 70) return `${t.substring(0, 70)}...`;
-}
-
 const EmptySlide: React.FC = () => (
   <StyledSwiper>
     <SwiperSlide>
@@ -101,11 +93,8 @@ const Slider: React.FC = () => {
         <SwiperSlide key={item.id}>
           <Slide
             imageSource={item.image || defaultImage}
-            slideTitle={titleEllipsis(item.title) || "Заголовок новости"}
-            slideText={
-              textEllipsis(item.subTitle) ||
-              "Скоро тут появится интересная новость"
-            }
+            slideTitle={item.title || "Заголовок новости"}
+            slideText={item.subTitle || "Скоро тут появится интересная новость"}
             linkTo={`/article/${item.id}`}
             linkTitle={item.urlLabel || "Подробнее"}
           />

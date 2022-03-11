@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { Subtitle3, Text3 } from "../../../ui/controls/typography";
 import { Box, Link, LinkButton } from "../../../ui/controls";
 import { ScreenSize } from "../../../ui/types";
+import textEllipsis from "../../../utils";
 
 const StyledSlide = styled.div`
   background-color: #fff;
@@ -38,8 +39,36 @@ const StyledBox = styled(Box)`
 `;
 
 const StyledTitle = styled(Subtitle3)`
+  display: -webkit-box;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  @media (max-width: ${ScreenSize.Small}px) {
+    -webkit-line-clamp: 3;
+  }
   @media (max-width: ${ScreenSize.XSmall}px) {
     font-size: 16px;
+  }
+  @media (max-width: ${ScreenSize.XXSmall}px) {
+    -webkit-line-clamp: 2;
+  }
+`;
+
+const StyledText = styled(Text3)`
+  display: -webkit-box;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+  @media (max-width: ${ScreenSize.Small}px) {
+    -webkit-line-clamp: 3;
+  }
+  @media (max-width: ${ScreenSize.XSmall}px) {
+    -webkit-line-clamp: 6;
+  }
+  @media (max-width: ${ScreenSize.XXSmall}px) {
+    -webkit-line-clamp: 5;
   }
 `;
 
@@ -76,7 +105,7 @@ const Slide: React.FC<SlideProps> = ({
         >
           <StyledTitle mt={1}>{slideTitle}</StyledTitle>
         </Link>
-        <Text3 mt={1}>{slideText}</Text3>
+        <StyledText mt={1}>{slideText}</StyledText>
       </Box>
       <StyledBox mb={1}>
         <Link
@@ -84,7 +113,7 @@ const Slide: React.FC<SlideProps> = ({
           borderBottomOnHover={false}
           to={linkTo || "/"}
         >
-          <LinkButton>{linkTitle || "Подробнее"}</LinkButton>
+          <LinkButton>{textEllipsis(linkTitle, 10) || "Подробнее"}</LinkButton>
         </Link>
       </StyledBox>
     </StyledSlide>

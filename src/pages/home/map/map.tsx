@@ -107,12 +107,14 @@ const Map: React.FC = () => {
     <Section id="map" mt={4}>
       <TextWrapper ml={6}>
         <AnimationWrapper>
-          <StyledTitle>{sectionTitle}</StyledTitle>
+          <StyledTitle ellipsis>{sectionTitle}</StyledTitle>
         </AnimationWrapper>
       </TextWrapper>
       <TextWrapper ml={6}>
         <AnimationWrapper>
-          <StyledText textColor={TextColor.Shadow}>{subtitle}</StyledText>
+          <StyledText textColor={TextColor.Shadow} ellipsis>
+            {subtitle}
+          </StyledText>
         </AnimationWrapper>
       </TextWrapper>
       <MapWrapper ml={6} mr={6}>

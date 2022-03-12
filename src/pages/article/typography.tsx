@@ -1,8 +1,8 @@
 import styled from "styled-components";
-import { Subtitle2 } from "../../ui/controls/typography";
+import { Subtitle2, Title } from "../../ui/controls/typography";
 import { ScreenSize } from "../../ui/types";
 
-export const MainTitleArticle = styled.div`
+export const MainTitleArticle = styled(Title)`
   color: #6d097a;
   text-transform: uppercase;
   font-size: 60px;
@@ -12,6 +12,12 @@ export const MainTitleArticle = styled.div`
   margin: 30px auto;
   text-align: center;
   padding: 0 20px;
+
+  display: -webkit-box;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  -webkit-line-clamp: 6;
+  -webkit-box-orient: vertical;
 
   @media (max-width: ${ScreenSize.Large}px) {
     font-size: 42px;
@@ -53,6 +59,12 @@ export const DecorationText = styled(Subtitle2)`
   text-align: center;
   max-width: 50%;
   align-self: center;
+
+  display: -webkit-box;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  -webkit-line-clamp: 6;
+  -webkit-box-orient: vertical;
 
   @media (max-width: ${ScreenSize.Large}px) {
     font-size: 22px;

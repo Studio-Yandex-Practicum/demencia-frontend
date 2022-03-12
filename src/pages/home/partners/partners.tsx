@@ -78,12 +78,16 @@ const Partners: React.FC = () => {
       <Box width="100%" mt={4}>
         <StyledBox ml={6}>
           <AnimationWrapper>
-            <StyledTitle textColor={TextColor.Accent1}>{title}</StyledTitle>
+            <StyledTitle textColor={TextColor.Accent1} ellipsis>
+              {title}
+            </StyledTitle>
           </AnimationWrapper>
         </StyledBox>
         <StyledBox ml={6}>
           <AnimationWrapper>
-            <StyledText textColor={TextColor.Shadow}>{subTitle}</StyledText>
+            <StyledText textColor={TextColor.Shadow} ellipsis>
+              {subTitle}
+            </StyledText>
           </AnimationWrapper>
         </StyledBox>
       </Box>

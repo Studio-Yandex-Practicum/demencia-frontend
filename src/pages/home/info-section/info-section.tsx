@@ -94,6 +94,7 @@ const InfoSection: React.FC = () => {
               borderWidth={2}
               className="info__more-button"
               onClick={() => setIsDetailsOpen(!isDetailsOpen)}
+              ellipsis
             >
               {isDetailsOpen
                 ? `${settings.aboutSectionTermCloseLabel || "Скрыть"}`

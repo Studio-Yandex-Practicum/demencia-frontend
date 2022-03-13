@@ -14,6 +14,14 @@ export const StyledInfoSection = styled(Section)`
     padding: 85px 40px;
   }
 
+  .about__title {
+    display: -webkit-box;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+  }
+
   .tip__box {
     left: -65px;
     max-width: 100%;
@@ -79,10 +87,20 @@ export const StyledInfoSection = styled(Section)`
 
   .help__title {
     text-align: right;
+    display: -webkit-box;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
   }
 
   .help__subtitle {
     text-align: right;
+    display: -webkit-box;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
   }
 
   .help__puzzle-image {

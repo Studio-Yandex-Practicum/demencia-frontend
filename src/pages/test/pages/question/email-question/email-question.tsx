@@ -27,9 +27,6 @@ const EmailQuestion: React.FC<{ number: number }> = ({ number }) => {
     personalData: false,
   });
 
-  console.log(isError);
-  console.log(values);
-
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value, checked } = e.target;
     setValues((prevState) => ({

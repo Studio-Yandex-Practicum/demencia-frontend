@@ -104,7 +104,7 @@ const TwoOptionsQuestion: React.FC<{ number: number }> = ({ number }) => {
               </InputBox>
             </StyleQuestionInputs>
             {firstChecked && testData[number].needFirstDescription && (
-              <BoxInputOne>
+              <BoxInputOne flex maxWidth={850}>
                 <InputOne
                   value={firstDescription}
                   onChange={(e) => setFirstDescription(e.target.value)}

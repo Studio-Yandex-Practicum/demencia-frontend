@@ -17,12 +17,18 @@ import {
 const EmailQuestion: React.FC<{ number: number }> = ({ number }) => {
   const navigate = useNavigate();
 
-  const [isError, setIsError] = useState(false);
+  const [isError, setIsError] = useState({
+    email: false,
+    checkbox: false,
+  });
 
   const [values, setValues] = useState({
     email: "",
     personalData: false,
   });
+
+  console.log(isError);
+  console.log(values);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value, checked } = e.target;
@@ -33,23 +39,38 @@ const EmailQuestion: React.FC<{ number: number }> = ({ number }) => {
   };
 
   const validateEmail = (email: string) => {
-    return email
+    const validate = email
       .toLowerCase()
       .match(
         /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
       );
+    if (validate) {
+      return true;
+    } else {
+      return false;
+    }
   };
 
   const goForward = () => {
     const { email, personalData } = values;
-    if (validateEmail(email) && personalData) {
-      setIsError(false);
 
+    if (!validateEmail(email) || !personalData) {
+      if (!validateEmail(email)) {
+        setIsError((prevState) => ({
+          ...prevState,
+          ["email"]: true,
+        }));
+      }
+
+      if (!personalData) {
+        setIsError((prevState) => ({
+          ...prevState,
+          ["checkbox"]: true,
+        }));
+      }
+    } else {
       localStorage.setItem(`${number}`, email);
       navigate(`/test/question/${number + 1}`);
-    } else {
-      setIsError(true);
-      navigate("");
     }
   };
 
@@ -80,6 +101,14 @@ const EmailQuestion: React.FC<{ number: number }> = ({ number }) => {
                 type="email"
                 onChange={handleChange}
                 value={values.email}
+                onInput={(e: React.ChangeEvent<HTMLInputElement>) => {
+                  if (validateEmail(e.target.value)) {
+                    setIsError((prevState) => ({
+                      ...prevState,
+                      ["email"]: false,
+                    }));
+                  }
+                }}
                 required
               />
               <EmailInputBox mt={4} flex>
@@ -88,6 +117,14 @@ const EmailQuestion: React.FC<{ number: number }> = ({ number }) => {
                   type="checkbox"
                   onChange={handleChange}
                   checked={values.personalData}
+                  onInput={(e: React.ChangeEvent<HTMLInputElement>) => {
+                    if (e.target.checked) {
+                      setIsError((prevState) => ({
+                        ...prevState,
+                        ["checkbox"]: false,
+                      }));
+                    }
+                  }}
                 />
                 <Text1 ml={2}>
                   Я согласен(а) на обработку{" "}
@@ -104,9 +141,12 @@ const EmailQuestion: React.FC<{ number: number }> = ({ number }) => {
               <ArrowRight onClick={goForward} />
             </StyledBoxArrowRight>
           </StyledBoxInput>
-          {isError && (
+          {isError.email && (
+            <ErrorText>Введите корректное значение почты</ErrorText>
+          )}
+          {isError.checkbox && (
             <ErrorText>
-              Необходимо ответить на вопрос, прежде, чем переходить к следующему
+              Дайте согласие на обработку персональных данных
             </ErrorText>
           )}
         </Section>

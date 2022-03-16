@@ -13,10 +13,12 @@ import TwoOptionsQuestion from "./two-options-question/two-options-question";
 import CountriesQuestion from "./countries-question/countries-question";
 import CirclesQuestion from "./circles-question/circles-question";
 import TrianglesQuestion from "./triangles-question/triangles-question";
+import useLocalStorage from "../../../../hooks/useLocalStorage";
 
 const QuestionPage = () => {
   const path = useLocation().pathname;
   const pageID = path.match(/\d+/g);
+  const [testAnswers, setTestAnswers] = useLocalStorage({}, `TestAnswers`);
 
   if (path === "/test/question") {
     return <Navigate to="/test/question/1" />;
@@ -39,7 +41,16 @@ const QuestionPage = () => {
         <Route path="12" element={<TwoOptionsQuestion number={12} />} />
         <Route path="13" element={<TwoOptionsQuestion number={13} />} />
         <Route path="14" element={<DateQuestion number={14} />} />
-        <Route path="15" element={<ImagesIdentificationQuestion />} />
+        <Route
+          path="15"
+          element={
+            <ImagesIdentificationQuestion
+              number={15}
+              testAnswers={testAnswers}
+              setTestAnswers={setTestAnswers}
+            />
+          }
+        />
         <Route path="16" element={<TextQuestion number={16} />} />
         <Route path="17" element={<TextQuestion number={17} />} />
         <Route path="18" element={<MoneyQuestion />} />

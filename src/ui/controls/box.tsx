@@ -25,6 +25,7 @@ export interface BoxStyleProps extends BoxProps {
   flex?: boolean;
   column?: boolean;
   between?: boolean;
+  alignItems?: string;
   marginTopAuto?: boolean;
   margin?: string;
   absolute?: boolean;
@@ -89,6 +90,7 @@ export const Box = styled.div<BoxStyleProps & ElementAnimationProps>`
   display: ${(p) => (p.flex ? "flex" : "block")};
   flex-direction: ${(p) => (p.column ? "column" : "")};
   justify-content: ${(p) => (p.between ? "space-between" : "")};
+  align-items: ${(p) => (p.alignItems ? `${p.alignItems}` : "")};
   box-sizing: border-box;
   max-width: ${(p) =>
     p.maxWidth !== undefined ? `${p.maxWidth}px` : undefined};

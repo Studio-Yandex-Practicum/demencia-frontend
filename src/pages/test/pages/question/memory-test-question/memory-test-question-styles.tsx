@@ -1,11 +1,5 @@
 import styled from "styled-components";
-import {
-  Section,
-  Box,
-  Text1,
-  Subtitle1,
-  Button,
-} from "../../../../../ui/controls";
+import { Section, Box, Text1, Button } from "../../../../../ui/controls";
 import { ScreenSize } from "../../../../../ui/types";
 
 export const StyledBoxArrowRight = styled(Box)`

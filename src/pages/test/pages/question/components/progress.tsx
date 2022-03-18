@@ -6,6 +6,7 @@ import { ButtonShape, ButtonType } from "../../../../../ui/types";
 const StyledDiv = styled.div`
   display: flex;
   flex-wrap: wrap;
+  justify-content: space-around;
   width: min(1920px, 100%);
   gap: 15px;
   margin-top: 30px;

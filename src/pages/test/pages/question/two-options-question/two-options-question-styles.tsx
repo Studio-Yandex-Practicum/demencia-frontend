@@ -24,11 +24,11 @@ export const InputBox = styled.div`
   width: 100%;
   border-radius: 60px;
   border: 1px solid #999;
-  padding: 10px 15px;
+  padding: 10px 0 10px 15px;
   margin: 0 35px;
   @media (max-width: ${ScreenSize.MediumSmall}px) {
     margin: 0 auto 15px;
-    width: 94%;
+    width: 95%;
   }
 `;
 
@@ -36,10 +36,28 @@ export const InputOne = styled(StyledInput)`
   margin: 0 35px;
   max-width: 850px;
   width: 100%;
+  padding: 10px 15px;
   border: 1px solid #999;
-  box-sizing: border-box;
+  display: inline-block;
+  text-align: start;
   @media (max-width: ${ScreenSize.MediumSmall}px) {
     margin: 0 auto 15px;
+    width: 98%;
+  }
+  @media (max-width: 560px) {
+    width: 98.2%;
+  }
+  @media (max-width: 510px) {
+    width: 98.5%;
+  }
+  @media (max-width: ${ScreenSize.XSmall}px) {
+    width: 99%;
+  }
+  @media (max-width: 410px) {
+    width: 99.5%;
+  }
+  @media (max-width: ${ScreenSize.XXSmall}px) {
+    width: 100%;
   }
 `;
 
@@ -65,9 +83,13 @@ export const StyleQuestionInputs = styled(Box)`
 `;
 
 export const BoxInputOne = styled(Box)`
-  display: flex;
-  align-items: center;
+  justify-content: center;
   margin-bottom: 1rem;
+  width: 100%;
+  padding: 0;
+  @media (max-width: ${ScreenSize.MediumSmall}px) {
+    flex-direction: column;
+  }
 `;
 
 export const StyledBoxArrowRight = styled(Box)`

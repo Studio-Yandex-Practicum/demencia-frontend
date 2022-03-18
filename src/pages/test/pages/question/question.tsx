@@ -28,7 +28,7 @@ const QuestionPage = () => {
         <Route path="1" element={<TextQuestion number={1} />} />
         <Route path="2" element={<DateQuestion number={2} />} />
         <Route path="3" element={<TwoOptionsQuestion number={3} />} />
-        <Route path="4" element={<EmailQuestion />} />
+        <Route path="4" element={<EmailQuestion number={4} />} />
         <Route path="5" element={<ThreeOptionsQuestion number={5} />} />
         <Route path="6" element={<TwoOptionsQuestion number={6} />} />
         <Route path="7" element={<TwoOptionsQuestion number={7} />} />

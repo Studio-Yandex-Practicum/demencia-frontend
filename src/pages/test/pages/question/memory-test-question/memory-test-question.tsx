@@ -16,10 +16,18 @@ const MemoryTestQuestion: React.FC<{ number: number }> = ({ number }) => {
   const navigate = useNavigate();
   const [isError, setIsError] = useState(false);
 
-  const goForward = () => {
+  const onPressButton = () => {
     setIsError(false);
     localStorage.setItem(`${number}`, "true");
     navigate(`/test/question/${number + 1}`);
+  };
+
+  const goForward = () => {
+    if (localStorage.getItem(`${number}`)) {
+      navigate(`/test/question/${number + 1}`);
+    } else {
+      setIsError(true);
+    }
   };
 
   return (
@@ -35,19 +43,11 @@ const MemoryTestQuestion: React.FC<{ number: number }> = ({ number }) => {
           </StyledBoxArrowLeft>
 
           <StyledBox>
-            <StyledButton onClick={goForward}>ПОНЯТНО. ДАЛЕЕ</StyledButton>
+            <StyledButton onClick={goPressButton}>ПОНЯТНО. ДАЛЕЕ</StyledButton>
           </StyledBox>
 
           <StyledBoxArrowRight>
-            <ArrowRight
-              onClick={() => {
-                if (localStorage.getItem(`${number}`)) {
-                  navigate(`/test/question/${number + 1}`);
-                } else {
-                  setIsError(true);
-                }
-              }}
-            />
+            <ArrowRight onClick={goForward} />
           </StyledBoxArrowRight>
         </StyledSection>
         {isError && (

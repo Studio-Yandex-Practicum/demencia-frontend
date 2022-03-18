@@ -1,5 +1,10 @@
 import styled, { css, DefaultTheme, ThemeProps } from "styled-components";
-import { FontLevelProps, typographySizeMixIn } from "./typography";
+import {
+  FontLevelProps,
+  textEllipsisMixin,
+  TextEllipsisProps,
+  typographySizeMixIn,
+} from "./typography";
 import { cursorMixin } from "./cursor";
 import { ButtonShape, ButtonSize, ButtonType } from "../types";
 import {
@@ -21,7 +26,8 @@ export interface ButtonProps
     FontLevelProps,
     BackgroundColorProps,
     TextUppercaseProps,
-    ElementAnimationProps {
+    ElementAnimationProps,
+    TextEllipsisProps {
   fullWidth?: boolean;
   type?: ButtonType;
   size?: ButtonSize;
@@ -180,6 +186,7 @@ export const buttonBaseMixin = css<ButtonProps>`
   ${cursorMixin}
   ${zoomOutOnHoverMixIn}
   ${zoomOnHoverMixIn}
+  ${textEllipsisMixin}
   line-height: 0;
 `;
 

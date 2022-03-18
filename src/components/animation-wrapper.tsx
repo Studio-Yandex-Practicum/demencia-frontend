@@ -3,39 +3,49 @@ import { ANIMATION_ACTIVATE_OFFSET } from "../constants";
 
 const AnimationWrapper: React.FC = ({ children }) => {
   const elRef = useRef<HTMLElement>(null);
-  const [animate, setAnimate] = useState(false);
-  const [y, setY] = useState(0);
+  const [animate, setAnimate] = useState(true);
 
-  useEffect(() => {
-    if (elRef.current) {
-      setY(elRef.current.getBoundingClientRect().y);
+  function offset(el: HTMLElement) {
+    const rect = el.getBoundingClientRect(),
+      scrollLeft = window.pageXOffset || document.documentElement.scrollLeft,
+      scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+    return { top: rect.top + scrollTop, left: rect.left + scrollLeft };
+  }
+
+  function animOnScroll(animItem: HTMLElement | null) {
+    if (animItem) {
+      const animItemHeight = animItem.offsetHeight;
+      const animItemOffset = offset(animItem).top;
+      const animStart = ANIMATION_ACTIVATE_OFFSET;
+
+      let animItemPoint = window.innerHeight - animItemHeight / animStart;
+      if (animItemHeight > window.innerHeight) {
+        animItemPoint = window.innerHeight - window.innerHeight / animStart;
+      }
+      if (
+        pageYOffset > animItemOffset - animItemPoint &&
+        pageYOffset < animItemOffset + animItemHeight
+      ) {
+        setAnimate(false);
+      } else {
+        setAnimate(true);
+      }
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [elRef.current]);
+  }
 
-  const scrollHandler = (e: Event) => {
-    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-    // @ts-ignore
-    const doc = e.target.documentElement;
-
-    if (
-      doc.scrollTop - ANIMATION_ACTIVATE_OFFSET <= y &&
-      y <= doc.scrollTop + window.innerHeight
-    ) {
-      setAnimate(false);
-    } else {
-      setAnimate(true);
-    }
+  const scrollHandler = () => {
+    animOnScroll(elRef.current);
   };
 
   useEffect(() => {
+    animOnScroll(elRef.current);
     document.addEventListener("scroll", scrollHandler);
 
     return () => {
       document.removeEventListener("scroll", scrollHandler);
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [y]);
+  }, []);
 
   return React.cloneElement(children as React.ReactElement, {
     animate,

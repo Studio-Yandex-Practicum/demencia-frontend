@@ -35,6 +35,22 @@ export interface TextBlockProps
   animate?: boolean;
 }
 
+export interface TextEllipsisProps {
+  ellipsis?: boolean;
+}
+
+export const textEllipsisMixin = (prop: TextEllipsisProps): string => {
+  if (!prop.ellipsis) {
+    return "";
+  }
+
+  return `
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+`;
+};
+
 export const textUnderlinedMixin = (props: TextUnderlinedProps): string => {
   if (!props.underlined) {
     return "";
@@ -70,6 +86,7 @@ export const typographyColorMixIn = (
 
 export const typographyMixin = css<
   BoxProps &
+    TextEllipsisProps &
     FontLevelProps &
     FontColorProps &
     TextUppercaseProps &
@@ -89,7 +106,8 @@ export const typographyMixin = css<
   ${getBoxStyles};
   ${textUppercaseMixIn};
   ${textUnderlinedMixin};
-  ${colorChangeOnHoverMixIn}
+  ${colorChangeOnHoverMixIn};
+  ${textEllipsisMixin}
 `;
 
 export const MainTitle = styled.h1.attrs(

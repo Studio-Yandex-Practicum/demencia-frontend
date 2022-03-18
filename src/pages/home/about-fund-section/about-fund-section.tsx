@@ -66,6 +66,7 @@ const AboutFundSection: React.FC = () => {
           textColor={TextColor.Secondary}
           hoverColor={TextColor.Secondary}
           className="about-fund-section__title"
+          ellipsis
         >
           {settings.fundSection || "О ФОНДЕ"}
         </FundSubtitle1>
@@ -103,6 +104,7 @@ const AboutFundSection: React.FC = () => {
           <FundButton
             uppercase
             className="about-fund-section__foundation-button"
+            ellipsis
           >
             {settings.fundSectionUrlLabel || "Перейти на сайт фонда"}
           </FundButton>

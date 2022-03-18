@@ -22,10 +22,8 @@ interface SlideProps {
 }
 
 const StyledSubtitle = styled(Subtitle3)`
-  width: 350px;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
+  max-width: 350px;
+
   @media screen and (max-width: 1130px) {
     width: 250px;
   }
@@ -65,6 +63,7 @@ const Slide: React.FC<SlideProps> = ({
                   borderBottomOnHover
                   uppercase={false}
                   textColor={TextColor.Secondary}
+                  ellipsis
                 >
                   {linkTitle || "Подробнее..."}
                 </StyledSubtitle>

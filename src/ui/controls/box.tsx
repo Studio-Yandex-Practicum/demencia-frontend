@@ -19,6 +19,7 @@ export interface BoxStyleProps extends BoxProps {
   theme: DefaultTheme;
   backgroundColor?: PaletteColor;
   maxWidth?: number;
+  maxWidthPercent?: number;
   width?: string;
   height?: string;
   flex?: boolean;
@@ -91,6 +92,8 @@ export const Box = styled.div<BoxStyleProps & ElementAnimationProps>`
   box-sizing: border-box;
   max-width: ${(p) =>
     p.maxWidth !== undefined ? `${p.maxWidth}px` : undefined};
+  max-width: ${(p) =>
+    p.maxWidthPercent !== undefined ? `${p.maxWidthPercent}%` : undefined};
   width: ${(p) => (p.width !== undefined ? `${p.width}` : undefined)};
   height: ${(p) => (p.height !== undefined ? `${p.height}` : undefined)};
   margin: ${(p) => p.margin};

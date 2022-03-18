@@ -49,6 +49,7 @@ const ButtonWithSemicircle: React.FC<ButtonWithSemicircleProps> = ({
               zoomOutOnHover={false}
               fullWidth
               size={ButtonSize.Default}
+              ellipsis
             >
               {buttonText || "Пройти тест"}
             </Button>

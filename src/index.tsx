@@ -13,6 +13,7 @@ import {
   createHttpLink,
 } from "@apollo/client";
 import { API_URL } from "./constants";
+import { Toaster } from "react-hot-toast";
 
 const httpLink = createHttpLink({
   uri: API_URL,
@@ -38,6 +39,7 @@ ReactDOM.render(
       <ApolloProvider client={client}>
         <GlobalStyle />
         <App />
+        <Toaster />
       </ApolloProvider>
     </ThemeProvider>
   </React.StrictMode>,

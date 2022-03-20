@@ -24,6 +24,9 @@ const NormalPageFooter: React.FC = () => {
 
   return (
     <Box mr={2}>
+      <TextBlock level={TypographyLevel.Text4}>
+        Сделано студентами Яндекс Практикума
+      </TextBlock>
       <TextBlock level={TypographyLevel.Footer}>
         &copy; {currentDate.getFullYear()} {title}
       </TextBlock>

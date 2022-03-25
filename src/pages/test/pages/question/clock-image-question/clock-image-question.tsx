@@ -1,5 +1,11 @@
-const ClockImageQuestion: React.FC = () => {
-  return <h1>Question 21</h1>;
+import QuestionHeader from "../components/question-header";
+
+const ClockImageQuestion: React.FC<{ number: number }> = ({ number }) => {
+  return (
+    <>
+      <QuestionHeader number={number} />
+    </>
+  );
 };
 
 export default ClockImageQuestion;

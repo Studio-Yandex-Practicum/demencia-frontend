@@ -21,27 +21,27 @@ const ThreeOptionsQuestion: React.FC<{ number: number }> = ({ number }) => {
   const navigate = useNavigate();
   const [firstChecked, setFirstChecked] = useState(false);
   const [secondChecked, setSecondChecked] = useState(false);
-  const [thirdChecked, sethirdChecked] = useState(false);
+  const [thirdChecked, setThirdChecked] = useState(false);
   const [isError, setIsError] = useState(false);
-  // const [firstDescription, setFirstDescription] = useState("");
 
-  const setChecked = (first: boolean, second: boolean) => {
+  const setChecked = (first: boolean, second: boolean, third: boolean) => {
     setFirstChecked(first);
     setSecondChecked(second);
-    // sethirdChecked(third);
+    setThirdChecked(third);
   };
 
   useEffect(() => {
     if (localStorage.getItem(`${number}`)) {
       const answer = localStorage.getItem(`${number}`);
-      if (answer) {
-        if (
-          answer === testData[number].first ||
-          answer === testData[number].second ||
-          answer === testData[number].third
-        ) {
-          setChecked(true, false);
-        }
+      if (answer === testData[number].first) {
+        console.log("ksjdflksdjf");
+        setChecked(true, false, false);
+      } else if (answer === testData[number].second) {
+        console.log("hghghghgh");
+        setChecked(false, true, false);
+      } else if (answer === testData[number].third) {
+        console.log("xzxzxzxzxzxzx");
+        setChecked(false, false, true);
       }
     }
   }, [number]);
@@ -49,18 +49,18 @@ const ThreeOptionsQuestion: React.FC<{ number: number }> = ({ number }) => {
   const makeAnswer = () => {
     return firstChecked
       ? testData[number].first || ""
-      : secondChecked && secondChecked
+      : secondChecked
       ? testData[number].second || ""
-      : thirdChecked && thirdChecked
-      ? thirdChecked
-      : testData[number].third || "";
+      : thirdChecked
+      ? testData[number].third || ""
+      : "";
   };
 
   const goForward = () => {
     if (firstChecked || secondChecked || thirdChecked) {
       setIsError(false);
 
-      const answer = new Boolean(makeAnswer()).toString();
+      const answer = makeAnswer();
 
       localStorage.setItem(`${number}`, answer);
 
@@ -87,7 +87,8 @@ const ThreeOptionsQuestion: React.FC<{ number: number }> = ({ number }) => {
                   id="first"
                   name="a"
                   type="radio"
-                  onChange={() => setChecked(true, false)}
+                  checked={firstChecked}
+                  onChange={() => setChecked(true, false, false)}
                 />
                 <StyleLabel htmlFor="first">
                   {testData[number].first}
@@ -98,7 +99,8 @@ const ThreeOptionsQuestion: React.FC<{ number: number }> = ({ number }) => {
                   id="second"
                   name="a"
                   type="radio"
-                  onChange={() => setChecked(true, false)}
+                  checked={secondChecked}
+                  onChange={() => setChecked(false, true, false)}
                 />
                 <StyleLabel htmlFor="second">
                   {testData[number].second}
@@ -109,7 +111,8 @@ const ThreeOptionsQuestion: React.FC<{ number: number }> = ({ number }) => {
                   id="third"
                   name="a"
                   type="radio"
-                  onChange={() => setChecked(true, false)}
+                  checked={thirdChecked}
+                  onChange={() => setChecked(false, false, true)}
                 />
                 <StyleLabel htmlFor="third">
                   {testData[number].third}

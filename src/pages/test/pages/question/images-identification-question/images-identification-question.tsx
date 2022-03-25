@@ -11,6 +11,7 @@ import { ErrorText } from "../date-question/date-question-styles";
 
 import rhinoPic from "../../../../../images/rhino-pic.jpg";
 import harpPic from "../../../../../images/harp-pic.jpg";
+import useLocalStorage from "../../../../../hooks/useLocalStorage";
 
 const StyledBoxInput = styled(Box)`
   margin: 90px auto;
@@ -27,39 +28,27 @@ const StyledImg = styled.img`
   object-position: center;
 `;
 
-const ImagesIdentificationQuestion: React.FC<{
-  number: number;
-  testAnswers?: { [key: string]: { [key: string]: string } };
-  setTestAnswers?: any;
-}> = ({ number, testAnswers, setTestAnswers }) => {
+const ImagesIdentificationQuestion: React.FC<{ number: number }> = ({
+  number,
+}) => {
   const navigate = useNavigate();
+  const [answer15, setAnswer15] = useLocalStorage(number.toString());
 
   const {
     values: imageIdentAnswers,
     handleChange,
     setValues: setImageIdentAnswers,
-    errors,
   } = useForm();
 
   const [isErrorTextShow, setIsErrorTextShow] = useState(false);
 
   useEffect(() => {
-    if (testAnswers && testAnswers.imageIdentAnswers) {
-      if (testAnswers.imageIdentAnswers.firstImageIdentInput) {
-        setImageIdentAnswers((prevState) => ({
-          ...prevState,
-          firstImageIdentInput:
-            testAnswers.imageIdentAnswers.firstImageIdentInput,
-        }));
-      }
-
-      if (testAnswers.imageIdentAnswers.secondImageIdentInput) {
-        setImageIdentAnswers((prevState) => ({
-          ...prevState,
-          secondImageIdentInput:
-            testAnswers.imageIdentAnswers.secondImageIdentInput,
-        }));
-      }
+    if (answer15) {
+      setImageIdentAnswers((prevState) => ({
+        ...prevState,
+        firstImageIdentInput: answer15.split(",")[0],
+        secondImageIdentInput: answer15.split(",")[1],
+      }));
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
@@ -71,16 +60,20 @@ const ImagesIdentificationQuestion: React.FC<{
   };
 
   const onForward = () => {
-    console.log(errors);
     if (
       imageIdentAnswers.firstImageIdentInput &&
       imageIdentAnswers.secondImageIdentInput
     ) {
       setIsErrorTextShow(false);
-      setTestAnswers({ ...testAnswers, imageIdentAnswers });
+      setAnswer15(
+        `${imageIdentAnswers.firstImageIdentInput},${imageIdentAnswers.secondImageIdentInput}`
+      );
       const to =
         number === 25 ? "/test/result" : `/test/question/${number + 1}`;
-      navigate(to);
+      // Используем setTimeout, чтобы переместить выполнение navigate(to) после setAnswers15
+      setTimeout(() => {
+        navigate(to);
+      }, 0);
     } else {
       setIsErrorTextShow(true);
     }

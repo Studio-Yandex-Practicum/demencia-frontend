@@ -85,6 +85,7 @@ const TwoOptionsQuestion: React.FC<{ number: number }> = ({ number }) => {
                   id="first"
                   name="a"
                   type="radio"
+                  checked={firstChecked}
                   onChange={() => setChecked(true, false)}
                 />
                 <StyleLabel htmlFor="first">
@@ -96,6 +97,7 @@ const TwoOptionsQuestion: React.FC<{ number: number }> = ({ number }) => {
                   id="second"
                   name="a"
                   type="radio"
+                  checked={secondChecked}
                   onChange={() => setChecked(false, true)}
                 />
                 <StyleLabel htmlFor="second">

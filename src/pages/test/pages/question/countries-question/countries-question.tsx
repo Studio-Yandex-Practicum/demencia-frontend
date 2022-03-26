@@ -1,55 +1,16 @@
 import React, { ChangeEvent, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { Box, Section, Text1 } from "../../../../../ui/controls";
+import { Box } from "../../../../../ui/controls";
 import QuestionHeader from "../components/question-header";
-import { ArrowLeft, ArrowRight } from "../components/arrows";
 import StyledInput from "../../../../../components/input-field";
-import styled from "styled-components";
 import { useState } from "react";
-import { ScreenSize } from "../../../../../ui/types";
-
-const StyledSection = styled(Section)`
-  justify-content: center;
-  margin: 90px 0 60px;
-  @media (max-width: ${ScreenSize.Small}px) {
-    flex-wrap: wrap;
-    margin-bottom: 20px;
-  }
-`;
-
-const StyledArrowLeft = styled(ArrowLeft)`
-  @media (max-width: ${ScreenSize.Small}px) {
-    order: 1;
-  }
-`;
-
-const StyledArrowRight = styled(ArrowRight)`
-  @media (max-width: ${ScreenSize.Small}px) {
-    order: 2;
-  }
-`;
-
-const StyledBoxInput = styled.div`
-  width: 100%;
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(271px, 290px));
-  justify-content: center;
-  gap: 20px 26px;
-  @media (max-width: ${ScreenSize.Small}px) {
-    margin-bottom: 50px;
-    gap: 50px;
-  }
-`;
-
-const ErrorText = styled(Text1)`
-  text-align: center;
-  color: red;
-  margin: 20px auto;
-  font-size: 30px;
-  @media (max-width: ${ScreenSize.Small}px) {
-    font-size: 20px;
-  }
-`;
+import {
+  StyledSection,
+  StyledArrowLeft,
+  StyledArrowRight,
+  StyledBoxInput,
+  ErrorText,
+} from "./countries-question-styles";
 
 const CountriesQuestion: React.FC<{ number: number }> = ({ number }) => {
   const navigate = useNavigate();

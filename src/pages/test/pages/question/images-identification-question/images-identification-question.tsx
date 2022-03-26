@@ -6,12 +6,10 @@ import { Box, Section } from "../../../../../ui/controls";
 import { ArrowLeft, ArrowRight } from "../components/arrows";
 import QuestionHeader from "../components/question-header";
 import { ScreenSize } from "../../../../../ui/types";
-import { useForm } from "../../../../../hooks/useForm";
 import { ErrorText } from "../date-question/date-question-styles";
 
 import rhinoPic from "../../../../../images/rhino-pic.jpg";
 import harpPic from "../../../../../images/harp-pic.jpg";
-import useLocalStorage from "../../../../../hooks/useLocalStorage";
 
 const StyledBoxInput = styled(Box)`
   margin: 90px auto;
@@ -32,26 +30,18 @@ const ImagesIdentificationQuestion: React.FC<{ number: number }> = ({
   number,
 }) => {
   const navigate = useNavigate();
-  const [answer15, setAnswer15] = useLocalStorage(number.toString());
-
-  const {
-    values: imageIdentAnswers,
-    handleChange,
-    setValues: setImageIdentAnswers,
-  } = useForm();
-
+  const [firstAnswer, setFirstAnswer] = useState("");
+  const [secondAnswer, setSecondAnswer] = useState("");
   const [isErrorTextShow, setIsErrorTextShow] = useState(false);
 
   useEffect(() => {
-    if (answer15) {
-      setImageIdentAnswers((prevState) => ({
-        ...prevState,
-        firstImageIdentInput: answer15.split(",")[0],
-        secondImageIdentInput: answer15.split(",")[1],
-      }));
+    const answer = localStorage.getItem(`${number}`);
+    if (answer) {
+      const [first, second] = answer.split(",");
+      setFirstAnswer(first);
+      setSecondAnswer(second);
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [number]);
 
   const onBack = () => {
     if (number > 1) {
@@ -60,20 +50,14 @@ const ImagesIdentificationQuestion: React.FC<{ number: number }> = ({
   };
 
   const onForward = () => {
-    if (
-      imageIdentAnswers.firstImageIdentInput &&
-      imageIdentAnswers.secondImageIdentInput
-    ) {
+    if (firstAnswer && secondAnswer) {
       setIsErrorTextShow(false);
-      setAnswer15(
-        `${imageIdentAnswers.firstImageIdentInput},${imageIdentAnswers.secondImageIdentInput}`
-      );
-      const to =
-        number === 25 ? "/test/result" : `/test/question/${number + 1}`;
-      // Используем setTimeout, чтобы переместить выполнение navigate(to) после setAnswers15
-      setTimeout(() => {
-        navigate(to);
-      }, 0);
+
+      const answer = `${firstAnswer},${secondAnswer}`;
+
+      localStorage.setItem(`${number}`, answer);
+
+      navigate(`/test/question/${number + 1}`);
     } else {
       setIsErrorTextShow(true);
     }
@@ -94,8 +78,8 @@ const ImagesIdentificationQuestion: React.FC<{ number: number }> = ({
               type="text"
               name="firstImageIdentInput"
               required
-              value={imageIdentAnswers.firstImageIdentInput || ""}
-              onChange={handleChange}
+              value={firstAnswer}
+              onChange={(e) => setFirstAnswer(e.target.value)}
             />
             <Box flex maxWidth={300} width={"100%"}>
               <StyledImg src={harpPic} />
@@ -104,8 +88,8 @@ const ImagesIdentificationQuestion: React.FC<{ number: number }> = ({
               type="text"
               name="secondImageIdentInput"
               required
-              value={imageIdentAnswers.secondImageIdentInput || ""}
-              onChange={handleChange}
+              value={secondAnswer}
+              onChange={(e) => setSecondAnswer(e.target.value)}
             />
           </StyledBoxInput>
           <ArrowRight onClick={() => onForward()} />

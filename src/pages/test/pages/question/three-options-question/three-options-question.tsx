@@ -31,16 +31,13 @@ const ThreeOptionsQuestion: React.FC<{ number: number }> = ({ number }) => {
   };
 
   useEffect(() => {
-    if (localStorage.getItem(`${number}`)) {
-      const answer = localStorage.getItem(`${number}`);
+    const answer = localStorage.getItem(`${number}`);
+    if (answer) {
       if (answer === testData[number].first) {
-        console.log("ksjdflksdjf");
         setChecked(true, false, false);
       } else if (answer === testData[number].second) {
-        console.log("hghghghgh");
         setChecked(false, true, false);
       } else if (answer === testData[number].third) {
-        console.log("xzxzxzxzxzxzx");
         setChecked(false, false, true);
       }
     }

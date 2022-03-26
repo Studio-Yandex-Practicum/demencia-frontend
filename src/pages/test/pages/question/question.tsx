@@ -28,7 +28,7 @@ const QuestionPage = () => {
         <Route path="1" element={<TextQuestion number={1} />} />
         <Route path="2" element={<DateQuestion number={2} />} />
         <Route path="3" element={<TwoOptionsQuestion number={3} />} />
-        <Route path="4" element={<EmailQuestion />} />
+        <Route path="4" element={<EmailQuestion number={4} />} />
         <Route path="5" element={<ThreeOptionsQuestion number={5} />} />
         <Route path="6" element={<TwoOptionsQuestion number={6} />} />
         <Route path="7" element={<TwoOptionsQuestion number={7} />} />
@@ -46,7 +46,7 @@ const QuestionPage = () => {
         <Route path="16" element={<TextQuestion number={16} />} />
         <Route path="17" element={<TextQuestion number={17} />} />
         <Route path="18" element={<MoneyQuestion />} />
-        <Route path="19" element={<MemoryTestQuestion />} />
+        <Route path="19" element={<MemoryTestQuestion number={19} />} />
         <Route path="20" element={<PaperImageQuestion />} />
         <Route path="21" element={<ClockImageQuestion />} />
         <Route path="22" element={<CountriesQuestion />} />

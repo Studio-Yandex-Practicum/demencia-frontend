@@ -2,6 +2,7 @@ import styled from "styled-components";
 import { Box, Text1 } from "../../../../../ui/controls";
 import { ScreenSize } from "../../../../../ui/types";
 import StyledInput from "../../../../../components/input-field";
+import { ArrowLeft, ArrowRight } from "../components/arrows";
 
 export const StyledBoxInput = styled(Box)`
   flex-direction: row;
@@ -26,38 +27,12 @@ export const InputBox = styled.div`
   border: 1px solid #999;
   padding: 10px 0 10px 15px;
   margin: 0 35px;
+  @media (max-width: 890px) {
+    margin: 0 10px;
+  }
   @media (max-width: ${ScreenSize.MediumSmall}px) {
     margin: 0 auto 15px;
     width: 95%;
-  }
-`;
-
-export const InputOne = styled(StyledInput)`
-  margin: 0 35px;
-  max-width: 850px;
-  width: 100%;
-  padding: 10px 15px;
-  border: 1px solid #999;
-  display: inline-block;
-  text-align: start;
-  @media (max-width: ${ScreenSize.MediumSmall}px) {
-    margin: 0 auto 15px;
-    width: 98%;
-  }
-  @media (max-width: 560px) {
-    width: 98.2%;
-  }
-  @media (max-width: 510px) {
-    width: 98.5%;
-  }
-  @media (max-width: ${ScreenSize.XSmall}px) {
-    width: 99%;
-  }
-  @media (max-width: 410px) {
-    width: 99.5%;
-  }
-  @media (max-width: ${ScreenSize.XXSmall}px) {
-    width: 100%;
   }
 `;
 
@@ -82,16 +57,6 @@ export const StyleQuestionInputs = styled(Box)`
   }
 `;
 
-export const BoxInputOne = styled(Box)`
-  justify-content: center;
-  margin-bottom: 1rem;
-  width: 100%;
-  padding: 0;
-  @media (max-width: ${ScreenSize.MediumSmall}px) {
-    flex-direction: column;
-  }
-`;
-
 export const StyledBoxArrowRight = styled(Box)`
   margin-left: 10px;
   @media (max-width: ${ScreenSize.MediumSmall}px) {
@@ -107,6 +72,18 @@ export const StyledBoxArrowLeft = styled(Box)`
     margin-top: 32px;
     order: 1;
     margin-right: 0;
+  }
+`;
+
+export const StyledArrowLeft = styled(ArrowLeft)`
+  @media (max-width: 890px) {
+    width: 45px;
+  }
+`;
+
+export const StyledArrowRight = styled(ArrowRight)`
+  @media (max-width: 890px) {
+    width: 45px;
   }
 `;
 

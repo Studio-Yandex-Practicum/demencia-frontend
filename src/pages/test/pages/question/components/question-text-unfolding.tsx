@@ -22,14 +22,14 @@ const StyledBox = styled(Box)`
   margin: 0 auto;
 `;
 
-const StuleButton = styled(Button)`
+const StyleButton = styled(Button)`
   margin: 0;
   padding: 0;
   width: 20px;
   background: none;
 `;
 
-const Styledtext1 = styled(Text1)`
+const StyledText1 = styled(Text1)`
   @media (max-width: ${ScreenSize.MediumSmall}px) {
     font-size: 18px;
     line-height: 20px;
@@ -62,15 +62,15 @@ const QuestionTextUnfolding: React.FC = () => {
       <Section>
         <StyledBox maxWidth={920}>
           {checked ? (
-            <StuleButton>
+            <StyleButton>
               <ArrowTop onClick={() => setChecked(false)} />
-            </StuleButton>
+            </StyleButton>
           ) : (
-            <StuleButton>
+            <StyleButton>
               <ArrowDown onClick={() => setChecked(true)} />
-            </StuleButton>
+            </StyleButton>
           )}
-          <Styledtext1
+          <StyledText1
             maxWidth={860}
             textColor={TextColor.Primary}
             level={TypographyLevel.Subtitle3}
@@ -79,7 +79,7 @@ const QuestionTextUnfolding: React.FC = () => {
           >
             Для прохождения задания, пожалуйста, возьмите чистый лист бумаги
             (постарайтесь использовать нелинованный лист белого цвета).
-          </Styledtext1>
+          </StyledText1>
         </StyledBox>
         {checked ? (
           <StyledSection>

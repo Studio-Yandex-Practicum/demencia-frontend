@@ -55,7 +55,8 @@ export const StyledBoxArrowLeft = styled(Box)`
 
 export const StyledBoxSelect = styled(Box)`
   @media (max-width: ${ScreenSize.MediumSmall}px) {
-    flex-direction: column;
+    display: grid;
+    grid-template-columns: 1fr auto;
   }
 `;
 

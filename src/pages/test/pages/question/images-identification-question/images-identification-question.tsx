@@ -11,12 +11,21 @@ import { ErrorText } from "../date-question/date-question-styles";
 import rhinoPic from "../../../../../images/rhino-pic.jpg";
 import harpPic from "../../../../../images/harp-pic.jpg";
 
+const StyledBox = styled(Box)`
+  @media (max-width: ${ScreenSize.Medium}px) {
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+  }
+`;
+
 const StyledBoxInput = styled(Box)`
   margin: 90px auto;
   width: 100%;
 
   @media (max-width: ${ScreenSize.Medium}px) {
+    margin: 30px auto;
     flex-direction: column;
+    order: -1;
   }
 `;
 
@@ -68,7 +77,7 @@ const ImagesIdentificationQuestion: React.FC<{ number: number }> = ({
       <QuestionHeader number={number} />
 
       <Section flex>
-        <Box flex maxWidth={1920} alignItems={"center"} width={"100%"}>
+        <StyledBox flex maxWidth={1920} alignItems={"center"} width={"100%"}>
           <ArrowLeft onClick={() => onBack()} />
           <StyledBoxInput flex maxWidth={1920} alignItems={"center"}>
             <Box flex maxWidth={300} width={"100%"}>
@@ -93,7 +102,7 @@ const ImagesIdentificationQuestion: React.FC<{ number: number }> = ({
             />
           </StyledBoxInput>
           <ArrowRight onClick={() => onForward()} />
-        </Box>
+        </StyledBox>
         {isErrorTextShow && (
           <ErrorText>
             Необходимо ответить на вопрос, прежде, чем переходить к следующему

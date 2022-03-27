@@ -6,7 +6,7 @@ import {
   TextColor,
   TypographyLevel,
 } from "../../../../../ui/types";
-import { ArrowDown, ArrowTop } from "../components/arrows";
+import { ArrowDown, ArrowTop } from "./arrows";
 
 const StyledSection = styled(Section)`
   display: block;
@@ -63,11 +63,11 @@ const QuestionTextUnfolding: React.FC = () => {
         <StyledBox maxWidth={920}>
           {checked ? (
             <StuleButton>
-              <ArrowDown onChange={() => setChecked(!checked)} />
+              <ArrowTop onClick={() => setChecked(false)} />
             </StuleButton>
           ) : (
             <StuleButton>
-              <ArrowTop onChange={() => setChecked(checked)} />
+              <ArrowDown onClick={() => setChecked(true)} />
             </StuleButton>
           )}
           <Styledtext1

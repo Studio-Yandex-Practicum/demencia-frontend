@@ -22,6 +22,10 @@ const StyledButton = styled(Button)`
   height: max-content;
   align-self: center;
   margin: 0 20px;
+  @media (max-width: ${ScreenSize.Medium}px) {
+    margin-bottom: 30px;
+    padding: 17px 20px;
+  }
 `;
 
 const StyledArrowLeft = styled(ArrowLeft)`

@@ -142,7 +142,11 @@ const SvgCircle: React.FC<SvgCircleProps> = ({
       }}
     >
       <StyledCircle cx={cx} cy={cy} r={r} isClicked={isClicked} />
-      <StyledCircleText x={cx - 12} y={cy + 13} isClicked={isClicked}>
+      <StyledCircleText
+        x={circleText === "Д" ? cx - 15 : cx - 12}
+        y={circleText === "Д" ? cy + 12 : cy + 13}
+        isClicked={isClicked}
+      >
         {circleText}
       </StyledCircleText>
     </g>
@@ -171,7 +175,7 @@ const CirclesQuestion: React.FC<{ number: number }> = ({ number }) => {
   };
 
   const onForward = () => {
-    if (answer.length === 10) {
+    if (answer.length === 12) {
       setIsErrorTextShow(false);
       localStorage.setItem(`${number}`, answer);
       navigate(`/test/question/${number + 1}`);
@@ -229,7 +233,7 @@ const CirclesQuestion: React.FC<{ number: number }> = ({ number }) => {
               />
               <SvgCircle
                 cx={200}
-                cy={50}
+                cy={70}
                 r={30}
                 circleText={"A"}
                 addPoint={addPoint}
@@ -239,7 +243,7 @@ const CirclesQuestion: React.FC<{ number: number }> = ({ number }) => {
               />
               <SvgCircle
                 cx={50}
-                cy={140}
+                cy={160}
                 r={30}
                 circleText={"2"}
                 addPoint={addPoint}
@@ -248,8 +252,8 @@ const CirclesQuestion: React.FC<{ number: number }> = ({ number }) => {
                 setAnswer={setAnswer}
               />
               <SvgCircle
-                cx={60}
-                cy={250}
+                cx={90}
+                cy={270}
                 r={30}
                 circleText={"Б"}
                 addPoint={addPoint}
@@ -269,7 +273,7 @@ const CirclesQuestion: React.FC<{ number: number }> = ({ number }) => {
               />
               <SvgCircle
                 cx={250}
-                cy={250}
+                cy={220}
                 r={30}
                 circleText={"В"}
                 addPoint={addPoint}
@@ -279,7 +283,7 @@ const CirclesQuestion: React.FC<{ number: number }> = ({ number }) => {
               />
               <SvgCircle
                 cx={400}
-                cy={200}
+                cy={100}
                 r={30}
                 circleText={"4"}
                 addPoint={addPoint}
@@ -288,8 +292,28 @@ const CirclesQuestion: React.FC<{ number: number }> = ({ number }) => {
                 setAnswer={setAnswer}
               />
               <SvgCircle
-                cx={500}
-                cy={100}
+                cx={450}
+                cy={300}
+                r={30}
+                circleText={"Г"}
+                addPoint={addPoint}
+                isReset={circlesReset}
+                setReset={setCirclesReset}
+                setAnswer={setAnswer}
+              />
+              <SvgCircle
+                cx={550}
+                cy={130}
+                r={30}
+                circleText={"5"}
+                addPoint={addPoint}
+                isReset={circlesReset}
+                setReset={setCirclesReset}
+                setAnswer={setAnswer}
+              />
+              <SvgCircle
+                cx={750}
+                cy={50}
                 r={30}
                 circleText={"Д"}
                 addPoint={addPoint}
@@ -299,17 +323,17 @@ const CirclesQuestion: React.FC<{ number: number }> = ({ number }) => {
               />
               <SvgCircle
                 cx={650}
-                cy={230}
+                cy={200}
                 r={30}
-                circleText={"5"}
+                circleText={"6"}
                 addPoint={addPoint}
                 isReset={circlesReset}
                 setReset={setCirclesReset}
                 setAnswer={setAnswer}
               />
               <SvgCircle
-                cx={700}
-                cy={120}
+                cx={740}
+                cy={300}
                 r={30}
                 circleText={"Е"}
                 addPoint={addPoint}

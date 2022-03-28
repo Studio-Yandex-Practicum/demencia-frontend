@@ -35,6 +35,18 @@ const StyledImg = styled.img`
   object-position: center;
 `;
 
+const StyledArrowLeft = styled(ArrowLeft)`
+  @media (max-width: ${ScreenSize.Medium}px) {
+    margin: 30px 0;
+  }
+`;
+
+const StyledArrowRight = styled(ArrowRight)`
+  @media (max-width: ${ScreenSize.Medium}px) {
+    margin: 30px 0;
+  }
+`;
+
 const ImagesIdentificationQuestion: React.FC<{ number: number }> = ({
   number,
 }) => {
@@ -78,7 +90,7 @@ const ImagesIdentificationQuestion: React.FC<{ number: number }> = ({
 
       <Section flex>
         <StyledBox flex maxWidth={1920} alignItems={"center"} width={"100%"}>
-          <ArrowLeft onClick={() => onBack()} />
+          <StyledArrowLeft onClick={() => onBack()} />
           <StyledBoxInput flex maxWidth={1920} alignItems={"center"}>
             <Box flex maxWidth={300} width={"100%"}>
               <StyledImg src={rhinoPic} />
@@ -101,7 +113,7 @@ const ImagesIdentificationQuestion: React.FC<{ number: number }> = ({
               onChange={(e) => setSecondAnswer(e.target.value)}
             />
           </StyledBoxInput>
-          <ArrowRight onClick={() => onForward()} />
+          <StyledArrowRight onClick={() => onForward()} />
         </StyledBox>
         {isErrorTextShow && (
           <ErrorText>

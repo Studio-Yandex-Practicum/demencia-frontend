@@ -50,7 +50,7 @@ const QuestionPage = () => {
         <Route path="20" element={<PaperImageQuestion />} />
         <Route path="21" element={<ClockImageQuestion number={21} />} />
         <Route path="22" element={<CountriesQuestion number={22} />} />
-        <Route path="23" element={<CirclesQuestion />} />
+        <Route path="23" element={<CirclesQuestion number={23} />} />
         <Route path="24" element={<TrianglesQuestion />} />
         <Route path="25" element={<TextQuestion number={25} />} />
       </Routes>

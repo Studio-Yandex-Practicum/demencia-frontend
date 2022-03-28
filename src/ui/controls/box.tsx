@@ -29,12 +29,14 @@ export interface BoxStyleProps extends BoxProps {
   marginTopAuto?: boolean;
   margin?: string;
   absolute?: boolean;
+  relative?: boolean;
   top?: string;
   left?: string;
   right?: string;
   bottom?: string;
   zIndex?: number;
   animate?: boolean;
+  gap?: string;
 }
 
 const getShift = (val: number, defaultSpacing: number): number => {
@@ -100,12 +102,14 @@ export const Box = styled.div<BoxStyleProps & ElementAnimationProps>`
   height: ${(p) => (p.height !== undefined ? `${p.height}` : undefined)};
   margin: ${(p) => p.margin};
   margin-top: ${(p) => (p.marginTopAuto ? "auto" : "")};
+  position: ${(p) => (p.relative ? "relative" : "")};
   position: ${(p) => (p.absolute ? "absolute" : "")};
   top: ${(p) => (p.top !== undefined ? `${p.top}` : undefined)};
   left: ${(p) => (p.left !== undefined ? `${p.left}` : undefined)};
   right: ${(p) => (p.right !== undefined ? `${p.right}` : undefined)};
   bottom: ${(p) => (p.bottom !== undefined ? `${p.bottom}` : undefined)};
   z-index: ${(p) => (p.zIndex ? p.zIndex : 0)};
+  gap: ${(p) => (p.gap ? p.gap : "")};
   ${getBoxStyles}
   ${zoomOnHoverMixIn}
   ${(p) =>

@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { ScreenSize } from "../ui/types/";
 
 const StyledInput = styled.input`
   width: 100%;
@@ -12,6 +13,9 @@ const StyledInput = styled.input`
   &:focus {
     outline: none;
     border: 2px solid #000000;
+  }
+  @media (max-width: ${ScreenSize.MediumSmall}px) {
+    font-size: 20px;
   }
 `;
 

@@ -1,6 +1,8 @@
 import styled from "styled-components";
 import arrowLeft from "../../../../../images/arrow-left.svg";
 import arrowRight from "../../../../../images/arrow-right.svg";
+import arrowDown from "../../../../../images/arrow-down.svg";
+import arrowTop from "../../../../../images/arrow-top.svg";
 import { ScreenSize } from "../../../../../ui/types";
 import { cursorMixin } from "../../../../../ui/controls";
 
@@ -34,4 +36,24 @@ export const ArrowRight = styled.img.attrs((props) => ({
   @media (max-width: ${ScreenSize.XSmall}px) {
     width: 40px;
   }
+`;
+
+export const ArrowDown = styled.img.attrs((props) => ({
+  src: props.src || arrowDown,
+  alt: props.alt || "",
+}))`
+  z-index: 309;
+  width: 20px;
+  position: relative;
+  right: 0;
+`;
+
+export const ArrowTop = styled.img.attrs((props) => ({
+  src: props.src || arrowTop,
+  alt: props.alt || "",
+}))`
+  z-index: 309;
+  width: 20px;
+  position: relative;
+  right: 0;
 `;

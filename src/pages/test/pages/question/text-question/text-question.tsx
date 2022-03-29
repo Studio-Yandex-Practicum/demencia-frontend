@@ -56,7 +56,7 @@ const TextQuestion: React.FC<{ number: number }> = ({ number }) => {
             <ArrowLeft onClick={onBack} />
           </StyledBoxArrowLeft>
 
-          <Box mb={4}>
+          <Box flex width="100%" mb={6}>
             <StyledInput onChange={handleChange} value={textAnswer} />
           </Box>
 

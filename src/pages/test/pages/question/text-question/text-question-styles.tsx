@@ -21,7 +21,6 @@ export const StyledBoxArrowLeft = styled(Box)`
 export const StyledBoxInput = styled(Box)`
   flex-direction: row;
   justify-content: space-around;
-  align-items: center;
   margin: 90px auto 50px;
   width: 100%;
   @media (max-width: ${ScreenSize.MediumSmall}px) {

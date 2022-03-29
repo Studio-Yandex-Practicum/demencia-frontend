@@ -69,12 +69,10 @@ const ResultPage: React.FC = () => {
 
   const StyleText1 = styled(Text1)`
     font-size: 33px;
-    @media (max-width: ${ScreenSize.Medium}px) {
-      margin: 20px auto 0;
-      padding: 0;
-    }
     @media (max-width: ${ScreenSize.XSmall}px) {
+      margin: 20px auto 0;
       font-size: 14px;
+      padding: 0;
     }
   `;
 

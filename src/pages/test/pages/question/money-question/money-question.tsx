@@ -10,6 +10,7 @@ import {
   StyledBoxSelect,
   StyleLabel,
   ErrorText,
+  InputBox,
 } from "./money-question-styles";
 import { ArrowLeft, ArrowRight } from "../components/arrows";
 
@@ -22,34 +23,21 @@ const MoneyQuestion: React.FC<{ number: number }> = ({ number }) => {
   const handleChangeFirstQuestion = (
     e: React.ChangeEvent<HTMLInputElement>
   ) => {
-    const str = e.target.value;
-    if (str) {
-      setFirstAnswer(str);
-    }
+    setFirstAnswer(e.target.value);
   };
 
   const handleChangeSecondQuestion = (
     e: React.ChangeEvent<HTMLInputElement>
   ) => {
-    const str = e.target.value;
-    if (str) {
-      setSecondAnswer(str);
-    }
+    setSecondAnswer(e.target.value);
   };
 
   useEffect(() => {
     if (localStorage.getItem(`${number}`)) {
-      const localStorageDate = localStorage.getItem(`${number}`)?.split("-");
+      const localStorageDate = localStorage.getItem(`${number}`)?.split(",");
       if (localStorageDate) {
-        const modifiedLocalStorageDate = localStorageDate?.map((item) => {
-          if (item.startsWith("0")) {
-            return item.slice(1);
-          }
-          return item;
-        });
-
-        setFirstAnswer(modifiedLocalStorageDate[0]);
-        setSecondAnswer(modifiedLocalStorageDate[1]);
+        setFirstAnswer(localStorageDate[0]);
+        setSecondAnswer(localStorageDate[1]);
       }
     }
   }, [number]);
@@ -59,7 +47,7 @@ const MoneyQuestion: React.FC<{ number: number }> = ({ number }) => {
   };
 
   const goForward = () => {
-    if (firstAnswer || secondAnswer) {
+    if (firstAnswer && secondAnswer) {
       setIsError(false);
 
       const answer = makeAnswer();
@@ -83,35 +71,39 @@ const MoneyQuestion: React.FC<{ number: number }> = ({ number }) => {
               onClick={() => navigate(`/test/question/${number - 1}`)}
             />
           </StyledBoxArrowLeft>
-          <StyledBoxSelect flex width="100%">
-            <StyleInput
-              type="number"
-              min="0"
-              max="99"
-              step="1"
-              defaultValue={firstAnswer}
-              onChange={handleChangeFirstQuestion}
-              onKeyPress={(e) => {
-                if (!/[0-9]/.test(e.key)) {
-                  e.preventDefault();
-                }
-              }}
-            />
-            <StyleLabel>рублей</StyleLabel>
-            <StyleInput
-              type="number"
-              min="0"
-              max="99"
-              step="1"
-              defaultValue={secondAnswer}
-              onChange={handleChangeSecondQuestion}
-              onKeyPress={(e) => {
-                if (!/[0-9]/.test(e.key)) {
-                  e.preventDefault();
-                }
-              }}
-            />
-            <StyleLabel>копеек</StyleLabel>
+          <StyledBoxSelect flex maxWidth={1200}>
+            <InputBox>
+              <StyleInput
+                type="number"
+                min="0"
+                max="99"
+                step="1"
+                defaultValue={firstAnswer}
+                onChange={handleChangeFirstQuestion}
+                onKeyPress={(e) => {
+                  if (!/[0-9]/.test(e.key)) {
+                    e.preventDefault();
+                  }
+                }}
+              />
+              <StyleLabel>рублей</StyleLabel>
+            </InputBox>
+            <InputBox>
+              <StyleInput
+                type="number"
+                min="0"
+                max="99"
+                step="1"
+                defaultValue={secondAnswer}
+                onChange={handleChangeSecondQuestion}
+                onKeyPress={(e) => {
+                  if (!/[0-9]/.test(e.key)) {
+                    e.preventDefault();
+                  }
+                }}
+              />
+              <StyleLabel>копеек</StyleLabel>
+            </InputBox>
           </StyledBoxSelect>
           <StyledBoxArrowRight>
             <ArrowRight onClick={goForward} />

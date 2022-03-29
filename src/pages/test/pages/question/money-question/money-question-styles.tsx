@@ -14,7 +14,7 @@ export const StyledBoxInput = styled(Box)`
     justify-content: space-evenly;
     align-items: center;
     vertical-align: baseline;
-    margin: 30px auto 30px;
+    margin: 50px auto 30px;
   }
 `;
 
@@ -56,7 +56,7 @@ export const StyledBoxArrowLeft = styled(Box)`
 export const StyledBoxSelect = styled(Box)`
   gap: 70px;
   @media (max-width: ${ScreenSize.MediumSmall}px) {
-    gap: 20px;
+    gap: 0;
     width: 100%;
     flex-direction: column;
   }
@@ -91,7 +91,6 @@ export const InputBox = styled.div`
   display: flex;
   @media (max-width: ${ScreenSize.MediumSmall}px) {
     width: 100%;
-    margin: 0 auto;
-    gap: 32px;
+    margin: 0 auto 15px;
   }
 `;

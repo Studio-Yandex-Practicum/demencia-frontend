@@ -24,6 +24,8 @@ const TextQuestion: React.FC<{ number: number }> = ({ number }) => {
       if (localAnswer) {
         setTextAnswer(localAnswer);
       }
+    } else {
+      setTextAnswer("");
     }
   }, [number]);
 

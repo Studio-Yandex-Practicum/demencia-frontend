@@ -38,6 +38,9 @@ const MoneyQuestion: React.FC<{ number: number }> = ({ number }) => {
       if (localStorageDate) {
         setFirstAnswer(localStorageDate[0]);
         setSecondAnswer(localStorageDate[1]);
+      } else {
+        setFirstAnswer("");
+        setSecondAnswer("");
       }
     }
   }, [number]);

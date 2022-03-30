@@ -61,6 +61,9 @@ const ImagesIdentificationQuestion: React.FC<{ number: number }> = ({
       const [first, second] = answer.split(",");
       setFirstAnswer(first);
       setSecondAnswer(second);
+    } else {
+      setFirstAnswer("");
+      setSecondAnswer("");
     }
   }, [number]);
 

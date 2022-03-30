@@ -50,6 +50,8 @@ const CountriesQuestion: React.FC<{ number: number }> = ({ number }) => {
     if (localStorage.getItem(`${number}`)) {
       const answer = JSON.parse(localStorage.getItem(`${number}`) || "");
       setInputArray(answer);
+    } else {
+      setInputArray(new Array(12).fill(""));
     }
   }, [number]);
 

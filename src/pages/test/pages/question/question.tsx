@@ -51,7 +51,7 @@ const QuestionPage = () => {
         <Route path="21" element={<ClockImageQuestion number={21} />} />
         <Route path="22" element={<CountriesQuestion number={22} />} />
         <Route path="23" element={<CirclesQuestion number={23} />} />
-        <Route path="24" element={<TrianglesQuestion />} />
+        <Route path="24" element={<TrianglesQuestion number={24} />} />
         <Route path="25" element={<TextQuestion number={25} />} />
       </Routes>
       <Progress pageID={pageID ? pageID[0] : ""} />

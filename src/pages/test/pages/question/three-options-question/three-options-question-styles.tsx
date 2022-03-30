@@ -46,7 +46,7 @@ export const StyleBoxInputs = styled(Box)`
 export const StyleQuestionInputs = styled(Box)`
   display: flex;
   align-items: center;
-  margin-bottom: 1rem;
+  margin: auto 0;
   @media (max-width: ${ScreenSize.MediumSmall}px) {
     flex-direction: column;
     flex-wrap: wrap;

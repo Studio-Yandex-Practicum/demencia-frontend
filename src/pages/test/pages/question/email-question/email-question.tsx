@@ -12,6 +12,7 @@ import {
   StyledBoxArrowRight,
   StyledBoxArrowLeft,
   EmailInputBox,
+  EmailCheckboxBox,
 } from "./email-question-styles";
 
 const EmailQuestion: React.FC<{ number: number }> = ({ number }) => {
@@ -92,7 +93,7 @@ const EmailQuestion: React.FC<{ number: number }> = ({ number }) => {
                 onClick={() => navigate(`/test/question/${number - 1}`)}
               />
             </StyledBoxArrowLeft>
-            <Box flex column width="100%">
+            <EmailInputBox flex column width="100%">
               <StyledInput
                 name="email"
                 type="email"
@@ -108,7 +109,7 @@ const EmailQuestion: React.FC<{ number: number }> = ({ number }) => {
                 }}
                 required
               />
-              <EmailInputBox mt={4} flex>
+              <EmailCheckboxBox mt={4} flex>
                 <input
                   name="personalData"
                   type="checkbox"
@@ -132,8 +133,8 @@ const EmailQuestion: React.FC<{ number: number }> = ({ number }) => {
                     персональных данных
                   </Link>
                 </Text1>
-              </EmailInputBox>
-            </Box>
+              </EmailCheckboxBox>
+            </EmailInputBox>
             <StyledBoxArrowRight>
               <ArrowRight onClick={goForward} />
             </StyledBoxArrowRight>

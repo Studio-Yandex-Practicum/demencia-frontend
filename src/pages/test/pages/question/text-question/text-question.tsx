@@ -3,6 +3,7 @@ import {
   StyledBoxArrowLeft,
   StyledBoxArrowRight,
   StyledBoxInput,
+  TextInputBox,
 } from "./text-question-styles";
 import { Box, Section } from "../../../../../ui/controls";
 import StyledInput from "../../../../../components/input-field";
@@ -56,9 +57,9 @@ const TextQuestion: React.FC<{ number: number }> = ({ number }) => {
             <ArrowLeft onClick={onBack} />
           </StyledBoxArrowLeft>
 
-          <Box flex width="100%" mb={6}>
+          <TextInputBox width="100%">
             <StyledInput onChange={handleChange} value={textAnswer} />
-          </Box>
+          </TextInputBox>
 
           <StyledBoxArrowRight>
             <ArrowRight onClick={onForward} />

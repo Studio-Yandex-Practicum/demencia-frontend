@@ -30,6 +30,13 @@ export const StyledBoxInput = styled(Box)`
   }
 `;
 
+export const TextInputBox = styled(Box)`
+  margin: auto 0;
+  @media (max-width: ${ScreenSize.MediumSmall}px) {
+    margin-bottom: 32px;
+  }
+`;
+
 export const ErrorText = styled(Text1)`
   text-align: center;
   color: red;

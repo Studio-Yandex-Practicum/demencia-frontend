@@ -21,26 +21,16 @@ import {
 
 const ClockImageQuestion: React.FC<{ number: number }> = ({ number }) => {
   const navigate = useNavigate();
-  const [isFail, setIsFail] = useState("");
+  const [isSelected, setIsSelected] = useState(false);
+  const [selectedFile, setSelectedFile] = useState<File>();
   const [isError, setIsError] = useState(false);
   const [buttonText, setButtonText] = useState("Добавить файл");
 
-  useEffect(() => {
-    const answer = localStorage.getItem(`${number}`);
-    if (answer) {
-      const newData = localStorage.getItem(`${number}`);
-      if (newData) {
-        setButtonText("Загрузка...");
-        setIsFail(newData);
-        setButtonText("Загружено");
-      }
-    } else {
-      setIsFail("");
-    }
-  }, [number]);
-
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setIsFail(e.target.value);
+    if (e.target.files) {
+      setSelectedFile(e.target.files[0]);
+      setIsSelected(true);
+    }
   };
 
   const onBack = () => {
@@ -50,12 +40,8 @@ const ClockImageQuestion: React.FC<{ number: number }> = ({ number }) => {
   };
 
   const goForward = () => {
-    if (isFail) {
+    if (isSelected) {
       setIsError(false);
-
-      const answer = `${isFail}`;
-
-      localStorage.setItem(`${number}`, answer);
       navigate(`/test/question/${number + 1}`);
     } else {
       setIsError(true);
@@ -82,13 +68,14 @@ const ClockImageQuestion: React.FC<{ number: number }> = ({ number }) => {
               </StyledText1>
             </StyledBoxInput>
             <StyledBoxInput flex>
-              <StyledLabel htmlFor="file_drawClock">{buttonText}</StyledLabel>
+              <StyledLabel htmlFor="file_drawClock">
+                {isSelected ? "Загружен" : "Добавить файл"}
+              </StyledLabel>
               <StyledInput
                 id="file_drawClock"
                 type="file"
                 accept="image/jpeg"
                 onChange={handleChange}
-                value={isFail}
               />
             </StyledBoxInput>
           </StyleBoxInputs>

@@ -81,6 +81,7 @@ export const StyledText1 = styled(Text1)`
 export const StyledBoxInput = styled(Box)`
   margin: 0;
   width: 100%;
+  align-items: center;
 `;
 
 export const StyledInput = styled.input`

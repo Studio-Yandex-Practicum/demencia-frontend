@@ -58,7 +58,7 @@ const ClockImageQuestion: React.FC<{ number: number }> = ({ number }) => {
             <StyledArrowLeft onClick={onBack} />
           </StyledBoxArrowLeft>
           <StyleBoxInputs>
-            <StyledBoxInput>
+            <StyledBoxInput flex>
               <StyledText1
                 textColor={TextColor.Primary}
                 level={TypographyLevel.Subtitle3}

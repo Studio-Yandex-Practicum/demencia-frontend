@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { Swiper } from "swiper/react";
 import { ScreenSize } from "../../../../../ui/types";
 import { Container, Box } from "../../../../../ui/controls";
-import whiteHalfCircle from "../../../../../images/test_halfcircle_white.svg";
+import pinkHalfCircle from "../../../../../images/decor_halfcirlce_pink.svg";
 import defaultImage from "../../../../../images/slider-default.svg";
 
 const StyledSwiper = styled(Swiper)`
@@ -86,7 +86,7 @@ const Wrapper = styled.div`
 const Decor = styled.div`
   width: 135px;
   height: 266px;
-  background-image: url(${whiteHalfCircle});
+  background-image: url(${pinkHalfCircle});
   background-size: cover;
   background-repeat: no-repeat;
   position: absolute;

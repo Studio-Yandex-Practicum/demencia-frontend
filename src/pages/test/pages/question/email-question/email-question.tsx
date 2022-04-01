@@ -78,6 +78,8 @@ const EmailQuestion: React.FC<{ number: number }> = ({ number }) => {
       if (localStorageEmail) {
         setValues({ email: localStorageEmail, personalData: true });
       }
+    } else {
+      setValues({ email: "", personalData: false });
     }
   }, [number]);
 

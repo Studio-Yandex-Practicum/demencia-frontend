@@ -78,6 +78,10 @@ const DateQuestion: React.FC<{ number: number }> = ({ number }) => {
         setMonth(modifiedLocalStorageDate[1]);
         setYear(modifiedLocalStorageDate[2]);
       }
+    } else {
+      setDay("");
+      setMonth("1");
+      setYear("1922");
     }
   }, [number]);
 

@@ -19,12 +19,12 @@ export const StyledBoxInput = styled(Box)`
 `;
 
 export const StyleInput = styled(StyledInput)`
-  width: 40%;
+  width: 100%;
   margin-right: 10px;
   @media (max-width: ${ScreenSize.MediumSmall}px) {
-    width: 100%;
+    width: 80%;
     margin-right: 0;
-    margin-bottom: 15px;
+    align-self: center;
   }
 `;
 
@@ -54,14 +54,16 @@ export const StyledBoxArrowLeft = styled(Box)`
 `;
 
 export const StyledBoxSelect = styled(Box)`
+  gap: 70px;
   @media (max-width: ${ScreenSize.MediumSmall}px) {
-    display: grid;
-    grid-template-columns: 1fr auto;
+    gap: 0;
+    width: 100%;
+    flex-direction: column;
   }
 `;
 
 export const StyleLabel = styled.label`
-  width: 90%;
+  width: max-content;
   margin: 0 0 0 10px;
   padding: 0;
   font-family: Roboto, sans-serif;
@@ -70,6 +72,9 @@ export const StyleLabel = styled.label`
   color: #999;
   justify-content: center;
   align-self: center;
+  @media (max-width: ${ScreenSize.MediumSmall}px) {
+    width: max-content;
+  }
 `;
 
 export const ErrorText = styled(Text1)`
@@ -79,5 +84,13 @@ export const ErrorText = styled(Text1)`
   font-size: 30px;
   @media (max-width: ${ScreenSize.Small}px) {
     font-size: 20px;
+  }
+`;
+
+export const InputBox = styled.div`
+  display: flex;
+  @media (max-width: ${ScreenSize.MediumSmall}px) {
+    width: 100%;
+    margin: 0 auto 15px;
   }
 `;

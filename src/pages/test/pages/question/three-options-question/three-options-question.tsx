@@ -40,6 +40,8 @@ const ThreeOptionsQuestion: React.FC<{ number: number }> = ({ number }) => {
       } else if (answer === testData[number].third) {
         setChecked(false, false, true);
       }
+    } else {
+      setChecked(false, false, false);
     }
   }, [number]);
 

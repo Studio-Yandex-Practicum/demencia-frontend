@@ -1,6 +1,6 @@
-import { useState } from "react";
-import { Text4, Button } from "../../../ui/controls";
-import { PaletteColor, ButtonType } from "../../../ui/types";
+import React, { useState } from "react";
+import { Text4, Button, Text1 } from "../../../ui/controls";
+import { PaletteColor, ButtonType, TextColor } from "../../../ui/types";
 import {
   StyledInfoSection,
   RelativeBox,
@@ -72,7 +72,7 @@ const InfoSection: React.FC = () => {
               backgroundColor={PaletteColor.LightGreen}
               className="tip__box"
             >
-              <Text4 mt={2} mb={2} ml={4}>
+              <Text4 mt={2} mb={2} ml={4} textColor={TextColor.Accent1}>
                 {ReactHtmlParser(
                   DOMPurify.sanitize(settings.aboutSectionInfo)
                 ) ||

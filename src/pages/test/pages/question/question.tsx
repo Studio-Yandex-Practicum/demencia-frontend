@@ -47,7 +47,7 @@ const QuestionPage = () => {
         <Route path="17" element={<TextQuestion number={17} />} />
         <Route path="18" element={<MoneyQuestion number={18} />} />
         <Route path="19" element={<MemoryTestQuestion number={19} />} />
-        <Route path="20" element={<PaperImageQuestion />} />
+        <Route path="20" element={<PaperImageQuestion number={20} />} />
         <Route path="21" element={<ClockImageQuestion number={21} />} />
         <Route path="22" element={<CountriesQuestion number={22} />} />
         <Route path="23" element={<CirclesQuestion number={23} />} />

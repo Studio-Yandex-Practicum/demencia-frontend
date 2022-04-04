@@ -1,7 +1,13 @@
 import styled from "styled-components";
 import { Section, Box, TwoColumnGrid } from "../../../ui/controls";
-import { ScreenSize } from "../../../ui/types";
-import { Subtitle1, Subtitle3, Text1, Button } from "../../../ui/controls";
+import { ScreenSize, TextColor } from "../../../ui/types";
+import {
+  Subtitle1,
+  Subtitle3,
+  Text1,
+  Text4,
+  Button,
+} from "../../../ui/controls";
 
 export const StyledInfoSection = styled(Section)`
   .info__about {

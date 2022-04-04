@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { Box, Section, Text1 } from "../../../../../ui/controls";
 import { ArrowLeft, ArrowRight } from "../components/arrows";
@@ -14,8 +14,10 @@ import {
   EmailInputBox,
   EmailCheckboxBox,
 } from "./email-question-styles";
+import { AppContext } from "../../../../../components/contexts";
 
 const EmailQuestion: React.FC<{ number: number }> = ({ number }) => {
+  const { setLastQuestionId } = useContext(AppContext);
   const navigate = useNavigate();
 
   const [isError, setIsError] = useState({
@@ -67,6 +69,9 @@ const EmailQuestion: React.FC<{ number: number }> = ({ number }) => {
         }));
       }
     } else {
+      if (setLastQuestionId) {
+        setLastQuestionId(`${number + 1}`);
+      }
       localStorage.setItem(`${number}`, email);
       navigate(`/test/question/${number + 1}`);
     }

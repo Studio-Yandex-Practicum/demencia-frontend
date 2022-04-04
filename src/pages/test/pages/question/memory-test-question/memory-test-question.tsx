@@ -1,5 +1,6 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { AppContext } from "../../../../../components/contexts";
 import { Box } from "../../../../../ui/controls";
 import { ArrowLeft, ArrowRight } from "../components/arrows";
 import QuestionHeader from "../components/question-header";
@@ -13,6 +14,7 @@ import {
 } from "./memory-test-question-styles";
 
 const MemoryTestQuestion: React.FC<{ number: number }> = ({ number }) => {
+  const { setLastQuestionId } = useContext(AppContext);
   const navigate = useNavigate();
   const [isError, setIsError] = useState(false);
 
@@ -24,6 +26,9 @@ const MemoryTestQuestion: React.FC<{ number: number }> = ({ number }) => {
 
   const goForward = () => {
     if (localStorage.getItem(`${number}`)) {
+      if (setLastQuestionId) {
+        setLastQuestionId(`${number + 1}`);
+      }
       navigate(`/test/question/${number + 1}`);
     } else {
       setIsError(true);

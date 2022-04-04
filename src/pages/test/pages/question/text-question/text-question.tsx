@@ -9,11 +9,13 @@ import { Box, Section } from "../../../../../ui/controls";
 import StyledInput from "../../../../../components/input-field";
 import { ArrowLeft, ArrowRight } from "../components/arrows";
 import QuestionHeader from "../components/question-header";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import { useNavigate } from "react-router-dom";
+import { AppContext } from "../../../../../components/contexts";
 
 const TextQuestion: React.FC<{ number: number }> = ({ number }) => {
   const navigate = useNavigate();
+  const { setLastQuestionId } = useContext(AppContext);
 
   const [textAnswer, setTextAnswer] = useState("");
   const [isError, setIsError] = useState(false);
@@ -43,6 +45,9 @@ const TextQuestion: React.FC<{ number: number }> = ({ number }) => {
     if (textAnswer) {
       setIsError(false);
       localStorage.setItem(`${number}`, textAnswer);
+      if (setLastQuestionId) {
+        setLastQuestionId(`${number + 1}`);
+      }
       const to =
         number === 25 ? "/test/result" : `/test/question/${number + 1}`;
       navigate(to);

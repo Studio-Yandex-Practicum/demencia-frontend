@@ -19,8 +19,22 @@ import {
   StyledSubtitle3,
   Actions,
 } from "./start-styles";
+import { AppContext } from "../../../../components/contexts";
+import { useContext, useEffect } from "react";
 
 const StartPage = () => {
+  const { setLastQuestionId } = useContext(AppContext);
+  function setTestId(id = "123456789") {
+    localStorage.setItem("test_id", id);
+  }
+
+  useEffect(() => {
+    if (setLastQuestionId) {
+      setLastQuestionId(`start`);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   return (
     <Box mb={5}>
       <StyledInfoSection flex>
@@ -64,6 +78,12 @@ const StartPage = () => {
                   <StyledButtonWithSemicircle
                     maxWidth={350}
                     buttonText="Начать тестирование"
+                    onClick={() => {
+                      setTestId();
+                      if (setLastQuestionId) {
+                        setLastQuestionId("description");
+                      }
+                    }}
                   />
                 </Actions>
               </Link>

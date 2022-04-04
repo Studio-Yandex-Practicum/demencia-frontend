@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import StyledInput from "../../../../../components/input-field";
@@ -10,6 +10,7 @@ import { ErrorText } from "../date-question/date-question-styles";
 
 import rhinoPic from "../../../../../images/rhino-pic.jpg";
 import harpPic from "../../../../../images/harp-pic.jpg";
+import { AppContext } from "../../../../../components/contexts";
 
 const StyledBox = styled(Box)`
   @media (max-width: ${ScreenSize.Medium}px) {
@@ -50,6 +51,7 @@ const StyledArrowRight = styled(ArrowRight)`
 const ImagesIdentificationQuestion: React.FC<{ number: number }> = ({
   number,
 }) => {
+  const { setLastQuestionId } = useContext(AppContext);
   const navigate = useNavigate();
   const [firstAnswer, setFirstAnswer] = useState("");
   const [secondAnswer, setSecondAnswer] = useState("");
@@ -75,6 +77,9 @@ const ImagesIdentificationQuestion: React.FC<{ number: number }> = ({
 
   const onForward = () => {
     if (firstAnswer && secondAnswer) {
+      if (setLastQuestionId) {
+        setLastQuestionId(`${number + 1}`);
+      }
       setIsErrorTextShow(false);
 
       const answer = `${firstAnswer},${secondAnswer}`;

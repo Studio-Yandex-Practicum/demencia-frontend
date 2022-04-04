@@ -17,6 +17,16 @@ import TrianglesQuestion from "./triangles-question/triangles-question";
 const QuestionPage = () => {
   const path = useLocation().pathname;
   const pageID = path.match(/\d+/g);
+  /*   function setLastQuestionId(id: string) {
+    switch (id) {
+      case "26":
+        localStorage.setItem("last_question", "result");
+        break;
+      default:
+        localStorage.setItem("last_question", id);
+        break;
+    }
+  } */
 
   if (path === "/test/question") {
     return <Navigate to="/test/question/1" />;

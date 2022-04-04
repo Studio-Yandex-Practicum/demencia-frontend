@@ -1,6 +1,12 @@
 /* eslint-disable @typescript-eslint/no-non-null-assertion */
 import styled from "styled-components";
-import { Dispatch, SetStateAction, useState, useEffect } from "react";
+import {
+  Dispatch,
+  SetStateAction,
+  useState,
+  useEffect,
+  useContext,
+} from "react";
 import { useNavigate } from "react-router-dom";
 import { Box, Button, Section, Text1, Text3 } from "../../../../../ui/controls";
 import { ArrowLeft, ArrowRight } from "../components/arrows";
@@ -9,6 +15,7 @@ import { ErrorText } from "../date-question/date-question-styles";
 import { ScreenSize, TextColor } from "../../../../../ui/types";
 
 import circleQuestionSamplePic from "../../../../../images/circle-question-sample-pic.jpg";
+import { AppContext } from "../../../../../components/contexts";
 
 const StyledBox = styled(Box)`
   @media (max-width: ${ScreenSize.Medium}px) {
@@ -155,6 +162,7 @@ const SvgCircle: React.FC<SvgCircleProps> = ({
 
 // Компонент вопрос №23
 const CirclesQuestion: React.FC<{ number: number }> = ({ number }) => {
+  const { setLastQuestionId } = useContext(AppContext);
   const navigate = useNavigate();
   const [points, setPoints] = useState<[{ x?: number; y?: number }?]>([]); // Стейт точек линии соединящей кружки
   const [circlesReset, setCirclesReset] = useState(false); // Сброс нажатых кружков
@@ -176,6 +184,9 @@ const CirclesQuestion: React.FC<{ number: number }> = ({ number }) => {
 
   const onForward = () => {
     if (answer.length === 12) {
+      if (setLastQuestionId) {
+        setLastQuestionId(`${number + 1}`);
+      }
       setIsErrorTextShow(false);
       localStorage.setItem(`${number}`, answer);
       navigate(`/test/question/${number + 1}`);

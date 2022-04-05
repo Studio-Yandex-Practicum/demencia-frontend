@@ -113,7 +113,7 @@ const Card: React.FC<CardProps> = ({
         </Link>
         <Text3 newsGrid>{cardText}</Text3>
       </Box>
-      <Box flex between marginTopAuto>
+      <Box flex between alignItems={"center"} marginTopAuto>
         <time className="card__date" dateTime={cardDateTime}>
           {cardDateTimeText}
         </time>

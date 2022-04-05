@@ -45,7 +45,7 @@ export const StyledInfoSection = styled(Section)`
   }
 
   .info__more-button-box {
-    align-items: flex-end;
+    align-items: flex-start;
     padding: 0 40px;
   }
 

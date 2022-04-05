@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Text4, Button, Text1 } from "../../../ui/controls";
+import { Text4, Button } from "../../../ui/controls";
 import { PaletteColor, ButtonType, TextColor } from "../../../ui/types";
 import {
   StyledInfoSection,

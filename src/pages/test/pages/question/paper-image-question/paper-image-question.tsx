@@ -1,8 +1,7 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Box, Section } from "../../../../../ui/controls";
 import { TextColor, TypographyLevel } from "../../../../../ui/types";
-import { testData } from "../../../data";
 import QuestionHeader from "../components/question-header";
 import QuestionTextUnfolding from "../components/question-text-unfolding";
 import {

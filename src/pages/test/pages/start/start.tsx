@@ -1,8 +1,9 @@
+import React from "react";
 import { Box } from "../../../../ui/controls";
 import { ContainerSize, TextColor } from "../../../../ui/types";
 import { BackgroundColor } from "../../../../ui/types/background-color.enum";
 import largeHalfCircle from "../../../../images/large-half-circle.svg";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import {
   StyledBox,
   StyledBoxContainer,
@@ -19,8 +20,24 @@ import {
   StyledSubtitle3,
   Actions,
 } from "./start-styles";
+import { useLazyQuery } from "@apollo/client";
+import { NewTest } from "../../../../types/newTest";
+import { NEW_TEST } from "../../../../gql/query/newTest";
+import { toast } from "react-hot-toast";
 
 const StartPage = () => {
+  const [getTestId, {}] = useLazyQuery<NewTest>(NEW_TEST);
+  const navigate = useNavigate();
+  function onStartBtnClick(event: React.MouseEvent<HTMLAnchorElement>) {
+    event.preventDefault();
+    getTestId()
+      .then((res) => {
+        localStorage.setItem("test_id", JSON.stringify(res.data?.newTest));
+        navigate("/test/description");
+      })
+      .catch(() => toast.error(`Не удалось начать тест`, { id: "error" }));
+  }
+
   return (
     <Box mb={5}>
       <StyledInfoSection flex>
@@ -59,7 +76,7 @@ const StartPage = () => {
           <StyledBox flex>
             <StyledPuzzles />
             <StyledTestBox flex column>
-              <Link to="/test/description">
+              <Link to="/test/description" onClick={onStartBtnClick}>
                 <Actions>
                   <StyledButtonWithSemicircle
                     maxWidth={350}

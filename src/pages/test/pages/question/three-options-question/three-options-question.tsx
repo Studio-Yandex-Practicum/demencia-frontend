@@ -1,5 +1,6 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import { useNavigate } from "react-router-dom";
+import { AppContext } from "../../../../../components/contexts";
 import { Box, Section } from "../../../../../ui/controls";
 import { testData } from "../../../data";
 import QuestionHeader from "../components/question-header";
@@ -18,6 +19,7 @@ import {
 } from "./three-options-question-styles";
 
 const ThreeOptionsQuestion: React.FC<{ number: number }> = ({ number }) => {
+  const { setLastQuestionId } = useContext(AppContext);
   const navigate = useNavigate();
   const [firstChecked, setFirstChecked] = useState(false);
   const [secondChecked, setSecondChecked] = useState(false);
@@ -57,6 +59,9 @@ const ThreeOptionsQuestion: React.FC<{ number: number }> = ({ number }) => {
 
   const goForward = () => {
     if (firstChecked || secondChecked || thirdChecked) {
+      if (setLastQuestionId) {
+        setLastQuestionId(`${number + 1}`);
+      }
       setIsError(false);
 
       const answer = makeAnswer();

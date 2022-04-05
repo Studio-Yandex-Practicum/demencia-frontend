@@ -14,7 +14,8 @@ import {
 import { useNavigate } from "react-router-dom";
 import QuestionHeader from "../components/question-header";
 import arrowSelect from "../../../../../images/arrow-select.svg";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
+import { AppContext } from "../../../../../components/contexts";
 
 const months = [
   "Январь",
@@ -37,6 +38,7 @@ const years = [...Array(new Date().getFullYear() - 1922 + 1)].map(
 
 const DateQuestion: React.FC<{ number: number }> = ({ number }) => {
   const navigate = useNavigate();
+  const { setLastQuestionId } = useContext(AppContext);
   const [day, setDay] = useState("");
   const [month, setMonth] = useState("1");
   const [year, setYear] = useState("1922");
@@ -93,6 +95,9 @@ const DateQuestion: React.FC<{ number: number }> = ({ number }) => {
 
   const goForward = () => {
     if (day && parseInt(day, 10) < 31 && parseInt(day, 10) > 0) {
+      if (setLastQuestionId) {
+        setLastQuestionId(`${number + 1}`);
+      }
       setIsError(false);
 
       const date = calculateDate();

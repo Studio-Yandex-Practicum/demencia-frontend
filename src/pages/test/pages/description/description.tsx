@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Section } from "../../../../ui/controls";
 import { Box, Button } from "../../../../ui/controls";
 import {
@@ -11,6 +11,7 @@ import { Subtitle1, Text1, Text2 } from "../../../../ui/controls";
 import styled from "styled-components";
 import { ArrowLeft, ArrowRight } from "./decor";
 import { useNavigate } from "react-router-dom";
+import { AppContext } from "../../../../components/contexts";
 
 const StyleArrowLeft = styled(ArrowLeft)`
   margin-right: 7px;
@@ -65,6 +66,7 @@ const StyleButton = styled(Button)`
 `;
 
 const DescriptionPage: React.FC = () => {
+  const { setLastQuestionId } = useContext(AppContext);
   const navigate = useNavigate();
 
   return (
@@ -151,7 +153,12 @@ const DescriptionPage: React.FC = () => {
             type={ButtonType.Primary}
             width={310}
             level={TypographyLevel.Subtitle3}
-            onClick={() => navigate("/test/question/1")}
+            onClick={() => {
+              navigate("/test/question/1");
+              if (setLastQuestionId) {
+                setLastQuestionId(`1`);
+              }
+            }}
           >
             все понятно. Начать!
           </StyleButton>

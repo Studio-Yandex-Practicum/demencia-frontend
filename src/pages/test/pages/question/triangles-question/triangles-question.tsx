@@ -1,5 +1,11 @@
 import styled from "styled-components";
-import { Dispatch, SetStateAction, useState, useEffect } from "react";
+import {
+  Dispatch,
+  SetStateAction,
+  useState,
+  useEffect,
+  useContext,
+} from "react";
 import { useNavigate } from "react-router-dom";
 import { Box, Button, Section, Text1, Text3 } from "../../../../../ui/controls";
 import { ArrowLeft, ArrowRight } from "../components/arrows";
@@ -8,6 +14,7 @@ import { ErrorText } from "../date-question/date-question-styles";
 import { ScreenSize, TextColor } from "../../../../../ui/types";
 
 import triangleQuestionSamplePic from "../../../../../images/triangles-question-sample-pic.jpg";
+import { AppContext } from "../../../../../components/contexts";
 
 const StyledBox = styled(Box)`
   @media (max-width: ${ScreenSize.Medium}px) {
@@ -150,6 +157,7 @@ const SvgLine: React.FC<SvgLineProps> = ({
 
 // Компонент вопрос №24
 const TrianglesQuestion: React.FC<{ number: number }> = ({ number }) => {
+  const { setLastQuestionId } = useContext(AppContext);
   const navigate = useNavigate();
   const [islinesReset, setIsLinesReset] = useState(false); // Сброс нажатых кружков
   const [answer, setAnswer] = useState([1, 2, 3, 4, 5, 6, 7, 8, 9]); // Стейт массива ответа
@@ -163,6 +171,9 @@ const TrianglesQuestion: React.FC<{ number: number }> = ({ number }) => {
 
   const onForward = () => {
     if (answer.length < 8) {
+      if (setLastQuestionId) {
+        setLastQuestionId(`${number + 1}`);
+      }
       setIsErrorTextShow(false);
       localStorage.setItem(`${number}`, answer.join(","));
       navigate(`/test/question/${number + 1}`);

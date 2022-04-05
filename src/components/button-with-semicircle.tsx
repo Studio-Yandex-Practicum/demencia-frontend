@@ -30,6 +30,7 @@ interface ButtonWithSemicircleProps {
   margin?: string;
   buttonText?: string;
   animate?: boolean;
+  onClick?: () => void;
 }
 
 const ButtonWithSemicircle: React.FC<ButtonWithSemicircleProps> = ({
@@ -37,6 +38,7 @@ const ButtonWithSemicircle: React.FC<ButtonWithSemicircleProps> = ({
   buttonText,
   margin,
   animate,
+  onClick,
 }) => {
   return (
     <RelativeBox maxWidth={maxWidth} margin={margin}>
@@ -50,6 +52,7 @@ const ButtonWithSemicircle: React.FC<ButtonWithSemicircleProps> = ({
               fullWidth
               size={ButtonSize.Default}
               ellipsis
+              onClick={onClick}
             >
               {buttonText || "Пройти тест"}
             </Button>
@@ -66,6 +69,7 @@ const ButtonWithSemicircle: React.FC<ButtonWithSemicircleProps> = ({
             zoomOutOnHover={false}
             fullWidth
             size={ButtonSize.Default}
+            onClick={onClick}
           >
             {buttonText || "Пройти тест"}
           </Button>

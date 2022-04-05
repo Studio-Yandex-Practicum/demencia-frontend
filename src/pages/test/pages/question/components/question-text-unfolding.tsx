@@ -11,7 +11,7 @@ import { ArrowDown, ArrowTop } from "./arrows";
 const StyledSection = styled(Section)`
   display: block;
   @media (max-width: ${ScreenSize.MediumSmall}px) {
-    max-width: 600px;
+    margin: 0 auto;
   }
 `;
 
@@ -48,12 +48,14 @@ const StyledText1 = styled(Text1)`
 `;
 
 const StyleText3 = styled(Text3)`
-  margin: 0 auto;
+  margin: 0 auto 0 40px;
   @media (max-width: ${ScreenSize.Medium}px) {
     margin: 0 40px;
   }
   @media (max-width: ${ScreenSize.MediumSmall}px) {
+    max-width: 540px;
     font-size: 16px;
+    margin: 0 auto 0 73px;
   }
   @media (max-width: ${ScreenSize.XSmall}px) {
     margin: 0 30px 0 67px;

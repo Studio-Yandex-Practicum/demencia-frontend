@@ -17,7 +17,6 @@ import { DEFAULT_SITE_NAME } from "../constants";
 import { Subtitle3 } from "../ui/controls";
 import ScrollToTop from "./scroll-to-top";
 import TestPage from "../pages/test/test";
-import { AppContext } from "./contexts";
 
 const App: React.FC = () => {
   const { loading, error, data } = useQuery<SettingsData>(GET_SETTINGS, {
@@ -31,23 +30,6 @@ const App: React.FC = () => {
       toast.error("Не удалось получить настроек сайта", { id: "error" });
     }
   });
-
-  function setLastQuestionId(id: string) {
-    switch (id) {
-      case "26":
-        localStorage.setItem("last_question", "result");
-        break;
-      case "description":
-        localStorage.setItem("last_question", "description");
-        break;
-      case "start":
-        localStorage.setItem("last_question", "start");
-        break;
-      default:
-        localStorage.setItem("last_question", id);
-        break;
-    }
-  }
 
   if (loading) {
     return (
@@ -81,19 +63,17 @@ const App: React.FC = () => {
         <ScrollToTop />
         <Layout>
           <PageHeader />
-          <AppContext.Provider value={{ setLastQuestionId }}>
-            <Main>
-              <Routes>
-                <Route path="/" element={<HomePage />} />
-                <Route path="/news-grid" element={<NewsGridPage />} />
-                <Route path="/article/:id" element={<ArticlePage />} />
-                <Route path="/ui-kit" element={<UIKitPage />} />
-                <Route path="/details" element={<DetailsPage />} />
-                <Route path="/graphql" element={<GraphqlTestPage />} />
-                <Route path="/test/*" element={<TestPage />} />
-              </Routes>
-            </Main>
-          </AppContext.Provider>
+          <Main>
+            <Routes>
+              <Route path="/" element={<HomePage />} />
+              <Route path="/news-grid" element={<NewsGridPage />} />
+              <Route path="/article/:id" element={<ArticlePage />} />
+              <Route path="/ui-kit" element={<UIKitPage />} />
+              <Route path="/details" element={<DetailsPage />} />
+              <Route path="/graphql" element={<GraphqlTestPage />} />
+              <Route path="/test/*" element={<TestPage />} />
+            </Routes>
+          </Main>
           <PageFooter />
         </Layout>
       </Router>

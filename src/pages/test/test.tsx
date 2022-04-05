@@ -7,10 +7,28 @@ import {
   useNavigate,
 } from "react-router-dom";
 import { DescriptionPage, QuestionPage, ResultPage, StartPage } from "./pages";
+import { AppContext } from "../../components/contexts";
 
 const TestPage = () => {
   const path = useLocation().pathname;
   const navigate = useNavigate();
+
+  function setLastQuestionId(id: string) {
+    switch (id) {
+      case "26":
+        localStorage.setItem("last_question", "result");
+        break;
+      case "description":
+        localStorage.setItem("last_question", "description");
+        break;
+      case "start":
+        localStorage.setItem("last_question", "start");
+        break;
+      default:
+        localStorage.setItem("last_question", id);
+        break;
+    }
+  }
 
   useEffect(() => {
     const lastQuestion = localStorage.getItem("last_question");
@@ -43,12 +61,14 @@ const TestPage = () => {
   }
 
   return (
-    <Routes>
-      <Route path="start" element={<StartPage />} />
-      <Route path="description" element={<DescriptionPage />} />
-      <Route path="result" element={<ResultPage />} />
-      <Route path="question/*" element={<QuestionPage />} />
-    </Routes>
+    <AppContext.Provider value={{ setLastQuestionId }}>
+      <Routes>
+        <Route path="start" element={<StartPage />} />
+        <Route path="description" element={<DescriptionPage />} />
+        <Route path="result" element={<ResultPage />} />
+        <Route path="question/*" element={<QuestionPage />} />
+      </Routes>
+    </AppContext.Provider>
   );
 };
 

@@ -21,6 +21,9 @@ const MemoryTestQuestion: React.FC<{ number: number }> = ({ number }) => {
   const onPressButton = () => {
     setIsError(false);
     localStorage.setItem(`${number}`, "true");
+    if (setLastQuestionId) {
+      setLastQuestionId(`${number + 1}`);
+    }
     navigate(`/test/question/${number + 1}`);
   };
 

@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { Section } from "../../../ui/controls/layout";
 import { Box } from "../../../ui/controls";
 import { PaletteColor, ScreenSize, TextColor } from "../../../ui/types";
-import { Title, Subtitle4 } from "../../../ui/controls/typography";
+import { Title, Subtitle4, Subtitle1 } from "../../../ui/controls/typography";
 import Slider from "./slider";
 import { useQuery } from "@apollo/client";
 import { SettingsData } from "../../../types/settings";
@@ -31,6 +31,8 @@ const StyledTitle = styled(Title)`
   transition: all 1s ease;
   ${({ animate }) =>
     animate ? "opacity: 0; transform: translateY(100px);" : ""}
+
+  ${({ hoverColor }) => (hoverColor ? `color: ${hoverColor}` : "")}  
 
   @media (max-width: ${ScreenSize.Medium}px) {
     font-size: 23px;
@@ -78,7 +80,11 @@ const Partners: React.FC = () => {
       <Box width="100%" mt={4}>
         <StyledBox ml={6}>
           <AnimationWrapper>
-            <StyledTitle textColor={TextColor.Accent1} ellipsis>
+            <StyledTitle
+              textColor={TextColor.Accent1}
+              hoverColor={TextColor.Accent2}
+              ellipsis
+            >
               {title}
             </StyledTitle>
           </AnimationWrapper>

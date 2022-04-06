@@ -2,6 +2,7 @@ import styled from "styled-components";
 import { Box, Text1 } from "../../../../../ui/controls";
 import { ScreenSize } from "../../../../../ui/types";
 import { ArrowLeft, ArrowRight } from "../components/arrows";
+import { cursorMixin } from "../../../../../ui/controls";
 import paper from "../../../../../images/paper.svg";
 
 export const StyledBox = styled(Box)`
@@ -104,6 +105,7 @@ export const StyledLabel = styled.label`
   border: 0;
   margin: 0 0 0 10px;
   width: 100%;
+  ${cursorMixin}
   @media (max-width: 790px) {
     margin: 30px 10px 0;
   }

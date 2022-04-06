@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { Section } from "../../../ui/controls/layout";
 import { Box } from "../../../ui/controls";
 import { PaletteColor, ScreenSize, TextColor } from "../../../ui/types";
-import { Title, Subtitle4, Subtitle1 } from "../../../ui/controls/typography";
+import { Title, Subtitle4 } from "../../../ui/controls/typography";
 import Slider from "./slider";
 import { useQuery } from "@apollo/client";
 import { SettingsData } from "../../../types/settings";

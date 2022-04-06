@@ -32,8 +32,9 @@ const StyledTitle = styled(Title)`
   ${({ animate }) =>
     animate ? "opacity: 0; transform: translateY(100px);" : ""}
 
-  ${({ hoverColor }) => (hoverColor ? `color: ${hoverColor}` : "")}  
-
+  textColor: ${TextColor.Accent1}
+  hoverColor: ${TextColor.Accent2}
+  
   @media (max-width: ${ScreenSize.Medium}px) {
     font-size: 23px;
   }
@@ -80,13 +81,7 @@ const Partners: React.FC = () => {
       <Box width="100%" mt={4}>
         <StyledBox ml={6}>
           <AnimationWrapper>
-            <StyledTitle
-              textColor={TextColor.Accent1}
-              hoverColor={TextColor.Accent2}
-              ellipsis
-            >
-              {title}
-            </StyledTitle>
+            <StyledTitle ellipsis>{title}</StyledTitle>
           </AnimationWrapper>
         </StyledBox>
         <StyledBox ml={6}>

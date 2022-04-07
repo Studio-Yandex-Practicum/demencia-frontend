@@ -1,9 +1,9 @@
-import React from "react";
+import React, { SyntheticEvent } from "react";
 import { Box } from "../../../../ui/controls";
 import { ContainerSize, TextColor } from "../../../../ui/types";
 import { BackgroundColor } from "../../../../ui/types/background-color.enum";
 import largeHalfCircle from "../../../../images/large-half-circle.svg";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import {
   StyledBox,
   StyledBoxContainer,
@@ -30,19 +30,21 @@ import { toast } from "react-hot-toast";
 const StartPage = () => {
   const [getTestId, {}] = useLazyQuery<NewTest>(NEW_TEST);
   const { setLastQuestionId } = useContext(AppContext);
-  
-  function onStartBtnClick(event: React.MouseEvent<HTMLAnchorElement>) {
-    event.preventDefault();
+  const navigate = useNavigate();
+
+  const onStartBtnClick = () => {
+    console.log("start");
     getTestId()
       .then((res) => {
         localStorage.setItem("test_id", JSON.stringify(res.data?.newTest));
         if (setLastQuestionId) {
-          setLastQuestionId(`start`);
+          setLastQuestionId(`description`);
+          navigate(`/test/description`);
         }
       })
       .catch(() => toast.error(`Не удалось начать тест`, { id: "error" }));
-  }
-  
+  };
+
   useEffect(() => {
     if (setLastQuestionId) {
       setLastQuestionId(`start`);
@@ -88,15 +90,13 @@ const StartPage = () => {
           <StyledBox flex>
             <StyledPuzzles />
             <StyledTestBox flex column>
-              <Link to="/test/description">
-                <Actions>
-                  <StyledButtonWithSemicircle
-                    maxWidth={350}
-                    buttonText="Начать тестирование"
-                    onClick={onStartBtnClick}
-                  />
-                </Actions>
-              </Link>
+              <Actions>
+                <StyledButtonWithSemicircle
+                  maxWidth={350}
+                  buttonText="Начать тестирование"
+                  onClick={onStartBtnClick}
+                />
+              </Actions>
               <StyledText1 maxWidth={500} mt={7}>
                 Тест рекомендуется использовать в качестве дополнения к
                 профессиональной врачебной диагностике, а не в качестве её

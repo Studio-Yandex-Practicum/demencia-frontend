@@ -9,6 +9,7 @@ const GET_REGIONS = gql`
         city
         address
         phoneNo
+        phoneNoSecondary
       }
     }
   }

@@ -2,6 +2,7 @@ export interface Center {
   city: string;
   address: string;
   phoneNo: string;
+  phoneNoSecondary: string;
 }
 
 export interface Region {

@@ -1,6 +1,9 @@
+import { useMutation } from "@apollo/client";
 import { useState, useEffect, useContext } from "react";
+import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 import { AppContext } from "../../../../../components/contexts";
+import { CREATE_ANSWER } from "../../../../../gql/mutation/create-answer";
 import { Box, Section } from "../../../../../ui/controls";
 import { testData } from "../../../data";
 import QuestionHeader from "../components/question-header";
@@ -19,6 +22,7 @@ import {
 } from "./three-options-question-styles";
 
 const ThreeOptionsQuestion: React.FC<{ number: number }> = ({ number }) => {
+  const [createAnswer] = useMutation(CREATE_ANSWER);
   const { setLastQuestionId } = useContext(AppContext);
   const navigate = useNavigate();
   const [firstChecked, setFirstChecked] = useState(false);
@@ -59,16 +63,35 @@ const ThreeOptionsQuestion: React.FC<{ number: number }> = ({ number }) => {
 
   const goForward = () => {
     if (firstChecked || secondChecked || thirdChecked) {
-      if (setLastQuestionId) {
-        setLastQuestionId(`${number + 1}`);
-      }
       setIsError(false);
 
       const answer = makeAnswer();
 
-      localStorage.setItem(`${number}`, answer);
-
-      navigate(`/test/question/${number + 1}`);
+      const testId = JSON.parse(localStorage.getItem("test_id") || "");
+      createAnswer({
+        variables: {
+          input: {
+            answerValue: answer,
+            testCase: { id: testId },
+            question: number,
+          },
+        },
+      })
+        .then((res) => {
+          if (res.data.createAnswer.ok === true) {
+            localStorage.setItem(`${number}`, answer);
+            if (setLastQuestionId) {
+              setLastQuestionId(`${number + 1}`);
+            }
+            const to =
+              number === 25 ? "/test/result" : `/test/question/${number + 1}`;
+            navigate(to);
+          }
+        })
+        .catch((err) => {
+          console.log(err);
+          toast.error(`Ошибка сервера`);
+        });
     } else {
       setIsError(true);
     }

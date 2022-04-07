@@ -12,8 +12,12 @@ import {
   ErrorText,
 } from "./countries-question-styles";
 import { AppContext } from "../../../../../components/contexts";
+import { useMutation } from "@apollo/client";
+import { CREATE_ANSWER } from "../../../../../gql/mutation/create-answer";
+import toast from "react-hot-toast";
 
 const CountriesQuestion: React.FC<{ number: number }> = ({ number }) => {
+  const [createAnswer] = useMutation(CREATE_ANSWER);
   const { setLastQuestionId } = useContext(AppContext);
   const navigate = useNavigate();
   const [isError, setIsError] = useState(false);
@@ -37,11 +41,33 @@ const CountriesQuestion: React.FC<{ number: number }> = ({ number }) => {
     if (!isValid) {
       setIsError(true);
     } else {
-      if (setLastQuestionId) {
-        setLastQuestionId(`${number + 1}`);
-      }
       const finalDataResponse = inputsArray.toString(); //финальные данные теста, доделать при интеграции с бэкендом
-      navigate(number === 25 ? "/test/result" : `/test/question/${number + 1}`);
+
+      const testId = JSON.parse(localStorage.getItem("test_id") || "");
+      createAnswer({
+        variables: {
+          input: {
+            answerValue: finalDataResponse,
+            testCase: { id: testId },
+            question: number,
+          },
+        },
+      })
+        .then((res) => {
+          if (res.data.createAnswer.ok === true) {
+            localStorage.setItem(`${number}`, finalDataResponse);
+            if (setLastQuestionId) {
+              setLastQuestionId(`${number + 1}`);
+            }
+            const to =
+              number === 25 ? "/test/result" : `/test/question/${number + 1}`;
+            navigate(to);
+          }
+        })
+        .catch((err) => {
+          console.log(err);
+          toast.error(`Ошибка сервера`);
+        });
     }
   };
 

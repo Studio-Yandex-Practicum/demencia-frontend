@@ -11,6 +11,9 @@ import { ErrorText } from "../date-question/date-question-styles";
 import rhinoPic from "../../../../../images/rhino-pic.jpg";
 import harpPic from "../../../../../images/harp-pic.jpg";
 import { AppContext } from "../../../../../components/contexts";
+import { useMutation } from "@apollo/client";
+import { CREATE_ANSWER } from "../../../../../gql/mutation/create-answer";
+import toast from "react-hot-toast";
 
 const StyledBox = styled(Box)`
   @media (max-width: ${ScreenSize.Medium}px) {
@@ -51,6 +54,7 @@ const StyledArrowRight = styled(ArrowRight)`
 const ImagesIdentificationQuestion: React.FC<{ number: number }> = ({
   number,
 }) => {
+  const [createAnswer] = useMutation(CREATE_ANSWER);
   const { setLastQuestionId } = useContext(AppContext);
   const navigate = useNavigate();
   const [firstAnswer, setFirstAnswer] = useState("");
@@ -77,16 +81,37 @@ const ImagesIdentificationQuestion: React.FC<{ number: number }> = ({
 
   const onForward = () => {
     if (firstAnswer && secondAnswer) {
-      if (setLastQuestionId) {
-        setLastQuestionId(`${number + 1}`);
-      }
       setIsErrorTextShow(false);
 
       const answer = `${firstAnswer},${secondAnswer}`;
 
       localStorage.setItem(`${number}`, answer);
 
-      navigate(`/test/question/${number + 1}`);
+      const testId = JSON.parse(localStorage.getItem("test_id") || "");
+      createAnswer({
+        variables: {
+          input: {
+            answerValue: answer,
+            testCase: { id: testId },
+            question: number,
+          },
+        },
+      })
+        .then((res) => {
+          if (res.data.createAnswer.ok === true) {
+            localStorage.setItem(`${number}`, answer);
+            if (setLastQuestionId) {
+              setLastQuestionId(`${number + 1}`);
+            }
+            const to =
+              number === 25 ? "/test/result" : `/test/question/${number + 1}`;
+            navigate(to);
+          }
+        })
+        .catch((err) => {
+          console.log(err);
+          toast.error(`Ошибка сервера`);
+        });
     } else {
       setIsErrorTextShow(true);
     }

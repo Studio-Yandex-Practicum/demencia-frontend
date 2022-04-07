@@ -1,5 +1,9 @@
-import { useState } from "react";
+import { useMutation } from "@apollo/client";
+import { useContext, useState } from "react";
+import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
+import { AppContext } from "../../../../../components/contexts";
+import { CREATE_ANSWER } from "../../../../../gql/mutation/create-answer";
 import { Box, Section } from "../../../../../ui/controls";
 import { TextColor, TypographyLevel } from "../../../../../ui/types";
 import QuestionHeader from "../components/question-header";
@@ -20,6 +24,8 @@ import {
 } from "./paper-image-question-style";
 
 const PaperImageQuestion: React.FC<{ number: number }> = ({ number }) => {
+  const [createAnswer] = useMutation(CREATE_ANSWER);
+  const { setLastQuestionId } = useContext(AppContext);
   const navigate = useNavigate();
   const [isSelected, setIsSelected] = useState(false);
   const [selectedFile, setSelectedFile] = useState<File>();
@@ -42,7 +48,34 @@ const PaperImageQuestion: React.FC<{ number: number }> = ({ number }) => {
   const goForward = () => {
     if (isSelected) {
       setIsError(false);
-      navigate(`/test/question/${number + 1}`);
+
+      const answer = "true";
+
+      const testId = JSON.parse(localStorage.getItem("test_id") || "");
+      createAnswer({
+        variables: {
+          input: {
+            answerValue: answer,
+            testCase: { id: testId },
+            question: number,
+          },
+        },
+      })
+        .then((res) => {
+          if (res.data.createAnswer.ok === true) {
+            localStorage.setItem(`${number}`, answer);
+            if (setLastQuestionId) {
+              setLastQuestionId(`${number + 1}`);
+            }
+            const to =
+              number === 25 ? "/test/result" : `/test/question/${number + 1}`;
+            navigate(to);
+          }
+        })
+        .catch((err) => {
+          console.log(err);
+          toast.error(`Ошибка сервера`);
+        });
     } else {
       setIsError(true);
     }

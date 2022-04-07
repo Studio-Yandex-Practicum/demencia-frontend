@@ -15,6 +15,9 @@ import { ScreenSize, TextColor } from "../../../../../ui/types";
 
 import triangleQuestionSamplePic from "../../../../../images/triangles-question-sample-pic.jpg";
 import { AppContext } from "../../../../../components/contexts";
+import { CREATE_ANSWER } from "../../../../../gql/mutation/create-answer";
+import { useMutation } from "@apollo/client";
+import toast from "react-hot-toast";
 
 const StyledBox = styled(Box)`
   @media (max-width: ${ScreenSize.Medium}px) {
@@ -157,6 +160,7 @@ const SvgLine: React.FC<SvgLineProps> = ({
 
 // Компонент вопрос №24
 const TrianglesQuestion: React.FC<{ number: number }> = ({ number }) => {
+  const [createAnswer] = useMutation(CREATE_ANSWER);
   const { setLastQuestionId } = useContext(AppContext);
   const navigate = useNavigate();
   const [islinesReset, setIsLinesReset] = useState(false); // Сброс нажатых кружков
@@ -171,12 +175,35 @@ const TrianglesQuestion: React.FC<{ number: number }> = ({ number }) => {
 
   const onForward = () => {
     if (answer.length < 8) {
-      if (setLastQuestionId) {
-        setLastQuestionId(`${number + 1}`);
-      }
       setIsErrorTextShow(false);
-      localStorage.setItem(`${number}`, answer.join(","));
-      navigate(`/test/question/${number + 1}`);
+
+      const finalAnswer = answer.join(",");
+
+      const testId = JSON.parse(localStorage.getItem("test_id") || "");
+      createAnswer({
+        variables: {
+          input: {
+            answerValue: finalAnswer,
+            testCase: { id: testId },
+            question: number,
+          },
+        },
+      })
+        .then((res) => {
+          if (res.data.createAnswer.ok === true) {
+            localStorage.setItem(`${number}`, finalAnswer);
+            if (setLastQuestionId) {
+              setLastQuestionId(`${number + 1}`);
+            }
+            const to =
+              number === 25 ? "/test/result" : `/test/question/${number + 1}`;
+            navigate(to);
+          }
+        })
+        .catch((err) => {
+          console.log(err);
+          toast.error(`Ошибка сервера`);
+        });
     } else {
       setIsErrorTextShow(true);
     }

@@ -1,6 +1,9 @@
+import { useMutation } from "@apollo/client";
 import { useContext, useState } from "react";
+import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 import { AppContext } from "../../../../../components/contexts";
+import { CREATE_ANSWER } from "../../../../../gql/mutation/create-answer";
 import { Box } from "../../../../../ui/controls";
 import { ArrowLeft, ArrowRight } from "../components/arrows";
 import QuestionHeader from "../components/question-header";
@@ -14,24 +17,45 @@ import {
 } from "./memory-test-question-styles";
 
 const MemoryTestQuestion: React.FC<{ number: number }> = ({ number }) => {
+  const [createAnswer] = useMutation(CREATE_ANSWER);
   const { setLastQuestionId } = useContext(AppContext);
   const navigate = useNavigate();
   const [isError, setIsError] = useState(false);
 
   const onPressButton = () => {
     setIsError(false);
-    localStorage.setItem(`${number}`, "true");
-    if (setLastQuestionId) {
-      setLastQuestionId(`${number + 1}`);
-    }
-    navigate(`/test/question/${number + 1}`);
+
+    const answer = "true";
+
+    const testId = JSON.parse(localStorage.getItem("test_id") || "");
+    createAnswer({
+      variables: {
+        input: {
+          answerValue: answer,
+          testCase: { id: testId },
+          question: number,
+        },
+      },
+    })
+      .then((res) => {
+        if (res.data.createAnswer.ok === true) {
+          localStorage.setItem(`${number}`, answer);
+          if (setLastQuestionId) {
+            setLastQuestionId(`${number + 1}`);
+          }
+          const to =
+            number === 25 ? "/test/result" : `/test/question/${number + 1}`;
+          navigate(to);
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+        toast.error(`Ошибка сервера`);
+      });
   };
 
   const goForward = () => {
     if (localStorage.getItem(`${number}`)) {
-      if (setLastQuestionId) {
-        setLastQuestionId(`${number + 1}`);
-      }
       navigate(`/test/question/${number + 1}`);
     } else {
       setIsError(true);

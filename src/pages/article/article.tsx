@@ -81,7 +81,7 @@ const ArticlePage: React.FC = () => {
           <ArticleTextBox mt={4}>
             <Text1>{ReactHtmlParser(DOMPurify.sanitize(article.text))}</Text1>
           </ArticleTextBox>
-          <ArticleTextBox mt={4} centered zoomOnHover maxWidth={350}>
+          <ArticleTextBox mt={4} centered maxWidth={350}>
             <ArticleLink to="/news-grid" zoomTextOnHover={false}>
               Перейти к ленте новостей
             </ArticleLink>

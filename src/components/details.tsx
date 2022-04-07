@@ -124,6 +124,10 @@ const CognitiveFunctionsGrid = styled(TwoColumnGrid)`
   }
 `;
 
+const StyledThreeColumnGrid = styled(ThreeColumnGrid)`
+  max-width: 1206px;
+`;
+
 const Details: React.FC = () => {
   return (
     <>
@@ -276,7 +280,7 @@ const Details: React.FC = () => {
       </Section>
 
       <Section flex centered mt={7}>
-        <ThreeColumnGrid>
+        <StyledThreeColumnGrid>
           <SeparatedColumn flex centered>
             <Subtitle2 uppercase={false}>Легкие</Subtitle2>
             <List>
@@ -348,7 +352,7 @@ const Details: React.FC = () => {
               </li>
             </List>
           </SeparatedColumn>
-        </ThreeColumnGrid>
+        </StyledThreeColumnGrid>
       </Section>
 
       <Section

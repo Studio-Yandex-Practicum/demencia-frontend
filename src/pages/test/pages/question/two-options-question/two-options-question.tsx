@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { Box, Section } from "../../../../../ui/controls";
 import { testData } from "../../../data";
@@ -17,8 +17,10 @@ import {
   ErrorText,
 } from "./two-options-question-styles";
 import { ArrowLeft, ArrowRight } from "../components/arrows";
+import { AppContext } from "../../../../../components/contexts";
 
 const TwoOptionsQuestion: React.FC<{ number: number }> = ({ number }) => {
+  const { setLastQuestionId } = useContext(AppContext);
   const navigate = useNavigate();
   const [firstChecked, setFirstChecked] = useState(false);
   const [secondChecked, setSecondChecked] = useState(false);
@@ -60,6 +62,9 @@ const TwoOptionsQuestion: React.FC<{ number: number }> = ({ number }) => {
 
   const goForward = () => {
     if (firstChecked || secondChecked) {
+      if (setLastQuestionId) {
+        setLastQuestionId(`${number + 1}`);
+      }
       setIsError(false);
 
       const answer = makeAnswer();

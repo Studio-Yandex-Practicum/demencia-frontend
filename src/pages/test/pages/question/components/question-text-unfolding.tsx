@@ -11,7 +11,7 @@ import { ArrowDown, ArrowTop } from "./arrows";
 const StyledSection = styled(Section)`
   display: block;
   @media (max-width: ${ScreenSize.MediumSmall}px) {
-    max-width: 600px;
+    margin: 0 auto;
   }
 `;
 
@@ -19,7 +19,14 @@ const StyledBox = styled(Box)`
   display: flex;
   justify-content: flex-start;
   flex-direction: row;
-  margin: 0 auto;
+  margin: 0 auto 0 0;
+  @media (max-width: ${ScreenSize.MediumSmall}px) {
+    margin: 0 auto;
+    padding: 0 30px;
+  }
+  @media (max-width: 385px) {
+    padding: 0 10px;
+  }
 `;
 
 const StyleButton = styled(Button)`
@@ -33,24 +40,29 @@ const StyledText1 = styled(Text1)`
   @media (max-width: ${ScreenSize.MediumSmall}px) {
     font-size: 18px;
     line-height: 20px;
-    margin: 16px 60px 0 20px;
+    margin: 16px auto 0 20px;
   }
   @media (max-width: ${ScreenSize.Small}px) {
     font-size: 16px;
-    margin: 16px 40px 0 20px;
   }
 `;
 
 const StyleText3 = styled(Text3)`
-  margin: 0 auto;
+  margin: 0 auto 0 40px;
   @media (max-width: ${ScreenSize.Medium}px) {
     margin: 0 40px;
   }
   @media (max-width: ${ScreenSize.MediumSmall}px) {
+    max-width: 540px;
     font-size: 16px;
+    margin: 0 auto 0 73px;
   }
   @media (max-width: ${ScreenSize.XSmall}px) {
-    margin: 0 30px;
+    margin: 0 30px 0 67px;
+  }
+  @media (max-width: 385px) {
+    margin: 0 20px 0 50px;
+  }
   }
 `;
 
@@ -60,7 +72,7 @@ const QuestionTextUnfolding: React.FC = () => {
   return (
     <Box>
       <Section>
-        <StyledBox maxWidth={920}>
+        <StyledBox maxWidth={920} alignItems={"left"}>
           {checked ? (
             <StyleButton>
               <ArrowTop onClick={() => setChecked(false)} />
@@ -82,6 +94,8 @@ const QuestionTextUnfolding: React.FC = () => {
           </StyledText1>
         </StyledBox>
         {checked ? (
+          ""
+        ) : (
           <StyledSection>
             <StyleText3
               maxWidth={860}
@@ -111,8 +125,6 @@ const QuestionTextUnfolding: React.FC = () => {
               смартфона/планшета.
             </StyleText3>
           </StyledSection>
-        ) : (
-          ""
         )}
       </Section>
     </Box>

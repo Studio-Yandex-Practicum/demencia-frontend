@@ -20,6 +20,7 @@ import { NewsArticleData } from "../../types/news";
 import { GET_NEWS_ARTICLE } from "../../gql/query/news";
 import { toast } from "react-hot-toast";
 import { useParams } from "react-router-dom";
+import { TextColor } from "../../ui/types";
 
 const Empty: React.FC = () => (
   <Section borderBox flex centered>
@@ -63,7 +64,12 @@ const ArticlePage: React.FC = () => {
   return (
     <>
       <Section flex>
-        <MainTitleArticle>{article.title}</MainTitleArticle>
+        <MainTitleArticle
+          textColor={TextColor.Accent1}
+          hoverColor={TextColor.Accent2}
+        >
+          {article.title}
+        </MainTitleArticle>
         <ArticleDate>{formattedDate}</ArticleDate>
         <PurplePuzzle src={purplePuzzleImg} alt="." />
       </Section>

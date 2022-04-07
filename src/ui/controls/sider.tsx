@@ -18,7 +18,7 @@ const SiderNav = styled.nav<{ isVisible: boolean; alignRight: boolean }>`
   bottom: 0;
   max-width: 300px;
   width: 100%;
-  overflow: hidden;
+  overflow: scroll;
   ${(p) => (!p.alignRight ? "left" : "right")}: 0;
   transform: translate(${(p) => (!p.isVisible ? "100%" : "0")}, 0);
   z-index: 999999;
@@ -42,7 +42,7 @@ const SiderBtn = styled(Button).attrs(
   top: 20px;
   right: 15px;
   z-index: 3;
-  @media screen and (min-width: ${ScreenSize.Large - 1}px) {
+  @media screen and (min-width: ${ScreenSize.Large + 1}px) {
     display: none;
   }
 `;

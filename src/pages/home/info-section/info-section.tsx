@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Text4, Button, Text1 } from "../../../ui/controls";
+import { Text4, Button } from "../../../ui/controls";
 import { PaletteColor, ButtonType, TextColor } from "../../../ui/types";
 import {
   StyledInfoSection,
@@ -28,9 +28,11 @@ import ReactHtmlParser from "react-html-parser";
 import ButtonWithSemicircle from "../../../components/button-with-semicircle";
 
 import AnimationWrapper from "../../../components/animation-wrapper";
+import { useNavigate } from "react-router-dom";
 
 const InfoSection: React.FC = () => {
   const [isDetailsOpen, setIsDetailsOpen] = useState(false);
+  const navigate = useNavigate();
 
   const { data } = useQuery<SettingsData>(GET_SETTINGS, {
     fetchPolicy: "cache-first",
@@ -42,6 +44,10 @@ const InfoSection: React.FC = () => {
   }
 
   const settings = data.settings;
+
+  function onClick() {
+    navigate("/test/start");
+  }
 
   return (
     <StyledInfoSection id="info" borderBox flex centered mb={1}>
@@ -142,6 +148,7 @@ const InfoSection: React.FC = () => {
             <ButtonWithSemicircle
               maxWidth={350}
               buttonText={settings.aboutSectionButtonLabel}
+              onClick={onClick}
               animate
             />
           </FlexColumn>

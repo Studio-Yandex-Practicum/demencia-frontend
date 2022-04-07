@@ -124,7 +124,10 @@ const ResultPage: React.FC = () => {
             type={ButtonType.Primary}
             width={310}
             level={TypographyLevel.Subtitle3}
-            onClick={() => navigate("/test/question/1")}
+            onClick={() => {
+              navigate("/test/start");
+              localStorage.clear();
+            }}
           >
             Пройти еще раз
           </StyleButton>

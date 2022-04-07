@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { Box, Section } from "../../../../../ui/controls";
 import QuestionHeader from "../components/question-header";
@@ -13,8 +13,10 @@ import {
   InputBox,
 } from "./money-question-styles";
 import { ArrowLeft, ArrowRight } from "../components/arrows";
+import { AppContext } from "../../../../../components/contexts";
 
 const MoneyQuestion: React.FC<{ number: number }> = ({ number }) => {
+  const { setLastQuestionId } = useContext(AppContext);
   const navigate = useNavigate();
   const [firstAnswer, setFirstAnswer] = useState("");
   const [secondAnswer, setSecondAnswer] = useState("");
@@ -51,6 +53,9 @@ const MoneyQuestion: React.FC<{ number: number }> = ({ number }) => {
 
   const goForward = () => {
     if (firstAnswer && secondAnswer) {
+      if (setLastQuestionId) {
+        setLastQuestionId(`${number + 1}`);
+      }
       setIsError(false);
 
       const answer = makeAnswer();

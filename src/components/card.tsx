@@ -4,6 +4,7 @@ import styled from "styled-components";
 import { ScreenSize } from "../ui/types";
 import { Subtitle3, Text3 } from "../ui/controls/typography";
 import { Box, Link, LinkButton } from "../ui/controls";
+import textEllipsis from "../utils";
 
 const StyledCard = styled.div`
   margin: 0;
@@ -90,6 +91,7 @@ interface CardProps {
   cardDateTime?: string;
   cardDateTimeText: string;
   cardLinkTo: string;
+  urlLabel: string;
 }
 
 const Card: React.FC<CardProps> = ({
@@ -99,7 +101,10 @@ const Card: React.FC<CardProps> = ({
   cardDateTime,
   cardDateTimeText,
   cardLinkTo,
+  urlLabel,
 }) => {
+  const linkLabel = textEllipsis(urlLabel, 9);
+
   return (
     <StyledCard>
       <Link to={cardLinkTo} zoomTextOnHover={false} borderBottomOnHover={false}>
@@ -113,7 +118,7 @@ const Card: React.FC<CardProps> = ({
         </Link>
         <Text3 newsGrid>{cardText}</Text3>
       </Box>
-      <Box flex between marginTopAuto>
+      <Box flex between alignItems={"center"} marginTopAuto>
         <time className="card__date" dateTime={cardDateTime}>
           {cardDateTimeText}
         </time>
@@ -122,7 +127,7 @@ const Card: React.FC<CardProps> = ({
           borderBottomOnHover={false}
           to={cardLinkTo}
         >
-          <LinkButton>подробнее</LinkButton>
+          <LinkButton>{linkLabel}</LinkButton>
         </Link>
       </Box>
     </StyledCard>

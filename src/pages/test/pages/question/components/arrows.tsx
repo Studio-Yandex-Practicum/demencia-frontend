@@ -38,7 +38,7 @@ export const ArrowRight = styled.img.attrs((props) => ({
   }
 `;
 
-export const ArrowDown = styled.img.attrs((props) => ({
+export const ArrowTop = styled.img.attrs((props) => ({
   src: props.src || arrowDown,
   alt: props.alt || "",
 }))`
@@ -48,7 +48,7 @@ export const ArrowDown = styled.img.attrs((props) => ({
   right: 0;
 `;
 
-export const ArrowTop = styled.img.attrs((props) => ({
+export const ArrowDown = styled.img.attrs((props) => ({
   src: props.src || arrowTop,
   alt: props.alt || "",
 }))`

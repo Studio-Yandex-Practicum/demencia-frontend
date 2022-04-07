@@ -1,4 +1,4 @@
-import React, { ChangeEvent, useEffect } from "react";
+import React, { ChangeEvent, useContext, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { Box } from "../../../../../ui/controls";
 import QuestionHeader from "../components/question-header";
@@ -11,8 +11,10 @@ import {
   StyledBoxInput,
   ErrorText,
 } from "./countries-question-styles";
+import { AppContext } from "../../../../../components/contexts";
 
 const CountriesQuestion: React.FC<{ number: number }> = ({ number }) => {
+  const { setLastQuestionId } = useContext(AppContext);
   const navigate = useNavigate();
   const [isError, setIsError] = useState(false);
   const [inputsArray, setInputArray] = useState(new Array(12).fill(""));
@@ -35,6 +37,9 @@ const CountriesQuestion: React.FC<{ number: number }> = ({ number }) => {
     if (!isValid) {
       setIsError(true);
     } else {
+      if (setLastQuestionId) {
+        setLastQuestionId(`${number + 1}`);
+      }
       const finalDataResponse = inputsArray.toString(); //финальные данные теста, доделать при интеграции с бэкендом
       navigate(number === 25 ? "/test/result" : `/test/question/${number + 1}`);
     }

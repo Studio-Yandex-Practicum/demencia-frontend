@@ -10,6 +10,7 @@ import { GET_SETTINGS } from "../../../../gql/query/settings";
 import ButtonWithSemicircle from "../../../../components/button-with-semicircle";
 import Puzzles from "../../../../components/puzzles";
 import GreenPuzzle from "../../../../components/green-puzzle";
+import { useNavigate } from "react-router-dom";
 
 const Actions = styled.div`
   display: flex;
@@ -54,8 +55,8 @@ const StyledNavBox = styled(Box)`
 `;
 
 const DefaultCaption: React.FC<{ title: string }> = ({ title }) => <>{title}</>;
-
 const Test: React.FC = () => {
+  const navigate = useNavigate();
   const { data } = useQuery<SettingsData>(GET_SETTINGS, {
     fetchPolicy: "cache-first",
   });
@@ -66,6 +67,10 @@ const Test: React.FC = () => {
   const buttonCaption = data.settings.mainSectionButtonLabel;
 
   if (!buttonCaption.length) return <DefaultCaption title="Пройти тест" />;
+
+  function onClick() {
+    navigate("/test/start");
+  }
 
   return (
     <StyledBox>
@@ -84,6 +89,7 @@ const Test: React.FC = () => {
           maxWidth={300}
           buttonText={buttonCaption}
           margin={"0 60px 0 0"}
+          onClick={onClick}
           animate
         />
       </Actions>

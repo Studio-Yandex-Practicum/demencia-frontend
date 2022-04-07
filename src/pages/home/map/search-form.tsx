@@ -206,6 +206,9 @@ const SearchForm: React.FC = () => {
             <StyledCard key={index}>
               <Text2 textColor={TextColor.Shadow}>{center.address}</Text2>
               <Text2 textColor={TextColor.Shadow}>{center.phoneNo}</Text2>
+              <Text2 textColor={TextColor.Shadow}>
+                {center.phoneNoSecondary}
+              </Text2>
             </StyledCard>
           ))}
         </StyledWrapper>

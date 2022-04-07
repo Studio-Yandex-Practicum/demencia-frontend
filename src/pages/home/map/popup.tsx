@@ -53,19 +53,24 @@ interface PopupProps {
 const Popup: React.FC<PopupProps> = ({ currentRegion, left, top }) => {
   // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
   const initData = sessionStorage.getItem(currentRegion)!;
-
   const data = JSON.parse(initData);
 
   return (
     <div>
       <StyledBox left={left} top={top}>
         {data.map(
-          (region: { city: string; address: string; phoneNo: string }) => (
+          (region: {
+            city: string;
+            address: string;
+            phoneNo: string;
+            phoneNoSecondary: string;
+          }) => (
             <div key={region.address}>
               <StyledTitle>{region.city}</StyledTitle>
               <StyledLine>
                 <StyledText mt={2}>{region.address}</StyledText>
                 <StyledText mt={1}>{region.phoneNo}</StyledText>
+                <StyledText mt={1}>{region.phoneNoSecondary}</StyledText>
               </StyledLine>
             </div>
           )

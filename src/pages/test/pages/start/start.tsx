@@ -3,7 +3,7 @@ import { Box } from "../../../../ui/controls";
 import { ContainerSize, TextColor } from "../../../../ui/types";
 import { BackgroundColor } from "../../../../ui/types/background-color.enum";
 import largeHalfCircle from "../../../../images/large-half-circle.svg";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import {
   StyledBox,
   StyledBoxContainer,
@@ -20,6 +20,8 @@ import {
   StyledSubtitle3,
   Actions,
 } from "./start-styles";
+import { AppContext } from "../../../../components/contexts";
+import { useContext, useEffect } from "react";
 import { useLazyQuery } from "@apollo/client";
 import { NewTest } from "../../../../types/newTest";
 import { NEW_TEST } from "../../../../gql/query/newTest";
@@ -27,16 +29,26 @@ import { toast } from "react-hot-toast";
 
 const StartPage = () => {
   const [getTestId, {}] = useLazyQuery<NewTest>(NEW_TEST);
-  const navigate = useNavigate();
+  const { setLastQuestionId } = useContext(AppContext);
+  
   function onStartBtnClick(event: React.MouseEvent<HTMLAnchorElement>) {
     event.preventDefault();
     getTestId()
       .then((res) => {
         localStorage.setItem("test_id", JSON.stringify(res.data?.newTest));
-        navigate("/test/description");
+        if (setLastQuestionId) {
+          setLastQuestionId(`start`);
+        }
       })
       .catch(() => toast.error(`Не удалось начать тест`, { id: "error" }));
   }
+  
+  useEffect(() => {
+    if (setLastQuestionId) {
+      setLastQuestionId(`start`);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return (
     <Box mb={5}>
@@ -76,11 +88,12 @@ const StartPage = () => {
           <StyledBox flex>
             <StyledPuzzles />
             <StyledTestBox flex column>
-              <Link to="/test/description" onClick={onStartBtnClick}>
+              <Link to="/test/description">
                 <Actions>
                   <StyledButtonWithSemicircle
                     maxWidth={350}
                     buttonText="Начать тестирование"
+                    onClick={onStartBtnClick}
                   />
                 </Actions>
               </Link>

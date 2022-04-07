@@ -3,7 +3,6 @@ import { Subtitle2, Title } from "../../ui/controls/typography";
 import { ScreenSize } from "../../ui/types";
 
 export const MainTitleArticle = styled(Title)`
-  color: #6d097a;
   text-transform: uppercase;
   font-size: 60px;
   line-height: 1.15;

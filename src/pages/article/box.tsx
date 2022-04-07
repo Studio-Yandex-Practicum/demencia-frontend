@@ -1,5 +1,6 @@
 import styled, { css } from "styled-components";
 import { Box } from "../../ui/controls";
+import { buildTransitionFaster } from "../../ui/controls/mixins";
 import { ScreenSize } from "../../ui/types";
 
 export const ArticleItemBox = styled.div`
@@ -64,6 +65,7 @@ export const ImageBox = styled.div`
 
 export const ArticleTextBox = styled(Box)<{ centered?: boolean }>`
   display: flex;
+  ${buildTransitionFaster("all")}
   @media (max-width: ${ScreenSize.XSmall}px) {
     ${(p) => {
       if (p.centered) {

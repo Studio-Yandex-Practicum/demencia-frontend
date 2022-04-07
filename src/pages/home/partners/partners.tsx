@@ -78,7 +78,11 @@ const Partners: React.FC = () => {
       <Box width="100%" mt={4}>
         <StyledBox ml={6}>
           <AnimationWrapper>
-            <StyledTitle textColor={TextColor.Accent1} ellipsis>
+            <StyledTitle
+              textColor={TextColor.Accent1}
+              hoverColor={TextColor.Accent2}
+              ellipsis
+            >
               {title}
             </StyledTitle>
           </AnimationWrapper>

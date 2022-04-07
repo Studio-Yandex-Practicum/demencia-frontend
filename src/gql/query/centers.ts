@@ -6,6 +6,7 @@ const GET_CENTERS = gql`
       city
       address
       phoneNo
+      phoneNoSecondary
     }
   }
 `;

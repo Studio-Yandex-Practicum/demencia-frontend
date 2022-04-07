@@ -117,7 +117,7 @@ const DescriptionPage: React.FC = () => {
               черно-белой.
             </Text1>
             <Text1 maxWidth={1026} mb={1} textColor={TextColor.Primary}>
-              2. Фото рисунка необходимо сделать сверху. Освящение должно быть
+              2. Фото рисунка необходимо сделать сверху. Освещение должно быть
               максимально ярким (дневное, под лампой, без тени от устройства).
             </Text1>
             <Text1 maxWidth={1026} mb={1} textColor={TextColor.Primary}>

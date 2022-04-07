@@ -4,6 +4,7 @@ import styled from "styled-components";
 import { ScreenSize } from "../ui/types";
 import { Subtitle3, Text3 } from "../ui/controls/typography";
 import { Box, Link, LinkButton } from "../ui/controls";
+import textEllipsis from "../utils";
 
 const StyledCard = styled.div`
   margin: 0;
@@ -102,6 +103,8 @@ const Card: React.FC<CardProps> = ({
   cardLinkTo,
   urlLabel,
 }) => {
+  const linkLabel = textEllipsis(urlLabel, 9);
+
   return (
     <StyledCard>
       <Link to={cardLinkTo} zoomTextOnHover={false} borderBottomOnHover={false}>
@@ -124,7 +127,7 @@ const Card: React.FC<CardProps> = ({
           borderBottomOnHover={false}
           to={cardLinkTo}
         >
-          <LinkButton>{urlLabel}</LinkButton>
+          <LinkButton>{linkLabel}</LinkButton>
         </Link>
       </Box>
     </StyledCard>

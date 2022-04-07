@@ -1,3 +1,4 @@
+import React from "react";
 import { Box } from "../../../../ui/controls";
 import { ContainerSize, TextColor } from "../../../../ui/types";
 import { BackgroundColor } from "../../../../ui/types/background-color.enum";
@@ -21,13 +22,27 @@ import {
 } from "./start-styles";
 import { AppContext } from "../../../../components/contexts";
 import { useContext, useEffect } from "react";
+import { useLazyQuery } from "@apollo/client";
+import { NewTest } from "../../../../types/newTest";
+import { NEW_TEST } from "../../../../gql/query/newTest";
+import { toast } from "react-hot-toast";
 
 const StartPage = () => {
+  const [getTestId, {}] = useLazyQuery<NewTest>(NEW_TEST);
   const { setLastQuestionId } = useContext(AppContext);
-  function setTestId(id = "123456789") {
-    localStorage.setItem("test_id", id);
+  
+  function onStartBtnClick(event: React.MouseEvent<HTMLAnchorElement>) {
+    event.preventDefault();
+    getTestId()
+      .then((res) => {
+        localStorage.setItem("test_id", JSON.stringify(res.data?.newTest));
+        if (setLastQuestionId) {
+          setLastQuestionId(`start`);
+        }
+      })
+      .catch(() => toast.error(`Не удалось начать тест`, { id: "error" }));
   }
-
+  
   useEffect(() => {
     if (setLastQuestionId) {
       setLastQuestionId(`start`);
@@ -78,12 +93,7 @@ const StartPage = () => {
                   <StyledButtonWithSemicircle
                     maxWidth={350}
                     buttonText="Начать тестирование"
-                    onClick={() => {
-                      setTestId();
-                      if (setLastQuestionId) {
-                        setLastQuestionId("description");
-                      }
-                    }}
+                    onClick={onStartBtnClick}
                   />
                 </Actions>
               </Link>

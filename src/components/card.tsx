@@ -90,6 +90,7 @@ interface CardProps {
   cardDateTime?: string;
   cardDateTimeText: string;
   cardLinkTo: string;
+  urlLabel: string;
 }
 
 const Card: React.FC<CardProps> = ({
@@ -99,6 +100,7 @@ const Card: React.FC<CardProps> = ({
   cardDateTime,
   cardDateTimeText,
   cardLinkTo,
+  urlLabel,
 }) => {
   return (
     <StyledCard>
@@ -122,7 +124,7 @@ const Card: React.FC<CardProps> = ({
           borderBottomOnHover={false}
           to={cardLinkTo}
         >
-          <LinkButton>подробнее</LinkButton>
+          <LinkButton>{urlLabel}</LinkButton>
         </Link>
       </Box>
     </StyledCard>

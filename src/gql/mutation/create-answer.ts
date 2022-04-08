@@ -5,6 +5,7 @@ const CREATE_ANSWER = gql`
     createAnswer(input: $input) {
       answer {
         id
+        image
       }
       ok
     }

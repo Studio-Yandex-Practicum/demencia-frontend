@@ -6,22 +6,20 @@ import reportWebVitals from "./reportWebVitals";
 import { GlobalStyle } from "./ui/controls/style";
 import { themeLight } from "./ui/theme";
 import { ThemeProvider } from "styled-components";
-import {
-  ApolloClient,
-  ApolloProvider,
-  InMemoryCache,
-  createHttpLink,
-} from "@apollo/client";
+import { ApolloClient, ApolloProvider, InMemoryCache } from "@apollo/client";
+import { createUploadLink } from "apollo-upload-client";
 import { API_URL } from "./constants";
 import { Toaster } from "react-hot-toast";
 
-const httpLink = createHttpLink({
+const httpLink = createUploadLink({
   uri: API_URL,
 });
 
 const cache = new InMemoryCache();
 
 const client = new ApolloClient({
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+  //@ts-ignore
   link: httpLink,
   cache,
   resolvers: {},

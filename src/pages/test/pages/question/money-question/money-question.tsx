@@ -14,8 +14,12 @@ import {
 } from "./money-question-styles";
 import { ArrowLeft, ArrowRight } from "../components/arrows";
 import { AppContext } from "../../../../../components/contexts";
+import { useMutation } from "@apollo/client";
+import { CREATE_ANSWER } from "../../../../../gql/mutation/create-answer";
+import toast from "react-hot-toast";
 
 const MoneyQuestion: React.FC<{ number: number }> = ({ number }) => {
+  const [createAnswer] = useMutation(CREATE_ANSWER);
   const { setLastQuestionId } = useContext(AppContext);
   const navigate = useNavigate();
   const [firstAnswer, setFirstAnswer] = useState("");
@@ -53,16 +57,35 @@ const MoneyQuestion: React.FC<{ number: number }> = ({ number }) => {
 
   const goForward = () => {
     if (firstAnswer && secondAnswer) {
-      if (setLastQuestionId) {
-        setLastQuestionId(`${number + 1}`);
-      }
       setIsError(false);
 
       const answer = makeAnswer();
 
-      localStorage.setItem(`${number}`, answer);
-
-      navigate(`/test/question/${number + 1}`);
+      const testId = JSON.parse(localStorage.getItem("test_id") || "");
+      createAnswer({
+        variables: {
+          input: {
+            answerValue: answer,
+            testCase: { id: testId },
+            question: number,
+          },
+        },
+      })
+        .then((res) => {
+          if (res.data.createAnswer.ok === true) {
+            localStorage.setItem(`${number}`, answer);
+            if (setLastQuestionId) {
+              setLastQuestionId(`${number + 1}`);
+            }
+            const to =
+              number === 25 ? "/test/result" : `/test/question/${number + 1}`;
+            navigate(to);
+          }
+        })
+        .catch((err) => {
+          console.log(err);
+          toast.error(`Ошибка сервера`);
+        });
     } else {
       setIsError(true);
       navigate("");

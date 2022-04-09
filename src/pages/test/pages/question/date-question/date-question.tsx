@@ -16,6 +16,9 @@ import QuestionHeader from "../components/question-header";
 import arrowSelect from "../../../../../images/arrow-select.svg";
 import { useContext, useEffect, useState } from "react";
 import { AppContext } from "../../../../../components/contexts";
+import { useMutation } from "@apollo/client";
+import { CREATE_ANSWER } from "../../../../../gql/mutation/create-answer";
+import toast from "react-hot-toast";
 
 const months = [
   "Январь",
@@ -37,6 +40,7 @@ const years = [...Array(new Date().getFullYear() - 1922 + 1)].map(
 );
 
 const DateQuestion: React.FC<{ number: number }> = ({ number }) => {
+  const [createAnswer] = useMutation(CREATE_ANSWER);
   const navigate = useNavigate();
   const { setLastQuestionId } = useContext(AppContext);
   const [day, setDay] = useState("");
@@ -95,16 +99,35 @@ const DateQuestion: React.FC<{ number: number }> = ({ number }) => {
 
   const goForward = () => {
     if (day && parseInt(day, 10) < 31 && parseInt(day, 10) > 0) {
-      if (setLastQuestionId) {
-        setLastQuestionId(`${number + 1}`);
-      }
       setIsError(false);
 
       const date = calculateDate();
 
-      localStorage.setItem(`${number}`, date);
-
-      navigate(`/test/question/${number + 1}`);
+      const testId = JSON.parse(localStorage.getItem("test_id") || "");
+      createAnswer({
+        variables: {
+          input: {
+            answerValue: date,
+            testCase: { id: testId },
+            question: number,
+          },
+        },
+      })
+        .then((res) => {
+          if (res.data.createAnswer.ok === true) {
+            localStorage.setItem(`${number}`, date);
+            if (setLastQuestionId) {
+              setLastQuestionId(`${number + 1}`);
+            }
+            const to =
+              number === 25 ? "/test/result" : `/test/question/${number + 1}`;
+            navigate(to);
+          }
+        })
+        .catch((err) => {
+          console.log(err);
+          toast.error(`Ошибка сервера`);
+        });
     } else {
       setIsError(true);
       navigate("");

@@ -18,7 +18,7 @@ const httpLink = createUploadLink({
 const cache = new InMemoryCache();
 
 const client = new ApolloClient({
-  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+  //eslint-disable-next-line @typescript-eslint/ban-ts-comment
   //@ts-ignore
   link: httpLink,
   cache,

@@ -14,6 +14,7 @@ export const StyleSelect = styled.select`
   font-size: 30px;
   color: #999;
   appearance: none;
+  outline-color: #000;
   @media (max-width: ${ScreenSize.MediumSmall}px) {
     font-size: 20px;
   }
@@ -22,6 +23,11 @@ export const StyleSelect = styled.select`
 export const StyleInput = styled(StyledInput)`
   width: 40%;
   margin-right: 10px;
+  -moz-appearance: textfield;
+  ::-webkit-inner-spin-button,
+  ::-webkit-outer-spin-button {
+    -webkit-appearance: None;
+  }
   @media (max-width: ${ScreenSize.MediumSmall}px) {
     width: 100%;
     margin-right: 0;
@@ -108,10 +114,10 @@ export const StyledBoxCurrentSelect = styled(Box)`
 export const StyledImg = styled.img`
   position: absolute;
   width: 12px;
-  height: 20px;
   top: 50%;
   right: 1.5rem;
   transform: translateY(-50%);
+  z-index: -1;
 `;
 
 export const ErrorText = styled(Text1)`

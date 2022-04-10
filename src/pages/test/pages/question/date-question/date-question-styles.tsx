@@ -23,6 +23,11 @@ export const StyleSelect = styled.select`
 export const StyleInput = styled(StyledInput)`
   width: 40%;
   margin-right: 10px;
+  -moz-appearance: textfield;
+  ::-webkit-inner-spin-button,
+  ::-webkit-outer-spin-button {
+    -webkit-appearance: None;
+  }
   @media (max-width: ${ScreenSize.MediumSmall}px) {
     width: 100%;
     margin-right: 0;

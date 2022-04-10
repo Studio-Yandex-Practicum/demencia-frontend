@@ -25,7 +25,7 @@ const StyledSlide = styled.div`
 `;
 
 const StyledImage = styled.img`
-  object-fit: cover;
+  object-fit: contain;
   width: 100%;
   height: 100%;
   flex-shrink: 0;

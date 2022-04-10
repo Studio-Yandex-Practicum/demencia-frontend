@@ -109,10 +109,10 @@ export const StyledBoxCurrentSelect = styled(Box)`
 export const StyledImg = styled.img`
   position: absolute;
   width: 12px;
-  height: 20px;
   top: 50%;
   right: 1.5rem;
   transform: translateY(-50%);
+  z-index: -1;
 `;
 
 export const ErrorText = styled(Text1)`

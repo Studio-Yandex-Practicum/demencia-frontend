@@ -13,7 +13,7 @@ import {
 } from "./date-question-styles";
 import { useNavigate } from "react-router-dom";
 import QuestionHeader from "../components/question-header";
-import arrowSelect from "../../../../../images/arrow-select.svg";
+import arrowSelectDown from "../../../../../images/arrow-select-down.svg";
 import { useContext, useEffect, useState } from "react";
 import { AppContext } from "../../../../../components/contexts";
 
@@ -146,7 +146,7 @@ const DateQuestion: React.FC<{ number: number }> = ({ number }) => {
                     </option>
                   ))}
                 </StyleSelect>
-                <StyledImg src={arrowSelect} />
+                <StyledImg src={arrowSelectDown} />
               </StyledBoxCurrentSelect>
               <StyledBoxCurrentSelect>
                 <StyleSelect value={year} onChange={handleChangeYear}>
@@ -156,7 +156,7 @@ const DateQuestion: React.FC<{ number: number }> = ({ number }) => {
                     </option>
                   ))}
                 </StyleSelect>
-                <StyledImg src={arrowSelect} />
+                <StyledImg src={arrowSelectDown} />
               </StyledBoxCurrentSelect>
             </StyledBoxSelect>
 

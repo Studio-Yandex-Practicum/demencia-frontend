@@ -1,9 +1,9 @@
-import React, { SyntheticEvent } from "react";
+import React from "react";
 import { Box } from "../../../../ui/controls";
 import { ContainerSize, TextColor } from "../../../../ui/types";
 import { BackgroundColor } from "../../../../ui/types/background-color.enum";
 import largeHalfCircle from "../../../../images/large-half-circle.svg";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import {
   StyledBox,
   StyledBoxContainer,

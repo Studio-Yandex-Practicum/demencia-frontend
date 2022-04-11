@@ -1,4 +1,5 @@
 import React from "react";
+import { MouseEvent } from "react";
 import { useQuery } from "@apollo/client";
 import { toast } from "react-hot-toast";
 import { MainMenuData } from "../types/main-menu";
@@ -34,20 +35,51 @@ const StyledBox = styled(Box)`
   }
 `;
 
+const handleClickAnchorLink = (
+  e: MouseEvent<HTMLAnchorElement>,
+  url: string
+) => {
+  if (url[1] === "#") {
+    const anchorElement = document.getElementById(url.slice(2));
+    if (anchorElement) {
+      e.preventDefault();
+      anchorElement.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+      });
+    }
+  }
+};
+
 const DefaultMenu: React.FC<{ vertical?: boolean }> = (props) => {
   return (
     <Menu vertical={!!props.vertical}>
       <MenuItem>
-        <Link to="/#info">О деменции</Link>
+        <Link
+          to="/#info"
+          onClick={(event) => handleClickAnchorLink(event, "/#info")}
+        >
+          О деменции
+        </Link>
       </MenuItem>
       <MenuItem>
-        <Link to="/#sponsors">Партнеры</Link>
+        <Link
+          to="/#partners"
+          onClick={(event) => handleClickAnchorLink(event, "/#partners")}
+        >
+          Партнеры
+        </Link>
       </MenuItem>
       <MenuItem>
         <Link to="/news-grid">Новости</Link>
       </MenuItem>
       <MenuItem>
-        <Link to="/#about">О фонде</Link>
+        <Link
+          to="/#about"
+          onClick={(event) => handleClickAnchorLink(event, "/#about")}
+        >
+          О фонде
+        </Link>
       </MenuItem>
     </Menu>
   );
@@ -86,24 +118,7 @@ const NavMenu: React.FC<{ vertical?: boolean }> = (props) => {
           <Link
             to={item.url}
             zoomTextOnHover={false}
-            onClick={(event) => {
-              //определяем что полученный url является якорем
-              if (item.url[1] === "#") {
-                //получаем элемент по id если он есть в документе
-                const anchorElement = document.getElementById(
-                  item.url.slice(2)
-                );
-                //проверяем наличие полученного элемента
-                if (anchorElement) {
-                  event.preventDefault();
-                  //плавно скроллим до начала блока с заданным id
-                  anchorElement.scrollIntoView({
-                    behavior: "smooth",
-                    block: "start",
-                  });
-                }
-              }
-            }}
+            onClick={(event) => handleClickAnchorLink(event, item.url)}
           >
             {textEllipsis(item.name)}
           </Link>

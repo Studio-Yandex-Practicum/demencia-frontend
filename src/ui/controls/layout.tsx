@@ -32,7 +32,6 @@ export const Layout = styled.div<LayoutProps>`
   box-sizing: border-box;
   overflow: hidden;
   background-color: ${(props) => props.theme.colors.background};
-  scroll-behavior: smooth;
 `;
 
 export const Main = styled.main`

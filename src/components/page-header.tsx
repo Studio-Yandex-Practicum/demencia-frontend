@@ -83,7 +83,28 @@ const NavMenu: React.FC<{ vertical?: boolean }> = (props) => {
     <Menu vertical={!!props.vertical}>
       {items.map((item) => (
         <MenuItem key={item.id} zoomOnHover>
-          <Link to={item.url} zoomTextOnHover={false}>
+          <Link
+            to={item.url}
+            zoomTextOnHover={false}
+            onClick={(event) => {
+              //определяем что полученный url является якорем
+              if (item.url[1] === "#") {
+                //получаем элемент по id если он есть в документе
+                const anchorElement = document.getElementById(
+                  item.url.slice(2)
+                );
+                //проверяем наличие полученного элемента
+                if (anchorElement) {
+                  event.preventDefault();
+                  //плавно скроллим до начала блока с заданным id
+                  anchorElement.scrollIntoView({
+                    behavior: "smooth",
+                    block: "start",
+                  });
+                }
+              }
+            }}
+          >
             {textEllipsis(item.name)}
           </Link>
         </MenuItem>

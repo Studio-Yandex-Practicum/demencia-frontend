@@ -10,6 +10,16 @@ import {
 import { Subtitle3, Text1, Text4 } from "../../../../ui/controls";
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
+import { useQuery } from "@apollo/client";
+import { toast } from "react-hot-toast";
+import { TestResult } from "../../../../types/testResult";
+import { GET_TEST_RESULT } from "../../../../gql/query/testResult";
+
+const Empty: React.FC = () => (
+  <Section borderBox flex centered>
+    <Subtitle3>Не удалось получить результаты теста</Subtitle3>
+  </Section>
+);
 
 const ResultPage: React.FC = () => {
   const StyledTestBox = styled(Box)`
@@ -85,6 +95,41 @@ const ResultPage: React.FC = () => {
 
   const navigate = useNavigate();
 
+  const id = JSON.parse(localStorage.getItem("test_id") || "");
+
+  const { data, loading, error } = useQuery<TestResult>(GET_TEST_RESULT, {
+    variables: { id },
+  });
+
+  if (loading) {
+    return (
+      <Section flex centered>
+        <Subtitle3>Загрузка результатов теста...</Subtitle3>
+      </Section>
+    );
+  }
+
+  if (error) {
+    toast.error(`${error}`, { id: "error" });
+    return <Empty />;
+  }
+
+  if (!data) {
+    return <Empty />;
+  }
+
+  const result = data.testResult;
+
+  const changeEndOfWord = (answer: number) => {
+    if (answer === 1 || answer === 21) {
+      return "балл";
+    } else if ((answer > 1 && answer < 5) || (answer > 21 && answer < 25)) {
+      return "баллa";
+    } else {
+      return "баллов";
+    }
+  };
+
   return (
     <Box>
       <Section flex centered borderBox>
@@ -106,7 +151,7 @@ const ResultPage: React.FC = () => {
                 textColor={TextColor.Accent1}
                 uppercase={false}
               >
-                16 баллов
+                {`${result} ${changeEndOfWord(Number(result))}`}
               </StyleSubtitle3>
             </StyledTextBox>
           </StyledBox>

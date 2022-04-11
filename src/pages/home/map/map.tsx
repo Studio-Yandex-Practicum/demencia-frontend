@@ -55,6 +55,8 @@ const MapWrapper = styled(Box)`
 `;
 
 const StyledBox = styled(Box)`
+  position: relative;
+  z-index: -1;
   width: 100%;
   display: flex;
   flex-direction: row;

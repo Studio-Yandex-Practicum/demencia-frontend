@@ -41,13 +41,11 @@ const PaperImageQuestion: React.FC<{ number: number }> = ({ number }) => {
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.validity.valid && e.target.files) {
-      const answer = "true";
       const testId = JSON.parse(localStorage.getItem("test_id") || "");
       setButtonText("Загрузка...");
       createAnswer({
         variables: {
           input: {
-            answerValue: answer,
             testCase: { id: testId },
             question: number,
             image: e.target.files[0],
@@ -58,7 +56,7 @@ const PaperImageQuestion: React.FC<{ number: number }> = ({ number }) => {
           if (res.data.createAnswer.ok === true) {
             setButtonText("Загружено");
             setIsSelected(true);
-            localStorage.setItem(`${number}`, answer);
+            localStorage.setItem(`${number}`, "true");
             if (setLastQuestionId) {
               setLastQuestionId(`${number + 1}`);
             }

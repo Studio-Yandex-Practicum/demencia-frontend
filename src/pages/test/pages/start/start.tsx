@@ -1,8 +1,9 @@
+import React, { SyntheticEvent } from "react";
 import { Box } from "../../../../ui/controls";
 import { ContainerSize, TextColor } from "../../../../ui/types";
 import { BackgroundColor } from "../../../../ui/types/background-color.enum";
 import largeHalfCircle from "../../../../images/large-half-circle.svg";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import {
   StyledBox,
   StyledBoxContainer,
@@ -21,12 +22,28 @@ import {
 } from "./start-styles";
 import { AppContext } from "../../../../components/contexts";
 import { useContext, useEffect } from "react";
+import { useLazyQuery } from "@apollo/client";
+import { NewTest } from "../../../../types/newTest";
+import { NEW_TEST } from "../../../../gql/query/newTest";
+import { toast } from "react-hot-toast";
 
 const StartPage = () => {
+  const [getTestId, {}] = useLazyQuery<NewTest>(NEW_TEST);
   const { setLastQuestionId } = useContext(AppContext);
-  function setTestId(id = "123456789") {
-    localStorage.setItem("test_id", id);
-  }
+  const navigate = useNavigate();
+
+  const onStartBtnClick = () => {
+    console.log("start");
+    getTestId()
+      .then((res) => {
+        localStorage.setItem("test_id", JSON.stringify(res.data?.newTest));
+        if (setLastQuestionId) {
+          setLastQuestionId(`description`);
+          navigate(`/test/description`);
+        }
+      })
+      .catch(() => toast.error(`Не удалось начать тест`, { id: "error" }));
+  };
 
   useEffect(() => {
     if (setLastQuestionId) {
@@ -73,20 +90,13 @@ const StartPage = () => {
           <StyledBox flex>
             <StyledPuzzles />
             <StyledTestBox flex column>
-              <Link to="/test/description">
-                <Actions>
-                  <StyledButtonWithSemicircle
-                    maxWidth={350}
-                    buttonText="Начать тестирование"
-                    onClick={() => {
-                      setTestId();
-                      if (setLastQuestionId) {
-                        setLastQuestionId("description");
-                      }
-                    }}
-                  />
-                </Actions>
-              </Link>
+              <Actions>
+                <StyledButtonWithSemicircle
+                  maxWidth={350}
+                  buttonText="Начать тестирование"
+                  onClick={onStartBtnClick}
+                />
+              </Actions>
               <StyledText1 maxWidth={500} mt={7}>
                 Тест рекомендуется использовать в качестве дополнения к
                 профессиональной врачебной диагностике, а не в качестве её

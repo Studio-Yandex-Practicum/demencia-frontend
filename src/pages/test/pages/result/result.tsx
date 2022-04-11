@@ -17,7 +17,7 @@ import { GET_TEST_RESULT } from "../../../../gql/query/testResult";
 
 const Empty: React.FC = () => (
   <Section borderBox flex centered>
-    <Subtitle3>Результаты теста не найдены</Subtitle3>
+    <Subtitle3>Не удалось получить результаты теста</Subtitle3>
   </Section>
 );
 
@@ -119,7 +119,6 @@ const ResultPage: React.FC = () => {
   }
 
   const result = data.testResult;
-  console.log(result);
 
   const changeEndOfWord = (answer: number) => {
     if (answer === 1 || answer === 21) {
@@ -152,7 +151,7 @@ const ResultPage: React.FC = () => {
                 textColor={TextColor.Accent1}
                 uppercase={false}
               >
-                {`${1} ${changeEndOfWord(Number(1))}`}
+                {`${result} ${changeEndOfWord(Number(result))}`}
               </StyleSubtitle3>
             </StyledTextBox>
           </StyledBox>

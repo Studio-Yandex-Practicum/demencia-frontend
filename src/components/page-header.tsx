@@ -43,9 +43,9 @@ const handleClickAnchorLink = (
     const anchorElement = document.getElementById(url.slice(2));
     if (anchorElement) {
       e.preventDefault();
-      anchorElement.scrollIntoView({
+      window.scrollTo({
+        top: anchorElement.offsetTop,
         behavior: "smooth",
-        block: "start",
       });
     }
   }

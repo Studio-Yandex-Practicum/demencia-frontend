@@ -39,7 +39,7 @@ const handleClickAnchorLink = (
   e: MouseEvent<HTMLAnchorElement>,
   url: string
 ) => {
-  if (url[1] === "#") {
+  if (url?.[1] === "#") {
     const anchorElement = document.getElementById(url.slice(2));
     if (anchorElement) {
       e.preventDefault();

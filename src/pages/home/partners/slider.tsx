@@ -42,8 +42,6 @@ const Slider: React.FC = () => {
 
   return (
     <StyledSwiper
-      slidesPerView="auto"
-      loopedSlides={5}
       spaceBetween={30}
       breakpoints={{
         300: {
@@ -60,10 +58,7 @@ const Slider: React.FC = () => {
           slidesPerView: 5,
         },
       }}
-      centeredSlides={true}
-      roundLengths={true}
-      loop={true}
-      loopAdditionalSlides={10}
+      loop={items.length > 3 ? true : false}
       autoplay={{
         delay: 5000,
         disableOnInteraction: false,

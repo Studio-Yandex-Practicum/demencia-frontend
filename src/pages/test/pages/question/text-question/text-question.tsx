@@ -36,7 +36,11 @@ const TextQuestion: React.FC<{ number: number }> = ({ number }) => {
   }, [number]);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setTextAnswer(e.target.value);
+    if (number !== 17) {
+      setTextAnswer(e.target.value.replace(/[^а-яё\s]/gi, ""));
+    } else {
+      setTextAnswer(e.target.value);
+    }
   };
 
   const onBack = () => {
@@ -87,7 +91,13 @@ const TextQuestion: React.FC<{ number: number }> = ({ number }) => {
           </StyledBoxArrowLeft>
 
           <TextInputBox width="100%">
-            <StyledInput onChange={handleChange} value={textAnswer} />
+            <StyledInput
+              onChange={handleChange}
+              value={textAnswer}
+              placeholder={
+                number === 17 ? "" : "Допустимы только буквы кириллицы"
+              }
+            />
           </TextInputBox>
 
           <StyledBoxArrowRight>

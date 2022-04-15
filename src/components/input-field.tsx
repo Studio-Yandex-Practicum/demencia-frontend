@@ -10,6 +10,9 @@ const StyledInput = styled.input`
   box-sizing: border-box;
   background-color: #ffffff;
   font-size: 30px;
+  &::placeholder {
+    font-size: 25px;
+  }
   &:focus {
     outline: none;
     border: 2px solid #000000;

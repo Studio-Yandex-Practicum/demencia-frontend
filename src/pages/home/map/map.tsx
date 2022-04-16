@@ -17,7 +17,7 @@ import icon from "../../../images/alert-icon.svg";
 const StyledTitle = styled(Title)`
   transition: all 1s ease;
   ${({ animate }) =>
-    animate ? "opacity: 0; transform: translateY(100px);" : ""}
+    animate ? "opacity: 0; transform: translateY(100px);" : ""};
 
   @media (max-width: ${ScreenSize.Medium}px) {
     font-size: 30px;
@@ -30,7 +30,7 @@ const StyledTitle = styled(Title)`
 const StyledText = styled(Subtitle4)`
   transition: all 1s ease;
   ${({ animate }) =>
-    animate ? "opacity: 0; transform: translateY(100px);" : ""}
+    animate ? "opacity: 0; transform: translateY(100px);" : ""};
 
   @media (max-width: ${ScreenSize.Small}px) {
     font-size: 12px;
@@ -55,6 +55,8 @@ const MapWrapper = styled(Box)`
 `;
 
 const StyledBox = styled(Box)`
+  position: relative;
+  z-index: -1;
   width: 100%;
   display: flex;
   flex-direction: row;
@@ -104,7 +106,7 @@ const Map: React.FC = () => {
   if (!sectionInfo.length) return <></>;
 
   return (
-    <Section id="map" mt={4}>
+    <Section id="map" mt={4} zIndex={1}>
       <TextWrapper ml={6}>
         <AnimationWrapper>
           <StyledTitle ellipsis>{sectionTitle}</StyledTitle>

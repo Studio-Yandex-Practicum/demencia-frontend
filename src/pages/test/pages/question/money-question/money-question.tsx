@@ -56,7 +56,14 @@ const MoneyQuestion: React.FC<{ number: number }> = ({ number }) => {
   };
 
   const goForward = () => {
-    if (firstAnswer && secondAnswer) {
+    if (
+      firstAnswer &&
+      secondAnswer &&
+      parseInt(firstAnswer, 10) < 99 &&
+      parseInt(firstAnswer, 10) > 0 &&
+      parseInt(secondAnswer, 10) < 99 &&
+      parseInt(secondAnswer, 10) > 0
+    ) {
       setIsError(false);
 
       const answer = makeAnswer();

@@ -163,7 +163,7 @@ const TrianglesQuestion: React.FC<{ number: number }> = ({ number }) => {
   const [createAnswer] = useMutation(CREATE_ANSWER);
   const { setLastQuestionId } = useContext(AppContext);
   const navigate = useNavigate();
-  const [islinesReset, setIsLinesReset] = useState(false); // Сброс нажатых кружков
+  const [isLinesReset, setIsLinesReset] = useState(false); // Сброс нажатых кружков
   const [answer, setAnswer] = useState([1, 2, 3, 4, 5, 6, 7, 8, 9]); // Стейт массива ответа
   const [isErrorTextShow, setIsErrorTextShow] = useState(false);
 
@@ -174,6 +174,14 @@ const TrianglesQuestion: React.FC<{ number: number }> = ({ number }) => {
   };
 
   const onForward = () => {
+    const to = number === 25 ? "/test/result" : `/test/question/${number + 1}`;
+
+    const isAnswered = localStorage.getItem(`${number}`);
+    if (isAnswered && answer.length === 9) {
+      navigate(to);
+      return;
+    }
+
     if (answer.length < 8) {
       setIsErrorTextShow(false);
 
@@ -195,8 +203,6 @@ const TrianglesQuestion: React.FC<{ number: number }> = ({ number }) => {
             if (setLastQuestionId) {
               setLastQuestionId(`${number + 1}`);
             }
-            const to =
-              number === 25 ? "/test/result" : `/test/question/${number + 1}`;
             navigate(to);
           }
         })
@@ -236,7 +242,7 @@ const TrianglesQuestion: React.FC<{ number: number }> = ({ number }) => {
                 setAnswer={setAnswer}
                 answer={answer}
                 setReset={setIsLinesReset}
-                isReset={islinesReset}
+                isReset={isLinesReset}
               />
               <SvgLine
                 x1={10}
@@ -247,7 +253,7 @@ const TrianglesQuestion: React.FC<{ number: number }> = ({ number }) => {
                 setAnswer={setAnswer}
                 answer={answer}
                 setReset={setIsLinesReset}
-                isReset={islinesReset}
+                isReset={isLinesReset}
               />
               <SvgLine
                 x1={310}
@@ -258,7 +264,7 @@ const TrianglesQuestion: React.FC<{ number: number }> = ({ number }) => {
                 setAnswer={setAnswer}
                 answer={answer}
                 setReset={setIsLinesReset}
-                isReset={islinesReset}
+                isReset={isLinesReset}
               />
               <SvgLine
                 x1={180}
@@ -269,7 +275,7 @@ const TrianglesQuestion: React.FC<{ number: number }> = ({ number }) => {
                 setAnswer={setAnswer}
                 answer={answer}
                 setReset={setIsLinesReset}
-                isReset={islinesReset}
+                isReset={isLinesReset}
               />
               <SvgLine
                 x1={340}
@@ -280,7 +286,7 @@ const TrianglesQuestion: React.FC<{ number: number }> = ({ number }) => {
                 setAnswer={setAnswer}
                 answer={answer}
                 setReset={setIsLinesReset}
-                isReset={islinesReset}
+                isReset={isLinesReset}
               />
               <SvgLine
                 x1={330}
@@ -291,7 +297,7 @@ const TrianglesQuestion: React.FC<{ number: number }> = ({ number }) => {
                 setAnswer={setAnswer}
                 answer={answer}
                 setReset={setIsLinesReset}
-                isReset={islinesReset}
+                isReset={isLinesReset}
               />
               <SvgLine
                 x1={630}
@@ -302,7 +308,7 @@ const TrianglesQuestion: React.FC<{ number: number }> = ({ number }) => {
                 setAnswer={setAnswer}
                 answer={answer}
                 setReset={setIsLinesReset}
-                isReset={islinesReset}
+                isReset={isLinesReset}
               />
               <SvgLine
                 x1={500}
@@ -313,7 +319,7 @@ const TrianglesQuestion: React.FC<{ number: number }> = ({ number }) => {
                 setAnswer={setAnswer}
                 answer={answer}
                 setReset={setIsLinesReset}
-                isReset={islinesReset}
+                isReset={isLinesReset}
               />
               <SvgLine
                 x1={650}
@@ -324,7 +330,7 @@ const TrianglesQuestion: React.FC<{ number: number }> = ({ number }) => {
                 setAnswer={setAnswer}
                 answer={answer}
                 setReset={setIsLinesReset}
-                isReset={islinesReset}
+                isReset={isLinesReset}
               />
             </StyledQuestionSVG>
             <StyledButton

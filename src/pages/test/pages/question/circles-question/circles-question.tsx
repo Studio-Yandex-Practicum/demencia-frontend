@@ -187,6 +187,13 @@ const CirclesQuestion: React.FC<{ number: number }> = ({ number }) => {
   };
 
   const onForward = () => {
+    const to = number === 25 ? "/test/result" : `/test/question/${number + 1}`;
+
+    const isAnswered = localStorage.getItem(`${number}`);
+    if (isAnswered && answer.length === 0) {
+      navigate(to);
+      return;
+    }
     if (answer.length === 12) {
       setIsErrorTextShow(false);
 
@@ -206,8 +213,7 @@ const CirclesQuestion: React.FC<{ number: number }> = ({ number }) => {
             if (setLastQuestionId) {
               setLastQuestionId(`${number + 1}`);
             }
-            const to =
-              number === 25 ? "/test/result" : `/test/question/${number + 1}`;
+
             navigate(to);
           }
         })

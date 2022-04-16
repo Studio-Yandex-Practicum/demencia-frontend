@@ -69,7 +69,7 @@ const Test: React.FC = () => {
   if (!buttonCaption.length) return <DefaultCaption title="Пройти тест" />;
 
   function onClick() {
-    navigate("/test/start");
+    navigate("/test");
   }
 
   return (

@@ -46,7 +46,7 @@ const InfoSection: React.FC = () => {
   const settings = data.settings;
 
   function onClick() {
-    navigate("/test/start");
+    navigate("/test");
   }
 
   return (

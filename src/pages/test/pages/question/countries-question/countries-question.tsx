@@ -23,19 +23,13 @@ const CountriesQuestion: React.FC<{ number: number }> = ({ number }) => {
   const [isError, setIsError] = useState(false);
   const [inputsArray, setInputArray] = useState(new Array(12).fill(""));
 
-  const saveInputs = () => {
-    localStorage.setItem(`${number}`, JSON.stringify(inputsArray));
-  };
-
   const onBack = () => {
-    saveInputs();
     if (number > 1) {
       navigate(`/test/question/${number - 1}`);
     }
   };
 
   const onForward = () => {
-    saveInputs();
     const isValid = !inputsArray.filter((input) => input.trim().length == 0)
       .length;
     if (!isValid) {
@@ -79,8 +73,8 @@ const CountriesQuestion: React.FC<{ number: number }> = ({ number }) => {
 
   useEffect(() => {
     if (localStorage.getItem(`${number}`)) {
-      const answer = JSON.parse(localStorage.getItem(`${number}`) || "");
-      setInputArray(answer);
+      const answer = localStorage.getItem(`${number}`) || "";
+      setInputArray(answer.split(","));
     } else {
       setInputArray(new Array(12).fill(""));
     }

@@ -54,7 +54,9 @@ const DefaultMenu: React.FC<{ vertical?: boolean }> = (props) => {
 };
 
 const NavMenu: React.FC<{ vertical?: boolean }> = (props) => {
-  const { data, loading, error } = useQuery<MainMenuData>(GET_MAIN_MENU_ITEMS);
+  const { data, loading, error } = useQuery<MainMenuData>(GET_MAIN_MENU_ITEMS, {
+    fetchPolicy: "cache-first",
+  });
 
   if (loading) {
     return (

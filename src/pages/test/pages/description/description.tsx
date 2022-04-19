@@ -1,23 +1,21 @@
 import React, { useContext } from "react";
 import { Section } from "../../../../ui/controls";
-import { Box, Button } from "../../../../ui/controls";
-import {
-  ButtonType,
-  TextColor,
-  TypographyLevel,
-  ScreenSize,
-} from "../../../../ui/types";
+import { Box } from "../../../../ui/controls";
+import { TextColor, TypographyLevel, ScreenSize } from "../../../../ui/types";
 import { Subtitle1, Text1, Text2 } from "../../../../ui/controls";
 import styled from "styled-components";
 import { ArrowLeft, ArrowRight } from "./decor";
 import { useNavigate } from "react-router-dom";
 import { AppContext } from "../../../../components/contexts";
+import ButtonWithSemicircle from "../../../../components/button-with-semicircle";
 
 const StyleArrowLeft = styled(ArrowLeft)`
+  right: 0;
   margin-right: 7px;
 `;
 
 const StyleArrowRight = styled(ArrowRight)`
+  right: 0;
   margin-left: 7px;
 `;
 
@@ -57,11 +55,13 @@ const StyleText1 = styled(Text1)`
   }
 `;
 
-const StyleButton = styled(Button)`
-  text-aling: center;
-  margin: 0 auto;
+const StyledButtonWithSemicircleWrapper = styled.div`
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   @media (max-width: ${ScreenSize.XSmall}px) {
-    font-size: 14px;
+    transform: scale(0.7);
   }
 `;
 
@@ -130,7 +130,7 @@ const DescriptionPage: React.FC = () => {
       </Section>
 
       <Section flex centered borderBox pt={1} pb={10}>
-        <StyledTestBox flex column>
+        <StyledTestBox flex column alignItems="center">
           <StyledBox flex pb={10}>
             <Box>
               <StyleText1
@@ -149,20 +149,18 @@ const DescriptionPage: React.FC = () => {
               <StyleArrowRight />
             </StyledButtonBox>
           </StyledBox>
-          <StyleButton
-            type={ButtonType.Primary}
-            width={310}
-            level={TypographyLevel.Subtitle3}
-            onClick={() => {
-              navigate("/test/question/1");
-              if (setLastQuestionId) {
-                setLastQuestionId(`1`);
-              }
-            }}
-          >
-            все понятно. Начать!
-          </StyleButton>
-          {/* </Link> */}
+          <StyledButtonWithSemicircleWrapper>
+            <ButtonWithSemicircle
+              maxWidth={350}
+              buttonText="Всё понятно. Начать!"
+              onClick={() => {
+                navigate("/test/question/1");
+                if (setLastQuestionId) {
+                  setLastQuestionId(`1`);
+                }
+              }}
+            />
+          </StyledButtonWithSemicircleWrapper>
         </StyledTestBox>
       </Section>
     </Box>

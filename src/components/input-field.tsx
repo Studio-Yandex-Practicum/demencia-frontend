@@ -17,8 +17,23 @@ const StyledInput = styled.input`
     outline: none;
     border: 2px solid #000000;
   }
+  @media (max-width: ${ScreenSize.Medium}px) {
+    &::placeholder {
+      font-size: 20px;
+    }
+  }
   @media (max-width: ${ScreenSize.MediumSmall}px) {
     font-size: 20px;
+  }
+  @media (max-width: ${ScreenSize.Small}px) {
+    &::placeholder {
+      font-size: 15px;
+    }
+  }
+  @media (max-width: ${ScreenSize.Small}px) {
+    &::placeholder {
+      font-size: 12px;
+    }
   }
 `;
 

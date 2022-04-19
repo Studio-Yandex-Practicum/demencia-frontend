@@ -28,12 +28,14 @@ const PaperImageQuestion: React.FC<{ number: number }> = ({ number }) => {
   const { setLastQuestionId } = useContext(AppContext);
   const navigate = useNavigate();
   const [isSelected, setIsSelected] = useState(false);
+  const [isUploaded, setIsUploaded] = useState(false);
   const [isError, setIsError] = useState(false);
   const [buttonText, setButtonText] = useState("Добавить файл");
+  const [file, setFile] = useState<File>();
 
   useEffect(() => {
     if (localStorage.getItem(`${number}`)) {
-      setIsSelected(true);
+      setIsUploaded(true);
       setButtonText("Загружено");
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -41,33 +43,10 @@ const PaperImageQuestion: React.FC<{ number: number }> = ({ number }) => {
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.validity.valid && e.target.files) {
-      const testId = JSON.parse(localStorage.getItem("test_id") || "");
-      setButtonText("Загрузка...");
-      createAnswer({
-        variables: {
-          input: {
-            testCase: { id: testId },
-            question: number,
-            image: e.target.files[0],
-          },
-        },
-      })
-        .then((res) => {
-          if (res.data.createAnswer.ok === true) {
-            setButtonText("Загружено");
-            setIsSelected(true);
-            localStorage.setItem(`${number}`, "true");
-            if (setLastQuestionId) {
-              setLastQuestionId(`${number + 1}`);
-            }
-          }
-        })
-        .catch((err) => {
-          console.log(err);
-          setButtonText("Добавить файл");
-          toast.error(`Ошибка сервера`);
-          setIsSelected(false);
-        });
+      setFile(e.target.files[0]);
+      setButtonText("Загружено");
+      setIsSelected(true);
+      setIsError(false);
     }
   };
 
@@ -79,10 +58,37 @@ const PaperImageQuestion: React.FC<{ number: number }> = ({ number }) => {
 
   const goForward = () => {
     if (isSelected) {
-      setIsError(false);
-      const to =
-        number === 25 ? "/test/result" : `/test/question/${number + 1}`;
-      navigate(to);
+      const testId = JSON.parse(localStorage.getItem("test_id") || "");
+      setButtonText("Загрузка...");
+      createAnswer({
+        variables: {
+          input: {
+            testCase: { id: testId },
+            question: number,
+            image: file,
+          },
+        },
+      })
+        .then((res) => {
+          if (res.data.createAnswer.ok === true) {
+            setButtonText("Загружено");
+            setIsUploaded(true);
+            localStorage.setItem(`${number}`, "true");
+            if (setLastQuestionId) {
+              setLastQuestionId(`${number + 1}`);
+            }
+            setIsError(false);
+            const to =
+              number === 25 ? "/test/result" : `/test/question/${number + 1}`;
+            navigate(to);
+          }
+        })
+        .catch((err) => {
+          console.log(err);
+          setButtonText("Добавить файл");
+          toast.error(`Ошибка сервера`);
+          setIsSelected(false);
+        });
     } else {
       setIsError(true);
     }
@@ -114,7 +120,7 @@ const PaperImageQuestion: React.FC<{ number: number }> = ({ number }) => {
                 type="file"
                 accept="image/jpeg"
                 onChange={handleChange}
-                disabled={isSelected}
+                disabled={isUploaded}
               />
             </StyledBoxInput>
           </StyleBoxInputs>

@@ -111,7 +111,7 @@ const DateQuestion: React.FC<{ number: number }> = ({ number }) => {
       return true;
     } else if (
       Number(m) === 2 &&
-      Number(d) > 28 &&
+      Number(d) === 29 &&
       (Number(y) % 4 || (!(Number(y) % 100) && Number(y) % 400))
     ) {
       setErrorMessage(

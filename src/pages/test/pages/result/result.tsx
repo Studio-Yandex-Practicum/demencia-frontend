@@ -28,7 +28,7 @@ const ResultPage: React.FC = () => {
   `;
 
   const StyleButton = styled(Button)`
-    margin: 80px 0 80px;
+    margin: 80px 0 80px 1rem;
     @media (max-width: ${ScreenSize.XSmall}px) {
       width: 200px;
       font-size: 14px;

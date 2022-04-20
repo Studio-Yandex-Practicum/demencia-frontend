@@ -118,13 +118,7 @@ const DateQuestion: React.FC<{ number: number }> = ({ number }) => {
         "Этот год не високосный, максимальное значение даты 28 февраля"
       );
       setIsError(true);
-    } else if (
-      (Number(m) === 4 ||
-        Number(m) === 6 ||
-        Number(m) === 9 ||
-        Number(m) === 11) &&
-      Number(d) > 30
-    ) {
+    } else if ([4, 6, 9, 11].includes(Number(m)) && Number(d) > 30) {
       setErrorMessage(
         "Данные введены не корректно, максимальное значение даты в заданном месяце 30"
       );

@@ -1,3 +1,4 @@
+import React from "react";
 import { Box, Section } from "../../../../../ui/controls";
 import { ArrowLeft, ArrowRight } from "../components/arrows";
 import {
@@ -47,6 +48,7 @@ const DateQuestion: React.FC<{ number: number }> = ({ number }) => {
   const [month, setMonth] = useState("1");
   const [year, setYear] = useState("1922");
   const [isError, setIsError] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
 
   const handleChangeDay = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (day.length === 2) {
@@ -97,38 +99,72 @@ const DateQuestion: React.FC<{ number: number }> = ({ number }) => {
     }-${year}`;
   };
 
-  const goForward = () => {
-    if (day && parseInt(day, 10) < 31 && parseInt(day, 10) > 0) {
+  function validateDate(y: string, m: string, d: string) {
+    const dat = new Date(Number(y), Number(m) - 1, Number(d));
+    if (
+      dat.getFullYear() == Number(y) &&
+      dat.getMonth() == Number(m) - 1 &&
+      dat.getDate() == Number(d)
+    ) {
+      setErrorMessage("");
       setIsError(false);
-
-      const date = calculateDate();
-
-      const testId = JSON.parse(localStorage.getItem("test_id") || "");
-      createAnswer({
-        variables: {
-          input: {
-            answerValue: date,
-            testCase: { id: testId },
-            question: number,
-          },
-        },
-      })
-        .then((res) => {
-          if (res.data.createAnswer.ok === true) {
-            localStorage.setItem(`${number}`, date);
-            if (setLastQuestionId) {
-              setLastQuestionId(`${number + 1}`);
-            }
-            const to =
-              number === 25 ? "/test/result" : `/test/question/${number + 1}`;
-            navigate(to);
-          }
-        })
-        .catch((err) => {
-          console.log(err);
-          toast.error(`Ошибка сервера`);
-        });
+      return true;
+    } else if (
+      Number(m) === 2 &&
+      Number(d) === 29 &&
+      (Number(y) % 4 || (!(Number(y) % 100) && Number(y) % 400))
+    ) {
+      setErrorMessage(
+        "Этот год не високосный, максимальное значение даты 28 февраля"
+      );
+      setIsError(true);
+    } else if ([4, 6, 9, 11].includes(Number(m)) && Number(d) > 30) {
+      setErrorMessage(
+        "Данные введены не корректно, максимальное значение даты в заданном месяце 30"
+      );
+      setIsError(true);
     } else {
+      setErrorMessage("Данные введены не корректно, проверьте введенную дату");
+      setIsError(true);
+      return false;
+    }
+  }
+
+  const goForward = () => {
+    if (day && parseInt(day, 10) > 0) {
+      setIsError(false);
+      if (validateDate(year, month, day)) {
+        const date = calculateDate();
+        const testId = JSON.parse(localStorage.getItem("test_id") || "");
+        createAnswer({
+          variables: {
+            input: {
+              answerValue: date,
+              testCase: { id: testId },
+              question: number,
+            },
+          },
+        })
+          .then((res) => {
+            if (res.data.createAnswer.ok === true) {
+              localStorage.setItem(`${number}`, date);
+              if (setLastQuestionId) {
+                setLastQuestionId(`${number + 1}`);
+              }
+              const to =
+                number === 25 ? "/test/result" : `/test/question/${number + 1}`;
+              navigate(to);
+            }
+          })
+          .catch((err) => {
+            console.log(err);
+            toast.error(`Ошибка сервера`);
+          });
+      }
+    } else {
+      setErrorMessage(
+        "Необходимо ответить на вопрос, прежде, чем переходить к следующему"
+      );
       setIsError(true);
       navigate("");
     }
@@ -187,11 +223,7 @@ const DateQuestion: React.FC<{ number: number }> = ({ number }) => {
               <ArrowRight onClick={goForward} />
             </StyledBoxArrowRight>
           </StyledBoxInput>
-          {isError && (
-            <ErrorText>
-              Необходимо ответить на вопрос, прежде, чем переходить к следующему
-            </ErrorText>
-          )}
+          {isError && <ErrorText>{errorMessage}</ErrorText>}
         </Section>
       </Box>
     </>

@@ -1,12 +1,7 @@
 import React from "react";
 import { Section } from "../../../../ui/controls";
-import { Box, Button } from "../../../../ui/controls";
-import {
-  ButtonType,
-  TextColor,
-  TypographyLevel,
-  ScreenSize,
-} from "../../../../ui/types";
+import { Box } from "../../../../ui/controls";
+import { TextColor, TypographyLevel, ScreenSize } from "../../../../ui/types";
 import { Subtitle3, Text1, Text4 } from "../../../../ui/controls";
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
@@ -14,6 +9,7 @@ import { useQuery } from "@apollo/client";
 import { toast } from "react-hot-toast";
 import { TestResult } from "../../../../types/testResult";
 import { GET_TEST_RESULT } from "../../../../gql/query/testResult";
+import ButtonWithSemicircle from "../../../../components/button-with-semicircle";
 
 const Empty: React.FC = () => (
   <Section borderBox flex centered>
@@ -25,15 +21,6 @@ const ResultPage: React.FC = () => {
   const StyledTestBox = styled(Box)`
     text-align: left;
     max-width: 1026px;
-  `;
-
-  const StyleButton = styled(Button)`
-    margin: 80px 0 80px;
-    @media (max-width: ${ScreenSize.XSmall}px) {
-      width: 200px;
-      font-size: 14px;
-      margin: 50px auto 50px;
-    }
   `;
 
   const StyledBox = styled(Box)`
@@ -90,6 +77,17 @@ const ResultPage: React.FC = () => {
     font-size: 12px;
     @media (max-width: ${ScreenSize.XSmall}px) {
       font-size: 9px;
+    }
+  `;
+
+  const StyledButtonWithSemicircleWrapper = styled.div`
+    margin: 80px 0;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    @media (max-width: ${ScreenSize.XSmall}px) {
+      margin: 40px 0;
+      transform: scale(0.7);
     }
   `;
 
@@ -165,17 +163,16 @@ const ResultPage: React.FC = () => {
           <StyleText4>
             *Если вы не получили данное письмо, проверьте папку “Спам”
           </StyleText4>
-          <StyleButton
-            type={ButtonType.Primary}
-            width={310}
-            level={TypographyLevel.Subtitle3}
-            onClick={() => {
-              navigate("/test/start");
-              localStorage.clear();
-            }}
-          >
-            Пройти еще раз
-          </StyleButton>
+          <StyledButtonWithSemicircleWrapper>
+            <ButtonWithSemicircle
+              maxWidth={350}
+              buttonText="Пройти еще раз"
+              onClick={() => {
+                navigate("/test/start");
+                localStorage.clear();
+              }}
+            />
+          </StyledButtonWithSemicircleWrapper>
         </StyledTestBox>
       </Section>
     </Box>

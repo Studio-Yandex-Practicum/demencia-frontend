@@ -96,11 +96,11 @@ const TextQuestion: React.FC<{ number: number }> = ({ number }) => {
             <StyledInput
               onChange={handleChange}
               value={textAnswer}
-              placeholder={
-                number === 17
-                  ? "Допустимы только буквы кириллицы и цифры"
-                  : "Допустимы только буквы кириллицы"
-              }
+              // placeholder={
+              //   number === 17
+              //     ? "Допустимы только буквы кириллицы и цифры"
+              //     : "Допустимы только буквы кириллицы"
+              // }
             />
           </TextInputBox>
 

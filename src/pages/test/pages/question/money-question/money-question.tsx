@@ -114,6 +114,8 @@ const MoneyQuestion: React.FC<{ number: number }> = ({ number }) => {
                 onKeyPress={(e) => {
                   if (!/[0-9]/.test(e.key)) {
                     e.preventDefault();
+                  } else if (firstAnswer.length > 1) {
+                    e.preventDefault();
                   }
                 }}
               />
@@ -129,6 +131,8 @@ const MoneyQuestion: React.FC<{ number: number }> = ({ number }) => {
                 onChange={handleChangeSecondQuestion}
                 onKeyPress={(e) => {
                   if (!/[0-9]/.test(e.key)) {
+                    e.preventDefault();
+                  } else if (secondAnswer.length > 1) {
                     e.preventDefault();
                   }
                 }}

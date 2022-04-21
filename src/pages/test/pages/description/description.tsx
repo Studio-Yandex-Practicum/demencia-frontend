@@ -58,7 +58,7 @@ const StyleText1 = styled(Text1)`
 `;
 
 const StyleButton = styled(Button)`
-  text-aling: center;
+  text-align: center;
   margin: 0 auto;
   @media (max-width: ${ScreenSize.XSmall}px) {
     font-size: 14px;
@@ -153,6 +153,8 @@ const DescriptionPage: React.FC = () => {
             type={ButtonType.Primary}
             width={310}
             level={TypographyLevel.Subtitle3}
+            zoomOnHover
+            zoomOutOnHover={false}
             onClick={() => {
               navigate("/test/question/1");
               if (setLastQuestionId) {

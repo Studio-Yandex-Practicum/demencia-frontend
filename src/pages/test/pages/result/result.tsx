@@ -169,6 +169,8 @@ const ResultPage: React.FC = () => {
             type={ButtonType.Primary}
             width={310}
             level={TypographyLevel.Subtitle3}
+            zoomOnHover
+            zoomOutOnHover={false}
             onClick={() => {
               navigate("/test/start");
               localStorage.clear();

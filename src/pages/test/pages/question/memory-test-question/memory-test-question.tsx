@@ -75,7 +75,13 @@ const MemoryTestQuestion: React.FC<{ number: number }> = ({ number }) => {
           </StyledBoxArrowLeft>
 
           <StyledBox>
-            <StyledButton onClick={onPressButton}>ПОНЯТНО. ДАЛЕЕ</StyledButton>
+            <StyledButton
+              zoomOnHover
+              zoomOutOnHover={false}
+              onClick={onPressButton}
+            >
+              ПОНЯТНО. ДАЛЕЕ
+            </StyledButton>
           </StyledBox>
 
           <StyledBoxArrowRight>

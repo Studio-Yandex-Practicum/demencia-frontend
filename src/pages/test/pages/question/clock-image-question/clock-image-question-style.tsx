@@ -83,6 +83,10 @@ export const StyledBoxInput = styled(Box)`
   margin: 0;
   width: 100%;
   align-items: center;
+
+  @media (max-width: 790px) {
+    flex-direction: row;
+  }
 `;
 
 export const StyledInput = styled.input`
@@ -101,9 +105,25 @@ export const StyledLabel = styled.label`
   font-size: 20px;
   border: 0;
   margin: 0 10px;
-  width: 100%;
+  width: 400px;
+  transition: all 0.5s ease;
+  transform: scale(0.95);
   ${cursorMixin}
+
+  &:hover {
+    transform: scale(1);
+  }
+
+  @media (max-width: ${ScreenSize.Large}px) {
+    width: 250px;
+  }
+
+  @media (max-width: ${ScreenSize.Medium}px) {
+    width: 150px;
+  }
+
   @media (max-width: 790px) {
+    width: 100%;
     margin: 30px 10px;
   }
 `;

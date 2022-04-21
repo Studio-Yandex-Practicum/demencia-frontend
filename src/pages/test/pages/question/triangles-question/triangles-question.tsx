@@ -334,6 +334,8 @@ const TrianglesQuestion: React.FC<{ number: number }> = ({ number }) => {
               />
             </StyledQuestionSVG>
             <StyledButton
+              zoomOnHover
+              zoomOutOnHover={false}
               onClick={() => {
                 setIsLinesReset(true);
                 setIsErrorTextShow(false);

@@ -385,6 +385,8 @@ const CirclesQuestion: React.FC<{ number: number }> = ({ number }) => {
               />
             </StyledQuestionSVG>
             <StyledButton
+              zoomOnHover
+              zoomOutOnHover={false}
               onClick={() => {
                 setPoints([]);
                 setCirclesReset(true);

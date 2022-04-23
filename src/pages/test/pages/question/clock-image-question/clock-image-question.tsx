@@ -27,14 +27,12 @@ const ClockImageQuestion: React.FC<{ number: number }> = ({ number }) => {
   const { setLastQuestionId } = useContext(AppContext);
   const navigate = useNavigate();
   const [isSelected, setIsSelected] = useState(false);
-  const [isUploaded, setIsUploaded] = useState(false);
   const [isError, setIsError] = useState(false);
   const [buttonText, setButtonText] = useState("Добавить файл");
 
   useEffect(() => {
     if (localStorage.getItem(`${number}`)) {
       setIsSelected(true);
-      setIsUploaded(true);
       setButtonText("Загружено");
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -115,7 +113,6 @@ const ClockImageQuestion: React.FC<{ number: number }> = ({ number }) => {
                 type="file"
                 accept="image/jpeg"
                 onChange={handleChange}
-                disabled={isUploaded}
               />
             </StyledBoxInput>
           </StyleBoxInputs>

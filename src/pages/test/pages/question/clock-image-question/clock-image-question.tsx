@@ -106,7 +106,7 @@ const ClockImageQuestion: React.FC<{ number: number }> = ({ number }) => {
                 стрелки так, чтобы часы показывали без десяти минут 14 часов.
               </StyledText1>
             </StyledBoxInput>
-            <StyledBoxInput flex>
+            <StyledBoxInput flex column>
               <StyledLabel htmlFor="file_drawClock">{buttonText}</StyledLabel>
               <StyledInput
                 id="file_drawClock"

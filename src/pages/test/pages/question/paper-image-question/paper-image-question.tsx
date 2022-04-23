@@ -107,7 +107,7 @@ const PaperImageQuestion: React.FC<{ number: number }> = ({ number }) => {
                 Нарисуйте этот рисунок, сфотографируйте его и загрузите файл
               </StyledText1>
             </StyledBoxInput>
-            <StyledBoxInput flex>
+            <StyledBoxInput flex column>
               <StyledLabel htmlFor="file_drawClock">{buttonText}</StyledLabel>
               <StyledInput
                 id="file_drawClock"

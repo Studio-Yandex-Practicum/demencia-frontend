@@ -114,7 +114,6 @@ const PaperImageQuestion: React.FC<{ number: number }> = ({ number }) => {
                 type="file"
                 accept="image/jpeg"
                 onChange={handleChange}
-                disabled={isSelected}
               />
             </StyledBoxInput>
           </StyleBoxInputs>

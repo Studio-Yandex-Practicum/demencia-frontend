@@ -113,7 +113,6 @@ const ClockImageQuestion: React.FC<{ number: number }> = ({ number }) => {
                 type="file"
                 accept="image/jpeg"
                 onChange={handleChange}
-                disabled={isSelected}
               />
             </StyledBoxInput>
           </StyleBoxInputs>

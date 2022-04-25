@@ -12,19 +12,19 @@ type TTestData = {
 
 export const testData: TTestData = {
   1: {
-    question: "Введите Ваше Имя:",
+    question: "Введите ваше имя:",
   },
   2: {
-    question: "Введите свою Дату рождения:",
+    question: "Введите свою дату рождения:",
   },
   3: {
-    question: "Укажите Ваш Пол:",
+    question: "Укажите ваш пол:",
     first: "Мужской",
     second: "Женский",
     needFirstDescription: false,
   },
   4: {
-    question: "Укажите электронную почту",
+    question: "Укажите электронную почту:",
   },
   5: {
     question: "Есть ли у вас проблемы с памятью и мышлением?",
@@ -61,7 +61,7 @@ export const testData: TTestData = {
     needFirstDescription: false,
   },
   11: {
-    question: "Испытываете ли вы тревогу, депрессию, тоску",
+    question: "Испытываете ли вы тревогу, депрессию, тоску?",
     first: "Да",
     second: "Иногда",
     third: "Нет",
@@ -80,10 +80,10 @@ export const testData: TTestData = {
     needFirstDescription: false,
   },
   14: {
-    question: "Назовите сегодняшнюю дату, месяц, год",
+    question: "Назовите сегодняшнюю дату, месяц, год:",
   },
   15: {
-    question: "Назовите объекты, изображенные на рисунках",
+    question: "Назовите объекты, изображенные на рисунках:",
   },
   16: {
     question: "Что общего между розой и тюльпаном?",
@@ -106,13 +106,13 @@ export const testData: TTestData = {
     question: "Нарисуйте циферблат:",
   },
   22: {
-    question: "Напишите названия 12 разных стран.",
+    question: "Напишите названия 12 разных стран:",
   },
   23: {
-    question: "Соедините круги",
+    question: "Соедините круги:",
   },
   24: {
-    question: "Уберите лишние линии",
+    question: "Уберите лишние линии:",
   },
   25: {
     question: "Вы все сделали?",

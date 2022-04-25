@@ -93,15 +93,7 @@ const TextQuestion: React.FC<{ number: number }> = ({ number }) => {
           </StyledBoxArrowLeft>
 
           <TextInputBox width="100%">
-            <StyledInput
-              onChange={handleChange}
-              value={textAnswer}
-              // placeholder={
-              //   number === 17
-              //     ? "Допустимы только буквы кириллицы и цифры"
-              //     : "Допустимы только буквы кириллицы"
-              // }
-            />
+            <StyledInput onChange={handleChange} value={textAnswer} />
           </TextInputBox>
 
           <StyledBoxArrowRight>
@@ -110,7 +102,7 @@ const TextQuestion: React.FC<{ number: number }> = ({ number }) => {
         </StyledBoxInput>
         {isError && (
           <ErrorText>
-            Необходимо ответить на вопрос, прежде, чем переходить к следующему
+            Необходимо ответить на вопрос, прежде чем переходить к следующему
           </ErrorText>
         )}
       </Section>

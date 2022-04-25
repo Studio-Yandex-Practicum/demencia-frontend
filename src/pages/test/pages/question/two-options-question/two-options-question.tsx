@@ -155,7 +155,7 @@ const TwoOptionsQuestion: React.FC<{ number: number }> = ({ number }) => {
         </StyledBoxInput>
         {isError && (
           <ErrorText>
-            Необходимо ответить на вопрос, прежде, чем переходить к следующему
+            Необходимо ответить на вопрос, прежде чем переходить к следующему
           </ErrorText>
         )}
       </Section>

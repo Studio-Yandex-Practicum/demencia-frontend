@@ -109,7 +109,7 @@ const DescriptionPage: React.FC = () => {
               textColor={TextColor.Primary}
               level={TypographyLevel.Subtitle4}
             >
-              - Ручку черного цвета(ручка иных цветов или карандаш не будут
+              - Ручку черного цвета (ручка иных цветов или карандаш не будут
               распознаны системой);
             </Text1>
             <Text1 maxWidth={1026} mb={1} textColor={TextColor.Primary}>
@@ -122,7 +122,7 @@ const DescriptionPage: React.FC = () => {
             </Text1>
             <Text1 maxWidth={1026} mb={1} textColor={TextColor.Primary}>
               3. Фотография должна содержать ТОЛЬКО тестируемый рисунок. Если в
-              фото кадр попали не относящиеся к рисунку элементы, рекомендуется
+              фотокадр попали не относящиеся к рисунку элементы, рекомендуется
               обрезать изображение или сделать новый снимок.
             </Text1>
           </Box>

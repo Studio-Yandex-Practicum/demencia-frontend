@@ -150,7 +150,7 @@ const ImagesIdentificationQuestion: React.FC<{ number: number }> = ({
         </StyledBox>
         {isErrorTextShow && (
           <ErrorText>
-            Необходимо ответить на вопрос, прежде, чем переходить к следующему
+            Необходимо ответить на вопрос, прежде чем переходить к следующему
           </ErrorText>
         )}
       </Section>

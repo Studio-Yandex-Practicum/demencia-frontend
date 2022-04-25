@@ -104,7 +104,7 @@ const PaperImageQuestion: React.FC<{ number: number }> = ({ number }) => {
                 textColor={TextColor.Primary}
                 level={TypographyLevel.Subtitle3}
               >
-                Нарисуйте этот рисунок, сфотографируйте его и загрузите файл
+                Нарисуйте этот рисунок, сфотографируйте его и загрузите файл.
               </StyledText1>
             </StyledBoxInput>
             <StyledBoxInput flex column>
@@ -123,7 +123,7 @@ const PaperImageQuestion: React.FC<{ number: number }> = ({ number }) => {
         </StyledBox>
         {isError && (
           <ErrorText>
-            Необходимо загрузить рисунок, прежде, чем переходить к следующему
+            Необходимо загрузить рисунок, прежде чем переходить к следующему
             вопросу
           </ErrorText>
         )}

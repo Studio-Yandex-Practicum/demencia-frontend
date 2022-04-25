@@ -393,7 +393,7 @@ const CirclesQuestion: React.FC<{ number: number }> = ({ number }) => {
               }}
             >
               <Text3 textColor={TextColor.Secondary} uppercase>
-                Я ошибся/ошиблась. Начать снова
+                Я ошибся (-лась). Начать снова
               </Text3>
             </StyledButton>
           </StyledBox>
@@ -401,7 +401,7 @@ const CirclesQuestion: React.FC<{ number: number }> = ({ number }) => {
         </StyledBox>
         {isErrorTextShow && (
           <ErrorText>
-            Необходимо завершить цепочку, прежде, чем переходить к следующему
+            Необходимо завершить цепочку, прежде чем переходить к следующему
             вопросу
           </ErrorText>
         )}

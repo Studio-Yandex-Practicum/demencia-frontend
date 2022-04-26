@@ -105,7 +105,8 @@ const DateQuestion: React.FC<{ number: number }> = ({ number }) => {
     if (
       today.getFullYear() <= Number(y) &&
       today.getMonth() <= Number(m) - 1 &&
-      today.getDate() < Number(d)
+      today.getDate() < Number(d) &&
+      number === 2
     ) {
       setErrorMessage("Введенная дата не может быть больше текущей");
       setIsError(true);

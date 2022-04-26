@@ -79,6 +79,13 @@ const ImagesIdentificationQuestion: React.FC<{ number: number }> = ({
     }
   };
 
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement>,
+    setState: (value: string) => void
+  ) => {
+    setState(e.target.value.replace(/[^а-яё\s]/gi, ""));
+  };
+
   const onForward = () => {
     if (firstAnswer && secondAnswer) {
       setIsErrorTextShow(false);
@@ -133,7 +140,7 @@ const ImagesIdentificationQuestion: React.FC<{ number: number }> = ({
               name="firstImageIdentInput"
               required
               value={firstAnswer}
-              onChange={(e) => setFirstAnswer(e.target.value)}
+              onChange={(e) => handleChange(e, setFirstAnswer)}
             />
             <Box flex maxWidth={300} width={"100%"}>
               <StyledImg src={harpPic} />
@@ -143,7 +150,7 @@ const ImagesIdentificationQuestion: React.FC<{ number: number }> = ({
               name="secondImageIdentInput"
               required
               value={secondAnswer}
-              onChange={(e) => setSecondAnswer(e.target.value)}
+              onChange={(e) => handleChange(e, setSecondAnswer)}
             />
           </StyledBoxInput>
           <StyledArrowRight onClick={() => onForward()} />

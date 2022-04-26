@@ -277,7 +277,7 @@ const CirclesQuestion: React.FC<{ number: number }> = ({ number }) => {
                 cx={200}
                 cy={70}
                 r={30}
-                circleText={"A"}
+                circleText={"А"}
                 addPoint={addPoint}
                 isReset={circlesReset}
                 setReset={setCirclesReset}

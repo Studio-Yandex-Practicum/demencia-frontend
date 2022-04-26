@@ -37,9 +37,7 @@ const TwoOptionsQuestion: React.FC<{ number: number }> = ({ number }) => {
   };
 
   useEffect(() => {
-    console.log(`${number}`);
     if (localStorage.getItem(`${number}`)) {
-      console.log(`xxxx_${number}`);
       const answer = localStorage.getItem(`${number}`);
       if (answer) {
         if (answer === testData[number].second) {

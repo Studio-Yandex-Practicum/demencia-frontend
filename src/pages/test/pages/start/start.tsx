@@ -33,7 +33,6 @@ const StartPage = () => {
   const navigate = useNavigate();
 
   const onStartBtnClick = () => {
-    console.log("start");
     getTestId()
       .then((res) => {
         localStorage.setItem("test_id", JSON.stringify(res.data?.newTest));

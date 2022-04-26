@@ -122,7 +122,7 @@ const ClockImageQuestion: React.FC<{ number: number }> = ({ number }) => {
         </StyledBox>
         {isError && (
           <ErrorText>
-            Необходимо загрузить рисунок, прежде, чем переходить к следующему
+            Необходимо загрузить рисунок, прежде чем переходить к следующему
             вопросу
           </ErrorText>
         )}

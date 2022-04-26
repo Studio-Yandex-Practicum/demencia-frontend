@@ -156,12 +156,12 @@ const EmailQuestion: React.FC<{ number: number }> = ({ number }) => {
                   }}
                 />
                 <Text1 ml={2}>
-                  Я согласен(а) на обработку{" "}
+                  Я согласен(-на) на обработку{" "}
                   <Link
                     href="https://xn--d1acamsh7dwd.net/Soglasie_na_obrabotku_personalnih_dannih.pdf"
                     target="_blank"
                   >
-                    персональных данных
+                    персональных данных.
                   </Link>
                 </Text1>
               </EmailCheckboxBox>

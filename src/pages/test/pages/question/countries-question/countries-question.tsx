@@ -99,7 +99,7 @@ const CountriesQuestion: React.FC<{ number: number }> = ({ number }) => {
       </StyledSection>
       {isError && (
         <ErrorText>
-          Необходимо ответить на вопрос, прежде, чем переходить к следующему
+          Необходимо ответить на вопрос, прежде чем переходить к следующему
         </ErrorText>
       )}
     </Box>

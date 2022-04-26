@@ -342,7 +342,7 @@ const TrianglesQuestion: React.FC<{ number: number }> = ({ number }) => {
               }}
             >
               <Text3 textColor={TextColor.Secondary} uppercase>
-                Я ошибся/ошиблась. Начать снова
+                Я ошибся (-лась). Начать снова
               </Text3>
             </StyledButton>
           </StyledBox>
@@ -350,7 +350,7 @@ const TrianglesQuestion: React.FC<{ number: number }> = ({ number }) => {
         </StyledBox>
         {isErrorTextShow && answer.length > 7 && (
           <ErrorText>
-            Необходимо исключить лишние линии, прежде, чем переходить к
+            Необходимо исключить лишние линии, прежде чем переходить к
             следующему вопросу. Нужно исключить еще{" "}
             <strong>{-7 + answer.length}</strong> !
           </ErrorText>

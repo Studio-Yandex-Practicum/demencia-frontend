@@ -163,7 +163,7 @@ const DateQuestion: React.FC<{ number: number }> = ({ number }) => {
       }
     } else {
       setErrorMessage(
-        "Необходимо ответить на вопрос, прежде, чем переходить к следующему"
+        "Необходимо ответить на вопрос, прежде чем переходить к следующему"
       );
       setIsError(true);
       navigate("");

@@ -54,6 +54,9 @@ const DateQuestion: React.FC<{ number: number }> = ({ number }) => {
     if (day.length === 2) {
       e.target.value = e.target.value.slice(0, 2);
     }
+    if (Number(e.target.value) >= 31) {
+      e.target.value = "31";
+    }
     setDay(e.target.value);
   };
 
@@ -120,11 +123,16 @@ const DateQuestion: React.FC<{ number: number }> = ({ number }) => {
       return true;
     } else if (
       Number(m) === 2 &&
-      Number(d) === 29 &&
+      Number(d) >= 29 &&
       (Number(y) % 4 || (!(Number(y) % 100) && Number(y) % 400))
     ) {
       setErrorMessage(
         "Этот год не високосный, максимальное значение даты 28 февраля"
+      );
+      setIsError(true);
+    } else if (Number(m) === 2 && Number(d) > 29) {
+      setErrorMessage(
+        "Данные введены не корректно, максимальное значение даты в заданном месяце 29"
       );
       setIsError(true);
     } else if ([4, 6, 9, 11].includes(Number(m)) && Number(d) > 30) {

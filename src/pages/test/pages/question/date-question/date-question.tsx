@@ -208,6 +208,11 @@ const DateQuestion: React.FC<{ number: number }> = ({ number }) => {
                 step="1"
                 defaultValue={day}
                 onChange={handleChangeDay}
+                onPaste={(e) => {
+                  if (/[\D]/.test(e.clipboardData.getData("text"))) {
+                    e.preventDefault();
+                  }
+                }}
                 onKeyPress={(e) => {
                   if (!/[0-9]/.test(e.key)) {
                     e.preventDefault();

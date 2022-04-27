@@ -111,6 +111,11 @@ const MoneyQuestion: React.FC<{ number: number }> = ({ number }) => {
                 step="1"
                 defaultValue={firstAnswer}
                 onChange={handleChangeFirstQuestion}
+                onPaste={(e) => {
+                  if (/[\D]/.test(e.clipboardData.getData("text"))) {
+                    e.preventDefault();
+                  }
+                }}
                 onKeyPress={(e) => {
                   if (!/[0-9]/.test(e.key)) {
                     e.preventDefault();
@@ -129,6 +134,11 @@ const MoneyQuestion: React.FC<{ number: number }> = ({ number }) => {
                 step="1"
                 defaultValue={secondAnswer}
                 onChange={handleChangeSecondQuestion}
+                onPaste={(e) => {
+                  if (/[\D]/.test(e.clipboardData.getData("text"))) {
+                    e.preventDefault();
+                  }
+                }}
                 onKeyPress={(e) => {
                   if (!/[0-9]/.test(e.key)) {
                     e.preventDefault();

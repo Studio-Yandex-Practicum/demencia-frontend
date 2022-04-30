@@ -52,7 +52,7 @@ const TextQuestion: React.FC<{ number: number }> = ({ number }) => {
   };
 
   const onForward = () => {
-    if (textAnswer) {
+    if (textAnswer || number === 8) {
       setIsError(false);
       const testId = JSON.parse(localStorage.getItem("test_id") || "");
       createAnswer({

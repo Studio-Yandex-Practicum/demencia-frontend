@@ -27,12 +27,17 @@ const StyledInput = styled.input`
   }
   @media (max-width: ${ScreenSize.Small}px) {
     &::placeholder {
-      font-size: 15px;
+      font-size: 18px;
     }
   }
-  @media (max-width: ${ScreenSize.Small}px) {
+  @media (max-width: ${ScreenSize.XSmall}px) {
     &::placeholder {
-      font-size: 12px;
+      font-size: 16px;
+    }
+  }
+  @media (max-width: ${ScreenSize.XXSmall}px) {
+    &::placeholder {
+      font-size: 14px;
     }
   }
 `;

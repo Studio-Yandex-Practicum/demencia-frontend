@@ -52,7 +52,6 @@ const TestPage = () => {
         navigate(`/test/question/${lastQuestion}`);
       }
     }
-    // console.log("1");
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 

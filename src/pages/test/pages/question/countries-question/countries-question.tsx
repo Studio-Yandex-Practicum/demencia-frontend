@@ -67,7 +67,7 @@ const CountriesQuestion: React.FC<{ number: number }> = ({ number }) => {
 
   function handleInput(index: number, event: ChangeEvent<HTMLInputElement>) {
     const updated = [...inputsArray];
-    updated[index] = event.target.value;
+    updated[index] = event.target.value.replace(/['"`{}\[\]<>\/\\!=\s]/gi, "");
     setInputArray(updated);
   }
 

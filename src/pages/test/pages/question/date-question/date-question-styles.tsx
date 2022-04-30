@@ -21,7 +21,6 @@ export const StyleSelect = styled.select`
 `;
 
 export const StyleInput = styled(StyledInput)`
-  color: #999;
   width: 40%;
   margin-right: 10px;
   -moz-appearance: textfield;

@@ -12,7 +12,6 @@ export const StyleSelect = styled.select`
   border-radius: 30px;
   border: 1px solid #000000;
   font-size: 30px;
-  color: #999;
   appearance: none;
   outline-color: #000;
   @media (max-width: ${ScreenSize.MediumSmall}px) {

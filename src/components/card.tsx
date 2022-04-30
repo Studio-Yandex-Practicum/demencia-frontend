@@ -83,6 +83,11 @@ const StyledCard = styled.div`
     font-size: 18px;
   }
 `;
+const StyledLink = styled(Link)`
+  @media (max-width: ${ScreenSize.XSmall}px) {
+    padding-bottom: 4px;
+  }
+`;
 
 interface CardProps {
   imageSource: string;
@@ -122,13 +127,13 @@ const Card: React.FC<CardProps> = ({
         <time className="card__date" dateTime={cardDateTime}>
           {cardDateTimeText}
         </time>
-        <Link
+        <StyledLink
           zoomTextOnHover={false}
           borderBottomOnHover={false}
           to={cardLinkTo}
         >
           <LinkButton>{linkLabel}</LinkButton>
-        </Link>
+        </StyledLink>
       </Box>
     </StyledCard>
   );

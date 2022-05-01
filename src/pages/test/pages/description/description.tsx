@@ -14,11 +14,15 @@ import { useNavigate } from "react-router-dom";
 import { AppContext } from "../../../../components/contexts";
 
 const StyleArrowLeft = styled(ArrowLeft)`
-  margin-right: 7px;
+  margin-right: 10px;
+  right: 0;
+  left: 0;
 `;
 
 const StyleArrowRight = styled(ArrowRight)`
-  margin-left: 7px;
+  margin-left: 10px;
+  right: 0;
+  left: 0;
 `;
 
 const StyledBox = styled(Box)`
@@ -43,7 +47,8 @@ const StyledButtonBox = styled(Box)`
   padding-top: 0;
   margin: 0 auto;
   @media (max-width: ${ScreenSize.Medium}px) {
-    margin-top: 40px;
+    //margin-top: 40px;
+    margin: 40px auto 0 auto;
   }
 `;
 

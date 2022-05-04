@@ -110,7 +110,7 @@ const DescriptionPage: React.FC = () => {
               level={TypographyLevel.Subtitle4}
             >
               - ручку черного цвета (ручка иных цветов или карандаш не будут
-              распознаны системой);
+              распознаны системой).
             </Text1>
             <Text1 maxWidth={1026} mb={1} textColor={TextColor.Primary}>
               Вы также можете отредактировать фотографию рисунка и сделать ее

@@ -98,7 +98,7 @@ const TextQuestion: React.FC<{ number: number }> = ({ number }) => {
               value={textAnswer}
               placeholder={
                 number === 17
-                  ? "Допустимы только буквы кириллицы и цифры"
+                  ? "Только буквы кириллицы и цифры"
                   : "Допустимы только буквы кириллицы"
               }
             />

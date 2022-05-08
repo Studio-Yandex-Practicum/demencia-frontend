@@ -13,8 +13,8 @@ import {
   MenuItem,
   Nav,
   Sider,
+  Subtitle3,
 } from "../ui/controls";
-import { Text3 } from "../ui/controls/typography";
 import { useMatch } from "react-router-dom";
 import BoxWithPuzzles from "./box-with-puzzles";
 import styled from "styled-components";
@@ -93,7 +93,7 @@ const NavMenu: React.FC<{ vertical?: boolean }> = (props) => {
   if (loading) {
     return (
       <Box>
-        <Text3>Загрузка...</Text3>
+        <Subtitle3>Загрузка...</Subtitle3>
       </Box>
     );
   }

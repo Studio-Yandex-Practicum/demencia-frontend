@@ -141,7 +141,7 @@ const TwoOptionsQuestion: React.FC<{ number: number }> = ({ number }) => {
             {firstChecked && testData[number].needFirstDescription && (
               <BoxInputOne mt={4} flex maxWidth={850}>
                 <InputOne
-                  placeholder="Пожалуйста, уточните, какие изменения вы наблюдаете"
+                  placeholder="Какие изменения вы наблюдаете?"
                   value={firstDescription}
                   onChange={(e) => setFirstDescription(e.target.value)}
                 />

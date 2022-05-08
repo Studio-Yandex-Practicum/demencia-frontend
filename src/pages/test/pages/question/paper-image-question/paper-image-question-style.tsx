@@ -58,16 +58,6 @@ export const StyledArrowRight = styled(ArrowRight)`
   }
 `;
 
-export const ErrorText = styled(Text1)`
-  text-align: center;
-  color: red;
-  margin: 20px auto;
-  font-size: 30px;
-  @media (max-width: ${ScreenSize.Small}px) {
-    font-size: 20px;
-  }
-`;
-
 export const StyledText1 = styled(Text1)`
   text-align: center;
   line-height: 1;

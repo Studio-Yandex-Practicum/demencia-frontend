@@ -9,15 +9,16 @@ import {
   StyledArrowLeft,
   StyledArrowRight,
   StyledBoxInput,
-  ErrorText,
 } from "./countries-question-styles";
 import { AppContext } from "../../../../../components/contexts";
 import { useMutation } from "@apollo/client";
 import { CREATE_ANSWER } from "../../../../../gql/mutation/create-answer";
 import toast from "react-hot-toast";
+import ErrorText from "../components/error-text";
+import LoadingText from "../components/loading-text";
 
 const CountriesQuestion: React.FC<{ number: number }> = ({ number }) => {
-  const [createAnswer] = useMutation(CREATE_ANSWER);
+  const [createAnswer, { loading }] = useMutation(CREATE_ANSWER);
   const { setLastQuestionId } = useContext(AppContext);
   const navigate = useNavigate();
   const [isError, setIsError] = useState(false);
@@ -102,6 +103,7 @@ const CountriesQuestion: React.FC<{ number: number }> = ({ number }) => {
           Необходимо ответить на вопрос, прежде чем переходить к следующему
         </ErrorText>
       )}
+      {loading && <LoadingText>Отправка ответа...</LoadingText>}
     </Box>
   );
 };

@@ -6,9 +6,10 @@ import { AppContext } from "../../../../../components/contexts";
 import { CREATE_ANSWER } from "../../../../../gql/mutation/create-answer";
 import { Box } from "../../../../../ui/controls";
 import { ArrowLeft, ArrowRight } from "../components/arrows";
+import ErrorText from "../components/error-text";
+import LoadingText from "../components/loading-text";
 import QuestionHeader from "../components/question-header";
 import {
-  ErrorText,
   StyledBox,
   StyledBoxArrowLeft,
   StyledBoxArrowRight,
@@ -17,7 +18,7 @@ import {
 } from "./memory-test-question-styles";
 
 const MemoryTestQuestion: React.FC<{ number: number }> = ({ number }) => {
-  const [createAnswer] = useMutation(CREATE_ANSWER);
+  const [createAnswer, { loading }] = useMutation(CREATE_ANSWER);
   const { setLastQuestionId } = useContext(AppContext);
   const navigate = useNavigate();
   const [isError, setIsError] = useState(false);
@@ -93,6 +94,7 @@ const MemoryTestQuestion: React.FC<{ number: number }> = ({ number }) => {
             Необходимо ответить на вопрос, прежде чем переходить к следующему
           </ErrorText>
         )}
+        {loading && <LoadingText>Отправка ответа...</LoadingText>}
       </Box>
     </>
   );

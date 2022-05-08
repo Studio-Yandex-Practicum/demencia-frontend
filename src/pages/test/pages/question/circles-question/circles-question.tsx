@@ -11,7 +11,6 @@ import { useNavigate } from "react-router-dom";
 import { Box, Button, Section, Text1, Text3 } from "../../../../../ui/controls";
 import { ArrowLeft, ArrowRight } from "../components/arrows";
 import QuestionHeader from "../components/question-header";
-import { ErrorText } from "../date-question/date-question-styles";
 import { ScreenSize, TextColor } from "../../../../../ui/types";
 
 import circleQuestionSamplePic from "../../../../../images/circle-question-sample-pic.jpg";
@@ -19,6 +18,8 @@ import { AppContext } from "../../../../../components/contexts";
 import { useMutation } from "@apollo/client";
 import { CREATE_ANSWER } from "../../../../../gql/mutation/create-answer";
 import toast from "react-hot-toast";
+import ErrorText from "../components/error-text";
+import LoadingText from "../components/loading-text";
 
 const StyledBox = styled(Box)`
   @media (max-width: ${ScreenSize.Medium}px) {
@@ -165,7 +166,7 @@ const SvgCircle: React.FC<SvgCircleProps> = ({
 
 // Компонент вопрос №23
 const CirclesQuestion: React.FC<{ number: number }> = ({ number }) => {
-  const [createAnswer] = useMutation(CREATE_ANSWER);
+  const [createAnswer, { loading }] = useMutation(CREATE_ANSWER);
   const { setLastQuestionId } = useContext(AppContext);
   const navigate = useNavigate();
   const [points, setPoints] = useState<[{ x?: number; y?: number }?]>([]); // Стейт точек линии соединящей кружки
@@ -405,6 +406,7 @@ const CirclesQuestion: React.FC<{ number: number }> = ({ number }) => {
             вопросу
           </ErrorText>
         )}
+        {loading && <LoadingText>Отправка ответа...</LoadingText>}
       </Section>
     </Box>
   );

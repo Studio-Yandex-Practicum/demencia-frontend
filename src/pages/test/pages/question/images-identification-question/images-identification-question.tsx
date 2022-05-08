@@ -6,7 +6,6 @@ import { Box, Section } from "../../../../../ui/controls";
 import { ArrowLeft, ArrowRight } from "../components/arrows";
 import QuestionHeader from "../components/question-header";
 import { ScreenSize } from "../../../../../ui/types";
-import { ErrorText } from "../date-question/date-question-styles";
 
 import rhinoPic from "../../../../../images/rhino-pic.jpg";
 import harpPic from "../../../../../images/harp-pic.jpg";
@@ -14,6 +13,8 @@ import { AppContext } from "../../../../../components/contexts";
 import { useMutation } from "@apollo/client";
 import { CREATE_ANSWER } from "../../../../../gql/mutation/create-answer";
 import toast from "react-hot-toast";
+import ErrorText from "../components/error-text";
+import LoadingText from "../components/loading-text";
 
 const StyledBox = styled(Box)`
   @media (max-width: ${ScreenSize.Medium}px) {
@@ -54,7 +55,7 @@ const StyledArrowRight = styled(ArrowRight)`
 const ImagesIdentificationQuestion: React.FC<{ number: number }> = ({
   number,
 }) => {
-  const [createAnswer] = useMutation(CREATE_ANSWER);
+  const [createAnswer, { loading }] = useMutation(CREATE_ANSWER);
   const { setLastQuestionId } = useContext(AppContext);
   const navigate = useNavigate();
   const [firstAnswer, setFirstAnswer] = useState("");
@@ -160,6 +161,7 @@ const ImagesIdentificationQuestion: React.FC<{ number: number }> = ({
             Необходимо ответить на вопрос, прежде чем переходить к следующему
           </ErrorText>
         )}
+        {loading && <LoadingText>Отправка ответа...</LoadingText>}
       </Section>
     </Box>
   );

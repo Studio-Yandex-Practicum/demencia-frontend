@@ -118,13 +118,3 @@ export const StyledImg = styled.img`
   transform: translateY(-50%);
   z-index: -1;
 `;
-
-export const ErrorText = styled(Text1)`
-  text-align: center;
-  color: red;
-  margin: 20px auto;
-  font-size: 30px;
-  @media (max-width: ${ScreenSize.Small}px) {
-    font-size: 20px;
-  }
-`;

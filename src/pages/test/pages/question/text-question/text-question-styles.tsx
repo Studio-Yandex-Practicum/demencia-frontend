@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { Box, Text1 } from "../../../../../ui/controls";
+import { Box } from "../../../../../ui/controls";
 import { ScreenSize } from "../../../../../ui/types";
 
 export const StyledBoxArrowRight = styled(Box)`
@@ -34,15 +34,5 @@ export const TextInputBox = styled(Box)`
   margin: auto 0;
   @media (max-width: ${ScreenSize.MediumSmall}px) {
     margin-bottom: 32px;
-  }
-`;
-
-export const ErrorText = styled(Text1)`
-  text-align: center;
-  color: red;
-  margin: 20px auto;
-  font-size: 30px;
-  @media (max-width: ${ScreenSize.Small}px) {
-    font-size: 20px;
   }
 `;

@@ -1,5 +1,4 @@
 import {
-  ErrorText,
   StyledBoxArrowLeft,
   StyledBoxArrowRight,
   StyledBoxInput,
@@ -15,9 +14,11 @@ import { AppContext } from "../../../../../components/contexts";
 import { CREATE_ANSWER } from "../../../../../gql/mutation/create-answer";
 import { useMutation } from "@apollo/client";
 import toast from "react-hot-toast";
+import ErrorText from "../components/error-text";
+import LoadingText from "../components/loading-text";
 
 const TextQuestion: React.FC<{ number: number }> = ({ number }) => {
-  const [createAnswer] = useMutation(CREATE_ANSWER);
+  const [createAnswer, { loading }] = useMutation(CREATE_ANSWER);
   const navigate = useNavigate();
   const { setLastQuestionId } = useContext(AppContext);
 
@@ -113,6 +114,7 @@ const TextQuestion: React.FC<{ number: number }> = ({ number }) => {
             Необходимо ответить на вопрос, прежде чем переходить к следующему
           </ErrorText>
         )}
+        {loading && <LoadingText>Отправка ответа...</LoadingText>}
       </Section>
     </Box>
   );

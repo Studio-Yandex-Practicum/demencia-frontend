@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { Section, Box, Text1, Button } from "../../../../../ui/controls";
+import { Section, Box, Button } from "../../../../../ui/controls";
 import { ScreenSize } from "../../../../../ui/types";
 
 export const StyledBoxArrowRight = styled(Box)`
@@ -39,14 +39,4 @@ export const StyledBox = styled(Box)`
 
 export const StyledButton = styled(Button)`
   width: 100%;
-`;
-
-export const ErrorText = styled(Text1)`
-  text-align: center;
-  color: red;
-  margin: 20px auto;
-  font-size: 30px;
-  @media (max-width: ${ScreenSize.Small}px) {
-    font-size: 20px;
-  }
 `;

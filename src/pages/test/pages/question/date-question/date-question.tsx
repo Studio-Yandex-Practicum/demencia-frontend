@@ -10,7 +10,6 @@ import {
   StyledBoxSelect,
   StyledImg,
   StyledBoxCurrentSelect,
-  ErrorText,
 } from "./date-question-styles";
 import { useNavigate } from "react-router-dom";
 import QuestionHeader from "../components/question-header";
@@ -20,6 +19,8 @@ import { AppContext } from "../../../../../components/contexts";
 import { useMutation } from "@apollo/client";
 import { CREATE_ANSWER } from "../../../../../gql/mutation/create-answer";
 import toast from "react-hot-toast";
+import ErrorText from "../components/error-text";
+import LoadingText from "../components/loading-text";
 
 const months = [
   "Январь",
@@ -41,7 +42,7 @@ const years = [...Array(new Date().getFullYear() - 1922 + 1)].map(
 );
 
 const DateQuestion: React.FC<{ number: number }> = ({ number }) => {
-  const [createAnswer] = useMutation(CREATE_ANSWER);
+  const [createAnswer, { loading }] = useMutation(CREATE_ANSWER);
   const navigate = useNavigate();
   const { setLastQuestionId } = useContext(AppContext);
   const [day, setDay] = useState("");
@@ -246,6 +247,7 @@ const DateQuestion: React.FC<{ number: number }> = ({ number }) => {
             </StyledBoxArrowRight>
           </StyledBoxInput>
           {isError && <ErrorText>{errorMessage}</ErrorText>}
+          {loading && <LoadingText>Отправка ответа...</LoadingText>}
         </Section>
       </Box>
     </>

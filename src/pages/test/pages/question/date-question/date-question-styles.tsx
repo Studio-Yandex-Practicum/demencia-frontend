@@ -61,7 +61,7 @@ export const StyledBoxInput = styled(Box)`
   flex-direction: row;
   justify-content: space-around;
   align-items: center;
-  margin: 90px auto 50px;
+  margin: 90px auto 40px;
   width: 100%;
   @media (max-width: ${ScreenSize.MediumSmall}px) {
     flex-wrap: wrap;

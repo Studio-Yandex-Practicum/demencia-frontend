@@ -8,7 +8,7 @@ export const StyledBox = styled(Box)`
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  margin: 90px auto;
+  margin: 90px auto 40px;
   width: 100%;
   @media (max-width: 790px) {
     flex-wrap: wrap;

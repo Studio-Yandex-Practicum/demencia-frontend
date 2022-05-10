@@ -22,10 +22,16 @@ import ErrorText from "../components/error-text";
 import LoadingText from "../components/loading-text";
 
 const StyledBox = styled(Box)`
+  margin-bottom: 20px;
+
   @media (max-width: ${ScreenSize.Medium}px) {
     flex-wrap: wrap;
     justify-content: space-evenly;
     order: -1;
+  }
+
+  @media (max-width: ${ScreenSize.MediumSmall}px) {
+    margin-bottom: 30px;
   }
 `;
 
@@ -40,15 +46,15 @@ const StyledButton = styled(Button)`
 `;
 
 const StyledArrowLeft = styled(ArrowLeft)`
-  @media (max-width: ${ScreenSize.Medium}px) {
-    margin: 30px 0;
-  }
+  /* @media (max-width: ${ScreenSize.Medium}px) {
+    margin-top: 30px;
+  } */
 `;
 
 const StyledArrowRight = styled(ArrowRight)`
-  @media (max-width: ${ScreenSize.Medium}px) {
-    margin: 30px 0;
-  }
+  /* @media (max-width: ${ScreenSize.Medium}px) {
+    margin-top: 30px;
+  } */
 `;
 
 const StyledImg = styled.img`

@@ -7,7 +7,7 @@ import {
 } from "../../../../../ui/types";
 
 const LoadingText = styled(Text1).attrs(() => ({
-  level: TypographyLevel.Subtitle1,
+  level: TypographyLevel.Subtitle3,
   textColor: TextColor.Accent1,
 }))`
   text-align: center;

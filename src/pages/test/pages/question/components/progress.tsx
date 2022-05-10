@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { Box, Button } from "../../../../../ui/controls";
-import { ButtonShape, ButtonType } from "../../../../../ui/types";
+import { ButtonShape, ButtonType, ScreenSize } from "../../../../../ui/types";
 
 const StyledDiv = styled.div`
   display: grid;
@@ -9,7 +9,11 @@ const StyledDiv = styled.div`
   justify-content: center;
   width: min(1920px, 100%);
   gap: 15px;
-  margin-top: 30px;
+  margin-top: 40px;
+
+  @media (max-width: ${ScreenSize.MediumSmall}px) {
+    margin-top: 30px;
+  }
 `;
 
 const StyledButton = styled(Button)`

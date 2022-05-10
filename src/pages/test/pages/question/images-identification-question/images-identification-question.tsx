@@ -21,14 +21,18 @@ const StyledBox = styled(Box)`
     flex-wrap: wrap;
     justify-content: space-evenly;
   }
+  margin-bottom: 40px;
+
+  @media (max-width: ${ScreenSize.MediumSmall}px) {
+    margin-bottom: 30px;
+  }
 `;
 
 const StyledBoxInput = styled(Box)`
-  margin: 90px auto;
+  margin: 0 auto;
   width: 100%;
 
   @media (max-width: ${ScreenSize.Medium}px) {
-    margin: 30px auto;
     flex-direction: column;
     order: -1;
   }
@@ -42,13 +46,13 @@ const StyledImg = styled.img`
 
 const StyledArrowLeft = styled(ArrowLeft)`
   @media (max-width: ${ScreenSize.Medium}px) {
-    margin: 30px 0;
+    margin-top: 30px;
   }
 `;
 
 const StyledArrowRight = styled(ArrowRight)`
   @media (max-width: ${ScreenSize.Medium}px) {
-    margin: 30px 0;
+    margin-top: 30px;
   }
 `;
 
@@ -129,7 +133,7 @@ const ImagesIdentificationQuestion: React.FC<{ number: number }> = ({
     <Box>
       <QuestionHeader number={number} />
 
-      <Section flex>
+      <Section flex mt={3}>
         <StyledBox flex maxWidth={1920} alignItems={"center"} width={"100%"}>
           <StyledArrowLeft onClick={() => onBack()} />
           <StyledBoxInput flex maxWidth={1920} alignItems={"center"}>

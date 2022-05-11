@@ -92,6 +92,7 @@ const CountriesQuestion: React.FC<{ number: number }> = ({ number }) => {
             <StyledInput
               key={index}
               value={inputsArray[index]}
+              maxLength={100}
               onChange={(event) => handleInput(index, event)}
             />
           ))}

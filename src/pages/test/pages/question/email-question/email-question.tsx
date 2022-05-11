@@ -129,6 +129,7 @@ const EmailQuestion: React.FC<{ number: number }> = ({ number }) => {
               <StyledInput
                 name="email"
                 type="email"
+                maxLength={100}
                 onChange={handleChange}
                 value={values.email}
                 onInput={(e: React.ChangeEvent<HTMLInputElement>) => {

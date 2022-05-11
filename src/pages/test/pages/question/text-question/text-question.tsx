@@ -97,6 +97,7 @@ const TextQuestion: React.FC<{ number: number }> = ({ number }) => {
             <StyledInput
               onChange={handleChange}
               value={textAnswer}
+              maxLength={100}
               placeholder={
                 number === 17
                   ? "Только буквы кириллицы и цифры"

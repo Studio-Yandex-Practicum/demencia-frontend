@@ -85,7 +85,7 @@ const StyledCard = styled.div`
 `;
 const StyledLink = styled(Link)`
   @media (max-width: ${ScreenSize.XSmall}px) {
-    padding-bottom: 4px;
+    padding-bottom: 1px;
   }
 `;
 

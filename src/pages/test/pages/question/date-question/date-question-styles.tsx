@@ -14,7 +14,7 @@ export const StyleSelect = styled.select`
   font-size: 30px;
   appearance: none;
   outline-color: #000;
-  @media (max-width: ${ScreenSize.MediumSmall}px) {
+  @media (max-width: ${ScreenSize.Medium}px) {
     font-size: 20px;
   }
 `;

@@ -6,7 +6,6 @@ import QuestionHeader from "../components/question-header";
 import StyledInput from "../../../../../components/input-field";
 
 import {
-  ErrorText,
   StyledBoxInput,
   Link,
   StyledBoxArrowRight,
@@ -18,9 +17,11 @@ import { AppContext } from "../../../../../components/contexts";
 import { useMutation } from "@apollo/client";
 import { CREATE_ANSWER } from "../../../../../gql/mutation/create-answer";
 import toast from "react-hot-toast";
+import ErrorText from "../components/error-text";
+import LoadingText from "../components/loading-text";
 
 const EmailQuestion: React.FC<{ number: number }> = ({ number }) => {
-  const [createAnswer] = useMutation(CREATE_ANSWER);
+  const [createAnswer, { loading }] = useMutation(CREATE_ANSWER);
   const { setLastQuestionId } = useContext(AppContext);
   const navigate = useNavigate();
 
@@ -178,6 +179,7 @@ const EmailQuestion: React.FC<{ number: number }> = ({ number }) => {
               Дайте согласие на обработку персональных данных
             </ErrorText>
           )}
+          {loading && <LoadingText>Отправка ответа...</LoadingText>}
         </Section>
       </Box>
     </>

@@ -6,7 +6,6 @@ import { Box, Section } from "../../../../../ui/controls";
 import { ArrowLeft, ArrowRight } from "../components/arrows";
 import QuestionHeader from "../components/question-header";
 import { ScreenSize } from "../../../../../ui/types";
-import { ErrorText } from "../date-question/date-question-styles";
 
 import rhinoPic from "../../../../../images/rhino-pic.jpg";
 import harpPic from "../../../../../images/harp-pic.jpg";
@@ -14,20 +13,26 @@ import { AppContext } from "../../../../../components/contexts";
 import { useMutation } from "@apollo/client";
 import { CREATE_ANSWER } from "../../../../../gql/mutation/create-answer";
 import toast from "react-hot-toast";
+import ErrorText from "../components/error-text";
+import LoadingText from "../components/loading-text";
 
 const StyledBox = styled(Box)`
   @media (max-width: ${ScreenSize.Medium}px) {
     flex-wrap: wrap;
     justify-content: space-evenly;
   }
+  margin-bottom: 40px;
+
+  @media (max-width: ${ScreenSize.MediumSmall}px) {
+    margin-bottom: 30px;
+  }
 `;
 
 const StyledBoxInput = styled(Box)`
-  margin: 90px auto;
+  margin: 0 auto;
   width: 100%;
 
   @media (max-width: ${ScreenSize.Medium}px) {
-    margin: 30px auto;
     flex-direction: column;
     order: -1;
   }
@@ -41,20 +46,20 @@ const StyledImg = styled.img`
 
 const StyledArrowLeft = styled(ArrowLeft)`
   @media (max-width: ${ScreenSize.Medium}px) {
-    margin: 30px 0;
+    margin-top: 30px;
   }
 `;
 
 const StyledArrowRight = styled(ArrowRight)`
   @media (max-width: ${ScreenSize.Medium}px) {
-    margin: 30px 0;
+    margin-top: 30px;
   }
 `;
 
 const ImagesIdentificationQuestion: React.FC<{ number: number }> = ({
   number,
 }) => {
-  const [createAnswer] = useMutation(CREATE_ANSWER);
+  const [createAnswer, { loading }] = useMutation(CREATE_ANSWER);
   const { setLastQuestionId } = useContext(AppContext);
   const navigate = useNavigate();
   const [firstAnswer, setFirstAnswer] = useState("");
@@ -128,7 +133,7 @@ const ImagesIdentificationQuestion: React.FC<{ number: number }> = ({
     <Box>
       <QuestionHeader number={number} />
 
-      <Section flex>
+      <Section flex mt={3}>
         <StyledBox flex maxWidth={1920} alignItems={"center"} width={"100%"}>
           <StyledArrowLeft onClick={() => onBack()} />
           <StyledBoxInput flex maxWidth={1920} alignItems={"center"}>
@@ -160,6 +165,7 @@ const ImagesIdentificationQuestion: React.FC<{ number: number }> = ({
             Необходимо ответить на вопрос, прежде чем переходить к следующему
           </ErrorText>
         )}
+        {loading && <LoadingText>Отправка ответа...</LoadingText>}
       </Section>
     </Box>
   );

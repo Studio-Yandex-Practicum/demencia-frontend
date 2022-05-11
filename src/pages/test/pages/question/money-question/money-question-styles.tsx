@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { Box, Text1 } from "../../../../../ui/controls";
+import { Box } from "../../../../../ui/controls";
 import { ScreenSize } from "../../../../../ui/types";
 import StyledInput from "../../../../../components/input-field";
 
@@ -7,7 +7,7 @@ export const StyledBoxInput = styled(Box)`
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  margin: 90px auto 50px;
+  margin: 90px auto 40px;
   width: 100%;
   @media (max-width: ${ScreenSize.MediumSmall}px) {
     flex-wrap: wrap;
@@ -74,16 +74,6 @@ export const StyleLabel = styled.label`
   align-self: center;
   @media (max-width: ${ScreenSize.MediumSmall}px) {
     width: max-content;
-  }
-`;
-
-export const ErrorText = styled(Text1)`
-  text-align: center;
-  color: red;
-  margin: 20px auto;
-  font-size: 30px;
-  @media (max-width: ${ScreenSize.Small}px) {
-    font-size: 20px;
   }
 `;
 

@@ -9,7 +9,7 @@ export const StyledBox = styled(Box)`
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  margin: 90px auto;
+  margin: 90px auto 40px;
   width: 100%;
   @media (max-width: 790px) {
     flex-wrap: wrap;
@@ -55,16 +55,6 @@ export const StyledArrowLeft = styled(ArrowLeft)`
 export const StyledArrowRight = styled(ArrowRight)`
   @media (max-width: 890px) {
     width: 45px;
-  }
-`;
-
-export const ErrorText = styled(Text1)`
-  text-align: center;
-  color: red;
-  margin: 20px auto;
-  font-size: 30px;
-  @media (max-width: ${ScreenSize.Small}px) {
-    font-size: 20px;
   }
 `;
 

@@ -3,8 +3,8 @@ import styled from "styled-components";
 import { useQuery } from "@apollo/client";
 import { toast } from "react-hot-toast";
 import { LeftMenuElementsData } from "../../../../types/left-menu";
-import { Link, Menu, MenuItem, Box } from "../../../../ui/controls";
-import { Text3 } from "../../../../ui/controls/typography";
+import { Link, Menu, MenuItem, Box, Subtitle3 } from "../../../../ui/controls";
+import { Text3 } from "../../../../ui/controls";
 // import { ScreenSize } from "../../../../ui/types";
 import { GET_LEFT_MENU_ITEMS } from "../../../../gql/query/left-menu";
 
@@ -39,7 +39,7 @@ const NavMenu: React.FC = () => {
   if (loading) {
     return (
       <Box mt={2}>
-        <Text3>Загрузка...</Text3>
+        <Subtitle3>Загрузка...</Subtitle3>
       </Box>
     );
   }

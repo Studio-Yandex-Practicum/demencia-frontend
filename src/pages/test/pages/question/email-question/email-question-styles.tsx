@@ -1,20 +1,10 @@
 import styled from "styled-components";
-import { Box, Text1 } from "../../../../../ui/controls";
+import { Box } from "../../../../../ui/controls";
 import { ScreenSize } from "../../../../../ui/types";
-
-export const ErrorText = styled(Text1)`
-  text-align: center;
-  color: red;
-  margin: 20px auto;
-  font-size: 30px;
-  @media (max-width: ${ScreenSize.Small}px) {
-    font-size: 20px;
-  }
-`;
 
 export const StyledBoxInput = styled(Box)`
   align-items: start;
-  margin: 90px auto 50px;
+  margin: 90px auto 40px;
   width: 100%;
   @media (max-width: ${ScreenSize.MediumSmall}px) {
     flex-wrap: wrap;

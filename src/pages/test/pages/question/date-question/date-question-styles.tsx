@@ -61,7 +61,7 @@ export const StyledBoxInput = styled(Box)`
   flex-direction: row;
   justify-content: space-around;
   align-items: center;
-  margin: 90px auto 50px;
+  margin: 90px auto 40px;
   width: 100%;
   @media (max-width: ${ScreenSize.MediumSmall}px) {
     flex-wrap: wrap;
@@ -117,14 +117,4 @@ export const StyledImg = styled.img`
   right: 1.5rem;
   transform: translateY(-50%);
   z-index: -1;
-`;
-
-export const ErrorText = styled(Text1)`
-  text-align: center;
-  color: red;
-  margin: 20px auto;
-  font-size: 30px;
-  @media (max-width: ${ScreenSize.Small}px) {
-    font-size: 20px;
-  }
 `;

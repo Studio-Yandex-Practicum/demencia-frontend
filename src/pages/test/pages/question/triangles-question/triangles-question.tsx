@@ -10,7 +10,6 @@ import { useNavigate } from "react-router-dom";
 import { Box, Button, Section, Text1, Text3 } from "../../../../../ui/controls";
 import { ArrowLeft, ArrowRight } from "../components/arrows";
 import QuestionHeader from "../components/question-header";
-import { ErrorText } from "../date-question/date-question-styles";
 import { ScreenSize, TextColor } from "../../../../../ui/types";
 
 import triangleQuestionSamplePic from "../../../../../images/triangles-question-sample-pic.jpg";
@@ -18,6 +17,8 @@ import { AppContext } from "../../../../../components/contexts";
 import { CREATE_ANSWER } from "../../../../../gql/mutation/create-answer";
 import { useMutation } from "@apollo/client";
 import toast from "react-hot-toast";
+import ErrorText from "../components/error-text";
+import LoadingText from "../components/loading-text";
 
 const StyledBox = styled(Box)`
   @media (max-width: ${ScreenSize.Medium}px) {
@@ -160,7 +161,7 @@ const SvgLine: React.FC<SvgLineProps> = ({
 
 // Компонент вопрос №24
 const TrianglesQuestion: React.FC<{ number: number }> = ({ number }) => {
-  const [createAnswer] = useMutation(CREATE_ANSWER);
+  const [createAnswer, { loading }] = useMutation(CREATE_ANSWER);
   const { setLastQuestionId } = useContext(AppContext);
   const navigate = useNavigate();
   const [isLinesReset, setIsLinesReset] = useState(false); // Сброс нажатых кружков
@@ -355,6 +356,7 @@ const TrianglesQuestion: React.FC<{ number: number }> = ({ number }) => {
             <strong>{-7 + answer.length}</strong> !
           </ErrorText>
         )}
+        {loading && <LoadingText>Отправка ответа...</LoadingText>}
       </Section>
     </Box>
   );

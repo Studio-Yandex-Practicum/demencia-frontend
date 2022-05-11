@@ -6,6 +6,8 @@ import { AppContext } from "../../../../../components/contexts";
 import { CREATE_ANSWER } from "../../../../../gql/mutation/create-answer";
 import { Box, Section } from "../../../../../ui/controls";
 import { testData } from "../../../data";
+import ErrorText from "../components/error-text";
+import LoadingText from "../components/loading-text";
 import QuestionHeader from "../components/question-header";
 import {
   StyledBoxInput,
@@ -18,11 +20,10 @@ import {
   StyledArrowRight,
   StyledInputList,
   StyleLabel,
-  ErrorText,
 } from "./three-options-question-styles";
 
 const ThreeOptionsQuestion: React.FC<{ number: number }> = ({ number }) => {
-  const [createAnswer] = useMutation(CREATE_ANSWER);
+  const [createAnswer, { loading }] = useMutation(CREATE_ANSWER);
   const { setLastQuestionId } = useContext(AppContext);
   const navigate = useNavigate();
   const [firstChecked, setFirstChecked] = useState(false);
@@ -156,6 +157,7 @@ const ThreeOptionsQuestion: React.FC<{ number: number }> = ({ number }) => {
             Необходимо ответить на вопрос, прежде чем переходить к следующему
           </ErrorText>
         )}
+        {loading && <LoadingText>Отправка ответа...</LoadingText>}
       </Section>
     </Box>
   );

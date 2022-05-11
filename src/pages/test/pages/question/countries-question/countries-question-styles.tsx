@@ -1,14 +1,14 @@
 import styled from "styled-components";
-import { Section, Text1 } from "../../../../../ui/controls";
+import { Section } from "../../../../../ui/controls";
 import { ScreenSize } from "../../../../../ui/types";
 import { ArrowLeft, ArrowRight } from "../components/arrows";
 
 export const StyledSection = styled(Section)`
   justify-content: center;
-  margin: 90px 0 60px;
+  margin: 90px 0 40px;
   @media (max-width: ${ScreenSize.MediumSmall}px) {
     flex-wrap: wrap;
-    margin-bottom: 20px;
+    margin-bottom: 30px;
     justify-content: space-evenly;
   }
 `;
@@ -40,15 +40,5 @@ export const StyledBoxInput = styled.div`
     grid-template-columns: repeat(1, 1fr);
     margin-bottom: 50px;
     gap: 50px;
-  }
-`;
-
-export const ErrorText = styled(Text1)`
-  text-align: center;
-  color: red;
-  margin: 20px auto;
-  font-size: 30px;
-  @media (max-width: ${ScreenSize.MediumSmall}px) {
-    font-size: 20px;
   }
 `;

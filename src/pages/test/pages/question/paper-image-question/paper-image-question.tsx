@@ -6,6 +6,8 @@ import { AppContext } from "../../../../../components/contexts";
 import { CREATE_ANSWER } from "../../../../../gql/mutation/create-answer";
 import { Box, Section } from "../../../../../ui/controls";
 import { TextColor, TypographyLevel } from "../../../../../ui/types";
+import ErrorText from "../components/error-text";
+import LoadingText from "../components/loading-text";
 import QuestionHeader from "../components/question-header";
 import QuestionTextUnfolding from "../components/question-text-unfolding";
 import {
@@ -16,7 +18,6 @@ import {
   StyledArrowLeft,
   StyledArrowRight,
   StyledText1,
-  ErrorText,
   StyledInput,
   StyledLabel,
   StyledBoxInput,
@@ -24,7 +25,7 @@ import {
 } from "./paper-image-question-style";
 
 const PaperImageQuestion: React.FC<{ number: number }> = ({ number }) => {
-  const [createAnswer] = useMutation(CREATE_ANSWER);
+  const [createAnswer, { loading }] = useMutation(CREATE_ANSWER);
   const { setLastQuestionId } = useContext(AppContext);
   const navigate = useNavigate();
   const [isSelected, setIsSelected] = useState(false);
@@ -127,6 +128,7 @@ const PaperImageQuestion: React.FC<{ number: number }> = ({ number }) => {
             вопросу
           </ErrorText>
         )}
+        {loading && <LoadingText>Отправка ответа...</LoadingText>}
       </Section>
     </Box>
   );

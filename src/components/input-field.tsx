@@ -11,19 +11,17 @@ const StyledInput = styled.input`
   background-color: #ffffff;
   font-size: 30px;
   &::placeholder {
-    font-size: 25px;
+    font-size: 30px;
   }
   &:focus {
     outline: none;
     border: 2px solid #000000;
   }
   @media (max-width: ${ScreenSize.Medium}px) {
+    font-size: 20px;
     &::placeholder {
       font-size: 20px;
     }
-  }
-  @media (max-width: ${ScreenSize.MediumSmall}px) {
-    font-size: 20px;
   }
   @media (max-width: ${ScreenSize.Small}px) {
     &::placeholder {

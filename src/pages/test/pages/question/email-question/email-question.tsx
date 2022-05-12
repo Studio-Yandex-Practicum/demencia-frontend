@@ -47,7 +47,7 @@ const EmailQuestion: React.FC<{ number: number }> = ({ number }) => {
     const validate = email
       .toLowerCase()
       .match(
-        /^\w+([\.'+-]?\w+)*@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z]+([\.-]?\w)+\.)+[a-zA-Z]{2,63}))$/
+        /^\w+([\.'+-]?\w+)*@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z]+([\.-]?[a-zA-Z0-9])+\.)+[a-zA-Z]{2,63}))$/
       );
     if (validate) {
       return true;

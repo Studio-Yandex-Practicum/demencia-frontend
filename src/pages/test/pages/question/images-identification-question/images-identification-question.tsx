@@ -92,7 +92,7 @@ const ImagesIdentificationQuestion: React.FC<{ number: number }> = ({
   };
 
   const onForward = () => {
-    if (firstAnswer && secondAnswer) {
+    if (firstAnswer.trim().length !== 0 && secondAnswer.trim().length !== 0) {
       setIsErrorTextShow(false);
 
       const answer = `${firstAnswer},${secondAnswer}`;

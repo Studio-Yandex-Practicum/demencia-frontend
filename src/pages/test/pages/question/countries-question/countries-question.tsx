@@ -23,6 +23,7 @@ const CountriesQuestion: React.FC<{ number: number }> = ({ number }) => {
   const navigate = useNavigate();
   const [isError, setIsError] = useState(false);
   const [inputsArray, setInputArray] = useState(new Array(12).fill(""));
+  const [errorText, setErrorText] = useState("");
 
   const onBack = () => {
     if (number > 1) {
@@ -34,9 +35,20 @@ const CountriesQuestion: React.FC<{ number: number }> = ({ number }) => {
     const isValid = !inputsArray.filter((input) => input.trim().length == 0)
       .length;
     if (!isValid) {
+      setErrorText(
+        "Необходимо ответить на вопрос, прежде чем переходить к следующему"
+      );
       setIsError(true);
     } else {
       const finalDataResponse = inputsArray.toString(); //финальные данные теста, доделать при интеграции с бэкендом
+
+      if (finalDataResponse.length > 255) {
+        setErrorText("Общая длина всех названий превышает допустимую.");
+        setIsError(true);
+        return;
+      }
+
+      setIsError(false);
 
       const testId = JSON.parse(localStorage.getItem("test_id") || "");
       createAnswer({
@@ -102,11 +114,7 @@ const CountriesQuestion: React.FC<{ number: number }> = ({ number }) => {
         </StyledBoxInput>
         <StyledArrowRight onClick={() => onForward()} />
       </StyledSection>
-      {isError && (
-        <ErrorText>
-          Необходимо ответить на вопрос, прежде чем переходить к следующему
-        </ErrorText>
-      )}
+      {isError && <ErrorText>{errorText}</ErrorText>}
       {loading && <LoadingText>Отправка ответа...</LoadingText>}
     </Box>
   );

@@ -38,7 +38,7 @@ const TextQuestion: React.FC<{ number: number }> = ({ number }) => {
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (number !== 17) {
-      setTextAnswer(e.target.value.replace(/[^а-яё\s]/gi, ""));
+      setTextAnswer(e.target.value.replace(/[^а-яё\-\s]/gi, ""));
     } else if (number === 17) {
       setTextAnswer(e.target.value.replace(/[^а-яё\s\d]/gi, ""));
     } else {
@@ -53,7 +53,7 @@ const TextQuestion: React.FC<{ number: number }> = ({ number }) => {
   };
 
   const onForward = () => {
-    if (textAnswer || number === 8) {
+    if (textAnswer.trim().length !== 0 || number === 8) {
       setIsError(false);
       const testId = JSON.parse(localStorage.getItem("test_id") || "");
       createAnswer({
@@ -97,6 +97,7 @@ const TextQuestion: React.FC<{ number: number }> = ({ number }) => {
             <StyledInput
               onChange={handleChange}
               value={textAnswer}
+              maxLength={100}
               placeholder={
                 number === 17
                   ? "Только буквы кириллицы и цифры"

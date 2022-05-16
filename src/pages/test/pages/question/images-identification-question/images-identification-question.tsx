@@ -92,7 +92,7 @@ const ImagesIdentificationQuestion: React.FC<{ number: number }> = ({
   };
 
   const onForward = () => {
-    if (firstAnswer && secondAnswer) {
+    if (firstAnswer.trim().length !== 0 && secondAnswer.trim().length !== 0) {
       setIsErrorTextShow(false);
 
       const answer = `${firstAnswer},${secondAnswer}`;
@@ -145,6 +145,7 @@ const ImagesIdentificationQuestion: React.FC<{ number: number }> = ({
               name="firstImageIdentInput"
               required
               value={firstAnswer}
+              maxLength={100}
               onChange={(e) => handleChange(e, setFirstAnswer)}
             />
             <Box flex maxWidth={300} width={"100%"}>
@@ -155,6 +156,7 @@ const ImagesIdentificationQuestion: React.FC<{ number: number }> = ({
               name="secondImageIdentInput"
               required
               value={secondAnswer}
+              maxLength={100}
               onChange={(e) => handleChange(e, setSecondAnswer)}
             />
           </StyledBoxInput>

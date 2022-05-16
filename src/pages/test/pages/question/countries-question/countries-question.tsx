@@ -23,6 +23,7 @@ const CountriesQuestion: React.FC<{ number: number }> = ({ number }) => {
   const navigate = useNavigate();
   const [isError, setIsError] = useState(false);
   const [inputsArray, setInputArray] = useState(new Array(12).fill(""));
+  const [errorText, setErrorText] = useState("");
 
   const onBack = () => {
     if (number > 1) {
@@ -34,9 +35,20 @@ const CountriesQuestion: React.FC<{ number: number }> = ({ number }) => {
     const isValid = !inputsArray.filter((input) => input.trim().length == 0)
       .length;
     if (!isValid) {
+      setErrorText(
+        "Необходимо ответить на вопрос, прежде чем переходить к следующему"
+      );
       setIsError(true);
     } else {
       const finalDataResponse = inputsArray.toString(); //финальные данные теста, доделать при интеграции с бэкендом
+
+      if (finalDataResponse.length > 255) {
+        setErrorText("Общая длина всех названий превышает допустимую.");
+        setIsError(true);
+        return;
+      }
+
+      setIsError(false);
 
       const testId = JSON.parse(localStorage.getItem("test_id") || "");
       createAnswer({
@@ -68,7 +80,10 @@ const CountriesQuestion: React.FC<{ number: number }> = ({ number }) => {
 
   function handleInput(index: number, event: ChangeEvent<HTMLInputElement>) {
     const updated = [...inputsArray];
-    updated[index] = event.target.value.replace(/['"`{}\[\]<>\/\\!=\s]/gi, "");
+    updated[index] = event.target.value.replace(
+      /['"`{}\[\]<>\/\\!=\s]|[\uD83C|\uD83D|\uD83E][\uDC00-\uDFFF][\u200D|\uFE0F]|[\uD83C|\uD83D|\uD83E][\uDC00-\uDFFF]|[0-9|*|#]\uFE0F\u20E3|[0-9|#]\u20E3|[\u203C-\u3299]\uFE0F\u200D|[\u203C-\u3299]\uFE0F|[\u2122-\u2B55]|\u303D|[\A9|\AE]\u3030|\uA9|\uAE|\u3030/gi,
+      ""
+    );
     setInputArray(updated);
   }
 
@@ -92,17 +107,14 @@ const CountriesQuestion: React.FC<{ number: number }> = ({ number }) => {
             <StyledInput
               key={index}
               value={inputsArray[index]}
+              maxLength={100}
               onChange={(event) => handleInput(index, event)}
             />
           ))}
         </StyledBoxInput>
         <StyledArrowRight onClick={() => onForward()} />
       </StyledSection>
-      {isError && (
-        <ErrorText>
-          Необходимо ответить на вопрос, прежде чем переходить к следующему
-        </ErrorText>
-      )}
+      {isError && <ErrorText>{errorText}</ErrorText>}
       {loading && <LoadingText>Отправка ответа...</LoadingText>}
     </Box>
   );

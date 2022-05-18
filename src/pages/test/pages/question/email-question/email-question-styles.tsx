@@ -37,6 +37,6 @@ export const EmailInputBox = styled(Box)`
 export const EmailCheckboxBox = styled(Box)`
   align-items: baseline;
   @media (max-width: ${ScreenSize.MediumSmall}px) {
-    margin-bottom: 32px;
+    margin-bottom: 30px;
   }
 `;

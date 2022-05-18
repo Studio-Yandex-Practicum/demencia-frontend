@@ -22,7 +22,7 @@ import ErrorText from "../components/error-text";
 import LoadingText from "../components/loading-text";
 
 const StyledBox = styled(Box)`
-  margin-bottom: 20px;
+  margin-bottom: 30px;
 
   @media (max-width: ${ScreenSize.Medium}px) {
     flex-wrap: wrap;
@@ -40,21 +40,20 @@ const StyledButton = styled(Button)`
   align-self: center;
   margin: 0 20px;
   @media (max-width: ${ScreenSize.Medium}px) {
-    margin-bottom: 30px;
     padding: 17px 20px;
   }
 `;
 
 const StyledArrowLeft = styled(ArrowLeft)`
-  /* @media (max-width: ${ScreenSize.Medium}px) {
-    margin-top: 30px;
-  } */
+  @media (max-width: ${ScreenSize.Medium}px) {
+    width: 40px;
+  }
 `;
 
 const StyledArrowRight = styled(ArrowRight)`
-  /* @media (max-width: ${ScreenSize.Medium}px) {
-    margin-top: 30px;
-  } */
+  @media (max-width: ${ScreenSize.Medium}px) {
+    width: 40px;
+  }
 `;
 
 const StyledImg = styled.img`

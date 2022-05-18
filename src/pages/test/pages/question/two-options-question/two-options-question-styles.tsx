@@ -95,7 +95,7 @@ export const BoxInputOne = styled(Box)`
 export const StyledBoxArrowRight = styled(Box)`
   margin-left: 10px;
   @media (max-width: ${ScreenSize.MediumSmall}px) {
-    margin-top: 32px;
+    margin-top: 15px;
     order: 2;
     margin-left: 0;
   }
@@ -104,7 +104,7 @@ export const StyledBoxArrowRight = styled(Box)`
 export const StyledBoxArrowLeft = styled(Box)`
   margin-right: 10px;
   @media (max-width: ${ScreenSize.MediumSmall}px) {
-    margin-top: 32px;
+    margin-top: 15px;
     order: 1;
     margin-right: 0;
   }

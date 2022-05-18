@@ -32,7 +32,7 @@ export const StyleBoxInputs = styled(Box)`
 
 export const StyledBoxArrowRight = styled(Box)`
   @media (max-width: 790px) {
-    margin-top: 32px;
+    margin-top: 30px;
     order: 2;
     margin-left: 0;
   }
@@ -40,7 +40,7 @@ export const StyledBoxArrowRight = styled(Box)`
 
 export const StyledBoxArrowLeft = styled(Box)`
   @media (max-width: 790px) {
-    margin-top: 32px;
+    margin-top: 30px;
     order: 1;
     margin-right: 0;
   }
@@ -48,13 +48,13 @@ export const StyledBoxArrowLeft = styled(Box)`
 
 export const StyledArrowLeft = styled(ArrowLeft)`
   @media (max-width: 890px) {
-    width: 45px;
+    width: 40px;
   }
 `;
 
 export const StyledArrowRight = styled(ArrowRight)`
   @media (max-width: 890px) {
-    width: 45px;
+    width: 40px;
   }
 `;
 

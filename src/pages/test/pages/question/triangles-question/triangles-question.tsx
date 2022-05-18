@@ -33,7 +33,6 @@ const StyledButton = styled(Button)`
   align-self: center;
   margin: 0 20px;
   @media (max-width: ${ScreenSize.Medium}px) {
-    margin-bottom: 30px;
     padding: 17px 20px;
   }
 `;
@@ -41,12 +40,14 @@ const StyledButton = styled(Button)`
 const StyledArrowLeft = styled(ArrowLeft)`
   @media (max-width: ${ScreenSize.Medium}px) {
     margin: 30px 0;
+    width: 40px;
   }
 `;
 
 const StyledArrowRight = styled(ArrowRight)`
   @media (max-width: ${ScreenSize.Medium}px) {
     margin: 30px 0;
+    width: 40px;
   }
 `;
 

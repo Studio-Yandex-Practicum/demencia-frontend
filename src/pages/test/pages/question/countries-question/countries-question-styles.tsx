@@ -17,6 +17,7 @@ export const StyledArrowLeft = styled(ArrowLeft)`
   @media (max-width: ${ScreenSize.MediumSmall}px) {
     order: 1;
     margin: 0;
+    width: 40px;
   }
 `;
 
@@ -24,6 +25,7 @@ export const StyledArrowRight = styled(ArrowRight)`
   @media (max-width: ${ScreenSize.MediumSmall}px) {
     order: 2;
     margin: 0;
+    width: 40px;
   }
 `;
 
@@ -38,7 +40,7 @@ export const StyledBoxInput = styled.div`
   }
   @media (max-width: ${ScreenSize.MediumSmall}px) {
     grid-template-columns: repeat(1, 1fr);
-    margin-bottom: 50px;
+    margin-bottom: 30px;
     gap: 50px;
   }
 `;

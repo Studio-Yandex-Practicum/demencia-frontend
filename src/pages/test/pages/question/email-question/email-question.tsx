@@ -5,6 +5,8 @@ import { ArrowLeft, ArrowRight } from "../components/arrows";
 import QuestionHeader from "../components/question-header";
 import StyledInput from "../../../../../components/input-field";
 
+import validator from "validator";
+
 import {
   StyledBoxInput,
   Link,
@@ -19,6 +21,8 @@ import { CREATE_ANSWER } from "../../../../../gql/mutation/create-answer";
 import toast from "react-hot-toast";
 import ErrorText from "../components/error-text";
 import LoadingText from "../components/loading-text";
+
+const reEmail = new RegExp("/^w+([.-]?w+)*@w+([.-]?w+)*(.w{2,3})+$/");
 
 const EmailQuestion: React.FC<{ number: number }> = ({ number }) => {
   const [createAnswer, { loading }] = useMutation(CREATE_ANSWER);
@@ -37,6 +41,7 @@ const EmailQuestion: React.FC<{ number: number }> = ({ number }) => {
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value, checked } = e.target;
+    console.log(value);
     setValues((prevState) => ({
       ...prevState,
       [name]: name === "personalData" ? checked : value,
@@ -44,23 +49,17 @@ const EmailQuestion: React.FC<{ number: number }> = ({ number }) => {
   };
 
   const validateEmail = (email: string) => {
-    const validate = email
-      .toLowerCase()
-      .match(
-        /^\w+([\.'+-]?\w+)*@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z]+([\.-]?[a-zA-Z0-9])+\.)+[a-zA-Z]{2,63}))$/
-      );
-    if (validate) {
-      return true;
-    } else {
-      return false;
-    }
+    const text = email.toLowerCase();
+    return validator.isEmail(text);
   };
 
   const goForward = () => {
     const { email, personalData } = values;
 
-    if (!validateEmail(email) || !personalData) {
-      if (!validateEmail(email)) {
+    const emailIsValid = validateEmail(email);
+
+    if (!emailIsValid || !personalData) {
+      if (!emailIsValid) {
         setIsError((prevState) => ({
           ...prevState,
           ["email"]: true,

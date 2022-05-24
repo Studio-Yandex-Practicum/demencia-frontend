@@ -66,7 +66,7 @@ export const StyledBoxInput = styled(Box)`
   @media (max-width: ${ScreenSize.MediumSmall}px) {
     flex-wrap: wrap;
     justify-content: space-evenly;
-    margin: 50px auto 30px;
+    margin: 50px auto 20px;
   }
 `;
 
@@ -105,7 +105,7 @@ export const StyledBoxCurrentSelect = styled(Box)`
     margin-left: 0;
     margin-bottom: 15px;
     &:last-child {
-      margin-bottom: 30px;
+      margin-bottom: 40px;
     }
   }
 `;

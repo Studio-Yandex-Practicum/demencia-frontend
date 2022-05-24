@@ -24,7 +24,7 @@ const StyledBox = styled(Box)`
   margin-bottom: 40px;
 
   @media (max-width: ${ScreenSize.MediumSmall}px) {
-    margin-bottom: 30px;
+    margin-bottom: 20px;
   }
 `;
 
@@ -46,13 +46,13 @@ const StyledImg = styled.img`
 
 const StyledArrowLeft = styled(ArrowLeft)`
   @media (max-width: ${ScreenSize.Medium}px) {
-    margin-top: 30px;
+    margin-top: 40px;
   }
 `;
 
 const StyledArrowRight = styled(ArrowRight)`
   @media (max-width: ${ScreenSize.Medium}px) {
-    margin-top: 30px;
+    margin-top: 40px;
   }
 `;
 

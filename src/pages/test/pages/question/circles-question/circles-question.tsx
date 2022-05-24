@@ -31,7 +31,7 @@ const StyledBox = styled(Box)`
   }
 
   @media (max-width: ${ScreenSize.MediumSmall}px) {
-    margin-bottom: 30px;
+    margin-bottom: 20px;
   }
 `;
 
@@ -48,11 +48,19 @@ const StyledArrowLeft = styled(ArrowLeft)`
   @media (max-width: ${ScreenSize.Medium}px) {
     width: 40px;
   }
+
+  @media (max-width: ${ScreenSize.MediumSmall}px) {
+    margin-top: 20px;
+  }
 `;
 
 const StyledArrowRight = styled(ArrowRight)`
   @media (max-width: ${ScreenSize.Medium}px) {
     width: 40px;
+  }
+
+  @media (max-width: ${ScreenSize.MediumSmall}px) {
+    margin-top: 20px;
   }
 `;
 

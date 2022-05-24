@@ -12,7 +12,7 @@ const StyledDiv = styled.div`
   margin-top: 40px;
 
   @media (max-width: ${ScreenSize.MediumSmall}px) {
-    margin-top: 30px;
+    margin-top: 20px;
   }
 `;
 

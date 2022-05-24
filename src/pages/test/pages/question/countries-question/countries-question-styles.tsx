@@ -8,7 +8,7 @@ export const StyledSection = styled(Section)`
   margin: 90px 0 40px;
   @media (max-width: ${ScreenSize.MediumSmall}px) {
     flex-wrap: wrap;
-    margin-bottom: 30px;
+    margin-bottom: 20px;
     justify-content: space-evenly;
   }
 `;
@@ -40,7 +40,7 @@ export const StyledBoxInput = styled.div`
   }
   @media (max-width: ${ScreenSize.MediumSmall}px) {
     grid-template-columns: repeat(1, 1fr);
-    margin-bottom: 30px;
+    margin-bottom: 40px;
     gap: 50px;
   }
 `;

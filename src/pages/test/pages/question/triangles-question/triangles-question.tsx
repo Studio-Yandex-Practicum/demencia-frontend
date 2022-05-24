@@ -39,14 +39,14 @@ const StyledButton = styled(Button)`
 
 const StyledArrowLeft = styled(ArrowLeft)`
   @media (max-width: ${ScreenSize.Medium}px) {
-    margin: 30px 0;
+    margin: 40px 0 20px;
     width: 40px;
   }
 `;
 
 const StyledArrowRight = styled(ArrowRight)`
   @media (max-width: ${ScreenSize.Medium}px) {
-    margin: 30px 0;
+    margin: 40px 0 20px;
     width: 40px;
   }
 `;

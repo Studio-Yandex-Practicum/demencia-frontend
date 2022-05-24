@@ -88,7 +88,7 @@ const ImagesIdentificationQuestion: React.FC<{ number: number }> = ({
     e: React.ChangeEvent<HTMLInputElement>,
     setState: (value: string) => void
   ) => {
-    setState(e.target.value.replace(/[^а-яё\s]/gi, ""));
+    setState(e.target.value.replace(/[^а-яёa-z0-9\s]/gi, ""));
   };
 
   const onForward = () => {

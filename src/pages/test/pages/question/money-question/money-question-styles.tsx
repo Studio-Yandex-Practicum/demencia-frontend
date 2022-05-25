@@ -14,7 +14,7 @@ export const StyledBoxInput = styled(Box)`
     justify-content: space-evenly;
     align-items: center;
     vertical-align: baseline;
-    margin: 50px auto 30px;
+    margin: 50px auto 20px;
   }
 `;
 
@@ -38,7 +38,7 @@ export const StyleBoxInputs = styled(Box)`
 export const StyledBoxArrowRight = styled(Box)`
   margin-left: 10px;
   @media (max-width: ${ScreenSize.MediumSmall}px) {
-    margin-top: 32px;
+    margin-top: 20px;
     order: 2;
     margin-left: 0;
   }
@@ -47,7 +47,7 @@ export const StyledBoxArrowRight = styled(Box)`
 export const StyledBoxArrowLeft = styled(Box)`
   margin-right: 10px;
   @media (max-width: ${ScreenSize.MediumSmall}px) {
-    margin-top: 32px;
+    margin-top: 20px;
     order: 1;
     margin-right: 0;
   }
@@ -81,6 +81,6 @@ export const InputBox = styled.div`
   display: flex;
   @media (max-width: ${ScreenSize.MediumSmall}px) {
     width: 100%;
-    margin: 0 auto 15px;
+    margin: 0 auto 20px;
   }
 `;

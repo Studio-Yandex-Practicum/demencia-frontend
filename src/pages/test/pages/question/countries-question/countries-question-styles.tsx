@@ -8,7 +8,7 @@ export const StyledSection = styled(Section)`
   margin: 90px 0 40px;
   @media (max-width: ${ScreenSize.MediumSmall}px) {
     flex-wrap: wrap;
-    margin-bottom: 30px;
+    margin-bottom: 20px;
     justify-content: space-evenly;
   }
 `;
@@ -17,6 +17,7 @@ export const StyledArrowLeft = styled(ArrowLeft)`
   @media (max-width: ${ScreenSize.MediumSmall}px) {
     order: 1;
     margin: 0;
+    width: 40px;
   }
 `;
 
@@ -24,6 +25,7 @@ export const StyledArrowRight = styled(ArrowRight)`
   @media (max-width: ${ScreenSize.MediumSmall}px) {
     order: 2;
     margin: 0;
+    width: 40px;
   }
 `;
 
@@ -38,7 +40,7 @@ export const StyledBoxInput = styled.div`
   }
   @media (max-width: ${ScreenSize.MediumSmall}px) {
     grid-template-columns: repeat(1, 1fr);
-    margin-bottom: 50px;
+    margin-bottom: 40px;
     gap: 50px;
   }
 `;

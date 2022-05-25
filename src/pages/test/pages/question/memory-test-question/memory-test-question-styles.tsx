@@ -25,7 +25,7 @@ export const StyledSection = styled(Section)`
   @media (max-width: ${ScreenSize.MediumSmall}px) {
     flex-wrap: wrap;
     justify-content: space-evenly;
-    margin: 50px auto 30px;
+    margin: 50px auto 20px;
   }
 `;
 
@@ -33,7 +33,7 @@ export const StyledBox = styled(Box)`
   width: 50%;
   @media (max-width: ${ScreenSize.MediumSmall}px) {
     width: 90%;
-    margin-bottom: 30px;
+    margin-bottom: 40px;
   }
 `;
 

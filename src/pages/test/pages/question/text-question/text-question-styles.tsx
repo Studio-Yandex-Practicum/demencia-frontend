@@ -26,13 +26,13 @@ export const StyledBoxInput = styled(Box)`
   @media (max-width: ${ScreenSize.MediumSmall}px) {
     flex-wrap: wrap;
     justify-content: space-evenly;
-    margin: 50px auto 30px;
+    margin: 50px auto 20px;
   }
 `;
 
 export const TextInputBox = styled(Box)`
   margin: auto 0;
   @media (max-width: ${ScreenSize.MediumSmall}px) {
-    margin-bottom: 32px;
+    margin-bottom: 40px;
   }
 `;

@@ -24,7 +24,7 @@ export const InputBox = styled.div`
   align-items: center;
   width: 100%;
   border-radius: 60px;
-  border: 1px solid #999;
+  border: 1px solid #000;
   padding: 10px 0 10px 15px;
   margin: 0 35px;
   @media (max-width: 890px) {

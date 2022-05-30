@@ -53,13 +53,22 @@ const TextQuestion: React.FC<{ number: number }> = ({ number }) => {
   };
 
   const onForward = () => {
-    if (textAnswer.trim().length !== 0 || number === 8) {
+    let answer = textAnswer.trim();
+
+    if (number === 1) {
+      answer = answer.replace(/^-+/, "").replace(/-+$/, "");
+      if (!answer.length) {
+        setTextAnswer("");
+      }
+    }
+
+    if (answer.length !== 0 || number === 8) {
       setIsError(false);
       const testId = JSON.parse(localStorage.getItem("test_id") || "");
       createAnswer({
         variables: {
           input: {
-            answerValue: textAnswer,
+            answerValue: answer,
             testCase: { id: testId },
             question: number,
           },
@@ -67,7 +76,7 @@ const TextQuestion: React.FC<{ number: number }> = ({ number }) => {
       })
         .then((res) => {
           if (res.data.createAnswer.ok === true) {
-            localStorage.setItem(`${number}`, textAnswer);
+            localStorage.setItem(`${number}`, answer);
             if (setLastQuestionId) {
               setLastQuestionId(`${number + 1}`);
             }

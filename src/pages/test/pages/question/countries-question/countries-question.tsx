@@ -80,7 +80,7 @@ const CountriesQuestion: React.FC<{ number: number }> = ({ number }) => {
 
   function handleInput(index: number, event: ChangeEvent<HTMLInputElement>) {
     const updated = [...inputsArray];
-    updated[index] = event.target.value.replace(/[^а-яёa-z0-9\s]/gi, "");
+    updated[index] = event.target.value;
     setInputArray(updated);
   }
 

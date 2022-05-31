@@ -40,7 +40,11 @@ const ClockImageQuestion: React.FC<{ number: number }> = ({ number }) => {
   }, []);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    if (e.target.validity.valid && e.target.files) {
+    if (
+      e.target.validity.valid &&
+      e.target.files &&
+      e.target.files.length !== 0
+    ) {
       const testId = JSON.parse(localStorage.getItem("test_id") || "");
       setButtonText("Загрузка...");
       createAnswer({

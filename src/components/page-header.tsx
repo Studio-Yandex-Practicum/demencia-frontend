@@ -21,7 +21,7 @@ import styled from "styled-components";
 import { ScreenSize } from "../ui/types";
 
 function textEllipsis(t: string | undefined) {
-  if (t !== undefined && t.length > 10) {
+  if (t !== undefined && t.length > 11) {
     return `${t.substring(0, 10)}...`;
   }
   return t;

@@ -103,8 +103,6 @@ const Map: React.FC = () => {
   if (!subtitle.length)
     return <DefaultCaption title="карта центров профилактики" />;
 
-  if (!sectionInfo.length) return <></>;
-
   return (
     <Section id="map" mt={4} zIndex={1}>
       <TextWrapper ml={6}>
@@ -124,12 +122,14 @@ const Map: React.FC = () => {
         <BaseLayer SVG={MyMap} />
       </MapWrapper>
       <SearchForm />
-      <StyledBox>
-        <AlertIcon />
-        <Box maxWidth={750}>
-          <Text3 textColor={TextColor.Shadow}>{sectionInfo}</Text3>
-        </Box>
-      </StyledBox>
+      {sectionInfo.length !== 0 && (
+        <StyledBox>
+          <AlertIcon />
+          <Box maxWidth={750}>
+            <Text3 textColor={TextColor.Shadow}>{sectionInfo}</Text3>
+          </Box>
+        </StyledBox>
+      )}
     </Section>
   );
 };

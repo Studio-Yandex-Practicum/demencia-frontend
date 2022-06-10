@@ -50,6 +50,7 @@ const StyledText = styled(Subtitle4)`
 
 const StyledSliderWrapper = styled(Box)`
   position: relative;
+
   @media (max-width: ${ScreenSize.Medium}px) {
     padding: 16px 38px;
   }

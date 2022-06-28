@@ -28,7 +28,10 @@ import { NEW_TEST } from "../../../../gql/query/newTest";
 import { toast } from "react-hot-toast";
 
 const StartPage = () => {
-  const [getTestId, {}] = useLazyQuery<NewTest>(NEW_TEST);
+  const [getTestId, {}] = useLazyQuery<NewTest>(NEW_TEST, {
+    fetchPolicy: "cache-and-network",
+    nextFetchPolicy: "network-only",
+  });
   const { setLastQuestionId } = useContext(AppContext);
   const navigate = useNavigate();
 

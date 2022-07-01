@@ -1,6 +1,6 @@
 .PHONY: build push
 
-VERSION := 0.43.0
+VERSION := 0.44.0
 
 build:
 	docker build -t "demencia:${VERSION}" ./

@@ -17,6 +17,7 @@ import { DEFAULT_SITE_NAME } from "../constants";
 import { Subtitle3 } from "../ui/controls";
 import ScrollToTop from "./scroll-to-top";
 import TestPage from "../pages/test/test";
+import VideoCoursesPage from "../pages/videocourses/videocourses";
 
 const App: React.FC = () => {
   const { loading, error, data } = useQuery<SettingsData>(GET_SETTINGS, {
@@ -72,6 +73,7 @@ const App: React.FC = () => {
               <Route path="/details" element={<DetailsPage />} />
               <Route path="/graphql" element={<GraphqlTestPage />} />
               <Route path="/test/*" element={<TestPage />} />
+              <Route path="/videocourses" element={<VideoCoursesPage />} />
             </Routes>
           </Main>
           <PageFooter />

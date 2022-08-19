@@ -1,8 +1,15 @@
 import React from "react";
 import styled from "styled-components";
-import { Subtitle3, Text3 } from "../../../ui/controls/typography";
+import {
+  Subtitle3,
+  Subtitle4,
+  Text1,
+  Text3,
+  Text4,
+  Title,
+} from "../../../ui/controls/typography";
 import { Box, Link, LinkButton } from "../../../ui/controls";
-import { ScreenSize } from "../../../ui/types";
+import { ScreenSize, TypographyLevel } from "../../../ui/types";
 import textEllipsis from "../../../utils";
 
 const StyledSlide = styled.div`
@@ -39,11 +46,13 @@ const StyledBox = styled(Box)`
 `;
 
 const StyledTitle = styled(Subtitle3)`
+  uppercase: false;
   display: -webkit-box;
   overflow: hidden;
   text-overflow: ellipsis;
-  -webkit-line-clamp: 2;
+  -webkit-line-clamp: 4;
   -webkit-box-orient: vertical;
+  font-size: 14px;
   @media (max-width: ${ScreenSize.Small}px) {
     -webkit-line-clamp: 3;
   }
@@ -55,7 +64,7 @@ const StyledTitle = styled(Subtitle3)`
   }
 `;
 
-const StyledText = styled(Text3)`
+const StyledText = styled(Text4)`
   display: -webkit-box;
   overflow: hidden;
   text-overflow: ellipsis;

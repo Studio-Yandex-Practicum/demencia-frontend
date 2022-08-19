@@ -133,7 +133,7 @@ const NewsGridPage: React.FC = () => {
               cardDateTime={article.createdAt}
               cardDateTimeText={formattedDate || "Дата новости"}
               imageSource={article.image || cardDefImg}
-              cardLinkTo={`/article/${article.id}`}
+              cardLinkTo={article.urlLabel || `/article/${article.id}`}
               urlLabel={article.urlLabel || "Подробнее"}
             />
           );

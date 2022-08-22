@@ -1,79 +1,72 @@
 import { FC } from "react";
-import { Subtitle1, Subtitle3, Section, Text2, Box } from "../../ui/controls";
-import { SeparatedColumn, TwoColumnGrid } from "../../ui/controls/layout";
-import {
-  ButtonType,
-  TextColor,
-  TypographyLevel,
-  ScreenSize,
-} from "../../ui/types";
-import styled from "styled-components";
+import { Subtitle3, Section, Box } from "../../ui/controls";
+import { TwoColumnGrid } from "../../ui/controls/layout";
+import { TextColor, TypographyLevel } from "../../ui/types";
 import testGreenPuzzle from "../../images/test_green_puzzle.svg";
-import StyledImage from "../news-grid/styled-image";
+import {
+  StyledSubtitle1,
+  StyledText2,
+  StyledText2Strong,
+  StyledImage,
+  StyledTextForList,
+  StyledList,
+  StyledTextStrong,
+} from "./videocurses-styles";
 
 const VideoCoursesPage: FC = () => {
-  const List = styled.ul<{
-    color?: string;
-  }>`
-    margin: 0;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: flex-start;
-  `;
-
   return (
     <Section flex centered mb={2}>
-      <Subtitle1
+      <StyledSubtitle1
         maxWidth={1026}
         uppercase={false}
         level={TypographyLevel.Subtitle1}
       >
         Видеокурс
-      </Subtitle1>
-      <Subtitle1
+      </StyledSubtitle1>
+      <StyledSubtitle1
         maxWidth={1026}
         uppercase={false}
         level={TypographyLevel.Subtitle1}
       >
         &laquo;Все о&nbsp;деменции за&nbsp;60&nbsp;минут&raquo;
-      </Subtitle1>
+      </StyledSubtitle1>
       <Box mb={2}>
-        <Text2 mt={6}>
-          Уникальный <b>бесплатный</b> видеокурс о&nbsp;здоровье мозга создан
-          при поддержке Фонда президентских грантов.
-        </Text2>
+        <StyledText2 mt={6}>
+          Уникальный <StyledText2Strong>бесплатный</StyledText2Strong> видеокурс
+          о&nbsp;здоровье мозга создан при поддержке Фонда президентских
+          грантов.
+        </StyledText2>
       </Box>
       <TwoColumnGrid>
         <Subtitle3 mt={2} textColor={TextColor.Accent2} uppercase={false}>
           Всего лишь за 60 минут вы узнаете:
         </Subtitle3>
-        <List>
+        <StyledList>
           <Box mt={2}>
             <li>
-              <Text2 textColor={TextColor.Primary} mr={4}>
+              <StyledTextForList textColor={TextColor.Primary} mr={4}>
                 Что предпринять при проблемах с памятью?
-              </Text2>
+              </StyledTextForList>
             </li>
           </Box>
           <li>
-            <Text2 textColor={TextColor.Primary} mr={4}>
+            <StyledTextForList textColor={TextColor.Primary} mr={4}>
               Как остановить прогресс потери памяти?
-            </Text2>
+            </StyledTextForList>
           </li>
           <li>
-            <Text2 textColor={TextColor.Primary} mr={4}>
+            <StyledTextForList textColor={TextColor.Primary} mr={4}>
               Как позаботиться о близком, если он теряет память?
-            </Text2>
+            </StyledTextForList>
           </li>
-        </List>
+        </StyledList>
       </TwoColumnGrid>
       <Box mb={2}>
-        <Text2 mt={6}>
+        <StyledText2 mt={6}>
           Смотрите до&nbsp;конца, и&nbsp;вы&nbsp;узнаете всё о&nbsp;деменции
-          и&nbsp;проблемах с&nbsp;памятью! Будьте здоровы!
-        </Text2>
-        <Text2>Будьте здоровы!</Text2>
+          и&nbsp;проблемах с&nbsp;памятью!
+        </StyledText2>
+        <StyledTextStrong>Будьте здоровы!</StyledTextStrong>
       </Box>
       <StyledImage src={testGreenPuzzle} puzzleType="news-grid__green-puzzle" />
       <></>

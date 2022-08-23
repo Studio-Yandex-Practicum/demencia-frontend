@@ -29,6 +29,7 @@ import ButtonWithSemicircle from "../../../components/button-with-semicircle";
 
 import AnimationWrapper from "../../../components/animation-wrapper";
 import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const InfoSection: React.FC = () => {
   const [isDetailsOpen, setIsDetailsOpen] = useState(false);
@@ -151,6 +152,14 @@ const InfoSection: React.FC = () => {
               onClick={onClick}
               animate
             />
+            <a href="https://testing2.xn--d1acamsh7dwd.net/testrelUser">
+              <ButtonWithSemicircle
+                maxWidth={350}
+                buttonText={"Проверить близкого"}
+                onClick={onClick}
+                animate
+              />
+            </a>
           </FlexColumn>
         </RelativeBox>
       </TwoColumnGridInfo>

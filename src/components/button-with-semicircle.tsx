@@ -57,9 +57,6 @@ const ButtonWithSemicircle: React.FC<ButtonWithSemicircleProps> = ({
               {buttonText || "Пройти тест"}
             </Button>
           </AnimationWrapper>
-          <AnimationWrapper>
-            <StyledImg src={greenSemicirclePic} />
-          </AnimationWrapper>
         </>
       ) : (
         <>

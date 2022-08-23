@@ -127,8 +127,9 @@ export const StyledInfoSection = styled(Section)`
   }
 
   .info__test-button-column {
-    max-width: 590px;
-    align-items: center;
+    max-width: 900px;
+    justify-content: space-between;
+    flex-direction: row;
   }
 
   .test-button__side-semicircle {
@@ -253,6 +254,9 @@ export const StyledInfoSection = styled(Section)`
 
     .info__test-button-column {
       max-width: 100%;
+      height: 130px;
+      flex-direction: column;
+      align-items: center;
     }
   }
 

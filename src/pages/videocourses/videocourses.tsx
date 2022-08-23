@@ -1,9 +1,10 @@
 import { FC } from "react";
+import Header from "./header/header";
 
 const VideoCoursesPage: FC = () => {
   return (
     <>
-      <div>videocourses</div>
+      <Header />
     </>
   );
 };

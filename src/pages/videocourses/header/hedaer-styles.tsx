@@ -1,6 +1,6 @@
-import { Subtitle1, Text2, Box } from "../../ui/controls";
+import { Subtitle1, Text2, Box } from "../../../ui/controls";
 import styled from "styled-components";
-import { ScreenSize } from "../../ui/types";
+import { ScreenSize } from "../../../ui/types";
 
 export const List = styled.ul<{
   color?: string;
@@ -25,6 +25,10 @@ export const StyledSubtitle1 = styled(Subtitle1)`
   font-size: 45px;
   text-align: center;
 
+  &:hover {
+    color: #772988;
+  }
+
   @media (max-width: ${ScreenSize.Large}px) {
     & {
       font-size: 35px;
@@ -47,8 +51,9 @@ export const StyledSubtitle1 = styled(Subtitle1)`
 export const StyledText2 = styled(Text2)`
   text-align: center;
   font-size: 16px;
+  width: 100%;
 
-  @media (max-width: ${ScreenSize.Small}px) {
+  @media (max-width: ${ScreenSize.MediumSmall}px) {
     & {
       text-align: left;
     }
@@ -58,8 +63,9 @@ export const StyledText2 = styled(Text2)`
 export const StyledTextStrong = styled(Text2)`
   text-align: center;
   font-size: 16px;
+  width: 100%;
 
-  @media (max-width: ${ScreenSize.Small}px) {
+  @media (max-width: ${ScreenSize.MediumSmall}px) {
     & {
       text-align: left;
       font-weight: 700;

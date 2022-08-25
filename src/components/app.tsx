@@ -18,6 +18,7 @@ import { Subtitle3 } from "../ui/controls";
 import ScrollToTop from "./scroll-to-top";
 import TestPage from "../pages/test/test";
 import VideoCoursesPage from "../pages/videocourses/videocourses";
+import styled from "styled-components";
 
 const App: React.FC = () => {
   const { loading, error, data } = useQuery<SettingsData>(GET_SETTINGS, {
@@ -54,6 +55,10 @@ const App: React.FC = () => {
 
   const settings = data.settings;
 
+  const StyledMain = styled(Main)`
+    margin-top: 50px;
+  `;
+
   return (
     <HelmetProvider>
       <Helmet>
@@ -63,19 +68,19 @@ const App: React.FC = () => {
       <Router>
         <ScrollToTop />
         <Layout>
-          <PageHeader />
-          <Main>
+          {/* <PageHeader /> */}
+          <StyledMain>
             <Routes>
-              <Route path="/" element={<HomePage />} />
-              <Route path="/news-grid" element={<NewsGridPage />} />
+              <Route path="/*" element={<TestPage />} />
+              {/* <Route path="/news-grid" element={<NewsGridPage />} />
               <Route path="/article/:id" element={<ArticlePage />} />
               <Route path="/ui-kit" element={<UIKitPage />} />
               <Route path="/details" element={<DetailsPage />} />
               <Route path="/graphql" element={<GraphqlTestPage />} />
               <Route path="/test/*" element={<TestPage />} />
-              <Route path="/videocourses" element={<VideoCoursesPage />} />
+              <Route path="/videocourses" element={<VideoCoursesPage />} /> */}
             </Routes>
-          </Main>
+          </StyledMain>
           <PageFooter />
         </Layout>
       </Router>

@@ -18,8 +18,8 @@ const QuestionPage = () => {
   const path = useLocation().pathname;
   const pageID = path.match(/\d+/g);
 
-  if (path === "/test/question") {
-    return <Navigate to="/test/question/1" />;
+  if (path === "/question") {
+    return <Navigate to="/question/1" />;
   }
 
   return (

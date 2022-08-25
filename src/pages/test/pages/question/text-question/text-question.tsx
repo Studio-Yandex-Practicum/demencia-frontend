@@ -48,7 +48,7 @@ const TextQuestion: React.FC<{ number: number }> = ({ number }) => {
 
   const onBack = () => {
     if (number > 1) {
-      navigate(`/test/question/${number - 1}`);
+      navigate(`/question/${number - 1}`);
     }
   };
 
@@ -80,8 +80,7 @@ const TextQuestion: React.FC<{ number: number }> = ({ number }) => {
             if (setLastQuestionId) {
               setLastQuestionId(`${number + 1}`);
             }
-            const to =
-              number === 25 ? "/test/result" : `/test/question/${number + 1}`;
+            const to = number === 25 ? "/result" : `/question/${number + 1}`;
             navigate(to);
           }
         })

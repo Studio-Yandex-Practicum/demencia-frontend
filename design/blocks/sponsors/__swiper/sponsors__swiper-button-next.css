@@ -1,9 +1,0 @@
-.swiper-button-next::after {
-    display: none;
-}
-
-.sponsors__swiper-button-next {
-    background-color: transparent;
-    border: 0;
-    padding: 0;
-}

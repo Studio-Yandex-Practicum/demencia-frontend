@@ -1,13 +1,13 @@
 .PHONY: build push
 
-VERSION := 0.44.0
+VERSION := 0.2.0
 
 build:
-	docker build -t "demencia:${VERSION}" ./
-	docker tag "demencia:${VERSION}" "akruglov/demencia:${VERSION}"
-	docker tag "demencia:${VERSION}" "akruglov/demencia:latest"
+	docker build -t "demencia-limited:${VERSION}" ./
+	docker tag "demencia-limited:${VERSION}" "akruglov/demencia-limited:${VERSION}"
+	docker tag "demencia-limited:${VERSION}" "akruglov/demencia-limited:latest"
 
 push: build
 	docker login
-	docker image push "akruglov/demencia:${VERSION}"
-	docker image push "akruglov/demencia:latest"
+	docker image push "akruglov/demencia-limited:${VERSION}"
+	docker image push "akruglov/demencia-limited:latest"

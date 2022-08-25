@@ -5,7 +5,7 @@ import NormalPageFooter from "./normal-page-footer";
 import { Footer } from "../ui/controls";
 
 const PageFooter: React.FC = () => {
-  const match = useMatch("/test/*");
+  const match = useMatch("/*");
 
   return <Footer>{match ? <TestPageFooter /> : <NormalPageFooter />}</Footer>;
 };

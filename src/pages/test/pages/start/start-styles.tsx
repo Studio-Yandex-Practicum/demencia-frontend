@@ -25,8 +25,9 @@ export const Actions = styled.div`
 `;
 
 export const StyledInfoSection = styled(Section)`
-  transform: translateY(-100px);
-  margin-bottom: -120px;
+  // transform: translateY(-100px);
+  // margin-bottom: -120px;
+  margin-top: 50px;
   @media (max-width: 1300px) {
     margin-bottom: 0;
     transform: translateY(0);

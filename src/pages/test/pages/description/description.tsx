@@ -161,7 +161,7 @@ const DescriptionPage: React.FC = () => {
             zoomOnHover
             zoomOutOnHover={false}
             onClick={() => {
-              navigate("/test/question/1");
+              navigate("/question/1");
               if (setLastQuestionId) {
                 setLastQuestionId(`1`);
               }

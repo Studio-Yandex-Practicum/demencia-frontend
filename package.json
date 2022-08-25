@@ -1,6 +1,6 @@
 {
   "name": "demencia",
-  "version": "0.44.0",
+  "version": "0.2.0",
   "private": true,
   "homepage": "/static",
   "dependencies": {

@@ -196,12 +196,12 @@ const CirclesQuestion: React.FC<{ number: number }> = ({ number }) => {
 
   const onBack = () => {
     if (number > 1) {
-      navigate(`/test/question/${number - 1}`);
+      navigate(`/question/${number - 1}`);
     }
   };
 
   const onForward = () => {
-    const to = number === 25 ? "/test/result" : `/test/question/${number + 1}`;
+    const to = number === 25 ? "/result" : `/question/${number + 1}`;
 
     const isAnswered = localStorage.getItem(`${number}`);
     if (isAnswered && answer.length === 0) {

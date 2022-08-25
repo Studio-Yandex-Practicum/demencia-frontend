@@ -49,14 +49,14 @@ const TestPage = () => {
             break;
         }
       } else {
-        navigate(`/test/question/${lastQuestion}`);
+        navigate(`/question/${lastQuestion}`);
       }
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  if (path === "/test") {
-    return <Navigate to="/test/start" />;
+  if (path === "/") {
+    return <Navigate to="/start" />;
   }
 
   return (

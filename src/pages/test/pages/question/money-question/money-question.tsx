@@ -78,8 +78,7 @@ const MoneyQuestion: React.FC<{ number: number }> = ({ number }) => {
             if (setLastQuestionId) {
               setLastQuestionId(`${number + 1}`);
             }
-            const to =
-              number === 25 ? "/test/result" : `/test/question/${number + 1}`;
+            const to = number === 25 ? "/result" : `/question/${number + 1}`;
             navigate(to);
           }
         })
@@ -99,9 +98,7 @@ const MoneyQuestion: React.FC<{ number: number }> = ({ number }) => {
       <Section centered flex>
         <StyledBoxInput flex maxWidth={1900}>
           <StyledBoxArrowLeft>
-            <ArrowLeft
-              onClick={() => navigate(`/test/question/${number - 1}`)}
-            />
+            <ArrowLeft onClick={() => navigate(`/question/${number - 1}`)} />
           </StyledBoxArrowLeft>
           <StyledBoxSelect flex maxWidth={1200}>
             <InputBox>

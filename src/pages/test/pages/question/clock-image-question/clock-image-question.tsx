@@ -77,15 +77,14 @@ const ClockImageQuestion: React.FC<{ number: number }> = ({ number }) => {
 
   const onBack = () => {
     if (number > 1) {
-      navigate(`/test/question/${number - 1}`);
+      navigate(`/question/${number - 1}`);
     }
   };
 
   const goForward = () => {
     if (isSelected) {
       setIsError(false);
-      const to =
-        number === 25 ? "/test/result" : `/test/question/${number + 1}`;
+      const to = number === 25 ? "/result" : `/question/${number + 1}`;
       navigate(to);
     } else {
       setIsError(true);

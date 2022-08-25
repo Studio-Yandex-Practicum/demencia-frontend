@@ -44,8 +44,7 @@ const MemoryTestQuestion: React.FC<{ number: number }> = ({ number }) => {
           if (setLastQuestionId) {
             setLastQuestionId(`${number + 1}`);
           }
-          const to =
-            number === 25 ? "/test/result" : `/test/question/${number + 1}`;
+          const to = number === 25 ? "/result" : `/question/${number + 1}`;
           navigate(to);
         }
       })
@@ -57,7 +56,7 @@ const MemoryTestQuestion: React.FC<{ number: number }> = ({ number }) => {
 
   const goForward = () => {
     if (localStorage.getItem(`${number}`)) {
-      navigate(`/test/question/${number + 1}`);
+      navigate(`/question/${number + 1}`);
     } else {
       setIsError(true);
     }
@@ -70,9 +69,7 @@ const MemoryTestQuestion: React.FC<{ number: number }> = ({ number }) => {
 
         <StyledSection centered flex>
           <StyledBoxArrowLeft>
-            <ArrowLeft
-              onClick={() => navigate(`/test/question/${number - 1}`)}
-            />
+            <ArrowLeft onClick={() => navigate(`/question/${number - 1}`)} />
           </StyledBoxArrowLeft>
 
           <StyledBox>

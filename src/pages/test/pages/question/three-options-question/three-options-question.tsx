@@ -84,8 +84,7 @@ const ThreeOptionsQuestion: React.FC<{ number: number }> = ({ number }) => {
             if (setLastQuestionId) {
               setLastQuestionId(`${number + 1}`);
             }
-            const to =
-              number === 25 ? "/test/result" : `/test/question/${number + 1}`;
+            const to = number === 25 ? "/result" : `/question/${number + 1}`;
             navigate(to);
           }
         })
@@ -105,7 +104,7 @@ const ThreeOptionsQuestion: React.FC<{ number: number }> = ({ number }) => {
         <StyledBoxInput flex maxWidth={1900}>
           <StyledBoxArrowLeft>
             <StyledArrowLeft
-              onClick={() => navigate(`/test/question/${number - 1}`)}
+              onClick={() => navigate(`/question/${number - 1}`)}
             />
           </StyledBoxArrowLeft>
           <StyleBoxInputs flex maxWidth={850}>

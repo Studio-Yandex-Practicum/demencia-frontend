@@ -41,7 +41,7 @@ const StartPage = () => {
         localStorage.setItem("test_id", JSON.stringify(res.data?.newTest));
         if (setLastQuestionId) {
           setLastQuestionId(`description`);
-          navigate(`/test/description`);
+          navigate(`/description`);
         }
       })
       .catch(() => toast.error(`Не удалось начать тест`, { id: "error" }));

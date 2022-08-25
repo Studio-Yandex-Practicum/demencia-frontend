@@ -2,7 +2,7 @@ version: "3"
 
 services:
   demencia:
-    image: akruglov/demencia:latest
+    image: akruglov/demencia-limited:latest
     environment:
       - UI_PATH=/var/ui
     ports:

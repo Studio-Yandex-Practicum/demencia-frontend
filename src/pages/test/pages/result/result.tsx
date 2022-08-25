@@ -172,7 +172,7 @@ const ResultPage: React.FC = () => {
             zoomOnHover
             zoomOutOnHover={false}
             onClick={() => {
-              navigate("/test/start");
+              navigate("/start");
               localStorage.clear();
             }}
           >

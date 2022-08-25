@@ -1,6 +1,11 @@
 import React, { useState } from "react";
 import { Text4, Button } from "../../../ui/controls";
-import { PaletteColor, ButtonType, TextColor } from "../../../ui/types";
+import {
+  PaletteColor,
+  ButtonSize,
+  ButtonType,
+  TextColor,
+} from "../../../ui/types";
 import {
   StyledInfoSection,
   RelativeBox,
@@ -146,12 +151,18 @@ const InfoSection: React.FC = () => {
         </RelativeBox>
         <RelativeBox className="info__test-button">
           <FlexColumn className="info__test-button-column">
-            <ButtonWithSemicircle
-              maxWidth={350}
-              buttonText={settings.aboutSectionButtonLabel}
+            <Button
+              type={ButtonType.Primary}
+              size={ButtonSize.Default}
+              zoomOnHover
+              zoomOutOnHover={false}
+              className={"button-not-with-semicircle"}
               onClick={onClick}
+              ellipsis
               animate
-            />
+            >
+              {settings.aboutSectionButtonLabel}
+            </Button>
             <a href="https://testing2.xn--d1acamsh7dwd.net/testrelUser">
               <ButtonWithSemicircle
                 maxWidth={350}

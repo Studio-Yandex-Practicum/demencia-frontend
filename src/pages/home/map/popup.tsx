@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import styled from "styled-components";
 import { Subtitle4, Text3 } from "../../../ui/controls/typography";
 import { PaletteColor, ScreenSize } from "../../../ui/types";
@@ -55,10 +55,6 @@ const Popup: React.FC<PopupProps> = ({ currentRegion, left, top }) => {
   // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
   const initData = sessionStorage.getItem(currentRegion)!;
   const data = JSON.parse(initData);
-
-  useEffect(() => {
-    console.log(data);
-  }, [data]);
 
   return (
     <div>

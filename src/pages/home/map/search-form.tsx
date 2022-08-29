@@ -204,7 +204,9 @@ const SearchForm: React.FC = () => {
           </StyledTitle>
           {centers?.map((center, index) => (
             <StyledCard key={index}>
+              <Text2 textColor={TextColor.Shadow}>{center.description}</Text2>
               <Text2 textColor={TextColor.Shadow}>{center.address}</Text2>
+              <Text2 textColor={TextColor.Shadow}>{center.openingHours}</Text2>
               <Text2 textColor={TextColor.Shadow}>{center.phoneNo}</Text2>
               <Text2 textColor={TextColor.Shadow}>
                 {center.phoneNoSecondary}

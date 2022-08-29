@@ -1,10 +1,4 @@
-import {
-  Subtitle1,
-  Text2,
-  Box,
-  Link,
-  ThreeColumnGrid,
-} from "../../../ui/controls";
+import { Subtitle1, Text2, Box, Link, Grid } from "../../../ui/controls";
 import { Subtitle4 } from "../../../ui/controls/typography";
 import styled from "styled-components";
 import { ScreenSize } from "../../../ui/types";
@@ -53,16 +47,18 @@ export const StyledSubtitle4 = styled(Subtitle4)`
 `;
 
 export const StyledBox = styled(Box)`
+  max-width: 1448px;
   @media (max-width: ${ScreenSize.Medium}px) {
     & {
       flex-direction: column;
+      padding-bottom: 0;
     }
   }
 `;
 
 export const StyledCardBox = styled(Box)`
   background-color: #cae6df;
-  max-width: 576px;
+  max-width: 456px;
 
   @media (max-width: ${ScreenSize.Medium}px) {
     & {
@@ -71,7 +67,7 @@ export const StyledCardBox = styled(Box)`
   }
 `;
 
-export const StyledThreeColumnGrid = styled(ThreeColumnGrid)`
+export const StyledGrid = styled(Grid)`
   gap: 40px;
   @media (max-width: ${ScreenSize.Large}px) {
     & {
@@ -79,24 +75,18 @@ export const StyledThreeColumnGrid = styled(ThreeColumnGrid)`
     }
   }
 
-  @media (max-width: ${ScreenSize.Medium}px) {
-    & {
-      gap: 40px;
-      grid-template-columns: 1fr 1fr;
-    }
-  }
-
-  @media (max-width: ${ScreenSize.MediumSmall}px) {
-    & {
-      gap: 20px;
-    }
-  }
-
-  @media (max-width: ${ScreenSize.XSmall}px) {
-    & {
-      grid-template-columns: 1fr;
-    }
-  }
+  // @media (max-width: ${ScreenSize.Medium}px) {
+  //   & {
+  //     gap: 40px;
+  //     grid-template-columns: 1fr 1fr;
+  //   }
+  // }
+  //
+  // @media (max-width: ${ScreenSize.MediumSmall}px) {
+  //   & {
+  //     gap: 20px;
+  //   }
+  // }
 `;
 
 export const StyledLink = styled(Link)`
@@ -123,7 +113,7 @@ export const StyledLink = styled(Link)`
 
   @media (max-width: ${ScreenSize.Medium}px) {
     & {
-      margin: 20px;
+      margin: 40px 0 0 0;
     }
   }
 `;

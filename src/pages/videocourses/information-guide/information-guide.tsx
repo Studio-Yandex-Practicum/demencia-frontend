@@ -1,5 +1,5 @@
 import React, { FC } from "react";
-import { Section } from "../../../ui/controls";
+import { Section, Grid } from "../../../ui/controls";
 import { TextColor, TypographyLevel } from "../../../ui/types";
 import {
   StyledSubtitle1,
@@ -8,7 +8,7 @@ import {
   StyledLinkText,
   StyledCardBox,
   StyledSubtitle4,
-  StyledThreeColumnGrid,
+  StyledGrid,
   StyledCardLink,
   StyledCardLinkText,
   StyledBox,
@@ -20,15 +20,7 @@ const InformationGuide: FC = () => {
       <StyledSubtitle1 uppercase={false} level={TypographyLevel.Subtitle1}>
         Информационный справочник «Деменция.net»
       </StyledSubtitle1>
-      <StyledBox
-        mt={3}
-        flex
-        between
-        alignItems={"center"}
-        pt={4}
-        pb={4}
-        width={"100%"}
-      >
+      <StyledBox mt={3} flex between alignItems={"center"} pt={4}>
         <StyledText2>
           В&nbsp;дополнение к&nbsp;видеокурсу мы&nbsp;создали Справочник для
           людей, живущих с&nbsp;деменцией, членов их&nbsp;семьи и&nbsp;тех, кто
@@ -44,7 +36,8 @@ const InformationGuide: FC = () => {
           </StyledLinkText>
         </StyledLink>
       </StyledBox>
-      <StyledThreeColumnGrid pt={2} pb={8}>
+      <StyledGrid pt={5} pl={5} pr={5} zIndex={2}>
+        {/*<StyledThreeColumnGrid pt={2} pb={8}>*/}
         <StyledCardBox flex column between>
           <StyledSubtitle4>
             Еженедельный планер физической активности
@@ -83,7 +76,8 @@ const InformationGuide: FC = () => {
             </StyledCardLinkText>
           </StyledCardLink>
         </StyledCardBox>
-      </StyledThreeColumnGrid>
+        {/*</StyledThreeColumnGrid>*/}
+      </StyledGrid>
     </Section>
   );
 };

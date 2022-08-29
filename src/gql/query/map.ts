@@ -10,6 +10,8 @@ const GET_REGIONS = gql`
         address
         phoneNo
         phoneNoSecondary
+        description
+        openingHours
       }
     }
   }

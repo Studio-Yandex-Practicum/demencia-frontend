@@ -3,6 +3,8 @@ export interface RegionCenter {
   address: string;
   phoneNo: string;
   phoneNoSecondary: string;
+  description: string;
+  openingHours: string;
 }
 
 export interface CentersData {

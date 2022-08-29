@@ -1,3 +1,4 @@
+import React from "react";
 import styled from "styled-components";
 import { Subtitle4, Text3 } from "../../../ui/controls/typography";
 import { PaletteColor, ScreenSize } from "../../../ui/types";
@@ -60,6 +61,8 @@ const Popup: React.FC<PopupProps> = ({ currentRegion, left, top }) => {
       <StyledBox left={left} top={top}>
         {data.map(
           (region: {
+            description: string;
+            openingHours: string;
             city: string;
             address: string;
             phoneNo: string;
@@ -68,7 +71,9 @@ const Popup: React.FC<PopupProps> = ({ currentRegion, left, top }) => {
             <div key={region.address}>
               <StyledTitle>{region.city}</StyledTitle>
               <StyledLine>
+                <StyledText mt={1}>{region.description}</StyledText>
                 <StyledText mt={2}>{region.address}</StyledText>
+                <StyledText mt={1}>{region.openingHours}</StyledText>
                 <StyledText mt={1}>{region.phoneNo}</StyledText>
                 <StyledText mt={1}>{region.phoneNoSecondary}</StyledText>
               </StyledLine>

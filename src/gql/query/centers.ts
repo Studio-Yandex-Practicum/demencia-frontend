@@ -7,6 +7,8 @@ const GET_CENTERS = gql`
       address
       phoneNo
       phoneNoSecondary
+      description
+      openingHours
     }
   }
 `;

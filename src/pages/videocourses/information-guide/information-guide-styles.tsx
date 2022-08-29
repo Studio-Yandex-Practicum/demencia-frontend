@@ -74,19 +74,6 @@ export const StyledGrid = styled(Grid)`
       gap: 20px;
     }
   }
-
-  // @media (max-width: ${ScreenSize.Medium}px) {
-  //   & {
-  //     gap: 40px;
-  //     grid-template-columns: 1fr 1fr;
-  //   }
-  // }
-  //
-  // @media (max-width: ${ScreenSize.MediumSmall}px) {
-  //   & {
-  //     gap: 20px;
-  //   }
-  // }
 `;
 
 export const StyledLink = styled(Link)`

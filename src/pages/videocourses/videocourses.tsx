@@ -1,5 +1,6 @@
 import { FC } from "react";
 import Header from "./header/header";
+import InformationGuide from "./information-guide/information-guide";
 import { Main } from "./main/main";
 
 const VideoCoursesPage: FC = () => {
@@ -7,6 +8,7 @@ const VideoCoursesPage: FC = () => {
     <>
       <Header />
       <Main />
+      <InformationGuide />
     </>
   );
 };

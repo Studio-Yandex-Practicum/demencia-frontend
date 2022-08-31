@@ -151,18 +151,20 @@ const InfoSection: React.FC = () => {
         </RelativeBox>
         <RelativeBox className="info__test-button">
           <FlexColumn className="info__test-button-column">
-            <Button
-              type={ButtonType.Primary}
-              size={ButtonSize.Default}
-              zoomOnHover
-              zoomOutOnHover={false}
-              className={"button-not-with-semicircle"}
-              onClick={onClick}
-              ellipsis
-              animate
-            >
-              {settings.aboutSectionButtonLabel}
-            </Button>
+            <AnimationWrapper>
+              <Button
+                type={ButtonType.Primary}
+                size={ButtonSize.Default}
+                zoomOnHover
+                zoomOutOnHover={false}
+                className={"button-not-with-semicircle"}
+                onClick={onClick}
+                ellipsis
+                animate
+              >
+                {settings.aboutSectionButtonLabel}
+              </Button>
+            </AnimationWrapper>
             <a href="https://testing2.xn--d1acamsh7dwd.net/testrelUser">
               <ButtonWithSemicircle
                 maxWidth={350}

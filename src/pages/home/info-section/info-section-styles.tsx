@@ -127,7 +127,7 @@ export const StyledInfoSection = styled(Section)`
   }
 
   .info__test-button-column {
-    max-width: 560px;
+    max-width: 516px;
     flex-direction: row;
     justify-content: space-between;
   }
@@ -143,7 +143,6 @@ export const StyledInfoSection = styled(Section)`
     max-width: 350px;
     opacity: 1;
     transition: all 1s ease;
-    transform: none;
   }
 
   @media (max-width: ${ScreenSize.Large}px) {
@@ -268,6 +267,10 @@ export const StyledInfoSection = styled(Section)`
       height: 130px;
       flex-direction: column;
       align-items: center;
+    }
+
+    .button-not-with-semicircle {
+      width: 276px;
     }
   }
 

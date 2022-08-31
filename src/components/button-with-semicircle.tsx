@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { Box, Button } from "../ui/controls";
-import { ButtonSize, ButtonType } from "../ui/types";
+import { ButtonSize, ButtonType, ScreenSize } from "../ui/types";
 import greenSemicirclePic from "../images/green-semicircle.svg";
 import AnimationWrapper from "./animation-wrapper";
 
@@ -23,6 +23,13 @@ export const StyledImg = styled.img<{
   transition: all 1s ease;
   ${({ animate }) =>
     animate ? "opacity: 0; transform: translateX(100px);" : ""}
+`;
+
+export const StyledImgButton = styled(StyledImg)`
+  display: block;
+  @media (max-width: ${ScreenSize.Medium}px) {
+    display: none;
+  }
 `;
 
 interface ButtonWithSemicircleProps {
@@ -58,7 +65,7 @@ const ButtonWithSemicircle: React.FC<ButtonWithSemicircleProps> = ({
             </Button>
           </AnimationWrapper>
           <AnimationWrapper>
-            <StyledImg src={greenSemicirclePic} />
+            <StyledImgButton src={greenSemicirclePic} />
           </AnimationWrapper>
         </>
       ) : (

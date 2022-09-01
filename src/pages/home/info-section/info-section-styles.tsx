@@ -127,8 +127,9 @@ export const StyledInfoSection = styled(Section)`
   }
 
   .info__test-button-column {
-    max-width: 590px;
-    align-items: center;
+    max-width: 516px;
+    flex-direction: row;
+    justify-content: space-between;
   }
 
   .test-button__side-semicircle {
@@ -138,6 +139,12 @@ export const StyledInfoSection = styled(Section)`
     left: 270px;
   }
 
+  .button-not-with-semicircle {
+    max-width: 350px;
+    opacity: 1;
+    transition: all 1s ease;
+  }
+
   @media (max-width: ${ScreenSize.Large}px) {
     .tip__i-pic {
       left: 75%;
@@ -145,6 +152,10 @@ export const StyledInfoSection = styled(Section)`
 
     .tip__pink-semicircle-pic {
       left: 70%;
+    }
+
+    .info__test-button-column {
+      max-width: 600px;
     }
   }
 
@@ -253,6 +264,13 @@ export const StyledInfoSection = styled(Section)`
 
     .info__test-button-column {
       max-width: 100%;
+      height: 130px;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .button-not-with-semicircle {
+      width: 276px;
     }
   }
 

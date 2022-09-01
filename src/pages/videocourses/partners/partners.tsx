@@ -13,7 +13,8 @@ import { ScreenSize, TextColor } from "../../../ui/types";
 import styled from "styled-components";
 
 const StyledGrid = styled(Grid)`
-  grid-template-columns: repeat(auto-fit, 340px);
+  max-width: 1448px;
+  grid-template-columns: repeat(auto-fit, 332px);
 
   @media screen and (max-width: ${ScreenSize.Large}px) {
     grid-template-columns: repeat(auto-fit, 300px);

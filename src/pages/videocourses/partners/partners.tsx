@@ -1,5 +1,5 @@
 import { FC } from "react";
-import { Grid, Section } from "../../../ui/controls";
+import { Box, Grid, Section } from "../../../ui/controls";
 import frame1 from "../../../images/frame-1.jpg";
 import frame2 from "../../../images/frame-2.jpg";
 import frame3 from "../../../images/frame-3.jpg";
@@ -54,31 +54,36 @@ const partnersImage = [
 
 export const Partners: FC = () => {
   return (
-    <Section flex mt={15} mb={7}>
-      <Subtitle1 uppercase={false}>
-        Видеокурс «Все о деменции за 60 минут»
-      </Subtitle1>
-      <Text1 textColor={TextColor.Shadow} mt={3}>
-        был создан при поддержке и участии наших партнеров:
-      </Text1>
+    <Section flex centered mt={15} mb={7}>
+      <Box maxWidth={1448} width="100%">
+        <Subtitle1 uppercase={false}>
+          Видеокурс «Все о деменции за 60 минут»
+        </Subtitle1>
+        <Text1 textColor={TextColor.Shadow} mt={3}>
+          был создан при поддержке и участии наших партнеров:
+        </Text1>
+      </Box>
+
       <StyledGrid mt={5} mb={9}>
         {partnersImage.map((image) => (
           <img className="partners__image" src={image} alt="partners" />
         ))}
       </StyledGrid>
-      <Text1 mb={4}>
-        Мы надеемся, что данные материалы дадут вам и вашим родным более широкое
-        понимание о деменции, помогут легче справиться с принятием диагноза,
-        расскажут, что необходимо предпринять в первую очередь, чтобы помочь
-        пожилому человеку сохранить полноценную и самостоятельную активную
-        жизнь, а также обеспечить достойный уход и лечение.
-      </Text1>
-      <Text1>
-        <strong>
-          Если у вас остались вопросы о деменции, напишите нам на
-          info@деменция.net
-        </strong>
-      </Text1>
+      <Box maxWidth={1448}>
+        <Text1 mb={4}>
+          Мы надеемся, что данные материалы дадут вам и вашим родным более
+          широкое понимание о деменции, помогут легче справиться с принятием
+          диагноза, расскажут, что необходимо предпринять в первую очередь,
+          чтобы помочь пожилому человеку сохранить полноценную и самостоятельную
+          активную жизнь, а также обеспечить достойный уход и лечение.
+        </Text1>
+        <Text1>
+          <strong>
+            Если у вас остались вопросы о деменции, напишите нам на
+            info@деменция.net
+          </strong>
+        </Text1>
+      </Box>
     </Section>
   );
 };

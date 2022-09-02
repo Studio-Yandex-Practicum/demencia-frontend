@@ -13,8 +13,8 @@ const HomePage: React.FC = () => {
       <InfoSection />
       <News />
       <Map />
-      <AboutFundSection />
       <Partners />
+      <AboutFundSection />
     </>
   );
 };

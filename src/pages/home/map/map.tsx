@@ -28,6 +28,7 @@ const StyledTitle = styled(Title)`
 `;
 
 const StyledText = styled(Subtitle4)`
+  white-space: break-spaces;
   transition: all 1s ease;
   ${({ animate }) =>
     animate ? "opacity: 0; transform: translateY(100px);" : ""};

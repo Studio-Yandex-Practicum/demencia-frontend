@@ -28,11 +28,15 @@ const StyledTitle = styled(Title)`
 `;
 
 const StyledText = styled(Subtitle4)`
+  max-width: 860px;
   white-space: break-spaces;
   transition: all 1s ease;
   ${({ animate }) =>
     animate ? "opacity: 0; transform: translateY(100px);" : ""};
 
+  @media (max-width: ${ScreenSize.Medium}px) {
+    max-width: 700px;
+  }
   @media (max-width: ${ScreenSize.Small}px) {
     font-size: 12px;
   }

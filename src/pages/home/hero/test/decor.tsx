@@ -57,28 +57,28 @@ export const MediumCircle = styled.img.attrs((props) => ({
   top: -51px;
   right: 180px;
 
-  @keyframes rotateMediumCircle {
-    0% {
-      transform: rotate(0deg);
-    }
+  // @keyframes rotateMediumCircle {
+  //   0% {
+  //     transform: rotate(0deg);
+  //   }
 
-    25% {
-      transform: rotate(-10deg);
-    }
+  //   25% {
+  //     transform: rotate(-10deg);
+  //   }
 
-    50% {
-      transform: rotate(0deg);
-    }
+  //   50% {
+  //     transform: rotate(0deg);
+  //   }
 
-    75% {
-      transform: rotate(10deg);
-    }
+  //   75% {
+  //     transform: rotate(10deg);
+  //   }
 
-    100% {
-      transform: rotate(0deg);
-    }
-  }
-  animation: rotateMediumCircle 10s linear infinite;
+  //   100% {
+  //     transform: rotate(0deg);
+  //   }
+  // }
+  // animation: rotateMediumCircle 10s linear infinite;
 
   @media screen and (max-width: 1800px) {
     right: 140px;
@@ -118,28 +118,28 @@ export const BigCircle = styled.img.attrs((props) => ({
   top: 0;
   right: 15%;
 
-  @keyframes rotateBigCircle {
-    0% {
-      transform: rotate(0deg);
-    }
+  // @keyframes rotateBigCircle {
+  //   0% {
+  //     transform: rotate(0deg);
+  //   }
 
-    25% {
-      transform: rotate(10deg);
-    }
+  //   25% {
+  //     transform: rotate(10deg);
+  //   }
 
-    50% {
-      transform: rotate(0deg);
-    }
+  //   50% {
+  //     transform: rotate(0deg);
+  //   }
 
-    75% {
-      transform: rotate(-10deg);
-    }
+  //   75% {
+  //     transform: rotate(-10deg);
+  //   }
 
-    100% {
-      transform: rotate(0deg);
-    }
-  }
-  animation: rotateBigCircle 10s linear infinite;
+  //   100% {
+  //     transform: rotate(0deg);
+  //   }
+  // }
+  // animation: rotateBigCircle 10s linear infinite;
 
   @media screen and (max-width: 1800px) {
     width: 450px;

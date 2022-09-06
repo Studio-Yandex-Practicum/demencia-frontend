@@ -141,6 +141,7 @@ export const StyledInfoSection = styled(Section)`
 
   .button-not-with-semicircle {
     max-width: 350px;
+    margin-right: 15px;
     opacity: 1;
     transition: all 1s ease;
   }
@@ -270,7 +271,7 @@ export const StyledInfoSection = styled(Section)`
     }
 
     .button-not-with-semicircle {
-      width: 276px;
+      margin-right: 0px;
     }
   }
 

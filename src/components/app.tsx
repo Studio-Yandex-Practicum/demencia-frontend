@@ -18,6 +18,7 @@ import { Subtitle3 } from "../ui/controls";
 import ScrollToTop from "./scroll-to-top";
 import TestPage from "../pages/test/test";
 import VideoCoursesPage from "../pages/videocourses/videocourses";
+import TestForClosePersonPage from "../pages/test-for-close-person/test-for-close-person";
 
 const App: React.FC = () => {
   const { loading, error, data } = useQuery<SettingsData>(GET_SETTINGS, {
@@ -73,6 +74,10 @@ const App: React.FC = () => {
               <Route path="/details" element={<DetailsPage />} />
               <Route path="/graphql" element={<GraphqlTestPage />} />
               <Route path="/test/*" element={<TestPage />} />
+              <Route
+                path="/test-for-close-person/*"
+                element={<TestForClosePersonPage />}
+              />
               <Route path="/videocourses" element={<VideoCoursesPage />} />
             </Routes>
           </Main>

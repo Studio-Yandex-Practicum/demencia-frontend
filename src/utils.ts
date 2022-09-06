@@ -4,3 +4,11 @@ export default function textEllipsis(text: string | undefined, limit: number) {
   }
   return text;
 }
+
+export function testBaseUrl(forClosePerson = false) {
+  if (forClosePerson) {
+    return "/test-for-close-person";
+  }
+
+  return "/test";
+}

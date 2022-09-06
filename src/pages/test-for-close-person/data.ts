@@ -2,13 +2,13 @@ import { TTestData } from "../../types/test";
 
 export const testForClosePersonData: TTestData = {
   1: {
-    question: "Введите Имя респондента:",
+    question: "Введите имя респондента:",
   },
   2: {
-    question: "Введите Дату рождения респондента:",
+    question: "Введите дату рождения респондента:",
   },
   3: {
-    question: "Укажите Пол респондента:",
+    question: "Укажите пол респондента:",
     first: "Мужской",
     second: "Женский",
     needFirstDescription: false,
@@ -20,7 +20,7 @@ export const testForClosePersonData: TTestData = {
     question: "Укажите свою электронную почту:",
   },
   6: {
-    question: "Есть ли у близкого Вам человека проблемы с памятью?",
+    question: "Есть ли у близкого вам человека проблемы с памятью?",
     first: "Да",
     second: "Нет",
     needFirstDescription: false,
@@ -33,7 +33,7 @@ export const testForClosePersonData: TTestData = {
   },
   8: {
     question:
-      "Повторяет ли Ваш близкий один и тот же вопрос или одну и ту же мысль несколько раз в течение дня?",
+      "Повторяет ли ваш близкий один и тот же вопрос или одну и ту же мысль несколько раз в течение дня?",
     first: "Да",
     second: "Нет",
     needFirstDescription: false,
@@ -123,7 +123,7 @@ export const testForClosePersonData: TTestData = {
   },
   22: {
     question:
-      "Может ли Ваш близкий потеряться на знакомой территории (например, рядом с собственным домом)?",
+      "Может ли ваш близкий потеряться на знакомой территории (например, рядом с собственным домом)?",
     first: "Да",
     second: "Нет",
     needFirstDescription: false,
@@ -136,13 +136,13 @@ export const testForClosePersonData: TTestData = {
   },
   24: {
     question:
-      "Случается ли, что Ваш близкий не только забывает имена, но и не может вспомнить нужное слово?",
+      "Случается ли, что ваш близкий не только забывает имена, но и не может вспомнить нужное слово?",
     first: "Да",
     second: "Нет",
     needFirstDescription: false,
   },
   25: {
-    question: "Путает ли Ваш близкий имена родственников или друзей?",
+    question: "Путает ли ваш близкий имена родственников или друзей?",
     first: "Да",
     second: "Нет",
     needFirstDescription: false,

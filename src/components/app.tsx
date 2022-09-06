@@ -16,9 +16,9 @@ import { GET_SETTINGS } from "../gql/query/settings";
 import { DEFAULT_SITE_NAME } from "../constants";
 import { Subtitle3 } from "../ui/controls";
 import ScrollToTop from "./scroll-to-top";
-import TestPage from "../pages/test/test";
+import TestPage from "../pages/test/for-myself/test";
 import VideoCoursesPage from "../pages/videocourses/videocourses";
-import TestForClosePersonPage from "../pages/test-for-close-person/test-for-close-person";
+import TestForClosePersonPage from "../pages/test/for-close-person/test";
 
 const App: React.FC = () => {
   const { loading, error, data } = useQuery<SettingsData>(GET_SETTINGS, {

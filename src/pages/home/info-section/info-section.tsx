@@ -34,7 +34,6 @@ import ButtonWithSemicircle from "../../../components/button-with-semicircle";
 
 import AnimationWrapper from "../../../components/animation-wrapper";
 import { useNavigate } from "react-router-dom";
-import { Link } from "react-router-dom";
 
 const InfoSection: React.FC = () => {
   const [isDetailsOpen, setIsDetailsOpen] = useState(false);

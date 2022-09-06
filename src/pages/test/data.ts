@@ -1,14 +1,4 @@
-type TQuestionData = {
-  question: string;
-  first?: string;
-  second?: string;
-  third?: string;
-  needFirstDescription?: boolean;
-};
-
-type TTestData = {
-  [key: number]: TQuestionData;
-};
+import { TTestData } from "../../types/test";
 
 export const testData: TTestData = {
   1: {

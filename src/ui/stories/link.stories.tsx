@@ -1,12 +1,9 @@
 import {
-  TextUppercaseProps,
-  textUppercaseMixIn,
   colorChangeOnHoverMixIn,
 } from "../controls/mixins";
 import { Link } from "../controls/link";
 import { ComponentStory, ComponentMeta } from "@storybook/react";
 import { TextColor, TypographyLevel } from "../types";
-import { BackgroundColor } from "../types/background-color.enum";
 
 export default {
   title: "Link",

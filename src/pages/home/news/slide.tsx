@@ -1,15 +1,8 @@
 import React from "react";
 import styled from "styled-components";
-import {
-  Subtitle3,
-  Subtitle4,
-  Text1,
-  Text3,
-  Text4,
-  Title,
-} from "../../../ui/controls/typography";
+import { Subtitle3, Text4 } from "../../../ui/controls/typography";
 import { Box, Link, LinkButton } from "../../../ui/controls";
-import { ScreenSize, TypographyLevel } from "../../../ui/types";
+import { ScreenSize } from "../../../ui/types";
 import textEllipsis from "../../../utils";
 
 const StyledSlide = styled.div`

@@ -24,9 +24,8 @@ import { AppContext } from "../../../../components/contexts";
 import { useContext, useEffect } from "react";
 import { useLazyQuery } from "@apollo/client";
 import { NewTest } from "../../../../types/newTest";
-import { NEW_TEST } from "../../../../gql/query/newTest";
 import { toast } from "react-hot-toast";
-import { setTestId, testBaseUrl } from "../../../../utils";
+import { newTestQuery, setTestId, testBaseUrl } from "../../../../utils";
 
 interface StartPageProps {
   forClosePerson: boolean;
@@ -34,13 +33,13 @@ interface StartPageProps {
 }
 
 const StartPage: React.FC<StartPageProps> = ({ forClosePerson, title }) => {
-  const [getTestId, {}] = useLazyQuery<NewTest>(NEW_TEST, {
+  const [getTestId, {}] = useLazyQuery<NewTest>(newTestQuery(forClosePerson), {
     fetchPolicy: "cache-and-network",
     nextFetchPolicy: "network-only",
   });
   const { setLastQuestionId } = useContext(AppContext);
   const navigate = useNavigate();
-  const route = testBaseUrl(forClosePerson);
+  const routeForTest = testBaseUrl(forClosePerson);
 
   const onStartBtnClick = () => {
     getTestId()
@@ -48,7 +47,7 @@ const StartPage: React.FC<StartPageProps> = ({ forClosePerson, title }) => {
         setTestId(JSON.stringify(res.data?.newTest), forClosePerson);
         if (setLastQuestionId) {
           setLastQuestionId(`description`);
-          navigate(`${route}/description`);
+          navigate(`${routeForTest}/description`);
         }
       })
       .catch(() => toast.error(`Не удалось начать тест`, { id: "error" }));

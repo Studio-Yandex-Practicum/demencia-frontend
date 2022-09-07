@@ -7,7 +7,13 @@ import {
   useContext,
 } from "react";
 import { useNavigate } from "react-router-dom";
-import { Box, Button, Section, Text1, Text3 } from "../../../../../../ui/controls";
+import {
+  Box,
+  Button,
+  Section,
+  Text1,
+  Text3,
+} from "../../../../../../ui/controls";
 import { ArrowLeft, ArrowRight } from "../components/arrows";
 import QuestionHeader from "../components/question-header";
 import { ScreenSize, TextColor } from "../../../../../../ui/types";

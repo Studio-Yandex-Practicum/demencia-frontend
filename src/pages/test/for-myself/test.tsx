@@ -62,7 +62,15 @@ const TestPage = () => {
   return (
     <AppContext.Provider value={{ setLastQuestionId }}>
       <Routes>
-        <Route path="start" element={<StartPage />} />
+        <Route
+          path="start"
+          element={
+            <StartPage
+              forClosePerson={false}
+              title="Данный тест рекомендуется пройти для проверки своего когнитивного статуса."
+            />
+          }
+        />
         <Route path="description" element={<DescriptionPage />} />
         <Route path="result" element={<ResultPage />} />
         <Route path="question/*" element={<QuestionPage />} />

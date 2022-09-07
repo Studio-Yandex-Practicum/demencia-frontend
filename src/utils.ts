@@ -14,6 +14,6 @@ export function testBaseUrl(forClosePerson = false) {
 }
 
 export function setTestId(id: string, forClosePerson = false) {
-  const key = forClosePerson ? "test-for-close-person-id" : "test-id";
+  const key = forClosePerson ? "test-for-close-person-id" : "test_id";
   localStorage.setItem(key, id);
 }

@@ -1,7 +1,11 @@
 import React from "react";
 import styled from "styled-components";
 import { Box, Button } from "../../../../../../ui/controls";
-import { ButtonShape, ButtonType, ScreenSize } from "../../../../../../ui/types";
+import {
+  ButtonShape,
+  ButtonType,
+  ScreenSize,
+} from "../../../../../../ui/types";
 
 const StyledDiv = styled.div`
   display: grid;

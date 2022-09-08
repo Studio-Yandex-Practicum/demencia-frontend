@@ -1,6 +1,12 @@
 import styled from "styled-components";
 import { useState } from "react";
-import { Box, Section, Text3, Text1, Button } from "../../../../../../ui/controls";
+import {
+  Box,
+  Section,
+  Text3,
+  Text1,
+  Button,
+} from "../../../../../../ui/controls";
 import {
   ScreenSize,
   TextColor,

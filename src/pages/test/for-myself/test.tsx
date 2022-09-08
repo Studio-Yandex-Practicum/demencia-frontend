@@ -6,8 +6,9 @@ import {
   useLocation,
   useNavigate,
 } from "react-router-dom";
-import { DescriptionPage, QuestionPage, ResultPage, StartPage } from "./pages";
+import { DescriptionPage, QuestionPage, ResultPage } from "./pages";
 import { AppContext } from "../../../components/contexts";
+import StartPage from "../pages/start/start";
 
 const TestPage = () => {
   const path = useLocation().pathname;
@@ -62,7 +63,15 @@ const TestPage = () => {
   return (
     <AppContext.Provider value={{ setLastQuestionId }}>
       <Routes>
-        <Route path="start" element={<StartPage />} />
+        <Route
+          path="start"
+          element={
+            <StartPage
+              forClosePerson={false}
+              title="Данный тест рекомендуется пройти для проверки своего когнитивного статуса."
+            />
+          }
+        />
         <Route path="description" element={<DescriptionPage />} />
         <Route path="result" element={<ResultPage />} />
         <Route path="question/*" element={<QuestionPage />} />

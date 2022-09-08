@@ -5,11 +5,11 @@ import {
   Section,
   Text1,
   Subtitle3,
-} from "../../../../../ui/controls";
-import { ScreenSize } from "../../../../../ui/types";
-import Puzzles from "../../../../../components/puzzles";
-import GreenPuzzle from "../../../../../components/green-puzzle";
-import ButtonWithSemicircle from "../../../../../components/button-with-semicircle";
+} from "../../../../ui/controls";
+import { ScreenSize } from "../../../../ui/types";
+import Puzzles from "../../../../components/puzzles";
+import GreenPuzzle from "../../../../components/green-puzzle";
+import ButtonWithSemicircle from "../../../../components/button-with-semicircle";
 
 export const Actions = styled.div`
   display: flex;

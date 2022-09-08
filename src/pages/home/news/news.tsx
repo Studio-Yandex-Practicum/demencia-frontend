@@ -25,15 +25,6 @@ const BoxVideoContainer = styled(Box)`
   }
 `;
 
-const BoxVideo = styled(Box)`
-  align-items: flex-end;
-  align-self: end;
-  @media (max-width: ${ScreenSize.Small}px) {
-    align-items: center;
-    margin-right: 0;
-  }
-`;
-
 const StyledBox = styled(Box)`
   @media (max-width: ${ScreenSize.Medium}px) {
     flex-wrap: wrap;
@@ -69,7 +60,7 @@ const StyledImage = styled.img`
 `;
 
 const CardContainer = styled(Box)`
-  max-width: 305px;
+  max-width: 400px;
 
   @media screen and (max-width: 1100px) {
     max-width: 460px;
@@ -195,7 +186,7 @@ const News: React.FC = () => {
           </Button>
         </CenteredBox>
         <BoxVideoContainer flex gap="40px">
-          <BoxVideo>
+          <Box width="100%">
             <iframe
               width="100%"
               height="314px"
@@ -210,8 +201,8 @@ const News: React.FC = () => {
                 </strong>
               </Text4>
             </Box>
-          </BoxVideo>
-          <BoxVideo>
+          </Box>
+          <Box width="100%">
             <iframe
               width="100%"
               height="314px"
@@ -226,7 +217,7 @@ const News: React.FC = () => {
                 </strong>
               </Text4>
             </Box>
-          </BoxVideo>
+          </Box>
         </BoxVideoContainer>
       </Box>
     </Section>

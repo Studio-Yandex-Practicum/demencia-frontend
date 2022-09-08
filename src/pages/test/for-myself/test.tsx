@@ -6,8 +6,9 @@ import {
   useLocation,
   useNavigate,
 } from "react-router-dom";
-import { DescriptionPage, QuestionPage, ResultPage, StartPage } from "./pages";
+import { DescriptionPage, QuestionPage, ResultPage } from "./pages";
 import { AppContext } from "../../../components/contexts";
+import StartPage from "../pages/start/start";
 
 const TestPage = () => {
   const path = useLocation().pathname;

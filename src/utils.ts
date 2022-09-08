@@ -14,6 +14,7 @@ export function testBaseUrl(forClosePerson = false) {
 
   return "/test";
 }
+
 export function newTestQuery(forClosePerson = false) {
   if (forClosePerson) {
     return NEW_TEST_FOR_CLOSE_PERSON;

@@ -54,7 +54,7 @@ const QuestionPage = () => {
         <Route path="24" element={<TrianglesQuestion number={24} />} />
         <Route path="25" element={<TextQuestion number={25} />} />
       </Routes>
-      <Progress pageID={pageID ? pageID[0] : ""} />
+      <Progress pageID={pageID ? pageID[0] : ""} size={25} />
     </>
   );
 };

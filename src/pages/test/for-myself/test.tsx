@@ -9,7 +9,7 @@ import {
 import { DescriptionPage, QuestionPage, ResultPage } from "./pages";
 import { AppContext } from "../../../components/contexts";
 import StartPage from "../pages/start/start";
-import descriptionForMyself from "./components/description";
+import TestDescriptionForMyself from "./components/description";
 
 const TestPage = () => {
   const path = useLocation().pathname;
@@ -77,7 +77,7 @@ const TestPage = () => {
           path="description"
           element={
             <DescriptionPage forClosePerson={false}>
-              {descriptionForMyself}
+              <TestDescriptionForMyself />
             </DescriptionPage>
           }
         />

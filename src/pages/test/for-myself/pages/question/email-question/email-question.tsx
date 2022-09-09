@@ -39,7 +39,6 @@ const EmailQuestion: React.FC<{ number: number }> = ({ number }) => {
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value, checked } = e.target;
-    console.log(value);
     setValues((prevState) => ({
       ...prevState,
       [name]: name === "personalData" ? checked : value,

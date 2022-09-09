@@ -27,3 +27,31 @@ export function setTestId(id: string, forClosePerson = false) {
   const key = forClosePerson ? "test-for-close-person-id" : "test_id";
   localStorage.setItem(key, id);
 }
+
+export function getTestId(forClosePerson = false) {
+  if (forClosePerson) {
+    return localStorage.getItem("test-for-close-person-id");
+  }
+
+  return localStorage.getItem("test_id");
+}
+
+export function getTestNumber(number: number, forClosePerson = false) {
+  if (forClosePerson) {
+    return localStorage.getItem(`for-close-person-${number}`);
+  }
+
+  return localStorage.getItem(`${number}`);
+}
+
+export function setTestNumber(
+  number: number,
+  answer: string,
+  forClosePerson = false
+) {
+  if (forClosePerson) {
+    localStorage.setItem(`for-close-person-${number}`, answer);
+    return;
+  }
+  localStorage.setItem(`${number}`, answer);
+}

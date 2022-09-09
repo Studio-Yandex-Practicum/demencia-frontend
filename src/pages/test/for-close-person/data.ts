@@ -1,6 +1,6 @@
 import { TTestData } from "../../../types/test";
 
-export const testForClosePersonData: TTestData = {
+export const forClosePersonData: TTestData = {
   1: {
     question: "Введите имя респондента:",
   },

@@ -8,7 +8,7 @@ import { Box, Section } from "../../../../../../ui/controls";
 import { TextColor, TypographyLevel } from "../../../../../../ui/types";
 import ErrorText from "../components/error-text";
 import LoadingText from "../components/loading-text";
-import QuestionHeader from "../components/question-header";
+import QuestionHeader from "../../../../pages/question/question-header";
 import QuestionTextUnfolding from "../components/question-text-unfolding";
 import {
   StyledBox,

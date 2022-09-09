@@ -2,7 +2,7 @@ import { useState, useEffect, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { Box, Section, Text1 } from "../../../../../../ui/controls";
 import { ArrowLeft, ArrowRight } from "../components/arrows";
-import QuestionHeader from "../components/question-header";
+import QuestionHeader from "../../../../pages/question/question-header";
 import StyledInput from "../../../../../../components/input-field";
 
 import validator from "validator";

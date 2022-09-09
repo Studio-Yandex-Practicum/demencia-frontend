@@ -7,7 +7,7 @@ import EmailQuestion from "./email-question/email-question";
 import ImagesIdentificationQuestion from "./images-identification-question/images-identification-question";
 import MemoryTestQuestion from "./memory-test-question/memory-test-question";
 import MoneyQuestion from "./money-question/money-question";
-import TextQuestion from "../../../pages/question/text-question";
+import TextQuestion from "../../../pages/question/text-question/text-question";
 import ThreeOptionsQuestion from "./three-options-question/three-options-question";
 import TwoOptionsQuestion from "./two-options-question/two-options-question";
 import CountriesQuestion from "./countries-question/countries-question";

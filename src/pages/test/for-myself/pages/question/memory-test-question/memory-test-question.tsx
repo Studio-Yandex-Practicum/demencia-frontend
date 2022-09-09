@@ -8,7 +8,7 @@ import { Box } from "../../../../../../ui/controls";
 import { ArrowLeft, ArrowRight } from "../components/arrows";
 import ErrorText from "../components/error-text";
 import LoadingText from "../components/loading-text";
-import QuestionHeader from "../components/question-header";
+import QuestionHeader from "../../../../pages/question/question-header";
 import {
   StyledBox,
   StyledBoxArrowLeft,

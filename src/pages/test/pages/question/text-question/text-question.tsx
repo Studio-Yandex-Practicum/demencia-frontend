@@ -4,27 +4,27 @@ import {
   StyledBoxInput,
   TextInputBox,
 } from "./text-question-styles";
-import { Box, Section } from "../../../../ui/controls";
-import StyledInput from "../../../../components/input-field";
+import { Box, Section } from "../../../../../ui/controls";
+import StyledInput from "../../../../../components/input-field";
 import {
   ArrowLeft,
   ArrowRight,
-} from "../../for-myself/pages/question/components/arrows";
-import QuestionHeader from "../../for-myself/pages/question/components/question-header";
+} from "../../../for-myself/pages/question/components/arrows";
+import QuestionHeader from "../question-header";
 import { useState, useEffect, useContext } from "react";
 import { useNavigate } from "react-router-dom";
-import { AppContext } from "../../../../components/contexts";
-import { CREATE_ANSWER } from "../../../../gql/mutation/create-answer";
+import { AppContext } from "../../../../../components/contexts";
+import { CREATE_ANSWER } from "../../../../../gql/mutation/create-answer";
 import { useMutation } from "@apollo/client";
 import toast from "react-hot-toast";
-import ErrorText from "../../for-myself/pages/question/components/error-text";
-import LoadingText from "../../for-myself/pages/question/components/loading-text";
+import ErrorText from "../../../for-myself/pages/question/components/error-text";
+import LoadingText from "../../../for-myself/pages/question/components/loading-text";
 import {
   getTestId,
   getTestNumber,
   setTestNumber,
   testBaseUrl,
-} from "../../../../utils";
+} from "../../../../../utils";
 
 const TextQuestion: React.FC<{ number: number; forClosePerson: boolean }> = ({
   number,

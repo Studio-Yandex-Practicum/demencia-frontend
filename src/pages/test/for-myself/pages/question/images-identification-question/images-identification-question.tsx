@@ -4,7 +4,7 @@ import styled from "styled-components";
 import StyledInput from "../../../../../../components/input-field";
 import { Box, Section } from "../../../../../../ui/controls";
 import { ArrowLeft, ArrowRight } from "../components/arrows";
-import QuestionHeader from "../components/question-header";
+import QuestionHeader from "../../../../pages/question/question-header";
 import { ScreenSize } from "../../../../../../ui/types";
 
 import rhinoPic from "../../../../../../images/rhino-pic.jpg";

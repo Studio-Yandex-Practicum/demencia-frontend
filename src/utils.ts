@@ -1,4 +1,7 @@
 import { NEW_TEST, NEW_TEST_FOR_CLOSE_PERSON } from "./gql/query/newTest";
+import { forClosePersonData } from "./pages/test/for-close-person/data";
+
+import { testData } from "./pages/test/for-myself/data";
 
 export default function textEllipsis(text: string | undefined, limit: number) {
   if (text && limit && text.length > limit) {
@@ -54,4 +57,12 @@ export function setTestNumber(
     return;
   }
   localStorage.setItem(`${number}`, answer);
+}
+
+export function getDataForTest(number: number, forClosePerson = false) {
+  if (forClosePerson) {
+    return forClosePersonData[number].question;
+  }
+
+  return testData[number].question;
 }

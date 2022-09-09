@@ -2,7 +2,7 @@ import { useState, useEffect, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { Box, Section } from "../../../../../../ui/controls";
 import { testData } from "../../../data";
-import QuestionHeader from "../components/question-header";
+import QuestionHeader from "../../../../pages/question/question-header";
 import {
   StyledBoxInput,
   InputBox,

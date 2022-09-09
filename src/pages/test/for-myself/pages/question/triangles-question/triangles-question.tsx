@@ -15,7 +15,7 @@ import {
   Text3,
 } from "../../../../../../ui/controls";
 import { ArrowLeft, ArrowRight } from "../components/arrows";
-import QuestionHeader from "../components/question-header";
+import QuestionHeader from "../../../../pages/question/question-header";
 import { ScreenSize, TextColor } from "../../../../../../ui/types";
 
 import triangleQuestionSamplePic from "../../../../../../images/triangles-question-sample-pic.jpg";

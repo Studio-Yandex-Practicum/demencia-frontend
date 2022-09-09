@@ -9,6 +9,7 @@ import {
 import { DescriptionPage, QuestionPage, ResultPage } from "./pages";
 import { AppContext } from "../../../components/contexts";
 import StartPage from "../pages/start/start";
+import descriptionForMyself from "./components/description";
 
 const TestPage = () => {
   const path = useLocation().pathname;
@@ -72,7 +73,10 @@ const TestPage = () => {
             />
           }
         />
-        <Route path="description" element={<DescriptionPage />} />
+        <Route
+          path="description"
+          element={<DescriptionPage>{descriptionForMyself}</DescriptionPage>}
+        />
         <Route path="result" element={<ResultPage />} />
         <Route path="question/*" element={<QuestionPage />} />
       </Routes>

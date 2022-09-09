@@ -1,4 +1,4 @@
-import DescriptionPage from "./description/description";
+import DescriptionPage from "../../pages/description/description";
 import QuestionPage from "./question/question";
 import ResultPage from "./result/result";
 

@@ -1,7 +1,7 @@
 import styled from "styled-components";
-import arrowLeft from "../../../../../images/arrow-left.svg";
-import arrowRight from "../../../../../images/arrow-right.svg";
-import { ScreenSize } from "../../../../../ui/types";
+import arrowLeft from "../../../../images/arrow-left.svg";
+import arrowRight from "../../../../images/arrow-right.svg";
+import { ScreenSize } from "../../../../ui/types";
 
 export const ArrowLeft = styled.img.attrs((props) => ({
   src: props.src || arrowLeft,

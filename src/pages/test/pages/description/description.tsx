@@ -12,6 +12,7 @@ import styled from "styled-components";
 import { ArrowLeft, ArrowRight } from "./decor";
 import { useNavigate } from "react-router-dom";
 import { AppContext } from "../../../../components/contexts";
+import { testBaseUrl } from "../../../../utils";
 
 const StyleArrowLeft = styled(ArrowLeft)`
   margin-right: 10px;
@@ -70,9 +71,17 @@ const StyleButton = styled(Button)`
   }
 `;
 
-const DescriptionPage: React.FC = ({ children }) => {
+interface DescriptionPageProps {
+  forClosePerson: boolean;
+}
+
+const DescriptionPage: React.FC<DescriptionPageProps> = ({
+  children,
+  forClosePerson,
+}) => {
   const { setLastQuestionId } = useContext(AppContext);
   const navigate = useNavigate();
+  const routeForTest = testBaseUrl(forClosePerson);
 
   return (
     <Box>
@@ -117,7 +126,7 @@ const DescriptionPage: React.FC = ({ children }) => {
             zoomOnHover
             zoomOutOnHover={false}
             onClick={() => {
-              navigate("/test/question/1");
+              navigate(`${routeForTest}/question/1`);
               if (setLastQuestionId) {
                 setLastQuestionId(`1`);
               }

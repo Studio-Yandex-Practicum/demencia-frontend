@@ -75,7 +75,11 @@ const TestPage = () => {
         />
         <Route
           path="description"
-          element={<DescriptionPage>{descriptionForMyself}</DescriptionPage>}
+          element={
+            <DescriptionPage forClosePerson={false}>
+              {descriptionForMyself}
+            </DescriptionPage>
+          }
         />
         <Route path="result" element={<ResultPage />} />
         <Route path="question/*" element={<QuestionPage />} />

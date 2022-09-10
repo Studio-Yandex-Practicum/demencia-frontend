@@ -29,25 +29,52 @@ const QuestionPage = () => {
           path="1"
           element={<TextQuestion forClosePerson={false} number={1} />}
         />
-        <Route path="2" element={<DateQuestion number={2} />} />
-        <Route path="3" element={<TwoOptionsQuestion number={3} />} />
+        <Route
+          path="2"
+          element={<DateQuestion forClosePerson={false} number={2} />}
+        />
+        <Route
+          path="3"
+          element={<TwoOptionsQuestion forClosePerson={false} number={3} />}
+        />
         <Route
           path="4"
           element={<EmailQuestion forClosePerson={false} number={4} />}
         />
         <Route path="5" element={<ThreeOptionsQuestion number={5} />} />
-        <Route path="6" element={<TwoOptionsQuestion number={6} />} />
-        <Route path="7" element={<TwoOptionsQuestion number={7} />} />
+        <Route
+          path="6"
+          element={<TwoOptionsQuestion forClosePerson={false} number={6} />}
+        />
+        <Route
+          path="7"
+          element={<TwoOptionsQuestion forClosePerson={false} number={7} />}
+        />
         <Route
           path="8"
           element={<TextQuestion forClosePerson={false} number={8} />}
         />
-        <Route path="9" element={<TwoOptionsQuestion number={9} />} />
-        <Route path="10" element={<TwoOptionsQuestion number={10} />} />
+        <Route
+          path="9"
+          element={<TwoOptionsQuestion forClosePerson={false} number={9} />}
+        />
+        <Route
+          path="10"
+          element={<TwoOptionsQuestion forClosePerson={false} number={10} />}
+        />
         <Route path="11" element={<ThreeOptionsQuestion number={11} />} />
-        <Route path="12" element={<TwoOptionsQuestion number={12} />} />
-        <Route path="13" element={<TwoOptionsQuestion number={13} />} />
-        <Route path="14" element={<DateQuestion number={14} />} />
+        <Route
+          path="12"
+          element={<TwoOptionsQuestion forClosePerson={false} number={12} />}
+        />
+        <Route
+          path="13"
+          element={<TwoOptionsQuestion forClosePerson={false} number={13} />}
+        />
+        <Route
+          path="14"
+          element={<DateQuestion forClosePerson={false} number={14} />}
+        />
         <Route
           path="15"
           element={<ImagesIdentificationQuestion number={15} />}

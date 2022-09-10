@@ -21,16 +21,26 @@ import { useMutation } from "@apollo/client";
 import toast from "react-hot-toast";
 import ErrorText from "../components/error-text";
 import LoadingText from "../components/loading-text";
-import { answerQuery } from "../../../../../../utils";
+import {
+  answerQuery,
+  getTestId,
+  getTestNumber,
+  setTestNumber,
+  testBaseUrl,
+} from "../../../../../../utils";
 
-const TwoOptionsQuestion: React.FC<{ number: number }> = ({ number }) => {
-  const [createAnswer, { loading }] = useMutation(answerQuery());
+const TwoOptionsQuestion: React.FC<{
+  number: number;
+  forClosePerson: boolean;
+}> = ({ number, forClosePerson }) => {
+  const [createAnswer, { loading }] = useMutation(answerQuery(forClosePerson));
   const { setLastQuestionId } = useContext(AppContext);
   const navigate = useNavigate();
   const [firstChecked, setFirstChecked] = useState(false);
   const [secondChecked, setSecondChecked] = useState(false);
   const [isError, setIsError] = useState(false);
   const [firstDescription, setFirstDescription] = useState("");
+  const routeForTest = testBaseUrl(forClosePerson);
 
   const setChecked = (first: boolean, second: boolean) => {
     setFirstChecked(first);
@@ -38,8 +48,8 @@ const TwoOptionsQuestion: React.FC<{ number: number }> = ({ number }) => {
   };
 
   useEffect(() => {
-    if (localStorage.getItem(`${number}`)) {
-      const answer = localStorage.getItem(`${number}`);
+    if (getTestNumber(number, forClosePerson)) {
+      const answer = getTestNumber(number, forClosePerson);
       if (answer) {
         if (answer === testData[number].second) {
           setChecked(false, true);
@@ -53,7 +63,7 @@ const TwoOptionsQuestion: React.FC<{ number: number }> = ({ number }) => {
     } else {
       setChecked(false, false);
     }
-  }, [number]);
+  }, [forClosePerson, number]);
 
   const makeAnswer = () => {
     return secondChecked
@@ -72,7 +82,7 @@ const TwoOptionsQuestion: React.FC<{ number: number }> = ({ number }) => {
 
       const answer = makeAnswer();
 
-      const testId = JSON.parse(localStorage.getItem("test_id") || "");
+      const testId = JSON.parse(getTestId(forClosePerson) || "");
       createAnswer({
         variables: {
           input: {
@@ -84,12 +94,14 @@ const TwoOptionsQuestion: React.FC<{ number: number }> = ({ number }) => {
       })
         .then((res) => {
           if (res.data.createAnswer.ok === true) {
-            localStorage.setItem(`${number}`, answer);
+            setTestNumber(number, answer, forClosePerson);
             if (setLastQuestionId) {
               setLastQuestionId(`${number + 1}`);
             }
             const to =
-              number === 25 ? "/test/result" : `/test/question/${number + 1}`;
+              number === 25
+                ? `${routeForTest}/result`
+                : `${routeForTest}/question/${number + 1}`;
             navigate(to);
           }
         })

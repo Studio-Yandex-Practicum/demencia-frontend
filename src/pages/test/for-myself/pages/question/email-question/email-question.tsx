@@ -20,7 +20,13 @@ import { useMutation } from "@apollo/client";
 import toast from "react-hot-toast";
 import ErrorText from "../components/error-text";
 import LoadingText from "../components/loading-text";
-import { answerQuery } from "../../../../../../utils";
+import {
+  answerQuery,
+  getTestId,
+  getTestNumber,
+  setTestNumber,
+  testBaseUrl,
+} from "../../../../../../utils";
 
 const EmailQuestion: React.FC<{ number: number; forClosePerson: boolean }> = ({
   number,
@@ -29,6 +35,7 @@ const EmailQuestion: React.FC<{ number: number; forClosePerson: boolean }> = ({
   const [createAnswer, { loading }] = useMutation(answerQuery(forClosePerson));
   const { setLastQuestionId } = useContext(AppContext);
   const navigate = useNavigate();
+  const routeForTest = testBaseUrl(forClosePerson);
 
   const [isError, setIsError] = useState({
     email: false,
@@ -73,7 +80,7 @@ const EmailQuestion: React.FC<{ number: number; forClosePerson: boolean }> = ({
         }));
       }
     } else {
-      const testId = JSON.parse(localStorage.getItem("test_id") || "");
+      const testId = JSON.parse(getTestId(forClosePerson) || "");
       createAnswer({
         variables: {
           input: {
@@ -85,12 +92,14 @@ const EmailQuestion: React.FC<{ number: number; forClosePerson: boolean }> = ({
       })
         .then((res) => {
           if (res.data.createAnswer.ok === true) {
-            localStorage.setItem(`${number}`, email);
+            setTestNumber(number, email, forClosePerson);
             if (setLastQuestionId) {
               setLastQuestionId(`${number + 1}`);
             }
             const to =
-              number === 25 ? "/test/result" : `/test/question/${number + 1}`;
+              number === 25
+                ? `${routeForTest}/result`
+                : `${routeForTest}/question/${number + 1}`;
             navigate(to);
           }
         })
@@ -102,15 +111,15 @@ const EmailQuestion: React.FC<{ number: number; forClosePerson: boolean }> = ({
   };
 
   useEffect(() => {
-    if (localStorage.getItem(`${number}`)) {
-      const localStorageEmail = localStorage.getItem(`${number}`);
+    if (getTestNumber(number, forClosePerson)) {
+      const localStorageEmail = getTestNumber(number, forClosePerson);
       if (localStorageEmail) {
         setValues({ email: localStorageEmail, personalData: true });
       }
     } else {
       setValues({ email: "", personalData: false });
     }
-  }, [number]);
+  }, [number, forClosePerson]);
 
   return (
     <>

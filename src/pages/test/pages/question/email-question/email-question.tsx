@@ -1,9 +1,12 @@
 import { useState, useEffect, useContext } from "react";
 import { useNavigate } from "react-router-dom";
-import { Box, Section, Text1 } from "../../../../../../ui/controls";
-import { ArrowLeft, ArrowRight } from "../components/arrows";
-import QuestionHeader from "../../../../pages/question/question-header";
-import StyledInput from "../../../../../../components/input-field";
+import { Box, Section, Text1 } from "../../../../../ui/controls";
+import {
+  ArrowLeft,
+  ArrowRight,
+} from "../../../for-myself/pages/question/components/arrows";
+import QuestionHeader from "../question-header";
+import StyledInput from "../../../../../components/input-field";
 
 import validator from "validator";
 
@@ -15,18 +18,18 @@ import {
   EmailInputBox,
   EmailCheckboxBox,
 } from "./email-question-styles";
-import { AppContext } from "../../../../../../components/contexts";
+import { AppContext } from "../../../../../components/contexts";
 import { useMutation } from "@apollo/client";
 import toast from "react-hot-toast";
-import ErrorText from "../components/error-text";
-import LoadingText from "../components/loading-text";
+import ErrorText from "../../../for-myself/pages/question/components/error-text";
+import LoadingText from "../../../for-myself/pages/question/components/loading-text";
 import {
   answerQuery,
   getTestId,
   getTestNumber,
   setTestNumber,
   testBaseUrl,
-} from "../../../../../../utils";
+} from "../../../../../utils";
 
 const EmailQuestion: React.FC<{ number: number; forClosePerson: boolean }> = ({
   number,

@@ -81,7 +81,7 @@ const TestPage = () => {
             </DescriptionPage>
           }
         />
-        <Route path="result" element={<ResultPage />} />
+        <Route path="result" element={<ResultPage forClosePerson={false} />} />
         <Route path="question/*" element={<QuestionPage />} />
       </Routes>
     </AppContext.Provider>

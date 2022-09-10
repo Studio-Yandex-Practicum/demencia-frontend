@@ -1,8 +1,8 @@
 import { useState, useEffect, useContext } from "react";
 import { useNavigate } from "react-router-dom";
-import { Box, Section } from "../../../../../../ui/controls";
-import { testData } from "../../../data";
-import QuestionHeader from "../../../../pages/question/question-header";
+import { Box, Section } from "../../../../../ui/controls";
+import { testData } from "../../../for-myself/data";
+import QuestionHeader from "../question-header";
 import {
   StyledBoxInput,
   InputBox,
@@ -15,19 +15,22 @@ import {
   InputOne,
   StyleLabel,
 } from "./two-options-question-styles";
-import { ArrowLeft, ArrowRight } from "../components/arrows";
-import { AppContext } from "../../../../../../components/contexts";
+import {
+  ArrowLeft,
+  ArrowRight,
+} from "../../../for-myself/pages/question/components/arrows";
+import { AppContext } from "../../../../../components/contexts";
 import { useMutation } from "@apollo/client";
 import toast from "react-hot-toast";
-import ErrorText from "../components/error-text";
-import LoadingText from "../components/loading-text";
+import ErrorText from "../../../for-myself/pages/question/components/error-text";
+import LoadingText from "../../../for-myself/pages/question/components/loading-text";
 import {
   answerQuery,
   getTestId,
   getTestNumber,
   setTestNumber,
   testBaseUrl,
-} from "../../../../../../utils";
+} from "../../../../../utils";
 
 const TwoOptionsQuestion: React.FC<{
   number: number;

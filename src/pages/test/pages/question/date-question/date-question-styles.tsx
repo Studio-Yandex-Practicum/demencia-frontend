@@ -1,7 +1,7 @@
 import styled from "styled-components";
-import StyledInput from "../../../../../../components/input-field";
-import { Section, Box, Text1, Subtitle1 } from "../../../../../../ui/controls";
-import { ScreenSize } from "../../../../../../ui/types";
+import StyledInput from "../../../../../components/input-field";
+import { Section, Box, Text1, Subtitle1 } from "../../../../../ui/controls";
+import { ScreenSize } from "../../../../../ui/types";
 
 export const StyleSelect = styled.select`
   width: 100%;

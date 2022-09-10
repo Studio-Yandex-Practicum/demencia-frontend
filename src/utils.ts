@@ -3,6 +3,10 @@ import {
   CREATE_ANSWER_FOR_CLOSE_PERSON,
 } from "./gql/mutation/create-answer";
 import { NEW_TEST, NEW_TEST_FOR_CLOSE_PERSON } from "./gql/query/newTest";
+import {
+  GET_TEST_RESULT,
+  GET_TEST_RESULT_FOR_CLOSE_PERSON,
+} from "./gql/query/testResult";
 import { forClosePersonData } from "./pages/test/for-close-person/data";
 
 import { testData } from "./pages/test/for-myself/data";
@@ -28,6 +32,14 @@ export function newTestQuery(forClosePerson = false) {
   }
 
   return NEW_TEST;
+}
+
+export function newTestResult(forClosePerson = false) {
+  if (forClosePerson) {
+    return GET_TEST_RESULT_FOR_CLOSE_PERSON;
+  }
+
+  return GET_TEST_RESULT;
 }
 
 export function answerQuery(forClosePerson = false) {

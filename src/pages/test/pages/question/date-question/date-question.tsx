@@ -1,6 +1,9 @@
 import React from "react";
-import { Box, Section } from "../../../../../../ui/controls";
-import { ArrowLeft, ArrowRight } from "../components/arrows";
+import { Box, Section } from "../../../../../ui/controls";
+import {
+  ArrowLeft,
+  ArrowRight,
+} from "../../../for-myself/pages/question/components/arrows";
 import {
   StyleSelect,
   StyleInput,
@@ -12,21 +15,21 @@ import {
   StyledBoxCurrentSelect,
 } from "./date-question-styles";
 import { useNavigate } from "react-router-dom";
-import QuestionHeader from "../../../../pages/question/question-header";
-import arrowSelectDown from "../../../../../../images/arrow-select-down.svg";
+import QuestionHeader from "../question-header";
+import arrowSelectDown from "../../../../../images/arrow-select-down.svg";
 import { useContext, useEffect, useState } from "react";
-import { AppContext } from "../../../../../../components/contexts";
+import { AppContext } from "../../../../../components/contexts";
 import { useMutation } from "@apollo/client";
 import toast from "react-hot-toast";
-import ErrorText from "../components/error-text";
-import LoadingText from "../components/loading-text";
+import ErrorText from "../../../for-myself/pages/question/components/error-text";
+import LoadingText from "../../../for-myself/pages/question/components/loading-text";
 import {
   answerQuery,
   getTestId,
   getTestNumber,
   setTestNumber,
   testBaseUrl,
-} from "../../../../../../utils";
+} from "../../../../../utils";
 
 const months = [
   "Январь",

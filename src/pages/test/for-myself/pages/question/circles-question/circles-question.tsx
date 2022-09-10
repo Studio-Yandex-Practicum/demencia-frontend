@@ -22,10 +22,10 @@ import { ScreenSize, TextColor } from "../../../../../../ui/types";
 import circleQuestionSamplePic from "../../../../../../images/circle-question-sample-pic.jpg";
 import { AppContext } from "../../../../../../components/contexts";
 import { useMutation } from "@apollo/client";
-import { CREATE_ANSWER } from "../../../../../../gql/mutation/create-answer";
 import toast from "react-hot-toast";
 import ErrorText from "../components/error-text";
 import LoadingText from "../components/loading-text";
+import { answerQuery } from "../../../../../../utils";
 
 const StyledBox = styled(Box)`
   margin-bottom: 30px;
@@ -185,7 +185,7 @@ const SvgCircle: React.FC<SvgCircleProps> = ({
 
 // Компонент вопрос №23
 const CirclesQuestion: React.FC<{ number: number }> = ({ number }) => {
-  const [createAnswer, { loading }] = useMutation(CREATE_ANSWER);
+  const [createAnswer, { loading }] = useMutation(answerQuery());
   const { setLastQuestionId } = useContext(AppContext);
   const navigate = useNavigate();
   const [points, setPoints] = useState<[{ x?: number; y?: number }?]>([]); // Стейт точек линии соединящей кружки

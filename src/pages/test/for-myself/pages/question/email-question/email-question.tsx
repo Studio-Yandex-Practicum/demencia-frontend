@@ -17,13 +17,16 @@ import {
 } from "./email-question-styles";
 import { AppContext } from "../../../../../../components/contexts";
 import { useMutation } from "@apollo/client";
-import { CREATE_ANSWER } from "../../../../../../gql/mutation/create-answer";
 import toast from "react-hot-toast";
 import ErrorText from "../components/error-text";
 import LoadingText from "../components/loading-text";
+import { answerQuery } from "../../../../../../utils";
 
-const EmailQuestion: React.FC<{ number: number }> = ({ number }) => {
-  const [createAnswer, { loading }] = useMutation(CREATE_ANSWER);
+const EmailQuestion: React.FC<{ number: number; forClosePerson: boolean }> = ({
+  number,
+  forClosePerson,
+}) => {
+  const [createAnswer, { loading }] = useMutation(answerQuery(forClosePerson));
   const { setLastQuestionId } = useContext(AppContext);
   const navigate = useNavigate();
 

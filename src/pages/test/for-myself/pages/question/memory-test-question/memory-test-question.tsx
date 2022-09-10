@@ -3,7 +3,6 @@ import { useContext, useState } from "react";
 import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 import { AppContext } from "../../../../../../components/contexts";
-import { CREATE_ANSWER } from "../../../../../../gql/mutation/create-answer";
 import { Box } from "../../../../../../ui/controls";
 import { ArrowLeft, ArrowRight } from "../components/arrows";
 import ErrorText from "../components/error-text";
@@ -16,9 +15,10 @@ import {
   StyledButton,
   StyledSection,
 } from "./memory-test-question-styles";
+import { answerQuery } from "../../../../../../utils";
 
 const MemoryTestQuestion: React.FC<{ number: number }> = ({ number }) => {
-  const [createAnswer, { loading }] = useMutation(CREATE_ANSWER);
+  const [createAnswer, { loading }] = useMutation(answerQuery());
   const { setLastQuestionId } = useContext(AppContext);
   const navigate = useNavigate();
   const [isError, setIsError] = useState(false);

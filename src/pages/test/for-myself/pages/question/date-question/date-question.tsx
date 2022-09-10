@@ -17,10 +17,10 @@ import arrowSelectDown from "../../../../../../images/arrow-select-down.svg";
 import { useContext, useEffect, useState } from "react";
 import { AppContext } from "../../../../../../components/contexts";
 import { useMutation } from "@apollo/client";
-import { CREATE_ANSWER } from "../../../../../../gql/mutation/create-answer";
 import toast from "react-hot-toast";
 import ErrorText from "../components/error-text";
 import LoadingText from "../components/loading-text";
+import { answerQuery } from "../../../../../../utils";
 
 const months = [
   "Январь",
@@ -42,7 +42,7 @@ const years = [...Array(new Date().getFullYear() - 1922 + 1)].map(
 );
 
 const DateQuestion: React.FC<{ number: number }> = ({ number }) => {
-  const [createAnswer, { loading }] = useMutation(CREATE_ANSWER);
+  const [createAnswer, { loading }] = useMutation(answerQuery());
   const navigate = useNavigate();
   const { setLastQuestionId } = useContext(AppContext);
   const [day, setDay] = useState("");

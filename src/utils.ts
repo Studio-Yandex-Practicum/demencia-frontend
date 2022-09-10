@@ -1,3 +1,7 @@
+import {
+  CREATE_ANSWER,
+  CREATE_ANSWER_FOR_CLOSE_PERSON,
+} from "./gql/mutation/create-answer";
 import { NEW_TEST, NEW_TEST_FOR_CLOSE_PERSON } from "./gql/query/newTest";
 import { forClosePersonData } from "./pages/test/for-close-person/data";
 
@@ -24,6 +28,14 @@ export function newTestQuery(forClosePerson = false) {
   }
 
   return NEW_TEST;
+}
+
+export function answerQuery(forClosePerson = false) {
+  if (forClosePerson) {
+    return CREATE_ANSWER_FOR_CLOSE_PERSON;
+  }
+
+  return CREATE_ANSWER;
 }
 
 export function setTestId(id: string, forClosePerson = false) {

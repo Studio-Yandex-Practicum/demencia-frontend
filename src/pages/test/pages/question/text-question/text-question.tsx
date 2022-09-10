@@ -14,12 +14,12 @@ import QuestionHeader from "../question-header";
 import { useState, useEffect, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { AppContext } from "../../../../../components/contexts";
-import { CREATE_ANSWER } from "../../../../../gql/mutation/create-answer";
 import { useMutation } from "@apollo/client";
 import toast from "react-hot-toast";
 import ErrorText from "../../../for-myself/pages/question/components/error-text";
 import LoadingText from "../../../for-myself/pages/question/components/loading-text";
 import {
+  answerQuery,
   getTestId,
   getTestNumber,
   setTestNumber,
@@ -30,7 +30,7 @@ const TextQuestion: React.FC<{ number: number; forClosePerson: boolean }> = ({
   number,
   forClosePerson,
 }) => {
-  const [createAnswer, { loading }] = useMutation(CREATE_ANSWER);
+  const [createAnswer, { loading }] = useMutation(answerQuery(forClosePerson));
   const navigate = useNavigate();
   const { setLastQuestionId } = useContext(AppContext);
   const routeForTest = testBaseUrl(forClosePerson);

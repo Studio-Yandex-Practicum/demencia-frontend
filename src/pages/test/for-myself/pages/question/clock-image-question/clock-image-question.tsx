@@ -3,7 +3,6 @@ import { useContext, useEffect, useState } from "react";
 import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 import { AppContext } from "../../../../../../components/contexts";
-import { CREATE_ANSWER } from "../../../../../../gql/mutation/create-answer";
 import { Box, Section } from "../../../../../../ui/controls";
 import { TextColor, TypographyLevel } from "../../../../../../ui/types";
 import ErrorText from "../components/error-text";
@@ -22,9 +21,10 @@ import {
   StyledLabel,
   StyledBoxInput,
 } from "./clock-image-question-style";
+import { answerQuery } from "../../../../../../utils";
 
 const ClockImageQuestion: React.FC<{ number: number }> = ({ number }) => {
-  const [createAnswer, { loading }] = useMutation(CREATE_ANSWER);
+  const [createAnswer, { loading }] = useMutation(answerQuery());
   const { setLastQuestionId } = useContext(AppContext);
   const navigate = useNavigate();
   const [isSelected, setIsSelected] = useState(false);

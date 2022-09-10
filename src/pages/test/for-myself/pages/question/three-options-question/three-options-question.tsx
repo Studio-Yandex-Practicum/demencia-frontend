@@ -3,7 +3,6 @@ import { useState, useEffect, useContext } from "react";
 import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 import { AppContext } from "../../../../../../components/contexts";
-import { CREATE_ANSWER } from "../../../../../../gql/mutation/create-answer";
 import { Box, Section } from "../../../../../../ui/controls";
 import { testData } from "../../../data";
 import ErrorText from "../components/error-text";
@@ -21,9 +20,10 @@ import {
   StyledInputList,
   StyleLabel,
 } from "./three-options-question-styles";
+import { answerQuery } from "../../../../../../utils";
 
 const ThreeOptionsQuestion: React.FC<{ number: number }> = ({ number }) => {
-  const [createAnswer, { loading }] = useMutation(CREATE_ANSWER);
+  const [createAnswer, { loading }] = useMutation(answerQuery());
   const { setLastQuestionId } = useContext(AppContext);
   const navigate = useNavigate();
   const [firstChecked, setFirstChecked] = useState(false);

@@ -12,13 +12,13 @@ import {
 } from "./countries-question-styles";
 import { AppContext } from "../../../../../../components/contexts";
 import { useMutation } from "@apollo/client";
-import { CREATE_ANSWER } from "../../../../../../gql/mutation/create-answer";
 import toast from "react-hot-toast";
 import ErrorText from "../components/error-text";
 import LoadingText from "../components/loading-text";
+import { answerQuery } from "../../../../../../utils";
 
 const CountriesQuestion: React.FC<{ number: number }> = ({ number }) => {
-  const [createAnswer, { loading }] = useMutation(CREATE_ANSWER);
+  const [createAnswer, { loading }] = useMutation(answerQuery());
   const { setLastQuestionId } = useContext(AppContext);
   const navigate = useNavigate();
   const [isError, setIsError] = useState(false);

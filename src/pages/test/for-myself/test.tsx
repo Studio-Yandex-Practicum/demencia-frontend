@@ -6,10 +6,12 @@ import {
   useLocation,
   useNavigate,
 } from "react-router-dom";
-import { DescriptionPage, QuestionPage, ResultPage } from "./pages";
+import { QuestionPage } from "./pages";
 import { AppContext } from "../../../components/contexts";
 import StartPage from "../pages/start/start";
 import TestDescriptionForMyself from "./components/description";
+import DescriptionPage from "../pages/description/description";
+import ResultPage from "../pages/result/result";
 
 const TestPage = () => {
   const path = useLocation().pathname;

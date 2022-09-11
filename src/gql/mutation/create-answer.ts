@@ -14,7 +14,7 @@ const CREATE_ANSWER = gql`
 
 const CREATE_ANSWER_FOR_CLOSE_PERSON = gql`
   mutation createAnswer($input: AnswerInput!) {
-    createAnswer(input: $input) {
+    createAnswer(input: $input, forClosePerson: true) {
       answer {
         id
         image

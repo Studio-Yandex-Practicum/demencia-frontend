@@ -102,7 +102,7 @@ const TwoOptionsQuestion: React.FC<{
               setLastQuestionId(`${number + 1}`);
             }
             const to =
-              number === 25
+              number === 26
                 ? `${routeForTest}/result`
                 : `${routeForTest}/question/${number + 1}`;
             navigate(to);

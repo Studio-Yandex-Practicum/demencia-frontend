@@ -1,8 +1,8 @@
 import { useState, useEffect, useContext } from "react";
 import { useNavigate } from "react-router-dom";
-import { Box, Section } from "../../../../../../ui/controls";
-import { testData } from "../../../data";
-import QuestionHeader from "../components/question-header";
+import { Box, Section } from "../../../../../ui/controls";
+import { testData } from "../../../for-myself/data";
+import QuestionHeader from "../question-header";
 import {
   StyledBoxInput,
   InputBox,
@@ -15,22 +15,35 @@ import {
   InputOne,
   StyleLabel,
 } from "./two-options-question-styles";
-import { ArrowLeft, ArrowRight } from "../components/arrows";
-import { AppContext } from "../../../../../../components/contexts";
+import {
+  ArrowLeft,
+  ArrowRight,
+} from "../../../for-myself/pages/question/components/arrows";
+import { AppContext } from "../../../../../components/contexts";
 import { useMutation } from "@apollo/client";
-import { CREATE_ANSWER } from "../../../../../../gql/mutation/create-answer";
 import toast from "react-hot-toast";
-import ErrorText from "../components/error-text";
-import LoadingText from "../components/loading-text";
+import ErrorText from "../../../for-myself/pages/question/components/error-text";
+import LoadingText from "../../../for-myself/pages/question/components/loading-text";
+import {
+  answerQuery,
+  getTestId,
+  getTestNumber,
+  setTestNumber,
+  testBaseUrl,
+} from "../../../../../utils";
 
-const TwoOptionsQuestion: React.FC<{ number: number }> = ({ number }) => {
-  const [createAnswer, { loading }] = useMutation(CREATE_ANSWER);
+const TwoOptionsQuestion: React.FC<{
+  number: number;
+  forClosePerson: boolean;
+}> = ({ number, forClosePerson }) => {
+  const [createAnswer, { loading }] = useMutation(answerQuery(forClosePerson));
   const { setLastQuestionId } = useContext(AppContext);
   const navigate = useNavigate();
   const [firstChecked, setFirstChecked] = useState(false);
   const [secondChecked, setSecondChecked] = useState(false);
   const [isError, setIsError] = useState(false);
   const [firstDescription, setFirstDescription] = useState("");
+  const routeForTest = testBaseUrl(forClosePerson);
 
   const setChecked = (first: boolean, second: boolean) => {
     setFirstChecked(first);
@@ -38,8 +51,8 @@ const TwoOptionsQuestion: React.FC<{ number: number }> = ({ number }) => {
   };
 
   useEffect(() => {
-    if (localStorage.getItem(`${number}`)) {
-      const answer = localStorage.getItem(`${number}`);
+    if (getTestNumber(number, forClosePerson)) {
+      const answer = getTestNumber(number, forClosePerson);
       if (answer) {
         if (answer === testData[number].second) {
           setChecked(false, true);
@@ -53,7 +66,7 @@ const TwoOptionsQuestion: React.FC<{ number: number }> = ({ number }) => {
     } else {
       setChecked(false, false);
     }
-  }, [number]);
+  }, [forClosePerson, number]);
 
   const makeAnswer = () => {
     return secondChecked
@@ -72,7 +85,7 @@ const TwoOptionsQuestion: React.FC<{ number: number }> = ({ number }) => {
 
       const answer = makeAnswer();
 
-      const testId = JSON.parse(localStorage.getItem("test_id") || "");
+      const testId = JSON.parse(getTestId(forClosePerson) || "");
       createAnswer({
         variables: {
           input: {
@@ -84,12 +97,14 @@ const TwoOptionsQuestion: React.FC<{ number: number }> = ({ number }) => {
       })
         .then((res) => {
           if (res.data.createAnswer.ok === true) {
-            localStorage.setItem(`${number}`, answer);
+            setTestNumber(number, answer, forClosePerson);
             if (setLastQuestionId) {
               setLastQuestionId(`${number + 1}`);
             }
             const to =
-              number === 25 ? "/test/result" : `/test/question/${number + 1}`;
+              number === 26
+                ? `${routeForTest}/result`
+                : `${routeForTest}/question/${number + 1}`;
             navigate(to);
           }
         })

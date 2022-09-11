@@ -1,6 +1,9 @@
 import React from "react";
-import { Box, Section } from "../../../../../../ui/controls";
-import { ArrowLeft, ArrowRight } from "../components/arrows";
+import { Box, Section } from "../../../../../ui/controls";
+import {
+  ArrowLeft,
+  ArrowRight,
+} from "../../../for-myself/pages/question/components/arrows";
 import {
   StyleSelect,
   StyleInput,
@@ -12,15 +15,21 @@ import {
   StyledBoxCurrentSelect,
 } from "./date-question-styles";
 import { useNavigate } from "react-router-dom";
-import QuestionHeader from "../components/question-header";
-import arrowSelectDown from "../../../../../../images/arrow-select-down.svg";
+import QuestionHeader from "../question-header";
+import arrowSelectDown from "../../../../../images/arrow-select-down.svg";
 import { useContext, useEffect, useState } from "react";
-import { AppContext } from "../../../../../../components/contexts";
+import { AppContext } from "../../../../../components/contexts";
 import { useMutation } from "@apollo/client";
-import { CREATE_ANSWER } from "../../../../../../gql/mutation/create-answer";
 import toast from "react-hot-toast";
-import ErrorText from "../components/error-text";
-import LoadingText from "../components/loading-text";
+import ErrorText from "../../../for-myself/pages/question/components/error-text";
+import LoadingText from "../../../for-myself/pages/question/components/loading-text";
+import {
+  answerQuery,
+  getTestId,
+  getTestNumber,
+  setTestNumber,
+  testBaseUrl,
+} from "../../../../../utils";
 
 const months = [
   "Январь",
@@ -41,8 +50,11 @@ const years = [...Array(new Date().getFullYear() - 1922 + 1)].map(
   (_, i) => 1922 + i
 );
 
-const DateQuestion: React.FC<{ number: number }> = ({ number }) => {
-  const [createAnswer, { loading }] = useMutation(CREATE_ANSWER);
+const DateQuestion: React.FC<{ number: number; forClosePerson: boolean }> = ({
+  number,
+  forClosePerson,
+}) => {
+  const [createAnswer, { loading }] = useMutation(answerQuery());
   const navigate = useNavigate();
   const { setLastQuestionId } = useContext(AppContext);
   const [day, setDay] = useState("");
@@ -50,6 +62,7 @@ const DateQuestion: React.FC<{ number: number }> = ({ number }) => {
   const [year, setYear] = useState("1922");
   const [isError, setIsError] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
+  const routeForTest = testBaseUrl(forClosePerson);
 
   const handleChangeDay = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (day.length === 2) {
@@ -76,8 +89,10 @@ const DateQuestion: React.FC<{ number: number }> = ({ number }) => {
   };
 
   useEffect(() => {
-    if (localStorage.getItem(`${number}`)) {
-      const localStorageDate = localStorage.getItem(`${number}`)?.split("-");
+    if (getTestNumber(number, forClosePerson)) {
+      const localStorageDate = getTestNumber(number, forClosePerson)?.split(
+        "-"
+      );
       if (localStorageDate) {
         const modifiedLocalStorageDate = localStorageDate?.map((item) => {
           if (item.startsWith("0")) {
@@ -95,7 +110,7 @@ const DateQuestion: React.FC<{ number: number }> = ({ number }) => {
       setMonth("1");
       setYear("1922");
     }
-  }, [number]);
+  }, [forClosePerson, number]);
 
   const calculateDate = () => {
     return `${day.length === 1 ? `0${day}` : `${day}`}-${
@@ -153,7 +168,7 @@ const DateQuestion: React.FC<{ number: number }> = ({ number }) => {
       setIsError(false);
       if (validateDate(year, month, day)) {
         const date = calculateDate();
-        const testId = JSON.parse(localStorage.getItem("test_id") || "");
+        const testId = JSON.parse(getTestId(forClosePerson) || "");
         createAnswer({
           variables: {
             input: {
@@ -165,12 +180,14 @@ const DateQuestion: React.FC<{ number: number }> = ({ number }) => {
         })
           .then((res) => {
             if (res.data.createAnswer.ok === true) {
-              localStorage.setItem(`${number}`, date);
+              setTestNumber(number, date, forClosePerson);
               if (setLastQuestionId) {
                 setLastQuestionId(`${number + 1}`);
               }
               const to =
-                number === 25 ? "/test/result" : `/test/question/${number + 1}`;
+                number === 25
+                  ? `${routeForTest}/result`
+                  : `${routeForTest}/question/${number + 1}`;
               navigate(to);
             }
           })

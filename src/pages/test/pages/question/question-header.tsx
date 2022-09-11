@@ -1,11 +1,7 @@
 import styled from "styled-components";
-import { Box, Section, Subtitle1, Text1 } from "../../../../../../ui/controls";
-import {
-  ScreenSize,
-  TextColor,
-  TypographyLevel,
-} from "../../../../../../ui/types";
-import { testData } from "../../../data";
+import { Box, Section, Subtitle1, Text1 } from "../../../../ui/controls";
+import { ScreenSize, TextColor, TypographyLevel } from "../../../../ui/types";
+import { getDataForTest } from "../../../../utils";
 
 const StyledSection = styled(Section)`
   justify-content: flex-start;
@@ -36,7 +32,15 @@ const StyleText1 = styled(Text1)`
   }
 `;
 
-const QuestionHeader: React.FC<{ number: number }> = ({ number }) => {
+interface QuestionHeaderProps {
+  number: number;
+  forClosePerson?: boolean;
+}
+
+const QuestionHeader: React.FC<QuestionHeaderProps> = ({
+  number,
+  forClosePerson = false,
+}) => {
   return (
     <Box>
       <StyledSection flex>
@@ -54,7 +58,7 @@ const QuestionHeader: React.FC<{ number: number }> = ({ number }) => {
           textColor={TextColor.Accent1}
           level={TypographyLevel.Subtitle2}
         >
-          {testData[number].question}
+          {getDataForTest(number, forClosePerson)}
         </StyleText1>
       </StyledSection>
     </Box>

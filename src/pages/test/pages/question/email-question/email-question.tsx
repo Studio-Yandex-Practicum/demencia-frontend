@@ -1,9 +1,12 @@
 import { useState, useEffect, useContext } from "react";
 import { useNavigate } from "react-router-dom";
-import { Box, Section, Text1 } from "../../../../../../ui/controls";
-import { ArrowLeft, ArrowRight } from "../components/arrows";
-import QuestionHeader from "../components/question-header";
-import StyledInput from "../../../../../../components/input-field";
+import { Box, Section, Text1 } from "../../../../../ui/controls";
+import {
+  ArrowLeft,
+  ArrowRight,
+} from "../../../for-myself/pages/question/components/arrows";
+import QuestionHeader from "../question-header";
+import StyledInput from "../../../../../components/input-field";
 
 import validator from "validator";
 
@@ -15,17 +18,27 @@ import {
   EmailInputBox,
   EmailCheckboxBox,
 } from "./email-question-styles";
-import { AppContext } from "../../../../../../components/contexts";
+import { AppContext } from "../../../../../components/contexts";
 import { useMutation } from "@apollo/client";
-import { CREATE_ANSWER } from "../../../../../../gql/mutation/create-answer";
 import toast from "react-hot-toast";
-import ErrorText from "../components/error-text";
-import LoadingText from "../components/loading-text";
+import ErrorText from "../../../for-myself/pages/question/components/error-text";
+import LoadingText from "../../../for-myself/pages/question/components/loading-text";
+import {
+  answerQuery,
+  getTestId,
+  getTestNumber,
+  setTestNumber,
+  testBaseUrl,
+} from "../../../../../utils";
 
-const EmailQuestion: React.FC<{ number: number }> = ({ number }) => {
-  const [createAnswer, { loading }] = useMutation(CREATE_ANSWER);
+const EmailQuestion: React.FC<{ number: number; forClosePerson: boolean }> = ({
+  number,
+  forClosePerson,
+}) => {
+  const [createAnswer, { loading }] = useMutation(answerQuery(forClosePerson));
   const { setLastQuestionId } = useContext(AppContext);
   const navigate = useNavigate();
+  const routeForTest = testBaseUrl(forClosePerson);
 
   const [isError, setIsError] = useState({
     email: false,
@@ -39,7 +52,6 @@ const EmailQuestion: React.FC<{ number: number }> = ({ number }) => {
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value, checked } = e.target;
-    console.log(value);
     setValues((prevState) => ({
       ...prevState,
       [name]: name === "personalData" ? checked : value,
@@ -71,7 +83,7 @@ const EmailQuestion: React.FC<{ number: number }> = ({ number }) => {
         }));
       }
     } else {
-      const testId = JSON.parse(localStorage.getItem("test_id") || "");
+      const testId = JSON.parse(getTestId(forClosePerson) || "");
       createAnswer({
         variables: {
           input: {
@@ -83,12 +95,14 @@ const EmailQuestion: React.FC<{ number: number }> = ({ number }) => {
       })
         .then((res) => {
           if (res.data.createAnswer.ok === true) {
-            localStorage.setItem(`${number}`, email);
+            setTestNumber(number, email, forClosePerson);
             if (setLastQuestionId) {
               setLastQuestionId(`${number + 1}`);
             }
             const to =
-              number === 25 ? "/test/result" : `/test/question/${number + 1}`;
+              number === 25
+                ? `${routeForTest}/result`
+                : `${routeForTest}/question/${number + 1}`;
             navigate(to);
           }
         })
@@ -100,15 +114,15 @@ const EmailQuestion: React.FC<{ number: number }> = ({ number }) => {
   };
 
   useEffect(() => {
-    if (localStorage.getItem(`${number}`)) {
-      const localStorageEmail = localStorage.getItem(`${number}`);
+    if (getTestNumber(number, forClosePerson)) {
+      const localStorageEmail = getTestNumber(number, forClosePerson);
       if (localStorageEmail) {
         setValues({ email: localStorageEmail, personalData: true });
       }
     } else {
       setValues({ email: "", personalData: false });
     }
-  }, [number]);
+  }, [number, forClosePerson]);
 
   return (
     <>

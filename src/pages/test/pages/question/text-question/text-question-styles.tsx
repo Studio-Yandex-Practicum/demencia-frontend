@@ -1,6 +1,6 @@
 import styled from "styled-components";
-import { Box } from "../../../../../../ui/controls";
-import { ScreenSize } from "../../../../../../ui/types";
+import { Box } from "../../../../../ui/controls";
+import { ScreenSize } from "../../../../../ui/types";
 
 export const StyledBoxArrowRight = styled(Box)`
   margin-left: 10px;

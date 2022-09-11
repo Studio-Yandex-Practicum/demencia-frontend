@@ -1,7 +1,7 @@
 import styled from "styled-components";
-import { Box } from "../../../../../../ui/controls";
-import { ScreenSize } from "../../../../../../ui/types";
-import StyledInput from "../../../../../../components/input-field";
+import { Box } from "../../../../../ui/controls";
+import { ScreenSize } from "../../../../../ui/types";
+import StyledInput from "../../../../../components/input-field";
 
 export const StyledBoxInput = styled(Box)`
   flex-direction: row;

@@ -4,17 +4,17 @@ import styled from "styled-components";
 import StyledInput from "../../../../../../components/input-field";
 import { Box, Section } from "../../../../../../ui/controls";
 import { ArrowLeft, ArrowRight } from "../components/arrows";
-import QuestionHeader from "../components/question-header";
+import QuestionHeader from "../../../../pages/question/question-header";
 import { ScreenSize } from "../../../../../../ui/types";
 
 import rhinoPic from "../../../../../../images/rhino-pic.jpg";
 import harpPic from "../../../../../../images/harp-pic.jpg";
 import { AppContext } from "../../../../../../components/contexts";
 import { useMutation } from "@apollo/client";
-import { CREATE_ANSWER } from "../../../../../../gql/mutation/create-answer";
 import toast from "react-hot-toast";
 import ErrorText from "../components/error-text";
 import LoadingText from "../components/loading-text";
+import { answerQuery } from "../../../../../../utils";
 
 const StyledBox = styled(Box)`
   @media (max-width: ${ScreenSize.Medium}px) {
@@ -59,7 +59,7 @@ const StyledArrowRight = styled(ArrowRight)`
 const ImagesIdentificationQuestion: React.FC<{ number: number }> = ({
   number,
 }) => {
-  const [createAnswer, { loading }] = useMutation(CREATE_ANSWER);
+  const [createAnswer, { loading }] = useMutation(answerQuery());
   const { setLastQuestionId } = useContext(AppContext);
   const navigate = useNavigate();
   const [firstAnswer, setFirstAnswer] = useState("");

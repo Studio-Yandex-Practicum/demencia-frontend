@@ -6,9 +6,11 @@ import {
   useLocation,
   useNavigate,
 } from "react-router-dom";
-import { DescriptionPage, QuestionPage, ResultPage } from "./pages";
+import { QuestionPage } from "./pages";
 import { AppContext } from "../../../components/contexts";
 import StartPage from "../pages/start/start";
+import DescriptionPage from "../pages/description/description";
+import ResultPage from "../pages/result/result";
 import TestDescription from "./components/description";
 import { testBaseUrl } from "../../../utils";
 
@@ -83,7 +85,7 @@ const TestPage = () => {
             </DescriptionPage>
           }
         />
-        <Route path="result" element={<ResultPage />} />
+        <Route path="result" element={<ResultPage forClosePerson={false} />} />
         <Route path="question/*" element={<QuestionPage />} />
       </Routes>
     </AppContext.Provider>

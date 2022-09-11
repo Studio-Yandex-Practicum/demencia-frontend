@@ -1,7 +1,7 @@
 import { Navigate, Route, Routes, useLocation } from "react-router-dom";
 import { testBaseUrl } from "../../../../../utils";
-import TextQuestion from "../../../for-myself/pages/question/text-question/text-question";
 import Progress from "../../../for-myself/pages/question/components/progress";
+import TextQuestion from "../../../pages/question/text-question/text-question";
 
 const QuestionPage = () => {
   const path = useLocation().pathname;
@@ -15,8 +15,14 @@ const QuestionPage = () => {
   return (
     <>
       <Routes>
-        <Route path="1" element={<TextQuestion number={1} />} />
-        <Route path="4" element={<TextQuestion number={4} />} />
+        <Route
+          path="1"
+          element={<TextQuestion number={1} forClosePerson={true} />}
+        />
+        <Route
+          path="4"
+          element={<TextQuestion number={4} forClosePerson={true} />}
+        />
       </Routes>
       <Progress pageID={pageID ? pageID[0] : ""} size={26} />
     </>

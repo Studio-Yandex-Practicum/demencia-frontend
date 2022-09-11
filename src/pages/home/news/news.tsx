@@ -9,8 +9,7 @@ import {
   TextColor,
   TypographyLevel,
 } from "../../../ui/types";
-import { Title, Text3, Text4 } from "../../../ui/controls/typography";
-import { Link } from "../../../ui/controls";
+import { Title, Text3, Subtitle3 } from "../../../ui/controls/typography";
 import { useQuery } from "@apollo/client";
 import { SettingsData } from "../../../types/settings";
 import { GET_SETTINGS } from "../../../gql/query/settings";
@@ -18,6 +17,7 @@ import AnimationWrapper from "../../../components/animation-wrapper";
 import { NewsArticlesData } from "../../../types/news";
 import { GET_NEWS_ARTICLES } from "../../../gql/query/news";
 import { useNavigate } from "react-router-dom";
+import NewsCard from "./newsCard";
 
 const BoxVideoContainer = styled(Box)`
   @media (max-width: ${ScreenSize.MediumSmall}px) {
@@ -50,24 +50,10 @@ const StyledTitle = styled(Title)`
 `;
 
 const StyledText3 = styled(Text3)`
+  font-size: 18px !important;
   transition: all 1s ease;
   ${({ animate }) =>
     animate ? "opacity: 0; transform: translateX(-200px);" : ""}
-`;
-
-const StyledImage = styled.img`
-  width: 100%;
-`;
-
-const CardContainer = styled(Box)`
-  max-width: 400px;
-
-  @media screen and (max-width: 1100px) {
-    max-width: 460px;
-  }
-  @media (max-width: ${ScreenSize.Medium}px) {
-    max-width: none;
-  }
 `;
 
 const DefaultCaption: React.FC<{ title: string }> = ({ title }) => <>{title}</>;
@@ -100,7 +86,7 @@ const News: React.FC = () => {
   return (
     <Section flex centered backgroundColor={PaletteColor.LightGreen}>
       <Box
-        mt={7}
+        mt={3}
         mb={11}
         pl={6}
         pr={6}
@@ -109,14 +95,16 @@ const News: React.FC = () => {
         maxWidth={1752}
         width="100%"
       >
-        <Box mb={7}>
-          <Box mb={4}>
+        <Box mb={5}>
+          <Box flex maxWidth={530}>
             <AnimationWrapper>
               <StyledTitle ellipsis>{sectionTitle}</StyledTitle>
             </AnimationWrapper>
           </Box>
           <AnimationWrapper>
-            <StyledText3 ellipsis>{linkTitle}</StyledText3>
+            <StyledText3 uppercase={true} ellipsis>
+              {linkTitle}
+            </StyledText3>
           </AnimationWrapper>
         </Box>
         <AnimationWrapper>
@@ -132,51 +120,21 @@ const News: React.FC = () => {
                   urlLabel = "Подробнее",
                 }) => {
                   return (
-                    <Link
+                    <NewsCard
                       key={id}
-                      zoomTextOnHover={false}
-                      borderBottomOnHover={false}
-                      to={`/article/${id}` || "/"}
-                      uppercase={false}
-                    >
-                      <CardContainer width="100%">
-                        <Box mb={2}>
-                          <StyledImage src={image} />
-                        </Box>
-                        <Box>
-                          <Box>
-                            <Text4>
-                              <strong>{title}</strong>
-                            </Text4>
-                          </Box>
-                          <Box mt={1}>
-                            <Text4>{subTitle}</Text4>
-                          </Box>
-                          <Link
-                            to={`/article/${id}` || "/"}
-                            uppercase={false}
-                            zoomTextOnHover={false}
-                            borderBottomOnHover={false}
-                          >
-                            <Box mt={2}>
-                              <Text4
-                                textColor={TextColor.Accent2}
-                                uppercase={false}
-                              >
-                                <strong>{urlLabel} &rarr;</strong>
-                              </Text4>
-                            </Box>
-                          </Link>
-                        </Box>
-                      </CardContainer>
-                    </Link>
+                      id={id}
+                      image={image}
+                      title={title}
+                      subTitle={subTitle}
+                      urlLabel={urlLabel}
+                    />
                   );
                 }
               )}
           </StyledBox>
         </AnimationWrapper>
 
-        <CenteredBox flex mt={7} mb={18}>
+        <CenteredBox flex mt={7} mb={7}>
           <Button
             type={ButtonType.Secondary}
             level={TypographyLevel.Subtitle3}
@@ -194,12 +152,10 @@ const News: React.FC = () => {
               frameBorder="0"
             ></iframe>
             <Box mt={2}>
-              <Text4>
-                <strong>
-                  Проект Деменция.net благотворительного фонда «Память
-                  поколений». Пройдите тест на сайте Деменция.net
-                </strong>
-              </Text4>
+              <Subtitle3 uppercase={true} textColor={TextColor.Primary}>
+                Проект Деменция.net благотворительного фонда «Память поколений».
+                Пройдите тест на сайте Деменция.net
+              </Subtitle3>
             </Box>
           </Box>
           <Box width="100%">
@@ -210,12 +166,10 @@ const News: React.FC = () => {
               frameBorder="0"
             ></iframe>
             <Box mt={2}>
-              <Text4>
-                <strong>
-                  Проект Деменция.net благотворительного фонда «Память
-                  поколений». Пройдите тест на сайте Деменция.net
-                </strong>
-              </Text4>
+              <Subtitle3 uppercase={true} textColor={TextColor.Primary}>
+                Проект Деменция.net благотворительного фонда «Память поколений».
+                Пройдите тест на сайте Деменция.net
+              </Subtitle3>
             </Box>
           </Box>
         </BoxVideoContainer>

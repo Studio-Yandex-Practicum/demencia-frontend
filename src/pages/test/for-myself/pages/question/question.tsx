@@ -99,7 +99,7 @@ const QuestionPage = () => {
           element={<TextQuestion forClosePerson={false} number={25} />}
         />
       </Routes>
-      <Progress pageID={pageID ? pageID[0] : ""} />
+      <Progress pageID={pageID ? pageID[0] : ""} size={25} />
     </>
   );
 };

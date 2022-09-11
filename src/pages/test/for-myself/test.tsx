@@ -9,13 +9,15 @@ import {
 import { QuestionPage } from "./pages";
 import { AppContext } from "../../../components/contexts";
 import StartPage from "../pages/start/start";
-import TestDescriptionForMyself from "./components/description";
 import DescriptionPage from "../pages/description/description";
 import ResultPage from "../pages/result/result";
+import TestDescription from "./components/description";
+import { testBaseUrl } from "../../../utils";
 
 const TestPage = () => {
   const path = useLocation().pathname;
   const navigate = useNavigate();
+  const baseUrl = testBaseUrl();
 
   function setLastQuestionId(id: string) {
     switch (id) {
@@ -53,14 +55,14 @@ const TestPage = () => {
             break;
         }
       } else {
-        navigate(`/test/question/${lastQuestion}`);
+        navigate(`${baseUrl}/question/${lastQuestion}`);
       }
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  if (path === "/test") {
-    return <Navigate to="/test/start" />;
+  if (path === baseUrl) {
+    return <Navigate to={`${baseUrl}/start`} />;
   }
 
   return (
@@ -79,7 +81,7 @@ const TestPage = () => {
           path="description"
           element={
             <DescriptionPage forClosePerson={false}>
-              <TestDescriptionForMyself />
+              <TestDescription />
             </DescriptionPage>
           }
         />

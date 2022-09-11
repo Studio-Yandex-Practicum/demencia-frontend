@@ -2,7 +2,7 @@ import { Box } from "../../../../ui/controls";
 import { Text1, Text2 } from "../../../../ui/controls";
 import { TextColor, TypographyLevel } from "../../../../ui/types";
 
-const TestDescriptionForMyself = () => {
+const TestDescription = () => {
   return (
     <Box pt={3} pb={3}>
       <Text2 maxWidth={1026} mb={2} textColor={TextColor.Primary}>
@@ -50,4 +50,4 @@ const TestDescriptionForMyself = () => {
   );
 };
 
-export default TestDescriptionForMyself;
+export default TestDescription;

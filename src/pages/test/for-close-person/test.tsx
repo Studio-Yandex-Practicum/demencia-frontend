@@ -12,6 +12,7 @@ import StartPage from "../pages/start/start";
 import { QuestionPage } from "./pages";
 import TestDescription from "./components/description";
 import DescriptionPage from "../pages/description/description";
+import ResultPage from "../pages/result/result";
 
 const TestForClosePersonPage = () => {
   const path = useLocation().pathname;
@@ -85,7 +86,7 @@ const TestForClosePersonPage = () => {
             </DescriptionPage>
           }
         />
-        {/*<Route path="result" element={<ResultPage />} />*/}
+        <Route path="result" element={<ResultPage forClosePerson={true} />} />
         <Route path="question/*" element={<QuestionPage />} />
       </Routes>
     </AppContext.Provider>

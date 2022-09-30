@@ -208,13 +208,15 @@ const DateQuestion: React.FC<{ number: number; forClosePerson: boolean }> = ({
   return (
     <>
       <Box>
-        <QuestionHeader number={number} />
+        <QuestionHeader number={number} forClosePerson={forClosePerson} />
 
         <Section centered flex>
           <StyledBoxInput flex maxWidth={1900}>
             <StyledBoxArrowLeft>
               <ArrowLeft
-                onClick={() => navigate(`/test/question/${number - 1}`)}
+                onClick={() =>
+                  navigate(`${routeForTest}/question/${number - 1}`)
+                }
               />
             </StyledBoxArrowLeft>
 

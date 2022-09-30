@@ -109,7 +109,7 @@ const TextQuestion: React.FC<{ number: number; forClosePerson: boolean }> = ({
 
   return (
     <Box>
-      <QuestionHeader number={number} />
+      <QuestionHeader number={number} forClosePerson={forClosePerson} />
 
       <Section centered flex>
         <StyledBoxInput flex maxWidth={1900}>

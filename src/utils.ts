@@ -90,3 +90,11 @@ export function getDataForTest(number: number, forClosePerson = false) {
 
   return testData[number].question;
 }
+
+export function getQuestionForTest(number: number, forClosePerson = false) {
+  if (forClosePerson) {
+    return forClosePersonData[number];
+  }
+
+  return testData[number];
+}

@@ -127,13 +127,15 @@ const EmailQuestion: React.FC<{ number: number; forClosePerson: boolean }> = ({
   return (
     <>
       <Box>
-        <QuestionHeader number={number} />
+        <QuestionHeader number={number} forClosePerson={forClosePerson} />
 
         <Section flex centered>
           <StyledBoxInput flex>
             <StyledBoxArrowLeft>
               <ArrowLeft
-                onClick={() => navigate(`/test/question/${number - 1}`)}
+                onClick={() =>
+                  navigate(`${routeForTest}/question/${number - 1}`)
+                }
               />
             </StyledBoxArrowLeft>
             <EmailInputBox flex column width="100%">

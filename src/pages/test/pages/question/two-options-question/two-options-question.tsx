@@ -1,7 +1,7 @@
 import { useState, useEffect, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { Box, Section } from "../../../../../ui/controls";
-import { testData } from "../../../for-myself/data";
+import { getQuestionForTest } from "../../../../../utils";
 import QuestionHeader from "../question-header";
 import {
   StyledBoxInput,
@@ -44,6 +44,7 @@ const TwoOptionsQuestion: React.FC<{
   const [isError, setIsError] = useState(false);
   const [firstDescription, setFirstDescription] = useState("");
   const routeForTest = testBaseUrl(forClosePerson);
+  const testData = getQuestionForTest(number, forClosePerson);
 
   const setChecked = (first: boolean, second: boolean) => {
     setFirstChecked(first);
@@ -54,11 +55,11 @@ const TwoOptionsQuestion: React.FC<{
     if (getTestNumber(number, forClosePerson)) {
       const answer = getTestNumber(number, forClosePerson);
       if (answer) {
-        if (answer === testData[number].second) {
+        if (answer === testData.second) {
           setChecked(false, true);
         } else {
           setChecked(true, false);
-          if (answer !== testData[number].first) {
+          if (answer !== testData.first) {
             setFirstDescription(answer);
           }
         }
@@ -66,14 +67,14 @@ const TwoOptionsQuestion: React.FC<{
     } else {
       setChecked(false, false);
     }
-  }, [forClosePerson, number]);
+  }, [forClosePerson, number, testData.first, testData.second]);
 
   const makeAnswer = () => {
     return secondChecked
-      ? testData[number].second || ""
+      ? testData.second || ""
       : firstChecked && firstDescription
       ? firstDescription
-      : testData[number].first || "";
+      : testData.first || "";
   };
 
   const goForward = () => {
@@ -119,12 +120,12 @@ const TwoOptionsQuestion: React.FC<{
 
   return (
     <Box>
-      <QuestionHeader number={number} />
+      <QuestionHeader number={number} forClosePerson={forClosePerson} />
       <Section flex>
         <StyledBoxInput flex maxWidth={1900}>
           <StyledBoxArrowLeft>
             <ArrowLeft
-              onClick={() => navigate(`/test/question/${number - 1}`)}
+              onClick={() => navigate(`${routeForTest}/question/${number - 1}`)}
             />
           </StyledBoxArrowLeft>
           <StyleBoxInputs flex maxWidth={850}>
@@ -137,9 +138,7 @@ const TwoOptionsQuestion: React.FC<{
                   checked={firstChecked}
                   onChange={() => setChecked(true, false)}
                 />
-                <StyleLabel htmlFor="first">
-                  {testData[number].first}
-                </StyleLabel>
+                <StyleLabel htmlFor="first">{testData.first}</StyleLabel>
               </InputBox>
               <InputBox>
                 <StyledInputList
@@ -149,12 +148,10 @@ const TwoOptionsQuestion: React.FC<{
                   checked={secondChecked}
                   onChange={() => setChecked(false, true)}
                 />
-                <StyleLabel htmlFor="second">
-                  {testData[number].second}
-                </StyleLabel>
+                <StyleLabel htmlFor="second">{testData.second}</StyleLabel>
               </InputBox>
             </StyleQuestionInputs>
-            {firstChecked && testData[number].needFirstDescription && (
+            {firstChecked && testData.needFirstDescription && (
               <BoxInputOne mt={4} flex maxWidth={850}>
                 <InputOne
                   placeholder="Какие изменения вы наблюдаете?"

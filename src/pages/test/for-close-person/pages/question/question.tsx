@@ -36,11 +36,15 @@ const QuestionPage = () => {
         />
         <Route
           path="5"
-          element={<EmailQuestion forClosePerson={false} number={5} />}
+          element={<EmailQuestion number={5} forClosePerson={true} />}
         />
         <Route
           path="6"
           element={<TwoOptionsQuestion number={6} forClosePerson={true} />}
+        />
+        <Route
+          path="7"
+          element={<TwoOptionsQuestion number={7} forClosePerson={true} />}
         />
         <Route
           path="8"

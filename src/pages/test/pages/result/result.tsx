@@ -13,7 +13,7 @@ import { useNavigate } from "react-router-dom";
 import { useQuery } from "@apollo/client";
 import { toast } from "react-hot-toast";
 import { TestResult } from "../../../../types/testResult";
-import { GET_TEST_RESULT } from "../../../../gql/query/testResult";
+import { getTestId, newTestResult, testBaseUrl } from "../../../../utils";
 
 const Empty: React.FC = () => (
   <Section borderBox flex centered>
@@ -21,7 +21,9 @@ const Empty: React.FC = () => (
   </Section>
 );
 
-const ResultPage: React.FC = () => {
+const ResultPage: React.FC<{ forClosePerson: boolean }> = ({
+  forClosePerson,
+}) => {
   const StyledTestBox = styled(Box)`
     text-align: left;
     max-width: 1026px;
@@ -94,12 +96,14 @@ const ResultPage: React.FC = () => {
   `;
 
   const navigate = useNavigate();
+  const routeForTest = testBaseUrl(forClosePerson);
 
-  const id = JSON.parse(localStorage.getItem("test_id") || "");
+  const id = JSON.parse(getTestId(forClosePerson) || "");
 
-  const { data, loading, error } = useQuery<TestResult>(GET_TEST_RESULT, {
-    variables: { id },
-  });
+  const { data, loading, error } = useQuery<TestResult>(
+    newTestResult(forClosePerson),
+    { variables: { id } }
+  );
 
   if (loading) {
     return (
@@ -172,7 +176,7 @@ const ResultPage: React.FC = () => {
             zoomOnHover
             zoomOutOnHover={false}
             onClick={() => {
-              navigate("/test/start");
+              navigate(`${routeForTest}/start`);
               localStorage.clear();
             }}
           >

@@ -34,7 +34,6 @@ import ButtonWithSemicircle from "../../../components/button-with-semicircle";
 
 import AnimationWrapper from "../../../components/animation-wrapper";
 import { useNavigate } from "react-router-dom";
-import { Link } from "react-router-dom";
 
 const InfoSection: React.FC = () => {
   const [isDetailsOpen, setIsDetailsOpen] = useState(false);
@@ -51,8 +50,12 @@ const InfoSection: React.FC = () => {
 
   const settings = data.settings;
 
-  function onClick() {
+  function onTestClick() {
     navigate("/test");
+  }
+
+  function onTestForClosePersonClick() {
+    navigate("/test-for-close-person");
   }
 
   return (
@@ -154,25 +157,24 @@ const InfoSection: React.FC = () => {
             <AnimationWrapper>
               <Button
                 type={ButtonType.Primary}
+                fullWidth
                 size={ButtonSize.Default}
                 zoomOnHover
                 zoomOutOnHover={false}
                 className={"button-not-with-semicircle"}
-                onClick={onClick}
+                onClick={onTestClick}
                 ellipsis
                 animate
               >
                 {settings.aboutSectionButtonLabel}
               </Button>
             </AnimationWrapper>
-            <a href="https://testing2.xn--d1acamsh7dwd.net/testrelUser">
-              <ButtonWithSemicircle
-                maxWidth={350}
-                buttonText={"Проверить близкого"}
-                onClick={onClick}
-                animate
-              />
-            </a>
+            <ButtonWithSemicircle
+              maxWidth={350}
+              buttonText={"Проверить близкого"}
+              onClick={onTestForClosePersonClick}
+              animate
+            />
           </FlexColumn>
         </RelativeBox>
       </TwoColumnGridInfo>

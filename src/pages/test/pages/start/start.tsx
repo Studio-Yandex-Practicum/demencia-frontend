@@ -24,24 +24,30 @@ import { AppContext } from "../../../../components/contexts";
 import { useContext, useEffect } from "react";
 import { useLazyQuery } from "@apollo/client";
 import { NewTest } from "../../../../types/newTest";
-import { NEW_TEST } from "../../../../gql/query/newTest";
 import { toast } from "react-hot-toast";
+import { newTestQuery, setTestId, testBaseUrl } from "../../../../utils";
 
-const StartPage = () => {
-  const [getTestId, {}] = useLazyQuery<NewTest>(NEW_TEST, {
+interface StartPageProps {
+  forClosePerson: boolean;
+  title: string;
+}
+
+const StartPage: React.FC<StartPageProps> = ({ forClosePerson, title }) => {
+  const [getTestId, {}] = useLazyQuery<NewTest>(newTestQuery(forClosePerson), {
     fetchPolicy: "cache-and-network",
     nextFetchPolicy: "network-only",
   });
   const { setLastQuestionId } = useContext(AppContext);
   const navigate = useNavigate();
+  const routeForTest = testBaseUrl(forClosePerson);
 
   const onStartBtnClick = () => {
     getTestId()
       .then((res) => {
-        localStorage.setItem("test_id", JSON.stringify(res.data?.newTest));
+        setTestId(JSON.stringify(res.data?.newTest), forClosePerson);
         if (setLastQuestionId) {
           setLastQuestionId(`description`);
-          navigate(`/test/description`);
+          navigate(`${routeForTest}/description`);
         }
       })
       .catch(() => toast.error(`Не удалось начать тест`, { id: "error" }));
@@ -86,8 +92,7 @@ const StartPage = () => {
       <StyledTestSection flex centered borderBox pt={8}>
         <StyledTestBox flex column>
           <StyledSubtitle3 maxWidth={749} mb={7} textColor={TextColor.Primary}>
-            Данный тест рекомендуется пройти для проверки своего когнитивного
-            статуса.
+            {title}
           </StyledSubtitle3>
           <StyledBox flex>
             <StyledPuzzles />

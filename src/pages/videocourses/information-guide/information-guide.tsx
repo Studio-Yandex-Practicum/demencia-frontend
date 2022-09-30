@@ -1,5 +1,5 @@
 import React, { FC } from "react";
-import { Section, Grid } from "../../../ui/controls";
+import { Section } from "../../../ui/controls";
 import { TextColor, TypographyLevel } from "../../../ui/types";
 import {
   StyledSubtitle1,

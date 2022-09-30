@@ -1,8 +1,8 @@
 import { useState, useEffect, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { Box, Section } from "../../../../../ui/controls";
-import { testData } from "../../../data";
-import QuestionHeader from "../components/question-header";
+import { getQuestionForTest } from "../../../../../utils";
+import QuestionHeader from "../question-header";
 import {
   StyledBoxInput,
   InputBox,
@@ -15,22 +15,36 @@ import {
   InputOne,
   StyleLabel,
 } from "./two-options-question-styles";
-import { ArrowLeft, ArrowRight } from "../components/arrows";
+import {
+  ArrowLeft,
+  ArrowRight,
+} from "../../../for-myself/pages/question/components/arrows";
 import { AppContext } from "../../../../../components/contexts";
 import { useMutation } from "@apollo/client";
-import { CREATE_ANSWER } from "../../../../../gql/mutation/create-answer";
 import toast from "react-hot-toast";
-import ErrorText from "../components/error-text";
-import LoadingText from "../components/loading-text";
+import ErrorText from "../../../for-myself/pages/question/components/error-text";
+import LoadingText from "../../../for-myself/pages/question/components/loading-text";
+import {
+  answerQuery,
+  getTestId,
+  getTestNumber,
+  setTestNumber,
+  testBaseUrl,
+} from "../../../../../utils";
 
-const TwoOptionsQuestion: React.FC<{ number: number }> = ({ number }) => {
-  const [createAnswer, { loading }] = useMutation(CREATE_ANSWER);
+const TwoOptionsQuestion: React.FC<{
+  number: number;
+  forClosePerson: boolean;
+}> = ({ number, forClosePerson }) => {
+  const [createAnswer, { loading }] = useMutation(answerQuery(forClosePerson));
   const { setLastQuestionId } = useContext(AppContext);
   const navigate = useNavigate();
   const [firstChecked, setFirstChecked] = useState(false);
   const [secondChecked, setSecondChecked] = useState(false);
   const [isError, setIsError] = useState(false);
   const [firstDescription, setFirstDescription] = useState("");
+  const routeForTest = testBaseUrl(forClosePerson);
+  const testData = getQuestionForTest(number, forClosePerson);
 
   const setChecked = (first: boolean, second: boolean) => {
     setFirstChecked(first);
@@ -38,14 +52,14 @@ const TwoOptionsQuestion: React.FC<{ number: number }> = ({ number }) => {
   };
 
   useEffect(() => {
-    if (localStorage.getItem(`${number}`)) {
-      const answer = localStorage.getItem(`${number}`);
+    if (getTestNumber(number, forClosePerson)) {
+      const answer = getTestNumber(number, forClosePerson);
       if (answer) {
-        if (answer === testData[number].second) {
+        if (answer === testData.second) {
           setChecked(false, true);
         } else {
           setChecked(true, false);
-          if (answer !== testData[number].first) {
+          if (answer !== testData.first) {
             setFirstDescription(answer);
           }
         }
@@ -53,14 +67,14 @@ const TwoOptionsQuestion: React.FC<{ number: number }> = ({ number }) => {
     } else {
       setChecked(false, false);
     }
-  }, [number]);
+  }, [forClosePerson, number, testData.first, testData.second]);
 
   const makeAnswer = () => {
     return secondChecked
-      ? testData[number].second || ""
+      ? testData.second || ""
       : firstChecked && firstDescription
       ? firstDescription
-      : testData[number].first || "";
+      : testData.first || "";
   };
 
   const goForward = () => {
@@ -72,7 +86,7 @@ const TwoOptionsQuestion: React.FC<{ number: number }> = ({ number }) => {
 
       const answer = makeAnswer();
 
-      const testId = JSON.parse(localStorage.getItem("test_id") || "");
+      const testId = JSON.parse(getTestId(forClosePerson) || "");
       createAnswer({
         variables: {
           input: {
@@ -84,12 +98,14 @@ const TwoOptionsQuestion: React.FC<{ number: number }> = ({ number }) => {
       })
         .then((res) => {
           if (res.data.createAnswer.ok === true) {
-            localStorage.setItem(`${number}`, answer);
+            setTestNumber(number, answer, forClosePerson);
             if (setLastQuestionId) {
               setLastQuestionId(`${number + 1}`);
             }
             const to =
-              number === 25 ? "/test/result" : `/test/question/${number + 1}`;
+              number === 26
+                ? `${routeForTest}/result`
+                : `${routeForTest}/question/${number + 1}`;
             navigate(to);
           }
         })
@@ -104,12 +120,12 @@ const TwoOptionsQuestion: React.FC<{ number: number }> = ({ number }) => {
 
   return (
     <Box>
-      <QuestionHeader number={number} />
+      <QuestionHeader number={number} forClosePerson={forClosePerson} />
       <Section flex>
         <StyledBoxInput flex maxWidth={1900}>
           <StyledBoxArrowLeft>
             <ArrowLeft
-              onClick={() => navigate(`/test/question/${number - 1}`)}
+              onClick={() => navigate(`${routeForTest}/question/${number - 1}`)}
             />
           </StyledBoxArrowLeft>
           <StyleBoxInputs flex maxWidth={850}>
@@ -122,9 +138,7 @@ const TwoOptionsQuestion: React.FC<{ number: number }> = ({ number }) => {
                   checked={firstChecked}
                   onChange={() => setChecked(true, false)}
                 />
-                <StyleLabel htmlFor="first">
-                  {testData[number].first}
-                </StyleLabel>
+                <StyleLabel htmlFor="first">{testData.first}</StyleLabel>
               </InputBox>
               <InputBox>
                 <StyledInputList
@@ -134,12 +148,10 @@ const TwoOptionsQuestion: React.FC<{ number: number }> = ({ number }) => {
                   checked={secondChecked}
                   onChange={() => setChecked(false, true)}
                 />
-                <StyleLabel htmlFor="second">
-                  {testData[number].second}
-                </StyleLabel>
+                <StyleLabel htmlFor="second">{testData.second}</StyleLabel>
               </InputBox>
             </StyleQuestionInputs>
-            {firstChecked && testData[number].needFirstDescription && (
+            {firstChecked && testData.needFirstDescription && (
               <BoxInputOne mt={4} flex maxWidth={850}>
                 <InputOne
                   placeholder="Какие изменения вы наблюдаете?"

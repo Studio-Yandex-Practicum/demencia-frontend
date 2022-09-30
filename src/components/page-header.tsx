@@ -131,8 +131,12 @@ const NavMenu: React.FC<{ vertical?: boolean }> = (props) => {
 };
 
 const PageHeader: React.FC = () => {
-  const questionMatch = useMatch("/test/question/*");
-  const resultMatch = useMatch("/test/result");
+  const questionMatch1 = useMatch("/test/question/*");
+  const questionMatch2 = useMatch("/test-for-close-person/question/*");
+  const questionMatch = questionMatch1 || questionMatch2;
+  const resultMatch1 = useMatch("/test/result");
+  const resultMatch2 = useMatch("/test-for-close-person/result");
+  const resultMatch = resultMatch1 || resultMatch2;
 
   return (
     <Header>

@@ -1,0 +1,18 @@
+name: Deploy
+on: push
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+   steps:
+      - name: Get code
+        uses: actions/checkout@v3
+      - name: Install dependecies
+        run: npm ci
+      - name: Tets
+        run: react-scripts test
+      - name: Run app
+        run: export PUBLIC_URL=/ || set PUBLIC_URL=/&& react-scripts start
+      - name: Lint
+        run: tsc --noEmit && eslint src/**/*.ts{,x}
+      - name: Build
+        run: react-scripts build

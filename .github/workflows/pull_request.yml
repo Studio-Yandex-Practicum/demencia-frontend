@@ -6,8 +6,10 @@ jobs:
     steps:
       - name: Get code
         uses: actions/checkout@v3
-      - name: Install dependecies
-        run: npm install
+      - name: Setup Node
+        uses: actions/setup-node@v3
+        with:
+          node-version: "16"
       - name: Tets
         run: react-scripts test
       - name: Run app

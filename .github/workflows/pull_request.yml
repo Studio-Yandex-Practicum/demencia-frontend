@@ -7,7 +7,7 @@ jobs:
       - name: Get code
         uses: actions/checkout@v3
       - name: Install dependecies
-        run: npm ci
+        run: npm install
       - name: Tets
         run: react-scripts test
       - name: Run app

@@ -10,6 +10,8 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: "16"
+      - name: Install dependencies
+        uses: npm install
       - name: Tets
         run: react-scripts test
       - name: Run app

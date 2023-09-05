@@ -11,7 +11,7 @@ jobs:
         with:
           node-version: "16"
       - name: Install dependencies
-        uses: npm install
+        run: npm install
       - name: Tets
         run: react-scripts test
       - name: Run app

@@ -12,11 +12,11 @@ jobs:
           node-version: "16"
       - name: Install dependencies
         run: npm install --legacy-peer-deps
-      - name: Tets
-        run: react-scripts test
+      - name: Test
+        run: npm run test
       - name: Run app
-        run: export PUBLIC_URL=/ || set PUBLIC_URL=/&& react-scripts start
+        run: npm run start
       - name: Lint
-        run: tsc --noEmit && eslint src/**/*.ts{,x}
+        run: npm run lint
       - name: Build
-        run: react-scripts build
+        run: npm run build

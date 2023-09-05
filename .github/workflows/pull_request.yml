@@ -11,7 +11,7 @@ jobs:
         with:
           node-version: "16"
       - name: Install dependencies
-        run: npm install
+        run: npm install --legacy-peer-deps
       - name: Tets
         run: react-scripts test
       - name: Run app

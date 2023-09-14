@@ -20,6 +20,9 @@ jobs:
         run: yarn test
       - name: Lint
         run: yarn lint
+  push:
+    runs-on: ubuntu-latest
+    steps:
       - name: Deploy with gh-pages
         run: |
           git remote set-url origin https://git:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git

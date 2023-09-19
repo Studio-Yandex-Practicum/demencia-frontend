@@ -1,5 +1,8 @@
 name: Pull_request
-on: workflow_dispatch
+on:
+  pull_request:
+    branches:
+      - master
 jobs:
   pull_request:
     runs-on: ubuntu-latest

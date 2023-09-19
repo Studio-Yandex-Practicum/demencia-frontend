@@ -1,10 +1,19 @@
 name: Pull_request
 on:
   push:
-    branches:
-      - master
+    branches: [master]
   pull_request:
+    branches: [master]
 jobs:
+  deployment:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy with gh-pages
+        run: |
+          git remote set-url origin https://git:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git
+          npm run deploy -- -u "github-actions-bot <support+actions@github.com>"
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
   pull_request:
     runs-on: ubuntu-latest
     steps:
@@ -20,12 +29,3 @@ jobs:
         run: yarn test
       - name: Lint
         run: yarn lint
-  push:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Deploy with gh-pages
-        run: |
-          git remote set-url origin https://git:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git
-          npm run deploy -- -u "github-actions-bot <support+actions@github.com>"
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

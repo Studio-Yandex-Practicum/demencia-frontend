@@ -2,6 +2,7 @@ name: Pull_request
 on:
   push:
     branches: [master]
+  workflow_dispatch:
   pull_request:
     branches: [master]
 jobs:
@@ -10,12 +11,20 @@ jobs:
     steps:
       - name: Get code
         uses: actions/checkout@v3
-      - name: Deploy with gh-pages
-        run: |
-          git remote set-url origin https://git:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git
-          npm run deploy -- -u "github-actions-bot <support+actions@github.com>"
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Setup Node
+        uses: actions/setup-node@v3
+        with:
+          node-version: "16"
+      - name: Install dependencies
+        run: yarn install
+      - name: Test
+        run: yarn test
+      - name: Lint
+        run: yarn lint
+      - name: Build
+        run: yarn build
+      - name: Deploy
+        run: yarn deploy
   pull_request:
     runs-on: ubuntu-latest
     steps:

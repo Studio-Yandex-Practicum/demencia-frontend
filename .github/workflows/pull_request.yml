@@ -1,28 +1,6 @@
 name: Pull_request
-on:
-  push:
-    branches: [master]
-  workflow_dispatch:
+on: workflow_dispatch
 jobs:
-  deployment:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Get code
-        uses: actions/checkout@v3
-      - name: Setup Node
-        uses: actions/setup-node@v3
-        with:
-          node-version: "16"
-      - name: Install dependencies
-        run: yarn install
-      - name: Test
-        run: yarn test
-      - name: Lint
-        run: yarn lint
-      - name: Build
-        run: yarn build
-      - name: Deploy
-        run: yarn deploy
   pull_request:
     runs-on: ubuntu-latest
     steps:
